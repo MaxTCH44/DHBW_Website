@@ -1,0 +1,23 @@
+[
+    {
+        "id" : 1,
+        "name" : "PEM Electrolyser",
+        "type" : "pem",
+        "price" : 150000,
+        "efficiency" : 100
+    },
+    {
+        "id" : 2,
+        "name" : "Alkaline Electrolyser",
+        "type" : "alkaline",
+        "price" : 150000,
+        "efficiency" : 100
+    },
+    {
+        "id" : 3,
+        "name" : "AEM Electrolyser",
+        "type" : "aem",
+        "price" : 150000,
+        "efficiency" : 100
+    }
+]

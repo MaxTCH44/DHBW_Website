@@ -1,0 +1,16 @@
+[
+    {
+        "id" : 1,
+        "name" : "Mecanical Compressor",
+        "type" : "mecanical",
+        "price" : 50000,
+        "efficiency" : 100
+    },
+    {
+        "id" : 2,
+        "name" : "Electrochemical Compressor",
+        "type" : "electrochemical",
+        "price" : 50000,
+        "efficiency" : 100
+    }
+]
