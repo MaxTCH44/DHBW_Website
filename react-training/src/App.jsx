@@ -1,8 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Production from './pages/Production';
+import ProductionChain from './pages/ProductionChain';
 import Recycling from './pages/Recycling';
 import Electrolyzers from './pages/Electrolyzers';
-import Header from './components/Header'; 
+import Calculator from './pages/Calculator';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import './App.css';
 
 export default function App() {
@@ -12,13 +14,14 @@ export default function App() {
         <Header />
         <main>
           <Routes>
-            <Route path="/" element={<Production />} />
-            <Route path="/production" element={<Production />} />
+            <Route path="/" element={<Calculator />} />
+            <Route path="/calculator" element={<Calculator />} />
+            <Route path="/production" element={<ProductionChain />} />
             <Route path="/recycling" element={<Recycling />} />
             <Route path="/electrolyzers" element={<Electrolyzers />} />
           </Routes>
         </main>
-        
+        <Footer />
       </div>
     </BrowserRouter>
   );

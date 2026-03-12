@@ -1,5 +1,7 @@
-export default function Recycling(){
+import { Title } from "@mantine/core"
+
+export default function Recycling() {
     return(
-        <h1>Recycling</h1>
+        <Title order={1} mb="xl">Recycling Process</Title>
     )
 }

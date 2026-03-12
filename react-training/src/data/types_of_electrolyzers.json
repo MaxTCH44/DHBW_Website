@@ -1,0 +1,89 @@
+{
+  "introText": "Understanding the different types of electrolyzers is crucial for optimizing hydrogen production.",
+  "electrolyzers": [
+    {
+      "id": "pem",
+      "label": "PEM Electrolysis",
+      "content": [
+        {
+          "type": "paragraph",
+          "value": "Proton Exchange Membrane (PEM) water electrolysis is an electrochemical process that splits water into hydrogen and oxygen using electrical energy."
+        },
+        {
+          "type": "image",
+          "src": "/img/vite.svg",
+          "alt": "Diagram of PEM half-cell reactions",
+          "size": 100
+        },
+        {
+          "type": "paragraph",
+          "value": "The core of the system is the solid polymer electrolyte membrane. This membrane conducts protons across to the cathode while acting as an electrical insulator and preventing the product gases from mixing."
+        }
+      ],
+      "advantages": [
+        "Produces high-purity hydrogen gas",
+        "Compact system design"
+      ],
+      "disadvantages": [
+        "Relies on expensive catalyst materials",
+        "Highly sensitive to water impurities"
+      ]
+    },
+    {
+      "id": "alkaline",
+      "label": "Alkaline Electrolysis",
+      "content": [
+        {
+          "type": "paragraph",
+          "value": "Unlike PEM electrolysis, Alkaline Water Electrolysis operates in a high-pH liquid environment and relies on the movement of hydroxide anions OH-."
+        },
+        {
+          "type": "paragraph",
+          "value": "The system uses a highly concentrated aqueous alkaline solution, typically 20-30 wt% KOH, in which the electrodes are immersed."
+        },
+        {
+          "type": "image",
+          "src": "/img/vite.svg",
+          "alt": "Diagram of Alkaline liquid electrolyte system",
+          "size": 120
+        }
+      ],
+      "advantages": [
+        "Does not require noble metals",
+        "Mature and well-established technology"
+      ],
+      "disadvantages": [
+        "Uses a corrosive liquid electrolyte",
+        "Gas crossover can occur at low loads"
+      ]
+    },
+    {
+      "id": "aem",
+      "label": "AEM Electrolysis",
+      "content": [
+        {
+          "type": "paragraph",
+          "value": "AEM electrolysis essentially bridges the gap between the PEM and traditional alkaline methods, combining the use of a solid polymer membrane with an alkaline operating environment."
+        },
+        {
+          "type": "image",
+          "src": "/img/vite.svg",
+          "alt": "Diagram of AEM solid membrane system",
+          "size": 180
+        },
+        {
+          "type": "paragraph",
+          "value": "The process uses a solid Anion Exchange Membrane (AEM) designed to selectively transport negatively charged hydroxide anions OH- across to the anode, while physically keeping the product gases separated."
+        }
+      ],
+      "advantages": [
+        "Combines the benefits of a solid membrane and an alkaline environment ",
+        "Eliminates the need for highly concentrated corrosive liquid electrolytes"
+      ],
+      "disadvantages": [
+        "Membrane durability is still an industry challenge",
+        "Less commercially mature than Alkaline and PEM"
+      ]
+    }
+  ]
+}

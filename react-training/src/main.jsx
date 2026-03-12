@@ -20,7 +20,7 @@ const myColor = [
 ];
 
 const theme = createTheme({
-  autoContrast : true,
+  autoContrast: true,
   defaultRadius: 'md',
   colors: {
     myColor,

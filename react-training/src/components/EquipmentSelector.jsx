@@ -1,5 +1,7 @@
 import { Select, Checkbox, Stack } from '@mantine/core';
 
+
+
 export default function EquipmentSelector({ label, itemsList, selectedItem, onItemChange, isOwned, onOwnedChange, ownedLabel }) {
 
     const selectData = itemsList.map((item, index) => ({
@@ -11,14 +13,14 @@ export default function EquipmentSelector({ label, itemsList, selectedItem, onIt
 
     return (
         <Stack gap="sm" mb="md">
-            <Select 
+            <Select
                 label={label}
                 data={selectData}
                 value={selectedIndex}
                 onChange={onItemChange}
                 allowDeselect={false}
             />
-            <Checkbox 
+            <Checkbox
                 label={ownedLabel}
                 checked={isOwned}
                 onChange={(e) => onOwnedChange(e.currentTarget.checked)}

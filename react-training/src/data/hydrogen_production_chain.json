@@ -1,0 +1,58 @@
+[
+  {
+    "level": 1,
+    "items": [
+      { 
+        "id": "renewables", 
+        "label": "Renewables", 
+        "iconName": "IconWindmill",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem mi, imperdiet ut cursus at, ornare in felis. Nullam neque lacus, volutpat ac pretium id, tempor sed urna. Fusce feugiat est vitae ligula aliquet, sit amet euismod arcu faucibus. Duis eu egestas odio. Mauris tempor tempus mi, vel tincidunt orci tempor pulvinar. Proin eu pretium dolor, nec malesuada purus. Etiam tristique purus arcu, vitae lacinia ex lobortis eu. Nunc pretium elit erat. Etiam placerat egestas sollicitudin. Nullam sagittis, turpis ac luctus tempor, ex turpis ultrices magna, nec faucibus nisl nulla a arcu. In vel commodo enim." 
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "items": [
+      { 
+        "id": "electrolysis", 
+        "label": "Electrolysis", 
+        "iconName": "IconDroplet", 
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem mi, imperdiet ut cursus at, ornare in felis. Nullam neque lacus, volutpat ac pretium id, tempor sed urna. Fusce feugiat est vitae ligula aliquet, sit amet euismod arcu faucibus. Duis eu egestas odio. Mauris tempor tempus mi, vel tincidunt orci tempor pulvinar. Proin eu pretium dolor, nec malesuada purus. Etiam tristique purus arcu, vitae lacinia ex lobortis eu. Nunc pretium elit erat. Etiam placerat egestas sollicitudin. Nullam sagittis, turpis ac luctus tempor, ex turpis ultrices magna, nec faucibus nisl nulla a arcu. In vel commodo enim." 
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "items": [
+      { 
+        "id": "storage", 
+        "label": "H₂ Storage", 
+        "iconName": "IconCylinder",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem mi, imperdiet ut cursus at, ornare in felis. Nullam neque lacus, volutpat ac pretium id, tempor sed urna. Fusce feugiat est vitae ligula aliquet, sit amet euismod arcu faucibus. Duis eu egestas odio. Mauris tempor tempus mi, vel tincidunt orci tempor pulvinar. Proin eu pretium dolor, nec malesuada purus. Etiam tristique purus arcu, vitae lacinia ex lobortis eu. Nunc pretium elit erat. Etiam placerat egestas sollicitudin. Nullam sagittis, turpis ac luctus tempor, ex turpis ultrices magna, nec faucibus nisl nulla a arcu. In vel commodo enim." 
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "items": [
+      { 
+        "id": "mobility", 
+        "label": "Mobility", 
+        "iconName": "IconCar",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem mi, imperdiet ut cursus at, ornare in felis. Nullam neque lacus, volutpat ac pretium id, tempor sed urna. Fusce feugiat est vitae ligula aliquet, sit amet euismod arcu faucibus. Duis eu egestas odio. Mauris tempor tempus mi, vel tincidunt orci tempor pulvinar. Proin eu pretium dolor, nec malesuada purus. Etiam tristique purus arcu, vitae lacinia ex lobortis eu. Nunc pretium elit erat. Etiam placerat egestas sollicitudin. Nullam sagittis, turpis ac luctus tempor, ex turpis ultrices magna, nec faucibus nisl nulla a arcu. In vel commodo enim."  
+      },
+      { 
+        "id": "industry", 
+        "label": "Industry", 
+        "iconName": "IconBuildingWarehouse",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem mi, imperdiet ut cursus at, ornare in felis. Nullam neque lacus, volutpat ac pretium id, tempor sed urna. Fusce feugiat est vitae ligula aliquet, sit amet euismod arcu faucibus. Duis eu egestas odio. Mauris tempor tempus mi, vel tincidunt orci tempor pulvinar. Proin eu pretium dolor, nec malesuada purus. Etiam tristique purus arcu, vitae lacinia ex lobortis eu. Nunc pretium elit erat. Etiam placerat egestas sollicitudin. Nullam sagittis, turpis ac luctus tempor, ex turpis ultrices magna, nec faucibus nisl nulla a arcu. In vel commodo enim." 
+      },
+      { 
+        "id": "heating", 
+        "label": "Heating", 
+        "iconName": "IconFlame",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem mi, imperdiet ut cursus at, ornare in felis. Nullam neque lacus, volutpat ac pretium id, tempor sed urna. Fusce feugiat est vitae ligula aliquet, sit amet euismod arcu faucibus. Duis eu egestas odio. Mauris tempor tempus mi, vel tincidunt orci tempor pulvinar. Proin eu pretium dolor, nec malesuada purus. Etiam tristique purus arcu, vitae lacinia ex lobortis eu. Nunc pretium elit erat. Etiam placerat egestas sollicitudin. Nullam sagittis, turpis ac luctus tempor, ex turpis ultrices magna, nec faucibus nisl nulla a arcu. In vel commodo enim."  
+      }
+    ]
+  }
+]
