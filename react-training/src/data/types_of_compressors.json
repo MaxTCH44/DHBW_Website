@@ -1,0 +1,62 @@
+{
+    "title": "Types of Compressors",
+    "introText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus odio placerat semper fringilla. Sed augue neque, sodales ut tincidunt pretium, elementum sit amet felis.",
+    "list": [
+        {
+            "id": "mecanical",
+            "label": "Mecanical Compressor",
+            "content": [
+                {
+                    "type": "paragraph",
+                    "value": "Vivamus pellentesque et magna in rutrum. In a urna vel sem tristique feugiat eget in eros. Maecenas id enim ullamcorper, maximus sapien sed, porta tortor. Mauris auctor leo ut mi ullamcorper scelerisque. Sed volutpat aliquam feugiat. Ut tellus dui, bibendum in maximus et, euismod nec lacus. Nunc purus augue, efficitur eleifend tincidunt vitae, commodo eu urna."
+                },
+                {
+                    "type": "image",
+                    "src": "/img/vite.svg",
+                    "alt": "",
+                    "size": 100
+                },
+                {
+                    "type": "paragraph",
+                    "value": "Donec magna ante, pharetra nec turpis id, egestas congue tortor. Sed id mi neque. Vivamus at dui ut arcu venenatis cursus et eget dui. Sed sem neque, blandit non sapien nec, scelerisque feugiat quam."
+                }
+            ],
+            "advantages": [
+                "Advantage 1",
+                "Advantage 2"
+            ],
+            "disadvantages": [
+                "Disadvantage 1",
+                "Disadvantage 2"
+            ]
+        },
+        {
+            "id": "electrochemical",
+            "label": "Electrochemical Compressor",
+            "content": [
+                {
+                    "type": "paragraph",
+                    "value": "Donec ultricies varius turpis, ac tincidunt ipsum egestas vitae. Donec ut molestie nisl. Sed non placerat dolor."
+                },
+                {
+                    "type": "paragraph",
+                    "value": "Curabitur pulvinar nisl bibendum, sollicitudin nisl eget, faucibus elit. Etiam cursus erat id nisl rhoncus, id rhoncus metus efficitur. Morbi convallis lectus nec diam iaculis vestibulum. Ut non mauris id augue tempus molestie non quis dolor. Pellentesque auctor sapien at mi condimentum, a mollis urna hendrerit. Duis aliquet non tellus sed consequat."
+                },
+                {
+                    "type": "image",
+                    "src": "/img/vite.svg",
+                    "alt": "",
+                    "size": 120
+                }
+            ],
+            "advantages": [
+                "Advantage 1",
+                "Advantage 2"
+            ],
+            "disadvantages": [
+                "Disadvantage 1",
+                "Disadvantage 2"
+            ]
+        }
+    ]
+}

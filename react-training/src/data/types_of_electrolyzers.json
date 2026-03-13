@@ -1,6 +1,7 @@
 {
+  "title": "Types of Electrolyzers",
   "introText": "Understanding the different types of electrolyzers is crucial for optimizing hydrogen production.",
-  "electrolyzers": [
+  "list": [
     {
       "id": "pem",
       "label": "PEM Electrolysis",

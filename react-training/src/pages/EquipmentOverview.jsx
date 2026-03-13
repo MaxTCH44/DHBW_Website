@@ -2,18 +2,17 @@ import { useState } from "react";
 import { Container, Title, Text, Group, Button } from "@mantine/core";
 import ContentDetails from "../components/ContentDetails";
 import ProsConsCards from "../components/ProsConsCards";
-import electrolyzersData from "../data/types_of_electrolyzers.json";
 
-export default function Electrolyzers() {
-    const [selectedItem, setSelectedItem] = useState(electrolyzersData.electrolyzers[0]);
+export default function EquipmentOverview({ equipmentList }) {
+    const [selectedItem, setSelectedItem] = useState(equipmentList.list[0]);
 
     return (
         <Container size="xl" mt="xl">
-            <Title order={1} mb="xl">Types of electrolyzers</Title>
-            <Text size="md" mb="xl">{electrolyzersData.introText}</Text>
+            <Title order={1} mb="xl">{equipmentList.title}</Title>
+            <Text size="md" mb="xl">{equipmentList.introText}</Text>
             
             <Group justify="center" mb="xl" pb="lg">
-                {electrolyzersData.electrolyzers.map((e) =>
+                {equipmentList.list.map((e) =>
                     <Button 
                         variant={e.id === selectedItem.id ? "outline" : "filled"} 
                         key={e.id} 

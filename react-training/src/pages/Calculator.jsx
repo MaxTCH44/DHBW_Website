@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Title, SimpleGrid, Card, Text, Paper, Anchor, Group, Badge, Stack } from '@mantine/core';
+import { Container, Title, SimpleGrid, Card, Text, Paper, Anchor, Stack } from '@mantine/core';
 
 import electrolyzers from '../data/electrolyzers_list.json';
 import compressors from '../data/compressors_list.json';
@@ -45,7 +45,7 @@ export default function Calculator() {
     return (
         <Container size="xl" px="xl" py="lg">
             <Title order={1} ta="center" mb="xl" c="dark.7">Hydrogen Cost Calculator</Title>
-            <SimpleGrid cols={{ base: 1, lg: 3 }} spacing="lg">
+            <SimpleGrid cols={{ base: 1, lg: 3 }} spacing="lg" style={{ alignItems: 'flex-start' }}>
                 <Card shadow="sm" padding="lg" radius="md" withBorder>
                     <Text fw={700} size="xl" mb="md" pb="xs" style={{ borderBottom: '2px solid #f0f0f0' }}>
                         Electrolyzer Setup
@@ -69,9 +69,9 @@ export default function Calculator() {
                     <Paper bg="gray.0" p="md" radius="md" withBorder mt="md">
                         <EquipmentSelector
                             label={
-                                <Stack>
+                                <Stack gap="xs">
                                     <span>Electrolyzer Type :</span>
-                                    <Anchor component={Link} to="/electrolyzers" size="xs" c="blue">
+                                    <Anchor component={Link} to="/electrolyzers" size="xs" mb="sm" c="blue">
                                         Learn more about the different types
                                     </Anchor>
                                 </Stack>
@@ -150,7 +150,12 @@ export default function Calculator() {
                     />
                     <Paper bg="gray.0" p="md" radius="md" withBorder mt="md">
                         <EquipmentSelector
-                            label="Compressor Type :"
+                            label={<Stack gap="xs">
+                                    <span>Compressor Type :</span>
+                                    <Anchor component={Link} to="/compressors" size="xs" mb="sm" c="blue">
+                                        Learn more about the different types
+                                    </Anchor>
+                                </Stack>}
                             itemsList={compressors}
                             selectedItem={selectedCompressor}
                             onItemChange={(val) => setSelectedCompressor(compressors[val])}
