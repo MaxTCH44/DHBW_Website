@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import ProductionChain from './pages/ProductionChain';
 import Recycling from './pages/Recycling';
 import EquipmentOverview from './pages/EquipmentOverview';
@@ -14,7 +14,7 @@ import compressorsData from "./data/types_of_compressors.json";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="app-container">
         <Header />
         <main>
@@ -29,6 +29,6 @@ export default function App() {
         </main>
         <Footer />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
