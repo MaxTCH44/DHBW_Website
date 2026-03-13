@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Title, Text, Group, Button } from "@mantine/core";
 import ContentDetails from "../components/ContentDetails";
 import ProsConsCards from "../components/ProsConsCards";
 
 export default function EquipmentOverview({ equipmentList }) {
     const [selectedItem, setSelectedItem] = useState(equipmentList.list[0]);
+
+    useEffect(() => {
+        setSelectedItem(equipmentList.list[0]);
+    }, [equipmentList]);
 
     return (
         <Container size="xl" mt="xl">
