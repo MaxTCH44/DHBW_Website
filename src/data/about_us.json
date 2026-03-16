@@ -1,0 +1,21 @@
+{
+    "title": "About Greenlabs H₂",
+    "description": "Learn more about our mission, our researchers, and the open-source engineering tools we are building for the green hydrogen industry.",
+    "content":
+    [
+        {
+            "type": "paragraph",
+            "value": "Vivamus pellentesque et magna in rutrum. In a urna vel sem tristique feugiat eget in eros. Maecenas id enim ullamcorper, maximus sapien sed, porta tortor. Mauris auctor leo ut mi ullamcorper scelerisque. Sed volutpat aliquam feugiat. Ut tellus dui, bibendum in maximus et, euismod nec lacus. Nunc purus augue, efficitur eleifend tincidunt vitae, commodo eu urna."
+        },
+        {
+            "type": "image",
+            "src": "img/vite.svg",
+            "alt": "",
+            "size": 100
+        },
+        {
+            "type": "paragraph",
+            "value": "Donec magna ante, pharetra nec turpis id, egestas congue tortor. Sed id mi neque. Vivamus at dui ut arcu venenatis cursus et eget dui. Sed sem neque, blandit non sapien nec, scelerisque feugiat quam."
+        }
+    ]
+}

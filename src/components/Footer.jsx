@@ -1,25 +1,9 @@
 import { Anchor, Container, Group, Title, Box, Flex } from '@mantine/core';
+import { Link } from 'react-router-dom'; 
 
 
-
-const links = [
-  { link: '#', label: 'About Us' },
-  { link: '#', label: 'Contact' },
-];
 
 export default function Footer() {
-  const items = links.map((link) => (
-    <Anchor
-      c="dimmed"
-      key={link.label}
-      href={link.link}
-      onClick={(event) => event.preventDefault()}
-      size="sm"
-    >
-      {link.label}
-    </Anchor>
-  ));
-
   return (
     <Box 
       component="footer" 
@@ -37,7 +21,14 @@ export default function Footer() {
           <Title order={4} c="dimmed">
             Greenlabs H₂
           </Title>
-          <Group mt={{ base: 'md', sm: 0 }}>{items}</Group>
+          <Group mt={{ base: 'md', sm: 0 }}>
+            <Anchor component={Link} to="/about" c="dimmed" size="sm">
+              About Us
+            </Anchor>
+            <Anchor component={Link} to="/contact" c="dimmed" size="sm">
+              Contact
+            </Anchor>
+          </Group>
         </Flex>
       </Container>
     </Box>

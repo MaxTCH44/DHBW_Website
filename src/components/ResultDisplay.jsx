@@ -1,5 +1,7 @@
 import { Card, Title, Group, Paper, Text, Badge } from '@mantine/core';
 
+
+
 export default function ResultDisplay({ cost, capex }) {
     return (
         <Card shadow="md" padding="xl" radius="md" withBorder mt="xl" bg="myColor.0" style={{ borderColor: 'var(--mantine-color-myColor-3)' }}>

@@ -3,6 +3,8 @@ import { useDisclosure } from '@mantine/hooks';
 import { Link, useLocation } from 'react-router-dom';
 import { IconChevronDown } from '@tabler/icons-react';
 
+
+
 const links = [
     { link: '/calculator', label: 'H₂ Calculator' },
     { link: '/recycling', label: 'Recycling' },
@@ -140,7 +142,12 @@ export default function Header() {
         >
             <Container size="md">
                 <Flex h={100} justify="space-between" align="center">
-                    <Title order={3}>
+                    <Title 
+                        order={3} 
+                        component={Link} 
+                        to="/" 
+                        style={{ textDecoration: 'none', color: 'inherit' }}
+                    >
                         Greenlabs H₂
                     </Title>
                     <Group gap={5} visibleFrom="sm">

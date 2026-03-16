@@ -9,6 +9,7 @@ import ValueInput from '../components/ValueInput.jsx';
 import SliderInput from '../components/SliderInput.jsx';
 import ResultDisplay from '../components/ResultDisplay.jsx';
 import EquipmentSelector from '../components/EquipmentSelector.jsx';
+import LabelWithTooltip from '../components/LabelWithTooltip.jsx';
 
 
 
@@ -17,8 +18,6 @@ const POWER_UNITS = [{ label: "MW", factor: 1 }, { label: "kW", factor: 1000 }];
 const VOLUME_PRICE_UNITS = [{ label: "€/m³", factor: 1 }, { label: "€/L", factor: 1000 }];
 const TIME_PER_YEAR_UNITS = [{ label: "days/year", factor: 1 }, { label: "h/year", factor: 24 }];
 const VOLUME_UNITS = [{ label: "kg", factor: 1 }, { label: "m³", factor: 11.1 }];
-
-
 
 export default function Calculator() {
     const [selectedElectrolyzer, setSelectedElectrolyzer] = useState(electrolyzers[0]);
@@ -30,6 +29,9 @@ export default function Calculator() {
 
     const [electricityPrice, setElectricityPrice] = useState({ value: 50, unit: ELEC_PRICE_UNITS[0] });
     const [waterPrice, setWaterPrice] = useState({ value: 2, unit: VOLUME_PRICE_UNITS[0] });
+
+    const [projectLifetime, setProjectLifetime] = useState(15);
+    const [interestRate, setInterestRate] = useState(2);
 
     const [storageCapacity, setStorageCapacity] = useState({ value: 100, unit: VOLUME_UNITS[0] });
     const [storagePrice, setStoragePrice] = useState(20000);
@@ -45,13 +47,17 @@ export default function Calculator() {
     return (
         <Container size="xl" px="xl" py="lg">
             <Title order={1} ta="center" mb="xl" c="dark.7">Hydrogen Cost Calculator</Title>
+            <Text c="dimmed" ta="center" maw={800} mx="auto" mb="xl">
+                Estimate the Levelized Cost of Hydrogen (LCOH) and total capital expenditure (CAPEX) for your production plant. 
+                Adjust system parameters, resource costs, and financial variables to simulate different techno-economic scenarios.
+            </Text>
             <SimpleGrid cols={{ base: 1, lg: 3 }} spacing="lg" style={{ alignItems: 'flex-start' }}>
                 <Card shadow="sm" padding="lg" radius="md" withBorder>
                     <Text fw={700} size="xl" mb="md" pb="xs" style={{ borderBottom: '2px solid #f0f0f0' }}>
                         Electrolyzer Setup
                     </Text>
                     <ValueInput
-                        label="System size"
+                        label={<LabelWithTooltip label="System size" tooltip="Total electrical power capacity of your electrolyzer setup." />}
                         units={POWER_UNITS}
                         currentUnit={systemSize.unit}
                         value={systemSize.value}
@@ -59,7 +65,7 @@ export default function Calculator() {
                         onUnitChange={u => setSystemSize({ ...systemSize, unit: u })}
                     />
                     <ValueInput
-                        label="Operating time"
+                        label={<LabelWithTooltip label="Operating time" tooltip="Number of hours or days the system operates continuously per year." />}
                         units={TIME_PER_YEAR_UNITS}
                         currentUnit={operatingTime.unit}
                         value={operatingTime.value}
@@ -70,7 +76,7 @@ export default function Calculator() {
                         <EquipmentSelector
                             label={
                                 <Stack gap="xs">
-                                    <span>Electrolyzer Type :</span>
+                                    <LabelWithTooltip label="Electrolyzer Type :" tooltip="Different technologies have distinct efficiencies and costs. Check the 'Learn' section for details." />
                                     <Anchor component={Link} to="/electrolyzers" size="xs" mb="sm" c="blue">
                                         Learn more about the different types
                                     </Anchor>
@@ -107,12 +113,13 @@ export default function Calculator() {
                         </Anchor>
                     </Paper>
                 </Card>
+                <Stack gap="lg">
                 <Card shadow="sm" padding="lg" radius="md" withBorder>
                     <Text fw={700} size="xl" mb="md" pb="xs" style={{ borderBottom: '2px solid var(--mantine-color-gray-2)' }}>
                         Resources Costs
                     </Text>
                     <ValueInput
-                        label="Electricity price"
+                        label={<LabelWithTooltip label="Electricity price" tooltip="Average cost of electricity required to split water into hydrogen and oxygen." />}
                         units={ELEC_PRICE_UNITS}
                         currentUnit={electricityPrice.unit}
                         value={electricityPrice.value}
@@ -120,7 +127,7 @@ export default function Calculator() {
                         onUnitChange={u => setElectricityPrice({ ...electricityPrice, unit: u })}
                     />
                     <ValueInput
-                        label="Water price"
+                        label={<LabelWithTooltip label="Water price" tooltip="Cost of purified water supply for the electrolysis process." />}
                         units={VOLUME_PRICE_UNITS}
                         currentUnit={waterPrice.unit}
                         value={waterPrice.value}
@@ -130,10 +137,32 @@ export default function Calculator() {
                 </Card>
                 <Card shadow="sm" padding="lg" radius="md" withBorder>
                     <Text fw={700} size="xl" mb="md" pb="xs" style={{ borderBottom: '2px solid var(--mantine-color-gray-2)' }}>
+                        Lifecycle Parameters
+                    </Text>
+                    <ValueInput
+                        label={<LabelWithTooltip label="Project Lifetime" tooltip="Expected operational lifespan of the plant to amortize the CAPEX." />}
+                        units="years"
+                        currentUnit="years"
+                        value={projectLifetime}
+                        onValueChange={val => setProjectLifetime(val)}
+                        onUnitChange={() => { }}
+                    />
+                    <ValueInput
+                        label={<LabelWithTooltip label="Interest Rate" tooltip="The discount rate or cost of capital used to calculate the levelized cost." />}
+                        units="%"
+                        currentUnit="%"
+                        value={interestRate}
+                        onValueChange={val => setInterestRate(val)}
+                        onUnitChange={() => { }}
+                    />
+                </Card>
+                </Stack>
+                <Card shadow="sm" padding="lg" radius="md" withBorder>
+                    <Text fw={700} size="xl" mb="md" pb="xs" style={{ borderBottom: '2px solid var(--mantine-color-gray-2)' }}>
                         Storage & Compression
                     </Text>
                     <ValueInput
-                        label="Storage capacity"
+                        label={<LabelWithTooltip label="Storage capacity" tooltip="Volume or mass of hydrogen you need to hold on-site." />}
                         units={VOLUME_UNITS}
                         currentUnit={storageCapacity.unit}
                         value={storageCapacity.value}
@@ -151,7 +180,7 @@ export default function Calculator() {
                     <Paper bg="gray.0" p="md" radius="md" withBorder mt="md">
                         <EquipmentSelector
                             label={<Stack gap="xs">
-                                    <span>Compressor Type :</span>
+                                    <LabelWithTooltip label="Compressor Type :" tooltip="Required to compress the hydrogen for efficient storage or transport." />
                                     <Anchor component={Link} to="/compressors" size="xs" mb="sm" c="blue">
                                         Learn more about the different types
                                     </Anchor>

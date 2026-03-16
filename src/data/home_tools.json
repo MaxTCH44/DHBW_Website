@@ -1,0 +1,16 @@
+[
+    {
+        "title": "Techno-Economic Calculator",
+        "description": "Run CAPEX and OPEX simulations for green hydrogen plants. Advanced models designed for transparent financial and technical planning.",
+        "iconName": "IconCalculator",
+        "buttonText": "Run Simulation",
+        "link": "/calculator"
+    },
+    {
+        "title": "Recycling Systems Evaluator",
+        "description": "Analyze exhaust gas mixtures to determine the optimal separation (PSA/Membranes) and compression architecture for H₂ recovery.",
+        "iconName": "IconRecycle",
+        "buttonText": "Open Evaluator",
+        "link": "/recycling"
+    }
+]

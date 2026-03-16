@@ -1,24 +1,20 @@
 import { Container, Title, Text } from "@mantine/core";
 import { useState } from "react";
-import InteractiveFlow from "../components/InteractiveFlow";
+import { IconWindmill, IconDroplet, IconCylinder, IconCar, IconBuildingWarehouse,IconFlame } from '@tabler/icons-react';
+
 import production_data from "../data/hydrogen_production_chain.json";
 
-import { 
-    IconWindmill, 
-    IconDroplet, 
-    IconCylinder, 
-    IconCar, 
-    IconBuildingWarehouse,
-    IconFlame 
-} from '@tabler/icons-react';
+import InteractiveFlow from "../components/InteractiveFlow";
 
-const iconMap = {
-    "IconWindmill": IconWindmill,
-    "IconDroplet": IconDroplet,
-    "IconCylinder": IconCylinder,
-    "IconCar": IconCar,
-    "IconBuildingWarehouse": IconBuildingWarehouse,
-    "IconFlame": IconFlame
+
+
+const ICON_MAP = {
+    IconWindmill,
+    IconDroplet,
+    IconCylinder,
+    IconCar,
+    IconBuildingWarehouse,
+    IconFlame
 };
 
 export default function ProductionChain() {
@@ -30,7 +26,7 @@ export default function ProductionChain() {
             
             <InteractiveFlow 
                 data={production_data} 
-                iconMap={iconMap} 
+                iconMap={ICON_MAP} 
                 selectedItem={selectedItem}
                 onNodeClick={setSelectedItem} 
             />

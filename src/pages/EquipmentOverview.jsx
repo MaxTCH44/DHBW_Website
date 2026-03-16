@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Title, Text, Group, Button } from "@mantine/core";
+
 import ContentDetails from "../components/ContentDetails";
 import ProsConsCards from "../components/ProsConsCards";
 

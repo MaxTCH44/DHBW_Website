@@ -1,0 +1,20 @@
+[
+    {
+        "title": "H₂ Production Chain",
+        "description": "Understand the complete lifecycle of green hydrogen from water electrolysis to storage and distribution. A macroscopic view of the infrastructure.",
+        "iconName": "IconRoute",
+        "link": "/production"
+    },
+    {
+        "title": "Electrolyzer Technologies",
+        "description": "Compare PEM, Alkaline, and AEM core technologies. Analyze efficiency parameters, operational lifespans, and ideal industrial use cases.",
+        "iconName": "IconDroplet",
+        "link": "/electrolyzers"
+    },
+    {
+        "title": "Compression Systems",
+        "description": "Explore mechanical and non-mechanical compression methods necessary for high-density hydrogen storage and grid injection.",
+        "iconName": "IconGauge",
+        "link": "/compressors"
+    }
+]

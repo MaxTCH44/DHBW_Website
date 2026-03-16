@@ -1,5 +1,7 @@
 import { NumberInput, Slider, Box, Text } from '@mantine/core';
 
+
+
 export default function SliderInput({ label, value, units, onValueChange, min, max }) {
   return (
     <Box pos="relative">
