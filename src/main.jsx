@@ -2,8 +2,8 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-//import TicTacToe from '../public/test code/TicTacToe.jsx';
 import '@mantine/core/styles.css';
+import '@mantine/charts/styles.css';
 import { MantineProvider, createTheme } from '@mantine/core';
 
 const myColor = [

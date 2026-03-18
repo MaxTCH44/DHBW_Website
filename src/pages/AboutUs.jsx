@@ -3,6 +3,7 @@ import { Container, Title, Text } from "@mantine/core";
 import aboutUs from "../data/about_us.json"
 
 import ContentDetails from "../components/ContentDetails";
+import { BarChart } from "@mantine/charts";
 
 
 

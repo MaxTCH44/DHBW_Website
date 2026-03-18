@@ -10,6 +10,7 @@ import Calculator from './pages/Calculator';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import AboutUs from './pages/AboutUs';
+import NotFound from './pages/NotFound';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -35,6 +36,8 @@ export default function App() {
             <Route path="/compressors" element={<EquipmentOverview equipmentList={compressorsData}/>} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<AboutUs />} />
+            {/* If page not found */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />

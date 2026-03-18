@@ -1,12 +1,14 @@
-import { Container, Title, Text } from "@mantine/core";
+import { Container, Title } from "@mantine/core";
+import { AreaChart } from "@mantine/charts";
+import { useSearchParams } from "react-router-dom"; 
 import { useState } from "react";
-import { IconWindmill, IconDroplet, IconCylinder, IconCar, IconBuildingWarehouse,IconFlame } from '@tabler/icons-react';
+import { IconWindmill, IconDroplet, IconCylinder, IconCar, IconBuildingWarehouse, IconFlame } from '@tabler/icons-react';
 
 import production_data from "../data/hydrogen_production_chain.json";
 
 import InteractiveFlow from "../components/InteractiveFlow";
-
-
+import ContentDetails from "../components/ContentDetails";
+import LinkButton from "../components/LinkButton";
 
 const ICON_MAP = {
     IconWindmill,
@@ -17,24 +19,41 @@ const ICON_MAP = {
     IconFlame
 };
 
+const COMPONENT_REGISTRY = {
+    AreaChart,
+    LinkButton
+};
+
 export default function ProductionChain() {
-    const [selectedItem, setSelectedItem] = useState(production_data[0].items[0]);
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const findItemById = (id) => {
+        return production_data.find(item => item.id === id) || null;
+    };
+
+    const initialStepId = searchParams.get("step") || production_data[0].id;
+    
+    const [selectedItem, setSelectedItem] = useState(
+        findItemById(initialStepId) || production_data[0]
+    );
+
+    const handleNodeClick = (item) => {
+        setSelectedItem(item);
+        setSearchParams({ step: item.id });
+    };
 
     return(
         <Container size="xl" mt="xl">
-            <Title order={1} mb="xl">Production Chain</Title>
+            <Title order={1} mb="xl">Green H₂ Production Chain</Title>
             
             <InteractiveFlow 
                 data={production_data} 
                 iconMap={ICON_MAP} 
                 selectedItem={selectedItem}
-                onNodeClick={setSelectedItem} 
+                onNodeClick={handleNodeClick}
             />
 
-            <Title size="lg" mt="lg" mb="lg" > {selectedItem.label} </Title>
-            <Text size="md">
-                {selectedItem.content}
-            </Text>
+            <ContentDetails item={selectedItem} componentList={COMPONENT_REGISTRY}/>
 
         </Container>
     );

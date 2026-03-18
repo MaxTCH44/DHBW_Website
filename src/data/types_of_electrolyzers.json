@@ -8,26 +8,58 @@
       "content": [
         {
           "type": "paragraph",
-          "value": "Proton Exchange Membrane (PEM) water electrolysis is an electrochemical process that splits water into hydrogen and oxygen using electrical energy."
+          "value": "PEM water electrolysis was first idealized in the 1950s and developed to overcome the operational drawbacks of traditional alkaline water electrolysis. At the heart of this technology is a solid polysulfonated polymer membrane (such as Nafion) that acts as the electrolyte, specifically designed to conduct protons while remaining impermeable to gases."
+        },
+        {
+          "type": "subtitle",
+          "value": "The Electrochemical Mechanism",
+          "size": 3
+        },
+        {
+          "type": "paragraph",
+          "value": "The fundamental principle involves splitting water at specific electrodes. Liquid water is pumped directly to the anode, where it is electrochemically decomposed into oxygen gas (O₂), protons (H⁺), and electrons (e⁻)."
+        },
+        {
+          "type": "paragraph",
+          "value": "Anode Reaction: H₂O → 2H⁺ + ½ O₂ + 2e⁻"
         },
         {
           "type": "image",
           "src": "img/vite.svg",
-          "alt": "Diagram of PEM half-cell reactions",
-          "size": 100
+          "alt": "Diagram of PEM water electrolysis cell mechanism showing proton exchange",
+          "size": 600
         },
         {
           "type": "paragraph",
-          "value": "The core of the system is the solid polymer electrolyte membrane. This membrane conducts protons across to the cathode while acting as an electrical insulator and preventing the product gases from mixing."
+          "value": "The solid polymer membrane only allows positive ions to pass, meaning the protons travel directly through the membrane to the cathode. The electrons travel through an external power circuit, providing the driving voltage. At the cathode, they recombine to produce highly pure hydrogen gas."
+        },
+        {
+          "type": "paragraph",
+          "value": "Cathode Reaction: 2H⁺ + 2e⁻ → H₂"
+        },
+        {
+          "type": "subtitle",
+          "value": "Components and Challenges",
+          "size": 3
+        },
+        {
+          "type": "paragraph",
+          "value": "A PEM cell is built around the Membrane Electrode Assembly (MEA). Because the system operates in a highly corrosive acidic environment, it necessitates the use of expensive noble metals. Platinum (Pt) is typically used for the cathode (HER), while Iridium dioxide (IrO₂) or Ruthenium dioxide (RuO₂) are required for the anode (OER). Furthermore, components like separator plates must be made of corrosion-resistant titanium, significantly driving up the capital cost."
         }
       ],
       "advantages": [
-        "Produces high-purity hydrogen gas",
-        "Compact system design"
+        "Produces ultrapure hydrogen (99.99%) and pure oxygen as a byproduct",
+        "Operates at high current densities (above 2 A/cm²)",
+        "Compact system design with a very small physical footprint",
+        "Highly dynamic operation with fast response times, ideal for intermittent renewable energy",
+        "Can operate at high pressures (simplifying downstream compression)"
       ],
       "disadvantages": [
-        "Relies on expensive catalyst materials",
-        "Highly sensitive to water impurities"
+        "High capital cost due to expensive cell components (separator plates and MEA)",
+        "Relies heavily on scarce and expensive noble metals (Platinum, Iridium, Ruthenium)",
+        "Highly corrosive acidic operating environment degrades components over time",
+        "Lower durability and lifespan compared to mature alkaline systems",
+        "Commercialization at massive multi-megawatt scales is still in the near-term phase"
       ]
     },
     {
@@ -36,26 +68,57 @@
       "content": [
         {
           "type": "paragraph",
-          "value": "Unlike PEM electrolysis, Alkaline Water Electrolysis operates in a high-pH liquid environment and relies on the movement of hydroxide anions OH-."
+          "value": "Alkaline water electrolysis is one of the most practical and advanced technologies for hydrogen production, with a long and established history of utilization in the chlor-alkali industry. The system operates using a highly concentrated aqueous alkaline solution, typically 20-30 wt% potassium hydroxide (KOH), as the liquid electrolyte."
+        },
+        {
+          "type": "subtitle",
+          "value": "The Electrochemical Mechanism",
+          "size": 3
         },
         {
           "type": "paragraph",
-          "value": "The system uses a highly concentrated aqueous alkaline solution, typically 20-30 wt% KOH, in which the electrodes are immersed."
+          "value": "Unlike PEM systems that rely on protons, AWE operates in a high-pH liquid environment where hydroxide anions (OH⁻) act as the primary electrochemical charge carriers."
+        },
+        {
+          "type": "paragraph",
+          "value": "Cathode Reaction: 2H₂O + 2e⁻ → H₂ + 2OH⁻"
         },
         {
           "type": "image",
           "src": "img/vite.svg",
-          "alt": "Diagram of Alkaline liquid electrolyte system",
-          "size": 120
+          "alt": "Diagram of Alkaline liquid electrolyte system showing hydroxide ion transport",
+          "size": 600
+        },
+        {
+          "type": "paragraph",
+          "value": "At the cathode, liquid water is reduced to produce molecular hydrogen gas and hydroxide anions. These anions are transported through a porous diaphragm to the anode, where they are oxidized to release molecular oxygen gas, water, and electrons."
+        },
+        {
+          "type": "paragraph",
+          "value": "Anode Reaction: 2OH⁻ → ½ O₂ + H₂O + 2e⁻"
+        },
+        {
+          "type": "subtitle",
+          "value": "Components and Catalysts",
+          "size": 3
+        },
+        {
+          "type": "paragraph",
+          "value": "A major economic advantage of the alkaline environment is that it does not require expensive noble metals. The electrodes are typically made of abundant transition metals, such as Raney Nickel, Ni-plated steel, or stainless-steel meshes. To prevent the mixing of product gases, the cell uses a thick porous diaphragm (historically asbestos, now modern porous oxides like Zirfon) to allow OH⁻ ion transport while keeping the hydrogen and oxygen safely separated."
         }
       ],
       "advantages": [
-        "Does not require noble metals",
-        "Mature and well-established technology"
+        "Does not require expensive noble metals for catalysts (uses Ni, Fe, Co) ",
+        "Mature, well-established, and fully commercialized technology at the Megawatt scale ",
+        "Low capital expenditure (CAPEX) compared to PEM systems",
+        "High energy efficiency (70-80%) "
       ],
       "disadvantages": [
-        "Uses a corrosive liquid electrolyte",
-        "Gas crossover can occur at low loads"
+        "Operates at lower current densities (below 400 mA/cm²)",
+        "Uses a highly corrosive and hazardous liquid electrolyte (KOH)",
+        "Low dynamic operation capability, making it less adaptable to highly fluctuating wind/solar power ",
+        "Impurities (like carbonates) in the KOH can block catalytic sites and cause degradation",
+        "Large physical footprint and complex industrial setup required for large-scale operation "
       ]
     },
     {
@@ -64,26 +127,57 @@
       "content": [
         {
           "type": "paragraph",
-          "value": "AEM electrolysis essentially bridges the gap between the PEM and traditional alkaline methods, combining the use of a solid polymer membrane with an alkaline operating environment."
+          "value": "AEM electrolysis is widely considered the next-generation breakthrough in green hydrogen production. It essentially bridges the gap between traditional Alkaline Water Electrolysis (AWE) and Proton Exchange Membrane (PEM) systems. The core innovation lies in the use of a solid polymer membrane that operates in an alkaline environment and selectively transports negatively charged hydroxide anions (OH⁻)."
+        },
+        {
+          "type": "subtitle",
+          "value": "The Electrochemical Mechanism",
+          "size": 3
+        },
+        {
+          "type": "paragraph",
+          "value": "In an AEM electrolyzer, the half-cell reactions are identical to those of traditional alkaline electrolysis. Pure water or a very dilute alkaline solution is introduced at the cathode. Here, water molecules are reduced to form pure hydrogen gas and hydroxide ions."
+        },
+        {
+          "type": "paragraph",
+          "value": "Cathode Reaction: 2H₂O + 2e⁻ → H₂ + 2OH⁻"
         },
         {
           "type": "image",
           "src": "img/vite.svg",
-          "alt": "Diagram of AEM solid membrane system",
-          "size": 180
+          "alt": "Diagram of AEM solid membrane system showing hydroxide ion transport",
+          "size": 600
         },
         {
           "type": "paragraph",
-          "value": "The process uses a solid Anion Exchange Membrane (AEM) designed to selectively transport negatively charged hydroxide anions OH- across to the anode, while physically keeping the product gases separated."
+          "value": "Driven by the electric field, these hydroxide anions travel directly through the solid Anion Exchange Membrane to reach the anode. At the anode, the ions are oxidized to produce oxygen gas, water, and electrons."
+        },
+        {
+          "type": "paragraph",
+          "value": "Anode Reaction: 2OH⁻ → ½ O₂ + H₂O + 2e⁻"
+        },
+        {
+          "type": "subtitle",
+          "value": "Components and Current Challenges",
+          "size": 3
+        },
+        {
+          "type": "paragraph",
+          "value": "The greatest promise of AEM technology is its cost-effectiveness. It eliminates the need for expensive noble metal catalysts (like Platinum and Iridium) and titanium components, utilizing abundant transition metals like Nickel instead. Simultaneously, because it uses a solid membrane rather than a thick liquid diaphragm, it offers the compact footprint, high-pressure capabilities, and fast dynamic response typical of PEM systems."
         }
       ],
       "advantages": [
-        "Combines the benefits of a solid membrane and an alkaline environment ",
-        "Eliminates the need for highly concentrated corrosive liquid electrolytes"
+        "Low capital cost: uses cheap, abundant non-noble metal catalysts (Ni, Fe, Co)",
+        "Combines the rapid dynamic response of PEM with the cheap materials of Alkaline",
+        "Uses pure water or a very dilute/safe alkaline solution (1% KOH instead of 30%)",
+        "Produces high-purity hydrogen gas under pressure, reducing compression needs",
+        "Compact system design with a small physical footprint"
       ],
       "disadvantages": [
-        "Membrane durability is still an industry challenge",
-        "Less commercially mature than Alkaline and PEM"
+        "Membrane durability is a major issue; the polymer backbone degrades quickly in alkaline environments",
+        "Lower ionic conductivity compared to PEM systems",
+        "Overall cell lifespan is currently shorter than commercial PEM and Alkaline systems",
+        "Still in the early commercialization phase; lacks massive Gigawatt-scale deployment history"
       ]
     }
   ]

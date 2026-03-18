@@ -1,57 +1,417 @@
 [
   {
-    "level": 1,
-    "items": [
-      { 
-        "id": "renewables", 
-        "label": "Renewables", 
-        "iconName": "IconWindmill",
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem mi, imperdiet ut cursus at, ornare in felis. Nullam neque lacus, volutpat ac pretium id, tempor sed urna. Fusce feugiat est vitae ligula aliquet, sit amet euismod arcu faucibus. Duis eu egestas odio. Mauris tempor tempus mi, vel tincidunt orci tempor pulvinar. Proin eu pretium dolor, nec malesuada purus. Etiam tristique purus arcu, vitae lacinia ex lobortis eu. Nunc pretium elit erat. Etiam placerat egestas sollicitudin. Nullam sagittis, turpis ac luctus tempor, ex turpis ultrices magna, nec faucibus nisl nulla a arcu. In vel commodo enim." 
-      }
-    ]
-  },
-  {
-    "level": 2,
-    "items": [
-      { 
-        "id": "electrolysis", 
-        "label": "Electrolysis", 
-        "iconName": "IconDroplet", 
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem mi, imperdiet ut cursus at, ornare in felis. Nullam neque lacus, volutpat ac pretium id, tempor sed urna. Fusce feugiat est vitae ligula aliquet, sit amet euismod arcu faucibus. Duis eu egestas odio. Mauris tempor tempus mi, vel tincidunt orci tempor pulvinar. Proin eu pretium dolor, nec malesuada purus. Etiam tristique purus arcu, vitae lacinia ex lobortis eu. Nunc pretium elit erat. Etiam placerat egestas sollicitudin. Nullam sagittis, turpis ac luctus tempor, ex turpis ultrices magna, nec faucibus nisl nulla a arcu. In vel commodo enim." 
-      }
-    ]
-  },
-  {
-    "level": 3,
-    "items": [
-      { 
-        "id": "storage", 
-        "label": "H₂ Storage", 
-        "iconName": "IconCylinder",
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem mi, imperdiet ut cursus at, ornare in felis. Nullam neque lacus, volutpat ac pretium id, tempor sed urna. Fusce feugiat est vitae ligula aliquet, sit amet euismod arcu faucibus. Duis eu egestas odio. Mauris tempor tempus mi, vel tincidunt orci tempor pulvinar. Proin eu pretium dolor, nec malesuada purus. Etiam tristique purus arcu, vitae lacinia ex lobortis eu. Nunc pretium elit erat. Etiam placerat egestas sollicitudin. Nullam sagittis, turpis ac luctus tempor, ex turpis ultrices magna, nec faucibus nisl nulla a arcu. In vel commodo enim." 
-      }
-    ]
-  },
-  {
-    "level": 4,
-    "items": [
-      { 
-        "id": "mobility", 
-        "label": "Mobility", 
-        "iconName": "IconCar",
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem mi, imperdiet ut cursus at, ornare in felis. Nullam neque lacus, volutpat ac pretium id, tempor sed urna. Fusce feugiat est vitae ligula aliquet, sit amet euismod arcu faucibus. Duis eu egestas odio. Mauris tempor tempus mi, vel tincidunt orci tempor pulvinar. Proin eu pretium dolor, nec malesuada purus. Etiam tristique purus arcu, vitae lacinia ex lobortis eu. Nunc pretium elit erat. Etiam placerat egestas sollicitudin. Nullam sagittis, turpis ac luctus tempor, ex turpis ultrices magna, nec faucibus nisl nulla a arcu. In vel commodo enim."  
+    "id": "renewables",
+    "parentId": null,
+    "label": "Renewables",
+    "iconName": "IconWindmill",
+    "content": [
+      {
+        "type": "subtitle",
+        "value": "The Rise of Renewable Energy in Germany (2024)",
+        "size": 2
       },
-      { 
-        "id": "industry", 
-        "label": "Industry", 
-        "iconName": "IconBuildingWarehouse",
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem mi, imperdiet ut cursus at, ornare in felis. Nullam neque lacus, volutpat ac pretium id, tempor sed urna. Fusce feugiat est vitae ligula aliquet, sit amet euismod arcu faucibus. Duis eu egestas odio. Mauris tempor tempus mi, vel tincidunt orci tempor pulvinar. Proin eu pretium dolor, nec malesuada purus. Etiam tristique purus arcu, vitae lacinia ex lobortis eu. Nunc pretium elit erat. Etiam placerat egestas sollicitudin. Nullam sagittis, turpis ac luctus tempor, ex turpis ultrices magna, nec faucibus nisl nulla a arcu. In vel commodo enim." 
+      {
+        "type": "paragraph",
+        "value": "To understand the growing necessity of green hydrogen, we must first look at the current energy landscape. In 2024, Germany reached a historic milestone: renewable energy sources covered 62.7% of the net public electricity generation, injecting approximately 275.2 terawatt-hours (TWh) into the grid."
       },
-      { 
-        "id": "heating", 
-        "label": "Heating", 
-        "iconName": "IconFlame",
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem mi, imperdiet ut cursus at, ornare in felis. Nullam neque lacus, volutpat ac pretium id, tempor sed urna. Fusce feugiat est vitae ligula aliquet, sit amet euismod arcu faucibus. Duis eu egestas odio. Mauris tempor tempus mi, vel tincidunt orci tempor pulvinar. Proin eu pretium dolor, nec malesuada purus. Etiam tristique purus arcu, vitae lacinia ex lobortis eu. Nunc pretium elit erat. Etiam placerat egestas sollicitudin. Nullam sagittis, turpis ac luctus tempor, ex turpis ultrices magna, nec faucibus nisl nulla a arcu. In vel commodo enim."  
+      {
+        "type": "subtitle",
+        "value": "A Highly Variable Energy Mix",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "Wind power (both onshore and offshore) remains the backbone of the German system, accounting for 33% of the total electricity mix. However, wind production is highly volatile. This fluctuation is exactly what drives the need for massive energy storage and conversion solutions, such as water electrolysis."
+      },
+      {
+        "type": "paragraph",
+        "value": "Solar photovoltaics (PV) represent the fastest-growing sector, covering 14% of the grid. Notably, self-consumption—electricity consumed directly on-site without entering the public grid—jumped to over 12 TWh in 2024. This trend is highly relevant for laboratories and industrial facilities aiming for 100% self-sufficient hydrogen production."
+      },
+      {
+        "type": "paragraph",
+        "value": "The remainder of the renewable mix is provided by biomass (7%, providing stable base-load energy) and hydropower (4%)."
+      },
+      {
+        "type": "subtitle",
+        "value": "Gross electricity production in Germany from 2019 to 2025",
+        "size": 5
+      },
+      {
+        "type": "component",
+        "componentName": "AreaChart",
+        "props": {
+          "dataKey": "year",
+          "h": 550,
+          "type": "percent",
+          "curveType": "linear",
+          "data": [
+            { "year": "2019", "Non-Renewable": 367 , "Wind": 126, "Solar": 45, "Biomass": 46, "Hydro": 20, "Other Green": 6},
+            { "year": "2020", "Non-Renewable": 323 , "Wind": 132, "Solar": 50, "Biomass": 47, "Hydro": 19, "Other Green": 6},
+            { "year": "2021", "Non-Renewable": 353 , "Wind": 117, "Solar": 51, "Biomass": 47, "Hydro": 20, "Other Green": 6},
+            { "year": "2022", "Non-Renewable": 323 , "Wind": 124, "Solar": 61, "Biomass": 47, "Hydro": 18, "Other Green": 6},
+            { "year": "2023", "Non-Renewable": 236 , "Wind": 142, "Solar": 64, "Biomass": 44, "Hydro": 20, "Other Green": 6},
+            { "year": "2024", "Non-Renewable": 215 , "Wind": 140, "Solar": 76, "Biomass": 44, "Hydro": 23, "Other Green": 6},
+            { "year": "2025", "Non-Renewable": 217 , "Wind": 134, "Solar": 92, "Biomass": 42, "Hydro": 17, "Other Green": 6}
+          ],
+          "series": [
+            { "name": "Non-Renewable", "label": "Non-Renewable (TWh)", "color": "dark.8"},
+            { "name": "Wind", "label": "Wind (TWh)", "color": "gray.6" },
+            { "name": "Solar", "label": "Solar (TWh)", "color": "yellow.5" },
+            { "name": "Biomass", "label": "Biomass (TWh)", "color": "orange.8" },
+            { "name": "Hydro", "label": "Hydro (TWh)", "color": "blue.5" },
+            { "name": "Other Green", "label": "Other Green (TWh)", "color": "teal.6" }
+          ]
+        }
+      },
+      {
+        "type": "subtitle",
+        "id": "wind_power",
+        "value": "Wind Power: Harnessing Air Currents",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "Wind turbines operate by capturing the kinetic energy of moving air and converting it into mechanical rotation, which drives an electrical generator. To be effective, these systems require open landscapes or offshore marine areas with strong, consistent wind streams."
+      },
+      {
+        "type": "image",
+        "src": "https://images.unsplash.com/photo-1562519990-50eb51e282b2?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "alt": "Wind Turbine",
+        "size": 800
+      },
+      {
+        "type": "paragraph",
+        "value": "While wind power is a remarkably clean and highly scalable energy source capable of generating massive amounts of electricity, its primary drawback is its extreme intermittency. The wind does not always blow when demand is high, and the visual or acoustic footprint of large turbines can sometimes lead to local acceptance challenges."
+      },
+      {
+        "type": "paragraph",
+        "value": "This fluctuating nature makes wind energy the perfect candidate for green hydrogen conversion, allowing excess energy produced during windy nights to be stored rather than wasted."
+      },
+      {
+        "type": "subtitle",
+        "id": "solar_power",
+        "value": "Solar Photovoltaics: Direct Sunlight Conversion",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "Unlike wind, solar energy involves no moving parts. Photovoltaic (PV) cells rely on semiconductor materials, typically silicon, to absorb photons from sunlight and release electrons, directly generating a direct current (DC)."
+      },
+      {
+        "type": "paragraph",
+        "value": "This technology requires unobstructed access to sunlight and significant surface area, making rooftops and open fields ideal deployment sites. The great advantage of solar power is its scalability and minimal maintenance, making it exceptionally well-suited for localized self-consumption in laboratories or factories."
+      },
+      {
+        "type": "image",
+        "src": "https://images.unsplash.com/photo-1713544123580-12096cc9eb12?q=80&w=1289&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "alt": "Rooftop Solar Panels",
+        "size": 600
+      },
+      {
+        "type": "paragraph",
+        "value": "However, its efficiency is heavily dependent on weather conditions and time of day, dropping to zero at night. Consequently, relying heavily on solar energy absolutely requires robust storage architectures, such as battery banks or hydrogen systems, to bridge the nighttime gap."
+      },
+      {
+        "type": "subtitle",
+        "id": "biomass",
+        "value": "Biomass: The Dispatchable Organic Baseline",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "Biomass energy is generated through the combustion or biological fermentation of organic matter—such as agricultural waste, wood pellets, or biogas—to produce heat and steam, which in turn spin a turbine. Its most significant requirement is a continuous, sustainable supply of organic feedstock."
+      },
+      {
+        "type": "image",
+        "src": "https://images.unsplash.com/photo-1630441466146-cb2e108f529b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "alt": "Wood Biomass",
+        "size": 500
+      },
+      {
+        "type": "paragraph",
+        "value": "Unlike wind and solar, biomass is a 'dispatchable' energy source, meaning it can be ramped up or down on demand to provide a stable, reliable baseload for the power grid regardless of the weather."
+      },
+      {
+        "type": "paragraph",
+        "value": "On the downside, the process does release carbon dioxide upon combustion (though it is generally considered carbon-neutral over the plant's lifecycle), and acquiring the necessary biomass requires large amounts of land and water, potentially competing with food agriculture."
+      },
+      {
+        "type": "subtitle",
+        "id": "hydropower",
+        "value": "Hydropower: The Reliable Flow",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "Hydropower plants harness the continuous flow and gravitational drop of water through rivers or dams to forcefully turn mechanical turbines. This technology demands specific geographical features, namely significant water volume and elevation changes."
+      },
+      {
+        "type": "image",
+        "src": "https://images.unsplash.com/photo-1570106230673-3bab9f2f3c63?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "alt": "Sardar Sarovar Dam, Gujarat, India",
+        "size": 700
+      },
+      {
+        "type": "paragraph",
+        "value": "Where feasible, hydropower is incredibly efficient, highly reliable, and boasts an exceptionally long operational lifespan. Certain setups, like pumped-storage hydroelectricity, can even act as massive physical batteries by pumping water uphill during energy surpluses."
+      },
+      {
+        "type": "paragraph",
+        "value": "However, the heavy reliance on local geography limits where new plants can be built, and the construction of large dams can severely disrupt local aquatic ecosystems and alter natural water flows."
+      }
+    ]
+  },
+  {
+    "id": "electrolysis",
+    "parentId": "renewables",
+    "label": "Electrolysis",
+    "iconName": "IconDroplet",
+    "content": [
+      {
+        "type": "subtitle",
+        "value": "The Electrolysis Process: Splitting Water",
+        "size": 2
+      },
+      {
+        "type": "paragraph",
+        "value": "Electrolysis is the fundamental chemical process at the heart of the green hydrogen value chain. Rather than extracting energy from fossil fuels, this process uses an electrical direct current (DC) to drive an otherwise non-spontaneous chemical reaction. By passing this current through water, the electrical energy physically breaks the chemical bonds holding the water molecules together, separating them into their constituent elements."
+      },
+      {
+        "type": "subtitle",
+        "value": "Inputs, Outputs, and Byproducts",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "The mass balance of this process is remarkably straightforward and clean. The primary inputs are simply ultra-pure water (H₂O) and renewable electricity. On the output side, the process yields high-purity hydrogen gas (H₂) at the cathode and oxygen gas (O₂) at the anode."
+      },
+      {
+        "type": "image",
+        "src": "https://media1.tenor.com/m/LbpMN0wyWnwAAAAd/electricity.gif",
+        "alt": "a diagram showing the process of electrolysis with hydrogen and oxygen bubbles",
+        "size": 600
+      },
+      {
+        "type": "paragraph",
+        "value": "While the hydrogen is captured and compressed for energy storage, the oxygen is often safely vented back into the atmosphere or captured for medical and industrial applications. Additionally, the process generates a significant amount of low-grade heat, which modern facilities increasingly recover to supply local district heating networks, thereby maximizing overall energy efficiency."
+      },
+      {
+        "type": "subtitle",
+        "value": "The Environmental Shift: Grey, Blue, and Green Hydrogen",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "To fully grasp the critical importance of water electrolysis, it must be contrasted with the traditional, fossil-based methods used today. Currently, the vast majority of global hydrogen is classified as 'grey hydrogen.' This is produced primarily through Steam Methane Reforming (SMR), a process that extracts hydrogen from natural gas (CH₄) using high-temperature steam. While SMR is currently cheaper, it is an environmental disaster: producing just one kilogram of grey hydrogen emits between 9 to 10 kilograms of CO₂."
+      },
+      {
+        "type": "paragraph",
+        "value": "As a transitional step, the industry also produces 'blue hydrogen.' This method still relies on fossil fuels and SMR, but it incorporates Carbon Capture and Storage (CCS) technologies to trap a significant portion of the CO₂ emissions underground before they reach the atmosphere. While it significantly reduces the carbon footprint compared to grey hydrogen, it is not entirely emission-free, carries risks of methane leaks, and still depends on finite fossil resources."
+      },
+      {
+        "type": "paragraph",
+        "value": "In stark contrast, green hydrogen produced via renewable electrolysis generates absolutely zero carbon emissions. When this green hydrogen is later consumed—for instance, in a fuel cell to power a vehicle—the only byproduct released is pure water, creating a completely closed, sustainable, and clean ecological loop."
+      },
+      {
+        "type": "subtitle",
+        "value": "Looking Ahead: Electrolyzer Technologies",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "While the fundamental chemistry of water electrolysis remains the same, the industrial equipment used to drive this reaction varies significantly. Different technologies, such as Proton Exchange Membrane (PEM), Alkaline (AEL), and Anion Exchange Membrane (AEM), offer distinct advantages in terms of cost, efficiency, and dynamic response. To understand which technology best fits specific industrial needs, explore our dedicated Electrolyzer Technologies page."
+      },
+      {
+        "type": "component",
+        "componentName": "LinkButton",
+        "props": {
+          "link": "/electrolyzers",
+          "label": "Explore Electrolyzer Technologies"
+        }
+      }
+    ]
+  },
+  {
+    "id": "storage",
+    "parentId": "electrolysis",
+    "label": "H₂ Storage",
+    "iconName": "IconCylinder",
+    "content": [
+      {
+        "type": "subtitle",
+        "value": "Hydrogen Compression and Storage: Bridging the Gap",
+        "size": 2
+      },
+      {
+        "type": "paragraph",
+        "value": "While green hydrogen is an exceptionally clean energy carrier, it presents a unique physical challenge: it is the lightest element in the universe. Although it boasts an incredibly high gravimetric energy density (energy per kilogram), its volumetric energy density at ambient pressure is extremely low. To store a meaningful amount of energy in a practical space, hydrogen must first be densified, which is typically achieved through mechanical compression."
+      },
+      {
+        "type": "subtitle",
+        "value": "The Role of Compressors",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "Depending on the end-use application, hydrogen exiting the electrolyzer is compressed to high pressures, typically ranging from 30 to 700 bar. This stage requires highly specialized equipment capable of handling the tiny hydrogen molecules safely and efficiently without contamination."
+      },
+      {
+        "type": "component",
+        "componentName": "LinkButton",
+        "props": {
+          "link": "/compressors",
+          "label": "Explore Compressor Technologies"
+        }
+      },
+      {
+        "type": "subtitle",
+        "value": "How Hydrogen is Stored: Tanks and Caverns",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "Once compressed, hydrogen can be stored in several ways depending on the required scale and duration. For short- to medium-term storage, high-pressure composite cylinders (Type III or IV tanks) are standard in industrial facilities and refueling stations."
+      },
+      {
+        "type": "paragraph",
+        "value": "However, for massive, grid-scale energy storage, the most effective method is geological storage. Pumping compressed hydrogen gas into massive underground salt caverns allows for the safe containment of millions of cubic meters of gas. For specific use cases like aerospace or long-haul marine transport, hydrogen can also be liquefied by cooling it to cryogenic temperatures (-253°C), which maximizes density but requires significant energy input."
+      },
+      {
+        "type": "subtitle",
+        "value": "Hydrogen vs. Batteries: The Power of Seasonal Storage",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "A common question is why we should use hydrogen when we already have advanced lithium-ion batteries. The answer lies in the scale and duration of the storage. Batteries are highly efficient for short-term, daily energy shifting (e.g., storing daytime solar for the evening) but they suffer from self-discharge over time and require massive amounts of heavy, expensive raw materials to scale up capacity."
+      },
+      {
+        "type": "paragraph",
+        "value": "The structural advantage of hydrogen is that its storage capacity scales independently of its conversion equipment. To store more energy, a facility only needs larger physical infrastructure, like expanded tanks or caverns, rather than duplicating expensive electrolyzer units. Furthermore, hydrogen is uniquely suited for seasonal energy shifting. It allows entire regions to harvest abundant summer solar energy, store it securely underground for half a year, and convert it back into power during winter—a critical long-term buffering solution that remains beyond the reach of battery technology."
+      }
+    ]
+  },
+  {
+    "id": "mobility",
+    "parentId": "storage",
+    "label": "Mobility",
+    "iconName": "IconCar",
+    "content": [
+      {
+        "type": "subtitle",
+        "value": "Hydrogen in Mobility: Powering Heavy Transport",
+        "size": 2
+      },
+      {
+        "type": "paragraph",
+        "value": "While the passenger car market is currently dominated by battery electric vehicles (BEVs), green hydrogen offers an indispensable zero-emission solution for the heavy-duty and long-haul transport sectors. In industries where the immense weight and size of massive battery packs would severely compromise payload capacity and operational efficiency—such as freight trucking, rail networks, maritime shipping, and eventually aviation—hydrogen emerges as the optimal clean energy carrier."
+      },
+      {
+        "type": "subtitle",
+        "value": "The Fuel Cell Mechanism: Reversing Electrolysis",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "Vehicles powered by this technology are known as Fuel Cell Electric Vehicles (FCEVs). At the core of an FCEV is the fuel cell stack, which essentially performs the exact reverse of the water electrolysis process. Instead of using electricity to split water, the fuel cell continuously receives compressed hydrogen from the vehicle's tanks and oxygen from the ambient air. Through an electrochemical reaction across a polymer membrane, these two elements combine to generate the direct current (DC) electricity needed to drive the electric motor. The only byproduct exhausted from the tailpipe is pure, harmless water vapor."
+      },
+      {
+        "type": "subtitle",
+        "value": "Refueling and Range Advantages",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "The most significant operational advantage of hydrogen in mobility is its parity with the convenience of traditional fossil fuels. Refueling a heavy-duty hydrogen truck or bus at a dispenser takes only a matter of minutes, drastically reducing the costly downtime associated with recharging large-scale battery systems. Furthermore, high-pressure hydrogen storage provides a significantly longer driving range regardless of external temperatures. This ensures that global logistical supply chains can seamlessly transition to zero-emission technologies without sacrificing operational uptime or fundamentally altering existing route structures."
+      }
+    ]
+  },
+  {
+    "id": "industry",
+    "parentId": "storage",
+    "label": "Industry",
+    "iconName": "IconBuildingWarehouse",
+    "content": [
+      {
+        "type": "subtitle",
+        "value": "Hydrogen in Industry: Decarbonizing the Heavyweights",
+        "size": 2
+      },
+      {
+        "type": "paragraph",
+        "value": "While mobility often captures the public's attention, the industrial sector is currently the largest global consumer of hydrogen. Today, industries use tens of millions of tons of hydrogen annually, primarily for petroleum refining, ammonia production for agricultural fertilizers, and methanol synthesis. However, because nearly all of this current demand is met with fossil-based grey hydrogen, the industrial sector is responsible for massive amounts of CO₂ emissions. Replacing this existing demand with green hydrogen is the most immediate and impactful step in the global energy transition."
+      },
+      {
+        "type": "subtitle",
+        "value": "Transforming Steel Production (DRI)",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "Beyond replacing existing grey hydrogen, green hydrogen is unlocking new pathways to decarbonize 'hard-to-abate' sectors—industries where direct electrification is chemically or physically impossible. The most prominent example is steel manufacturing. Traditional steelmaking relies on coal-fired blast furnaces to strip oxygen from iron ore, releasing vast quantities of CO₂."
+      },
+      {
+        "type": "image",
+        "src": "https://images.unsplash.com/photo-1697698532634-ea59b636ccea?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "alt": "steel coil storage",
+        "size": 500
+      },
+      {
+        "type": "paragraph",
+        "value": "By implementing a technology called Direct Reduced Iron (DRI), hydrogen gas can be used instead of coal as the reducing agent. In this process, the hydrogen reacts with the oxygen in the iron ore, yielding sponge iron and emitting only water vapor. This breakthrough technology has the potential to almost entirely eliminate the carbon footprint of one of the world's most polluting industries."
+      },
+      {
+        "type": "subtitle",
+        "value": "Chemical Feedstock and High-Temperature Heat",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "In addition to steel, green hydrogen serves as a vital building block for the chemical industry. It can be combined with captured CO₂ to create synthetic, climate-neutral fuels (e-fuels) for aviation and shipping, or green plastics. Furthermore, for specific industrial processes like cement or glass manufacturing that require extreme, high-temperature heat (often exceeding 1,000°C)—which electric heaters struggle to provide efficiently—the direct combustion of clean hydrogen offers a viable, zero-emission alternative to natural gas."
+      }
+    ]
+  },
+  {
+    "id": "heating",
+    "parentId": "storage",
+    "label": "Heating",
+    "iconName": "IconFlame",
+    "content": [
+      {
+        "type": "subtitle",
+        "value": "Hydrogen for Heating and Cogeneration",
+        "size": 2
+      },
+      {
+        "type": "paragraph",
+        "value": "Decarbonizing the heating sector—which encompasses both residential space heating and high-temperature industrial processes—remains one of the most formidable challenges in the energy transition. While electric heat pumps are highly effective for well-insulated individual buildings, green hydrogen provides a critical alternative for dense district heating networks and large-scale facilities where direct electrification is economically or physically impractical."
+      },
+      {
+        "type": "subtitle",
+        "value": "Sector Coupling: Waste Heat Recovery",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "One of the most efficient applications of hydrogen in the heating sector actually occurs at the very beginning of its lifecycle. The water electrolysis process inherently generates a substantial amount of low-to-medium-grade waste heat. Through a concept known as 'sector coupling,' this thermal energy can be captured and fed directly into local municipal district heating networks. This approach can warm thousands of homes while drastically increasing the overall thermodynamic efficiency of the hydrogen production plant, turning waste into a valuable resource."
+      },
+      {
+        "type": "subtitle",
+        "value": "Combined Heat and Power (CHP)",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "On the consumption side, stationary hydrogen fuel cells can be deployed as Combined Heat and Power (CHP) units, commonly known as cogeneration systems. Instead of combusting fuel, these advanced systems use green hydrogen to electrochemically generate electricity for a building, campus, or factory. Simultaneously, they capture the byproduct heat from the reaction to provide hot water and space heating. This dual-generation process can push total system efficiencies well beyond 85%, far exceeding traditional power plants."
+      },
+      {
+        "type": "subtitle",
+        "value": "Grid Blending and Hydrogen Boilers",
+        "size": 3
+      },
+      {
+        "type": "paragraph",
+        "value": "As a transitional strategy to decarbonize heating, many countries are actively testing the blending of green hydrogen (typically up to 20%) into existing natural gas pipelines. This progressively lowers the carbon footprint of conventional heating without requiring immediate changes to end-user appliances. In the longer term, dedicated 100% pure hydrogen boilers are being developed to completely replace fossil gas systems in commercial settings, ensuring that the only emission leaving the chimney is pure water vapor."
       }
     ]
   }

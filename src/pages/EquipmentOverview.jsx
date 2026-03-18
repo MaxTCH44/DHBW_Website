@@ -27,7 +27,7 @@ export default function EquipmentOverview({ equipmentList }) {
                     </Button>
                 )}
             </Group>
-            <Title size="lg" mt="xl" mb="xl"> {selectedItem.label} </Title>
+            <Title order={2} mt="xl" mb="xl"> {selectedItem.label} </Title>
             <ContentDetails item={selectedItem} />
             <ProsConsCards item={selectedItem} />
         </Container> 
