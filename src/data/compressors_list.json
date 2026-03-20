@@ -1,16 +1,18 @@
 [
     {
         "id" : 1,
-        "name" : "Mecanical Compressor",
-        "type" : "mecanical",
-        "price" : 50000,
-        "efficiency" : 100
+        "name" : "Mechanical Compressor (Small Scale)",
+        "type" : "mechanical",
+        "price" : 8000,
+        "energy_consumption_kwh_per_kg" : 3,
+        "maintenance_percent_capex" : 4
     },
     {
         "id" : 2,
-        "name" : "Electrochemical Compressor",
+        "name" : "Electrochemical Compressor (Small Scale)",
         "type" : "electrochemical",
-        "price" : 50000,
-        "efficiency" : 100
+        "price" : 12000,
+        "energy_consumption_kwh_per_kg" : 4,
+        "maintenance_percent_capex" : 2
     }
 ]

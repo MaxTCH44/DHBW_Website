@@ -1,23 +1,32 @@
 [
     {
         "id" : 1,
-        "name" : "PEM Electrolyser",
+        "name" : "PEM Electrolyser (5 kW)",
         "type" : "pem",
-        "price" : 150000,
-        "efficiency" : 100
+        "price" : 25000,
+        "power" : 5,
+        "energy_consumption_kwh_per_kg" : 55,
+        "maintenance_percent_capex" : 3,
+        "stack_lifetime_hours" : 60000
     },
     {
         "id" : 2,
-        "name" : "Alkaline Electrolyser",
+        "name" : "Alkaline Electrolyser (5 kW)",
         "type" : "alkaline",
-        "price" : 150000,
-        "efficiency" : 100
+        "price" : 20000,
+        "power" : 5,
+        "energy_consumption_kwh_per_kg" : 52,
+        "maintenance_percent_capex" : 2,
+        "stack_lifetime_hours" : 80000
     },
     {
         "id" : 3,
-        "name" : "AEM Electrolyser",
+        "name" : "AEM Electrolyser (5 kW)",
         "type" : "aem",
-        "price" : 150000,
-        "efficiency" : 100
+        "price" : 18000,
+        "power" : 5,
+        "energy_consumption_kwh_per_kg" : 53,
+        "maintenance_percent_capex" : 2.5,
+        "stack_lifetime_hours": 50000
     }
 ]

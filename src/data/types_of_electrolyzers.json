@@ -1,6 +1,6 @@
 {
   "title": "Types of Electrolyzers",
-  "introText": "Understanding the different types of electrolyzers is crucial for optimizing hydrogen production.",
+  "introText": "Water electrolysis is the cornerstone of green hydrogen production, utilizing renewable electricity to split water molecules into pure hydrogen and oxygen. However, the industrial landscape requires diverse solutions to balance capital costs, energy efficiency, and dynamic response to intermittent power grids. Explore the fundamental mechanisms, material challenges, and unique advantages of each technology below.",
   "list": [
     {
       "id": "pem",
@@ -178,6 +178,64 @@
         "Lower ionic conductivity compared to PEM systems",
         "Overall cell lifespan is currently shorter than commercial PEM and Alkaline systems",
         "Still in the early commercialization phase; lacks massive Gigawatt-scale deployment history"
+      ]
+    },
+    {
+      "id": "soec",
+      "label": "SOEC Electrolysis",
+      "content": [
+        {
+          "type": "paragraph",
+          "value": "Solid Oxide Electrolyzer Cells (SOEC) operate at extremely high temperatures, typically between 700°C and 850°C, using high-temperature steam instead of liquid water. By utilizing thermal energy to assist the water-splitting reaction, SOECs achieve unprecedented electrical efficiencies that far exceed low-temperature systems."
+        },
+        {
+          "type": "subtitle",
+          "value": "The Electrochemical Mechanism",
+          "size": 3
+        },
+        {
+          "type": "paragraph",
+          "value": "The core of an SOEC is a solid ceramic electrolyte (like Yttria-Stabilized Zirconia) that conducts negatively charged oxygen ions (O²⁻). Steam is fed to the cathode, where it is reduced to form hydrogen gas and oxide ions."
+        },
+        {
+          "type": "paragraph",
+          "value": "Cathode Reaction: H₂O + 2e⁻ → H₂ + O²⁻"
+        },
+        {
+          "type": "image",
+          "src": "img/vite.svg",
+          "alt": "Diagram of SOEC high-temperature system showing oxide ion transport through ceramic",
+          "size": 600
+        },
+        {
+          "type": "paragraph",
+          "value": "These oxide ions migrate through the dense ceramic lattice of the electrolyte to reach the anode. There, the ions are oxidized, combining to form oxygen gas and releasing electrons back into the circuit."
+        },
+        {
+          "type": "paragraph",
+          "value": "Anode Reaction: O²⁻ → ½ O₂ + 2e⁻"
+        },
+        {
+          "type": "subtitle",
+          "value": "Materials and Co-Electrolysis",
+          "size": 3
+        },
+        {
+          "type": "paragraph",
+          "value": "SOEC systems do not require expensive noble metals; they utilize nickel-ceramic composites and perovskite oxides. A unique advantage of SOEC is its capability for 'co-electrolysis'—simultaneously electrolyzing steam (H₂O) and carbon dioxide (CO₂) to produce 'syngas', a critical building block for synthetic green fuels (e-fuels). However, the extreme temperatures accelerate material degradation and complicate dynamic operation."
+        }
+      ],
+      "advantages": [
+        "Highest electrical efficiency of all electrolyzer types (often exceeding 90% when integrated with waste heat)",
+        "Can utilize waste industrial heat (from nuclear, steel, or chemical plants) to reduce electrical demand",
+        "Capable of co-electrolysis (H₂O + CO₂) to produce syngas for e-fuels",
+        "Does not require expensive noble metal catalysts (Platinum/Iridium)"
+      ],
+      "disadvantages": [
+        "Severe material degradation due to extreme operating temperatures (corrosion, thermal stress)",
+        "Poor dynamic response and long start-up times, making it difficult to pair with highly intermittent renewables",
+        "Relies on complex thermal management systems",
+        "Less commercially mature for massive Gigawatt-scale deployment compared to Alkaline or PEM"
       ]
     }
   ]

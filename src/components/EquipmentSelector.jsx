@@ -1,8 +1,9 @@
 import { Select, Checkbox, Stack } from '@mantine/core';
+import SliderInput from './SliderInput';
 
 
 
-export default function EquipmentSelector({ label, itemsList, selectedItem, onItemChange, isOwned, onOwnedChange, ownedLabel }) {
+export default function EquipmentSelector({ label, itemsList, selectedItem, onItemChange, quantityOwned, onOwnedChange, ownedLabel, max }) {
 
     const selectData = itemsList.map((item, index) => ({
         value: index.toString(),
@@ -20,12 +21,23 @@ export default function EquipmentSelector({ label, itemsList, selectedItem, onIt
                 onChange={onItemChange}
                 allowDeselect={false}
             />
+            {max <= 1 ?
             <Checkbox
                 label={ownedLabel}
-                checked={isOwned}
-                onChange={(e) => onOwnedChange(e.currentTarget.checked)}
+                checked={quantityOwned === 1}
+                onChange={(e) => onOwnedChange(e.currentTarget.checked ? 1 : 0)}
                 mt="xs"
             />
+            :
+            <SliderInput
+                label={ownedLabel}
+                value={quantityOwned}
+                units=""
+                onValueChange={onOwnedChange} 
+                min={0} 
+                max={max} 
+            />
+            }
         </Stack>
     );
 }
