@@ -28,6 +28,9 @@ export default function Footer() {
             <Anchor component={Link} to="/contact" c="dimmed" size="sm">
               Contact
             </Anchor>
+            <Anchor component={Link} to="/references" c="dimmed" size="sm">
+              References
+            </Anchor>
           </Group>
         </Flex>
       </Container>

@@ -1,0 +1,57 @@
+{
+  "id": "recycling-process",
+  "content": [
+    {
+      "type": "subtitle",
+      "size": 2,
+      "value": "1. Introduction to Industrial Recycling"
+    },
+    {
+      "type": "paragraph",
+      "value": "In many advanced sectors (semiconductor manufacturing, optical fiber production, metallurgy, glass production), hydrogen is used in massive quantities. In most of these applications, it acts as a carrier gas or a protective atmosphere and is not chemically consumed. It exits the production process simply mixed or contaminated by other gases (argon, nitrogen, carbon residues, or dopants)."
+    },
+    {
+      "type": "paragraph",
+      "value": "Traditionally, this exhaust gas is flared or vented into the atmosphere, representing both a colossal financial loss and an environmental nonsense. By installing a closed-loop recycling system, industries can recover, purify, and reuse up to 98% of this hydrogen."
+    },
+    {
+      "type": "subtitle",
+      "size": 2,
+      "value": "2. Gas Purification and Recovery Technologies"
+    },
+    {
+      "type": "paragraph",
+      "value": "Industrial gas recycling relies on capturing the exhaust and passing it through high-performance separation systems. Several key technologies are utilized:"
+    },
+    {
+      "type": "paragraph",
+      "value": "• Catalytic Purification and PSA (Pressure Swing Adsorption): These systems filter the waste gas stream through adsorbent beds or catalytic reactors to remove impurities (oxygen, moisture, hydrocarbons). They restore the gas to 'Quality 5.0' hydrogen (guaranteed 99.999% purity), ready for direct reinjection into the production line."
+    },
+    {
+      "type": "paragraph",
+      "value": "• Electrochemical Hydrogen Separation and Compression (EHC): Acting as an active molecular filter, the polymer membrane of an EHC system only allows hydrogen protons to pass through. By applying an electrical current, this technology selectively extracts hydrogen from a gas mixture while simultaneously compressing it, with zero moving parts, ensuring no mechanical oil contamination."
+    },
+    {
+      "type": "subtitle",
+      "size": 2,
+      "value": "3. Chemical Regeneration (Solid-State Storage)"
+    },
+    {
+      "type": "paragraph",
+      "value": "Hydrogen recycling also applies to the regeneration of chemical storage materials, such as Sodium Borohydride (NaBH₄). NaBH₄ generates pure hydrogen on demand via hydrolysis. However, its lifecycle was hindered by the extreme energy cost required to regenerate its byproduct, sodium metaborate (NaBO₂)."
+    },
+    {
+      "type": "paragraph",
+      "value": "Major scientific breakthroughs have demonstrated that NaBH₄ can be regenerated directly from its hydrated byproduct at room temperature. Using a mechanochemical process (ball milling) with low-cost reducing agents like Magnesium (Mg), this chemical recycling achieves yields of nearly 89%, making the solid hydrogen cycle viable on a large scale."
+    },
+    {
+      "type": "subtitle",
+      "size": 2,
+      "value": "4. Economic and Environmental Benefits"
+    },
+    {
+      "type": "paragraph",
+      "value": "Implementing recycling infrastructures offers major strategic advantages. Economically, the Return on Investment (ROI) for a purification station is exceptionally fast, as the plant drastically reduces its purchases of new hydrogen. This guarantees independence from supply chain disruptions and price volatility. Environmentally, recycling limits the global demand for fossil-based grey hydrogen and avoids direct emissions, firmly anchoring the industry in the circular economy."
+    }
+  ]
+}

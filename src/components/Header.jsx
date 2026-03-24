@@ -13,6 +13,7 @@ const links = [
         label: 'Learn',
         links: [
             { link: '/production', label: 'Production Chain' },
+            { link: '/recycling-process', label: 'Recycling Process' },
             { link: '/electrolyzers', label: 'Electrolyzers' },
             { link: '/compressors', label: 'Compressors' },
         ],

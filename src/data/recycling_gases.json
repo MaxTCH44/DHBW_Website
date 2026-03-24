@@ -3,36 +3,42 @@
         "value": "Water Vapor (H2O)",
         "complexity": "Low (Dehumidification)",
         "complexityColor": "teal",
+        "recovery_rate": 0.95,
         "advice": "Separating water from hydrogen is a standard process. The investment is generally low and ROI is very fast."
     },
     {
         "value": "Nitrogen (N2)",
         "complexity": "Medium (PSA System)",
         "complexityColor": "yellow",
+        "recovery_rate": 0.85,
         "advice": "A Pressure Swing Adsorption (PSA) system will likely be required. It's a proven technology with an excellent lifespan."
     },
     {
         "value": "Oxygen (O2)",
         "complexity": "Medium (PSA System)",
         "complexityColor": "yellow",
+        "recovery_rate": 0.85,
         "advice": "A Pressure Swing Adsorption (PSA) system will likely be required. It's a proven technology with an excellent lifespan."
     },
     {
         "value": "Carbon Dioxide (CO2)",
         "complexity": "High (Membrane / Advanced PSA)",
         "complexityColor": "orange",
+        "recovery_rate": 0.80,
         "advice": "These gases require specific membrane technologies or advanced PSA. The initial investment is higher, but recovering H₂ remains highly profitable at scale."
     },
     {
         "value": "Argon",
         "complexity": "High (Membrane / Advanced PSA)",
         "complexityColor": "orange",
+        "recovery_rate": 0.80,
         "advice": "These gases require specific membrane technologies or advanced PSA. The initial investment is higher, but recovering H₂ remains highly profitable at scale."
     },
     {
         "value": "Mixed / Unknown",
         "complexity": "Custom Analysis Required",
         "complexityColor": "red",
+        "recovery_rate": 0.70,
         "advice": "Our engineers will need to sample and analyze your exhaust gas to design a custom multi-stage separation process."
     }
 ]

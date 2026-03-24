@@ -1,14 +1,44 @@
+
+import { useState, useEffect } from 'react';
 import { NumberInput, Select, Text } from '@mantine/core';
 
-
-
-export default function ValueEntry({ label, value, units, currentUnit, onValueChange, onUnitChange }) {
+export default function ValueInput({ label, value, units, currentUnit, onValueChange, onUnitChange = (() => {}), nullBlocker = false }) {
   const isArray = Array.isArray(units);
   const hasMultipleUnits = isArray && units.length > 1;
 
-  const selectData = isArray
-    ? units.map((u) => ({ value: u.label, label: u.label }))
-    : [];
+  const [localValue, setLocalValue] = useState(value);
+  const [errorMsg, setErrorMsg] = useState(null);
+
+  useEffect(() => {
+    setLocalValue(value);
+  }, [value]);
+
+  useEffect(() => {
+    let timeout;
+    if (errorMsg) {
+      timeout = setTimeout(() => {
+        setErrorMsg(null);
+      }, 3000);
+    }
+    return () => clearTimeout(timeout);
+  }, [errorMsg]);
+
+  function handleChange(val) {
+    setLocalValue(val);
+  }
+
+  function handleBlur() {
+    if (nullBlocker && (localValue === 0 || localValue === '' || localValue === null || localValue === undefined)) {
+      setErrorMsg("Value cannot be 0");
+      setLocalValue(value);
+      onValueChange(value);
+    } else {
+      setErrorMsg(null);
+      onValueChange(localValue);
+    }
+  }
+
+  const selectData = isArray ? units.map((u) => ({ value: u.label, label: u.label })) : [];
 
   function handleSelectChange(selectedValue) {
     const selectedUnit = units.find(u => u.label === selectedValue);
@@ -59,13 +89,16 @@ export default function ValueEntry({ label, value, units, currentUnit, onValueCh
   return (
     <NumberInput
       label={label}
-      value={value}
-      onChange={onValueChange}
+      value={localValue} 
+      onChange={handleChange} 
+      onBlur={handleBlur}
       min={0}
-      hideControls
+      allowNegative={false}
       rightSection={rightSection}
       rightSectionWidth="auto"
-      styles={{
+      hideControls
+      error={errorMsg}
+      styles={{ 
         input: { paddingRight: '90px' }
       }}
       mb="sm"

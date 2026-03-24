@@ -1,0 +1,389 @@
+{
+  "id": "references-page",
+  "content": [
+    {
+      "type": "subtitle",
+      "size": 2,
+      "value": "Green Hydrogen Production Chain"
+    },
+    {
+      "type": "subtitle",
+      "size": 4,
+      "value": "Renewables & Energy Mix"
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "Fraunhofer ISE - Renewable energies cover more than 60 percent of German electricity consumption (2024)",
+        "url": "https://www.ise.fraunhofer.de/en/press-media/press-releases/2025/public-electricity-generation-2024-renewable-energies-cover-more-than-60-percent-of-german-electricity-consumption-for-the-first-time.html"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "Fraunhofer ISE - Electricity Generation 2024 Report (PDF)",
+        "url": "https://www.ise.fraunhofer.de/content/dam/ise/en/documents/press-releases/2025/0125_ISE_en_PR_electricity_generation2024.pdf"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "Energy Charts - Live energy mix data",
+        "url": "https://www.energy-charts.info/"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "Destatis - Gross electricity production",
+        "url": "https://www.destatis.de/EN/Themes/Economic-Sectors-Enterprises/Energy/Production/Tables/gross-electricity-production.html"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "NREL - National Renewable Energy Laboratory",
+        "url": "https://www.nrel.gov/"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "IEA - International Energy Agency Homepage",
+        "url": "https://www.iea.org/"
+      }
+    },
+    {
+      "type": "subtitle",
+      "size": 4,
+      "value": "Electrolysis & Storage Perspectives"
+    },
+    {
+      "type": "reference",
+      "props": {
+        "authors": "IEA",
+        "year": "2019",
+        "title": "The Future of Hydrogen",
+        "journal": "IEA, Paris",
+        "url": "https://www.iea.org/reports/the-future-of-hydrogen",
+        "license": "CC BY 4.0"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "Department of Energy (DOE) - Hydrogen Production: Electrolysis",
+        "url": "https://www.energy.gov/eere/fuelcells/hydrogen-production-electrolysis"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "IRENA - International Renewable Energy Agency",
+        "url": "https://www.irena.org/"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "Department of Energy (DOE) - Hydrogen Storage",
+        "url": "https://www.energy.gov/eere/fuelcells/hydrogen-storage"
+      }
+    },
+    {
+      "type": "subtitle",
+      "size": 4,
+      "value": "End-Use Applications (Mobility, Industry, Heating)"
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "IEA - Hydrogen in Low-Emission Fuels",
+        "url": "https://www.iea.org/energy-system/low-emission-fuels/hydrogen"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "Hydrogen Council - Path to Hydrogen Competitiveness",
+        "url": "https://hydrogencouncil.com/wp-content/uploads/2020/01/Path-to-Hydrogen-Competitiveness_Full-Study-1.pdf"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "World Economic Forum - Positive tipping point for clean steel",
+        "url": "https://www.weforum.org/stories/2025/12/positive-tipping-point-clean-steel/"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "World Economic Forum - Green steel and net-zero emissions",
+        "url": "https://www.weforum.org/stories/2022/07/green-steel-emissions-net-zero/"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "IEA - Heating in Buildings",
+        "url": "https://www.iea.org/energy-system/buildings/heating"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "authors": "Thelen, C., Ganter Næss, L., Nolte, H., Kaiser, M., Jürgens, P., Müller, P., Senkpiel, C., Kost, C.",
+        "year": "2024",
+        "title": "Paths to a Climate-Neutral Energy System in Germany: Federal States in the Transformation Process",
+        "journal": "Fraunhofer ISE",
+        "url": "https://www.ise.fraunhofer.de/content/dam/ise/en/documents/publications/studies/Paths_to_a_Climate_Neutral_Energy_System_in_Germany.pdf"
+      }
+    },
+    {
+      "type": "subtitle",
+      "size": 2,
+      "value": "Recycling Process"
+    },
+    {
+      "type": "subtitle",
+      "size": 2,
+      "value": "Hydrogen Recycling Technologies"
+    },
+    {
+      "type": "subtitle",
+      "size": 4,
+      "value": "Industrial Gas Purification & Recovery"
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "ReiCat - Hydrogen recycling: Efficient H₂ recovery for industry",
+        "url": "https://reicat.com/en/products/hydrogen-recycling-efficient-h2-recovery-for-industry/"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "authors": "Du, Z., Liu, C., Zhai, J., Guo, X., Xiong, Y., Su, W., & He, G",
+        "year": "2021",
+        "title": "A Review of Hydrogen Purification Technologies for Fuel Cell Vehicles",
+        "journal": "Catalysts 11(3), 393",
+        "url": "https://doi.org/10.3390/catal11030393",
+        "license": "CC BY 4.0"
+      }
+    },
+    {
+      "type": "subtitle",
+      "size": 4,
+      "value": "Electrochemical Hydrogen Compression (EHC)"
+    },
+    {
+      "type": "reference",
+      "props": {
+        "authors": "Ralf Sorgenfrei, Kai Tornow, Jens Ohlmann, Nikolas Kraft, Konstantin Adaktylos-Surber, Sven Schmitz, Lisbeth Rochlitz, Stefan Janz",
+        "year": "2025",
+        "title": "Hydrogen recycling in CVD processes using electrochemical hydrogen compression, Volume 198",
+        "journal": "Process Safety and Environmental Protection",
+        "url": "https://doi.org/10.1016/j.psep.2025.107136",
+        "license": "CC BY-NC-ND 4.0"
+      }
+    },
+    {
+      "type": "subtitle",
+      "size": 4,
+      "value": "Chemical Regeneration (Solid-State)"
+    },
+    {
+      "type": "reference",
+      "props": {
+        "authors": "Liuzhang Ouyang, Hao Zhong, Hai-Wen Li, Min Zhu",
+        "year": "2018",
+        "title": "A Recycling Hydrogen Supply System of NaBH4 Based on a Facile Regeneration Process: A Review",
+        "journal": "Inorganics 6(1), 10",
+        "url": "https://doi.org/10.3390/inorganics6010010",
+        "license": "CC BY 4.0"
+      }
+    },
+    {
+      "type": "subtitle",
+      "size": 2,
+      "value": "Electrolyzer Technologies"
+    },
+    {
+      "type": "subtitle",
+      "size": 4,
+      "value": "Proton Exchange Membrane (PEM)"
+    },
+    {
+      "type": "reference",
+      "props": {
+        "authors": "S. Shiva Kumar, V. Himabindu",
+        "year": "2019",
+        "title": "Hydrogen production by PEM water electrolysis - A review",
+        "journal": "Materials Science for Energy Technologies, Volume 2, Issue 3",
+        "url": "https://doi.org/10.1016/j.mset.2019.03.002",
+        "license": "CC BY-NC-ND 4.0"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "authors": "Mayyas, Ahmad, Mark Ruth, Bryan Pivovar, Guido Bender, and Keith Wipke",
+        "year": "2018",
+        "title": "Manufacturing Cost Analysis for Proton Exchange Membrane Water Electrolyzers",
+        "journal": "National Renewable Energy Laboratory (NREL)",
+        "url": "https://docs.nlr.gov/docs/fy19osti/72740.pdf",
+        "license": "Public Domain (US Gov)"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "IRENA - Green hydrogen cost reduction",
+        "url": "https://www.irena.org/publications/2020/Dec/Green-hydrogen-cost-reduction"
+      }
+    },
+    {
+      "type": "subtitle",
+      "size": 4,
+      "value": "Alkaline Water Electrolysis (AWE)"
+    },
+    {
+      "type": "reference",
+      "props": {
+        "authors": "Tüysüz, Harun",
+        "year": "2024",
+        "title": "Alkaline Water Electrolysis for Green Hydrogen Production",
+        "journal": "Accounts of Chemical Research, Volume 57, Issue 4",
+        "url": "https://doi.org/10.1021/acs.accounts.3c00709",
+        "license": "CC BY 4.0"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "Fraunhofer ISE - Electrolysis and Power-to-Gas",
+        "url": "https://www.ise.fraunhofer.de/en/business-areas/hydrogen-technologies-and-electrical-energy-storage/electrolysis-and-power-to-gas.html"
+      }
+    },
+    {
+      "type": "subtitle",
+      "size": 4,
+      "value": "Anion Exchange Membrane (AEM)"
+    },
+    {
+      "type": "reference",
+      "props": {
+        "authors": "Bernat R, Milewski J, Dybinski O, Martsinchyk A, Shuhayeu P",
+        "year": "2024",
+        "title": "Review of AEM Electrolysis Research from the Perspective of Developing a Reliable Model",
+        "journal": "Energies, 17(20), 5030",
+        "url": "https://doi.org/10.3390/en17205030",
+        "license": "CC BY 4.0"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "authors": "Eid Gul, Giorgio Baldinelli, et al.",
+        "year": "2023",
+        "title": "AEM-electrolyzer based hydrogen integrated renewable energy system optimisation model for distributed communities",
+        "journal": "Energy Conversion and Management, Vol. 285",
+        "url": "https://doi.org/10.1016/j.enconman.2023.117025",
+        "license": "CC BY 4.0"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "Enapter - AEM Electrolysis Technology",
+        "url": "https://www.enapter.com/aem-electrolysis/"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "Fraunhofer IFAM - AEM Electrolysis Research",
+        "url": "https://www.ifam.fraunhofer.de/en/Research/Hydrogen_Technology/aem-electrolysis.html"
+      }
+    },
+    {
+      "type": "subtitle",
+      "size": 4,
+      "value": "Solid Oxide Electrolyzer Cells (SOEC)"
+    },
+    {
+      "type": "reference",
+      "props": {
+        "authors": "Aziz Nechache, Stéphane Hody",
+        "year": "2021",
+        "title": "Alternative and innovative solid oxide electrolysis cell materials: A short review",
+        "journal": "Renewable and Sustainable Energy Reviews, Volume 149",
+        "url": "https://doi.org/10.1016/j.rser.2021.111322",
+        "license": "CC BY-NC-ND 4.0"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "Department of Energy (DOE) - Hydrogen Production: Electrolysis",
+        "url": "https://www.energy.gov/eere/fuelcells/hydrogen-production-electrolysis"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "CEA Liten - Hydrogen and sustainable fuels",
+        "url": "https://liten.cea.fr/cea-tech/liten/Pages/Axes-de-recherche/Hydrogene-carburants-durables.aspx"
+      }
+    },
+    {
+      "type": "subtitle",
+      "size": 2,
+      "value": "Hydrogen Compression Technologies"
+    },
+    {
+      "type": "subtitle",
+      "size": 4,
+      "value": "Mechanical Compressors"
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "Maximator - Components for hydrogen applications",
+        "url": "https://www.maximator-ht.com/en/components-for-hydrogen-applications/"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "Department of Energy (DOE) - Gaseous Hydrogen Compression",
+        "url": "https://www.energy.gov/eere/fuelcells/gaseous-hydrogen-compression"
+      }
+    },
+    {
+      "type": "subtitle",
+      "size": 4,
+      "value": "Electrochemical Compressors (Solid-State)"
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "HyET Hydrogen - Electrochemical Compression",
+        "url": "https://hyethydrogen.com/"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "authors": "Michael Richter, Christoph Keuschnigg, Bianca Grabner, Marie-Gabrielle Macherhammer, Alexander Trattner",
+        "year": "2025",
+        "title": "Investigation of favourable operating conditions for electrochemical hydrogen compressors by 3D CFD simulation and single cell tests",
+        "journal": "International Journal of Hydrogen Energy, Volume 185",
+        "url": "https://doi.org/10.1016/j.ijhydene.2025.150251",
+        "license": "CC BY 4.0"
+      }
+    }
+  ]
+}
