@@ -1,16 +1,16 @@
 [
     {
         "title": "Techno-Economic Calculator",
-        "description": "Run CAPEX and OPEX simulations for green hydrogen plants. Advanced models designed for transparent financial and technical planning.",
+        "description": "Calculate Levelized Cost of Hydrogen (LCOH), CAPEX, and OPEX. Estimate potential revenue and payback periods for green hydrogen production plants.",
         "iconName": "IconCalculator",
-        "buttonText": "Run Simulation",
+        "buttonText": "Run LCOH Simulation",
         "link": "/calculator"
     },
     {
-        "title": "Recycling Systems Evaluator",
-        "description": "Analyze exhaust gas mixtures to determine the optimal separation (PSA/Membranes) and compression architecture for H₂ recovery.",
+        "title": "Hydrogen Recovery Calculator",
+        "description": "Estimate the financial viability of capturing unconsumed hydrogen. Calculate annual recovery volumes and Return on Investment (ROI) based on your exhaust gas mixture.",
         "iconName": "IconRecycle",
-        "buttonText": "Open Evaluator",
+        "buttonText": "Calculate ROI",
         "link": "/recycling"
     }
 ]

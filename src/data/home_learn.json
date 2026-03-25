@@ -6,6 +6,12 @@
         "link": "/production"
     },
     {
+        "title": "Hydrogen Recycling Process",
+        "description": "Learn about the technologies used to recover, purify, and recompress unconsumed hydrogen from industrial exhaust gases.",
+        "iconName": "IconRecycle",
+        "link": "/recycling-process"
+    },
+    {
         "title": "Electrolyzer Technologies",
         "description": "Compare PEM, Alkaline, and AEM core technologies. Analyze efficiency parameters, operational lifespans, and ideal industrial use cases.",
         "iconName": "IconDroplet",
