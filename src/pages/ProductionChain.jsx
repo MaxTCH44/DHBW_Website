@@ -6,7 +6,7 @@ import { IconWindmill, IconDroplet, IconCylinder, IconCar, IconBuildingWarehouse
 
 import production_data from "../data/hydrogen_production_chain.json";
 
-import InteractiveFlow from "../components/InteractiveFlow";
+import InteractiveFlow from "../schematics/InteractiveFlow";
 import ContentDetails from "../components/ContentDetails";
 import LinkButton from "../components/LinkButton";
 

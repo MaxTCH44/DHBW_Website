@@ -65,7 +65,16 @@ export default function ContentDetails({ item, componentList = null }) {
 
         if (block.type === 'paragraph') {
           return (
-            <Text key={index} mb="md" mt="md" lh={1.6}>
+            <Text 
+              key={index} 
+              mb="md" 
+              mt="md" 
+              lh={1.6}
+              c={block.color}
+              size={block.size}
+              fw={block.weight}
+              ta={block.align}
+            >
               {block.value}
             </Text>
           );

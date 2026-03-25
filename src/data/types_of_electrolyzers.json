@@ -21,13 +21,14 @@
         },
         {
           "type": "paragraph",
-          "value": "Anode Reaction: H₂O → 2H⁺ + ½ O₂ + 2e⁻"
+          "value": "Anode Reaction: H₂O → 2H⁺ + ½ O₂ + 2e⁻",
+          "size": "lg",
+          "weight": "bold",
+          "color": "#FD6E6E"
         },
         {
-          "type": "image",
-          "src": "img/vite.svg",
-          "alt": "Diagram of PEM water electrolysis cell mechanism showing proton exchange",
-          "size": 600
+          "type": "component",
+          "componentName": "PemElectrolyzer"
         },
         {
           "type": "paragraph",
@@ -35,7 +36,10 @@
         },
         {
           "type": "paragraph",
-          "value": "Cathode Reaction: 2H⁺ + 2e⁻ → H₂"
+          "value": "Cathode Reaction: 2H⁺ + 2e⁻ → H₂",
+          "size": "lg",
+          "weight": "bold",
+          "color": "#6E8BFD"
         },
         {
           "type": "subtitle",

@@ -4,6 +4,14 @@ import { Container, Title, Text, Group, Button } from "@mantine/core";
 import ContentDetails from "../components/ContentDetails";
 import ProsConsCards from "../components/ProsConsCards";
 
+import PemElectrolyzer from "../schematics/PemElectrolyzer";
+
+
+
+const COMPONENT_REGISTRY = {
+    PemElectrolyzer
+};
+
 export default function EquipmentOverview({ equipmentList }) {
     const [selectedItem, setSelectedItem] = useState(equipmentList.list[0]);
 
@@ -28,7 +36,7 @@ export default function EquipmentOverview({ equipmentList }) {
                 )}
             </Group>
             <Title order={2} mt="xl" mb="xl"> {selectedItem.label} </Title>
-            <ContentDetails item={selectedItem} />
+            <ContentDetails item={selectedItem} componentList={COMPONENT_REGISTRY}/>
             <ProsConsCards item={selectedItem} />
         </Container> 
     );
