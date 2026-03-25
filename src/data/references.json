@@ -143,11 +143,6 @@
     {
       "type": "subtitle",
       "size": 2,
-      "value": "Recycling Process"
-    },
-    {
-      "type": "subtitle",
-      "size": 2,
       "value": "Hydrogen Recycling Technologies"
     },
     {
@@ -165,7 +160,7 @@
     {
       "type": "reference",
       "props": {
-        "authors": "Du, Z., Liu, C., Zhai, J., Guo, X., Xiong, Y., Su, W., & He, G",
+        "authors": "Du, Zhemin, Congmin Liu, Junxiang Zhai, Xiuying Guo, Yalin Xiong, Wei Su, and Guangli He",
         "year": "2021",
         "title": "A Review of Hydrogen Purification Technologies for Fuel Cell Vehicles",
         "journal": "Catalysts 11(3), 393",
@@ -286,7 +281,7 @@
     {
       "type": "reference",
       "props": {
-        "authors": "Eid Gul, Giorgio Baldinelli, et al.",
+        "authors": "Eid Gul, Giorgio Baldinelli, Azharuddin Farooqui, Pietro Bartocci, Tariq Shamim",
         "year": "2023",
         "title": "AEM-electrolyzer based hydrogen integrated renewable energy system optimisation model for distributed communities",
         "journal": "Energy Conversion and Management, Vol. 285",

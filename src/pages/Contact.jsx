@@ -39,7 +39,7 @@ export default function Contact() {
                 <form id="messageForm" onSubmit={handleSubmit}>
                     <TextInput 
                         label="Full Name" 
-                        placeholder="John Doe" 
+                        placeholder="Your Name" 
                         required 
                         mb="md"
                     />

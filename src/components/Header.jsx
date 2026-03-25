@@ -7,7 +7,7 @@ import { IconChevronDown } from '@tabler/icons-react';
 
 const links = [
     { link: '/calculator', label: 'H₂ Calculator' },
-    { link: '/recycling', label: 'Recycling' },
+    { link: '/recycling', label: 'H₂ Recycling' },
     {
         link: '#learn',
         label: 'Learn',

@@ -94,9 +94,9 @@ export default function Home() {
                         height="100%"
                         slideSize={{ base: '100%', sm: '50%', md: '33.333333%' }}
                         slideGap="md"
-                        align="start"
                         emblaOptions={{
-                            loop: true
+                            loop: true,
+                            align:"start"
                         }}
                         mt={40}
                         style={{ paddingBottom: '40px' }}
