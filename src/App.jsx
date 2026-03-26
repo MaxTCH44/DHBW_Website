@@ -10,7 +10,7 @@ import EquipmentOverview from './pages/EquipmentOverview';
 import Calculator from './pages/Calculator';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
-import AboutUs from './pages/AboutUs';
+import OurLab from './pages/OurLab';
 import NotFound from './pages/NotFound';
 import References from './pages/References';
 
@@ -39,7 +39,7 @@ export default function App() {
             <Route path="/electrolyzers" element={<EquipmentOverview equipmentList={electrolyzersData}/>} />
             <Route path="/compressors" element={<EquipmentOverview equipmentList={compressorsData}/>} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/about" element={<AboutUs />} />
+            <Route path="/lab" element={<OurLab />} />
             <Route path="/references" element={<References />} />
             {/* If page not found */}
             <Route path="*" element={<NotFound />} />

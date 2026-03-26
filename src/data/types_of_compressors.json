@@ -20,10 +20,8 @@
                     "value": "The fundamental principle relies on physically reducing the volume of the gas. The two most prominent types are reciprocating piston compressors and diaphragm compressors. In these systems, hydrogen enters a cylinder through an inlet valve. A piston (or a flexible metal membrane)—driven by an electric motor, hydraulics, or compressed air—moves to forcefully compress the gas. Once the target pressure is reached, an exhaust valve opens to discharge the high-pressure hydrogen."
                 },
                 {
-                    "type": "image",
-                    "src": "img/vite.svg",
-                    "alt": "Diagram of mechanical compressor mechanism",
-                    "size": 300
+                "type": "component",
+                "componentName": "MechanicalCompressor"
                 },
                 {
                     "type": "paragraph",
@@ -70,10 +68,8 @@
                     "value": "Structurally similar to a PEM fuel cell, low-pressure hydrogen is fed to the anode, where it is electrochemically split into protons (H⁺) and electrons. The solid Proton Exchange Membrane (PEM) only allows the protons to pass through to the cathode side."
                 },
                 {
-                    "type": "image",
-                    "src": "img/vite.svg",
-                    "alt": "Diagram of electrochemical compressor mechanism showing proton transport",
-                    "size": 300
+                    "type": "component",
+                    "componentName": "EhcCompressor"
                 },
                 {
                     "type": "paragraph",

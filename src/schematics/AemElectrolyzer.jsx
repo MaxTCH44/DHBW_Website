@@ -1,11 +1,11 @@
 import { Box, HoverCard, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
-import './PemElectrolyzer.css';
+import './AlkalineElectrolyzer.css';
 
 
 
-export default function PemElectrolyzer() {
+export default function AemElectrolyzer() {
     const isMobile = useMediaQuery('(max-width: 768px)');
 
     const handleSvgClick = (e) => {
@@ -48,12 +48,12 @@ export default function PemElectrolyzer() {
                 >
                     <HoverCard.Target>
                         <g className="interactive-element" onClick={handleSvgClick}>
-                            <rect x="183" y="116" width="40" height="320" fill="#EDD2B8"/>
+                            <rect x="183" y="116" width="40" height="320" fill="#b768ca"/>
                             <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Membrane</text>
                         </g>
                     </HoverCard.Target>
-                    <HoverCard.Dropdown bg="#EDD2B8" c="black" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>Proton Exchange Membrane (PEM)</b><br/>A solid polymer membrane (e.g., Nafion) that acts as an electrolyte. It only allows positively charged protons (H⁺) to pass through, while forcing electrons to travel through the external circuit.</Text>
+                    <HoverCard.Dropdown bg="#b768ca" c="white" style={{ pointerEvents: 'none' }}>
+                        <Text size="sm"><b>Anion Exchange Membrane (AEM)</b><br/>A solid polymer membrane that conducts negative Hydroxide ions (OH⁻) from the cathode to the anode. It provides the compact design of a PEM but operates in a slightly alkaline environment.</Text>
                     </HoverCard.Dropdown>
                 </HoverCard>
 
@@ -74,7 +74,7 @@ export default function PemElectrolyzer() {
                             </g>
                         </HoverCard.Target>
                         <HoverCard.Dropdown bg="#6E8BFD" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>Cathode (Titanium / Platinum)</b><br/>Protons (H⁺) from the membrane combine with electrons (e⁻) from the external circuit to form pure Hydrogen gas (H₂).</Text>
+                            <Text size="sm"><b>Cathode (Non-PGM / Nickel-based)</b><br/>Water (H₂O) and electrons (e⁻) react here to form Hydrogen gas (H₂) and OH⁻ ions. Because AEM is not highly acidic, cheaper transition metals can be used instead of Platinum.</Text>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </g>
@@ -96,7 +96,7 @@ export default function PemElectrolyzer() {
                             </g>
                         </HoverCard.Target>
                         <HoverCard.Dropdown bg="#FD6E6E" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>Anode (Titanium)</b><br/> Water flows in from this side and is oxidized here to produce Oxygen gas (O₂), protons (H⁺), and electrons (e⁻). Oxygen is released, protons enter the membrane.</Text>
+                            <Text size="sm"><b>Anode (Non-PGM / Nickel or Iron)</b><br/>The OH⁻ ions that crossed the membrane are oxidized here, releasing Oxygen gas (O₂), water, and electrons (e⁻). No expensive Iridium is required.</Text>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </g>
@@ -105,33 +105,37 @@ export default function PemElectrolyzer() {
                     <path d="M271.703 44.0767V34.4744H273.614V44.0767H271.703ZM267.861 40.2273V38.3168H277.463V40.2273H267.861Z" fill="black"/>
                     <path d="M135.855 36.9332V38.7727H129.406V36.9332H135.855Z" fill="black"/>
                     
-                    <path d="M273 248.5L336 211.694V285.306L273 248.5Z" fill="#D9D9D9"/>
-                    <rect x="334" y="227" width="60" height="43" fill="#D9D9D9"/>
-                    <text x="343" y="256" fontSize="24" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>H₂O</text>
+                    <path d="M133 248.5L70 285.306L70 211.694L133 248.5Z" fill="#D9D9D9"/>
+                    <rect x="72" y="270" width="60" height="43" transform="rotate(-180 72 270)" fill="#D9D9D9"/>
+                    <text x="67" y="257" fontSize="24" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>2 H₂O</text>
                     
+                    <path d="M12 354.5L75 317.694V391.306L12 354.5Z" fill="#D9D9D9"/>
+                    <rect x="73" y="333" width="60" height="43" fill="#D9D9D9"/>
+                    <text x="80" y="363" fontSize="24" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>H₂</text>
+
+                    <path d="M394 248.5L331 285.306V211.694L394 248.5Z" fill="#D9D9D9"/>
+                    <rect x="333" y="270" width="60" height="43" transform="rotate(-180 333 270)" fill="#D9D9D9"/>
+                    <text x="330" y="257" fontSize="24" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>H₂O</text>
+
                     <path d="M394 354.5L331 391.306V317.694L394 354.5Z" fill="#D9D9D9"/>
                     <rect x="333" y="376" width="60" height="43" transform="rotate(-180 333 376)" fill="#D9D9D9"/>
                     <text x="330" y="363" fontSize="24" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>½O₂</text>
-                    
-                    <path d="M12 290.5L75 253.694V327.306L12 290.5Z" fill="#D9D9D9"/>
-                    <rect x="73" y="269" width="60" height="43" fill="#D9D9D9"/>
-                    <text x="80" y="298" fontSize="24" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>H₂</text>
                 </g>
                 <g className="protons" style={{ pointerEvents: 'none' }}>
                     
-                    <g className="proton proton-1">
-                        <circle cx="230" cy="220" r="10" fill="#baff3b" />
-                        <text x="230" y="224" fontSize="12" fill="black" textAnchor="middle" fontWeight="bold">H⁺</text>
+                    <g className="ions ion-1">
+                        <circle cx="230" cy="220" r="14" fill="#baff3b" />
+                        <text x="230" y="224" fontSize="12" fill="black" textAnchor="middle" fontWeight="bold">OH⁻</text>
                     </g>
 
-                    <g className="proton proton-2">
-                        <circle cx="230" cy="280" r="10" fill="#baff3b" />
-                        <text x="230" y="284" fontSize="12" fill="black" textAnchor="middle" fontWeight="bold">H⁺</text>
+                    <g className="ions ion-2">
+                        <circle cx="230" cy="280" r="14" fill="#baff3b" />
+                        <text x="230" y="284" fontSize="12" fill="black" textAnchor="middle" fontWeight="bold">OH⁻</text>
                     </g>
 
-                    <g className="proton proton-3">
-                        <circle cx="230" cy="340" r="10" fill="#baff3b" />
-                        <text x="230" y="344" fontSize="12" fill="black" textAnchor="middle" fontWeight="bold">H⁺</text>
+                    <g className="ions ion-3">
+                        <circle cx="230" cy="340" r="14" fill="#baff3b" />
+                        <text x="230" y="344" fontSize="12" fill="black" textAnchor="middle" fontWeight="bold">OH⁻</text>
                     </g>
 
                 </g>

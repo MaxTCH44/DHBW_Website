@@ -1,0 +1,135 @@
+
+.interactive-element {
+    cursor: pointer;
+    transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.interactive-element:hover {
+    filter: brightness(1.05) drop-shadow(0 0 8px rgba(0,0,0,0.15));
+}
+
+.piston-assembly {
+    transform-origin: center 102.5px;
+    animation: reciprocatingPistonCycle 4s infinite ease-in-out;
+}
+
+@keyframes reciprocatingPistonCycle {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(140px);
+    }
+}
+
+.valve-rect {
+    transition: transform 0.1s ease;
+}
+
+.valve-inlet {
+    transform-origin: 155px 35px;
+    animation: valveInletCycle 4s infinite linear;
+}
+
+@keyframes valveInletCycle {
+    0%, 2%, 48%, 50%, 100% {
+        transform: rotate(0deg);
+    }
+    10%, 40% {
+        transform: rotate(-90deg);
+    }
+}
+
+
+.valve-outlet {
+    animation: valveOutletCycle 4s infinite linear;
+}
+
+@keyframes valveOutletCycle {
+    8%, 50%, 85%{
+        transform: translate(330px, 33px) rotate(0deg);
+    }
+    0%, 5%, 90%, 100% {
+        transform: translate(330px, 45px) rotate(-90deg);
+    }
+}
+
+.molecule {
+    opacity: 0;
+    fill: #1971C2; 
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform-origin: center;
+}
+
+.molecule-1 { animation-name: moleculeCycle1; animation-delay: 0.1s; }
+.molecule-2 { animation-name: moleculeCycle2; animation-delay: 0.2s; }
+.molecule-3 { animation-name: moleculeCycle3; animation-delay: 0.3s; }
+.molecule-4 { animation-name: moleculeCycle4; animation-delay: 0.4s; }
+.molecule-5 { animation-name: moleculeCycle5; animation-delay: 0.5s; }
+
+@keyframes moleculeCycle1 {
+    0%   { transform: translate(-80px, 0); opacity: 0; fill: #1971C2; } 
+    10%  { opacity: 1; transform: translate(80px, 0); }
+    40%  { transform: translate(220px, 20px); opacity: 1; } 
+    
+    50%  { transform: translate(220px, 20px); fill: #1971C2; }
+    
+    60%  { fill: #FF0000; }
+    80%  { transform: translate(220px, 0px)}
+    90%  { transform: translate(450px, 0px); opacity: 1; }
+    100% { transform: translate(480px, 0px); opacity: 0; fill: #FF0000; }
+}
+
+@keyframes moleculeCycle2 {
+    0%   { transform: translate(-80px, 0); opacity: 0; fill: #1971C2; }
+    10%  { opacity: 1; transform: translate(80px, 0); }
+    40%  { transform: translate(160px, 160px); opacity: 1; }
+    
+    50%  { transform: translate(160px, 160px); fill: #1971C2; }
+    
+    70%  { fill: #FF0000; }
+    80%  { transform: translate(160px, 0px)}
+    90%  { transform: translate(430px, 0px); opacity: 1; }
+    100% { transform: translate(460px, 0px); opacity: 0; fill: #FF0000; }
+}
+
+@keyframes moleculeCycle3 {
+    0%   { transform: translate(-80px, 0); opacity: 0; fill: #1971C2; }
+    10%  { opacity: 1; transform: translate(80px, 0); }
+    40%  { transform: translate(190px, 120px); opacity: 1; }
+    
+    50%  { transform: translate(190px, 120px); fill: #1971C2; }
+    
+    70%  { fill: #FF0000; }
+    80%  { transform: translate(190px, 0px)}
+    90%  { transform: translate(450px, 0px); opacity: 1; }
+    100% { transform: translate(480px, 0px); opacity: 0; fill: #FF0000; }
+}
+
+@keyframes moleculeCycle4 {
+    0%   { transform: translate(-80px, 0); opacity: 0; fill: #1971C2; }
+    10%  { opacity: 1; transform: translate(80px, 0); }
+    40%  { transform: translate(130px, 30px); opacity: 1; }
+    
+    50%  { transform: translate(130px, 30px); fill: #1971C2; }
+    
+    70%  { fill: #FF0000;}
+    80%  { transform: translate(130px, 0px)}
+    90%  { transform: translate(470px, 0px); opacity: 1; }
+    100% { transform: translate(500px, 0px); opacity: 0; fill: #FF0000; }
+}
+
+@keyframes moleculeCycle5 {
+    0%   { transform: translate(-80px, 0); opacity: 0; fill: #1971C2; }
+    10%  { opacity: 1; transform: translate(90px, 0); }
+    40%  { transform: translate(100px, 150px); opacity: 1; }
+    
+    50%  { transform: translate(100px, 150px); fill: #1971C2; }
+    
+    70%  { fill: #FF0000; }
+    80%  { transform: translate(100px, 0px)}
+    90%  { transform: translate(450px, 0px); opacity: 1; }
+    100% { transform: translate(480px, 0px); opacity: 0; fill: #FF0000; }
+}

@@ -1,8 +1,9 @@
-import { Container, Title, Text, Button, Group, Box, SimpleGrid } from '@mantine/core';
+import { Container, Title, Text, Button, Group, Box, SimpleGrid, Paper, Grid, Badge, ThemeIcon } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import { useMediaQuery } from '@mantine/hooks';
 import '@mantine/carousel/styles.css';
-import { IconCalculator, IconBook, IconRecycle, IconRoute, IconDroplet, IconGauge } from '@tabler/icons-react';
+import { IconCalculator, IconBook, IconRecycle, IconRoute, IconDroplet, IconGauge, IconFlask, IconArrowRight } from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
 
 import learnData from '../data/home_learn.json';
 import toolsData from '../data/home_tools.json';
@@ -58,6 +59,41 @@ export default function Home() {
                     </Group>
                 </Container>
             </Box>
+            
+            <Container size="lg" pt={80} pb={20}>
+                <Paper radius="lg" p={{ base: 'xl', md: 50 }} bg="gray.0" style={{ border: '1px solid var(--mantine-color-gray-2)' }}>
+                    <Grid align="center" gutter={{ base: 'xl', md: 50 }}>
+                        <Grid.Col span={{ base: 12, md: 7 }}>
+                            <Badge color="var(--mantine-primary-color-filled)" variant="light" size="lg" mb="sm">Our Facility</Badge>
+                            <Title order={2} mb="md" lh={1.2}>
+                                Inside the <Text component="span" c="var(--mantine-primary-color-filled)" inherit>GreenLab</Text>
+                            </Title>
+                            <Text c="dimmed" size="lg" mb="xl" lh={1.6}>
+                                We are an advanced research facility dedicated to scaling green hydrogen technologies. 
+                                Beyond digital simulations, our physical lab focuses on testing, optimizing, and developing the next generation of electrolyzers and gas recycling systems.
+                            </Text>
+                            <Button 
+                                component={Link} 
+                                to="/lab" 
+                                size="md" 
+                                radius="md" 
+                                variant="outline"
+                                color="var(--mantine-primary-color-filled)"
+                                rightSection={<IconArrowRight size={18} />}
+                            >
+                                Discover our Research
+                            </Button>
+                        </Grid.Col>
+                        
+                        <Grid.Col span={{ base: 12, md: 5 }} ta="center">
+                            {/* Un grand cercle avec une icône de fiole de laboratoire pour illustrer */}
+                            <ThemeIcon size={160} radius="100%" variant="light" color="var(--mantine-primary-color-filled)">
+                                <IconFlask size={80} stroke={1.5} />
+                            </ThemeIcon>
+                        </Grid.Col>
+                    </Grid>
+                </Paper>
+            </Container>
 
             <Container id="tools" size="lg" py={80} mb={40}>
                 <Title order={2} ta="center" mb="sm">Engineering Utilities</Title>

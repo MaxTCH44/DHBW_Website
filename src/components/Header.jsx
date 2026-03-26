@@ -6,6 +6,7 @@ import { IconChevronDown } from '@tabler/icons-react';
 
 
 const links = [
+    { link: '/lab', label: <Text fw="900" size="lg" >Our Lab</Text> },
     { link: '/calculator', label: 'H₂ Calculator' },
     { link: '/recycling', label: 'H₂ Recycling' },
     {

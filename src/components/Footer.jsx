@@ -22,9 +22,6 @@ export default function Footer() {
             Greenlabs H₂
           </Title>
           <Group mt={{ base: 'md', sm: 0 }}>
-            <Anchor component={Link} to="/about" c="dimmed" size="sm">
-              About Us
-            </Anchor>
             <Anchor component={Link} to="/contact" c="dimmed" size="sm">
               Contact
             </Anchor>

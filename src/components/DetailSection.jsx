@@ -6,7 +6,7 @@ export default function DetailSection({ openedSections, toggleSection, children 
     return(
         <>
             <Collapse in={openedSections}>
-                <Card bg="green.0">
+                <Card bg="green.2">
                     {children}
                 </Card>
             </Collapse>
