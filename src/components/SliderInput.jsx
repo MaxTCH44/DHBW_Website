@@ -1,8 +1,16 @@
 import { NumberInput, Slider, Box, Text } from '@mantine/core';
+import { useEffect } from 'react';
 
 
 
-export default function SliderInput({ label, value, units, onValueChange, min, max }) {
+export default function SliderInput({ label, value, units, onValueChange, min, max, step = 1}) {
+
+  useEffect(() => {
+    if (max !== undefined && max !== null && value > max) {
+      onValueChange(max);
+    }
+  }, [max, value]);
+
   return (
     <Box pos="relative">
       <NumberInput
@@ -26,6 +34,7 @@ export default function SliderInput({ label, value, units, onValueChange, min, m
       <Slider
         max={max}
         min={min}
+        step={step}
         label={null}
         value={typeof value === 'string' ? 0 : value}
         onChange={onValueChange}

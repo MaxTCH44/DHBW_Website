@@ -1,5 +1,5 @@
-import { Card, Title, Group, Paper, Text, Badge, SimpleGrid, RingProgress, Stack, Progress, ThemeIcon, Grid, Box } from '@mantine/core';
-import { IconBolt, IconDroplet, IconWind, IconTool, IconChartPie } from '@tabler/icons-react';
+import { Card, Title, Group, Paper, Text, Badge, SimpleGrid, RingProgress, Stack, Progress, ThemeIcon, Grid, Box, Alert } from '@mantine/core';
+import { IconBolt, IconDroplet, IconWind, IconTool, IconChartPie, IconAlertCircle } from '@tabler/icons-react';
 
 export default function ResultDisplay({ cost, capex, costDifference, annualDifference, breakdown, metrics, greyDetails }) {
     const isProfitable = costDifference >= 0;
@@ -13,11 +13,27 @@ export default function ResultDisplay({ cost, capex, costDifference, annualDiffe
         water: (breakdown.water / safeCost) * 100,
     };
 
+    const showOversizedWarning = metrics?.utilizationRate > 0 && metrics.utilizationRate < 95;
+
     return (
         <Card shadow="lg" padding="xl" radius="md" withBorder mt="xl" bg="gray.0">
             <Title order={2} mb="xl" c="dark.8" ta="center">
                 Project Dashboard
             </Title>
+
+            {showOversizedWarning && (
+                <Alert 
+                    icon={<IconAlertCircle size={20} />} 
+                    title="Oversized Installation Warning" 
+                    color="orange" 
+                    variant="light"
+                    mb="xl"
+                >
+                    Your physical installation ({metrics.installedCapacity} kW) is oversized compared to your target production needs. 
+                    Your utilization rate is only <b>{metrics.utilizationRate.toFixed(1)}%</b>. 
+                    This under-utilization increases the CAPEX share per kg and negatively impacts your LCOH.
+                </Alert>
+            )}
             
             <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="lg" mb="xl">
                 <Paper p="md" radius="md" withBorder bg="white">

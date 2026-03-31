@@ -25,11 +25,19 @@
     },
     {
       "type": "paragraph",
-      "value": "• Catalytic Purification and PSA (Pressure Swing Adsorption): These systems filter the waste gas stream through adsorbent beds or catalytic reactors to remove impurities (oxygen, moisture, hydrocarbons). They restore the gas to 'Quality 5.0' hydrogen (guaranteed 99.999% purity), ready for direct reinjection into the production line."
+      "value": "• Catalytic Purification and PSA (Pressure Swing Adsorption): These systems filter the waste gas stream through adsorbent beds or catalytic reactors to remove impurities (oxygen, moisture, hydrocarbons). They restore the gas to guaranteed 99.999% purity hydrogen, ready for direct reinjection into the production line."
+    },
+    {
+      "type": "component",
+      "componentName": "PsaPurifier"
     },
     {
       "type": "paragraph",
       "value": "• Electrochemical Hydrogen Separation and Compression (EHC): Acting as an active molecular filter, the polymer membrane of an EHC system only allows hydrogen protons to pass through. By applying an electrical current, this technology selectively extracts hydrogen from a gas mixture while simultaneously compressing it, with zero moving parts, ensuring no mechanical oil contamination."
+    },
+    {
+      "type": "component",
+      "componentName": "EhcRecycling"
     },
     {
       "type": "subtitle",

@@ -316,6 +316,10 @@
         "value": "Vehicles powered by this technology are known as Fuel Cell Electric Vehicles (FCEVs). At the core of an FCEV is the fuel cell stack, which essentially performs the exact reverse of the water electrolysis process. Instead of using electricity to split water, the fuel cell continuously receives compressed hydrogen from the vehicle's tanks and oxygen from the ambient air. Through an electrochemical reaction across a polymer membrane, these two elements combine to generate the direct current (DC) electricity needed to drive the electric motor. The only byproduct exhausted from the tailpipe is pure, harmless water vapor."
       },
       {
+        "type": "component",
+        "componentName": "PemFuelCell"
+      },
+      {
         "type": "subtitle",
         "value": "Refueling and Range Advantages",
         "size": 3

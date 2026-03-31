@@ -2,7 +2,9 @@
 import { useState, useEffect } from 'react';
 import { NumberInput, Select, Text } from '@mantine/core';
 
-export default function ValueInput({ label, value, units, currentUnit, onValueChange, onUnitChange = (() => {}), nullBlocker = false }) {
+
+
+export default function ValueInput({ label, value, units, currentUnit, onValueChange, onUnitChange = (() => {}), nullBlocker = false , max = null}) {
   const isArray = Array.isArray(units);
   const hasMultipleUnits = isArray && units.length > 1;
 
@@ -23,6 +25,14 @@ export default function ValueInput({ label, value, units, currentUnit, onValueCh
     return () => clearTimeout(timeout);
   }, [errorMsg]);
 
+  useEffect(() => {
+    if (max !== null && value > max) {
+      setErrorMsg("Value adjusted to maximum allowed (" + max + ")");
+      setLocalValue(max);
+      onValueChange(max); 
+    }
+  }, [max, value]);
+  
   function handleChange(val) {
     setLocalValue(val);
   }
@@ -32,6 +42,10 @@ export default function ValueInput({ label, value, units, currentUnit, onValueCh
       setErrorMsg("Value cannot be 0");
       setLocalValue(value);
       onValueChange(value);
+    } else if (max && localValue > max) {
+      setErrorMsg("Value cannot be more than " + max);
+      onValueChange(max);
+      setLocalValue(max);
     } else {
       setErrorMsg(null);
       onValueChange(localValue);
@@ -45,6 +59,7 @@ export default function ValueInput({ label, value, units, currentUnit, onValueCh
     if (onUnitChange && selectedUnit) {
       onUnitChange(selectedUnit);
     }
+    
   }
 
   const rightSection = hasMultipleUnits ? (

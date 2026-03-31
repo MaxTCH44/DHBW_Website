@@ -1,25 +1,87 @@
-<svg width="406" height="470" viewBox="0 0 406 470" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="406" height="470" fill="white"/>
-<rect x="183" y="116" width="40" height="320" fill="#EDD2B8"/>
-<rect x="133" y="141" width="50" height="270" fill="#6E8BFD"/>
-<rect x="223" y="141" width="50" height="270" fill="#FD6E6E"/>
-<rect x="145" y="7" width="116" height="39" fill="black"/>
-<rect x="15" y="183" width="118" height="6" fill="black"/>
-<rect x="17" y="185" width="116" height="2" fill="#FFFF00"/>
-<rect x="15" y="23" width="6" height="160" fill="black"/>
-<rect x="17" y="25" width="2" height="160" fill="#FFFF00"/>
-<rect x="21" y="23" width="124" height="6" fill="black"/>
-<rect x="19" y="25" width="126" height="2" fill="#FFFF00"/>
-<rect width="118" height="6" transform="matrix(-1 0 0 1 391 183)" fill="black"/>
-<rect width="116" height="2" transform="matrix(-1 0 0 1 389 185)" fill="#FFFF00"/>
-<rect width="6" height="160" transform="matrix(-1 0 0 1 391 23)" fill="black"/>
-<rect width="2" height="160" transform="matrix(-1 0 0 1 389 25)" fill="#FFFF00"/>
-<rect width="124" height="6" transform="matrix(-1 0 0 1 385 23)" fill="black"/>
-<rect width="126" height="2" transform="matrix(-1 0 0 1 387 25)" fill="#FFFF00"/>
-<path d="M271.703 44.0767V34.4744H273.614V44.0767H271.703ZM267.861 40.2273V38.3168H277.463V40.2273H267.861Z" fill="black"/>
-<path d="M135.855 36.9332V38.7727H129.406V36.9332H135.855Z" fill="black"/>
-<path d="M273 290.5L336 214.723V366.277L273 290.5Z" fill="#B5E2ED"/>
-<rect x="334" y="246.235" width="60" height="88.5294" fill="#B5E2ED"/>
-<path d="M12 290.5L75 253.694V327.306L12 290.5Z" fill="#F5A4AF"/>
-<rect x="73" y="269" width="60" height="43" fill="#F5A4AF"/>
+<svg width="396" height="475" viewBox="0 0 396 475" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="396" height="475" fill="white"/>
+<path d="M12 268L52.6116 229.895L52.6116 306.105L12 268Z" fill="#FE7F25"/>
+<rect x="51.3223" y="245.741" width="38.6777" height="44.5176" fill="#FE7F25"/>
+<path d="M197 15L235.105 55.6116L158.895 55.6116L197 15Z" fill="#4DE32F"/>
+<rect x="219.259" y="54.3223" width="38.6777" height="44.5176" transform="rotate(90 219.259 54.3223)" fill="#4DE32F"/>
+<path d="M198 382L236.105 422.612H159.895L198 382Z" fill="#7F8299"/>
+<rect x="220.259" y="421.322" width="38.6777" height="44.5176" transform="rotate(90 220.259 421.322)" fill="#7F8299"/>
+<path d="M384 268L343.388 229.895V306.105L384 268Z" fill="#FE7F25"/>
+<rect width="38.6777" height="44.5176" transform="matrix(-1 0 0 1 344.678 245.741)" fill="#FE7F25"/>
+<rect x="112" y="155" width="73" height="145" fill="#B5E2ED" stroke="#5B5959" stroke-width="4"/>
+<rect x="140" y="302" width="17" height="40" fill="#5B5959"/>
+<rect x="143" y="298" width="11" height="41" fill="#F5F5F5"/>
+<rect x="140" y="113" width="17" height="40" fill="#5B5959"/>
+<rect x="143" y="116" width="11" height="41" fill="#F5F5F5"/>
+<rect x="110" y="259" width="17" height="40" transform="rotate(90 110 259)" fill="#5B5959"/>
+<rect x="114" y="262" width="11" height="44" transform="rotate(90 114 262)" fill="#F5F5F5"/>
+<rect x="-2" y="2" width="73" height="145" transform="matrix(-1 0 0 1 282 153)" fill="#B5E2ED" stroke="#5B5959" stroke-width="4"/>
+<rect width="17" height="40" transform="matrix(-1 0 0 1 256 302)" fill="#5B5959"/>
+<rect width="11" height="41" transform="matrix(-1 0 0 1 253 298)" fill="#F5F5F5"/>
+<rect width="17" height="40" transform="matrix(-1 0 0 1 206 343)" fill="#5B5959"/>
+<rect width="11" height="40" transform="matrix(-1 0 0 1 203 343)" fill="#F5F5F5"/>
+<rect width="17" height="86" transform="matrix(0 -1 -1 0 240 342)" fill="#5B5959"/>
+<rect width="11" height="89" transform="matrix(0 -1 -1 0 243 339)" fill="#F5F5F5"/>
+<rect width="17" height="40" transform="matrix(-1 0 0 1 206 342)" fill="#5B5959"/>
+<rect width="11" height="43" transform="matrix(-1 0 0 1 203 339)" fill="#F5F5F5"/>
+<rect width="17" height="40" transform="matrix(-1 0 0 1 256 113)" fill="#5B5959"/>
+<rect width="11" height="41" transform="matrix(-1 0 0 1 253 116)" fill="#F5F5F5"/>
+<rect width="17" height="40" transform="matrix(0 1 1 0 286 259)" fill="#5B5959"/>
+<rect width="11" height="44" transform="matrix(0 1 1 0 282 262)" fill="#F5F5F5"/>
+<rect x="206" y="112" width="17" height="40" transform="rotate(-180 206 112)" fill="#5B5959"/>
+<rect x="203" y="112" width="11" height="40" transform="rotate(-180 203 112)" fill="#F5F5F5"/>
+<rect x="240" y="113" width="17" height="86" transform="rotate(90 240 113)" fill="#5B5959"/>
+<rect x="243" y="116" width="11" height="89" transform="rotate(90 243 116)" fill="#F5F5F5"/>
+<rect x="206" y="113" width="17" height="40" transform="rotate(-180 206 113)" fill="#5B5959"/>
+<rect x="203" y="116" width="11" height="43" transform="rotate(-180 203 116)" fill="#F5F5F5"/>
 </svg>
+
+<HoverCard position={isMobile ? "bottom" : "left"} withArrow shadow="md" width={isMobile ? "90vw" : 250} openDelay={50} closeDelay={100} withinPortal={true}>
+                    <HoverCard.Target>
+                        <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
+                            {/* Flèche Entrée */}
+                            <rect x="20" y="380" width="80" height="40" fill="#B5E2ED" rx="8"/>
+                            <text x="60" y="405" fontSize="13" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>MIXED IN</text>
+                            
+                            {/* Flèche Échappement */}
+                            <rect x="380" y="440" width="80" height="40" fill="#E9ECEF" rx="8"/>
+                            <text x="420" y="465" fontSize="13" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>EXHAUST</text>
+                        </g>
+                    </HoverCard.Target>
+                    <HoverCard.Dropdown bg="gray.7" c="white" style={{ pointerEvents: 'none' }}>
+                        <Text size="sm"><b>Waste Gas Stream</b><br/>The unconsumed gas mixture from the industrial process enters the system. It contains hydrogen mixed with impurities like oxygen, moisture, and hydrocarbons. When a bed regenerates, these impurities are vented out through the exhaust.</Text>
+                    </HoverCard.Dropdown>
+                </HoverCard>
+
+<HoverCard position={isMobile ? "bottom" : "top"} withArrow shadow="md" width={isMobile ? "90vw" : 320} openDelay={50} closeDelay={100} withinPortal={true}>
+                    <HoverCard.Target>
+                        <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
+                            
+                            {/* COLONNE A (Gauche) */}
+                            <rect x="100" y="150" width="100" height="200" fill="#D9D9D9" stroke="#484040" strokeWidth="4" rx="10"/>
+                            <rect className="bed active-bed-a" x="104" y="154" width="92" height="192" fill="#90CDF4" rx="6"/>
+                            <text x="150" y="255" fontSize="16" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>BED A</text>
+
+                            {/* COLONNE B (Droite) */}
+                            <rect x="284" y="150" width="100" height="200" fill="#D9D9D9" stroke="#484040" strokeWidth="4" rx="10"/>
+                            <rect className="bed active-bed-b" x="288" y="154" width="92" height="192" fill="#90CDF4" rx="6"/>
+                            <text x="334" y="255" fontSize="16" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>BED B</text>
+
+                        </g>
+                    </HoverCard.Target>
+                    <HoverCard.Dropdown bg="blue.6" c="white" style={{ pointerEvents: 'none' }}>
+                        <Text size="sm"><b>Pressure Swing Adsorption (PSA)</b><br/>The adsorbent beds act as active molecular filters. Under high pressure, Bed A traps the impurities while letting H₂ pass. Meanwhile, Bed B depressurizes to release its trapped impurities. Then, they swing (switch roles)!</Text>
+                    </HoverCard.Dropdown>
+                </HoverCard>
+
+<HoverCard position={isMobile ? "bottom" : "right"} withArrow shadow="md" width={isMobile ? "90vw" : 250} openDelay={50} closeDelay={100} withinPortal={true}>
+                    <HoverCard.Target>
+                        <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
+                            <rect x="360" y="80" width="100" height="40" fill="#6E8BFD" rx="8"/>
+                            <text x="410" y="105" fontSize="13" fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Quality 5.0 H₂</text>
+                        </g>
+                    </HoverCard.Target>
+                    <HoverCard.Dropdown bg="green.5" c="dark.9" style={{ pointerEvents: 'none' }}>
+                        <Text size="sm"><b>Pure Hydrogen Output</b><br/>The filtered gas is restored to 'Quality 5.0' (guaranteed 99.999% purity). It is now ready for direct reinjection into the production line, saving massive amounts of energy and resources.</Text>
+                    </HoverCard.Dropdown>
+                </HoverCard>

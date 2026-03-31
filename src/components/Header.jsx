@@ -1,12 +1,12 @@
 import { Burger, Container, Group, Title, Drawer, Stack, Button, Flex, Box, Menu, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { Link, useLocation } from 'react-router-dom';
-import { IconChevronDown } from '@tabler/icons-react';
+import { IconChevronDown, IconFlask } from '@tabler/icons-react';
 
 
 
 const links = [
-    { link: '/lab', label: <Text fw="900" size="lg" >Our Lab</Text> },
+    { link: '/lab', label: <><IconFlask /> <Text fw="900" size="lg" ml="10" >Our Lab</Text></> },
     { link: '/calculator', label: 'H₂ Calculator' },
     { link: '/recycling', label: 'H₂ Recycling' },
     {

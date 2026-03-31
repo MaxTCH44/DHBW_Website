@@ -1,4 +1,6 @@
 import { Select, Checkbox, Stack, Tooltip, Box, Text } from '@mantine/core';
+import { useEffect } from 'react';
+
 import SliderInput from './SliderInput';
 
 
@@ -15,12 +17,26 @@ const EQUIPMENT_MAPS = {
     compressor: {
         type: { label: "Type", unit: "" },
         price: { label: "Price", unit: " €" },
+        cell_stack_price: { label: "Cell stack price", unit: " €" },
+        max_cells: { label: "Maximum number of cells", unit: "" },
+        cells_per_stack: { label: "Number of cells per stack", unit: "" },
+        // --- NOUVEAU : Le label devient dynamique selon le type de l'item ---
+        unitary_flowrate_kg_per_day: { 
+            label: (item) => item.type === "mechanical" ? "Flowrate" : "Flowrate per cell", 
+            unit: " kg/day" 
+        },
         energy_consumption_kwh_per_kg: { label: "Energy consumption", unit: " kWh/kg" },
         maintenance_percent_capex: { label: "Maintenance", unit: " %/year" }
     }
 };
 
 export default function EquipmentSelector({ label, itemsList, selectedItem, onItemChange, quantityOwned, onOwnedChange, ownedLabel, max }) {
+
+    useEffect(() => {
+        if (max !== null && max !== undefined && quantityOwned > max) {
+            onOwnedChange(max);
+        }
+    }, [max, quantityOwned]);
 
     const selectData = itemsList.list.map((item, index) => ({
         value: index.toString(),
@@ -31,23 +47,33 @@ export default function EquipmentSelector({ label, itemsList, selectedItem, onIt
     const selectedIndex = itemsList.list.findIndex(item => item.id === selectedItem.id).toString();
     const currentMap = EQUIPMENT_MAPS[itemsList.type];
 
-    function renderTooltipContent (itemData) {
+    function renderTooltipContent(item) {
+        const map = EQUIPMENT_MAPS[itemsList.type];
+        if (!map) return null;
+
         return (
-            <Box>
-                {Object.keys(currentMap).map((key) => {
-                    if (itemData[key] !== undefined) {
+            <Box w={220}>
+                {Object.entries(map).map(([key, config]) => {
+                    if (item[key] !== undefined && item[key] !== null) {
+                        
+                        const labelToDisplay = typeof config.label === 'function' 
+                            ? config.label(item) 
+                            : config.label;
+
                         return (
-                            <Text key={key} size="sm">
-                                <span style={{ opacity: 0.7 }}>{currentMap[key].label} : </span> 
-                                <b>{itemData[key]}{currentMap[key].unit}</b>
-                            </Text>
+                            <Box key={key} display="flex" style={{ justifyContent: 'space-between' }}>
+                                <Text size="xs" fw={700} c="gray.4">{labelToDisplay}:</Text>
+                                <Text size="xs" fw={500} c="white">
+                                    {item[key]} {config.unit}
+                                </Text>
+                            </Box>
                         );
                     }
                     return null;
                 })}
             </Box>
         );
-    };
+    }
 
     function renderOption ({ option }) {
         return(

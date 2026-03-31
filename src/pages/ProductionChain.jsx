@@ -6,9 +6,11 @@ import { IconWindmill, IconDroplet, IconCylinder, IconCar, IconBuildingWarehouse
 
 import production_data from "../data/hydrogen_production_chain.json";
 
-import InteractiveFlow from "../schematics/InteractiveFlow";
 import ContentDetails from "../components/ContentDetails";
 import LinkButton from "../components/LinkButton";
+
+import InteractiveFlow from "../schematics/InteractiveFlow";
+import PemFuelCell from "../schematics/PemFuelCell";
 
 const ICON_MAP = {
     IconWindmill,
@@ -21,7 +23,8 @@ const ICON_MAP = {
 
 const COMPONENT_REGISTRY = {
     AreaChart,
-    LinkButton
+    LinkButton,
+    PemFuelCell
 };
 
 export default function ProductionChain() {

@@ -1,0 +1,140 @@
+
+.interactive-element {
+    cursor: pointer;
+    transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.interactive-element:hover {
+    filter: brightness(1.05) drop-shadow(0 0 8px rgba(0,0,0,0.15));
+}
+
+.tank-group-left { --cycle-delay: 0s; }
+.tank-group-right { --cycle-delay: -8s; }
+
+.tank-group-left > rect:first-child,
+.tank-group-right > rect:first-child {
+    animation: tankColorCycle 16s infinite;
+    animation-delay: var(--cycle-delay);
+}
+
+@keyframes tankColorCycle {
+    0%, 15%   { fill: #E9ECEF; } 
+    30%, 50% { fill: #FFD2D2; } 
+    55%      { fill: #E9ECEF; } 
+    60%, 80% { fill: #D2E3FF; } 
+    85%, 100%{ fill: #E9ECEF; } 
+}
+
+.pipe-pair-bottom-left rect:nth-child(2),
+.pipe-pair-bottom-right rect:nth-child(2) {
+    animation: bottomValveCycle 16s infinite;
+    animation-delay: var(--cycle-delay);
+}
+@keyframes bottomValveCycle {
+    0%, 4%     { opacity: 0; } 
+    5%, 19%    { opacity: 1; } 
+    20%, 100%  { opacity: 0; } 
+}
+
+.pipe-pair-top-left rect:nth-child(2),
+.pipe-pair-top-right rect:nth-child(2) {
+    animation: topValveCycle 16s infinite;
+    animation-delay: var(--cycle-delay);
+}
+@keyframes topValveCycle {
+    0%, 39%    { opacity: 0; }
+    40%, 50%   { opacity: 1; } 
+    51%, 100%  { opacity: 0; }
+}
+
+.pipe-pair-side-left rect:nth-child(2) {
+    animation: sideValveCycle 16s infinite;
+    animation-delay: 0s;
+}
+.pipe-pair-side-right rect:nth-child(2) {
+    animation: sideValveCycle 16s infinite;
+    animation-delay: -8s;
+}
+@keyframes sideValveCycle {
+    0%, 74%    { opacity: 0; }
+    75%, 89%   { opacity: 1; } 
+    90%, 100%  { opacity: 0; }
+}
+
+.gas-particles circle {
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-delay: var(--cycle-delay);
+}
+
+.tank-group-left .gas-particles circle:nth-child(1) { 
+    --dx-in: 15px; --dx-attach: 2px; --dy-attach: -33px; --dx-out: -40px;
+    animation-name: redPart1Cycle;
+}
+.tank-group-left .gas-particles circle:nth-child(2) {
+    --dx-in: -15px; --dx-attach: -3px; --dy-attach: 67px; --dx-out: -70px;
+    animation-name: redPart2Cycle;
+}
+.tank-group-left .gas-particles circle:nth-child(3) {
+    --dx-in: 0px; --dx-out: -2px;
+    animation-name: whitePart1Cycle;
+}
+.tank-group-left .gas-particles circle:nth-child(4) {
+    --dx-in: 15px; --dx-out: 13px;
+    animation-name: whitePart2Cycle;
+}
+
+.tank-group-right .gas-particles circle:nth-child(1) {
+    --dx-in: 15px; --dx-attach: 2px; --dy-attach: -33px; --dx-out: 60px;
+    animation-name: redPart1Cycle;
+}
+.tank-group-right .gas-particles circle:nth-child(2) { 
+    --dx-in: -15px; --dx-attach: -3px; --dy-attach: 67px; --dx-out: 30px;
+    animation-name: redPart2Cycle;
+}
+.tank-group-right .gas-particles circle:nth-child(3) {
+    --dx-in: 0px; --dx-out: 6px;
+    animation-name: whitePart1Cycle;
+}
+.tank-group-right .gas-particles circle:nth-child(4) { 
+    --dx-in: 15px; --dx-out: 21px;
+    animation-name: whitePart2Cycle;
+}
+
+@keyframes redPart1Cycle {
+    0%, 9%     { transform: translate(var(--dx-in), 100px); opacity: 0; }
+    10%        { transform: translate(var(--dx-in), 100px); opacity: 1; }
+    15%, 24%   { transform: translate(0px, 0px); opacity: 1; } 
+    35%, 60%   { transform: translate(var(--dx-attach), var(--dy-attach)); opacity: 1; }
+    70%, 75%   { transform: translate(0px, 0px); opacity: 1; } 
+    76%        { transform: translate(0px, 0px); opacity: 1; }
+    85%        { transform: translate(var(--dx-out), 50px); opacity: 1; } 
+    86%, 100%  { transform: translate(var(--dx-out), 50px); opacity: 0; }
+}
+
+@keyframes redPart2Cycle {
+    0%, 9%     { transform: translate(var(--dx-in), 130px); opacity: 0; } 
+    10%        { transform: translate(var(--dx-in), 130px); opacity: 1; }
+    15%, 24%   { transform: translate(0px, 0px); opacity: 1; } 
+    35%, 60%   { transform: translate(var(--dx-attach), var(--dy-attach)); opacity: 1; } 
+    70%, 75%   { transform: translate(0px, 0px); opacity: 1; } 
+    76%        { transform: translate(0px, 0px); opacity: 1; }
+    85%        { transform: translate(var(--dx-out), 80px); opacity: 1; } 
+    86%, 100%  { transform: translate(var(--dx-out), 80px); opacity: 0; }
+}
+
+@keyframes whitePart1Cycle {
+    0%, 9%     { transform: translate(var(--dx-in), 105px); opacity: 0; }
+    10%        { transform: translate(var(--dx-in), 105px); opacity: 1; }
+    15%, 39%   { transform: translate(0px, 0px); opacity: 1; } 
+    50%        { transform: translate(var(--dx-out), -120px); opacity: 1; }
+    51%, 100%  { transform: translate(var(--dx-out), -120px); opacity: 0; }
+}
+
+@keyframes whitePart2Cycle {
+    0%, 9%     { transform: translate(var(--dx-in), 55px); opacity: 0; }
+    10%        { transform: translate(var(--dx-in), 55px); opacity: 1; }
+    15%, 39%   { transform: translate(0px, 0px); opacity: 1; }
+    50%        { transform: translate(var(--dx-out), -170px); opacity: 1; } 
+    51%, 100%  { transform: translate(var(--dx-out), -170px); opacity: 0; }
+}

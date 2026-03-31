@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Title, SimpleGrid, Card, Text, Paper, Anchor, Stack, Checkbox, Collapse } from '@mantine/core';
+import { Container, Title, SimpleGrid, Card, Text, Paper, Anchor, Stack, Checkbox, Group, Badge } from '@mantine/core';
 
 import electrolyzers from '../data/electrolyzers_list.json';
 import compressors from '../data/compressors_list.json';
@@ -18,9 +18,10 @@ const ELEC_PRICE_UNITS = [{ label: "€/MWh", factor: 0.001 }, { label: "€/kWh
 const POWER_UNITS = [{ label: "MW", factor: 1000 }, { label: "kW", factor: 1}];
 const WATER_VOLUME_PRICE_UNITS = [{ label: "€/m³", factor: 1 }, { label: "€/L", factor: 1000 }];
 const TIME_PER_YEAR_UNITS = [{ label: "days/year", factor: 24 }, { label: "h/year", factor: 1 }];
-const VOLUME_PER_TIME_UNITS = [{ label: "kg/year", factor: 1 }, { label: "m³/year", factor: 11.1 }, { label: "kg/day", factor: 365 }, { label: "m³", factor: 4051.5 }];
+const VOLUME_PER_TIME_UNITS = [{ label: "kg/h", factor: 1 }, { label: "m³/h", factor: (1/11.1) }, { label: "kg/day", factor: (1/24) }, { label: "m³/day", factor: (1/(11.1*24)) }];
 const VOLUME_UNITS = [{ label: "kg", factor: 1 }, { label: "m³", factor: 11.1 }];
 const H2_VOLUME_PRICE_UNITS = [{ label: "€/kg", factor: 1 }, { label: "€/m³", factor: 11.1 }];
+const H2_VOLUME_POWER_UNITS = [{ label: "kWh/kg", factor: 1 }, { label: "kWh/m³", factor: 11.1 }];
 const MAINTENANCE_UNITS = [{ label: "% CAPEX", factor: 1 }, { label: "€", factor: 1 }];
 
 const WATER_PER_KG_OF_H2 = 0.015; //m³ of water
@@ -28,10 +29,10 @@ const EMISSIONS_PER_KG_OF_H2 = 9.5; //kg of CO2
 
 export default function Calculator() {
     const [selectedElectrolyzer, setSelectedElectrolyzer] = useState(electrolyzers.list[0]);
-    const [electrolyzerSettings, setElectrolyzerSettings] = useState({unit: MAINTENANCE_UNITS[0], owned: 0});
+    const [electrolyzerSettings, setElectrolyzerSettings] = useState({maint_unit: MAINTENANCE_UNITS[0], cons_unit: H2_VOLUME_POWER_UNITS[0], owned: 0});
 
-    const [systemSize, setSystemSize] = useState({ value: 5, unit: POWER_UNITS[1], selfProduced: 0 });
-    const [productionGoal, setProductionGoal] = useState({ value: 0, unit: VOLUME_PER_TIME_UNITS[0] });
+    const [systemSize, setSystemSize] = useState({ value: selectedElectrolyzer.power, unit: POWER_UNITS[1], selfProduced: 0 });
+    //const [productionGoal, setProductionGoal] = useState({ value: 0, unit: VOLUME_PER_TIME_UNITS[0] });
     const [operatingTime, setOperatingTime] = useState({ value: 4000, unit: TIME_PER_YEAR_UNITS[1] });
 
     const [electricityPrice, setElectricityPrice] = useState({ value: 50, unit: ELEC_PRICE_UNITS[0] });
@@ -45,10 +46,19 @@ export default function Calculator() {
 
     //const [storageCapacity, setStorageCapacity] = useState({ value: 100, unit: VOLUME_UNITS[0] });
     //const [storagePrice, setStoragePrice] = useState(20000);
+    const [massToCompress, setMassToCompress] = useState(-1);
 
     const [isCompressorNeeded, setIsCompressorNeeded] = useState(true);
     const [selectedCompressor, setSelectedCompressor] = useState(compressors.list[0]);
-    const [compressorSettings, setCompressorSettings] = useState({unit: MAINTENANCE_UNITS[0], owned: 0});
+    const [compressorSettings, setCompressorSettings] = useState({
+        owned: 0,
+        ownedStacks: 0,
+        operatingTime: { value: 8000, unit: TIME_PER_YEAR_UNITS[1] },
+        cons_unit: ELEC_PRICE_UNITS[1],
+        maint_unit: MAINTENANCE_UNITS[0],
+        flow_unit: VOLUME_PER_TIME_UNITS[2],
+        maint_value: 0
+    });
 
     const [openedSections, setOpenedSections] = useState({ electrolyzer: false, compressor: false, system: false, greyH2: false });
 
@@ -58,38 +68,94 @@ export default function Calculator() {
             [sectionName]: !prev[sectionName]
         }));
     };
+    
+    const annualProd = ((systemSize.value * systemSize.unit.factor) * (operatingTime.value * operatingTime.unit.factor)) / selectedElectrolyzer.energy_consumption_kwh_per_kg;
+
+    const prevMaxRef = useRef(Math.round(annualProd));
+
+    useEffect(() => {
+        const newMax = Math.round(annualProd);
+        const oldMax = prevMaxRef.current;
+        setMassToCompress((currentMass) => {
+            if (currentMass === oldMax || currentMass > newMax || currentMass < 0) {
+                return newMax;
+            }
+            return currentMass;
+        });
+        prevMaxRef.current = newMax;
+    }, [annualProd]);
 
 
     const electrolyzerQuantity = Math.ceil((systemSize.value * systemSize.unit.factor) / selectedElectrolyzer.power);
-    const compressorQuantity = 1;
-
-    const annualProd = ((systemSize.value * systemSize.unit.factor) * (operatingTime.value * operatingTime.unit.factor)) / selectedElectrolyzer.energy_consumption_kwh_per_kg;
     
-    const capex = ((electrolyzerQuantity - electrolyzerSettings.owned) * selectedElectrolyzer.price) + (isCompressorNeeded ? ((compressorQuantity - compressorSettings.owned) * selectedCompressor.price) : 0);
+    let compressorQuantity = 0;
+    let compressorCapex = 0;
+    let extraStacksNeeded = 0;
+    let totalStacksNeeded = 0;
+
+    if (isCompressorNeeded && massToCompress > 0) {
+        const compOpHoursPerYear = compressorSettings.operatingTime.value * compressorSettings.operatingTime.unit.factor;
+        
+        if (selectedCompressor.type === 'mechanical') {
+            const annualCapPerComp = (selectedCompressor.unitary_flowrate_kg_per_day * compressorSettings.flow_unit.factor) * compOpHoursPerYear;
+            compressorQuantity = annualCapPerComp > 0 ? Math.ceil(massToCompress / annualCapPerComp) : 0;
+            
+            const newComps = Math.max(0, compressorQuantity - compressorSettings.owned);
+            compressorCapex = newComps * selectedCompressor.price;
+        } 
+        else if (selectedCompressor.type === 'electrochemical') {
+            const flowPerStackKgPerH = selectedCompressor.unitary_flowrate_kg_per_day * compressorSettings.flow_unit.factor * selectedCompressor.cells_per_stack;
+            const annualCapPerStack = flowPerStackKgPerH * compOpHoursPerYear;
+            
+            totalStacksNeeded = annualCapPerStack > 0 ? Math.ceil(massToCompress / annualCapPerStack) : 0;
+            const maxStacksPerComp = selectedCompressor.cells_per_stack > 0 ? Math.floor(selectedCompressor.max_cells / selectedCompressor.cells_per_stack) : 1;
+            
+            compressorQuantity = maxStacksPerComp > 0 ? Math.ceil(totalStacksNeeded / maxStacksPerComp) : 0;
+            extraStacksNeeded = Math.max(0, totalStacksNeeded - compressorQuantity);
+            
+            const newComps = Math.max(0, compressorQuantity - compressorSettings.owned);
+            
+            const actualOwnedStacks = Math.max(compressorSettings.ownedStacks, compressorSettings.owned);
+            const ownedExtraStacks = Math.max(0, actualOwnedStacks - compressorSettings.owned);
+            const newExtraStacks = Math.max(0, extraStacksNeeded - ownedExtraStacks);
+            
+            compressorCapex = (newComps * selectedCompressor.price) + (newExtraStacks * selectedCompressor.cell_stack_price);
+        }
+    }
+
+    
+    const capex = (Math.max(0, electrolyzerQuantity - electrolyzerSettings.owned) * selectedElectrolyzer.price) + compressorCapex;
     const annualDepre = capex / projectLifetime;
     const capexPerKgShare = annualDepre / annualProd; 
     
     const avgInflaFactor = ((1 + inflationRate / 100) ** projectLifetime - 1) / ((inflationRate / 100) * projectLifetime);
     const smoothedElecPrice = (electricityPrice.value * electricityPrice.unit.factor) * avgInflaFactor;
-    const gridElectricityRatio = systemSize.value > 0 ? (systemSize.value - systemSize.selfProduced) / systemSize.value : 0;
-
+    const gridElectricityRatio = systemSize.value > 0 ? Math.max(0, systemSize.value - systemSize.selfProduced) / systemSize.value : 0;
+    
     const carbonTaxPerKg = EMISSIONS_PER_KG_OF_H2 * (carbonTax / 1000);
     const baseGreyPrice = greyHydrogenPrice.value * greyHydrogenPrice.unit.factor;
     const greyPriceWithTax = baseGreyPrice + carbonTaxPerKg;
     const smoothedGreyPrice = greyPriceWithTax * avgInflaFactor;
 
-    const elecShare = (selectedElectrolyzer.energy_consumption_kwh_per_kg + (isCompressorNeeded ? selectedCompressor.energy_consumption_kwh_per_kg : 0)) * smoothedElecPrice * gridElectricityRatio;
+    const totalElecNeeded = (annualProd * (selectedElectrolyzer.energy_consumption_kwh_per_kg * electrolyzerSettings.cons_unit.factor)) + 
+                            (isCompressorNeeded ? (massToCompress * (selectedCompressor.energy_consumption_kwh_per_kg * compressorSettings.cons_unit.factor)) : 0);
+
+    const elecShare = annualProd > 0 ? (totalElecNeeded * smoothedElecPrice * gridElectricityRatio) / annualProd : 0;
     const waterShare = WATER_PER_KG_OF_H2 * (waterPrice.value * waterPrice.unit.factor);
     
-    const annualElectrolyzerMaintenance = electrolyzerSettings.unit.label === "€" 
+    const annualElectrolyzerMaintenance = electrolyzerSettings.maint_unit.label === "€" 
         ? selectedElectrolyzer.maintenance_percent_capex * electrolyzerQuantity
         : (selectedElectrolyzer.price * electrolyzerQuantity) * (selectedElectrolyzer.maintenance_percent_capex / 100);
 
+    const totalCompressorHardwareValue = (compressorQuantity * selectedCompressor.price) + (extraStacksNeeded * (selectedCompressor.cell_stack_price || 0));
+    
     const annualCompressorMaintenance = isCompressorNeeded 
-        ? (compressorSettings.unit.label === "€" 
-            ? selectedCompressor.maintenance_percent_capex * compressorQuantity 
-            : (selectedCompressor.price * compressorQuantity) * (selectedCompressor.maintenance_percent_capex / 100))
+        ? (compressorSettings.maint_unit.label === "€" 
+            ? (compressorSettings.maint_value * compressorQuantity)
+            : totalCompressorHardwareValue * (selectedCompressor.maintenance_percent_capex / 100))
         : 0;
+    
+    const showCellWarning = selectedCompressor.type === 'electrochemical' && selectedCompressor.cells_per_stack > 0 && (selectedCompressor.max_cells % selectedCompressor.cells_per_stack !== 0);
 
     const maintenanceShare = (annualElectrolyzerMaintenance + annualCompressorMaintenance) / annualProd;
 
@@ -105,10 +171,17 @@ export default function Calculator() {
         maintenance: maintenanceShare
     };
 
+    const installedElectrolyzerPower = (electrolyzerQuantity * selectedElectrolyzer.power).toFixed(2);
+    const utilizationRate = installedElectrolyzerPower > 0 
+        ? ((systemSize.value * systemSize.unit.factor) / installedElectrolyzerPower) * 100 
+        : 0;
+
     const extraMetrics = {
         annualProd: annualProd, 
         annualElec: annualProd * (selectedElectrolyzer.energy_consumption_kwh_per_kg + (isCompressorNeeded ? selectedCompressor.energy_consumption_kwh_per_kg : 0)), 
-        annualWater: annualProd * WATER_PER_KG_OF_H2 
+        annualWater: annualProd * WATER_PER_KG_OF_H2,
+        installedCapacity: installedElectrolyzerPower,
+        utilizationRate: utilizationRate 
     };
 
     const greyDetails = {
@@ -117,6 +190,7 @@ export default function Calculator() {
         totalWithTax: greyPriceWithTax,
         smoothed: smoothedGreyPrice
     };
+
 
     return (
         <Container size="xl" px="xl" py="lg">
@@ -154,6 +228,7 @@ export default function Calculator() {
                         units={TIME_PER_YEAR_UNITS}
                         currentUnit={operatingTime.unit}
                         value={operatingTime.value}
+                        max={365 * 24 / operatingTime.unit.factor}
                         onValueChange={val => setOperatingTime({ ...operatingTime, value: val })}
                         onUnitChange={u => setOperatingTime({ ...operatingTime, unit: u })}
                         nullBlocker
@@ -162,7 +237,7 @@ export default function Calculator() {
                         <EquipmentSelector
                             label={
                                 <Stack gap="xs">
-                                    <LabelWithTooltip label="Electrolyzer Type :" tooltip="Different technologies have distinct efficiencies and costs. Check the 'Learn' section for details." />
+                                    <LabelWithTooltip label="Electrolyzer Setup :" tooltip="Different technologies have distinct efficiencies and costs. Check the 'Learn' section for details." />
                                     <Anchor component={Link} to="/electrolyzers" size="xs" mb="sm" c="blue">
                                         Learn more about the different types
                                     </Anchor>
@@ -170,22 +245,29 @@ export default function Calculator() {
                             }
                             itemsList={electrolyzers}
                             selectedItem={selectedElectrolyzer}
-                            onItemChange={(val) => setSelectedElectrolyzer(electrolyzers.list[val])}
+                            onItemChange={(val) => {
+                                const newElectrolyzer = electrolyzers.list[val];
+                                const currentSystemPowerInKw = systemSize.value * systemSize.unit.factor;
+                                if (currentSystemPowerInKw === selectedElectrolyzer.power) {
+                                    setSystemSize({ ...systemSize, value: newElectrolyzer.power / systemSize.unit.factor });
+                                }
+                                setSelectedElectrolyzer(newElectrolyzer);
+                            }}
                             quantityOwned={electrolyzerSettings.owned} 
                             onOwnedChange={(v) => setElectrolyzerSettings({ ...electrolyzerSettings, owned: v })}
-                            ownedLabel={electrolyzerQuantity <= 1 ? "We already own this electrolyzer" : "Number of own electrolyzers"}
+                            ownedLabel={electrolyzerQuantity <= 1 ? "Already owned (No CAPEX)" : "Pre-owned electrolyzers"}
                             max={electrolyzerQuantity}
                         />
-                        {!(electrolyzerSettings.owned === electrolyzerQuantity) && (
-                            <ValueInput
-                                label="Electrolyzer purchase price"
-                                units="€"
-                                currentUnit="€"
-                                value={selectedElectrolyzer.price}
-                                onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, price: val })}
-                            />
-                        )}
                         <DetailSection openedSections={openedSections.electrolyzer} toggleSection={() => toggleSection('electrolyzer')}>
+                            {!(electrolyzerSettings.owned === electrolyzerQuantity) && (
+                                <ValueInput
+                                    label="Electrolyzer purchase price"
+                                    units="€"
+                                    currentUnit="€"
+                                    value={selectedElectrolyzer.price}
+                                    onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, price: val })}
+                                />
+                            )}
                             <ValueInput
                                 label="Electrolyzer power"
                                 units="kW"
@@ -196,19 +278,20 @@ export default function Calculator() {
                             />
                             <ValueInput
                                 label="Electrolyzer energy consumption"
-                                units="kWh/kg"
-                                currentUnit="kWh/kg"
+                                units={H2_VOLUME_POWER_UNITS}
+                                currentUnit={electrolyzerSettings.cons_unit}
                                 value={selectedElectrolyzer.energy_consumption_kwh_per_kg}
                                 onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, energy_consumption_kwh_per_kg: val })}
+                                onUnitChange={(u) => setElectrolyzerSettings({ ...electrolyzerSettings, cons_unit : u })}
                                 nullBlocker
                             />
                             <ValueInput
                                 label="Maintenance costs"
                                 units={MAINTENANCE_UNITS}
-                                currentUnit={electrolyzerSettings.unit}
+                                currentUnit={electrolyzerSettings.maint_unit}
                                 value={selectedElectrolyzer.maintenance_percent_capex}
                                 onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, maintenance_percent_capex: val })}
-                                onUnitChange={(u) => setElectrolyzerSettings({ ...electrolyzerSettings, unit : u })}
+                                onUnitChange={(u) => setElectrolyzerSettings({ ...electrolyzerSettings, maint_unit : u })}
                             />
                         </DetailSection>
                     </Paper>
@@ -248,7 +331,7 @@ export default function Calculator() {
                             units="€/t CO₂"
                             currentUnit="€/t CO₂"
                             value={carbonTax}
-                            onValueChange={val => setGreyHydrogenPrice(carbonTax)}
+                            onValueChange={val => setCarbonTax(val)}
                         />
                     </DetailSection>  
                 </Card>
@@ -277,11 +360,29 @@ export default function Calculator() {
                     <Text fw={700} size="xl" mb="md" pb="xs" style={{ borderBottom: '2px solid var(--mantine-color-gray-2)' }}>
                         Compressor Setup
                     </Text>
-                    <Checkbox
+                    <Checkbox mb="sm"
                         label="We need to use a compressor"
                         checked={isCompressorNeeded}
                         onChange={(e) => setIsCompressorNeeded(e.currentTarget.checked)}
                     />
+                    {isCompressorNeeded && <SliderInput 
+                        label={<LabelWithTooltip label="Hydrogen to compress" tooltip="Mass of hydrogen you need to compress" />}
+                        units="kg"
+                        value={massToCompress}
+                        onValueChange={v => setMassToCompress(Math.round(v))}
+                        min={0}
+                        max={Math.round(annualProd)}
+                    />}
+                    {isCompressorNeeded && <ValueInput
+                        label="Operating time"
+                        units={TIME_PER_YEAR_UNITS}
+                        currentUnit={compressorSettings.operatingTime.unit}
+                        value={compressorSettings.operatingTime.value}
+                        max={365 * 24 / compressorSettings.operatingTime.unit.factor}
+                        onValueChange={(val) => setCompressorSettings({ ...compressorSettings, operatingTime: { ...compressorSettings.operatingTime, value: val } })}
+                        onUnitChange={(u) => setCompressorSettings({ ...compressorSettings, operatingTime: { ...compressorSettings.operatingTime, unit: u } })}
+                        nullBlocker
+                    />}
                     {/*<ValueInput
                         label={<LabelWithTooltip label="Storage capacity" tooltip="Volume or mass of hydrogen you need to hold on-site." />}
                         units={VOLUME_UNITS}
@@ -300,7 +401,7 @@ export default function Calculator() {
                     {isCompressorNeeded && (<Paper bg="gray.0" p="md" radius="md" withBorder mt="md">
                         <EquipmentSelector
                             label={<Stack gap="xs">
-                                    <LabelWithTooltip label="Compressor Type :" tooltip="Required to compress the hydrogen for efficient storage or transport." />
+                                    <LabelWithTooltip label="Compressor Setup :" tooltip="Required to compress the hydrogen for efficient storage or transport." />
                                     <Anchor component={Link} to="/compressors" size="xs" mb="sm" c="blue">
                                         Learn more about the different types
                                     </Anchor>
@@ -310,33 +411,85 @@ export default function Calculator() {
                             onItemChange={(val) => setSelectedCompressor(compressors.list[val])}
                             quantityOwned={compressorSettings.owned}
                             onOwnedChange={(v) => setCompressorSettings({ ...compressorSettings, owned: v })}
-                            ownedLabel="We already own this compressor"
-                            max={1}
+                            ownedLabel={compressorQuantity <= 1 ? "Already owned (No CAPEX)" : "Pre-owned compressors"}
+                            max={compressorQuantity}
                         />
-                        {!(compressorSettings.owned === compressorQuantity) && (
-                            <ValueInput
-                                label="Compressor purchase price"
-                                units="€"
-                                currentUnit="€"
-                                value={selectedCompressor.price}
-                                onValueChange={val => setSelectedCompressor({ ...selectedCompressor, price: val })}
-                            />
-                        )}
+                        <Group mt="sm" mb="sm">
+                            <Text size="sm" fw={600}>Hardware needed:</Text>
+                            <Badge color="blue" variant="filled">{compressorQuantity} Compressor(s)</Badge>
+                            {selectedCompressor.type === 'electrochemical' && (
+                                <Badge color="teal" variant="filled">{totalStacksNeeded} Stack(s)</Badge>
+                            )}
+                        </Group>
                         <DetailSection openedSections={openedSections.compressor} toggleSection={() => toggleSection('compressor')}>
+                            {!(compressorSettings.owned === compressorQuantity) && (
+                                <ValueInput
+                                    label="Compressor purchase price"
+                                    units="€"
+                                    currentUnit="€"
+                                    value={selectedCompressor.price}
+                                    onValueChange={val => setSelectedCompressor({ ...selectedCompressor, price: val })}
+                                />
+                            )}
                             <ValueInput
                                 label="Compressor energy consumption"
-                                units="kWh/kg"
-                                currentUnit="kWh/kg"
+                                units={H2_VOLUME_POWER_UNITS}
+                                currentUnit={compressorSettings.cons_unit}
                                 value={selectedCompressor.energy_consumption_kwh_per_kg}
                                 onValueChange={val => setSelectedCompressor({ ...selectedCompressor, energy_consumption_kwh_per_kg: val })}
+                                onUnitChange={(u) => setCompressorSettings({ ...compressorSettings, cons_unit: u })}
+                            />
+                            {selectedCompressor.type === 'electrochemical' && (
+                                <>
+                                    <ValueInput
+                                        label="Number of owned stacks"
+                                        units="units"
+                                        value={compressorSettings.ownedStacks}
+                                        onValueChange={val => setCompressorSettings({ ...compressorSettings, ownedStacks: Math.max(val, compressorSettings.owned) })}
+                                    />
+                                    <ValueInput
+                                        label="Cell Stack Price"
+                                        units="€"
+                                        value={selectedCompressor.cell_stack_price}
+                                        onValueChange={val => setSelectedCompressor({ ...selectedCompressor, cell_stack_price: val })}
+                                    />
+                                    <ValueInput
+                                        label="Cells per stack"
+                                        units="cells"
+                                        value={selectedCompressor.cells_per_stack}
+                                        onValueChange={val => setSelectedCompressor({ ...selectedCompressor, cells_per_stack: val })}
+                                        nullBlocker
+                                    />
+                                    <ValueInput
+                                        label="Max cells per compressor"
+                                        units="cells"
+                                        value={selectedCompressor.max_cells}
+                                        onValueChange={val => setSelectedCompressor({ ...selectedCompressor, max_cells: val })}
+                                        nullBlocker
+                                    />
+                                    {showCellWarning && (
+                                        <Alert icon={<IconAlertCircle size={16} />} title="Suboptimal Configuration" color="orange" variant="light" mt="xs">
+                                            The maximum number of cells ({selectedCompressor.max_cells}) is not a perfect multiple of the cells per stack ({selectedCompressor.cells_per_stack}). The remaining space cannot be fully utilized.
+                                        </Alert>
+                                    )}
+                                </>
+                            )}
+                            <ValueInput
+                                label={selectedCompressor.type === 'electrochemical' ? "Flowrate per cell" : "Flowrate per compressor"}
+                                units={VOLUME_PER_TIME_UNITS}
+                                currentUnit={compressorSettings.flow_unit}
+                                value={selectedCompressor.unitary_flowrate_kg_per_day}
+                                onValueChange={val => setSelectedCompressor({ ...selectedCompressor, unitary_flowrate_kg_per_day: val })}
+                                onUnitChange={(u) => setCompressorSettings({ ...compressorSettings, flow_unit: u })}
+                                nullBlocker
                             />
                             <ValueInput
                                 label="Maintenance costs"
                                 units={MAINTENANCE_UNITS}
-                                currentUnit={compressorSettings.unit}
+                                currentUnit={compressorSettings.maint_unit}
                                 value={selectedCompressor.maintenance_percent_capex}
                                 onValueChange={val => setSelectedCompressor({ ...selectedCompressor, maintenance_percent_capex: val })}
-                                onUnitChange={(u) => setCompressorSettings({ ...compressorSettings, unit: u })}
+                                onUnitChange={(u) => setCompressorSettings({ ...compressorSettings, maint_unit: u })}
                             />
                         </DetailSection>
                     </Paper>)}
