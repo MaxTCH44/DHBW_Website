@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Title, SimpleGrid, Card, Text, Paper, Anchor, Stack, Checkbox, Group, Badge } from '@mantine/core';
+import { Container, Title, SimpleGrid, Card, Text, Paper, Anchor, Stack, Checkbox, Group, Badge, Alert } from '@mantine/core';
+import { IconAlertCircle } from '@tabler/icons-react';
 
 import electrolyzers from '../data/electrolyzers_list.json';
 import compressors from '../data/compressors_list.json';
@@ -441,11 +442,13 @@ export default function Calculator() {
                             />
                             {selectedCompressor.type === 'electrochemical' && (
                                 <>
-                                    <ValueInput
+                                    <SliderInput
                                         label="Number of owned stacks"
                                         units="units"
                                         value={compressorSettings.ownedStacks}
-                                        onValueChange={val => setCompressorSettings({ ...compressorSettings, ownedStacks: Math.max(val, compressorSettings.owned) })}
+                                        onValueChange={val => setCompressorSettings({ ...compressorSettings, ownedStacks: val })}
+                                        min={compressorSettings.owned}
+                                        max={totalStacksNeeded}
                                     />
                                     <ValueInput
                                         label="Cell Stack Price"
