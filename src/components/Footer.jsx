@@ -8,7 +8,7 @@ export default function Footer() {
     <Box 
       component="footer" 
       mt={80} 
-      bg="var(--mantine-color-body)" 
+      bg="var(--mantine-color-gray-1)" 
       style={{ borderTop: '1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4))' }}
     >
       <Container size="md">

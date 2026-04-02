@@ -1,64 +1,73 @@
-import { useState, useRef, useEffect} from 'react';
-import { Card, Title, List, Collapse, Group  } from '@mantine/core';
+import { useState } from 'react';
+import { Card, Title, List, Collapse, Group, ThemeIcon, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import { IconCheck, IconX, IconChevronDown, IconChevronUp } from '@tabler/icons-react';
 
 
 
-function HoverCard({ title, items, bgColor, borderColor }) {
-    const [isOpen, setIsOpen] = useState(false);
+function InfoCard({ title, items, type }) {
+    const [isOpenMobile, setIsOpenMobile] = useState(false);
     const isMobile = useMediaQuery('(max-width: 768px)');
-    const timeoutRef = useRef(null);
 
-    useEffect(() => {
-        return () => {
-            if (timeoutRef.current) clearTimeout(timeoutRef.current);
-        };
-    }, []);
+    const isAdvantages = type === 'advantages';
+    const iconColor = isAdvantages ? 'green' : 'red';
+    const topBorderColor = isAdvantages ? '#40c057' : '#fa5252';
+    const bgColor = isAdvantages ? 'rgba(64, 192, 87, 0.05)' : 'rgba(250, 82, 82, 0.05)';
+    
+    const isOpen = isMobile === false ? true : isOpenMobile;
 
     function handleClick() {
         if (isMobile) {
-            setIsOpen(prev => !prev);
-        }
-    }
-
-    function handlePointerEnter(e) {
-        if (e.pointerType === 'mouse') {
-            if (timeoutRef.current) clearTimeout(timeoutRef.current);
-            setIsOpen(true);
-        }
-    }
-
-    function handlePointerLeave(e) {
-        if (e.pointerType === 'mouse') {
-            timeoutRef.current = setTimeout(() => {
-                setIsOpen(false);
-            }, 1000);
+            setIsOpenMobile((prev) => !prev);
         }
     }
 
     return (
         <Card
             w={{ base: '100%', sm: '45%', md: '40%' }}
+            shadow="sm"
+            padding="lg"
+            radius="md"
             withBorder
-            bg={bgColor}
-            style={{
-                borderColor: borderColor,
-                borderWidth: "3px",
-                cursor: 'pointer',
-                transition: 'all 0.3s ease'
-            }}
-            onPointerEnter={handlePointerEnter}
-            onPointerLeave={handlePointerLeave}
+            ta="left"
             onClick={handleClick}
+            style={{
+                borderTop: `4px solid ${topBorderColor}`,
+                cursor: isMobile ? 'pointer' : 'default',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                backgroundColor: bgColor
+            }}
         >
-            <Title size="md" ta="center" mb={isOpen ? "sm" : 0} style={{ transition: 'margin 0.3s ease' }}>
-                {title}
-            </Title>
-
+            <Group justify="space-between" align="center" mx="auto" mb={isOpen ? "xs" : 0}>
+                <Group gap="sm">
+                    <ThemeIcon color={iconColor} variant="light" size="lg" radius="xl">
+                        {isAdvantages ? <IconCheck size={20} /> : <IconX size={20} />}
+                    </ThemeIcon>
+                    <Title order={4}>
+                        {title}
+                    </Title>
+                </Group>
+                {isMobile && (
+                    <ThemeIcon variant="subtle" color="gray">
+                        {isOpen ? <IconChevronUp size={18} /> : <IconChevronDown size={18} />}
+                    </ThemeIcon>
+                )}
+            </Group>
             <Collapse in={isOpen}>
-                <List>
+                <List
+                    spacing="sm"
+                    size="sm"
+                    mt="md"
+                    icon={
+                        <ThemeIcon color={iconColor} size={20} radius="xl">
+                            {isAdvantages ? <IconCheck size={14} stroke={3} /> : <IconX size={14} stroke={3} />}
+                        </ThemeIcon>
+                    }
+                >
                     {items.map((listItem, index) => (
-                        <List.Item key={index}>{listItem}</List.Item>
+                        <List.Item key={index}>
+                            <Text size="sm">{listItem}</Text>
+                        </List.Item>
                     ))}
                 </List>
             </Collapse>
@@ -71,18 +80,16 @@ export default function ProsConsCards({ item }) {
 
     return (
         <Group justify="center" mt="lg" align="flex-start" gap="xl">
-            <HoverCard
+            <InfoCard
                 title="Advantages"
                 items={item.advantages}
-                bgColor="#1bc73285"
-                borderColor="green"
+                type="advantages"
             />
             
-            <HoverCard
+            <InfoCard
                 title="Disadvantages"
                 items={item.disadvantages}
-                bgColor="#ec3e3ea4"
-                borderColor="red"
+                type="disadvantages"
             />
         </Group>
     );

@@ -1,6 +1,8 @@
 import { Card, Title, Group, Paper, Text, Badge, SimpleGrid, RingProgress, Stack, Progress, ThemeIcon, Grid, Box, Alert } from '@mantine/core';
 import { IconBolt, IconDroplet, IconWind, IconTool, IconChartPie, IconAlertCircle } from '@tabler/icons-react';
 
+
+
 export default function ResultDisplay({ cost, capex, costDifference, annualDifference, breakdown, metrics, greyDetails }) {
     const isProfitable = costDifference >= 0;
 

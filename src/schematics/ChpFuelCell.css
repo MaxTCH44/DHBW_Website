@@ -1,0 +1,102 @@
+.building-layer {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.building-layer.visible {
+    opacity: 1;
+}
+
+.window-pane {
+    fill: #ffffff;
+}
+
+.building-layer.visible .w0, .building-layer.visible .w1, .building-layer.visible .w2, .building-layer.visible .w3 {
+    animation: windowFloor3 5s infinite linear;
+}
+.building-layer.visible .w4, .building-layer.visible .w5, .building-layer.visible .w6, .building-layer.visible .w7 {
+    animation: windowFloor2 5s infinite linear;
+}
+.building-layer.visible .w8, .building-layer.visible .w9, .building-layer.visible .w10, .building-layer.visible .w11 {
+    animation: windowFloor1 5s infinite linear;
+}
+.building-layer.visible .w12, .building-layer.visible .w13, .building-layer.visible .w14, .building-layer.visible .w15 {
+    animation: windowFloor0 5s infinite linear;
+}
+
+@keyframes windowFloor0 {
+    0%, 17% { fill: #ffffff; }
+    23%, 80% { fill: #FFF9C4; } 
+    90%, 100% { fill: #ffffff; } 
+}
+
+@keyframes windowFloor1 {
+    0%, 24% { fill: #ffffff; }
+    30%, 80% { fill: #FFF9C4; }
+    90%, 100% { fill: #ffffff; }
+}
+
+@keyframes windowFloor2 {
+    0%, 32% { fill: #ffffff; }
+    38%, 80% { fill: #FFF9C4; }
+    90%, 100% { fill: #ffffff; }
+}
+
+@keyframes windowFloor3 {
+    0%, 39% { fill: #ffffff; }
+    45%, 80% { fill: #FFF9C4; }
+    90%, 100% { fill: #ffffff; }
+}
+
+
+.heat-ripple-gradient {
+    transform-origin: 190px 369px;
+    animation: radiateGradientHeat 5s infinite ease-out;
+}
+
+@keyframes radiateGradientHeat {
+    0%, 10% { transform: scale(0.3); opacity: 0; }
+    50% { opacity: 1; }
+    90%, 100% { transform: scale(2.2); opacity: 0; }
+}
+
+
+.electric-path {
+    stroke-dasharray: 400; 
+    stroke-dashoffset: 400;
+    animation: flowElectricity 5s infinite linear; 
+}
+
+@keyframes flowElectricity {
+    0%, 10% { stroke-dashoffset: 400; opacity: 1; } 
+    60% { stroke-dashoffset: 0; opacity: 1; }       
+    80% { stroke-dashoffset: 0; opacity: 1; }       
+    90% { stroke-dashoffset: 0; opacity: 0; }       
+    100% { stroke-dashoffset: 400; opacity: 0; } 
+}
+
+.fuel-cell-layer {
+    transform-origin: 0 0;
+    transition: transform 2s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    pointer-events: auto;
+}
+
+.fuel-cell-layer.miniaturized {
+    transform: translate(187px, 359.5px) scale(0.078);
+}
+
+.fc-bg {
+    transition: fill 2s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+.fuel-cell-layer.miniaturized .fc-bg {
+    fill: #f0f0f0 !important;
+}
+
+.fuel-cell-layer.miniaturized .pem-fuel-cell-group {
+    pointer-events: none; 
+}
+
+.fuel-cell-layer:not(.miniaturized):hover {
+    filter: brightness(1.1);
+}

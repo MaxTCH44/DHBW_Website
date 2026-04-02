@@ -5,7 +5,7 @@ import './PemFuelCell.css';
 
 
 
-export default function PemFuelCell() {
+export default function PemFuelCell({ asGroup = false }) {
     const isMobile = useMediaQuery('(max-width: 768px)');
 
     const handleSvgClick = (e) => {
@@ -13,11 +13,9 @@ export default function PemFuelCell() {
         e.stopPropagation();
     };
 
-    return (
-        <Box w={{ base: '100%', sm: '50%' }} mx="auto" ta="center" p="xl" style={{ overflow: 'hidden' }}>
-            <svg width="100%" viewBox="0 0 406 470" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ maxWidth: 800, margin: 'auto', display: 'block' }}>
-                
-                <rect width="406" height="407" fill="white" rx="16"/>
+    const svgContent = (
+        <>
+            <rect width="406" height="407" fill="white" rx="16" className="fc-bg"/>
 
                 <g className="circuit">
                     <rect x="145" y="7" width="116" height="39" fill="black"/>
@@ -160,6 +158,17 @@ export default function PemFuelCell() {
                     </g>
 
                 </g>
+        </>
+    )
+    
+    if (asGroup) {
+        return <g className="pem-fuel-cell-group">{svgContent}</g>;
+    }
+
+    return (
+        <Box w={{ base: '100%', sm: '50%' }} mx="auto" ta="center" p="xl" style={{ overflow: 'hidden' }}>
+            <svg width="100%" viewBox="0 0 406 470" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ maxWidth: 800, margin: 'auto', display: 'block' }}>
+                {svgContent}
             </svg>
         </Box>
     );

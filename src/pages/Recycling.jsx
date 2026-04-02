@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Container, Title, Text, Grid, Card, Group, Badge, Box, Select, Paper, Button, Divider } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { IconMail, IconRecycle, IconCoin, IconClockHour4, IconArrowRight } from '@tabler/icons-react';
@@ -8,6 +8,11 @@ import gasData from '../data/recycling_gases.json';
 
 import SliderInput from '../components/SliderInput';
 import ValueInput from '../components/ValueInput';
+
+
+
+const gasOptions = gasData.map(gas => gas.value);
+
 
 export default function Recycling() {
     const isMobile = useMediaQuery('(max-width: 768px)');
@@ -19,19 +24,37 @@ export default function Recycling() {
     const [h2Price, setH2Price] = useState(5.0); 
     const [systemPrice, setSystemPrice] = useState(25000);
 
-    const gasOptions = gasData.map(gas => gas.value);
-    const selectedGasInfo = gasData.find(gas => gas.value === gasType);
+    const { 
+    complexity, 
+    complexityColor, 
+    recoveryRate, 
+    advice, 
+    annualRecoveredH2Kg, 
+    annualSavings, 
+    roiYears 
+    } = useMemo(() => {
+        const info = gasData.find(gas => gas.value === gasType);
+        const comp = info ? info.complexity : "Select a gas type";
+        const color = info ? info.complexityColor : "gray";
+        const rate = info ? info.recovery_rate : 0;
+        const adv = info ? info.advice : "Please provide details about your mixed gas to get a preliminary assessment.";
 
-    const complexity = selectedGasInfo ? selectedGasInfo.complexity : "Select a gas type";
-    const complexityColor = selectedGasInfo ? selectedGasInfo.complexityColor : "gray";
-    const recoveryRate = selectedGasInfo ? selectedGasInfo.recovery_rate : 0;
-    const advice = selectedGasInfo ? selectedGasInfo.advice : "Please provide details about your mixed gas to get a preliminary assessment.";
+        const annualH2Volume = annualMixedGas * (h2Concentration / 100);
+        const annualH2Kg = annualH2Volume / 11.1;
+        const recoveredKg = annualH2Kg * rate;
+        const savings = recoveredKg * h2Price;
+        const roi = savings > 0 ? systemPrice / savings : 0;
 
-    const annualH2Volume = annualMixedGas * (h2Concentration / 100);
-    const annualH2Kg = annualH2Volume / 11.1;
-    const annualRecoveredH2Kg = annualH2Kg * recoveryRate;
-    const annualSavings = annualRecoveredH2Kg * h2Price;
-    const roiYears = annualSavings > 0 ? systemPrice / annualSavings : 0;
+        return {
+            complexity: comp,
+            complexityColor: color,
+            recoveryRate: rate,
+            advice: adv,
+            annualRecoveredH2Kg: recoveredKg,
+            annualSavings: savings,
+            roiYears: roi
+        };
+    }, [gasType, annualMixedGas, h2Concentration, h2Price, systemPrice]);
 
     return (
         <Container size="xl" px="xl" py="lg">
@@ -51,59 +74,21 @@ export default function Recycling() {
                     Learn how the recycling process works
                 </Button>
             </Box>
-
             <Grid gutter="xl" mb={60}>
                 <Grid.Col span={{ base: 12, md: 6 }}>
-                    <Card shadow="sm" padding="lg" radius="md" withBorder>
-                        <Title order={3} mb="md">Exhaust Gas Parameters</Title>
-                        
-                        <Select
-                            label="Mixed Gas Type (What is mixed with H₂?)"
-                            placeholder="Select secondary gas"
-                            data={gasOptions}
-                            value={gasType}
-                            onChange={setGasType}
-                            mb="md"
-                        />
-
-                        <ValueInput
-                            label="Annual Mixed Gas Produced"
-                            value={annualMixedGas}
-                            onValueChange={setAnnualMixedGas}
-                            units={[{ label: "m³/year", factor: 1 }]}
-                            currentUnit={{ label: "m³/year", factor: 1 }}
-                        />
-
-                        <SliderInput
-                            label="H₂ Concentration in Exhaust"
-                            value={h2Concentration}
-                            onValueChange={setH2Concentration}
-                            units="%"
-                            min={5}
-                            max={95}
-                        />
-
-                        <Divider my="md" />
-                        <Title order={4} mb="sm" c="dimmed">Financials & Investment</Title>
-
-                        <ValueInput
-                            label="Current Green H₂ Purchase Price"
-                            value={h2Price}
-                            onValueChange={setH2Price}
-                            units={[{ label: "€/kg", factor: 1 }]}
-                            currentUnit={{ label: "€/kg", factor: 1 }}
-                        />
-
-                        <ValueInput
-                            label="Estimated Recycling System Price (CAPEX)"
-                            value={systemPrice}
-                            onValueChange={setSystemPrice}
-                            units={[{ label: "€", factor: 1 }]}
-                            currentUnit={{ label: "€", factor: 1 }}
-                        />
-                    </Card>
+                    <RecyclingInputs 
+                        gasType={gasType}
+                        setGasType={setGasType}
+                        annualMixedGas={annualMixedGas}
+                        setAnnualMixedGas={setAnnualMixedGas}
+                        h2Concentration={h2Concentration}
+                        setH2Concentration={setH2Concentration}
+                        h2Price={h2Price}
+                        setH2Price={setH2Price}
+                        systemPrice={systemPrice}
+                        setSystemPrice={setSystemPrice}                    
+                    />
                 </Grid.Col>
-
                 <Grid.Col span={{ base: 12, md: 6 }}>
                     <Card shadow="sm" padding="lg" radius="md" withBorder h="100%" bg="gray.0">
                         <Title order={3} mb="xl">Estimation Results</Title>
@@ -129,7 +114,6 @@ export default function Recycling() {
                                         </div>
                                     </Group>
                                 </Paper>
-
                                 <Paper p="md" radius="md" withBorder bg="white" mb="md">
                                     <Group align="center" gap="sm">
                                         <IconCoin size={32} color="var(--mantine-color-teal-6)" />
@@ -141,7 +125,6 @@ export default function Recycling() {
                                         </div>
                                     </Group>
                                 </Paper>
-
                                 <Paper p="md" radius="md" withBorder bg="var(--mantine-color-myColor-0)" style={{ borderColor: 'var(--mantine-color-myColor-3)' }}>
                                     <Group align="center" gap="sm">
                                         <IconClockHour4 size={32} color="var(--mantine-color-myColor-9)" />
@@ -161,7 +144,6 @@ export default function Recycling() {
                                 </Text>
                             </Paper>
                         )}
-                        
                         <Box mt="auto" pt="xl">
                             <Text size="xs" c="dimmed" ta="center">
                                 *Calculations assume a recovery rate of {recoveryRate * 100}%. Real-world implementation requires a technical audit.
@@ -170,7 +152,6 @@ export default function Recycling() {
                     </Card>
                 </Grid.Col>
             </Grid>
-
             <Paper radius="md" p="xl" bg="var(--mantine-primary-color-filled)" c="white" ta="center">
                 <Title order={2} mb="md" c="white">Want to Learn More?</Title>
                 <Text size="lg" mb="xl" maw={600} mx="auto">
@@ -191,4 +172,63 @@ export default function Recycling() {
             </Paper>
         </Container>
     );
+}
+
+function RecyclingInputs ({
+    gasType,
+    setGasType,
+    annualMixedGas,
+    setAnnualMixedGas,
+    h2Concentration,
+    setH2Concentration,
+    h2Price,
+    setH2Price,
+    systemPrice,
+    setSystemPrice
+}){
+    return(
+        <Card shadow="sm" padding="lg" radius="md" withBorder>
+            <Title order={3} mb="md">Exhaust Gas Parameters</Title>
+            
+            <Select
+                label="Mixed Gas Type (What is mixed with H₂?)"
+                placeholder="Select secondary gas"
+                data={gasOptions}
+                value={gasType}
+                onChange={setGasType}
+                mb="md"
+            />
+            <ValueInput
+                label="Annual Mixed Gas Produced"
+                value={annualMixedGas}
+                onValueChange={setAnnualMixedGas}
+                units={[{ label: "m³/year", factor: 1 }]}
+                currentUnit={{ label: "m³/year", factor: 1 }}
+            />
+            <SliderInput
+                label="H₂ Concentration in Exhaust"
+                value={h2Concentration}
+                onValueChange={setH2Concentration}
+                units="%"
+                min={5}
+                max={95}
+            />
+            <Divider my="md" />
+            <Title order={4} mb="sm" c="dimmed">Financials & Investment</Title>
+            <ValueInput
+                label="Current Green H₂ Purchase Price"
+                value={h2Price}
+                onValueChange={setH2Price}
+                units={[{ label: "€/kg", factor: 1 }]}
+                currentUnit={{ label: "€/kg", factor: 1 }}
+            />
+            <ValueInput
+                label="Estimated Recycling System Price (CAPEX)"
+                value={systemPrice}
+                onValueChange={setSystemPrice}
+                units={[{ label: "€", factor: 1 }]}
+                currentUnit={{ label: "€", factor: 1 }}
+            />
+        </Card>
+    )
 }

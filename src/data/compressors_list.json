@@ -5,7 +5,7 @@
         {
             "id" : 1,
             "name" : "GreenLab Maximator Booster Station",
-            "type" : "mechanical",
+            "type" : "Mechanical",
             "price" : 20000,
             "cell_stack_price" : null,
             "max_cells" : null,
@@ -18,7 +18,7 @@
         {
             "id" : 2,
             "name" : "GreenLab HyET EHC",
-            "type" : "electrochemical",
+            "type" : "Electrochemical",
             "price" : 4750,
             "cell_stack_price" : 5400,
             "max_cells" : 25,
@@ -27,6 +27,19 @@
             "energy_consumption_kwh_per_kg" : 15,
             "maintenance_percent_capex" : 1,
             "stack_lifetime_hours" : 44000
+        },
+        {
+            "id" : 0,
+            "name" : "Custom Compressor",
+            "type" : "Mechanical",
+            "price" : 0,
+            "cell_stack_price" : 0,
+            "max_cells" : 1,
+            "cells_per_stack" : 1,
+            "unitary_flowrate_kg_per_day": 1,
+            "energy_consumption_kwh_per_kg" : 0,
+            "maintenance_percent_capex" : 0,
+            "stack_lifetime_hours" : 0
         }
     ],
     "demo_list":
@@ -34,7 +47,7 @@
         {
             "id" : 1,
             "name" : "Mechanical Compressor (Small Scale)",
-            "type" : "mechanical",
+            "type" : "Mechanical",
             "price" : 8000,
             "energy_consumption_kwh_per_kg" : 3,
             "maintenance_percent_capex" : 4
@@ -42,7 +55,7 @@
         {
             "id" : 2,
             "name" : "Electrochemical Compressor (Small Scale)",
-            "type" : "electrochemical",
+            "type" : "Electrochemical",
             "price" : 12000,
             "energy_consumption_kwh_per_kg" : 4,
             "maintenance_percent_capex" : 2

@@ -20,7 +20,6 @@ const EQUIPMENT_MAPS = {
         cell_stack_price: { label: "Cell stack price", unit: " €" },
         max_cells: { label: "Maximum number of cells", unit: "" },
         cells_per_stack: { label: "Number of cells per stack", unit: "" },
-        // --- NOUVEAU : Le label devient dynamique selon le type de l'item ---
         unitary_flowrate_kg_per_day: { 
             label: (item) => item.type === "mechanical" ? "Flowrate" : "Flowrate per cell", 
             unit: " kg/day" 
@@ -45,7 +44,6 @@ export default function EquipmentSelector({ label, itemsList, selectedItem, onIt
     }));
 
     const selectedIndex = itemsList.list.findIndex(item => item.id === selectedItem.id).toString();
-    const currentMap = EQUIPMENT_MAPS[itemsList.type];
 
     function renderTooltipContent(item) {
         const map = EQUIPMENT_MAPS[itemsList.type];
@@ -76,6 +74,9 @@ export default function EquipmentSelector({ label, itemsList, selectedItem, onIt
     }
 
     function renderOption ({ option }) {
+        if (option.id === 0) return (<div style={{ width: '100%', padding: '4px 0', fontWeight: 'bold', color: 'yellowgreen' }}>
+                {option.label}
+            </div>);
         return(
         <Tooltip
             label={renderTooltipContent(option)}

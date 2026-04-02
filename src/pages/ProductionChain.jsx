@@ -11,6 +11,7 @@ import LinkButton from "../components/LinkButton";
 
 import InteractiveFlow from "../schematics/InteractiveFlow";
 import PemFuelCell from "../schematics/PemFuelCell";
+import ChpFuelCell from "../schematics/ChpFuelCell";
 
 const ICON_MAP = {
     IconWindmill,
@@ -24,7 +25,8 @@ const ICON_MAP = {
 const COMPONENT_REGISTRY = {
     AreaChart,
     LinkButton,
-    PemFuelCell
+    PemFuelCell,
+    ChpFuelCell
 };
 
 export default function ProductionChain() {
@@ -55,7 +57,6 @@ export default function ProductionChain() {
                 selectedItem={selectedItem}
                 onNodeClick={handleNodeClick}
             />
-
             <ContentDetails item={selectedItem} componentList={COMPONENT_REGISTRY}/>
 
         </Container>

@@ -409,6 +409,10 @@
         "value": "On the consumption side, stationary hydrogen fuel cells can be deployed as Combined Heat and Power (CHP) units, commonly known as cogeneration systems. Instead of combusting fuel, these advanced systems use green hydrogen to electrochemically generate electricity for a building, campus, or factory. Simultaneously, they capture the byproduct heat from the reaction to provide hot water and space heating. This dual-generation process can push total system efficiencies well beyond 85%, far exceeding traditional power plants."
       },
       {
+        "type": "component",
+        "componentName": "ChpFuelCell"
+      },
+      {
         "type": "subtitle",
         "value": "Grid Blending and Hydrogen Boilers",
         "size": 3
