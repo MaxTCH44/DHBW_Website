@@ -21,7 +21,7 @@ export default function Recycling() {
     const [annualMixedGas, setAnnualMixedGas] = useState(10000);
     const [h2Concentration, setH2Concentration] = useState(40);
     
-    const [h2Price, setH2Price] = useState(5.0); 
+    const [h2Price, setH2Price] = useState(6.11); 
     const [systemPrice, setSystemPrice] = useState(25000);
 
     const { 
@@ -57,7 +57,7 @@ export default function Recycling() {
     }, [gasType, annualMixedGas, h2Concentration, h2Price, systemPrice]);
 
     return (
-        <Container size="xl" px="xl" py="lg">
+        <Container size="xl" px="xl" py="lg" mt="150px">
            <Box mb={60} ta="center">
                 <Title order={1} c="dark.7" mb="md">Hydrogen Recycling Calculator</Title>
                 <Text size="lg" c="dimmed" maw={800} mx="auto" mb="md">

@@ -138,7 +138,7 @@ export default function ResultDisplay({ cost, capex, costDifference, annualDiffe
                                         <ThemeIcon color="cyan.5" size="sm" radius="xl"><IconDroplet size={12}/></ThemeIcon>
                                         <Text size="sm" fw={600}>Water</Text>
                                     </Group>
-                                    <Text size="sm" fw={700}>{breakdown.water.toFixed(4)} € ({percents.water.toFixed(1)}%)</Text>
+                                    <Text size="sm" fw={700}>{breakdown.water.toFixed(2)} € ({percents.water.toFixed(1)}%)</Text>
                                 </Group>
                                 <Progress value={percents.water} color="cyan.5" size="md" radius="xl" />
                             </Box>

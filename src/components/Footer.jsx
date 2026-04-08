@@ -19,7 +19,7 @@ export default function Footer() {
           py="xl"
         >
           <Title order={4} c="dimmed">
-            Greenlabs H₂
+            GreenLabs H₂
           </Title>
           <Group mt={{ base: 'md', sm: 0 }}>
             <Anchor component={Link} to="/contact" c="dimmed" size="sm">

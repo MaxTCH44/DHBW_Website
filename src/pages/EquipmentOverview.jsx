@@ -30,7 +30,7 @@ export default function EquipmentOverview({ equipmentList }) {
     }, [equipmentList]);
 
     return (
-        <Container size="xl" mt="xl">
+        <Container size="xl" mt="150px">
             <Title order={1} mb="xl">{equipmentList.title}</Title>
             <Text size="md" mb="xl">{equipmentList.introText}</Text>
             

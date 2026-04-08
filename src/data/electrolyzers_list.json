@@ -9,7 +9,9 @@
             "price" : 34727.54,
             "power" : 2.4,
             "energy_consumption_kwh_per_kg" : 53.4,
-            "maintenance_percent_capex" : 3,
+            "total_auxiliary_consumption" : 0.5,
+            "water_consumption_l_per_h" : 1.26,
+            "maintenance_percent_capex" : 5,
             "stack_lifetime_hours" : 35000
         },
         {
@@ -19,8 +21,22 @@
             "price" : 440,
             "power" : 0.57,
             "energy_consumption_kwh_per_kg" : 52.8,
+            "total_auxiliary_consumption" : 0,
+            "water_consumption_l_per_h" : 1,
             "maintenance_percent_capex" : 3,
             "stack_lifetime_hours" : 6000
+        },
+        {
+            "id" : 3,
+            "name" : "Ostermeier Calculator Electrolyzer",
+            "type" : "AEM",
+            "price" : 73617,
+            "power" : 5,
+            "energy_consumption_kwh_per_kg" : 50.56,
+            "total_auxiliary_consumption" : 6.05,
+            "water_consumption_l_per_h" : 4.4,
+            "maintenance_percent_capex" : 1,
+            "stack_lifetime_hours" : 35000
         },
         {
             "id" : 0,
@@ -29,6 +45,8 @@
             "price" : 0,
             "power" : 1,
             "energy_consumption_kwh_per_kg" : 1,
+            "total_auxiliary_consumption" : 0,
+            "water_consumption_l_per_h" : 0,
             "maintenance_percent_capex" : 0,
             "stack_lifetime_hours" : 0
         }

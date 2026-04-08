@@ -17,7 +17,7 @@ import DetailSection from '../components/DetailSection.jsx';
 
 const ELEC_PRICE_UNITS = [{ label: "€/MWh", factor: 0.001 }, { label: "€/kWh", factor: 1 }];
 const POWER_UNITS = [{ label: "MW", factor: 1000 }, { label: "kW", factor: 1}];
-const WATER_VOLUME_PRICE_UNITS = [{ label: "€/m³", factor: 1 }, { label: "€/L", factor: 1000 }];
+const WATER_VOLUME_PRICE_UNITS = [{ label: "€/m³", factor: 0.001 }, { label: "€/L", factor: 1 }];
 const TIME_PER_YEAR_UNITS = [{ label: "days/year", factor: 24 }, { label: "h/year", factor: 1 }];
 const VOLUME_PER_TIME_UNITS = [{ label: "kg/h", factor: 1 }, { label: "m³/h", factor: (1/11.1) }, { label: "kg/day", factor: (1/24) }, { label: "m³/day", factor: (1/(11.1*24)) }];
 const VOLUME_UNITS = [{ label: "kg", factor: 1 }, { label: "m³", factor: 11.1 }];
@@ -38,10 +38,10 @@ export default function Calculator() {
     //const [productionGoal, setProductionGoal] = useState({ value: 0, unit: VOLUME_PER_TIME_UNITS[0] });
     const [operatingTime, setOperatingTime] = useState({ value: 4000, unit: TIME_PER_YEAR_UNITS[1] });
 
-    const [electricityPrice, setElectricityPrice] = useState({ value: 50, unit: ELEC_PRICE_UNITS[0] });
+    const [electricityPrice, setElectricityPrice] = useState({ value: 89, unit: ELEC_PRICE_UNITS[0] });
     const [waterPrice, setWaterPrice] = useState({ value: 2, unit: WATER_VOLUME_PRICE_UNITS[0] });
 
-    const [greyHydrogenPrice, setGreyHydrogenPrice] = useState({value : 2, unit: H2_VOLUME_PRICE_UNITS[0] });
+    const [greyHydrogenPrice, setGreyHydrogenPrice] = useState({value : 3.5, unit: H2_VOLUME_PRICE_UNITS[0] });
     const [carbonTax, setCarbonTax] = useState(50);
 
     const [projectLifetime, setProjectLifetime] = useState(15);
@@ -144,7 +144,7 @@ export default function Calculator() {
         const annualDepre = capex / projectLifetime;
         const capexPerKgShare = annualDepre / annualProd; 
         
-        const avgInflaFactor = ((1 + inflationRate / 100) ** projectLifetime - 1) / ((inflationRate / 100) * projectLifetime);
+        const avgInflaFactor = inflationRate === 0 ? 1 : ((1 + inflationRate / 100) ** projectLifetime - 1) / ((inflationRate / 100) * projectLifetime);
         const smoothedElecPrice = (electricityPrice.value * electricityPrice.unit.factor) * avgInflaFactor;
         const gridElectricityRatio = systemSize.value > 0 ? Math.max(0, systemSize.value - systemSize.selfProduced) / systemSize.value : 0;
         
@@ -153,11 +153,14 @@ export default function Calculator() {
         const greyPriceWithTax = baseGreyPrice + carbonTaxPerKg;
         const smoothedGreyPrice = greyPriceWithTax * avgInflaFactor;
 
-        const totalElecNeeded = (annualProd * (selectedElectrolyzer.energy_consumption_kwh_per_kg * electrolyzerSettings.cons_unit.factor)) + 
+        const annualAuxElec = selectedElectrolyzer.total_auxiliary_consumption * (operatingTime.value * operatingTime.unit.factor);
+
+        const totalElecNeeded = (annualProd * (selectedElectrolyzer.energy_consumption_kwh_per_kg * electrolyzerSettings.cons_unit.factor)) + annualAuxElec +
                                 (isCompressorNeeded ? (massToCompress * (selectedCompressor.energy_consumption_kwh_per_kg * compressorSettings.cons_unit.factor)) : 0);
+        const totalWaterNeeded = selectedElectrolyzer.water_consumption_l_per_h * (operatingTime.value * operatingTime.unit.factor) * electrolyzerQuantity
 
         const elecShare = annualProd > 0 ? (totalElecNeeded * smoothedElecPrice * gridElectricityRatio) / annualProd : 0;
-        const waterShare = WATER_PER_KG_OF_H2 * (waterPrice.value * waterPrice.unit.factor);
+        const waterShare = annualProd > 0 ? totalWaterNeeded * (waterPrice.value * waterPrice.unit.factor) / annualProd : 0;
         
         const annualElectrolyzerMaintenance = electrolyzerSettings.maint_unit.label === "€" 
             ? selectedElectrolyzer.maintenance_percent_capex * electrolyzerQuantity
@@ -195,7 +198,7 @@ export default function Calculator() {
         const extraMetrics = {
             annualProd: annualProd, 
             annualElec: annualProd * (selectedElectrolyzer.energy_consumption_kwh_per_kg + (isCompressorNeeded ? selectedCompressor.energy_consumption_kwh_per_kg : 0)), 
-            annualWater: annualProd * WATER_PER_KG_OF_H2,
+            annualWater: totalWaterNeeded,
             installedCapacity: installedElectrolyzerPower,
             utilizationRate: utilizationRate 
         };
@@ -253,7 +256,7 @@ export default function Calculator() {
 
 
     return (
-        <Container size="xl" px="xl" py="lg">
+        <Container size="xl" px="xl" py="lg" mt="150px">
             <Title order={1} ta="center" mb="xl" c="dark.7">Hydrogen Cost Calculator</Title>
             <Text c="dimmed" ta="center" maw={800} mx="auto" mb="xl">
                 Estimate the Levelized Cost of Hydrogen (LCOH) and total capital expenditure (CAPEX) for your production plant. 
@@ -445,13 +448,27 @@ function ElectrolyzerSetup ({
                         nullBlocker
                     />
                     <ValueInput
-                        label={<LabelWithTooltip label="Electrolyzer energy consumption" tooltip="The amount of electrical energy required by the electrolyzer to produce one kilogram or one m³ of green hydrogen (usually in kWh/kg)." />}
+                        label={<LabelWithTooltip label="Electrolyzer energy consumption" tooltip="Specific energy consumption of the electrolyzer stack itself to produce one unit of hydrogen. This value excludes system-wide auxiliaries like cooling or drying." />}
                         units={H2_VOLUME_POWER_UNITS}
                         currentUnit={electrolyzerSettings.cons_unit}
                         value={selectedElectrolyzer.energy_consumption_kwh_per_kg}
                         onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, energy_consumption_kwh_per_kg: val })}
                         onUnitChange={(u) => setElectrolyzerSettings({ ...electrolyzerSettings, cons_unit : u })}
                         nullBlocker
+                    />
+                    <ValueInput
+                        label={<LabelWithTooltip label="Total auxiliary consumption (BoP)" tooltip="Fixed electrical power (kW) required by the entire system's supporting hardware (cooling, drying, electronics). This is a global value for the whole setup, regardless of the number of electrolyzer units." />}
+                        units="kW"
+                        currentUnit="kW"
+                        value={selectedElectrolyzer.total_auxiliary_consumption}
+                        onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, total_auxiliary_consumption: val })}
+                    />
+                    <ValueInput
+                        label={<LabelWithTooltip label="Water consumption" tooltip="The amount of purified water required per hour by a single electrolyzer unit at its rated power." />}
+                        units="L/h"
+                        currentUnit="L/h"
+                        value={selectedElectrolyzer.water_consumption_l_per_h}
+                        onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, water_consumption_l_per_h: val })}
                     />
                     <ValueInput
                         label={<LabelWithTooltip label="Maintenance costs" tooltip="Annual operation and maintenance (O&M) costs, generally estimated as a percentage of the initial equipment cost (CAPEX)." />}

@@ -138,9 +138,15 @@ export default function Header() {
     return (
         <Box 
             component="header" 
-            mb={80} 
             bg="var(--mantine-color-gray-1)" 
-            style={{ borderBottom: '1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4))' }}
+            style={{ 
+                borderBottom: '1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4))',
+                position: 'fixed', 
+                top: 0,            
+                left: 0,           
+                width: '100%',     
+                zIndex: 100       
+            }}
         >
             <Container size="md">
                 <Flex h={100} justify="space-between" align="center">
@@ -150,7 +156,7 @@ export default function Header() {
                         to="/" 
                         style={{ textDecoration: 'none', color: 'inherit' }}
                     >
-                        Greenlabs H₂
+                        GreenLabs H₂
                     </Title>
                     <Group gap={5} visibleFrom="sm">
                         {desktopItems}

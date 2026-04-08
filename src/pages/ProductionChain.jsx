@@ -13,6 +13,8 @@ import InteractiveFlow from "../schematics/InteractiveFlow";
 import PemFuelCell from "../schematics/PemFuelCell";
 import ChpFuelCell from "../schematics/ChpFuelCell";
 
+
+
 const ICON_MAP = {
     IconWindmill,
     IconDroplet,
@@ -48,7 +50,7 @@ export default function ProductionChain() {
     };
 
     return(
-        <Container size="xl" mt="xl">
+        <Container size="xl" mt="150px">
             <Title order={1} mb="xl">Green H₂ Production Chain</Title>
             
             <InteractiveFlow 

@@ -157,9 +157,9 @@ export default function SoecElectrolyzer() {
                 </g>
                 <defs>
                     <radialGradient id="paint0_radial_20_2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(203 283) rotate(90) scale(187)">
-                        <stop stop-color="#FE7F25"/>
-                        <stop offset="0.572115" stop-color="#FEC8A2"/>
-                        <stop offset="1" stop-color="white"/>
+                        <stop stopColor="#FE7F25"/>
+                        <stop offset="0.572115" stopColor="#FEC8A2"/>
+                        <stop offset="1" stopColor="white"/>
                     </radialGradient>
                 </defs>
             </svg>

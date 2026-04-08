@@ -4,6 +4,49 @@
     {
       "type": "subtitle",
       "size": 2,
+      "value": "Calculator References"
+    },
+    {
+      "type": "subtitle",
+      "size": 4,
+      "value": "Hydrogen Cost Calculator"
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "OHS Energy - Hydrogen Cost Calculator (Reference Model)",
+        "url": "https://ohs.energy/h2-cost-calculator/"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "Trading Economics - Germany Electricity Price (Real-time data)",
+        "url": "https://tradingeconomics.com/germany/electricity-price"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "Business Analytiq - Grey Hydrogen Price Index (Market comparison)",
+        "url": "https://businessanalytiq.com/procurementanalytics/index/grey-hydrogen-price-index/"
+      }
+    },
+    {
+      "type": "subtitle",
+      "size": 4,
+      "value": "Hydrogen Recycling Calculator"
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "IMARC Group - Green Hydrogen Pricing & Market Report",
+        "url": "https://www.imarcgroup.com/green-hydrogen-pricing-report"
+      }
+    },
+    {
+      "type": "subtitle",
+      "size": 2,
       "value": "Green Hydrogen Production Chain"
     },
     {

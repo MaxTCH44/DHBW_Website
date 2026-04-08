@@ -25,7 +25,7 @@ export default function Home() {
     const isMobile = useMediaQuery('(max-width: 768px)');
     return (
         <>
-            <Box bg="linear-gradient(135deg, var(--mantine-color-dark-8) 0%, var(--mantine-primary-color-filled) 100%)" py={{ base: 80, md: 120 }} style={{ borderRadius: '0 0 20px 20px' }}>
+            <Box bg="linear-gradient(135deg, var(--mantine-color-dark-8) 0%, var(--mantine-primary-color-filled) 100%)" py={{ base: 80, md: 120 }}>
                 <Container size="lg" ta="center">
                     <Title order={1} c="white" fz={{ base: 40, md: 60 }} fw={900} lh={1.1} mb="md">
                         Advanced Tools for <Text component="span" c="var(--mantine-primary-color-3)" inherit>Green Hydrogen</Text> Engineering

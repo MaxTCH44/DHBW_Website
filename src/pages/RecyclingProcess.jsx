@@ -15,7 +15,7 @@ const COMPONENT_REGISTRY = {
 
 export default function RecyclingProcess() {
     return (
-        <Container size="xl" py="xl">
+        <Container size="xl" py="xl" mt="150px">
             <Box mb={50} ta="center">
                 <Title order={1} c="dark.8" mb="sm">The Hydrogen Recycling Process</Title>
                 <Text size="lg" c="dimmed">

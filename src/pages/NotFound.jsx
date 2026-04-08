@@ -4,7 +4,15 @@ import { IconHome } from '@tabler/icons-react';
 
 export default function NotFound() {
     return (
-        <Container size="md" py={100}>
+        <Container 
+            size="md" 
+            style={{ 
+                minHeight: 'calc(100vh - 100px - 171px)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}
+        >
             <Box ta="center">
                 <Title 
                     c="var(--mantine-primary-color-filled)" 

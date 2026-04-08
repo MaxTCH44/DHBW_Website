@@ -28,7 +28,7 @@ export default function Contact() {
     }
 
     return (
-        <Container size="sm" py="xl">
+        <Container size="sm" py="xl" mt="150px">
             <Box ta="center" mb="xl">
                 <Title order={1} c="dark.7" mb="sm">Contact Our Researchers</Title>
                 <Text c="dimmed" size="lg">

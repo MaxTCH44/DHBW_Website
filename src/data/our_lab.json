@@ -1,21 +1,47 @@
 {
-    "title": "About Greenlabs H₂",
+    "title": "About GreenLabs H₂",
     "description": "Learn more about our mission, our researchers, and the open-source engineering tools we are building for the green hydrogen industry.",
     "content":
     [
         {
+            "type": "subtitle",
+            "size": 4,
+            "value": "Rethinking hydrogen labs as GreenLabs"
+        },
+        {
             "type": "paragraph",
-            "value": "Vivamus pellentesque et magna in rutrum. In a urna vel sem tristique feugiat eget in eros. Maecenas id enim ullamcorper, maximus sapien sed, porta tortor. Mauris auctor leo ut mi ullamcorper scelerisque. Sed volutpat aliquam feugiat. Ut tellus dui, bibendum in maximus et, euismod nec lacus. Nunc purus augue, efficitur eleifend tincidunt vitae, commodo eu urna."
+            "value": "Producing, recycling, and intelligently controlling green hydrogen and thus securing the supply: Development of an open source tool for DHBW, for partners and other universities."
         },
         {
             "type": "image",
-            "src": "img/vite.svg",
-            "alt": "",
-            "size": 100
+            "title": "DHBW students are working on an electrochemical compressor in the hydrogen laboratory. This allows H2 to be purified, compressed, and stored in pressure cylinders at 200 bar in a single step.",
+            "src": "https://www.mannheim.dhbw.de/fileadmin/user_upload/Forschung/Schwerpunkte_Aktivitaeten/Forschung/20251001-Projekt-BWGreen-Lab-H2-Studierende-im-Wasserstofflabor-Eppelheim-DHBW-Ma.jpg",
+            "alt": "Two students with an electrochemical compressor in the hydrogen laboratory of DHBW Mannheim, next to them a hydrogen bottle.",
+            "caption": "BWGreenLabs H2: Through the GreenLab, the handling of H2 – as seen here at the electrochemical compressor – becomes an everyday occurrence for students.",
+            "size": 400
         },
         {
             "type": "paragraph",
-            "value": "Donec magna ante, pharetra nec turpis id, egestas congue tortor. Sed id mi neque. Vivamus at dui ut arcu venenatis cursus et eget dui. Sed sem neque, blandit non sapien nec, scelerisque feugiat quam."
+            "value": "With this project, DHBW Mannheim aims to produce and recycle green hydrogen at its Eppelheim campus. This not only saves costs but also makes a significant contribution to the energy transition. The focus is on a holistic approach that considers hydrogen not only as a carrier or laboratory gas but also as a source of electricity and heat."
+        },
+        {
+            "type": "paragraph",
+            "value": "DHBW Mannheim is ideally suited to reimagine hydrogen labs as green labs. For over 10 years, research has been conducted here in the hydrogen lab on all aspects of hydrogen production, purification, storage, and utilization. As a result, most of the infrastructure is already in place, and the focus is on developing an open-source tool for implementing intelligent control that ensures security of supply. This will allow project results to be transferred to other labs and enable a techno-economic assessment. The tool will be made available not only to other universities and research institutions but also to all of DHBW's dual-study partner companies."
+        },
+        {
+            "type": "paragraph",
+            "value": "The on-site production of and handling of hydrogen becomes an everyday experience for dual students through GreenLab H2, who act as ambassadors for GreenLab measures and bring the know-how to their respective companies."
+        },
+        {
+            "type": "paragraph",
+            "value": "The project is funded by the Ministry of Science, Research and the Arts as part of the ideas competition \"BWGreenLabs: Sustainable energy and resource use in research laboratories of the state of Baden-Württemberg\"."
+        },
+        {
+            "type": "image",
+            "title": "Logo Ministry of Science, Research and the Arts (MWK) BW",
+            "src": "https://www.mannheim.dhbw.de/fileadmin/user_upload/Forschung/Schwerpunkte_Aktivitaeten/20251001-Loko-MWK-DHBW-Ma.jpg",
+            "alt": "Logo Ministry of Science, Research and the Arts (MWK) BW",
+            "size": 500
         }
     ]
 }

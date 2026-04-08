@@ -5,7 +5,7 @@ import referencesData from '../data/references.json';
 
 export default function References() {
     return (
-        <Container size="md" py="xl">
+        <Container size="md" py="xl" mt="150px">
             <Box mb={50} ta="center">
                 <Title order={1} c="dark.8" mb="sm">Scientific References & Sources</Title>
                 <Text size="lg" c="dimmed">

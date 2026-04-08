@@ -1,4 +1,4 @@
-import { Text, Image, Title, Group, ThemeIcon, Anchor, Box, Badge } from '@mantine/core';
+import { Text, Image, Title, Group, ThemeIcon, Anchor, Box, Badge, Stack } from '@mantine/core';
 import { IconExternalLink } from '@tabler/icons-react';
 
 
@@ -82,17 +82,28 @@ export default function ContentDetails({ item, componentList = null }) {
 
         if (block.type === 'image') {
           return (
-            <Image
-              key={index}
-              src={block.src}
-              alt={block.alt}
-              w={block.size}
-              maw="100%"
-              m="auto"
-              radius="md"
-              mb="lg"
-              mt="lg"
-            />
+            <Stack 
+              key={index} 
+              w={block.size || "100%"} 
+              maw="100%" 
+              m="auto"  
+              mb="lg" 
+              mt="lg" 
+              gap="xs"
+            >
+              <Image
+                title={block.title}
+                src={block.src}
+                alt={block.alt}
+                w="100%"
+                radius="md"
+              />
+              {block.caption && (
+                <Text ta="center" size="sm" c="dimmed" fs="italic" px="sm">
+                  {block.caption}
+                </Text>
+              )}
+            </Stack>
           );
         }
 

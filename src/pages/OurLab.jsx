@@ -8,7 +8,7 @@ import ContentDetails from "../components/ContentDetails";
 
 export default function OurLab() {
     return(
-        <Container>
+        <Container mt="150px">
             <Title order={1} mb="sm">{ourLab.title}</Title>
             <Text size="lg" c="dimmed" maw={800} mx="auto">{ourLab.description}</Text>
             <ContentDetails item={ourLab} />

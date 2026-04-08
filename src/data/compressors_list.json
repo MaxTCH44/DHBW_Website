@@ -11,15 +11,15 @@
             "max_cells" : null,
             "cells_per_stack": null,
             "unitary_flowrate_kg_per_day": 14.2,
-            "energy_consumption_kwh_per_kg" : 5,
-            "maintenance_percent_capex" : 4,
+            "energy_consumption_kwh_per_kg" : 9,
+            "maintenance_percent_capex" : 4.5,
             "stack_lifetime_hours" : null
         },
         {
             "id" : 2,
             "name" : "GreenLab HyET EHC",
             "type" : "Electrochemical",
-            "price" : 4750,
+            "price" : 9500,
             "cell_stack_price" : 5400,
             "max_cells" : 25,
             "cells_per_stack" : 5,
