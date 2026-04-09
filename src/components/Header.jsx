@@ -1,4 +1,4 @@
-import { Burger, Container, Group, Title, Drawer, Stack, Button, Flex, Box, Menu, Text } from '@mantine/core';
+import { Burger, Container, Group, Title, Drawer, Stack, Button, Flex, Box, Menu, Text, Image } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { Link, useLocation } from 'react-router-dom';
 import { IconChevronDown, IconFlask } from '@tabler/icons-react';
@@ -150,14 +150,21 @@ export default function Header() {
         >
             <Container size="md">
                 <Flex h={100} justify="space-between" align="center">
-                    <Title 
-                        order={3} 
+                    <Group 
                         component={Link} 
                         to="/" 
+                        gap="0px" 
                         style={{ textDecoration: 'none', color: 'inherit' }}
                     >
-                        GreenLabs H₂
-                    </Title>
+                        <Image
+                            title="GreenLabs H₂ Logo"
+                            src="public/img/logo2.svg"
+                            w={{base:"60px", md:"80px"}}
+                        />
+                        <Title order={3}>
+                            GreenLabs H₂
+                        </Title>
+                    </Group>
                     <Group gap={5} visibleFrom="sm">
                         {desktopItems}
                     </Group>

@@ -57,7 +57,7 @@ export default function Calculator() {
         owned: 0,
         ownedStacks: 0,
         operatingTime: { value: 8000, unit: TIME_PER_YEAR_UNITS[1] },
-        cons_unit: ELEC_PRICE_UNITS[1],
+        cons_unit: H2_VOLUME_POWER_UNITS[0],
         maint_unit: MAINTENANCE_UNITS[0],
         flow_unit: VOLUME_PER_TIME_UNITS[2],
         maint_value: 0
@@ -103,7 +103,7 @@ export default function Calculator() {
 
 
     const calcResults = useMemo(() => {
-        const electrolyzerQuantity = Math.ceil((systemSize.value * systemSize.unit.factor) / selectedElectrolyzer.power);
+        const electrolyzerQuantity = Math.ceil(((systemSize.value * systemSize.unit.factor) / selectedElectrolyzer.power).toFixed(3));
         
         let compressorQuantity = 0;
         let compressorCapex = 0;

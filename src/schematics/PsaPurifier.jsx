@@ -97,8 +97,8 @@ export default function PsaPurifier() {
                 <HoverCard position={isMobile ? "bottom" : "bottom"} withArrow shadow="md" width={isMobile ? "90vw" : 250} openDelay={50} closeDelay={100} withinPortal={true}>
                     <HoverCard.Target>
                         <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
-                            <path d="M198 382L236.105 422.612H159.895L198 382Z" fill="#7F8299"/>
-                            <rect x="220.259" y="421.322" width="38.6777" height="44.5176" transform="rotate(90 220.259 421.322)" fill="#7F8299"/>
+                            <path d="M198 382L236.105 422.612H159.895L198 382Z" fill="#afb1be"/>
+                            <rect x="220.259" y="421.322" width="38.6777" height="44.5176" transform="rotate(90 220.259 421.322)" fill="#afb1be"/>
                             <text x="198" y="420" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}> Mixed </text>  
                             <text x="198" y="440" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}> gas </text>                          
 
