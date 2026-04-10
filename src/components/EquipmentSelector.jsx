@@ -29,7 +29,7 @@ const EQUIPMENT_MAPS = {
     }
 };
 
-export default function EquipmentSelector({ label, itemsList, selectedItem, onItemChange, quantityOwned, onOwnedChange, ownedLabel, max }) {
+export default function EquipmentSelector({ label, itemsList, selectedItem, onItemChange, quantityOwned, onOwnedChange, ownedLabel, max, isAdvancedMode = true }) {
 
     useEffect(() => {
         if (max !== null && max !== undefined && quantityOwned > max) {
@@ -102,7 +102,8 @@ export default function EquipmentSelector({ label, itemsList, selectedItem, onIt
                 allowDeselect={false}
                 renderOption={renderOption}
             />
-            {max <= 1 ?
+            {isAdvancedMode && (
+            max <= 1 ?
                 <Checkbox
                     label={ownedLabel}
                     checked={quantityOwned === 1}
@@ -118,7 +119,7 @@ export default function EquipmentSelector({ label, itemsList, selectedItem, onIt
                     min={0}
                     max={max}
                 />
-            }
+            )}
         </Stack>
     );
 }

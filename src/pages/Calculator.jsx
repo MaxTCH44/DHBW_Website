@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Title, SimpleGrid, Card, Text, Paper, Anchor, Stack, Checkbox, Group, Badge, Alert, Select } from '@mantine/core';
+import { Container, Title, SimpleGrid, Card, Text, Paper, Anchor, Stack, Checkbox, Group, Badge, Alert, Select, SegmentedControl, Center } from '@mantine/core';
 import { IconAlertCircle } from '@tabler/icons-react';
 
 import electrolyzers from '../data/electrolyzers_list.json';
@@ -12,6 +12,7 @@ import ResultDisplay from '../components/ResultDisplay.jsx';
 import EquipmentSelector from '../components/EquipmentSelector.jsx';
 import LabelWithTooltip from '../components/LabelWithTooltip.jsx';
 import DetailSection from '../components/DetailSection.jsx';
+import IncrementalInput from '../components/IncrementalInput.jsx';
 
 
 
@@ -65,6 +66,7 @@ export default function Calculator() {
     const [customCompressor, setCustomCompressor] = useState(compressors.list.find(e => e.id === 0));
 
     const [openedSections, setOpenedSections] = useState({ electrolyzer: false, compressor: false, system: false, greyH2: false });
+    const [isAdvancedMode, setIsAdvancedMode] = useState(false);
 
     function toggleSection (sectionName){
         setOpenedSections((prev) => ({
@@ -101,6 +103,45 @@ export default function Calculator() {
         }
     }, [selectedCompressor]);
 
+    useEffect(() => {
+        if (!isAdvancedMode) {
+            let activeElectrolyzer = selectedElectrolyzer;
+            if (selectedElectrolyzer.id === 0) {
+                const fallback = electrolyzers.list.find(e => e.id !== 0);
+                if (fallback) {
+                    activeElectrolyzer = fallback;
+                    setSelectedElectrolyzer(fallback);
+                }
+            }
+            const currentPowerKw = systemSize.value * systemSize.unit.factor;
+            const numberOfModules = Math.round(currentPowerKw / activeElectrolyzer.power);
+            const validModules = Math.max(1, numberOfModules);
+
+            const closedSections = Object.keys(openedSections).reduce((acc, key) => {
+                acc[key] = false;
+                return acc;
+            }, {});
+            
+            setOpenedSections(closedSections);
+
+            setSystemSize({ 
+                value: Number((validModules * activeElectrolyzer.power).toFixed(2)), 
+                unit:  POWER_UNITS[1],
+                selfProduced: 0
+            });
+        }
+    }, [isAdvancedMode]);
+
+
+    const availableElectrolyzers = useMemo(() => {
+        if (isAdvancedMode) {
+            return electrolyzers;
+        }
+        return {
+            ...electrolyzers,
+            list: electrolyzers.list.filter(e => e.id !== 0)
+        };
+    }, [isAdvancedMode]);
 
     const calcResults = useMemo(() => {
         const electrolyzerQuantity = Math.ceil(((systemSize.value * systemSize.unit.factor) / selectedElectrolyzer.power).toFixed(3));
@@ -262,6 +303,17 @@ export default function Calculator() {
                 Estimate the Levelized Cost of Hydrogen (LCOH) and total capital expenditure (CAPEX) for your production plant. 
                 Adjust system parameters, resource costs, and financial variables to simulate different techno-economic scenarios.
             </Text>
+            <Center mb="xl">
+                <SegmentedControl
+                    value={isAdvancedMode ? 'advanced' : 'simple'}
+                    onChange={(val) => setIsAdvancedMode(val === 'advanced')}
+                    data={[
+                    { label: 'Simple Mode', value: 'simple' },
+                    { label: 'Advanced Calculator', value: 'advanced' },
+                    ]}
+                    bg="green.1"
+                />
+            </Center>
             <SimpleGrid cols={{ base: 1, lg: 3 }} spacing="lg" style={{ alignItems: 'flex-start' }}>
                 <ElectrolyzerSetup 
                     systemSize={systemSize}
@@ -270,12 +322,14 @@ export default function Calculator() {
                     setOperatingTime={setOperatingTime}
                     selectedElectrolyzer={selectedElectrolyzer}
                     setSelectedElectrolyzer={setSelectedElectrolyzer}
+                    availableElectrolyzers={availableElectrolyzers}
                     electrolyzerSettings={electrolyzerSettings}
                     setElectrolyzerSettings={setElectrolyzerSettings}
                     customElectrolyzer={customElectrolyzer}
                     electrolyzerQuantity={electrolyzerQuantity}
                     openedSections={openedSections}
                     toggleSection={toggleSection}
+                    isAdvancedMode={isAdvancedMode}
                 />
                 <Stack gap="lg">
                 <ResourcesCosts 
@@ -289,8 +343,9 @@ export default function Calculator() {
                     setCarbonTax={setCarbonTax}
                     openedSections={openedSections}
                     toggleSection={toggleSection}
+                    isAdvancedMode={isAdvancedMode}
                 />
-                <Card shadow="sm" padding="lg" radius="md" withBorder>
+                {isAdvancedMode && (<Card shadow="sm" padding="lg" radius="md" withBorder>
                     <Text fw={700} size="xl" mb="md" pb="xs" style={{ borderBottom: '2px solid var(--mantine-color-gray-2)' }}>
                         Lifecycle Parameters
                     </Text>
@@ -309,7 +364,7 @@ export default function Calculator() {
                         value={inflationRate}
                         onValueChange={val => setInflationRate(val)}
                     />
-                </Card>
+                </Card>)}
                 </Stack>
                 <CompressorSetup 
                     isCompressorNeeded={isCompressorNeeded}
@@ -327,6 +382,7 @@ export default function Calculator() {
                     showCellWarning={showCellWarning}
                     openedSections={openedSections}
                     toggleSection={toggleSection}
+                    isAdvancedMode={isAdvancedMode}
                 />
             </SimpleGrid>
             <ResultDisplay 
@@ -349,28 +405,41 @@ function ElectrolyzerSetup ({
     setOperatingTime,
     selectedElectrolyzer,
     setSelectedElectrolyzer,
+    availableElectrolyzers,
     electrolyzerSettings,
     setElectrolyzerSettings,
     customElectrolyzer,
     electrolyzerQuantity,
     openedSections,
-    toggleSection
+    toggleSection,
+    isAdvancedMode
 }) {
     return(
         <Card shadow="sm" padding="lg" radius="md" withBorder>
             <Text fw={700} size="xl" mb="md" pb="xs" style={{ borderBottom: '2px solid #f0f0f0' }}>
                 Electrolyzer Setup
             </Text>
-            <ValueInput
-                label={<LabelWithTooltip label="System size" tooltip="Total electrical power capacity of your electrolyzer setup." />}
-                units={POWER_UNITS}
-                currentUnit={systemSize.unit}
-                value={systemSize.value}
-                onValueChange={val => setSystemSize({ ...systemSize, value: val })}
-                onUnitChange={u => setSystemSize({ ...systemSize, unit: u })}
-                nullBlocker
-            />
-            <DetailSection openedSections={openedSections.system} toggleSection={() => toggleSection('system')}>
+            {isAdvancedMode ? (
+                <ValueInput
+                    label={<LabelWithTooltip label="System size" tooltip="Total electrical power capacity of your electrolyzer setup." />}
+                    units={POWER_UNITS}
+                    currentUnit={systemSize.unit}
+                    value={systemSize.value}
+                    onValueChange={val => setSystemSize({ ...systemSize, value: val })}
+                    onUnitChange={u => setSystemSize({ ...systemSize, unit: u })}
+                    nullBlocker
+                />
+            ) : (
+                <IncrementalInput
+                    label={<LabelWithTooltip label="System size" tooltip="Total electrical power capacity of your electrolyzer setup." />}
+                    value={systemSize.value}
+                    step={selectedElectrolyzer.power}
+                    min={selectedElectrolyzer.power}
+                    unit="kW"
+                    onValueChange={val => setSystemSize({ ...systemSize, value: val })}
+                />
+            )}
+            {isAdvancedMode && (<DetailSection openedSections={openedSections.system} toggleSection={() => toggleSection('system')}>
                 <SliderInput 
                     label={<LabelWithTooltip label="Self-produced" tooltip="Percentage of the required electrical power generated on-site (e.g., via solar panels), reducing the energy drawn from the grid." />}
                     units={systemSize.unit.label}
@@ -379,7 +448,7 @@ function ElectrolyzerSetup ({
                     min={0}
                     max={systemSize.value}
                 />
-            </DetailSection>
+            </DetailSection>)}
             <ValueInput
                 label={<LabelWithTooltip label="Operating time" tooltip="Number of hours or days the electrolyzer system operates continuously per year." />}
                 units={TIME_PER_YEAR_UNITS}
@@ -400,13 +469,25 @@ function ElectrolyzerSetup ({
                             </Anchor>
                         </Stack>
                     }
-                    itemsList={electrolyzers}
+                    itemsList={availableElectrolyzers}
                     selectedItem={selectedElectrolyzer}
                     onItemChange={(val) => {
                         const newElectrolyzer = electrolyzers.list[val];
                         const currentSystemPowerInKw = systemSize.value * systemSize.unit.factor;
-                        if (currentSystemPowerInKw === selectedElectrolyzer.power) {
-                            setSystemSize({ ...systemSize, value: newElectrolyzer.power / systemSize.unit.factor });
+                        if (!isAdvancedMode) {
+                            const numberOfModules = Math.round(currentSystemPowerInKw / newElectrolyzer.power);
+                            const validModules = Math.max(1, numberOfModules); 
+                            const newPowerKw = validModules * newElectrolyzer.power;
+
+                            setSystemSize({ 
+                                value: Number(newPowerKw.toFixed(2)), 
+                                unit: { label: "kW", factor: 1 },
+                                selfProduced: 0
+                            });
+                        } else {
+                            if (currentSystemPowerInKw === selectedElectrolyzer.power) {
+                                setSystemSize({ ...systemSize, value: newElectrolyzer.power / systemSize.unit.factor });
+                            }
                         }
                         if (newElectrolyzer.id === 0){
                             if (!openedSections.electrolyzer) {toggleSection('electrolyzer')};
@@ -419,8 +500,9 @@ function ElectrolyzerSetup ({
                     onOwnedChange={(v) => setElectrolyzerSettings({ ...electrolyzerSettings, owned: v })}
                     ownedLabel={electrolyzerQuantity <= 1 ? "Already owned (No CAPEX)" : "Pre-owned electrolyzers"}
                     max={electrolyzerQuantity}
+                    isAdvancedMode={isAdvancedMode}
                 />
-                <DetailSection openedSections={openedSections.electrolyzer} toggleSection={() => toggleSection('electrolyzer')}>
+                {isAdvancedMode && (<DetailSection openedSections={openedSections.electrolyzer} toggleSection={() => toggleSection('electrolyzer')}>
                     {selectedElectrolyzer.id === 0 && (
                         <Select
                             label="Electrolyzer type"
@@ -478,7 +560,7 @@ function ElectrolyzerSetup ({
                         onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, maintenance_percent_capex: val })}
                         onUnitChange={(u) => setElectrolyzerSettings({ ...electrolyzerSettings, maint_unit : u })}
                     />
-                </DetailSection>
+                </DetailSection>)}
             </Paper>
         </Card>
     );
@@ -494,7 +576,8 @@ function ResourcesCosts ({
     carbonTax,
     setCarbonTax,
     openedSections,
-    toggleSection
+    toggleSection,
+    isAdvancedMode
 }){
     return(
         <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -509,7 +592,7 @@ function ResourcesCosts ({
                 onValueChange={val => setElectricityPrice({ ...electricityPrice, value: val })}
                 onUnitChange={u => setElectricityPrice({ ...electricityPrice, unit: u })}
             />
-            <ValueInput
+            {isAdvancedMode && (<><ValueInput
                 label={<LabelWithTooltip label="Water price" tooltip="Cost of purified water supply for the electrolysis process." />}
                 units={WATER_VOLUME_PRICE_UNITS}
                 currentUnit={waterPrice.unit}
@@ -533,7 +616,7 @@ function ResourcesCosts ({
                     value={carbonTax}
                     onValueChange={val => setCarbonTax(val)}
                 />
-            </DetailSection>  
+            </DetailSection></>)}
         </Card>
     )
 }
@@ -553,7 +636,8 @@ function CompressorSetup ({
     totalStacksNeeded,
     showCellWarning,
     openedSections,
-    toggleSection
+    toggleSection,
+    isAdvancedMode
 }){
     return(
         <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -565,15 +649,15 @@ function CompressorSetup ({
                 checked={isCompressorNeeded}
                 onChange={(e) => setIsCompressorNeeded(e.currentTarget.checked)}
             />
-            {isCompressorNeeded && <SliderInput 
+            {isCompressorNeeded && isAdvancedMode && (<><SliderInput 
                 label={<LabelWithTooltip label="Hydrogen to compress" tooltip="The total mass of hydrogen gas generated that needs to be compressed for storage or transport." />}
                 units="kg"
                 value={massToCompress}
                 onValueChange={v => setMassToCompress(Math.round(v))}
                 min={0}
                 max={Math.round(annualProd)}
-            />}
-            {isCompressorNeeded && <ValueInput
+            />
+            <ValueInput
                 label={<LabelWithTooltip label="Operating time" tooltip="Number of hours or days the compressor system operates continuously per year." />}
                 units={TIME_PER_YEAR_UNITS}
                 currentUnit={compressorSettings.operatingTime.unit}
@@ -582,7 +666,7 @@ function CompressorSetup ({
                 onValueChange={(val) => setCompressorSettings({ ...compressorSettings, operatingTime: { ...compressorSettings.operatingTime, value: val } })}
                 onUnitChange={(u) => setCompressorSettings({ ...compressorSettings, operatingTime: { ...compressorSettings.operatingTime, unit: u } })}
                 nullBlocker
-            />}
+            />
             {/*<ValueInput
                 label={<LabelWithTooltip label="Storage capacity" tooltip="Volume or mass of hydrogen you need to hold on-site." />}
                 units={VOLUME_UNITS}
@@ -598,7 +682,7 @@ function CompressorSetup ({
                 value={storagePrice}
                 onValueChange={val => setStoragePrice(val)}
             />*/}
-            {isCompressorNeeded && (<Paper bg="gray.0" p="md" radius="md" withBorder mt="md">
+            <Paper bg="gray.0" p="md" radius="md" withBorder mt="md">
                 <EquipmentSelector
                     label={<Stack gap="xs">
                             <LabelWithTooltip label="Compressor Setup :" tooltip="Required to compress the hydrogen for efficient storage or transport." />
@@ -719,7 +803,7 @@ function CompressorSetup ({
                         onUnitChange={(u) => setCompressorSettings({ ...compressorSettings, maint_unit: u })}
                     />
                 </DetailSection>
-            </Paper>)}
+            </Paper></>)}
         </Card>
     );
 }

@@ -158,7 +158,7 @@ export default function Header() {
                     >
                         <Image
                             title="GreenLabs H₂ Logo"
-                            src="public/img/logo2.svg"
+                            src="img/logo2.svg"
                             w={{base:"60px", md:"80px"}}
                         />
                         <Title order={3}>
