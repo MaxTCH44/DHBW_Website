@@ -4,7 +4,7 @@ import { NumberInput, Select, Text } from '@mantine/core';
 
 
 
-export default function ValueInput({ label, value, units, currentUnit, onValueChange, onUnitChange = (() => {}), nullBlocker = false , max = null}) {
+export default function ValueInput({ label, value, units, currentUnit, onValueChange, onUnitChange = (() => {}), nullBlocker = false, max = null, id = null}) {
   const isArray = Array.isArray(units);
   const hasMultipleUnits = isArray && units.length > 1;
 
@@ -107,6 +107,7 @@ export default function ValueInput({ label, value, units, currentUnit, onValueCh
 
   return (
     <NumberInput
+      id={id}
       label={label}
       value={localValue} 
       onChange={handleChange} 

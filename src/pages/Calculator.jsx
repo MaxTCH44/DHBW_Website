@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Title, SimpleGrid, Card, Text, Paper, Anchor, Stack, Checkbox, Group, Badge, Alert, Select, SegmentedControl, Center } from '@mantine/core';
-import { IconAlertCircle } from '@tabler/icons-react';
+import { Container, Title, SimpleGrid, Card, Text, Paper, Anchor, Stack, Checkbox, Group, Badge, Alert, Select, SegmentedControl, Tooltip, ActionIcon, Box, Center } from '@mantine/core';
+import { IconAlertCircle, IconQuestionMark } from '@tabler/icons-react';
 import { useSessionStorage } from '@mantine/hooks';
 
 import electrolyzers from '../data/electrolyzers_list.json';
 import compressors from '../data/compressors_list.json';
+import advices from '../data/calculator_advices.json';
 
 import ValueInput from '../components/ValueInput.jsx';
 import SliderInput from '../components/SliderInput.jsx';
@@ -14,6 +15,7 @@ import EquipmentSelector from '../components/EquipmentSelector.jsx';
 import LabelWithTooltip from '../components/LabelWithTooltip.jsx';
 import DetailSection from '../components/DetailSection.jsx';
 import IncrementalInput from '../components/IncrementalInput.jsx';
+import AdviceCards from '../components/AdviceCards.jsx';
 
 
 
@@ -71,6 +73,7 @@ export default function Calculator() {
         key: 'calculator-advanced-mode', 
         defaultValue: false 
     });
+    const [showHelp, setShowHelp] = useState(false);
 
     function toggleSection (sectionName){
         setOpenedSections((prev) => ({
@@ -79,6 +82,7 @@ export default function Calculator() {
         }));
     };
     
+
     const annualProd = ((systemSize.value * systemSize.unit.factor) * (operatingTime.value * operatingTime.unit.factor)) / selectedElectrolyzer.energy_consumption_kwh_per_kg;
 
     const prevMaxRef = useRef(Math.round(annualProd));
@@ -308,15 +312,41 @@ export default function Calculator() {
                 Adjust system parameters, resource costs, and financial variables to simulate different techno-economic scenarios.
             </Text>
             <Center mb="xl">
-                <SegmentedControl
-                    value={isAdvancedMode ? 'advanced' : 'simple'}
-                    onChange={(val) => setIsAdvancedMode(val === 'advanced')}
-                    data={[
-                    { label: 'Simple Mode', value: 'simple' },
-                    { label: 'Advanced Calculator', value: 'advanced' },
-                    ]}
-                    bg="green.1"
-                />
+                <Box pos="relative">
+                    <SegmentedControl
+                        value={isAdvancedMode ? 'advanced' : 'simple'}
+                        onChange={(val) => setIsAdvancedMode(val === 'advanced')}
+                        data={[
+                            { label: 'Simple Mode', value: 'simple' },
+                            { label: 'Advanced Calculator', value: 'advanced' },
+                        ]}
+                        bg="green.1"
+                    />
+                    {isAdvancedMode && (
+                        <Tooltip 
+                            label="Click for step-by-step help" 
+                            withArrow 
+                            position="right"
+                        >
+                            <ActionIcon 
+                                variant="light" 
+                                color="blue" 
+                                radius="xl" 
+                                size="lg"
+                                onClick={() => setShowHelp(true)}
+                                pos="absolute"
+                                style={{
+                                    left: 'calc(100% + 12px)', 
+                                    top: '50%',
+                                    transform: 'translateY(-50%)',
+                                    whiteSpace: 'nowrap'
+                                }}
+                            >
+                                <IconQuestionMark size={20} stroke={2.5} />
+                            </ActionIcon>
+                        </Tooltip>
+                    )}
+                </Box>
             </Center>
             <SimpleGrid cols={{ base: 1, lg: 3 }} spacing="lg" style={{ alignItems: 'flex-start' }}>
                 <ElectrolyzerSetup 
@@ -398,6 +428,12 @@ export default function Calculator() {
                 metrics={extraMetrics}
                 greyDetails={greyDetails} 
             />
+            {showHelp && (
+                <AdviceCards 
+                    helpData={advices} 
+                    onClose={() => setShowHelp(false)} 
+                />
+            )}
         </Container>
     );
 }
@@ -425,6 +461,7 @@ function ElectrolyzerSetup ({
             </Text>
             {isAdvancedMode ? (
                 <ValueInput
+                    id="system_size"
                     label={<LabelWithTooltip label="System size" tooltip="Total electrical power capacity of your electrolyzer setup." />}
                     units={POWER_UNITS}
                     currentUnit={systemSize.unit}
@@ -454,6 +491,7 @@ function ElectrolyzerSetup ({
                 />
             </DetailSection>)}
             <ValueInput
+                id="electrolyzer_operating_time"
                 label={<LabelWithTooltip label="Operating time" tooltip="Number of hours or days the electrolyzer system operates continuously per year." />}
                 units={TIME_PER_YEAR_UNITS}
                 currentUnit={operatingTime.unit}
@@ -589,6 +627,7 @@ function ResourcesCosts ({
                 Resources Costs
             </Text>
             <ValueInput
+                id="electricity_price"
                 label={<LabelWithTooltip label="Electricity price" tooltip="The average grid electricity price. This is the primary cost driver for green hydrogen production." />}
                 units={ELEC_PRICE_UNITS}
                 currentUnit={electricityPrice.unit}
@@ -653,7 +692,8 @@ function CompressorSetup ({
                 checked={isCompressorNeeded}
                 onChange={(e) => setIsCompressorNeeded(e.currentTarget.checked)}
             />
-            {isCompressorNeeded && isAdvancedMode && (<><SliderInput 
+            {isCompressorNeeded && isAdvancedMode && (<><SliderInput
+                id="h2_to_compress" 
                 label={<LabelWithTooltip label="Hydrogen to compress" tooltip="The total mass of hydrogen gas generated that needs to be compressed for storage or transport." />}
                 units="kg"
                 value={massToCompress}

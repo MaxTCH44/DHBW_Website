@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 
 
-export default function SliderInput({ label, value, units, onValueChange, min, max, step = 1}) {
+export default function SliderInput({ label, value, units, onValueChange, min, max, step = 1, id = null}) {
 
   useEffect(() => {
     if (max !== undefined && max !== null && value > max) {
@@ -20,6 +20,7 @@ export default function SliderInput({ label, value, units, onValueChange, min, m
   return (
     <Box pos="relative">
       <NumberInput
+        id={id}
         value={value}
         onChange={onValueChange}
         onBlur={handleBlur}

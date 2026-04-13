@@ -20,8 +20,8 @@
                     "value": "The fundamental principle relies on physically reducing the volume of the gas. The two most prominent types are reciprocating piston compressors and diaphragm compressors. In these systems, hydrogen enters a cylinder through an inlet valve. A piston (or a flexible metal membrane)—driven by an electric motor, hydraulics, or compressed air—moves to forcefully compress the gas. Once the target pressure is reached, an exhaust valve opens to discharge the high-pressure hydrogen."
                 },
                 {
-                "type": "component",
-                "componentName": "MechanicalCompressor"
+                    "type": "component",
+                    "componentName": "MechanicalCompressor"
                 },
                 {
                     "type": "paragraph",

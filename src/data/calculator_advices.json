@@ -1,0 +1,42 @@
+[
+    {
+        "id": "system_size",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "electrolyzer_operating_time",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "electricity_price",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "h2_to_compress",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    }
+]
