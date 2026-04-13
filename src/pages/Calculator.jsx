@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Title, SimpleGrid, Card, Text, Paper, Anchor, Stack, Checkbox, Group, Badge, Alert, Select, SegmentedControl, Center } from '@mantine/core';
 import { IconAlertCircle } from '@tabler/icons-react';
+import { useSessionStorage } from '@mantine/hooks';
 
 import electrolyzers from '../data/electrolyzers_list.json';
 import compressors from '../data/compressors_list.json';

@@ -19,6 +19,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 
 import './App.css';
+import SetupBuilder from './pages/SetupBuilder';
 
 
 
@@ -41,6 +42,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/lab" element={<OurLab />} />
             <Route path="/references" element={<References />} />
+            <Route path="/setup" element={<SetupBuilder />} />
             {/* If page not found */}
             <Route path="*" element={<NotFound />} />
           </Routes>

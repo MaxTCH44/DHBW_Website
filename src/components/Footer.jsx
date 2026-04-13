@@ -28,6 +28,9 @@ export default function Footer() {
             <Anchor component={Link} to="/references" c="dimmed" size="sm">
               References
             </Anchor>
+            <Anchor component={Link} to="/setup" c="dimmed" size="sm">
+              Setup Builder
+            </Anchor>
           </Group>
         </Flex>
       </Container>
