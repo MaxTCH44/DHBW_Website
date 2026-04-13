@@ -67,7 +67,10 @@ export default function Calculator() {
     const [customCompressor, setCustomCompressor] = useState(compressors.list.find(e => e.id === 0));
 
     const [openedSections, setOpenedSections] = useState({ electrolyzer: false, compressor: false, system: false, greyH2: false });
-    const [isAdvancedMode, setIsAdvancedMode] = useState(false);
+    const [isAdvancedMode, setIsAdvancedMode] = useSessionStorage({
+        key: 'calculator-advanced-mode', 
+        defaultValue: false 
+    });
 
     function toggleSection (sectionName){
         setOpenedSections((prev) => ({

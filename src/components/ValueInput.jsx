@@ -46,6 +46,10 @@ export default function ValueInput({ label, value, units, currentUnit, onValueCh
       setErrorMsg("Value cannot be more than " + max);
       onValueChange(max);
       setLocalValue(max);
+    } else if (localValue === '') {
+      setErrorMsg(null);
+      onValueChange(0);
+      setLocalValue(0);
     } else {
       setErrorMsg(null);
       onValueChange(localValue);

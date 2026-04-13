@@ -11,11 +11,18 @@ export default function SliderInput({ label, value, units, onValueChange, min, m
     }
   }, [max, value]);
 
+  function handleBlur() {
+    if (value === '' || value === null){
+      onValueChange(0);
+    }
+  }
+
   return (
     <Box pos="relative">
       <NumberInput
         value={value}
         onChange={onValueChange}
+        onBlur={handleBlur}
         label={label}
         min={min}
         max={max}
@@ -34,7 +41,7 @@ export default function SliderInput({ label, value, units, onValueChange, min, m
       <Slider
         max={max}
         min={min}
-        step={step}
+        step={typeof max === 'int' || step !== 1 ? step : (max/10).toFixed(3)}
         label={null}
         value={typeof value === 'string' ? 0 : value}
         onChange={onValueChange}
