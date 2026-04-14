@@ -29,7 +29,7 @@ const EQUIPMENT_MAPS = {
     }
 };
 
-export default function EquipmentSelector({ label, itemsList, selectedItem, onItemChange, quantityOwned, onOwnedChange, ownedLabel, max, isAdvancedMode = true }) {
+export default function EquipmentSelector({ label, itemsList, selectedItem, onItemChange, quantityOwned, onOwnedChange, ownedLabel, max, isAdvancedMode = true, id = null }) {
 
     useEffect(() => {
         if (max !== null && max !== undefined && quantityOwned > max) {
@@ -93,7 +93,7 @@ export default function EquipmentSelector({ label, itemsList, selectedItem, onIt
     };
 
     return (
-        <Stack gap="sm" mb="md">
+        <Stack gap="sm" mb="md" id={id}>
             <Select
                 label={label}
                 data={selectData}

@@ -1,51 +1,68 @@
 import { useState, useEffect, useRef } from 'react';
 import { Card, Group, Button, Text, ActionIcon, Box, Divider, Transition } from '@mantine/core';
 import { IconChevronLeft, IconChevronRight, IconX } from '@tabler/icons-react';
+
 import ContentDetails from './ContentDetails';
+
+
 
 export default function AdviceCards({ helpData = [], onClose }) {
     const [currentStep, setCurrentStep] = useState(0);
-    const [coords, setCoords] = useState({ top: 0, left: 0 });
+    const [coords, setCoords] = useState({ top: 0, left: 0, width: 350, isMobile: false });
     const [opened, setOpened] = useState(false);
     const cardRef = useRef(null);
     
     const step = helpData[currentStep];
 
     useEffect(() => {
-        setOpened(true);
         
-        if (step?.id) {
-            const target = document.getElementById(step.id);
+        const targetId = step?.targetId || step?.id;
+
+        if (targetId) {
+            const target = document.getElementById(targetId);
             if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                const isMobile = window.innerWidth <= 768;
+
+                if (isMobile) {
+                    const elementTop = target.getBoundingClientRect().top + window.scrollY;
+                    window.scrollTo({ top: elementTop - 150, behavior: 'smooth' });
+                } else {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
 
                 setTimeout(() => {
                     const rect = target.getBoundingClientRect();
-                    const cardWidth = 350;
+                    const cardWidth = isMobile ? Math.min(window.innerWidth - 20, 380) : 350;
                     const spacing = 15;
 
-                    let top = rect.top + window.scrollY;
-                    let left = rect.right + spacing;
+                    let newTop, newLeft;
 
-                    if (left + cardWidth > window.innerWidth) {
-                        left = rect.left - cardWidth - spacing;
+                    if (isMobile) {
+                        newLeft = (window.innerWidth - cardWidth) / 2;
+                        newTop = rect.bottom + window.scrollY + spacing; 
+                    } else {
+                        newTop = rect.top + window.scrollY;
+                        newLeft = rect.right + spacing;
+
+                        if (newLeft + cardWidth > window.innerWidth) {
+                            newLeft = rect.left - cardWidth - spacing;
+                        }
                     }
 
-                    if (left < 0) {
-                        left = Math.max(10, (window.innerWidth - cardWidth) / 2);
-                        top = rect.top + window.scrollY - 200; 
-                    }
-
-                    const viewportHeight = window.innerHeight;
-                    if (top + 250 > window.scrollY + viewportHeight) {
-                        top = window.scrollY + viewportHeight - 300;
-                    }
-
-                    setCoords({ top, left });
+                    newLeft = Math.max(10, newLeft);
+                    
+                    setCoords({ 
+                        top: newTop, 
+                        left: newLeft, 
+                        width: cardWidth,
+                        isMobile 
+                    });
+                    
+                    setOpened(true); 
                     
                     target.style.outline = '3px solid var(--mantine-color-green-5)';
                     target.style.outlineOffset = '4px';
-                }, 100);
+                }, 150);
 
                 return () => {
                     target.style.outline = 'none';
@@ -75,18 +92,18 @@ export default function AdviceCards({ helpData = [], onClose }) {
                     p="md" 
                     style={{ 
                         ...transitionStyles,
-                        position: 'absolute', 
+                        position: 'absolute',
                         top: coords.top,
                         left: coords.left,
-                        width: 350, 
+                        width: coords.width,
                         zIndex: 10000,
                         backgroundColor: 'var(--mantine-color-body)',
-                        pointerEvents: 'all'
+                        transition: 'top 0.4s ease-in-out, left 0.4s ease-in-out, width 0.4s ease'
                     }}
                 >
                     <Group justify="space-between" mb="xs">
                         <Text size="xs" fw={700} c="dimmed" tt="uppercase">
-                            Help Step {currentStep + 1} / {helpData.length}
+                            Step {currentStep + 1} / {helpData.length}
                         </Text>
                         <ActionIcon variant="subtle" color="gray" onClick={onClose}>
                             <IconX size={16} />
@@ -94,7 +111,7 @@ export default function AdviceCards({ helpData = [], onClose }) {
                     </Group>
 
                     <Box mb="md" style={{ maxHeight: '250px', overflowY: 'auto' }}>
-                        <ContentDetails item={step} />
+                        {step && <ContentDetails item={step} />}
                     </Box>
 
                     <Divider my="sm" />

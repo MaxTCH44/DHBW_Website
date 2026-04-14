@@ -131,6 +131,7 @@ export default function Calculator() {
             }, {});
             
             setOpenedSections(closedSections);
+            setShowHelp(false);
 
             setSystemSize({ 
                 value: Number((validModules * activeElectrolyzer.power).toFixed(2)), 
@@ -432,6 +433,16 @@ export default function Calculator() {
                 <AdviceCards 
                     helpData={advices} 
                     onClose={() => setShowHelp(false)} 
+                    onStepChange={(step) => {
+
+                        // Si l'étape demande d'ouvrir une section fermée
+                        if (step.openSection) {
+                            setOpenedSections(prev => ({ 
+                                ...prev, 
+                                [step.openSection]: true // Force l'ouverture de la section (ex: "compressor")
+                            }));
+                        }
+                    }}
                 />
             )}
         </Container>
@@ -503,6 +514,7 @@ function ElectrolyzerSetup ({
             />
             <Paper bg="gray.0" p="md" radius="md" withBorder mt="md">
                 <EquipmentSelector
+                    id="electrolyzer_selector"
                     label={
                         <Stack gap="xs">
                             <LabelWithTooltip label="Electrolyzer Setup :" tooltip="Different technologies have distinct efficiencies and costs. Check the 'Learn' section for details." />
