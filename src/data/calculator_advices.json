@@ -1,6 +1,7 @@
 [
     {
-        "id": "system_size",
+        "id": "step_sys_size",
+        "targetId": "system_size",
         "content": [
             {
                 "type": "paragraph",
@@ -10,7 +11,9 @@
         ]
     },
     {
-        "id": "electrolyzer_operating_time",
+        "id": "step_self_prod",
+        "targetId": "self_produced",
+        "openSection": "system",
         "content": [
             {
                 "type": "paragraph",
@@ -20,7 +23,8 @@
         ]
     },
     {
-        "id": "electrolyzer_selector",
+        "id": "step_elec_op_time",
+        "targetId": "electrolyzer_operating_time",
         "content": [
             {
                 "type": "paragraph",
@@ -30,7 +34,8 @@
         ]
     },
     {
-        "id": "electricity_price",
+        "id": "step_elec_select",
+        "targetId": "electrolyzer_selector",
         "content": [
             {
                 "type": "paragraph",
@@ -40,12 +45,343 @@
         ]
     },
     {
-        "id": "h2_to_compress",
+        "id": "step_elec_price",
+        "targetId": "electrolyzer_price",
+        "openSection": "electrolyzer",
+        "isPriceInput": true,
         "content": [
             {
                 "type": "paragraph",
                 "size": "13",
                 "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_elec_power",
+        "targetId": "electrolyzer_power",
+        "openSection": "electrolyzer",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_elec_cons",
+        "targetId": "electrolyzer_energy_consumption",
+        "openSection": "electrolyzer",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_aux_cons",
+        "targetId": "auxiliary_energy_consumption",
+        "openSection": "electrolyzer",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_water_cons",
+        "targetId": "water_consumption",
+        "openSection": "electrolyzer",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_elec_maint",
+        "targetId": "electrolyzer_maintenance_costs",
+        "openSection": "electrolyzer",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_electricity_price",
+        "targetId": "electricity_price",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_water_price",
+        "targetId": "water_price",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_current_h2_price",
+        "targetId": "current_h2_price",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_grey_h2_price",
+        "targetId": "grey_h2_price",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_carbon_tax",
+        "targetId": "carbon_tax",
+        "openSection": "greyH2",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_lifetime",
+        "targetId": "project_lifetime",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_interest",
+        "targetId": "interest_rate",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_comp_needed",
+        "targetId": "is_compressor_needed",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_h2_comp",
+        "targetId": "h2_to_compress",
+        "isCompressorSection": true,
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_comp_op_time",
+        "targetId": "compressor_operating_time",
+        "isCompressorSection": true,
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_comp_selector",
+        "targetId": "compressor_selector",
+        "isCompressorSection": true,
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_comp_price",
+        "targetId": "compressor_price",
+        "isPriceInput": true,
+        "openSection": "compressor",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_mech_comp_cons",
+        "targetId": "compressor_energy_consumption",
+        "openSection": "compressor",
+        "showIfCompressor": "Mechanical",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Mechanical - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_elec_comp_cons",
+        "targetId": "compressor_energy_consumption",
+        "openSection": "compressor",
+        "showIfCompressor": "Electrochemical",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Electrochemical - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_own_stack",
+        "targetId": "owned_stacks",
+        "openSection": "compressor",
+        "showIfCompressor": "Electrochemical",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_stack_price",
+        "targetId": "stack_price",
+        "openSection": "compressor",
+        "showIfCompressor": "Electrochemical",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_cells_per_stack",
+        "targetId": "cells_per_stack",
+        "openSection": "compressor",
+        "showIfCompressor": "Electrochemical",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_max_cells",
+        "targetId": "max_cells",
+        "openSection": "compressor",
+        "showIfCompressor": "Electrochemical",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_mech_flow",
+        "targetId": "flowrate",
+        "openSection": "compressor",
+        "showIfCompressor": "Mechanical",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Mechanical - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_elec_flow",
+        "targetId": "flowrate",
+        "openSection": "compressor",
+        "showIfCompressor": "Electrochemical",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Electrochemical - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_mech_comp_maint",
+        "targetId": "compressor_maintenance_costs",
+        "openSection": "compressor",
+        "showIfCompressor": "Mechanical",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Mechanical - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+            }
+        ]
+    },
+    {
+        "id": "step_elec_comp_maint",
+        "targetId": "compressor_maintenance_costs",
+        "openSection": "compressor",
+        "showIfCompressor": "Electrochemical",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Electrochemical - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
             }
         ]
     }

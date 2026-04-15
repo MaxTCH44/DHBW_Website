@@ -1,10 +1,12 @@
 import { Card, Title, Group, Paper, Text, Badge, SimpleGrid, RingProgress, Stack, Progress, ThemeIcon, Grid, Box, Alert } from '@mantine/core';
-import { IconBolt, IconDroplet, IconWind, IconTool, IconChartPie, IconAlertCircle } from '@tabler/icons-react';
+import { IconBolt, IconDroplet, IconWind, IconTool, IconChartPie, IconAlertCircle, IconLeaf } from '@tabler/icons-react';
 
 
 
-export default function ResultDisplay({ cost, capex, costDifference, annualDifference, breakdown, metrics, greyDetails }) {
-    const isProfitable = costDifference >= 0;
+export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, currentCostDifference, currentAnnualDifference, avoidedCO2, breakdown, metrics, greyDetails }) {
+    
+    const isProfitableCurrent = currentCostDifference >= 0;
+    const isProfitableGrey = greyCostDifference >= 0;
 
     const safeCost = cost > 0 ? cost : 1;
 
@@ -37,7 +39,7 @@ export default function ResultDisplay({ cost, capex, costDifference, annualDiffe
                 </Alert>
             )}
             
-            <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="lg" mb="xl">
+            <SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing="lg" mb="xl">
                 <Paper p="md" radius="md" withBorder bg="white">
                     <Text size="sm" c="dimmed" fw={600} tt="uppercase">LCOH (Green H₂)</Text>
                     <Text size="xl" fw={900} c="myColor.9" mt="sm">
@@ -52,22 +54,31 @@ export default function ResultDisplay({ cost, capex, costDifference, annualDiffe
                     </Text>
                 </Paper>
 
-                <Paper p="md" radius="md" withBorder bg={isProfitable ? "teal.0" : "red.0"}>
-                    <Text size="sm" c={isProfitable ? "teal.9" : "red.9"} fw={600} tt="uppercase">
-                        {isProfitable ? "Savings vs Grey H₂" : "Green Premium"}
+                <Paper p="md" radius="md" withBorder bg={isProfitableCurrent ? "teal.0" : "red.0"}>
+                    <Text size="sm" c={isProfitableCurrent ? "teal.9" : "red.9"} fw={600} tt="uppercase">
+                        {isProfitableCurrent ? "Savings vs Current Cost" : "Loss vs Current Cost"}
                     </Text>
-                    <Text size="xl" fw={900} c={isProfitable ? "teal.7" : "red.7"} mt="sm">
-                        {isProfitable ? "+" : ""}{(isFinite(annualDifference) && annualDifference !== 0) ? annualDifference.toLocaleString('fr-FR', { maximumFractionDigits: 0 }) : "0"} € / year
+                    <Text size="xl" fw={900} c={isProfitableCurrent ? "teal.7" : "red.7"} mt="sm">
+                        {isProfitableCurrent ? "+" : ""}{(isFinite(currentAnnualDifference) && currentAnnualDifference !== 0) ? currentAnnualDifference.toLocaleString('fr-FR', { maximumFractionDigits: 0 }) : "0"} € / year
                     </Text>
-                    <Badge color={isProfitable ? "teal" : "red"} mt="xs" variant="light">
-                        {isProfitable ? "+" : ""}{isFinite(costDifference) ? costDifference.toFixed(2) : "0.00"} € / kg
+                    <Badge color={isProfitableCurrent ? "teal" : "red"} mt="xs" variant="light">
+                        {isProfitableCurrent ? "+" : ""}{isFinite(currentCostDifference) ? currentCostDifference.toFixed(2) : "0.00"} € / kg
                     </Badge>
-                    <Box mt="sm" pt="sm" style={{ borderTop: `1px solid var(--mantine-color-${isProfitable ? 'teal' : 'red'}-2)` }}>
-                        <Text size="xs" c={isProfitable ? "teal.9" : "red.9"} fw={500}>
-                            Grey H₂ estimated at {greyDetails.smoothed.toFixed(2)} €/kg :
-                        </Text>
-                        <Text size="xs" c={isProfitable ? "teal.8" : "red.8"}>
-                            (Base: {greyDetails.base.toFixed(2)} € + CO₂ Tax: {greyDetails.tax.toFixed(2)} €) + Inflation
+                </Paper>
+
+                <Paper p="md" radius="md" withBorder bg={isProfitableGrey ? "teal.0" : "red.0"} style={{ opacity: 0.85 }}>
+                    <Text size="sm" c={isProfitableGrey ? "teal.9" : "red.9"} fw={600} tt="uppercase">
+                        {isProfitableGrey ? "Savings vs Grey H₂" : "Green Premium"}
+                    </Text>
+                    <Text size="xl" fw={900} c={isProfitableGrey ? "teal.7" : "red.7"} mt="sm">
+                        {isProfitableGrey ? "+" : ""}{(isFinite(greyAnnualDifference) && greyAnnualDifference !== 0) ? greyAnnualDifference.toLocaleString('fr-FR', { maximumFractionDigits: 0 }) : "0"} € / year
+                    </Text>
+                    <Badge color={isProfitableGrey ? "teal" : "red"} mt="xs" variant="light">
+                        {isProfitableGrey ? "+" : ""}{isFinite(greyCostDifference) ? greyCostDifference.toFixed(2) : "0.00"} € / kg
+                    </Badge>
+                    <Box mt="sm" pt="sm" style={{ borderTop: `1px solid var(--mantine-color-${isProfitableGrey ? 'teal' : 'red'}-2)` }}>
+                        <Text size="xs" c={isProfitableGrey ? "teal.9" : "red.9"} fw={500}>
+                            Grey H₂ estimated at {greyDetails.smoothed.toFixed(2)} €/kg
                         </Text>
                     </Box>
                 </Paper>
@@ -147,14 +158,14 @@ export default function ResultDisplay({ cost, capex, costDifference, annualDiffe
                 </Grid>
             </Paper>
 
-            <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="md">
+            <SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing="md">
                 <Paper p="md" radius="md" withBorder bg="white">
                     <Group gap="sm">
                         <ThemeIcon size="xl" radius="md" variant="light" color="myColor">
                             <IconWind size={24} />
                         </ThemeIcon>
                         <div>
-                            <Text size="xs" c="dimmed" tt="uppercase" fw={600}>Annual H₂ Production</Text>
+                            <Text size="xs" c="dimmed" tt="uppercase" fw={600}>Annual H₂ Prod.</Text>
                             <Text fw={700} size="lg">{metrics.annualProd.toLocaleString('fr-FR', { maximumFractionDigits: 0 })} kg</Text>
                         </div>
                     </Group>
@@ -166,7 +177,7 @@ export default function ResultDisplay({ cost, capex, costDifference, annualDiffe
                             <IconBolt size={24} />
                         </ThemeIcon>
                         <div>
-                            <Text size="xs" c="dimmed" tt="uppercase" fw={600}>Annual Energy Needed</Text>
+                            <Text size="xs" c="dimmed" tt="uppercase" fw={600}>Energy Needed</Text>
                             <Text fw={700} size="lg">{(metrics.annualElec / 1000).toLocaleString('fr-FR', { maximumFractionDigits: 1 })} MWh</Text>
                         </div>
                     </Group>
@@ -178,9 +189,23 @@ export default function ResultDisplay({ cost, capex, costDifference, annualDiffe
                             <IconDroplet size={24} />
                         </ThemeIcon>
                         <div>
-                            <Text size="xs" c="dimmed" tt="uppercase" fw={600}>Annual Water Needed</Text>
+                            <Text size="xs" c="dimmed" tt="uppercase" fw={600}>Water Needed</Text>
                             <Text fw={700} size="lg">
-                                {(metrics.annualWater).toLocaleString('fr-FR', { maximumFractionDigits: 0 })} Liters
+                                {(metrics.annualWater).toLocaleString('fr-FR', { maximumFractionDigits: 0 })} L
+                            </Text>
+                        </div>
+                    </Group>
+                </Paper>
+
+                <Paper p="md" radius="md" withBorder bg="white">
+                    <Group gap="sm">
+                        <ThemeIcon size="xl" radius="md" variant="light" color="green">
+                            <IconLeaf size={24} />
+                        </ThemeIcon>
+                        <div>
+                            <Text size="xs" c="dimmed" tt="uppercase" fw={600}>Avoided CO₂</Text>
+                            <Text fw={700} size="lg">
+                                {avoidedCO2 ? avoidedCO2.toLocaleString('fr-FR', { maximumFractionDigits: 1 }) : "0"} Tons
                             </Text>
                         </div>
                     </Group>
