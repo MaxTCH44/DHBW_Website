@@ -432,8 +432,8 @@ export default function Calculator() {
                         nullBlocker
                     />
                     <ValueInput
-                        label={<LabelWithTooltip label="Interest Rate" tooltip="The average percentage of annual prices increase. " />}
-                        id="interest_rate"
+                        label={<LabelWithTooltip label="Inflation Rate" tooltip="The average percentage of annual prices increase. " />}
+                        id="inflation_rate"
                         units="%"
                         currentUnit="%"
                         value={inflationRate}

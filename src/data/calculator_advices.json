@@ -6,7 +6,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "This defines the total electrical power capacity of your electrolyzer. It is the main driver for both your maximum hydrogen production and your initial investment (CAPEX). If you already know your target annual hydrogen demand, simply adjust this value until the production metric on the dashboard matches your goals."
             }
         ]
     },
@@ -18,7 +18,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "This represents the share of electricity you generate on-site (such as from solar panels or wind turbines) rather than buying directly from the grid. Because self-generated power is generally cheaper, increasing this percentage will significantly lower your operational costs. Set it to 0 if you rely entirely on a standard grid connection."
             }
         ]
     },
@@ -29,7 +29,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "This is the number of hours per year your electrolyzer is actively running (out of a maximum 8,760 hours or 365 days). A higher runtime spreads out your equipment cost over more hydrogen, lowering the final price per kg. If your system runs strictly on solar power, this might be around 2,000 to 3,000 hours. If it is grid-connected, it can operate nearly continuously."
             }
         ]
     },
@@ -40,7 +40,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Select the specific technology or model for your project. Choosing a predefined model automatically loads its exact technical specifications and costs, while 'Custom' allows you to manually enter your own numbers. Below this, indicate whether you already own the equipment, or part of it, in which case its purchase cost will be removed from the calculation."
             }
         ]
     },
@@ -53,7 +53,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "This is the total initial purchase cost (CAPEX). It must include both the electrolyzer and all necessary auxiliary components. The predefined models display their exact real-world price. If you are building a custom setup, contact your supplier for a complete quote and add up all the component costs to enter the final total sum here."
             }
         ]
     },
@@ -65,7 +65,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "This indicates the nominal electrical power rating of a single electrolyzer unit. It defines the scale of the module being installed. If you selected a predefined model, this exact value comes directly from the manufacturer's datasheet. For custom configurations, enter the rated power of the individual unit you plan to purchase."
             }
         ]
     },
@@ -77,7 +77,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Enter the amount of electricity required by the stack to produce one kilogram or one m³ of hydrogen. This metric reflects the core efficiency of the technology. Since electricity is typically the largest operational expense (OPEX) in green hydrogen production, finding the exact number on your manufacturer's technical specifications is crucial for a realistic cost estimate."
             }
         ]
     },
@@ -89,7 +89,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Producing hydrogen requires more than just the main stack. This field accounts for the extra power consumed by balance of plant (BoP) components like cooling systems, water pumps, and gas purification units. This value is added to your main energy consumption to calculate the total electricity bill, and can usually be found in the system's operational guidelines."
             }
         ]
     },
@@ -101,7 +101,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Specify how much water the system uses during operation. While water generally represents a very small fraction of the final levelized cost of hydrogen, it is physically indispensable for the reaction. The required volume depends heavily on the specific technology and water purity standards of your setup."
             }
         ]
     },
@@ -113,7 +113,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "This covers your annual operation and maintenance (O&M) expenses, including routine check-ups and minor part replacements. Note that major stack replacements are calculated separately. It is expressed as a percentage of the initial hardware purchase price. If you don't have a specific service contract quote, 2% to 5% is the standard industry estimate. You can also directly specify the exact amount in € if you have the annual value."
             }
         ]
     },
@@ -124,7 +124,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Enter the cost you pay for grid electricity. Since power is the largest ongoing expense in green hydrogen production, getting this number right is critical for an accurate final cost estimate."
             }
         ]
     },
@@ -135,7 +135,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Input your local industrial water supply rate, which you can specify in either €/m³ or €/L. Although highly purified water is strictly necessary for the electrolysis reaction, the raw water cost is generally negligible compared to your electricity and hardware expenses."
             }
         ]
     },
@@ -146,7 +146,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Specify the price you currently pay your supplier for delivered hydrogen, typically billed in €/kg. While this doesn't change your new on-site production costs, the dashboard relies on it as a baseline to calculate your exact financial savings and yearly return on investment."
             }
         ]
     },
@@ -157,7 +157,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Set the baseline market price for fossil-based grey hydrogen. The calculator compares this against your green hydrogen cost to determine the 'Green Premium', showing you the exact price gap between standard industrial supply and your clean production."
             }
         ]
     },
@@ -169,29 +169,28 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Enter the expected carbon tax rate, measured in € per ton of CO₂. Since producing grey hydrogen emits roughly 9.5 kg of CO₂ per kg of H₂, applying this tax simulates upcoming environmental regulations. It helps you forecast when green hydrogen will become financially more competitive than fossil fuels."
             }
         ]
-    },
-    {
+    },{
         "id": "step_lifetime",
         "targetId": "project_lifetime",
         "content": [
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Set the financial lifespan of your project, typically between 15 and 20 years. This timeframe is used to amortize your initial investments (CAPEX). A longer project lifetime spreads the equipment costs over a larger volume of hydrogen, reducing the final price per kg, though it may require factoring in more frequent stack replacements."
             }
         ]
     },
     {
-        "id": "step_interest",
-        "targetId": "interest_rate",
+        "id": "step_inflation",
+        "targetId": "inflation_rate",
         "content": [
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Enter the expected annual inflation rate for the duration of your project. This percentage accounts for the general increase in prices over time. It is crucial for projecting how your future operational expenses will grow year over year. A higher inflation rate will compound these ongoing costs, increasing the final levelized cost of your hydrogen."
             }
         ]
     },
@@ -202,7 +201,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Check this if your use case requires the hydrogen to be pressurized for storage, transport, or direct injection into an industrial process. Activating this unlocks the compression section to account for the additional hardware and energy costs, which can significantly impact your final LCOH."
             }
         ]
     },
@@ -214,7 +213,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Specify how much of your produced hydrogen actually goes through the compressor. You can input this with the slider or directly as a specific volume in kg. If your entire output needs to be pressurized to reach the end-user or storage tanks, simply leave this at maximum."
             }
         ]
     },
@@ -226,7 +225,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Define how long the compressor runs over a year, up to a maximum of 8,760 hours (or 365 days). This often matches your electrolyzer's operating time, but it can be lower if your compressor is oversized and only runs intermittently to fill buffer tanks. This metric directly impacts your hardware sizing and maintenance cycles."
             }
         ]
     },
@@ -238,7 +237,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Select the specific compression technology or model for your project. Choosing a predefined model automatically loads its exact technical specifications and costs, while 'Custom' allows you to manually enter your own data. Below this, indicate whether you already own the equipment, or part of it, in which case its purchase cost will be removed from the calculation."
             }
         ]
     },
@@ -251,7 +250,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "This is the total initial purchase cost (CAPEX) for the compression system. It must include both the main compressor unit and all necessary auxiliary components (like cooling or buffering systems). The predefined models display exact real-world prices. For a custom setup, contact your supplier for a complete quote and enter the total sum in €."
             }
         ]
     },
@@ -264,7 +263,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Mechanical - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Enter the total energy required by the mechanical compressor to pressurize one kilogram of hydrogen (in kWh/kg). Mechanical compression relies on electric motors or pneumatic drives. If your system is driven by compressed air, make sure to calculate the equivalent electrical energy used to produce that air and include it in this total. This value significantly impacts your overall operational costs and can be estimated using the manufacturer's datasheet."
             }
         ]
     },
@@ -277,7 +276,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Electrochemical - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Enter the electricity required by the electrochemical compressor to pressurize one kilogram or one m³ of hydrogen. Since this technology uses voltage to drive protons through a membrane rather than using moving parts, its energy profile is unique. This consumption is added to your overall electricity demand to calculate your operational costs. You can find this value in the manufacturer's technical specifications; be sure to look for the total system energy consumption, which includes both the stacks and any auxiliary power units."
             }
         ]
     },
@@ -290,7 +289,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Electrochemical compressors rely on internal cell stacks that degrade over time. If you already have spare cell stacks in your inventory, indicate the amount here. This will deduct their initial purchase price from your upfront CAPEX, though future stack replacements will still be factored into the project's long-term maintenance costs."
             }
         ]
     },
@@ -303,7 +302,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Enter the replacement cost for a single electrochemical cell stack, priced in €. Unlike mechanical systems, electrochemical compressors rely on membrane stacks that degrade over time and must be replaced periodically. This value is essential for accurately projecting your long-term operational and maintenance expenses. You can find this specific cost by requesting a detailed spare parts pricing list from your equipment manufacturer."
             }
         ]
     },
@@ -316,7 +315,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Specify how many individual cells make up one replaceable stack module. This metric defines the physical grouping of the hardware. It helps the calculator determine exactly how many stacks you need to initially purchase, and later replace, to meet your target compression capacity. This exact number is usually listed in the detailed technical datasheet of your chosen electrochemical compressor."
             }
         ]
     },
@@ -329,7 +328,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Indicate the maximum number of cells that a single compressor frame can physically hold. This structural limit dictates how much you can scale up the internal capacity before you are forced to purchase an entirely new secondary compressor unit, which would significantly increase your initial CAPEX. Check the expansion limits or physical layout specifications provided by your supplier to find this number."
             }
         ]
     },
@@ -342,7 +341,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Mechanical - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Define the maximum amount of hydrogen gas that one mechanical compressor unit can process, typically entered in kg per day. This determines how many separate compressor machines you need to handle your total production volume. If your output exceeds this limit, the system automatically adds more units to your required investment. Look for the 'nominal flow rate' or 'maximum capacity' on the machine's technical specification sheet."
             }
         ]
     },
@@ -355,7 +354,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Electrochemical - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Specify the hydrogen flowrate capacity for a single electrochemical cell, usually measured in kg per day. Since electrochemical systems scale up capacity by adding individual cells rather than whole machines, this exact performance metric determines how many cells are required to process your daily output, directly impacting your hardware costs. This value is typically listed under 'cell capacity' or 'unitary flow rate' in the manufacturer's technical documentation."
             }
         ]
     },
@@ -368,7 +367,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Mechanical - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Enter the annual operation and maintenance (O&M) costs for your mechanical compression system. Because mechanical compressors rely on physical moving parts like pistons, valves, and seals, they typically require regular servicing and part replacements to prevent leaks. You can enter this value either as a percentage of the initial purchase price (CAPEX) or as a fixed yearly cost in €. If you do not have a specific service contract quote from your supplier, the industry standard estimate is usually between 3% and 5%."
             }
         ]
     },
@@ -381,7 +380,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "Electrochemical - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vehicula velit, ut volutpat ex tempor eu. Ut ultrices quam quis ante commodo, quis laoreet massa gravida. Vestibulum et sollicitudin nisl. Donec et justo nibh. Duis efficitur auctor dictum. Duis non elit vel tellus fringilla eleifend et in lacus. Vestibulum elementum id ex pharetra maximus."
+                "value": "Enter the annual routine maintenance costs for your electrochemical compressor. Since this solid-state technology operates without moving parts, its day-to-day servicing needs are generally much lower than mechanical alternatives (please note that periodic stack replacements are handled and calculated separately). You can input this as a percentage of your initial CAPEX or as a fixed yearly amount in €. This number can be found in your supplier's service level agreement, or estimated around 1% to 2%."
             }
         ]
     }
