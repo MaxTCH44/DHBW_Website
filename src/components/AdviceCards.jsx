@@ -184,7 +184,7 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange }) {
                             </Group>
                         </Group>
 
-                        <ActionIcon variant="subtle" color="gray" onClick={onClose} ml="xs">
+                        <ActionIcon variant="subtle" color="gray" onClick={onClose}>
                             <IconX size={16} />
                         </ActionIcon>
                     </Group>

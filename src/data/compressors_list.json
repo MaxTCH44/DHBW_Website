@@ -41,24 +41,5 @@
             "maintenance_percent_capex" : 0,
             "stack_lifetime_hours" : 0
         }
-    ],
-    "demo_list":
-    [
-        {
-            "id" : 1,
-            "name" : "Mechanical Compressor (Small Scale)",
-            "type" : "Mechanical",
-            "price" : 8000,
-            "energy_consumption_kwh_per_kg" : 3,
-            "maintenance_percent_capex" : 4
-        },
-        {
-            "id" : 2,
-            "name" : "Electrochemical Compressor (Small Scale)",
-            "type" : "Electrochemical",
-            "price" : 12000,
-            "energy_consumption_kwh_per_kg" : 4,
-            "maintenance_percent_capex" : 2
-        }
     ]
 }

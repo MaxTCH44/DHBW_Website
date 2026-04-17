@@ -42,7 +42,7 @@ export default function SliderInput({ label, value, units, onValueChange, min, m
       <Slider
         max={max}
         min={min}
-        step={typeof max === 'int' || step !== 1 ? step : (max/10).toFixed(3)}
+        step={Number.isInteger(max) || step !== 1 ? step : Number((max/10).toFixed(3))}
         label={null}
         value={typeof value === 'string' ? 0 : value}
         onChange={onValueChange}

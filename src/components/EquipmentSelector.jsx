@@ -10,7 +10,12 @@ const EQUIPMENT_MAPS = {
         type: { label: "Type", unit: "" },
         price: { label: "Price", unit: " €" },
         power: { label: "System power", unit: " kW" },
-        energy_consumption_kwh_per_kg: { label: "Energy consumption", unit: " kWh/kg" },
+        stack_price : {label : "Stack price", unit : " €"},
+        stack_power : {label : "Stack power", unit : " kW"},
+        max_stacks : {label : "Max stacks per electrolyzer", unit : ""},
+        energy_consumption_kwh_per_kg: { label : "Energy consumption", unit: " kWh/kg" },
+        total_auxiliary_consumption : {label : "Total auxiliary consumption", unit : " kW"},
+        water_consumption_l_per_h : {label : "Water consumption", unit : " L/h"},
         maintenance_percent_capex: { label: "Maintenance", unit: " %/year" },
         stack_lifetime_hours: { label: "Stack lifetime", unit: " h" }
     },
@@ -25,7 +30,8 @@ const EQUIPMENT_MAPS = {
             unit: " kg/day" 
         },
         energy_consumption_kwh_per_kg: { label: "Energy consumption", unit: " kWh/kg" },
-        maintenance_percent_capex: { label: "Maintenance", unit: " %/year" }
+        maintenance_percent_capex: { label: "Maintenance", unit: " %/year" },
+        stack_lifetime_hours: { label: "Stack lifetime", unit: " h" }
     }
 };
 

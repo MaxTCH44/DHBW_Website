@@ -53,7 +53,7 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "This is the total initial purchase cost (CAPEX). It must include both the electrolyzer and all necessary auxiliary components. The predefined models display their exact real-world price. If you are building a custom setup, contact your supplier for a complete quote and add up all the component costs to enter the final total sum here."
+                "value": "This is the total initial purchase cost (CAPEX) for the electrolyzer system. Important: This base price already includes your first operational cell stack, along with all necessary balance-of-plant components (like power electronics and water treatment). Future stack replacements are calculated separately. For custom setups, enter your complete supplier quote in €."
             }
         ]
     },
@@ -65,7 +65,43 @@
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "This indicates the nominal electrical power rating of a single electrolyzer unit. It defines the scale of the module being installed. If you selected a predefined model, this exact value comes directly from the manufacturer's datasheet. For custom configurations, enter the rated power of the individual unit you plan to purchase."
+                "value": "This indicates the nominal electrical power rating of a single cell stack (in kW). It defines the scale of the individual module. The total power of your installation will be this value multiplied by the number of active stacks. You can find this rating on the manufacturer's technical datasheet."
+            }
+        ]
+    },
+    {
+        "id": "step_elec_owned_stacks",
+        "targetId": "electrolyzer_owned_stacks",
+        "openSection": "electrolyzer",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "If you already have spare cell stacks in your inventory for this electrolyzer, indicate the amount here. This will deduct their initial purchase price from your upfront CAPEX, though future stack replacements will still be factored into the project's long-term maintenance timeline."
+            }
+        ]
+    },
+    {
+        "id": "step_elec_stack_price",
+        "targetId": "electrolyzer_stack_price",
+        "openSection": "electrolyzer",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Enter the replacement cost for a single electrolyzer cell stack, priced in €. Since stacks degrade over time and must be replaced periodically, this value is essential for accurately projecting your long-term operational and maintenance expenses. You can find this specific cost by requesting a spare parts pricing list from your equipment manufacturer."
+            }
+        ]
+    },
+    {
+        "id": "step_max_stacks_elec",
+        "targetId": "max_stack_per_electrolyzer",
+        "openSection": "electrolyzer",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Indicate the maximum number of cell stacks that a single electrolyzer frame or cabinet can physically hold. This structural limit dictates how much you can scale up the internal capacity before you are forced to purchase an entirely new secondary electrolyzer unit, which would significantly increase your initial CAPEX."
             }
         ]
     },
@@ -114,6 +150,18 @@
                 "type": "paragraph",
                 "size": "13",
                 "value": "This covers your annual operation and maintenance (O&M) expenses, including routine check-ups and minor part replacements. Note that major stack replacements are calculated separately. It is expressed as a percentage of the initial hardware purchase price. If you don't have a specific service contract quote, 2% to 5% is the standard industry estimate. You can also directly specify the exact amount in € if you have the annual value."
+            }
+        ]
+    },
+    {
+        "id": "step_elec_stack_lifetime",
+        "targetId": "electrolyzer_stack_lifetime",
+        "openSection": "electrolyzer",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Specify the expected operational lifespan of the electrolyzer's cell stack, measured in working hours. Once the system reaches this threshold, the calculator automatically factors in the cost of a full stack replacement. This is a critical metric for accurately forecasting your long-term maintenance expenses. You can typically find this rated lifespan on the manufacturer's technical datasheet."
             }
         ]
     },
@@ -242,15 +290,30 @@
         ]
     },
     {
-        "id": "step_comp_price",
+        "id": "step_mech_comp_price",
         "targetId": "compressor_price",
         "isPriceInput": true,
         "openSection": "compressor",
+        "showIfCompressor": "Mechanical",
         "content": [
             {
                 "type": "paragraph",
                 "size": "13",
-                "value": "This is the total initial purchase cost (CAPEX) for the compression system. It must include both the main compressor unit and all necessary auxiliary components (like cooling or buffering systems). The predefined models display exact real-world prices. For a custom setup, contact your supplier for a complete quote and enter the total sum in €."
+                "value": "This is the total initial purchase cost (CAPEX) for your mechanical compression system. It must include both the main compressor unit (motor, pistons, etc.) and all necessary auxiliary components like cooling loops or buffering tanks. Predefined models display real-world prices. For a custom setup, contact your supplier for a complete quote and enter the final sum in €."
+            }
+        ]
+    },
+    {
+        "id": "step_elec_comp_price",
+        "targetId": "compressor_price",
+        "isPriceInput": true,
+        "openSection": "compressor",
+        "showIfCompressor": "Electrochemical",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "This is the total initial purchase cost (CAPEX) for the electrochemical compression system. Important: This base price already includes your first operational cell stack, along with all necessary balance-of-plant components (like power electronics). Future stack replacements are calculated separately. For custom setups, enter your complete supplier quote in €."
             }
         ]
     },
@@ -381,6 +444,19 @@
                 "type": "paragraph",
                 "size": "13",
                 "value": "Enter the annual routine maintenance costs for your electrochemical compressor. Since this solid-state technology operates without moving parts, its day-to-day servicing needs are generally much lower than mechanical alternatives (please note that periodic stack replacements are handled and calculated separately). You can input this as a percentage of your initial CAPEX or as a fixed yearly amount in €. This number can be found in your supplier's service level agreement, or estimated around 1% to 2%."
+            }
+        ]
+    },
+    {
+        "id": "step_comp_stack_lifetime",
+        "targetId": "compressor_stack_lifetime",
+        "openSection": "compressor",
+        "showIfCompressor": "Electrochemical",
+        "content": [
+            {
+                "type": "paragraph",
+                "size": "13",
+                "value": "Specify the operational lifespan of the electrochemical compressor's cell stack in working hours. Similar to an electrolyzer, the internal membranes degrade over time and require periodic replacement. The calculator uses this figure to automatically schedule and price future stack replacements over the project's entire lifetime. Check your supplier's technical specifications or warranty documents to find this exact duration."
             }
         ]
     }
