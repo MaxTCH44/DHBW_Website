@@ -324,8 +324,7 @@ export default function Calculator() {
                                 selectedCompressor.cells_per_stack > 0 && 
                                 (selectedCompressor.max_cells % selectedCompressor.cells_per_stack !== 0);
 
-        // Fallback if "power" does not exist, use "stack_power"
-        const installedElectrolyzerPower = (electrolyzerQuantity * (selectedElectrolyzer.power || elecStackPower)).toFixed(2);
+        const installedElectrolyzerPower = (totalElecStacksNeeded * elecStackPower).toFixed(2);
         const utilizationRate = installedElectrolyzerPower > 0 
             ? (targetPowerKW / installedElectrolyzerPower) * 100 
             : 0;
