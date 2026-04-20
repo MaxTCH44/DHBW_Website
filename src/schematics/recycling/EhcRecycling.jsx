@@ -1,11 +1,11 @@
 import { Box, HoverCard, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
-import './PemElectrolyzer.css';
+import '../electrolyzers/PemElectrolyzer.css';
 
 
 
-export default function EhcCompressor() {
+export default function EhcRecycling() {
     const isMobile = useMediaQuery('(max-width: 768px)');
 
     const handleSvgClick = (e) => {
@@ -53,7 +53,7 @@ export default function EhcCompressor() {
                         </g>
                     </HoverCard.Target>
                     <HoverCard.Dropdown bg="#EDD2B8" c="black" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>Proton Exchange Membrane</b><br/>Acts as a gas-tight barrier. It allows only Protons (H⁺) to cross from the low-pressure side to the high-pressure side, preventing the compressed gas from flowing back.</Text>
+                        <Text size="sm"><b>Active Molecular Filter (PEM)</b><br/>In recycling, the membrane acts as a perfect filter. It physically blocks all non-hydrogen gases, allowing ONLY protons (H⁺) to cross. This guarantees 99,999% pure hydrogen on the other side.</Text>
                     </HoverCard.Dropdown>
                 </HoverCard>
 
@@ -74,7 +74,7 @@ export default function EhcCompressor() {
                             </g>
                         </HoverCard.Target>
                         <HoverCard.Dropdown bg="#6E8BFD" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>Cathode (High Pressure)</b><br/>Protons and electrons recombine here to form Hydrogen gas (H₂). Because the membrane is gas-tight, the newly formed hydrogen is trapped, building up immense pressure electrochemically.</Text>
+                            <Text size="sm"><b>Cathode (Electrochemical Compression)</b><br/>The extracted protons recombine with electrons to form pure Hydrogen (H₂). Because it's a closed volume and more protons keep arriving, the gas is compressed electrochemically with zero moving parts!</Text>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </g>
@@ -96,7 +96,7 @@ export default function EhcCompressor() {
                             </g>
                         </HoverCard.Target>
                         <HoverCard.Dropdown bg="#FD6E6E" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>Anode (Low Pressure)</b><br/>Hydrogen gas (H₂) enters here. A catalyst splits the hydrogen molecules into Protons (H⁺) and electrons (e⁻). The voltage drives them apart.</Text>
+                            <Text size="sm"><b>Anode (Gas Mixture Inlet)</b><br/>Exhaust gas mixtures enter here. Only the Hydrogen is ionized into protons (H⁺) and extracted. The remaining impurities (Nitrogen, trace gases) are swept out through the exhaust vent.</Text>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </g>
@@ -105,9 +105,13 @@ export default function EhcCompressor() {
                     <path d="M271.703 44.0767V34.4744H273.614V44.0767H271.703ZM267.861 40.2273V38.3168H277.463V40.2273H267.861Z" fill="black"/>
                     <path d="M135.855 36.9332V38.7727H129.406V36.9332H135.855Z" fill="black"/>
                     
-                    <path d="M273 290.5L336 214.723V366.277L273 290.5Z" fill="#B5E2ED"/>
-                    <rect x="334" y="246.235" width="60" height="88.5294" fill="#B5E2ED"/>
-                    <text x="340" y="295" fontSize="12" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Low Pressure H₂</text>
+                    <path d="M273 248.5L336 211.694V285.306L273 248.5Z" fill="#D9D9D9"/>
+                    <rect x="334" y="227" width="60" height="43" fill="#D9D9D9"/>
+                    <text x="343" y="254" fontSize="18" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Mixed gas</text>
+                    
+                    <path d="M394 354.5L331 391.306V317.694L394 354.5Z" fill="#D9D9D9"/>
+                    <rect x="333" y="376" width="60" height="43" transform="rotate(-180 333 376)" fill="#D9D9D9"/>
+                    <text x="325" y="361" fontSize="18" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Exhaust</text>
                     
                     <path d="M12 290.5L75 253.694V327.306L12 290.5Z" fill="#F5A4AF"/>
                     <rect x="73" y="279" width="60" height="23" fill="#F5A4AF"/>

@@ -1,10 +1,11 @@
 import { Container, Title, Text, Box, Paper } from "@mantine/core";
-import recyclingProcessData from "../data/recycling_process.json";
+
+import recyclingProcessData from "../data/learn/recycling_process.json";
 
 import ContentDetails from "../components/ContentDetails";
 
-import EhcRecycling from "../schematics/EhcRecycling";
-import PsaPurifier from "../schematics/PsaPurifier";
+import EhcRecycling from "../schematics/recycling/EhcRecycling";
+import PsaPurifier from "../schematics/recycling/PsaPurifier";
 
 
 

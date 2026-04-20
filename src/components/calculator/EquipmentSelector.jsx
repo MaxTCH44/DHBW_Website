@@ -1,7 +1,7 @@
 import { Select, Checkbox, Stack, Tooltip, Box, Text } from '@mantine/core';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 
-import SliderInput from './SliderInput';
+import SliderInput from '../SliderInput';
 
 
 
@@ -27,7 +27,7 @@ const EQUIPMENT_MAPS = {
         max_cells: { label: "Maximum number of cells", unit: "" },
         cells_per_stack: { label: "Number of cells per stack", unit: "" },
         unitary_flowrate_kg_per_day: { 
-            label: (item) => item.type === "mechanical" ? "Flowrate" : "Flowrate per cell", 
+            label: (item) => item.type === "Mechanical" ? "Flowrate" : "Flowrate per cell", 
             unit: " kg/day" 
         },
         energy_consumption_kwh_per_kg: { label: "Energy consumption", unit: " kWh/kg" },
@@ -42,7 +42,7 @@ export default function EquipmentSelector({ label, itemsList, selectedItem, onIt
         if (max !== null && max !== undefined && quantityOwned > max) {
             onOwnedChange(max);
         }
-    }, [max, quantityOwned]);
+    }, [max, quantityOwned, onOwnedChange]);
 
     const selectData = itemsList.list.map((item, index) => ({
         value: index.toString(),
@@ -52,7 +52,7 @@ export default function EquipmentSelector({ label, itemsList, selectedItem, onIt
 
     const selectedIndex = itemsList.list.findIndex(item => item.id === selectedItem.id).toString();
 
-    function renderTooltipContent(item) {
+    const renderTooltipContent = useCallback((item) => {
         const map = EQUIPMENT_MAPS[itemsList.type];
         if (!map) return null;
 
@@ -65,11 +65,16 @@ export default function EquipmentSelector({ label, itemsList, selectedItem, onIt
                             ? config.label(item) 
                             : config.label;
 
+                        // Application du formatage européen (points pour milliers, virgules pour décimales)
+                        const valueToDisplay = typeof item[key] === 'number'
+                            ? item[key].toLocaleString('de-DE')
+                            : item[key];
+
                         return (
                             <Box key={key} display="flex" style={{ justifyContent: 'space-between' }}>
                                 <Text size="xs" fw={700} c="gray.4">{labelToDisplay}:</Text>
                                 <Text size="xs" fw={500} c="white">
-                                    {item[key]} {config.unit}
+                                    {valueToDisplay} {config.unit}
                                 </Text>
                             </Box>
                         );
@@ -78,26 +83,29 @@ export default function EquipmentSelector({ label, itemsList, selectedItem, onIt
                 })}
             </Box>
         );
-    }
+    }, [itemsList.type]);
 
-    function renderOption ({ option }) {
-        if (option.id === 0) return (<div style={{ width: '100%', padding: '4px 0', fontWeight: 'bold', color: 'yellowgreen' }}>
-                {option.label}
-            </div>);
-        return(
-        <Tooltip
-            label={renderTooltipContent(option)}
-            position="right"
-            withArrow
-            multiline
-            openDelay={300} 
-            style={{ pointerEvents: 'none' }}
-        >
-            <div style={{ width: '100%', padding: '4px 0' }}>
+    const renderOption = useCallback(({ option }) => {
+        if (option.id === 0) return (
+            <div style={{ width: '100%', padding: '4px 0', fontWeight: 'bold', color: 'yellowgreen' }}>
                 {option.label}
             </div>
-        </Tooltip>)
-    };
+        );
+        return(
+            <Tooltip
+                label={renderTooltipContent(option)}
+                position="right"
+                withArrow
+                multiline
+                openDelay={300} 
+                style={{ pointerEvents: 'none' }}
+            >
+                <div style={{ width: '100%', padding: '4px 0' }}>
+                    {option.label}
+                </div>
+            </Tooltip>
+        );
+    }, [renderTooltipContent]);
 
     return (
         <Stack gap="sm" mb="md" id={id}>

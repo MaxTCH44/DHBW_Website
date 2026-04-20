@@ -83,7 +83,7 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange }) {
                     retries++;
                     setTimeout(findAndPositionTarget, 50);
                 } else {
-                    console.warn(`L'élément ${targetId} est introuvable ou invisible pour l'aide.`);
+                    console.warn(`${targetId} can not be found`);
                 }
             };
 

@@ -1,7 +1,7 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 
-import electrolyzersData from "./data/types_of_electrolyzers.json";
-import compressorsData from "./data/types_of_compressors.json";
+import electrolyzersData from "./data/learn/types_of_electrolyzers.json";
+import compressorsData from "./data/learn/types_of_compressors.json";
 
 import ProductionChain from './pages/ProductionChain';
 import Recycling from './pages/Recycling';
@@ -20,7 +20,6 @@ import ScrollToTop from './components/ScrollToTop';
 
 import './App.css';
 import SetupBuilder from './pages/SetupBuilder';
-
 
 
 

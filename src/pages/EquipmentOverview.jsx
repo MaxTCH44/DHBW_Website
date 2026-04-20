@@ -4,12 +4,12 @@ import { Container, Title, Text, Group, Button } from "@mantine/core";
 import ContentDetails from "../components/ContentDetails";
 import ProsConsCards from "../components/ProsConsCards";
 
-import PemElectrolyzer from "../schematics/PemElectrolyzer";
-import AlkalineElectrolyzer from "../schematics/AlkalineElectrolyzer";
-import AemElectrolyzer from "../schematics/AemElectrolyzer";
-import SoecElectrolyzer from "../schematics/SoecElectrolyzer";
-import MechanicalCompressor from "../schematics/MechanicalCompressor";
-import EhcCompressor from "../schematics/EhcCompressor";
+import PemElectrolyzer from "../schematics/electrolyzers/PemElectrolyzer";
+import AlkalineElectrolyzer from "../schematics/electrolyzers/AlkalineElectrolyzer";
+import AemElectrolyzer from "../schematics/electrolyzers/AemElectrolyzer";
+import SoecElectrolyzer from "../schematics/electrolyzers/SoecElectrolyzer";
+import MechanicalCompressor from "../schematics/compressors/MechanicalCompressor";
+import EhcCompressor from "../schematics/compressors/EhcCompressor";
 
 
 

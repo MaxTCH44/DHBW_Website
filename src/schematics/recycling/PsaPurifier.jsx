@@ -1,6 +1,9 @@
 import { Box, HoverCard, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+
 import './PsaPurifier.css';
+
+
 
 export default function PsaPurifier() {
     const isMobile = useMediaQuery('(max-width: 768px)');
@@ -135,7 +138,7 @@ export default function PsaPurifier() {
                         </g>
                     </HoverCard.Target>
                     <HoverCard.Dropdown bg="#4DE32F" c="dark.9" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>Pure Hydrogen Output</b><br/>The filtered gas is restored with guaranteed 99.999% purity. It is now ready for direct reinjection into the production line, saving massive amounts of energy and resources.</Text>
+                        <Text size="sm"><b>Pure Hydrogen Output</b><br/>The filtered gas is restored with guaranteed 99,999% purity. It is now ready for direct reinjection into the production line, saving massive amounts of energy and resources.</Text>
                     </HoverCard.Dropdown>
                 </HoverCard>
 

@@ -4,14 +4,14 @@ import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import { IconWindmill, IconDroplet, IconCylinder, IconCar, IconBuildingWarehouse, IconFlame } from '@tabler/icons-react';
 
-import production_data from "../data/hydrogen_production_chain.json";
+import production_data from "../data/learn/hydrogen_production_chain.json";
 
 import ContentDetails from "../components/ContentDetails";
 import LinkButton from "../components/LinkButton";
 
-import InteractiveFlow from "../schematics/InteractiveFlow";
-import PemFuelCell from "../schematics/PemFuelCell";
-import ChpFuelCell from "../schematics/ChpFuelCell";
+import InteractiveFlow from "../schematics/production_chain/InteractiveFlow";
+import PemFuelCell from "../schematics/production_chain/PemFuelCell";
+import ChpFuelCell from "../schematics/production_chain/ChpFuelCell";
 
 
 

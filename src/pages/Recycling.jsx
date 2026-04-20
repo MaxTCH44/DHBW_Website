@@ -14,6 +14,16 @@ import ValueInput from '../components/ValueInput';
 const gasOptions = gasData.map(gas => gas.value);
 
 
+const UNIT_M3_YEAR = { label: "m³/year", factor: 1 };
+const UNITS_M3_YEAR_ARRAY = [UNIT_M3_YEAR];
+
+const UNIT_EUR_KG = { label: "€/kg", factor: 1 };
+const UNITS_EUR_KG_ARRAY = [UNIT_EUR_KG];
+
+const UNIT_EUR = { label: "€", factor: 1 };
+const UNITS_EUR_ARRAY = [UNIT_EUR];
+
+
 export default function Recycling() {
     const isMobile = useMediaQuery('(max-width: 768px)');
 
@@ -25,13 +35,13 @@ export default function Recycling() {
     const [systemPrice, setSystemPrice] = useState(25000);
 
     const { 
-    complexity, 
-    complexityColor, 
-    recoveryRate, 
-    advice, 
-    annualRecoveredH2Kg, 
-    annualSavings, 
-    roiYears 
+        complexity, 
+        complexityColor, 
+        recoveryRate, 
+        advice, 
+        annualRecoveredH2Kg, 
+        annualSavings, 
+        roiYears 
     } = useMemo(() => {
         const info = gasData.find(gas => gas.value === gasType);
         const comp = info ? info.complexity : "Select a gas type";
@@ -40,10 +50,11 @@ export default function Recycling() {
         const adv = info ? info.advice : "Please provide details about your mixed gas to get a preliminary assessment.";
 
         const annualH2Volume = annualMixedGas * (h2Concentration / 100);
-        const annualH2Kg = annualH2Volume / 11.1;
+        const annualH2Kg = annualH2Volume / 11.1; 
         const recoveredKg = annualH2Kg * rate;
         const savings = recoveredKg * h2Price;
-        const roi = savings > 0 ? systemPrice / savings : 0;
+        
+        const roi = savings > 0 ? systemPrice / savings : null;
 
         return {
             complexity: comp,
@@ -108,8 +119,9 @@ export default function Recycling() {
                                         <IconRecycle size={32} color="var(--mantine-color-blue-6)" />
                                         <div>
                                             <Text size="sm" c="dimmed" fw={500}>Recovered Hydrogen</Text>
+                                            {/* OPTIMISATION 1 : de-DE */}
                                             <Text size="xl" fw={900} c="blue.7">
-                                                {annualRecoveredH2Kg.toLocaleString('fr-FR', { maximumFractionDigits: 0 })} kg / year
+                                                {annualRecoveredH2Kg.toLocaleString('de-DE', { maximumFractionDigits: 0 })} kg / year
                                             </Text>
                                         </div>
                                     </Group>
@@ -120,7 +132,7 @@ export default function Recycling() {
                                         <div>
                                             <Text size="sm" c="dimmed" fw={500}>Estimated Gross Savings</Text>
                                             <Text size="xl" fw={900} c="teal.6">
-                                                {annualSavings.toLocaleString('fr-FR', { maximumFractionDigits: 0 })} € / year
+                                                {annualSavings.toLocaleString('de-DE', { maximumFractionDigits: 0 })} € / year
                                             </Text>
                                         </div>
                                     </Group>
@@ -131,7 +143,9 @@ export default function Recycling() {
                                         <div>
                                             <Text size="sm" c="dimmed" fw={500}>Return on Investment (ROI)</Text>
                                             <Text size="xl" fw={900} c="myColor.9">
-                                                {roiYears.toFixed(1)} years
+                                                {roiYears !== null 
+                                                    ? `${roiYears.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} years`
+                                                    : "N/A"}
                                             </Text>
                                         </div>
                                     </Group>
@@ -202,8 +216,8 @@ function RecyclingInputs ({
                 label="Annual Mixed Gas Produced"
                 value={annualMixedGas}
                 onValueChange={setAnnualMixedGas}
-                units={[{ label: "m³/year", factor: 1 }]}
-                currentUnit={{ label: "m³/year", factor: 1 }}
+                units={UNITS_M3_YEAR_ARRAY}
+                currentUnit={UNIT_M3_YEAR}
             />
             <SliderInput
                 label="H₂ Concentration in Exhaust"
@@ -219,15 +233,15 @@ function RecyclingInputs ({
                 label="Current Green H₂ Purchase Price"
                 value={h2Price}
                 onValueChange={setH2Price}
-                units={[{ label: "€/kg", factor: 1 }]}
-                currentUnit={{ label: "€/kg", factor: 1 }}
+                units={UNITS_EUR_KG_ARRAY}
+                currentUnit={UNIT_EUR_KG}
             />
             <ValueInput
                 label="Estimated Recycling System Price (CAPEX)"
                 value={systemPrice}
                 onValueChange={setSystemPrice}
-                units={[{ label: "€", factor: 1 }]}
-                currentUnit={{ label: "€", factor: 1 }}
+                units={UNITS_EUR_ARRAY}
+                currentUnit={UNIT_EUR}
             />
         </Card>
     )

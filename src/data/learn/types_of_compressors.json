@@ -39,7 +39,7 @@
             ],
             "advantages": [
                 "Highly mature technology with decades of industrial operational history",
-                "Capable of reaching extreme pressures (up to 1,000+ bar)",
+                "Capable of reaching extreme pressures (up to 1.000+ bar)",
                 "Diaphragm variants guarantee zero oil contamination, crucial for fuel cells",
                 "Highly scalable from small laboratory boosters to massive industrial refueling stations"
             ],
@@ -82,12 +82,12 @@
                 },
                 {
                     "type": "paragraph",
-                    "value": "Because the membrane is strictly permeable to protons, impurities (like CO or water) are blocked at the anode, ensuring the output is ultra-pure (99.999% H₂). Furthermore, the absence of moving parts ensures silent, vibration-free operation and entirely eliminates the risk of oil contamination."
+                    "value": "Because the membrane is strictly permeable to protons, impurities (like CO or water) are blocked at the anode, ensuring the output is ultra-pure (99,999% H₂). Furthermore, the absence of moving parts ensures silent, vibration-free operation and entirely eliminates the risk of oil contamination."
                 }
             ],
             "advantages": [
                 "Zero moving parts ensures completely silent and vibration-free operation",
-                "Dual function: inherently purifies the hydrogen up to 99.999% as it compresses",
+                "Dual function: inherently purifies the hydrogen up to 99,999% as it compresses",
                 "100% oil-free design ensures no mechanical contamination of the gas",
                 "High reliability and low maintenance due to the absence of mechanical wear and tear"
             ],

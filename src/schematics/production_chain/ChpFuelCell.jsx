@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Box, Stack, Text, HoverCard, Group, Badge } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+
 import PemFuelCell from './PemFuelCell'; 
 
 import './ChpFuelCell.css';
+
+
 
 export default function ChpFuelCell() {
     const isMobile = useMediaQuery('(max-width: 768px)');
