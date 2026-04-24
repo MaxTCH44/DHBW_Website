@@ -3,6 +3,8 @@ import { useDisclosure } from '@mantine/hooks';
 import { Link, useLocation } from 'react-router-dom';
 import { IconChevronDown, IconFlask } from '@tabler/icons-react';
 
+import logoImage from '../assets/logo2.svg';
+
 
 
 const links = [
@@ -158,7 +160,7 @@ export default function Header() {
                     >
                         <Image
                             title="GreenLabs H₂ Logo"
-                            src="img/logo2.svg"
+                            src={logoImage}
                             w={{base:"60px", md:"80px"}}
                         />
                         <Title order={3}>
