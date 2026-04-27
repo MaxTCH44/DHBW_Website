@@ -5,8 +5,8 @@ import { IconChevronDown, IconFlask } from '@tabler/icons-react';
 
 import logoImage from '../assets/logo2.svg';
 
-
-
+// --- NAVIGATION CONFIGURATION ---
+// Centralized routing map. Adding a new page to the app only requires updating this array.
 const links = [
     { link: '/lab', label: <><IconFlask /> <Text fw="900" size="lg" ml="10" >Our Lab</Text></> },
     { link: '/calculator', label: 'H₂ Calculator' },
@@ -23,11 +23,18 @@ const links = [
     },
 ];
 
+/**
+ * Global navigation header.
+ * Automatically adapts between a desktop horizontal menu and a mobile Drawer (hamburger menu).
+ * It listens to the current router location to dynamically highlight the active page.
+ */
 export default function Header() {
     const [opened, { toggle, close }] = useDisclosure(false);
     const location = useLocation();
 
+    // --- DESKTOP MENU RENDERER ---
     const desktopItems = links.map((link) => {
+        // Handles nested dropdown menus (e.g., the "Learn" section)
         if (link.links) {
             const isGroupActive = link.links.some(sub => location.pathname === sub.link);
             
@@ -67,6 +74,7 @@ export default function Header() {
             );
         }
 
+        // Handles standard single links
         const isActive = location.pathname === link.link;
         return (
             <Button
@@ -86,7 +94,9 @@ export default function Header() {
         );
     });
 
+    // --- MOBILE MENU RENDERER ---
     const mobileItems = links.map((link) => {
+        // Flattens the nested menus into categorized stacks for the mobile drawer
         if (link.links) {
             return (
                 <Stack key={link.label} gap={5} mt="sm">
@@ -143,11 +153,12 @@ export default function Header() {
             bg="var(--mantine-color-gray-1)" 
             style={{ 
                 borderBottom: '1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4))',
+                // Sticky positioning ensures the header is always available while scrolling long calculator pages
                 position: 'fixed', 
                 top: 0,            
-                left: 0,           
+                left: 0,            
                 width: '100%',     
-                zIndex: 100       
+                zIndex: 100        
             }}
         >
             <Container size="md">
@@ -167,9 +178,13 @@ export default function Header() {
                             GreenLabs H₂
                         </Title>
                     </Group>
+                    
+                    {/* Desktop Navigation */}
                     <Group gap={5} visibleFrom="sm">
                         {desktopItems}
                     </Group>
+                    
+                    {/* Mobile Hamburger Icon */}
                     <Burger
                         opened={opened}
                         onClick={toggle}
@@ -179,13 +194,15 @@ export default function Header() {
                     />
                 </Flex>
             </Container>
+            
+            {/* Mobile Sidebar (Drawer) */}
             <Drawer
                 opened={opened}
                 onClose={close}
                 size="xs"
                 title="Menu"
                 hiddenFrom="sm"
-                zIndex={1000000}
+                zIndex={1000000} // Ensures the drawer overlays any floating tooltips or advice cards
             >
                 <Stack gap="sm">
                     {mobileItems}

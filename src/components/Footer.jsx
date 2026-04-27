@@ -1,8 +1,10 @@
 import { Anchor, Container, Group, Title, Box, Flex } from '@mantine/core';
 import { Link } from 'react-router-dom'; 
 
-
-
+/**
+ * Global application footer.
+ * Provides consistent secondary navigation across all pages (contact, literature references, tools).
+ */
 export default function Footer() {
   return (
     <Box 

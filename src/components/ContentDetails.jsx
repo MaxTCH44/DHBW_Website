@@ -1,10 +1,14 @@
 import { Text, Image, Title, Group, ThemeIcon, Anchor, Box, Badge, Stack } from '@mantine/core';
 import { IconExternalLink } from '@tabler/icons-react';
 
-
-
+/**
+ * Sub-component to format and render academic or technical references.
+ * It handles two layouts: a simple link layout (if only a label is provided) 
+ * or a full academic citation layout (authors, journal, year, license).
+ */
 function ReferenceLink({ label, authors, year, title, journal, url, license }) {
-  if (label && !authors) {
+    // Simple layout: generally used for standard web links or basic documentation
+    if (label && !authors) {
         return (
             <Group gap="sm" mb="sm" wrap="nowrap" align="flex-start">
                 <ThemeIcon color="gray" size={24} variant="transparent" mt={2}>
@@ -16,6 +20,8 @@ function ReferenceLink({ label, authors, year, title, journal, url, license }) {
             </Group>
         );
     }
+    
+    // Academic layout: formats standard paper citations
     return (
         <Group gap="sm" mb="md" wrap="nowrap" align="flex-start">
             <ThemeIcon color="gray" size={24} variant="transparent" mt={2}>
@@ -43,11 +49,20 @@ function ReferenceLink({ label, authors, year, title, journal, url, license }) {
     );
 };
 
+/**
+ * A dynamic rendering engine that maps structured JSON data into actual Mantine UI components.
+ * This pattern allows non-developers to edit the platform's knowledge base (like hydrogen courses)
+ * purely via JSON files, without needing to touch the React source code.
+ * * @param {Object} props
+ * @param {Object} props.item - The structured JSON object containing a `content` array of layout blocks.
+ * @param {Object} [props.componentList=null] - A dictionary mapping string names to actual React components, allowing the JSON to inject complex interactive schemas (like SVG electrolyzers).
+ */
 export default function ContentDetails({ item, componentList = null }) {
   return (
     <div>
       {item.content.map((block, index) => {
         
+        // --- TEXT BLOCKS ---
         if (block.type === 'subtitle') {
           return (
             <Title 
@@ -80,6 +95,7 @@ export default function ContentDetails({ item, componentList = null }) {
           );
         }
 
+        // --- MEDIA BLOCKS ---
         if (block.type === 'image') {
           return (
             <Stack 
@@ -107,13 +123,16 @@ export default function ContentDetails({ item, componentList = null }) {
           );
         }
 
+        // --- EXTERNAL LINKS ---
         if (block.type === 'reference') {
            return <ReferenceLink key={index} {...block.props} />;
         }
 
+        // --- DYNAMIC REACT COMPONENTS ---
+        // Crucial feature: Allows injecting complex interactive widgets directly from the JSON.
+        // It looks up the requested component name within the provided `componentList` registry.
         if (block.type === 'component' && componentList) {
           const ComponentToRender = componentList[block.componentName];
-
           if (ComponentToRender) {
             return (
                 <ComponentToRender key={index} {...block.props}>{block.value}</ComponentToRender>
@@ -121,6 +140,7 @@ export default function ContentDetails({ item, componentList = null }) {
           }
         }
         
+        // Failsafe for unknown block types to prevent rendering crashes
         return null;
       })}
     </div>

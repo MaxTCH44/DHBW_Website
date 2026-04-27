@@ -12,43 +12,46 @@ import ValueInput from '../components/ValueInput.jsx';
 import ResultDisplay from '../components/calculator/ResultDisplay.jsx';
 import LabelWithTooltip from '../components/LabelWithTooltip.jsx';
 import AdviceCards from '../components/AdviceCards.jsx';
-
 import { useCalculatorLogic } from '../components/calculator/useCalculatorLogic';
-import { ELEC_PRICE_UNITS, POWER_UNITS, WATER_VOLUME_PRICE_UNITS, TIME_PER_YEAR_UNITS, VOLUME_PER_TIME_UNITS, VOLUME_UNITS, H2_VOLUME_PRICE_UNITS, H2_VOLUME_POWER_UNITS, MAINTENANCE_UNITS } from '../components/calculator/calculatorConstants.js';
+import { ELEC_PRICE_UNITS, POWER_UNITS, WATER_VOLUME_PRICE_UNITS, TIME_PER_YEAR_UNITS, VOLUME_PER_TIME_UNITS, H2_VOLUME_PRICE_UNITS, H2_VOLUME_POWER_UNITS, MAINTENANCE_UNITS } from '../components/calculator/calculatorConstants.js';
 import ElectrolyzerSetup from '../components/calculator/ElectrolyzerSetup.jsx';
 import ResourcesCosts from '../components/calculator/ResourcesCosts.jsx';
 import CompressorSetup from '../components/calculator/CompressorSetup.jsx';
 
-
-
+/**
+ * Main state manager and orchestrator for the Hydrogen Levelized Cost (LCOH) Calculator.
+ * It acts as the "Single Source of Truth", holding all user inputs (from equipment specs to economic variables),
+ * feeds them into the mathematical hook (`useCalculatorLogic`), and distributes the resulting data 
+ * to the visual dashboard (`ResultDisplay`). It also controls the interactive tutorial overlay (`AdviceCards`).
+ * * * Note: This component does not take external props. It initializes its state locally and via JSON imports.
+ */
 export default function Calculator() {
+    
+    // --- 1. ELECTROLYZER STATE ---
     const [selectedElectrolyzer, setSelectedElectrolyzer] = useState(electrolyzers.list[0]);
     const [electrolyzerSettings, setElectrolyzerSettings] = useState({
         owned: 0,
         ownedStacks: 0,
         maint_unit: MAINTENANCE_UNITS[0], 
         cons_unit: H2_VOLUME_POWER_UNITS[0]
-        });
+    });
     const [customElectrolyzer, setCustomElectrolyzer] = useState(electrolyzers.list.find(e => e.id === 0));
 
+    // --- 2. GLOBAL SIZING & OPERATIONAL STATE ---
     const [systemSize, setSystemSize] = useState({ value: selectedElectrolyzer.power, unit: POWER_UNITS[1], selfProduced: 0 });
-    //const [productionGoal, setProductionGoal] = useState({ value: 0, unit: VOLUME_PER_TIME_UNITS[0] });
     const [operatingTime, setOperatingTime] = useState({ value: 4000, unit: TIME_PER_YEAR_UNITS[1] });
-
+    
+    // --- 3. MACRO-ECONOMIC & UTILITY STATE ---
     const [electricityPrice, setElectricityPrice] = useState({ value: 89, unit: ELEC_PRICE_UNITS[0] });
     const [waterPrice, setWaterPrice] = useState({ value: 2, unit: WATER_VOLUME_PRICE_UNITS[0] });
-
     const [currentHydrogenPrice, setCurrentHydrogenPrice] = useState({value : 6.11, unit: H2_VOLUME_PRICE_UNITS[0] });
     const [greyHydrogenPrice, setGreyHydrogenPrice] = useState({value : 3.5, unit: H2_VOLUME_PRICE_UNITS[0] });
     const [carbonTax, setCarbonTax] = useState(50);
-
     const [projectLifetime, setProjectLifetime] = useState(15);
     const [inflationRate, setInflationRate] = useState(2);
 
-    //const [storageCapacity, setStorageCapacity] = useState({ value: 100, unit: VOLUME_UNITS[0] });
-    //const [storagePrice, setStoragePrice] = useState(20000);
+    // --- 4. COMPRESSOR STATE ---
     const [massToCompress, setMassToCompress] = useState(-1);
-
     const [isCompressorNeeded, setIsCompressorNeeded] = useState(true);
     const [selectedCompressor, setSelectedCompressor] = useState(compressors.list[0]);
     const [compressorSettings, setCompressorSettings] = useState({
@@ -61,7 +64,10 @@ export default function Calculator() {
     });
     const [customCompressor, setCustomCompressor] = useState(compressors.list.find(e => e.id === 0));
 
+    // --- 5. UI CONTROLS STATE ---
+    // Tracks which accordions are open to show/hide advanced parameters
     const [openedSections, setOpenedSections] = useState({ electrolyzer: false, compressor: false, system: false, greyH2: false });
+    // useSessionStorage ensures the user's mode preference (Simple/Advanced) persists even if they navigate away and come back
     const [isAdvancedMode, setIsAdvancedMode] = useSessionStorage({
         key: 'calculator-advanced-mode', 
         defaultValue: false 
@@ -75,23 +81,27 @@ export default function Calculator() {
         }));
     };
     
+    // --- 6. DYNAMIC CALCULATIONS & SAFETY LIMITS ---
 
+    // Calculate maximum possible annual production to constrain the compressor mass limit
     const annualProd = ((systemSize.value * systemSize.unit.factor) * (operatingTime.value * operatingTime.unit.factor)) / selectedElectrolyzer.energy_consumption_kwh_per_kg;
-
     const prevMaxRef = useRef(Math.round(annualProd));
 
+    // Safety Engine: Dynamically updates the "Mass to Compress" limit.
+    // Prevents the impossible scenario where the user asks to compress more hydrogen than the plant actually produces.
     useEffect(() => {
         const newMax = Math.round(annualProd);
         const oldMax = prevMaxRef.current;
         setMassToCompress((currentMass) => {
             if (currentMass === oldMax || currentMass > newMax || currentMass < 0) {
-                return newMax;
+                return newMax; // Auto-snap to the new maximum available production
             }
             return currentMass;
         });
         prevMaxRef.current = newMax;
     }, [annualProd]);
 
+    // Keep Custom models synced in state so users don't lose their typed values when switching tabs
     useEffect(() => {
         if (selectedElectrolyzer.id === 0) {
             setCustomElectrolyzer(selectedElectrolyzer);
@@ -104,9 +114,12 @@ export default function Calculator() {
         }
     }, [selectedCompressor]);
 
+    // UI Engine: Toggling between Simple and Advanced modes requires strict data cleanup
     useEffect(() => {
         if (!isAdvancedMode) {
             let activeElectrolyzer = selectedElectrolyzer;
+            
+            // "Custom" mode is too complex for Simple mode. We force a fallback to a standard commercial unit.
             if (selectedElectrolyzer.id === 0) {
                 const fallback = electrolyzers.list.find(e => e.id !== 0);
                 if (fallback) {
@@ -114,26 +127,30 @@ export default function Calculator() {
                     setSelectedElectrolyzer(fallback);
                 }
             }
+
+            // In Simple mode, the system size MUST be a perfect multiple of the hardware's base power.
+            // (e.g. You cannot buy 1.5 machines). We round the size to the nearest valid physical configuration.
             const currentPowerKw = systemSize.value * systemSize.unit.factor;
             const numberOfModules = Math.round(currentPowerKw / activeElectrolyzer.power);
             const validModules = Math.max(1, numberOfModules);
 
+            // Close all advanced accordions
             const closedSections = Object.keys(openedSections).reduce((acc, key) => {
                 acc[key] = false;
                 return acc;
             }, {});
-            
             setOpenedSections(closedSections);
             setShowHelp(false);
 
             setSystemSize({ 
                 value: Number((validModules * activeElectrolyzer.power).toFixed(2)), 
                 unit:  POWER_UNITS[1],
-                selfProduced: 0
+                selfProduced: 0 // Reset self-produced logic for Simple mode
             });
         }
     }, [isAdvancedMode]);
 
+    // Inventory constraints: You cannot own more sub-components (stacks) than the total number of full units you own
     useEffect(() => {
         if ((electrolyzerSettings.owned) > (electrolyzerSettings.ownedStacks)) {
             setElectrolyzerSettings(prev => ({
@@ -164,7 +181,7 @@ export default function Calculator() {
         }
     }, [compressorSettings.owned]);
 
-
+    // Filters the dropdown menu options based on the active mode (hides the 'Custom' option in Simple mode)
     const availableElectrolyzers = useMemo(() => {
         if (isAdvancedMode) {
             return electrolyzers;
@@ -175,6 +192,7 @@ export default function Calculator() {
         };
     }, [isAdvancedMode]);
 
+    // --- 7. EXECUTING THE CORE MATH HOOK ---
     const calcResults = useCalculatorLogic({
         annualProd,
         systemSize,
@@ -211,7 +229,10 @@ export default function Calculator() {
         currentAnnualDifference, 
         avoidedCO2
     } = calcResults;
-    
+
+    // --- 8. TUTORIAL (ADVICES) ENGINE ---
+    // Dynamically filters the tutorial steps so the floating card doesn't ask the user 
+    // to interact with components that are currently hidden (e.g., if compression is toggled off).
     const dynamicAdvices = useMemo(() => {
         return advices.filter(step => {
             if (step.showIfCompressor && selectedCompressor?.type !== step.showIfCompressor) {
@@ -231,13 +252,16 @@ export default function Calculator() {
     }, [selectedCompressor?.type, isCompressorNeeded, electrolyzerQuantity, electrolyzerSettings.owned, compressorQuantity, compressorSettings.owned, advices]);
 
 
+    // --- 9. RENDER ---
     return (
         <Container size="xl" px="xl" py="lg" mt="150px">
+            
             <Title order={1} ta="center" mb="xl" c="dark.7">Hydrogen Cost Calculator</Title>
             <Text c="dimmed" ta="center" maw={800} mx="auto" mb="xl">
                 Estimate the Levelized Cost of Hydrogen (LCOH) and total capital expenditure (CAPEX) for your production plant. 
                 Adjust system parameters, resource costs, and financial variables to simulate different techno-economic scenarios.
             </Text>
+
             <Center mb="xl">
                 <Box pos="relative">
                     <SegmentedControl
@@ -275,6 +299,7 @@ export default function Calculator() {
                     )}
                 </Box>
             </Center>
+
             <SimpleGrid cols={{ base: 1, lg: 3 }} spacing="lg" style={{ alignItems: 'flex-start' }}>
                 <ElectrolyzerSetup 
                     electrolyzers={electrolyzers}
@@ -294,45 +319,52 @@ export default function Calculator() {
                     toggleSection={toggleSection}
                     isAdvancedMode={isAdvancedMode}
                 />
+                
                 <Stack gap="lg">
-                <ResourcesCosts 
-                    electricityPrice={electricityPrice}
-                    setElectricityPrice={setElectricityPrice}
-                    waterPrice={waterPrice}
-                    setWaterPrice={setWaterPrice}
-                    currentHydrogenPrice={currentHydrogenPrice}
-                    setCurrentHydrogenPrice={setCurrentHydrogenPrice}
-                    greyHydrogenPrice={greyHydrogenPrice}
-                    setGreyHydrogenPrice={setGreyHydrogenPrice}
-                    carbonTax={carbonTax}
-                    setCarbonTax={setCarbonTax}
-                    openedSections={openedSections}
-                    toggleSection={toggleSection}
-                    isAdvancedMode={isAdvancedMode}
-                />
-                {isAdvancedMode && (<Card shadow="sm" padding="lg" radius="md" withBorder>
-                    <Text fw={700} size="xl" mb="md" pb="xs" style={{ borderBottom: '2px solid var(--mantine-color-gray-2)' }}>
-                        Lifecycle Parameters
-                    </Text>
-                    <ValueInput
-                        label={<LabelWithTooltip label="Project Lifetime" tooltip="Expected operational lifespan of the plant to amortize the CAPEX." />}
-                        id="project_lifetime"
-                        units="years"
-                        currentUnit="years"
-                        value={projectLifetime}
-                        onValueChange={val => setProjectLifetime(val)}
-                        nullBlocker
+                    <ResourcesCosts 
+                        electricityPrice={electricityPrice}
+                        setElectricityPrice={setElectricityPrice}
+                        waterPrice={waterPrice}
+                        setWaterPrice={setWaterPrice}
+                        currentHydrogenPrice={currentHydrogenPrice}
+                        setCurrentHydrogenPrice={setCurrentHydrogenPrice}
+                        greyHydrogenPrice={greyHydrogenPrice}
+                        setGreyHydrogenPrice={setGreyHydrogenPrice}
+                        carbonTax={carbonTax}
+                        setCarbonTax={setCarbonTax}
+                        openedSections={openedSections}
+                        toggleSection={toggleSection}
+                        isAdvancedMode={isAdvancedMode}
                     />
-                    <ValueInput
-                        label={<LabelWithTooltip label="Inflation Rate" tooltip="The average percentage of annual prices increase. " />}
-                        id="inflation_rate"
-                        units="%"
-                        currentUnit="%"
-                        value={inflationRate}
-                        onValueChange={val => setInflationRate(val)}
-                    />
-                </Card>)}
+                    
+                    {isAdvancedMode && (
+                        <Card shadow="sm" padding="lg" radius="md" withBorder>
+                            <Text fw={700} size="xl" mb="md" pb="xs" style={{ borderBottom: '2px solid var(--mantine-color-gray-2)' }}>
+                                Lifecycle Parameters
+                            </Text>
+
+                            <ValueInput
+                                label={<LabelWithTooltip label="Project Lifetime" tooltip="Expected operational lifespan of the plant to amortize the CAPEX." />}
+                                id="project_lifetime"
+                                units="years"
+                                currentUnit="years"
+                                value={projectLifetime}
+                                onValueChange={val => setProjectLifetime(val)}
+                                nullBlocker
+                            />
+
+                            <ValueInput
+                                label={<LabelWithTooltip label="Inflation Rate" tooltip="The average percentage of annual prices increase. " />}
+                                id="inflation_rate"
+                                units="%"
+                                currentUnit="%"
+                                value={inflationRate}
+                                onValueChange={val => setInflationRate(val)}
+                            />
+                        </Card>
+                    )}
                 </Stack>
+
                 <CompressorSetup 
                     compressors={compressors}
                     isCompressorNeeded={isCompressorNeeded}
@@ -353,6 +385,7 @@ export default function Calculator() {
                     isAdvancedMode={isAdvancedMode}
                 />
             </SimpleGrid>
+
             <ResultDisplay 
                 cost={lcoh} 
                 capex={capex} 
@@ -363,13 +396,16 @@ export default function Calculator() {
                 avoidedCO2={avoidedCO2}
                 breakdown={costBreakdown} 
                 metrics={extraMetrics}
-                greyDetails={greyDetails} 
+                greyDetails={greyDetails}
             />
+
+            {/* INTERACTIVE TUTORIAL OVERLAY */}
             {showHelp && (
                 <AdviceCards 
-                    helpData={dynamicAdvices}
+                    helpData={dynamicAdvices} 
                     onClose={() => setShowHelp(false)} 
                     onStepChange={(step) => {
+                        // Automatically forces advanced parameter accordions open if the tutorial needs to target a hidden input
                         if (step.openSection && !openedSections[step.openSection]) {
                             setOpenedSections(prev => ({ ...prev, [step.openSection]: true }));
                         }

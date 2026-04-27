@@ -2,11 +2,18 @@ import { Container, Title, Text, Button, Group, Box } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { IconHome } from '@tabler/icons-react';
 
+/**
+ * Standard 404 Error Page.
+ * Acts as the fallback UI when a user navigates to a URL route that does not exist in the application.
+ * It provides a clear error message and a safe navigation button back to the Home page.
+ */
 export default function NotFound() {
     return (
         <Container 
             size="md" 
             style={{ 
+                // Dynamic height calculation to perfectly center the content vertically, 
+                // accounting for the fixed Header and Footer heights.
                 minHeight: 'calc(100vh - 100px - 171px)',
                 display: 'flex',
                 alignItems: 'center',

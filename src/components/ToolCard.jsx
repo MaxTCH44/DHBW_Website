@@ -1,8 +1,17 @@
 import { Card, Text, Button, ThemeIcon, Group } from '@mantine/core';
 import { Link } from 'react-router-dom';
 
-
-
+/**
+ * Renders a primary navigation card for the interactive engineering tools (Calculators).
+ * Similar to the LearnCard, but specifically styled to emphasize actionable utility 
+ * rather than educational reading.
+ * * @param {Object} props
+ * @param {string} props.title - The name of the specific tool or calculator.
+ * @param {string} props.description - A brief summary of what the tool computes (e.g., LCOH, ROI).
+ * @param {React.ElementType} props.Icon - A Tabler Icon component representing the tool.
+ * @param {string} props.buttonText - Call-to-action text displayed inside the bottom button.
+ * @param {string} props.link - The local router path (e.g., '/calculator') to launch the tool.
+ */
 export default function ToolCard({ title, description, Icon, buttonText, link }) {
     return (
         <Card 

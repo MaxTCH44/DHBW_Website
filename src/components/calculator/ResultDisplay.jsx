@@ -1,7 +1,8 @@
 import { Card, Title, Group, Paper, Text, Badge, SimpleGrid, RingProgress, Stack, Progress, ThemeIcon, Grid, Box, Alert } from '@mantine/core';
 import { IconBolt, IconDroplet, IconWind, IconTool, IconChartPie, IconAlertCircle, IconLeaf } from '@tabler/icons-react';
 
-
+// --- SUB-COMPONENTS ---
+// Small utility components to keep the main render tree clean and readable.
 
 const StatCard = ({ icon, color, title, value, unit }) => (
     <Paper p="md" radius="md" withBorder bg="white">
@@ -34,13 +35,31 @@ const CostProgressRow = ({ icon, color, title, value, percent }) => (
     </Box>
 );
 
-
+/**
+ * Renders the final executive dashboard displaying the techno-economic viability of the hydrogen plant.
+ * It visualizes the Levelized Cost of Hydrogen (LCOH), CAPEX, ROI against current prices, and environmental impact.
+ * * @param {Object} props - Destructured properties from the parent Calculator logic.
+ * @param {number} props.cost - The calculated Levelized Cost of Hydrogen (LCOH) in €/kg.
+ * @param {number} props.capex - The total initial Capital Expenditure (equipment upfront cost) in €.
+ * @param {number} props.greyCostDifference - The price gap in €/kg between the user's LCOH and the market grey hydrogen price.
+ * @param {number} props.greyAnnualDifference - The projected annual savings/losses compared to buying fossil-based grey hydrogen.
+ * @param {number} props.currentCostDifference - The price gap in €/kg between the user's LCOH and their current H2 supply.
+ * @param {number} props.currentAnnualDifference - The actual projected annual savings/losses for the specific user setup.
+ * @param {number} props.avoidedCO2 - The estimated tons of CO2 emissions avoided annually by producing green hydrogen.
+ * @param {Object} props.breakdown - Breakdown of the LCOH into exact cost drivers (electricity, capex, maintenance, water).
+ * @param {Object} props.metrics - Additional physical plant metrics (annual production, energy needed, utilization rate).
+ * @param {Object} props.greyDetails - Contextual market data regarding grey hydrogen (base price, carbon tax impact).
+ */
 export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, currentCostDifference, currentAnnualDifference, avoidedCO2, breakdown, metrics, greyDetails }) {
     
+    // Profitability toggles used to dynamically switch card background colors (green for savings, red for losses)
     const isProfitableCurrent = currentCostDifference >= 0;
     const isProfitableGrey = greyCostDifference >= 0;
+    
+    // Fallback to prevent division by zero in edge cases where cost hasn't been fully calculated
     const safeCost = cost > 0 ? cost : 1;
-
+    
+    // Normalizing the breakdown values into percentages for the RingProgress chart
     const percents = {
         electricity: (breakdown.electricity / safeCost) * 100,
         capex: (breakdown.capex / safeCost) * 100,
@@ -48,6 +67,8 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
         water: (breakdown.water / safeCost) * 100,
     };
 
+    // If the installed physical capacity drastically exceeds the actual annual production needs (low utilization rate),
+    // the CAPEX share per kg spikes. This warns the user about a suboptimal, unnecessarily expensive hardware configuration.
     const showOversizedWarning = metrics?.utilizationRate > 0 && metrics.utilizationRate < 95;
 
     return (
@@ -56,6 +77,7 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
                 Project Dashboard
             </Title>
 
+            {/* --- ALERTS --- */}
             {showOversizedWarning && (
                 <Alert 
                     icon={<IconAlertCircle size={20} />} 
@@ -70,7 +92,10 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
                 </Alert>
             )}
             
+            {/* --- PRIMARY FINANCIAL METRICS (TOP ROW) --- */}
             <SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing="lg" mb="xl">
+                
+                {/* Levelized Cost of Hydrogen (LCOH) - The ultimate KPI combining CAPEX + OPEX over lifetime */}
                 <Paper p="md" radius="md" withBorder bg="white">
                     <Text size="sm" c="dimmed" fw={600} tt="uppercase">LCOH (Green H₂)</Text>
                     <Text size="xl" fw={900} c="myColor.9" mt="sm">
@@ -85,6 +110,7 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
                     </Text>
                 </Paper>
 
+                {/* ROI vs User's actual current supply costs */}
                 <Paper p="md" radius="md" withBorder bg={isProfitableCurrent ? "teal.0" : "red.0"}>
                     <Text size="sm" c={isProfitableCurrent ? "teal.9" : "red.9"} fw={600} tt="uppercase">
                         {isProfitableCurrent ? "Savings vs Current Cost" : "Loss vs Current Cost"}
@@ -97,6 +123,7 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
                     </Badge>
                 </Paper>
 
+                {/* Market Competitiveness: Green H2 vs highly polluting Grey H2 */}
                 <Paper p="md" radius="md" withBorder bg={isProfitableGrey ? "teal.0" : "red.0"} style={{ opacity: 0.85 }}>
                     <Text size="sm" c={isProfitableGrey ? "teal.9" : "red.9"} fw={600} tt="uppercase">
                         {isProfitableGrey ? "Savings vs Grey H₂" : "Green Premium"}
@@ -115,6 +142,8 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
                 </Paper>
             </SimpleGrid>
 
+            {/* --- LCOH BREAKDOWN CHART --- */}
+            {/* Visualizes what is driving the cost. Electricity typically dominates for green hydrogen. */}
             <Paper p="xl" radius="md" withBorder bg="white" mb="xl">
                 <Title order={4} mb="lg" c="dark.7">Cost Breakdown per kg</Title>
                 <Grid align="center">
@@ -146,11 +175,12 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
                 </Grid>
             </Paper>
 
+            {/* --- SECONDARY PHYSICAL METRICS (BOTTOM ROW) --- */}
             <SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing="md">
                 <StatCard 
                     icon={<IconWind size={24} />} 
                     color="myColor" 
-                    title="Annual H₂ Prod." 
+                    title="Annual H₂ Prod."
                     value={metrics.annualProd.toLocaleString('de-DE', { maximumFractionDigits: 0 })} 
                     unit="kg" 
                 />
@@ -168,6 +198,7 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
                     value={metrics.annualWater.toLocaleString('de-DE', { maximumFractionDigits: 0 })} 
                     unit="L" 
                 />
+                {/* Environmental impact compared to traditional steam methane reforming (grey H2) */}
                 <StatCard 
                     icon={<IconLeaf size={24} />} 
                     color="green" 

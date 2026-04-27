@@ -3,8 +3,14 @@ import { Card, Title, List, Collapse, Group, ThemeIcon, Text } from '@mantine/co
 import { useMediaQuery } from '@mantine/hooks';
 import { IconCheck, IconX, IconChevronDown, IconChevronUp } from '@tabler/icons-react';
 
-
-
+/**
+ * Sub-component that renders a single list of either advantages or disadvantages.
+ * On mobile devices, it automatically converts into a collapsible accordion to save vertical space.
+ * * @param {Object} props
+ * @param {string} props.title - The header of the card (e.g., "Advantages" or "Disadvantages").
+ * @param {Array<string>} props.items - Array of text bullet points to display.
+ * @param {string} props.type - Determines the styling context ('advantages' triggers green checkmarks, 'disadvantages' triggers red crosses).
+ */
 function InfoCard({ title, items, type }) {
     const [isOpenMobile, setIsOpenMobile] = useState(false);
     const isMobile = useMediaQuery('(max-width: 768px)');
@@ -14,6 +20,7 @@ function InfoCard({ title, items, type }) {
     const topBorderColor = isAdvantages ? '#40c057' : '#fa5252';
     const bgColor = isAdvantages ? 'rgba(64, 192, 87, 0.05)' : 'rgba(250, 82, 82, 0.05)';
     
+    // Automatically forces the card open on desktop, but respects user state on mobile
     const isOpen = isMobile === false ? true : isOpenMobile;
 
     function handleClick() {
@@ -75,6 +82,15 @@ function InfoCard({ title, items, type }) {
     );
 }
 
+/**
+ * Renders a side-by-side comparison (or stacked on mobile) of the pros and cons of a specific hardware technology.
+ * This is crucial for the educational sections, allowing users to quickly assess the technical 
+ * trade-offs of different electrolyzers or compressors.
+ * * @param {Object} props
+ * @param {Object} props.item - The hardware data object containing the arrays of pros and cons.
+ * @param {Array<string>} props.item.advantages - A list of the technology's benefits.
+ * @param {Array<string>} props.item.disadvantages - A list of the technology's drawbacks.
+ */
 export default function ProsConsCards({ item }) {
     if (!item) return null;
 
