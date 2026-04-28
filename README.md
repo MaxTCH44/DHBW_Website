@@ -31,7 +31,7 @@ Prerequisites: Node.js must be installed on your local machine.
 
 1. Clone the repository and navigate to the project directory:
    ```bash
-   cd greenlab-h2-calculator
+   cd DHBW_Website
    ```
 
 2. Install the required dependencies:
