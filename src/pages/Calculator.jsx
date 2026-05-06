@@ -247,7 +247,10 @@ export default function Calculator() {
             if (step.isPriceInput && step.openSection === "compressor" && compressorQuantity === compressorSettings.owned) {
                 return false;
             }
-            if (step.isOwnedStack && step.openSection === "electrolyzer" && totalStacksNeeded === 1 && electrolyzerSettings.owned === 1){
+            if (step.isOwnedStackElectrolyser && step.openSection === "electrolyzer" && totalStacksNeeded === 1 && electrolyzerSettings.owned === 1){
+                return false;
+            }
+            if (step.isOwnedStackCompressor && step.openSection === "compressor" && totalCompStacksNeeded === 1 && compressorSettings.owned === 1){
                 return false;
             }
             return true;

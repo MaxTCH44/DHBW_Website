@@ -80,7 +80,7 @@
         "targetId": "electrolyzer_owned_stacks",
         "title": "Number of owned electrolyser stacks",
         "openSection": "electrolyzer",
-        "isOwnedStack": true,
+        "isOwnedStackElectrolyser": true,
         "content": [
             {
                 "type": "paragraph",
@@ -378,6 +378,7 @@
         "targetId": "compressor_owned_stacks",
         "title": "Number of owned compressor stacks",
         "openSection": "compressor",
+        "isOwnedStackCompressor": true,
         "showIfCompressor": "Electrochemical",
         "content": [
             {
