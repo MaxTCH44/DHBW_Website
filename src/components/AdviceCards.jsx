@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Card, Group, Button, Text, ActionIcon, Box, Divider, Transition } from '@mantine/core';
+import { Card, Group, Button, Text, ActionIcon, Box, Divider, Transition, Tooltip } from '@mantine/core';
 import { IconChevronLeft, IconChevronRight, IconX } from '@tabler/icons-react';
 
 import ContentDetails from './ContentDetails';
@@ -195,26 +195,33 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange }) {
                             {/* Custom interactive progress bar */}
                             <Group gap={1} wrap="nowrap" style={{ flex: 1, height: '6px' }}>
                                 {helpData.map((_, index) => (
-                                    <Box
-                                        key={index}
-                                        onClick={() => setCurrentStep(index)}
-                                        onMouseEnter={() => handleMouseEnterStep(index)}
-                                        onMouseLeave={() => handleMouseLeaveStep(index)}
-                                        style={{
-                                            flex: 1, 
-                                            height: '100%',
-                                            backgroundColor: index === currentStep 
-                                                ? 'var(--mantine-color-green-5)' 
-                                                : index < currentStep 
-                                                    ? 'var(--mantine-color-green-2)' 
-                                                    : 'var(--mantine-color-gray-2)', 
-                                            borderRadius: '2px',
-                                            cursor: 'pointer',
-                                            transition: 'transform 0.1s ease, background-color 0.2s ease',
-                                        }}
-                                        onMouseOver={(e) => e.target.style.transform = 'scaleY(1.5)'}
-                                        onMouseOut={(e) => e.target.style.transform = 'scaleY(1)'}
-                                    />
+                                    <Tooltip
+                                        label={"step " + (index + 1) }
+                                        withArrow
+                                        position="top"
+                                        zIndex={11000}
+                                    >
+                                        <Box
+                                            key={index}
+                                            onClick={() => setCurrentStep(index)}
+                                            onMouseEnter={() => handleMouseEnterStep(index)}
+                                            onMouseLeave={() => handleMouseLeaveStep(index)}
+                                            style={{
+                                                flex: 1, 
+                                                height: '100%',
+                                                backgroundColor: index === currentStep 
+                                                    ? 'var(--mantine-color-green-5)' 
+                                                    : index < currentStep 
+                                                        ? 'var(--mantine-color-green-2)' 
+                                                        : 'var(--mantine-color-gray-2)', 
+                                                borderRadius: '2px',
+                                                cursor: 'pointer',
+                                                transition: 'transform 0.1s ease, background-color 0.2s ease',
+                                            }}
+                                            onMouseOver={(e) => e.target.style.transform = 'scaleY(1.5)'}
+                                            onMouseOut={(e) => e.target.style.transform = 'scaleY(1)'}
+                                        />
+                                    </Tooltip>
                                 ))}
                             </Group>
                         </Group>
