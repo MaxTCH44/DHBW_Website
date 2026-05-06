@@ -73,6 +73,7 @@
         "id": "step_elec_owned_stacks",
         "targetId": "electrolyzer_owned_stacks",
         "openSection": "electrolyzer",
+        "isOwnedStack": true,
         "content": [
             {
                 "type": "paragraph",

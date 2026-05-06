@@ -247,6 +247,9 @@ export default function Calculator() {
             if (step.isPriceInput && step.openSection === "compressor" && compressorQuantity === compressorSettings.owned) {
                 return false;
             }
+            if (step.isOwnedStack && step.openSection === "electrolyzer" && totalStacksNeeded === 1){
+                return false;
+            }
             return true;
         });
     }, [selectedCompressor?.type, isCompressorNeeded, electrolyzerQuantity, electrolyzerSettings.owned, compressorQuantity, compressorSettings.owned, advices]);
