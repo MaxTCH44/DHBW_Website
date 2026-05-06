@@ -346,7 +346,7 @@
     },
     {
         "id": "step_own_stack",
-        "targetId": "owned_stacks",
+        "targetId": "compressor_owned_stacks",
         "openSection": "compressor",
         "showIfCompressor": "Electrochemical",
         "content": [
@@ -359,7 +359,7 @@
     },
     {
         "id": "step_stack_price",
-        "targetId": "stack_price",
+        "targetId": "compessor_stack_price",
         "openSection": "compressor",
         "showIfCompressor": "Electrochemical",
         "content": [
