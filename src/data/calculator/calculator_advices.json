@@ -2,6 +2,7 @@
     {
         "id": "step_sys_size",
         "targetId": "system_size",
+        "title": "System size",
         "content": [
             {
                 "type": "paragraph",
@@ -14,6 +15,7 @@
         "id": "step_self_prod",
         "targetId": "self_produced",
         "openSection": "system",
+        "title": "Self-produced",
         "content": [
             {
                 "type": "paragraph",
@@ -25,6 +27,7 @@
     {
         "id": "step_elec_op_time",
         "targetId": "electrolyzer_operating_time",
+        "title": "Electrolyser operating time",
         "content": [
             {
                 "type": "paragraph",
@@ -36,6 +39,7 @@
     {
         "id": "step_elec_select",
         "targetId": "electrolyzer_selector",
+        "title": "Electrolyser selector",
         "content": [
             {
                 "type": "paragraph",
@@ -49,6 +53,7 @@
         "targetId": "electrolyzer_price",
         "openSection": "electrolyzer",
         "isPriceInput": true,
+        "title": "Electrolyzer purchase price",
         "content": [
             {
                 "type": "paragraph",
@@ -60,6 +65,7 @@
     {
         "id": "step_elec_power",
         "targetId": "electrolyzer_power",
+        "title": "Stack power",
         "openSection": "electrolyzer",
         "content": [
             {
@@ -72,6 +78,7 @@
     {
         "id": "step_elec_owned_stacks",
         "targetId": "electrolyzer_owned_stacks",
+        "title": "Number of owned electrolyser stacks",
         "openSection": "electrolyzer",
         "content": [
             {
@@ -84,6 +91,7 @@
     {
         "id": "step_elec_stack_price",
         "targetId": "electrolyzer_stack_price",
+        "title": "Electrolyser stack price",
         "openSection": "electrolyzer",
         "content": [
             {
@@ -96,6 +104,7 @@
     {
         "id": "step_max_stacks_elec",
         "targetId": "max_stack_per_electrolyzer",
+        "title": "Max stacks per electrolyser",
         "openSection": "electrolyzer",
         "content": [
             {
@@ -108,6 +117,7 @@
     {
         "id": "step_elec_cons",
         "targetId": "electrolyzer_energy_consumption",
+        "title": "Electrolyzer energy consumption",
         "openSection": "electrolyzer",
         "content": [
             {
@@ -120,6 +130,7 @@
     {
         "id": "step_aux_cons",
         "targetId": "auxiliary_energy_consumption",
+        "title": "Total auxiliary consumption (BoP)",
         "openSection": "electrolyzer",
         "content": [
             {
@@ -132,6 +143,7 @@
     {
         "id": "step_water_cons",
         "targetId": "water_consumption",
+        "title": "Water consumption",
         "openSection": "electrolyzer",
         "content": [
             {
@@ -144,6 +156,7 @@
     {
         "id": "step_elec_maint",
         "targetId": "electrolyzer_maintenance_costs",
+        "title": "Electrolyser maintenance costs",
         "openSection": "electrolyzer",
         "content": [
             {
@@ -156,6 +169,7 @@
     {
         "id": "step_elec_stack_lifetime",
         "targetId": "electrolyzer_stack_lifetime",
+        "title": "Stack Lifetime",
         "openSection": "electrolyzer",
         "content": [
             {
@@ -168,6 +182,7 @@
     {
         "id": "step_electricity_price",
         "targetId": "electricity_price",
+        "title": "Electricity price",
         "content": [
             {
                 "type": "paragraph",
@@ -179,6 +194,7 @@
     {
         "id": "step_water_price",
         "targetId": "water_price",
+        "title": "Water price",
         "content": [
             {
                 "type": "paragraph",
@@ -190,6 +206,7 @@
     {
         "id": "step_current_h2_price",
         "targetId": "current_h2_price",
+        "title": "Current H2 price",
         "content": [
             {
                 "type": "paragraph",
@@ -201,6 +218,7 @@
     {
         "id": "step_grey_h2_price",
         "targetId": "grey_h2_price",
+        "title": "Grey H2 price",
         "content": [
             {
                 "type": "paragraph",
@@ -212,6 +230,7 @@
     {
         "id": "step_carbon_tax",
         "targetId": "carbon_tax",
+        "title": "Carbon Tax",
         "openSection": "greyH2",
         "content": [
             {
@@ -223,6 +242,7 @@
     },{
         "id": "step_lifetime",
         "targetId": "project_lifetime",
+        "title": "Project Lifetime",
         "content": [
             {
                 "type": "paragraph",
@@ -234,6 +254,7 @@
     {
         "id": "step_inflation",
         "targetId": "inflation_rate",
+        "title": "Inflation Rate",
         "content": [
             {
                 "type": "paragraph",
@@ -245,6 +266,7 @@
     {
         "id": "step_comp_needed",
         "targetId": "is_compressor_needed",
+        "title": "Is compressor needed ?",
         "content": [
             {
                 "type": "paragraph",
@@ -256,6 +278,7 @@
     {
         "id": "step_h2_comp",
         "targetId": "h2_to_compress",
+        "title": "Hydrogen to compress",
         "isCompressorSection": true,
         "content": [
             {
@@ -268,6 +291,7 @@
     {
         "id": "step_comp_op_time",
         "targetId": "compressor_operating_time",
+        "title": "Compressor operating time",
         "isCompressorSection": true,
         "content": [
             {
@@ -280,6 +304,7 @@
     {
         "id": "step_comp_selector",
         "targetId": "compressor_selector",
+        "title": "Compressor Setup",
         "isCompressorSection": true,
         "content": [
             {
@@ -292,6 +317,7 @@
     {
         "id": "step_mech_comp_price",
         "targetId": "compressor_price",
+        "title": "Compressor purchase price",
         "isPriceInput": true,
         "openSection": "compressor",
         "showIfCompressor": "Mechanical",
@@ -306,6 +332,7 @@
     {
         "id": "step_elec_comp_price",
         "targetId": "compressor_price",
+        "title": "Compressor purchase price",
         "isPriceInput": true,
         "openSection": "compressor",
         "showIfCompressor": "Electrochemical",
@@ -320,6 +347,7 @@
     {
         "id": "step_mech_comp_cons",
         "targetId": "compressor_energy_consumption",
+        "title": "Compressor energy consumption",
         "openSection": "compressor",
         "showIfCompressor": "Mechanical",
         "content": [
@@ -333,6 +361,7 @@
     {
         "id": "step_elec_comp_cons",
         "targetId": "compressor_energy_consumption",
+        "title": "Compressor energy consumption",
         "openSection": "compressor",
         "showIfCompressor": "Electrochemical",
         "content": [
@@ -346,6 +375,7 @@
     {
         "id": "step_own_stack",
         "targetId": "owned_stacks",
+        "title": "Number of owned compressor stacks",
         "openSection": "compressor",
         "showIfCompressor": "Electrochemical",
         "content": [
@@ -359,6 +389,7 @@
     {
         "id": "step_stack_price",
         "targetId": "stack_price",
+        "title": "Cell stack price",
         "openSection": "compressor",
         "showIfCompressor": "Electrochemical",
         "content": [
@@ -372,6 +403,7 @@
     {
         "id": "step_cells_per_stack",
         "targetId": "cells_per_stack",
+        "title": "Cells per stack",
         "openSection": "compressor",
         "showIfCompressor": "Electrochemical",
         "content": [
@@ -385,6 +417,7 @@
     {
         "id": "step_max_cells",
         "targetId": "max_cells",
+        "title": "Max cells per compressor",
         "openSection": "compressor",
         "showIfCompressor": "Electrochemical",
         "content": [
@@ -398,6 +431,7 @@
     {
         "id": "step_mech_flow",
         "targetId": "flowrate",
+        "title": "Flowrate per cell",
         "openSection": "compressor",
         "showIfCompressor": "Mechanical",
         "content": [
@@ -411,6 +445,7 @@
     {
         "id": "step_elec_flow",
         "targetId": "flowrate",
+        "title": "Flowrate per cell",
         "openSection": "compressor",
         "showIfCompressor": "Electrochemical",
         "content": [
@@ -424,6 +459,7 @@
     {
         "id": "step_mech_comp_maint",
         "targetId": "compressor_maintenance_costs",
+        "title": "Compressor maintenance costs",
         "openSection": "compressor",
         "showIfCompressor": "Mechanical",
         "content": [
@@ -437,6 +473,7 @@
     {
         "id": "step_elec_comp_maint",
         "targetId": "compressor_maintenance_costs",
+        "title": "Compressor maintenance costs",
         "openSection": "compressor",
         "showIfCompressor": "Electrochemical",
         "content": [
@@ -450,6 +487,7 @@
     {
         "id": "step_comp_stack_lifetime",
         "targetId": "compressor_stack_lifetime",
+        "title": "Compressor stack lifetime",
         "openSection": "compressor",
         "showIfCompressor": "Electrochemical",
         "content": [

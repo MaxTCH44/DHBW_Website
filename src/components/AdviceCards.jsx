@@ -37,8 +37,6 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange }) {
         }
     }, [helpData, currentStep]);
 
-    const prevStepRef = useRef(null);
-
     // The core positioning engine: Fires every time the user navigates to a new tutorial step.
     useEffect(() => {
         if (!step) return; 
@@ -46,11 +44,6 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange }) {
         // Briefly hide the card during transition to prevent visual teleportation glitches
         setOpened(false); 
         const targetId = step?.targetId || step?.id;
-        
-        // Track whether the step actually changed or if this is just a parent re-render,
-        // then update the ref so the next call has an accurate previous value to compare against
-        const stepActuallyChanged = prevStepRef.current !== currentStep;
-        prevStepRef.current = currentStep;
 
         // Notify parent so it can prepare the DOM (like expanding collapsed detail sections)
         if (onStepChange) {
@@ -73,16 +66,13 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange }) {
                         const currentTarget = document.getElementById(targetId);
                         if (!currentTarget) return;
 
-                        //Scroll only if the step had change
-                        if (stepActuallyChanged) {
-                            // Auto-scroll logic: Keep the target element in the user's viewport
-                            if (isMobile) {
-                                const elementTop = currentTarget.getBoundingClientRect().top + window.scrollY;
-                                // Scroll slightly above the element so the floating card doesn't cover it
-                                window.scrollTo({ top: elementTop - 150, behavior: 'smooth' });
-                            } else {
-                                currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                            }
+                        // Auto-scroll logic: Keep the target element in the user's viewport
+                        if (isMobile) {
+                            const elementTop = currentTarget.getBoundingClientRect().top + window.scrollY;
+                            // Scroll slightly above the element so the floating card doesn't cover it
+                            window.scrollTo({ top: elementTop - 150, behavior: 'smooth' });
+                        } else {
+                            currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         }
 
                         const rect = currentTarget.getBoundingClientRect();
@@ -204,9 +194,9 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange }) {
                             
                             {/* Custom interactive progress bar */}
                             <Group gap={1} wrap="nowrap" style={{ flex: 1, height: '6px' }}>
-                                {helpData.map((_, index) => (
+                                {helpData.map((step, index) => (
                                     <Tooltip
-                                        label={"step " + (index + 1) }
+                                        label={"Step " + (index + 1) + " : " + (step.title)}
                                         withArrow
                                         position="top"
                                         zIndex={11000}
