@@ -80,6 +80,7 @@
         "targetId": "electrolyzer_owned_stacks",
         "title": "Number of owned electrolyser stacks",
         "openSection": "electrolyzer",
+        "isOwnedStack": true,
         "content": [
             {
                 "type": "paragraph",
@@ -374,7 +375,7 @@
     },
     {
         "id": "step_own_stack",
-        "targetId": "owned_stacks",
+        "targetId": "compressor_owned_stacks",
         "title": "Number of owned compressor stacks",
         "openSection": "compressor",
         "showIfCompressor": "Electrochemical",
@@ -388,7 +389,7 @@
     },
     {
         "id": "step_stack_price",
-        "targetId": "stack_price",
+        "targetId": "compessor_stack_price",
         "title": "Cell stack price",
         "openSection": "compressor",
         "showIfCompressor": "Electrochemical",

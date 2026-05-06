@@ -132,6 +132,9 @@ export default function ValueInput({ label, value, units, currentUnit, onValueCh
       label={label}
       value={localValue} 
       onChange={handleChange} 
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') e.target.blur();
+      }}
       onBlur={handleBlur}
       min={0}
       allowNegative={false} // Hydrogen physics rarely accept negative masses or power
