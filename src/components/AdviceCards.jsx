@@ -180,7 +180,7 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange }) {
                         top: coords.top,
                         left: coords.left,
                         width: coords.width,
-                        zIndex: 10000,
+                        zIndex: 80,
                         backgroundColor: 'var(--mantine-color-body)',
                         // Smoothly animate the card flying across the screen between steps
                         transition: 'top 0.4s ease-in-out, left 0.4s ease-in-out, width 0.4s ease'
@@ -199,7 +199,7 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange }) {
                                         label={"Step " + (index + 1) + " : " + (step.title)}
                                         withArrow
                                         position="top"
-                                        zIndex={11000}
+                                        zIndex={90}
                                     >
                                         <Box
                                             key={index}
