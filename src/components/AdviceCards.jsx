@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Card, Group, Button, Text, ActionIcon, Box, Divider, Transition } from '@mantine/core';
+import { Card, Group, Button, Text, ActionIcon, Box, Divider, Transition, Tooltip } from '@mantine/core';
 import { IconChevronLeft, IconChevronRight, IconX } from '@tabler/icons-react';
 
 import ContentDetails from './ContentDetails';
@@ -180,7 +180,7 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange }) {
                         top: coords.top,
                         left: coords.left,
                         width: coords.width,
-                        zIndex: 10000,
+                        zIndex: 80,
                         backgroundColor: 'var(--mantine-color-body)',
                         // Smoothly animate the card flying across the screen between steps
                         transition: 'top 0.4s ease-in-out, left 0.4s ease-in-out, width 0.4s ease'
@@ -194,27 +194,34 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange }) {
                             
                             {/* Custom interactive progress bar */}
                             <Group gap={1} wrap="nowrap" style={{ flex: 1, height: '6px' }}>
-                                {helpData.map((_, index) => (
-                                    <Box
-                                        key={index}
-                                        onClick={() => setCurrentStep(index)}
-                                        onMouseEnter={() => handleMouseEnterStep(index)}
-                                        onMouseLeave={() => handleMouseLeaveStep(index)}
-                                        style={{
-                                            flex: 1, 
-                                            height: '100%',
-                                            backgroundColor: index === currentStep 
-                                                ? 'var(--mantine-color-green-5)' 
-                                                : index < currentStep 
-                                                    ? 'var(--mantine-color-green-2)' 
-                                                    : 'var(--mantine-color-gray-2)', 
-                                            borderRadius: '2px',
-                                            cursor: 'pointer',
-                                            transition: 'transform 0.1s ease, background-color 0.2s ease',
-                                        }}
-                                        onMouseOver={(e) => e.target.style.transform = 'scaleY(1.5)'}
-                                        onMouseOut={(e) => e.target.style.transform = 'scaleY(1)'}
-                                    />
+                                {helpData.map((step, index) => (
+                                    <Tooltip
+                                        label={"Step " + (index + 1) + " : " + (step.title)}
+                                        withArrow
+                                        position="top"
+                                        zIndex={90}
+                                    >
+                                        <Box
+                                            key={index}
+                                            onClick={() => setCurrentStep(index)}
+                                            onMouseEnter={() => handleMouseEnterStep(index)}
+                                            onMouseLeave={() => handleMouseLeaveStep(index)}
+                                            style={{
+                                                flex: 1, 
+                                                height: '100%',
+                                                backgroundColor: index === currentStep 
+                                                    ? 'var(--mantine-color-green-5)' 
+                                                    : index < currentStep 
+                                                        ? 'var(--mantine-color-green-2)' 
+                                                        : 'var(--mantine-color-gray-2)', 
+                                                borderRadius: '2px',
+                                                cursor: 'pointer',
+                                                transition: 'transform 0.1s ease, background-color 0.2s ease',
+                                            }}
+                                            onMouseOver={(e) => e.target.style.transform = 'scaleY(1.5)'}
+                                            onMouseOut={(e) => e.target.style.transform = 'scaleY(1)'}
+                                        />
+                                    </Tooltip>
                                 ))}
                             </Group>
                         </Group>
