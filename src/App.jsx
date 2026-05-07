@@ -21,9 +21,12 @@ import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 import SetupBuilder from './pages/SetupBuilder';
 
+import { Button } from '@mantine/core';
 
 
 export default function App() {
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
   return (
     <HashRouter>
       <ScrollToTop />
@@ -46,6 +49,7 @@ export default function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
+        <Button onClick={scrollToTop} style={{ marginTop: '1rem'}}>Scroll to top</Button>
         <Footer />
       </div>
     </HashRouter>
