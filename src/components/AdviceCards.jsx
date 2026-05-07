@@ -37,6 +37,9 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange }) {
         }
     }, [helpData, currentStep]);
 
+    const onStepChangeRef = useRef(onStepChange);
+    useEffect(() => { onStepChangeRef.current = onStepChange; }, [onStepChange]);
+
     // The core positioning engine: Fires every time the user navigates to a new tutorial step.
     useEffect(() => {
         if (!step) return; 
@@ -46,8 +49,8 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange }) {
         const targetId = step?.targetId || step?.id;
 
         // Notify parent so it can prepare the DOM (like expanding collapsed detail sections)
-        if (onStepChange) {
-            onStepChange(step);
+        if (onStepChangeRef.current) {
+            onStepChangeRef.current(step);
         }
 
         if (targetId) {
@@ -122,7 +125,7 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange }) {
                 if (target) target.style.outline = 'none';
             };
         }
-    }, [currentStep, step, onStepChange]);
+    }, [currentStep, step]);
 
     // --- EVENT HANDLERS ---
 

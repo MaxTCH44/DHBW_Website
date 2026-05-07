@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Title, SimpleGrid, Card, Text, Stack, SegmentedControl, Tooltip, ActionIcon, Box, Center } from '@mantine/core';
 import { IconQuestionMark } from '@tabler/icons-react';
@@ -257,14 +257,6 @@ export default function Calculator() {
         });
     }, [selectedCompressor?.type, isCompressorNeeded, electrolyzerQuantity, electrolyzerSettings.owned, compressorQuantity, compressorSettings.owned, advices]);
 
-    // Stable callback passed to AdviceCards to open accordion sections that may hide tutorial targets.
-    // Wrapped in useCallback to prevent unnecessary re-renders caused by a new function reference on each render.
-    const handleStepChange = useCallback((step) => {
-        // Automatically forces advanced parameter accordions open if the tutorial needs to target a hidden input
-        if (step.openSection && !openedSections[step.openSection]) {
-            setOpenedSections(prev => ({ ...prev, [step.openSection]: true }));
-        }
-    }, [openedSections]);
     // --- 9. RENDER ---
     return (
         <Container size="xl" px="xl" py="lg" mt="150px">
@@ -417,7 +409,11 @@ export default function Calculator() {
                 <AdviceCards 
                     helpData={dynamicAdvices} 
                     onClose={() => setShowHelp(false)} 
-                    onStepChange={handleStepChange}
+                    onStepChange={(step) => {
+                        if (step.openSection && !openedSections[step.openSection]) {
+                            setOpenedSections(prev => ({ ...prev, [step.openSection]: true }));
+                        }
+                    }}
                 />
             )}
         </Container>
