@@ -73,6 +73,11 @@ export default function Calculator() {
         defaultValue: false 
     });
     const [showHelp, setShowHelp] = useState(false);
+    const [resetHelp, setResetHelp] = useState(false);
+
+    const setResetHelpFalse = useCallback(() => {
+        setResetHelp(false);
+    }, []);
 
     function toggleSection (sectionName){
         setOpenedSections((prev) => ({
@@ -257,14 +262,6 @@ export default function Calculator() {
         });
     }, [selectedCompressor?.type, isCompressorNeeded, electrolyzerQuantity, electrolyzerSettings.owned, compressorQuantity, compressorSettings.owned, advices]);
 
-    // Stable callback passed to AdviceCards to open accordion sections that may hide tutorial targets.
-    // Wrapped in useCallback to prevent unnecessary re-renders caused by a new function reference on each render.
-    const handleStepChange = useCallback((step) => {
-        // Automatically forces advanced parameter accordions open if the tutorial needs to target a hidden input
-        if (step.openSection && !openedSections[step.openSection]) {
-            setOpenedSections(prev => ({ ...prev, [step.openSection]: true }));
-        }
-    }, [openedSections]);
     // --- 9. RENDER ---
     return (
         <Container size="xl" px="xl" py="lg" mt="150px">
@@ -297,7 +294,10 @@ export default function Calculator() {
                                 color="blue" 
                                 radius="xl" 
                                 size="lg"
-                                onClick={() => setShowHelp(true)}
+                                onClick={() => {
+                                    setShowHelp(true);
+                                    setResetHelp(true);
+                                }}
                                 pos="absolute"
                                 style={{
                                     left: 'calc(100% + 12px)', 
@@ -417,7 +417,13 @@ export default function Calculator() {
                 <AdviceCards 
                     helpData={dynamicAdvices} 
                     onClose={() => setShowHelp(false)} 
-                    onStepChange={handleStepChange}
+                    onStepChange={(step) => {
+                        if (step.openSection && !openedSections[step.openSection]) {
+                            setOpenedSections(prev => ({ ...prev, [step.openSection]: true }));
+                        }
+                    }}
+                    reset={resetHelp}
+                    setReset={setResetHelpFalse}
                 />
             )}
         </Container>
