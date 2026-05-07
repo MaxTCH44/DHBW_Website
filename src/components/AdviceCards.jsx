@@ -12,8 +12,10 @@ import ContentDetails from './ContentDetails';
  * @param {Array} props.helpData - Array of step objects containing the content to display and the target DOM id.
  * @param {Function} props.onClose - Callback triggered when the user dismisses or finishes the tutorial.
  * @param {Function} props.onStepChange - Callback triggered when navigating steps. Used by the parent to open hidden sections (e.g., closed accordions) before the card tries to position itself.
+ * @param {Bool} props.reset - External reset trigger controlled by the parent component. When set to `true`, the tutorial resets its internal state and returns to the first step.
+ * @param {Function} props.setReset - Setter function provided by the parent to clear the reset flag after the reset operation has been processed.
  */
-export default function AdviceCards({ helpData = [], onClose, onStepChange }) {
+export default function AdviceCards({ helpData = [], onClose, onStepChange, reset, setReset }) {
     
     // --- STATE & CONSTANTS ---
     const [currentStep, setCurrentStep] = useState(0);
@@ -21,7 +23,14 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange }) {
     const [coords, setCoords] = useState({ top: 0, left: 0, width: 350, isMobile: false });
     const [opened, setOpened] = useState(false);
     const cardRef = useRef(null);
-    
+
+    useEffect(() => {
+        if (reset) {
+            setCurrentStep(0);
+            setReset();
+        }
+    }, [reset, setReset]);
+
     const step = helpData[currentStep];
 
     // --- EFFECTS & DOM POSITIONING ---

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Title, SimpleGrid, Card, Text, Stack, SegmentedControl, Tooltip, ActionIcon, Box, Center } from '@mantine/core';
 import { IconQuestionMark } from '@tabler/icons-react';
@@ -73,6 +73,11 @@ export default function Calculator() {
         defaultValue: false 
     });
     const [showHelp, setShowHelp] = useState(false);
+    const [resetHelp, setResetHelp] = useState(false);
+
+    const setResetHelpFalse = useCallback(() => {
+        setResetHelp(false);
+    }, []);
 
     function toggleSection (sectionName){
         setOpenedSections((prev) => ({
@@ -289,7 +294,10 @@ export default function Calculator() {
                                 color="blue" 
                                 radius="xl" 
                                 size="lg"
-                                onClick={() => setShowHelp(true)}
+                                onClick={() => {
+                                    setShowHelp(true);
+                                    setResetHelp(true);
+                                }}
                                 pos="absolute"
                                 style={{
                                     left: 'calc(100% + 12px)', 
@@ -414,6 +422,8 @@ export default function Calculator() {
                             setOpenedSections(prev => ({ ...prev, [step.openSection]: true }));
                         }
                     }}
+                    reset={resetHelp}
+                    setReset={setResetHelpFalse}
                 />
             )}
         </Container>
