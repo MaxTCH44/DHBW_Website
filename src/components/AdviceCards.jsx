@@ -243,7 +243,7 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange, rese
                         </ActionIcon>
                     </Group>
 
-                    <Box mb="md" style={{ maxHeight: '250px', overflowY: 'auto' }}>
+                    <Box mb="md" style={{ maxHeight: 'fit-content', overflowY: 'auto' }}>
                         {step && <ContentDetails item={step} />}
                     </Box>
 
