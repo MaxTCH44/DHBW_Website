@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Title, SimpleGrid, Card, Text, Stack, SegmentedControl, Tooltip, ActionIcon, Box, Center, Modal, Anchor, Group, Button } from '@mantine/core';
 import { IconQuestionMark } from '@tabler/icons-react';
-import { useSessionStorage, useLocalStorage } from '@mantine/hooks';
+import { useSessionStorage, useLocalStorage, useDidUpdate } from '@mantine/hooks';
 
 import electrolyzers from '../data/calculator/electrolyzers_list.json';
 import compressors from '../data/calculator/compressors_list.json';
@@ -18,6 +18,9 @@ import ElectrolyzerSetup from '../components/calculator/ElectrolyzerSetup.jsx';
 import ResourcesCosts from '../components/calculator/ResourcesCosts.jsx';
 import CompressorSetup from '../components/calculator/CompressorSetup.jsx';
 
+const DEFAULT_CUSTOM_ELECTROLYZER = electrolyzers.list.find(e => e.id === 0);
+const DEFAULT_CUSTOM_COMPRESSOR = compressors.list.find(e => e.id === 0);
+
 /**
  * Main state manager and orchestrator for the Hydrogen Levelized Cost (LCOH) Calculator.
  * It acts as the "Single Source of Truth", holding all user inputs (from equipment specs to economic variables),
@@ -30,7 +33,8 @@ export default function Calculator() {
     // --- 1. ELECTROLYZER STATE ---
     const [selectedElectrolyzer, setSelectedElectrolyzer] = useSessionStorage({
         key: 'calc-selected-electrolyzer',
-        defaultValue: electrolyzers.list[0]
+        defaultValue: electrolyzers.list[0],
+        getInitialValueInEffect: false
     });
     const [electrolyzerSettings, setElectrolyzerSettings] = useSessionStorage({
         key: 'calc-electrolyzer-settings',
@@ -39,65 +43,79 @@ export default function Calculator() {
             ownedStacks: 0,
             maint_unit: MAINTENANCE_UNITS[0], 
             cons_unit: H2_VOLUME_POWER_UNITS[0]
-        }
+        },
+        getInitialValueInEffect: false
     });
     const [customElectrolyzer, setCustomElectrolyzer] = useSessionStorage({
         key: 'calc-custom-electrolyzer',
-        defaultValue: electrolyzers.list.find(e => e.id === 0)
+        defaultValue: DEFAULT_CUSTOM_ELECTROLYZER,
+        getInitialValueInEffect: false
     });
 
     // --- 2. GLOBAL SIZING & OPERATIONAL STATE ---
     const [systemSize, setSystemSize] = useSessionStorage({
         key: 'calc-system-size',
-        defaultValue: { value: selectedElectrolyzer.power, unit: POWER_UNITS[1], selfProduced: 0 }
+        defaultValue: { value: selectedElectrolyzer.power, unit: POWER_UNITS[1], selfProduced: 0 },
+        getInitialValueInEffect: false
     });
     const [operatingTime, setOperatingTime] = useSessionStorage({
         key: 'calc-operating-time',
-        defaultValue: { value: 4000, unit: TIME_PER_YEAR_UNITS[1] }
+        defaultValue: { value: 4000, unit: TIME_PER_YEAR_UNITS[1] },
+        getInitialValueInEffect: false
     });
     
     // --- 3. MACRO-ECONOMIC & UTILITY STATE ---
     const [electricityPrice, setElectricityPrice] = useSessionStorage({
         key: 'calc-electricity-price',
-        defaultValue: { value: 89, unit: ELEC_PRICE_UNITS[0] }
+        defaultValue: { value: 89, unit: ELEC_PRICE_UNITS[0] },
+        getInitialValueInEffect: false
     });
     const [waterPrice, setWaterPrice] = useSessionStorage({
         key: 'calc-water-price',
-        defaultValue: { value: 2, unit: WATER_VOLUME_PRICE_UNITS[0] }
+        defaultValue: { value: 2, unit: WATER_VOLUME_PRICE_UNITS[0] },
+        getInitialValueInEffect: false
     });
     const [currentHydrogenPrice, setCurrentHydrogenPrice] = useSessionStorage({
         key: 'calc-current-h2-price',
-        defaultValue: {value : 6.11, unit: H2_VOLUME_PRICE_UNITS[0] }
+        defaultValue: {value : 6.11, unit: H2_VOLUME_PRICE_UNITS[0] },
+        getInitialValueInEffect: false
     });
     const [greyHydrogenPrice, setGreyHydrogenPrice] = useSessionStorage({
         key: 'calc-grey-h2-price',
-        defaultValue: {value : 3.5, unit: H2_VOLUME_PRICE_UNITS[0] }
+        defaultValue: {value : 3.5, unit: H2_VOLUME_PRICE_UNITS[0] },
+        getInitialValueInEffect: false
     });
     const [carbonTax, setCarbonTax] = useSessionStorage({
         key: 'calc-carbon-tax',
-        defaultValue: 50
+        defaultValue: 50,
+        getInitialValueInEffect: false
     });
     const [projectLifetime, setProjectLifetime] = useSessionStorage({
         key: 'calc-project-lifetime',
-        defaultValue: 15
+        defaultValue: 15,
+        getInitialValueInEffect: false
     });
     const [inflationRate, setInflationRate] = useSessionStorage({
         key: 'calc-inflation-rate',
-        defaultValue: 2
+        defaultValue: 2,
+        getInitialValueInEffect: false
     });
 
     // --- 4. COMPRESSOR STATE ---
     const [massToCompress, setMassToCompress] = useSessionStorage({
         key: 'calc-mass-to-compress',
-        defaultValue: -1
+        defaultValue: -1,
+        getInitialValueInEffect: false
     });
     const [isCompressorNeeded, setIsCompressorNeeded] = useSessionStorage({
         key: 'calc-is-compressor-needed',
-        defaultValue: true
+        defaultValue: true,
+        getInitialValueInEffect: false
     });
     const [selectedCompressor, setSelectedCompressor] = useSessionStorage({
         key: 'calc-selected-compressor',
-        defaultValue: compressors.list[0]
+        defaultValue: compressors.list[0],
+        getInitialValueInEffect: false
     });
     const [compressorSettings, setCompressorSettings] = useSessionStorage({
         key: 'calc-compressor-settings',
@@ -108,11 +126,13 @@ export default function Calculator() {
             cons_unit: H2_VOLUME_POWER_UNITS[0],
             maint_unit: MAINTENANCE_UNITS[0],
             flow_unit: VOLUME_PER_TIME_UNITS[2]
-        }
+        },
+        getInitialValueInEffect: false
     });
     const [customCompressor, setCustomCompressor] = useSessionStorage({
         key: 'calc-custom-compressor',
-        defaultValue: compressors.list.find(e => e.id === 0)
+        defaultValue: DEFAULT_CUSTOM_COMPRESSOR,
+        getInitialValueInEffect: false
     });
 
     // --- 5. UI CONTROLS STATE ---
@@ -121,7 +141,8 @@ export default function Calculator() {
     // useSessionStorage ensures the user's mode preference (Simple/Advanced) persists even if they navigate away and come back
     const [isAdvancedMode, setIsAdvancedMode] = useLocalStorage({
         key: 'calculator-advanced-mode', 
-        defaultValue: false 
+        defaultValue: false,
+        getInitialValueInEffect: false
     });
     const [showHelp, setShowHelp] = useState(false);
     const [resetHelp, setResetHelp] = useState(false);
@@ -177,7 +198,7 @@ export default function Calculator() {
     }, [selectedCompressor]);
 
     // UI Engine: Toggling between Simple and Advanced modes requires strict data cleanup
-    useEffect(() => {
+    useDidUpdate(() => {
         if (!isAdvancedMode) {
             let activeElectrolyzer = selectedElectrolyzer;
             
