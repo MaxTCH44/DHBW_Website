@@ -20,7 +20,7 @@
             "id" : 2,
             "name" : "GreenLab HyET EHC",
             "type" : "Electrochemical",
-            "compression_rate" : "From 15 to ??? bars",
+            "compression_rate" : "From 5 to 200 bars",
             "price" : 9500,
             "cell_stack_price" : 5400,
             "max_cells" : 25,
