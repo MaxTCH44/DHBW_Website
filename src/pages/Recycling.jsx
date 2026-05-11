@@ -8,13 +8,14 @@ import gasData from '../data/recycling_gases.json';
 
 import SliderInput from '../components/SliderInput';
 import ValueInput from '../components/ValueInput';
+import LabelWithTooltip from '../components/LabelWithTooltip';
 
 // --- DATA INITIALIZATION ---
 // Extracts just the 'value' strings from the JSON array to populate the Select component
 const gasOptions = gasData.map(gas => gas.value);
 
 // Local constants for ValueInput units, preventing inline object recreation on every render
-const UNIT_M3_YEAR = { label: "m³/year", factor: 1 };
+const UNIT_M3_YEAR = { label: "Nm³/year", factor: 1 };
 const UNITS_M3_YEAR_ARRAY = [UNIT_M3_YEAR];
 
 const UNIT_EUR_KG = { label: "€/kg", factor: 1 };
@@ -66,7 +67,7 @@ export default function Recycling() {
         // 1. Calculate raw hydrogen volume in the exhaust stream
         const annualH2Volume = annualMixedGas * (h2Concentration / 100);
         // 2. Convert volumetric flow (m³) to mass (kg). The density factor used here is roughly 11.1 m³ per kg of H2 at standard conditions.
-        const annualH2Kg = annualH2Volume / 11.1; 
+        const annualH2Kg = annualH2Volume / 11.126; 
         // 3. Apply the system's technical recovery efficiency (e.g., PSA systems rarely recover 100%)
         const recoveredKg = annualH2Kg * rate;
         
@@ -281,7 +282,7 @@ function RecyclingInputs ({
             <Title order={3} mb="md">Exhaust Gas Parameters</Title>
             
             <Select
-                label="Mixed Gas Type (What is mixed with H₂?)"
+                label={<LabelWithTooltip label="Mixed Gas Type" tooltip="Which gas is mixed with H₂ ?" />}
                 placeholder="Select secondary gas"
                 data={gasOptions}
                 value={gasType}
@@ -289,14 +290,14 @@ function RecyclingInputs ({
                 mb="md"
             />
             <ValueInput
-                label="Annual Mixed Gas Produced"
+                label={<LabelWithTooltip label="Annual Mixed Gas Produced" tooltip="Gas volume normalized at 1 atm and 0°C (Nm³)." />}
                 value={annualMixedGas}
                 onValueChange={setAnnualMixedGas}
                 units={UNITS_M3_YEAR_ARRAY}
                 currentUnit={UNIT_M3_YEAR}
             />
             <SliderInput
-                label="H₂ Concentration in Exhaust"
+                label={<LabelWithTooltip label="H₂ Concentration in Exhaust Gas" tooltip="Percentage of H₂ contained in the mixed gas stream before recovery." />}
                 value={h2Concentration}
                 onValueChange={setH2Concentration}
                 units="%"
@@ -308,14 +309,14 @@ function RecyclingInputs ({
             
             <Title order={4} mb="sm" c="dimmed">Financials & Investment</Title>
             <ValueInput
-                label="Current Green H₂ Purchase Price"
+                label={<LabelWithTooltip label="Current Green H₂ Purchase Price" tooltip="The price you currently pay for delivered hydrogen. This serves as a baseline to calculate your potential savings with on-site recycling." />}
                 value={h2Price}
                 onValueChange={setH2Price}
                 units={UNITS_EUR_KG_ARRAY}
                 currentUnit={UNIT_EUR_KG}
             />
             <ValueInput
-                label="Estimated Recycling System Price (CAPEX)"
+                label={<LabelWithTooltip label="Estimated Recycling System Price (CAPEX)" tooltip="The estimation of the initial purchase cost (CAPEX)." />}
                 value={systemPrice}
                 onValueChange={setSystemPrice}
                 units={UNITS_EUR_ARRAY}
@@ -323,7 +324,7 @@ function RecyclingInputs ({
             />
 
             <ValueInput
-                label="Annual operation and maintenance costs (OPEX)"
+                label={<LabelWithTooltip label="Maintenance costs (OPEX)" tooltip="Annual operation and maintenance (O&M) costs, generally estimated as a percentage of the initial equipment cost (CAPEX)." />}
                 value={annualOpexRate}
                 onValueChange={setAnnualOpexRate}
                 units="% CAPEX"
