@@ -39,6 +39,7 @@ export default function Recycling() {
     // Financial baselines to calculate the Return on Investment (ROI)
     const [h2Price, setH2Price] = useState(6.11); 
     const [systemPrice, setSystemPrice] = useState(25000);
+    const [annualOpexRate, setAnnualOpexRate] = useState(3);
 
     // --- CORE MATH & LOGIC ---
     // useMemo prevents recalculating the physics and financials unless the input states actually change.
@@ -70,7 +71,9 @@ export default function Recycling() {
         
         // 4. Financials
         const savings = recoveredKg * h2Price;
-        const roi = savings > 0 ? systemPrice / savings : null;
+        const annualOpex = systemPrice * (annualOpexRate / 100);
+        const netAnnualSavings = savings - annualOpex;
+        const roi = netAnnualSavings > 0 ? systemPrice / netAnnualSavings : null;
 
         return {
             complexity: comp,
@@ -81,7 +84,7 @@ export default function Recycling() {
             annualSavings: savings,
             roiYears: roi
         };
-    }, [gasType, annualMixedGas, h2Concentration, h2Price, systemPrice]);
+    }, [gasType, annualMixedGas, h2Concentration, h2Price, systemPrice, annualOpexRate]);
 
     return (
         <Container size="xl" px="xl" py="lg" mt="150px">
@@ -116,7 +119,9 @@ export default function Recycling() {
                         h2Price={h2Price}
                         setH2Price={setH2Price}
                         systemPrice={systemPrice}
-                        setSystemPrice={setSystemPrice}                  
+                        setSystemPrice={setSystemPrice}
+                        annualOpexRate={annualOpexRate}
+                        setAnnualOpexRate={setAnnualOpexRate}                 
                     />
                 </Grid.Col>
 
@@ -171,7 +176,7 @@ export default function Recycling() {
                                             <Text size="xl" fw={900} c="myColor.9">
                                                 {roiYears !== null 
                                                     ? `${roiYears.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} years`
-                                                    : "N/A"}
+                                                    : "Never"}
                                             </Text>
                                         </div>
                                     </Group>
@@ -242,7 +247,9 @@ function RecyclingInputs ({
     h2Price,
     setH2Price,
     systemPrice,
-    setSystemPrice
+    setSystemPrice,
+    annualOpexRate,
+    setAnnualOpexRate
 }){
     return(
         <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -288,6 +295,13 @@ function RecyclingInputs ({
                 onValueChange={setSystemPrice}
                 units={UNITS_EUR_ARRAY}
                 currentUnit={UNIT_EUR}
+            />
+
+            <ValueInput
+                label="Annual operation and maintenance costs (OPEX)"
+                value={annualOpexRate}
+                onValueChange={setAnnualOpexRate}
+                units="% CAPEX"
             />
         </Card>
     )
