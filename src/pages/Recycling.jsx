@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Container, Title, Text, Grid, Card, Group, Badge, Box, Select, Paper, Button, Divider } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
-import { IconMail, IconRecycle, IconCoin, IconClockHour4, IconArrowRight } from '@tabler/icons-react';
+import { IconMail, IconRecycle, IconCoin, IconClockHour4, IconArrowRight, IconLeaf } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 
 import gasData from '../data/recycling_gases.json';
@@ -39,6 +39,7 @@ export default function Recycling() {
     // Financial baselines to calculate the Return on Investment (ROI)
     const [h2Price, setH2Price] = useState(6.11); 
     const [systemPrice, setSystemPrice] = useState(25000);
+    const [annualOpexRate, setAnnualOpexRate] = useState(3);
 
     // --- CORE MATH & LOGIC ---
     // useMemo prevents recalculating the physics and financials unless the input states actually change.
@@ -49,7 +50,8 @@ export default function Recycling() {
         advice, 
         annualRecoveredH2Kg, 
         annualSavings, 
-        roiYears 
+        roiYears,
+        co2Avoided
     } = useMemo(() => {
         // Find the technical parameters corresponding to the user's selected gas mixture
         const info = gasData.find(gas => gas.value === gasType);
@@ -59,7 +61,7 @@ export default function Recycling() {
         const color = info ? info.complexityColor : "gray";
         const rate = info ? info.recovery_rate : 0;
         const adv = info ? info.advice : "Please provide details about your mixed gas to get a preliminary assessment.";
-
+        
         // --- CALCULATIONS ---
         // 1. Calculate raw hydrogen volume in the exhaust stream
         const annualH2Volume = annualMixedGas * (h2Concentration / 100);
@@ -70,7 +72,17 @@ export default function Recycling() {
         
         // 4. Financials
         const savings = recoveredKg * h2Price;
-        const roi = savings > 0 ? systemPrice / savings : null;
+        const annualOpex = systemPrice * (annualOpexRate / 100);
+        const netAnnualSavings = savings - annualOpex;
+        const roi = netAnnualSavings > 0 ? systemPrice / netAnnualSavings : null;
+
+        //5. Avoided CO2
+        const CO2_GRID_INTENSITY = 0.295; // kg CO₂/kWh — EU grid mix 2024
+        const H2_GWP = 11.6; // kg CO₂eq/kg H₂ vented — IPCC AR6 2023
+
+        //0 because we assume it's green energy
+        const co2Avoided = (recoveredKg * H2_GWP) - 0; // kg CO₂eq/year
+        const co2AvoidedTons = co2Avoided / 1000; // tCO₂eq/year
 
         return {
             complexity: comp,
@@ -79,9 +91,10 @@ export default function Recycling() {
             advice: adv,
             annualRecoveredH2Kg: recoveredKg,
             annualSavings: savings,
-            roiYears: roi
+            roiYears: roi,
+            co2Avoided: co2AvoidedTons
         };
-    }, [gasType, annualMixedGas, h2Concentration, h2Price, systemPrice]);
+    }, [gasType, annualMixedGas, h2Concentration, h2Price, systemPrice, annualOpexRate]);
 
     return (
         <Container size="xl" px="xl" py="lg" mt="150px">
@@ -116,7 +129,9 @@ export default function Recycling() {
                         h2Price={h2Price}
                         setH2Price={setH2Price}
                         systemPrice={systemPrice}
-                        setSystemPrice={setSystemPrice}                  
+                        setSystemPrice={setSystemPrice}
+                        annualOpexRate={annualOpexRate}
+                        setAnnualOpexRate={setAnnualOpexRate}                 
                     />
                 </Grid.Col>
 
@@ -162,6 +177,21 @@ export default function Recycling() {
                                     </Group>
                                 </Paper>
 
+                                {/* Avoided CO2 */}
+                                <Paper p="md" radius="md" withBorder bg="white" mb="md">
+                                    <Group align="center" gap="sm">
+                                        <IconLeaf size={32} color="var(--mantine-color-myColor-9)" />
+                                        <div>
+                                            <Text size="sm" c="dimmed" fw={500}>Avoided CO₂</Text>
+                                            <Text size="xl" fw={900} c="myColor.9">
+                                                {co2Avoided !== null 
+                                                    ? `${co2Avoided.toLocaleString('de-DE', { maximumFractionDigits: 1 })} Tons` : "0"
+                                                }
+                                            </Text>
+                                        </div>
+                                    </Group>
+                                </Paper>
+
                                 {/* ROI Projection */}
                                 <Paper p="md" radius="md" withBorder bg="var(--mantine-color-myColor-0)" style={{ borderColor: 'var(--mantine-color-myColor-3)' }}>
                                     <Group align="center" gap="sm">
@@ -171,7 +201,7 @@ export default function Recycling() {
                                             <Text size="xl" fw={900} c="myColor.9">
                                                 {roiYears !== null 
                                                     ? `${roiYears.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} years`
-                                                    : "N/A"}
+                                                    : "Never"}
                                             </Text>
                                         </div>
                                     </Group>
@@ -242,7 +272,9 @@ function RecyclingInputs ({
     h2Price,
     setH2Price,
     systemPrice,
-    setSystemPrice
+    setSystemPrice,
+    annualOpexRate,
+    setAnnualOpexRate
 }){
     return(
         <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -288,6 +320,13 @@ function RecyclingInputs ({
                 onValueChange={setSystemPrice}
                 units={UNITS_EUR_ARRAY}
                 currentUnit={UNIT_EUR}
+            />
+
+            <ValueInput
+                label="Annual operation and maintenance costs (OPEX)"
+                value={annualOpexRate}
+                onValueChange={setAnnualOpexRate}
+                units="% CAPEX"
             />
         </Card>
     )
