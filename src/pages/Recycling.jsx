@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Container, Title, Text, Grid, Card, Group, Badge, Box, Select, Paper, Button, Divider } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
-import { IconMail, IconRecycle, IconCoin, IconClockHour4, IconArrowRight } from '@tabler/icons-react';
+import { IconMail, IconRecycle, IconCoin, IconClockHour4, IconArrowRight, IconLeaf } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 
 import gasData from '../data/recycling_gases.json';
@@ -49,7 +49,8 @@ export default function Recycling() {
         advice, 
         annualRecoveredH2Kg, 
         annualSavings, 
-        roiYears 
+        roiYears,
+        co2Avoided
     } = useMemo(() => {
         // Find the technical parameters corresponding to the user's selected gas mixture
         const info = gasData.find(gas => gas.value === gasType);
@@ -59,7 +60,7 @@ export default function Recycling() {
         const color = info ? info.complexityColor : "gray";
         const rate = info ? info.recovery_rate : 0;
         const adv = info ? info.advice : "Please provide details about your mixed gas to get a preliminary assessment.";
-
+        
         // --- CALCULATIONS ---
         // 1. Calculate raw hydrogen volume in the exhaust stream
         const annualH2Volume = annualMixedGas * (h2Concentration / 100);
@@ -72,6 +73,14 @@ export default function Recycling() {
         const savings = recoveredKg * h2Price;
         const roi = savings > 0 ? systemPrice / savings : null;
 
+        //5. Avoided CO2
+        const CO2_GRID_INTENSITY = 0.295; // kg CO₂/kWh — EU grid mix 2024
+        const H2_GWP = 11.6; // kg CO₂eq/kg H₂ vented — IPCC AR6 2023
+
+        //0 because we assume it's green energy
+        const co2Avoided = (recoveredKg * H2_GWP) - 0; // kg CO₂eq/year
+        const co2AvoidedTons = co2Avoided / 1000; // tCO₂eq/year
+
         return {
             complexity: comp,
             complexityColor: color,
@@ -79,7 +88,8 @@ export default function Recycling() {
             advice: adv,
             annualRecoveredH2Kg: recoveredKg,
             annualSavings: savings,
-            roiYears: roi
+            roiYears: roi,
+            co2Avoided: co2AvoidedTons
         };
     }, [gasType, annualMixedGas, h2Concentration, h2Price, systemPrice]);
 
@@ -163,7 +173,7 @@ export default function Recycling() {
                                 </Paper>
 
                                 {/* ROI Projection */}
-                                <Paper p="md" radius="md" withBorder bg="var(--mantine-color-myColor-0)" style={{ borderColor: 'var(--mantine-color-myColor-3)' }}>
+                                <Paper p="md" radius="md" withBorder bg="var(--mantine-color-myColor-0)" style={{ borderColor: 'var(--mantine-color-myColor-3)' }} mb="md">
                                     <Group align="center" gap="sm">
                                         <IconClockHour4 size={32} color="var(--mantine-color-myColor-9)" />
                                         <div>
@@ -172,6 +182,21 @@ export default function Recycling() {
                                                 {roiYears !== null 
                                                     ? `${roiYears.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} years`
                                                     : "N/A"}
+                                            </Text>
+                                        </div>
+                                    </Group>
+                                </Paper>
+
+                                {/* Avoided CO2 */}
+                                <Paper p="md" radius="md" withBorder bg="white">
+                                    <Group align="center" gap="sm">
+                                        <IconLeaf size={32} color="var(--mantine-color-myColor-9)" />
+                                        <div>
+                                            <Text size="sm" c="dimmed" fw={500}>Avoided CO₂</Text>
+                                            <Text size="xl" fw={900} c="myColor.9">
+                                                {co2Avoided !== null 
+                                                    ? `${co2Avoided.toLocaleString('de-DE', { maximumFractionDigits: 1 })} Tons` : "0"
+                                                }
                                             </Text>
                                         </div>
                                     </Group>
