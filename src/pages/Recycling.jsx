@@ -177,23 +177,8 @@ export default function Recycling() {
                                     </Group>
                                 </Paper>
 
-                                {/* ROI Projection */}
-                                <Paper p="md" radius="md" withBorder bg="var(--mantine-color-myColor-0)" style={{ borderColor: 'var(--mantine-color-myColor-3)' }} mb="md">
-                                    <Group align="center" gap="sm">
-                                        <IconClockHour4 size={32} color="var(--mantine-color-myColor-9)" />
-                                        <div>
-                                            <Text size="sm" c="dimmed" fw={500}>Return on Investment (ROI)</Text>
-                                            <Text size="xl" fw={900} c="myColor.9">
-                                                {roiYears !== null 
-                                                    ? `${roiYears.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} years`
-                                                    : "Never"}
-                                            </Text>
-                                        </div>
-                                    </Group>
-                                </Paper>
-
                                 {/* Avoided CO2 */}
-                                <Paper p="md" radius="md" withBorder bg="white">
+                                <Paper p="md" radius="md" withBorder bg="white" mb="md">
                                     <Group align="center" gap="sm">
                                         <IconLeaf size={32} color="var(--mantine-color-myColor-9)" />
                                         <div>
@@ -202,6 +187,21 @@ export default function Recycling() {
                                                 {co2Avoided !== null 
                                                     ? `${co2Avoided.toLocaleString('de-DE', { maximumFractionDigits: 1 })} Tons` : "0"
                                                 }
+                                            </Text>
+                                        </div>
+                                    </Group>
+                                </Paper>
+
+                                {/* ROI Projection */}
+                                <Paper p="md" radius="md" withBorder bg="var(--mantine-color-myColor-0)" style={{ borderColor: 'var(--mantine-color-myColor-3)' }}>
+                                    <Group align="center" gap="sm">
+                                        <IconClockHour4 size={32} color="var(--mantine-color-myColor-9)" />
+                                        <div>
+                                            <Text size="sm" c="dimmed" fw={500}>Return on Investment (ROI)</Text>
+                                            <Text size="xl" fw={900} c="myColor.9">
+                                                {roiYears !== null 
+                                                    ? `${roiYears.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} years`
+                                                    : "Never"}
                                             </Text>
                                         </div>
                                     </Group>
