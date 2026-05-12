@@ -35,9 +35,21 @@ export default function Recycling() {
     const isMobile = useMediaQuery('(max-width: 768px)');
 
     // --- STATE MANAGEMENT ---
-    const [gasType, setGasType] = useState(null);
-    const [annualMixedGas, setAnnualMixedGas] = useState(10000);
-    const [h2Concentration, setH2Concentration] = useState(40);
+    const [gasType, setGasType] = useSessionStorage({
+        key: 'recycling-gas-type',
+        defaultValue: null,
+        getInitialValueInEffect: false
+    });
+    const [annualMixedGas, setAnnualMixedGas] = useSessionStorage({
+        key: 'recycling-annual-mixed-gas',
+        defaultValue: 10000,
+        getInitialValueInEffect: false
+    });
+    const [h2Concentration, setH2Concentration] = useSessionStorage({
+        key: 'recycling-h2-concentration',
+        defaultValue: 40,
+        getInitialValueInEffect: false
+    });
     
     // Financial baselines to calculate the Return on Investment (ROI)
     const [h2Price, setH2Price] = useState(6.11); 
@@ -48,6 +60,21 @@ export default function Recycling() {
     const [electricityPrice, setElectricityPrice] = useSessionStorage({
         key: 'calc-electricity-price',
         defaultValue: { value: 89, unit: ELEC_PRICE_UNITS[0] },
+          getInitialValueInEffect: false
+    });
+    const [h2Price, setH2Price] = useSessionStorage({
+        key: 'recycling-h2-price',
+        defaultValue: 6.11,
+        getInitialValueInEffect: false
+    });
+    const [systemPrice, setSystemPrice] = useSessionStorage({
+        key: 'recycling-system-price',
+        defaultValue: 25000,
+        getInitialValueInEffect: false
+    });
+    const [annualOpexRate, setAnnualOpexRate] = useSessionStorage({
+        key: 'recycling-annualOpexRate',
+        defaultValue: 3,
         getInitialValueInEffect: false
     });
 
