@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Container, Title, Text, Grid, Card, Group, Badge, Box, Select, Paper, Button, Divider } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
+import { useMediaQuery, useSessionStorage } from '@mantine/hooks';
 import { IconMail, IconRecycle, IconCoin, IconClockHour4, IconArrowRight, IconLeaf } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 
@@ -33,14 +33,38 @@ export default function Recycling() {
     const isMobile = useMediaQuery('(max-width: 768px)');
 
     // --- STATE MANAGEMENT ---
-    const [gasType, setGasType] = useState(null);
-    const [annualMixedGas, setAnnualMixedGas] = useState(10000);
-    const [h2Concentration, setH2Concentration] = useState(40);
+    const [gasType, setGasType] = useSessionStorage({
+        key: 'recycling-gas-type',
+        defaultValue: null,
+        getInitialValueInEffect: false
+    });
+    const [annualMixedGas, setAnnualMixedGas] = useSessionStorage({
+        key: 'recycling-annual-mixed-gas',
+        defaultValue: 10000,
+        getInitialValueInEffect: false
+    });
+    const [h2Concentration, setH2Concentration] = useSessionStorage({
+        key: 'recycling-h2-concentration',
+        defaultValue: 40,
+        getInitialValueInEffect: false
+    });
     
     // Financial baselines to calculate the Return on Investment (ROI)
-    const [h2Price, setH2Price] = useState(6.11); 
-    const [systemPrice, setSystemPrice] = useState(25000);
-    const [annualOpexRate, setAnnualOpexRate] = useState(3);
+    const [h2Price, setH2Price] = useSessionStorage({
+        key: 'recycling-h2-price',
+        defaultValue: 6.11,
+        getInitialValueInEffect: false
+    });
+    const [systemPrice, setSystemPrice] = useSessionStorage({
+        key: 'recycling-system-price',
+        defaultValue: 25000,
+        getInitialValueInEffect: false
+    });
+    const [annualOpexRate, setAnnualOpexRate] = useSessionStorage({
+        key: 'recycling-annualOpexRate',
+        defaultValue: 3,
+        getInitialValueInEffect: false
+    });
 
     // --- CORE MATH & LOGIC ---
     // useMemo prevents recalculating the physics and financials unless the input states actually change.
