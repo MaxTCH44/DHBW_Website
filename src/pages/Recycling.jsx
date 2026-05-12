@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Container, Title, Text, Grid, Card, Group, Badge, Box, Select, Paper, Button, Divider } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
+import { useMediaQuery, useSessionStorage } from '@mantine/hooks';
 import { IconMail, IconRecycle, IconCoin, IconClockHour4, IconArrowRight, IconLeaf } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 
@@ -9,6 +9,8 @@ import gasData from '../data/recycling_gases.json';
 import SliderInput from '../components/SliderInput';
 import ValueInput from '../components/ValueInput';
 import LabelWithTooltip from '../components/LabelWithTooltip';
+
+export const ELEC_PRICE_UNITS = [{ label: "€/MWh", factor: 0.001 }, { label: "€/kWh", factor: 1 }];
 
 // --- DATA INITIALIZATION ---
 // Extracts just the 'value' strings from the JSON array to populate the Select component
@@ -41,6 +43,13 @@ export default function Recycling() {
     const [h2Price, setH2Price] = useState(6.11); 
     const [systemPrice, setSystemPrice] = useState(25000);
     const [annualOpexRate, setAnnualOpexRate] = useState(3);
+    const [energyConsumption, setEnergyConsumption] = useState(0.3);
+
+    const [electricityPrice, setElectricityPrice] = useSessionStorage({
+        key: 'calc-electricity-price',
+        defaultValue: { value: 89, unit: ELEC_PRICE_UNITS[0] },
+        getInitialValueInEffect: false
+    });
 
     // --- CORE MATH & LOGIC ---
     // useMemo prevents recalculating the physics and financials unless the input states actually change.
@@ -132,7 +141,11 @@ export default function Recycling() {
                         systemPrice={systemPrice}
                         setSystemPrice={setSystemPrice}
                         annualOpexRate={annualOpexRate}
-                        setAnnualOpexRate={setAnnualOpexRate}                 
+                        setAnnualOpexRate={setAnnualOpexRate}
+                        energyConsumption={energyConsumption}
+                        setEnergyConsumption={setEnergyConsumption}
+                        electricityPrice={electricityPrice}
+                        setElectricityPrice={setElectricityPrice}                 
                     />
                 </Grid.Col>
 
@@ -275,7 +288,11 @@ function RecyclingInputs ({
     systemPrice,
     setSystemPrice,
     annualOpexRate,
-    setAnnualOpexRate
+    setAnnualOpexRate,
+    energyConsumption,
+    setEnergyConsumption,
+    electricityPrice,
+    setElectricityPrice
 }){
     return(
         <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -328,6 +345,22 @@ function RecyclingInputs ({
                 value={annualOpexRate}
                 onValueChange={setAnnualOpexRate}
                 units="% CAPEX"
+            />
+
+            <ValueInput
+                label={<LabelWithTooltip label="Recycling system energy consumption" tooltip="Specific energy consumption of the recycling system itself to produce one kg of hydrogen. This value excludes system-wide auxiliaries like cooling or drying." />}
+                units="kWh/kg"
+                value={energyConsumption}
+                onValueChange={setEnergyConsumption}
+            />
+
+            <ValueInput
+                label={<LabelWithTooltip label="Electricity price" tooltip="The average grid electricity price. This is the primary cost driver for green hydrogen production." />}
+                units={ELEC_PRICE_UNITS}
+                currentUnit={electricityPrice.unit}
+                value={electricityPrice.value}
+                onValueChange={val => setElectricityPrice({ ...electricityPrice, value: val })}
+                onUnitChange={u => setElectricityPrice({ ...electricityPrice, unit: u })}
             />
         </Card>
     )
