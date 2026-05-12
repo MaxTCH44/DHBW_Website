@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Container, Title, Text, Grid, Card, Group, Badge, Box, Select, Paper, Button, Divider } from '@mantine/core';
+import { Container, Title, Text, Grid, Card, Group, Badge, Box, Select, Paper, Button, Divider, Modal, Anchor } from '@mantine/core';
 import { useMediaQuery, useSessionStorage } from '@mantine/hooks';
 import { IconMail, IconRecycle, IconCoin, IconClockHour4, IconArrowRight, IconLeaf } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
@@ -33,6 +33,13 @@ const UNITS_EUR_ARRAY = [UNIT_EUR];
  */
 export default function Recycling() {
     const isMobile = useMediaQuery('(max-width: 768px)');
+
+
+    const [resetModalOpened, setResetModalOpened] = useState(false);
+    function handleResetDefaults(){
+        sessionStorage.clear(); 
+        window.location.reload(); 
+    };
 
     // --- STATE MANAGEMENT ---
     const [gasType, setGasType] = useSessionStorage({
@@ -112,7 +119,6 @@ export default function Recycling() {
         // 4. Financials
         const totalElectricityPrice = recoveredKg * energyConsumption * electricityPrice.value * electricityPrice.unit.factor 
         const savings = recoveredKg * h2Price;
-        console.log(totalElectricityPrice);
         const annualOpex = systemPrice * (annualOpexRate / 100) + totalElectricityPrice;
         const netAnnualSavings = savings - annualOpex;
         const roi = netAnnualSavings > 0 ? systemPrice / netAnnualSavings : null;
@@ -140,7 +146,7 @@ export default function Recycling() {
     return (
         <Container size="xl" px="xl" py="lg" mt="150px">
             {/* --- PAGE HEADER --- */}
-            <Box mb={60} ta="center">
+            <Box mb={20} ta="center">
                 <Title order={1} c="dark.7" mb="md">Hydrogen Recycling Calculator</Title>
                 <Text size="lg" c="dimmed" maw={800} mx="auto" mb="md">
                     Stop venting valuable hydrogen into the atmosphere. Calculate how much H₂ you can recover annually and discover your Return on Investment (ROI).
@@ -155,6 +161,39 @@ export default function Recycling() {
                 >
                     Learn how the recycling process works
                 </Button>
+
+            </Box>
+
+            <Box mb={10} ta="center">
+                <Anchor 
+                    component="button" 
+                    type="button" 
+                    size="sm" 
+                    c="dimmed" 
+                    mb="xs" 
+                    onClick={() => setResetModalOpened(true)}
+                >
+                    Reset all inputs to default values
+                </Anchor>
+
+                <Modal 
+                    opened={resetModalOpened} 
+                    onClose={() => setResetModalOpened(false)} 
+                    title="Reset Calculator" 
+                    centered
+                >
+                    <Text size="sm" mb="xl">
+                        Are you sure you want to clear all your inputs and reset the calculator to its default values? This action cannot be undone.
+                    </Text>
+                    <Group justify="flex-end">
+                        <Button variant="default" onClick={() => setResetModalOpened(false)}>
+                            Cancel
+                        </Button>
+                        <Button color="red" onClick={handleResetDefaults}>
+                            Yes, reset everything
+                        </Button>
+                    </Group>
+                </Modal>
             </Box>
 
             <Grid gutter="xl" mb={60}>
