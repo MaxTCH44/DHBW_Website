@@ -52,16 +52,18 @@ export default function Recycling() {
     });
     
     // Financial baselines to calculate the Return on Investment (ROI)
-    const [h2Price, setH2Price] = useState(6.11); 
-    const [systemPrice, setSystemPrice] = useState(25000);
-    const [annualOpexRate, setAnnualOpexRate] = useState(3);
-    const [energyConsumption, setEnergyConsumption] = useState(0.3);
+    const [energyConsumption, setEnergyConsumption] = useSessionStorage({
+        key: 'recycling-energy-consumption',
+        defaultValue: 11,
+            getInitialValueInEffect: false
+    });
 
     const [electricityPrice, setElectricityPrice] = useSessionStorage({
         key: 'calc-electricity-price',
         defaultValue: { value: 89, unit: ELEC_PRICE_UNITS[0] },
           getInitialValueInEffect: false
     });
+
     const [h2Price, setH2Price] = useSessionStorage({
         key: 'recycling-h2-price',
         defaultValue: 6.11,
@@ -108,8 +110,10 @@ export default function Recycling() {
         const recoveredKg = annualH2Kg * rate;
         
         // 4. Financials
+        const totalElectricityPrice = recoveredKg * energyConsumption * electricityPrice.value * electricityPrice.unit.factor 
         const savings = recoveredKg * h2Price;
-        const annualOpex = systemPrice * (annualOpexRate / 100);
+        console.log(totalElectricityPrice);
+        const annualOpex = systemPrice * (annualOpexRate / 100) + totalElectricityPrice;
         const netAnnualSavings = savings - annualOpex;
         const roi = netAnnualSavings > 0 ? systemPrice / netAnnualSavings : null;
 
@@ -131,7 +135,7 @@ export default function Recycling() {
             roiYears: roi,
             co2Avoided: co2AvoidedTons
         };
-    }, [gasType, annualMixedGas, h2Concentration, h2Price, systemPrice, annualOpexRate]);
+    }, [gasType, annualMixedGas, h2Concentration, h2Price, systemPrice, annualOpexRate, energyConsumption, electricityPrice]);
 
     return (
         <Container size="xl" px="xl" py="lg" mt="150px">
