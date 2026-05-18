@@ -1,5 +1,6 @@
 import { Box, HoverCard, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import { useTranslation } from 'react-i18next';
 
 import './PemElectrolyzer.css';
 
@@ -7,6 +8,9 @@ import './PemElectrolyzer.css';
 
 export default function PemElectrolyzer() {
     const isMobile = useMediaQuery('(max-width: 768px)');
+
+    const { t } = useTranslation("equipmentOverview");
+    
 
     const handleSvgClick = (e) => {
         e.preventDefault();
@@ -21,7 +25,7 @@ export default function PemElectrolyzer() {
 
                 <g className="circuit">
                     <rect x="145" y="7" width="116" height="39" fill="black"/>
-                    <text x="203" y="32" fontSize="14" fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>POWER SUPPLY</text>
+                    <text x="203" y="32" fontSize="14" fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.pem.schematic.power")}</text>
                     <rect x="15" y="183" width="118" height="6" fill="black"/>
                     <rect x="17" y="185" width="116" height="2" fill="#FFFF00"/>
                     <rect x="15" y="23" width="6" height="160" fill="black"/>
@@ -49,11 +53,11 @@ export default function PemElectrolyzer() {
                     <HoverCard.Target>
                         <g className="interactive-element" onClick={handleSvgClick}>
                             <rect x="183" y="116" width="40" height="320" fill="#EDD2B8"/>
-                            <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Membrane</text>
+                            <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.pem.schematic.membrane.title")}</text>
                         </g>
                     </HoverCard.Target>
                     <HoverCard.Dropdown bg="#EDD2B8" c="black" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>Proton Exchange Membrane (PEM)</b><br/>A solid polymer membrane (e.g., Nafion) that acts as an electrolyte. It only allows positively charged protons (H⁺) to pass through, while forcing electrons to travel through the external circuit.</Text>
+                        <Text size="sm"><b>{t("electrolyzers.pem.schematic.membrane.subtitle")}</b><br/>{t("electrolyzers.pem.schematic.membrane.explanation")}</Text>
                     </HoverCard.Dropdown>
                 </HoverCard>
 
@@ -70,11 +74,11 @@ export default function PemElectrolyzer() {
                         <HoverCard.Target>
                             <g className="interactive-element" onClick={handleSvgClick}>
                                 <rect x="133" y="141" width="50" height="270" fill="#6E8BFD"/>
-                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Cathode (-)</text>
+                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.pem.schematic.cathode.title")}</text>
                             </g>
                         </HoverCard.Target>
                         <HoverCard.Dropdown bg="#6E8BFD" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>Cathode (Titanium / Platinum)</b><br/>Protons (H⁺) from the membrane combine with electrons (e⁻) from the external circuit to form pure Hydrogen gas (H₂).</Text>
+                            <Text size="sm"><b>{t("electrolyzers.pem.schematic.cathode.subtitle")}</b><br/>{t("electrolyzers.pem.schematic.cathode.explanation")}</Text>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </g>
@@ -92,11 +96,11 @@ export default function PemElectrolyzer() {
                         <HoverCard.Target>
                             <g className="interactive-element">
                                 <rect x="223" y="141" width="50" height="270" fill="#FD6E6E"/>
-                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Anode (+)</text>
+                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.pem.schematic.anode.title")}</text>
                             </g>
                         </HoverCard.Target>
                         <HoverCard.Dropdown bg="#FD6E6E" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>Anode (Titanium)</b><br/> Water flows in from this side and is oxidized here to produce Oxygen gas (O₂), protons (H⁺), and electrons (e⁻). Oxygen is released, protons enter the membrane.</Text>
+                            <Text size="sm"><b>{t("electrolyzers.pem.schematic.anode.subtitle")}</b><br/>{t("electrolyzers.pem.schematic.anode.explanation")}</Text>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </g>

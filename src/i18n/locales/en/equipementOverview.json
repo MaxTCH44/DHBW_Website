@@ -34,6 +34,25 @@
                 "corrosiveEnvironment": "Highly corrosive acidic operating environment degrades components over time",
                 "lowerDurability": "Lower durability and lifespan compared to mature alkaline systems",
                 "commercialization": "Commercialization at massive multi-megawatt scales is still in the near-term phase"
+            },
+            "schematic": {
+                "power": "POWER SUPPLY",
+                "membrane": {
+                    "title": "Membrane",
+                    "subtitle": "Proton Exchange Membrane (PEM)",
+                    "explanation": "A solid polymer membrane (e.g., Nafion) that acts as an electrolyte. It only allows positively charged protons (H⁺) to pass through, while forcing electrons to travel through the external circuit."
+                },
+                "cathode": {
+                    "title": "Cathode (-)",
+                    "subtitle": "Cathode (Titanium / Platinum)",
+                    "explanation": "Protons (H⁺) from the membrane combine with electrons (e⁻) from the external circuit to form pure Hydrogen gas (H₂)."
+                },
+                "anode": {
+                    "title": "Anode (+)",
+                    "subtitle": "Anode (Titanium)",
+                    "explanation": "Water flows in from this side and is oxidized here to produce Oxygen gas (O₂), protons (H⁺), and electrons (e⁻). Oxygen is released, protons enter the membrane."
+                }
+
             }
         },
 
@@ -66,6 +85,25 @@
                 "poorDynamicResponse": "Low dynamic operation capability, making it less adaptable to highly fluctuating wind/solar power",
                 "carbonateImpurities": "Impurities (like carbonates) in the KOH can block catalytic sites and cause degradation",
                 "largeFootprint": "Large physical footprint and complex industrial setup required for large-scale operation"
+            },
+            "schematic": {
+                "power": "POWER SUPPLY",
+                "diaphragm": {
+                    "title": "Diaphragm",
+                    "subtitle": "Porous Diaphragm & Electrolyte",
+                    "explanation": "A porous separator submerged in an alkaline liquid electrolyte (usually 20-30% KOH or NaOH). It keeps H₂ and O₂ gases separated while allowing Hydroxide ions (OH⁻) to pass through."
+                },
+                "cathode": {
+                    "title": "Cathode (-)",
+                    "subtitle": "Cathode (Nickel-based)",
+                    "explanation": "Water (H₂O) and electrons (e⁻) from the external circuit react here to form pure Hydrogen gas (H₂) and Hydroxide ions (OH⁻). Water enters the system from this side."
+                },
+                "anode": {
+                    "title": "Anode (+)",
+                    "subtitle": "Anode (Nickel-based / Steel)",
+                    "explanation": "Hydroxide ions (OH⁻) arriving from the electrolyte are oxidized here. They release Oxygen gas (O₂), water, and electrons (e⁻) that flow into the external circuit."
+                }
+
             }
         },
         "aem": {
@@ -100,6 +138,25 @@
                 "lowerConductivity": "Lower ionic conductivity compared to PEM systems",
                 "shorterLifetime": "Overall cell lifespan is currently shorter than commercial PEM and Alkaline systems",
                 "earlyCommercialization": "Still in the early commercialization phase; lacks massive Gigawatt-scale deployment history"
+            },
+            "schematic": {
+                "power": "POWER SUPPLY",
+                "membrane": {
+                    "title": "Membrane",
+                    "subtitle": "Anion Exchange Membrane (AEM)",
+                    "explanation": "A solid polymer membrane that conducts negative Hydroxide ions (OH⁻) from the cathode to the anode. It provides the compact design of a PEM but operates in a slightly alkaline environment."
+                },
+                "cathode": {
+                    "title": "Cathode (-)",
+                    "subtitle": "Cathode (Non-PGM / Nickel-based)",
+                    "explanation": "Water (H₂O) and electrons (e⁻) react here to form Hydrogen gas (H₂) and OH⁻ ions. Because AEM is not highly acidic, cheaper transition metals can be used instead of Platinum."
+                },
+                "anode": {
+                    "title": "Anode (+)",
+                    "subtitle": "Anode (Non-PGM / Nickel or Iron)",
+                    "explanation": "The OH⁻ ions that crossed the membrane are oxidized here, releasing Oxygen gas (O₂), water, and electrons (e⁻). No expensive Iridium is required."
+                }
+
             }
         },
 
@@ -134,6 +191,25 @@
                 "poorDynamicResponse": "Poor dynamic response and long start-up times, making it difficult to pair with highly intermittent renewables",
                 "thermalManagement": "Relies on complex thermal management systems",
                 "limitedCommercialMaturity": "Less commercially mature for massive Gigawatt-scale deployment compared to Alkaline or PEM"
+            },
+            "schematic": {
+                "power": "POWER SUPPLY",
+                "ceramic": {
+                    "title": "Ceramic",
+                    "subtitle": "Solid Oxide Electrolyte (Ceramic)",
+                    "explanation": "A dense ceramic material (like YSZ) operating at ultra-high temperatures (700-1000°C). It conducts negative Oxide ions (O²⁻) while blocking electrons and gases."
+                },
+                "cathode": {
+                    "title": "Cathode (-)",
+                    "subtitle": "Cathode (Fuel Electrode)",
+                    "explanation": "Steam (H₂O vapor) enters here. High heat and electrons split the steam into Hydrogen gas (H₂) and Oxide ions (O²⁻). Using steam dramatically reduces the electricity required."
+                },
+                "anode": {
+                    "title": "Anode (+)",
+                    "subtitle": "Anode (Air/Oxygen Electrode)",
+                    "explanation": "TThe Oxide ions (O²⁻) traveling through the ceramic arrive here, where they release electrons (e⁻) and combine to form pure Oxygen gas (O₂)."
+                }
+
             }
         }
 

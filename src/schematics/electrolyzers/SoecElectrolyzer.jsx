@@ -1,5 +1,6 @@
 import { Box, HoverCard, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import { useTranslation } from 'react-i18next';
 
 import './SoecElectrolyzer.css';
 
@@ -7,6 +8,8 @@ import './SoecElectrolyzer.css';
 
 export default function SoecElectrolyzer() {
     const isMobile = useMediaQuery('(max-width: 768px)');
+
+    const { t } = useTranslation("equipmentOverview");
 
     const handleSvgClick = (e) => {
         e.preventDefault();
@@ -22,7 +25,7 @@ export default function SoecElectrolyzer() {
 
                 <g className="circuit">
                     <rect x="145" y="7" width="116" height="39" fill="black"/>
-                    <text x="203" y="32" fontSize="14" fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>POWER SUPPLY</text>
+                    <text x="203" y="32" fontSize="14" fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.soec.schematic.power")}</text>
                     <rect x="15" y="183" width="118" height="6" fill="black"/>
                     <rect x="17" y="185" width="116" height="2" fill="#FFFF00"/>
                     <rect x="15" y="23" width="6" height="160" fill="black"/>
@@ -50,11 +53,11 @@ export default function SoecElectrolyzer() {
                     <HoverCard.Target>
                         <g className="interactive-element" onClick={handleSvgClick}> 
                         <rect x="183" y="116" width="40" height="320" fill="#FEEA14"/>
-                        <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Ceramic</text>
+                        <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.soec.schematic.ceramic.title")}</text>
                         </g>
                     </HoverCard.Target>
                     <HoverCard.Dropdown bg="#FEEA14" c="black" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>Solid Oxide Electrolyte (Ceramic)</b><br/>A dense ceramic material (like YSZ) operating at ultra-high temperatures (700-1000°C). It conducts negative Oxide ions (O²⁻) while blocking electrons and gases.</Text>
+                        <Text size="sm"><b>{t("electrolyzers.soec.schematic.ceramic.subtitle")}</b><br/>{t("electrolyzers.soec.schematic.ceramic.explanation")}</Text>
                     </HoverCard.Dropdown>
                 </HoverCard>
 
@@ -71,11 +74,11 @@ export default function SoecElectrolyzer() {
                         <HoverCard.Target>
                             <g className="interactive-element" onClick={handleSvgClick}>
                                 <rect x="133" y="141" width="50" height="270" fill="#6E8BFD"/>
-                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Cathode (-)</text>
+                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.soec.schematic.cathode.title")}</text>
                             </g>
                         </HoverCard.Target>
                         <HoverCard.Dropdown bg="#6E8BFD" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>Cathode (Fuel Electrode)</b><br/>Steam (H₂O vapor) enters here. High heat and electrons split the steam into Hydrogen gas (H₂) and Oxide ions (O²⁻). Using steam dramatically reduces the electricity required.</Text>
+                            <Text size="sm"><b>{t("electrolyzers.soec.schematic.cathode.subtitle")}</b><br/>{t("electrolyzers.soec.schematic.cathode.explanation")}</Text>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </g>
@@ -93,11 +96,11 @@ export default function SoecElectrolyzer() {
                         <HoverCard.Target>
                             <g className="interactive-element">
                                 <rect x="223" y="141" width="50" height="270" fill="#FD6E6E"/>
-                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Anode (+)</text>
+                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.soec.schematic.anode.title")}</text>
                             </g>
                         </HoverCard.Target>
                         <HoverCard.Dropdown bg="#FD6E6E" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>Anode (Air/Oxygen Electrode)</b><br/>The Oxide ions (O²⁻) traveling through the ceramic arrive here, where they release electrons (e⁻) and combine to form pure Oxygen gas (O₂).</Text>
+                            <Text size="sm"><b>{t("electrolyzers.soec.schematic.anode.subtitle")}</b><br/>{t("electrolyzers.soec.schematic.anode.explanation")}</Text>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </g>
