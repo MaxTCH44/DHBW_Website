@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Title, Text, Group, Button } from "@mantine/core";
+import { useTranslation } from 'react-i18next';
 
 import ContentDetails from "../components/ContentDetails";
 import ProsConsCards from "../components/ProsConsCards";
@@ -32,6 +33,8 @@ const COMPONENT_REGISTRY = {
  */
 export default function EquipmentOverview({ equipmentList }) {
     
+    const { t } = useTranslation("equipmentOverview");
+
     // Default to displaying the first item in the provided JSON list
     const [selectedItem, setSelectedItem] = useState(equipmentList.list[0]);
 
@@ -43,8 +46,8 @@ export default function EquipmentOverview({ equipmentList }) {
     return (
         <Container size="xl" mt="150px">
             {/* --- PAGE HEADER --- */}
-            <Title order={1} mb="xl">{equipmentList.title}</Title>
-            <Text size="md" mb="xl">{equipmentList.introText}</Text>
+            <Title order={1} mb="xl">{t(equipmentList.title)}</Title>
+            <Text size="md" mb="xl">{t(equipmentList.introText)}</Text>
             
             {/* --- NAVIGATION TABS --- */}
             {/* Renders a row of buttons allowing the user to toggle between different hardware variants (e.g., PEM, Alkaline, AEM) */}
@@ -55,7 +58,7 @@ export default function EquipmentOverview({ equipmentList }) {
                         key={e.id} 
                         onClick={() => setSelectedItem(e)}
                     >
-                        {e.label}
+                        {t(e.label)}
                     </Button>
                 )}
             </Group>
@@ -63,11 +66,11 @@ export default function EquipmentOverview({ equipmentList }) {
             {/* --- DYNAMIC CONTENT --- */}
             {/* The title, text paragraphs, and interactive schematics change entirely based on the clicked tab */}
             <Title order={2} mt="xl" mb="xl">
-                {selectedItem.label}
+                {t(selectedItem.label)}
             </Title>
 
-            <ContentDetails item={selectedItem} componentList={COMPONENT_REGISTRY}/>
-            <ProsConsCards item={selectedItem} />
+            <ContentDetails item={selectedItem} componentList={COMPONENT_REGISTRY} namespace="equipmentOverview"/>
+            <ProsConsCards item={selectedItem} namespace="equipmentOverview" />
             
         </Container>
     );

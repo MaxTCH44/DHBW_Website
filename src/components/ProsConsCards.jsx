@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Card, Title, List, Collapse, Group, ThemeIcon, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { IconCheck, IconX, IconChevronDown, IconChevronUp } from '@tabler/icons-react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Sub-component that renders a single list of either advantages or disadvantages.
@@ -10,8 +11,9 @@ import { IconCheck, IconX, IconChevronDown, IconChevronUp } from '@tabler/icons-
  * @param {string} props.title - The header of the card (e.g., "Advantages" or "Disadvantages").
  * @param {Array<string>} props.items - Array of text bullet points to display.
  * @param {string} props.type - Determines the styling context ('advantages' triggers green checkmarks, 'disadvantages' triggers red crosses).
+ * @param {string} props.namespace - Determines the i18n namespace for the traduction.
  */
-function InfoCard({ title, items, type }) {
+function InfoCard({ title, items, type, namespace}) {
     const [isOpenMobile, setIsOpenMobile] = useState(false);
     const isMobile = useMediaQuery('(max-width: 768px)');
 
@@ -19,6 +21,8 @@ function InfoCard({ title, items, type }) {
     const iconColor = isAdvantages ? 'green' : 'red';
     const topBorderColor = isAdvantages ? '#40c057' : '#fa5252';
     const bgColor = isAdvantages ? 'rgba(64, 192, 87, 0.05)' : 'rgba(250, 82, 82, 0.05)';
+
+    const { t } = useTranslation(namespace);
     
     // Automatically forces the card open on desktop, but respects user state on mobile
     const isOpen = isMobile === false ? true : isOpenMobile;
@@ -71,9 +75,9 @@ function InfoCard({ title, items, type }) {
                         </ThemeIcon>
                     }
                 >
-                    {items.map((listItem, index) => (
-                        <List.Item key={index}>
-                            <Text size="sm">{listItem}</Text>
+                    {Object.entries(items).map(([id, key]) => (
+                        <List.Item key={id}>
+                            <Text size="sm">{t(key)}</Text>
                         </List.Item>
                     ))}
                 </List>
@@ -90,22 +94,27 @@ function InfoCard({ title, items, type }) {
  * @param {Object} props.item - The hardware data object containing the arrays of pros and cons.
  * @param {Array<string>} props.item.advantages - A list of the technology's benefits.
  * @param {Array<string>} props.item.disadvantages - A list of the technology's drawbacks.
+ * @param {string} props.namespace - Determines the i18n namespace for the traduction.
  */
-export default function ProsConsCards({ item }) {
+export default function ProsConsCards({ item, namespace }) {
     if (!item) return null;
+
+    const { t } = useTranslation(namespace);
 
     return (
         <Group justify="center" mt="lg" align="flex-start" gap="xl">
             <InfoCard
-                title="Advantages"
+                title={t("advantages")}
                 items={item.advantages}
                 type="advantages"
+                namespace={namespace}
             />
             
             <InfoCard
-                title="Disadvantages"
+                title={t("disadvantages")}
                 items={item.disadvantages}
                 type="disadvantages"
+                namespace={namespace}
             />
         </Group>
     );

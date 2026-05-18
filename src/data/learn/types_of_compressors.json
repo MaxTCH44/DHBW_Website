@@ -1,102 +1,102 @@
 {
-    "title": "Types of Compressors",
-    "introText": "Compression is a critical step in the hydrogen value chain. Because hydrogen is the lightest element in the universe, it has a very low volumetric energy density at ambient pressure. To be stored, transported, and utilized efficiently, it must be densified to extreme pressures—often between 350 and 700 bar. Explore the different technologies, from traditional mechanical systems to innovative solid-state compressors, used to achieve these demanding requirements.",
-    "list": [
+  "title": "compressors.title",
+  "introText": "compressors.introText",
+  "list": [
+    {
+      "id": "mechanical",
+      "label": "compressors.mechanical.label",
+      "content": [
         {
-            "id": "mechanical",
-            "label": "Mechanical Compression",
-            "content": [
-                {
-                    "type": "paragraph",
-                    "value": "Mechanical compression is the most mature and widely utilized technology for densifying green hydrogen. To store hydrogen in practical volumes, its pressure must be increased from the electrolyzer's output (10-30 bar) up to extreme pressures of 350 to over 700 bar for mobility and industrial applications."
-                },
-                {
-                    "type": "subtitle",
-                    "value": "The Compression Mechanism",
-                    "size": 3
-                },
-                {
-                    "type": "paragraph",
-                    "value": "The fundamental principle relies on physically reducing the volume of the gas. The two most prominent types are reciprocating piston compressors and diaphragm compressors. In these systems, hydrogen enters a cylinder through an inlet valve. A piston (or a flexible metal membrane)—driven by an electric motor, hydraulics, or compressed air—moves to forcefully compress the gas. Once the target pressure is reached, an exhaust valve opens to discharge the high-pressure hydrogen."
-                },
-                {
-                    "type": "component",
-                    "componentName": "MechanicalCompressor"
-                },
-                {
-                    "type": "paragraph",
-                    "value": "Diaphragm compressors are particularly favored for fuel cell applications because the flexible metal membrane completely isolates the hydrogen gas from the mechanical pistons and lubricating oils, ensuring 100% gas purity."
-                },
-                {
-                    "type": "subtitle",
-                    "value": "Material and Thermal Challenges",
-                    "size": 3
-                },
-                {
-                    "type": "paragraph",
-                    "value": "Because hydrogen is the smallest molecule, mechanical compressors require extremely advanced dynamic seals to prevent leakage. Furthermore, compressing gas generates intense heat. These systems require robust multi-stage cooling to prevent overheating. Strict material selection (like specialized 316L stainless steel) is also mandatory to prevent 'hydrogen embrittlement' under massive mechanical stress."
-                }
-            ],
-            "advantages": [
-                "Highly mature technology with decades of industrial operational history",
-                "Capable of reaching extreme pressures (up to 1.000+ bar)",
-                "Diaphragm variants guarantee zero oil contamination, crucial for fuel cells",
-                "Highly scalable from small laboratory boosters to massive industrial refueling stations"
-            ],
-            "disadvantages": [
-                "Numerous moving parts subject to severe mechanical wear and tear",
-                "High maintenance requirements (frequent seal replacements and valve checks)",
-                "Generates significant noise and vibration during operation",
-                "Requires complex and bulky intercooling systems to manage adiabatic heat generation"
-            ]
+          "type": "paragraph",
+          "value": "compressors.mechanical.introduction"
         },
         {
-            "id": "electrochemical",
-            "label": "Electrochemical Compression",
-            "content": [
-                {
-                    "type": "paragraph",
-                    "value": "Electrochemical Hydrogen Compression (EHC) is an innovative, solid-state technology with zero moving parts. It utilizes an electrical voltage to drive hydrogen across a specialized polymer membrane, actively densifying the gas while simultaneously acting as a highly efficient purifier."
-                },
-                {
-                    "type": "subtitle",
-                    "value": "The Electrochemical Mechanism",
-                    "size": 3
-                },
-                {
-                    "type": "paragraph",
-                    "value": "Structurally similar to a PEM fuel cell, low-pressure hydrogen is fed to the anode, where it is electrochemically split into protons (H⁺) and electrons. The solid Proton Exchange Membrane (PEM) only allows the protons to pass through to the cathode side."
-                },
-                {
-                    "type": "component",
-                    "componentName": "EhcCompressor"
-                },
-                {
-                    "type": "paragraph",
-                    "value": "At the cathode, the protons and electrons recombine to form hydrogen gas (H₂). Because the cathode chamber is sealed and restricted, the continuous accumulation of gas naturally builds up massive pressure without any physical mechanical force."
-                },
-                {
-                    "type": "subtitle",
-                    "value": "Purification and Solid-State Advantages",
-                    "size": 3
-                },
-                {
-                    "type": "paragraph",
-                    "value": "Because the membrane is strictly permeable to protons, impurities (like CO or water) are blocked at the anode, ensuring the output is ultra-pure (99,999% H₂). Furthermore, the absence of moving parts ensures silent, vibration-free operation and entirely eliminates the risk of oil contamination."
-                }
-            ],
-            "advantages": [
-                "Zero moving parts ensures completely silent and vibration-free operation",
-                "Dual function: inherently purifies the hydrogen up to 99,999% as it compresses",
-                "100% oil-free design ensures no mechanical contamination of the gas",
-                "High reliability and low maintenance due to the absence of mechanical wear and tear"
-            ],
-            "disadvantages": [
-                "Capital costs are high due to reliance on noble metal catalysts (Platinum) and specialized membranes",
-                "Currently limited to lower volumetric flow rates compared to large industrial mechanical compressors",
-                "To scale up capacity, multiple cell stacks must be added, increasing the footprint",
-                "The catalyst can be 'poisoned' and degraded by specific severe impurities (like sulfur) in the feed gas"
-            ]
+          "type": "subtitle",
+          "value": "compressors.mechanical.mechanismTitle",
+          "size": 3
+        },
+        {
+          "type": "paragraph",
+          "value": "compressors.mechanical.mechanismDescription"
+        },
+        {
+          "type": "component",
+          "componentName": "MechanicalCompressor"
+        },
+        {
+          "type": "paragraph",
+          "value": "compressors.mechanical.purityDescription"
+        },
+        {
+          "type": "subtitle",
+          "value": "compressors.mechanical.challengesTitle",
+          "size": 3
+        },
+        {
+          "type": "paragraph",
+          "value": "compressors.mechanical.challengesDescription"
         }
-    ]
+      ],
+      "advantages": {
+        "matureTechnology": "compressors.mechanical.advantages.matureTechnology",
+        "highPressureCapability": "compressors.mechanical.advantages.highPressureCapability",
+        "gasPurity": "compressors.mechanical.advantages.gasPurity",
+        "scalability": "compressors.mechanical.advantages.scalability"
+      },
+      "disadvantages": {
+        "mechanicalWear": "compressors.mechanical.disadvantages.mechanicalWear",
+        "highMaintenance": "compressors.mechanical.disadvantages.highMaintenance",
+        "noiseAndVibration": "compressors.mechanical.disadvantages.noiseAndVibration",
+        "coolingComplexity": "compressors.mechanical.disadvantages.coolingComplexity"
+      }
+    },
+    {
+      "id": "electrochemical",
+      "label": "compressors.electrochemical.label",
+      "content": [
+        {
+          "type": "paragraph",
+          "value": "compressors.electrochemical.introduction"
+        },
+        {
+          "type": "subtitle",
+          "value": "compressors.electrochemical.mechanismTitle",
+          "size": 3
+        },
+        {
+          "type": "paragraph",
+          "value": "compressors.electrochemical.mechanismDescription"
+        },
+        {
+          "type": "component",
+          "componentName": "EhcCompressor"
+        },
+        {
+          "type": "paragraph",
+          "value": "compressors.electrochemical.pressureBuildUpDescription"
+        },
+        {
+          "type": "subtitle",
+          "value": "compressors.electrochemical.advantagesTitle",
+          "size": 3
+        },
+        {
+          "type": "paragraph",
+          "value": "compressors.electrochemical.advantagesDescription"
+        }
+      ],
+      "advantages": {
+        "silentOperation": "compressors.electrochemical.advantages.silentOperation",
+        "purification": "compressors.electrochemical.advantages.purification",
+        "oilFree": "compressors.electrochemical.advantages.oilFree",
+        "lowMaintenance": "compressors.electrochemical.advantages.lowMaintenance"
+      },
+      "disadvantages": {
+        "highCapex": "compressors.electrochemical.disadvantages.highCapex",
+        "limitedFlowRates": "compressors.electrochemical.disadvantages.limitedFlowRates",
+        "scalingComplexity": "compressors.electrochemical.disadvantages.scalingComplexity",
+        "catalystPoisoning": "compressors.electrochemical.disadvantages.catalystPoisoning"
+      }
+    }
+  ]
 }

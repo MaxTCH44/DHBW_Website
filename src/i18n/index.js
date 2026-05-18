@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import enCommon from './locales/en/common.json';
+/*import enCommon from './locales/en/common.json';
 import frCommon from './locales/fr/common.json';
 import deCommon from './locales/de/common.json';
 
@@ -16,9 +16,9 @@ import deCalculator from './locales/de/calculator.json';
 import enContact from './locales/en/contact.json';
 import frContact from './locales/fr/contact.json';
 import deContact from './locales/de/contact.json';
-
+*/
 import enEquipementOverview from './locales/en/equipementOverview.json';
-import frEquipementOverview from './locales/fr/equipementOverview.json';
+/*import frEquipementOverview from './locales/fr/equipementOverview.json';
 import deEquipementOverview from './locales/de/equipementOverview.json';
 
 import enHome from './locales/en/home.json';
@@ -49,25 +49,28 @@ import enSetupBuilder from './locales/en/setupBuilder.json';
 import frSetupBuilder from './locales/fr/setupBuilder.json';
 import deSetupBuilder from './locales/de/setupBuilder.json';
 import EquipmentOverview from '../pages/EquipmentOverview';
+*/
 
 i18n
   .use(initReactI18next)
   .init({
     resources: {
       en: {
-        common: enCommon,
+        /*common: enCommon,
         recycling: enRecycling,
         calculator: enCalculator,
-        contact: enContact,
+        contact: enContact,*/
         equipmentOverview: enEquipementOverview,
-        home: enHome,
+        /*home: enHome,
         notFound: enNotFound,
         ourLab: enOurLab,
         productionChain: enProductionChain,
         recyclingProcess: enRecyclingProcess,
         references: enReferences,
         setupBuilder: enSetupBuilder
+      */
       },
+      /*
       fr: {
         common: frCommon,
         recycling: frRecycling,
@@ -95,7 +98,7 @@ i18n
         recyclingProcess: deRecyclingProcess,
         references: deReferences,
         setupBuilder: deSetupBuilder
-      },
+      },*/
     },
 
     lng: 'en',
