@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Container, Title, Text, Box, Paper } from "@mantine/core"; 
 
 import recyclingProcessData from "../data/learn/recycling_process.json";
@@ -16,16 +17,19 @@ const COMPONENT_REGISTRY = { EhcRecycling, PsaPurifier };
  * data into the `ContentDetails` engine to render the article and its interactive schematics.
  */
 export default function RecyclingProcess() { 
+
+    const { t } = useTranslation("recyclingProcess");
+
     return ( 
         <Container size="xl" py="xl" mt="150px"> 
             <Box mb={50} ta="center"> 
-                <Title order={1} c="dark.8" mb="sm">The Hydrogen Recycling Process</Title> 
+                <Title order={1} c="dark.8" mb="sm">{t("title")}</Title> 
                 <Text size="lg" c="dimmed"> 
-                    Explore the technologies used by modern industries to capture, purify, and regenerate hydrogen, driving both economic efficiency and circularity. 
+                     {t("introText")}
                 </Text> 
             </Box> 
             
-            <ContentDetails item={recyclingProcessData} componentList={COMPONENT_REGISTRY} /> 
+            <ContentDetails item={recyclingProcessData} componentList={COMPONENT_REGISTRY} namespace='recyclingProcess' /> 
         </Container> 
     );
 }

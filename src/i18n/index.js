@@ -36,9 +36,9 @@ import deOurLab from './locales/de/ourLab.json';
 import enProductionChain from './locales/en/productionChain.json';
 import frProductionChain from './locales/fr/productionChain.json';
 import deProductionChain from './locales/de/productionChain.json';
-
+*/
 import enRecyclingProcess from './locales/en/recyclingProcess.json';
-import frRecyclingProcess from './locales/fr/recyclingProcess.json';
+/*import frRecyclingProcess from './locales/fr/recyclingProcess.json';
 import deRecyclingProcess from './locales/de/recyclingProcess.json';
 
 import enReferences from './locales/en/references.json';
@@ -65,8 +65,9 @@ i18n
         notFound: enNotFound,
         ourLab: enOurLab,
         productionChain: enProductionChain,
+        */
         recyclingProcess: enRecyclingProcess,
-        references: enReferences,
+        /*references: enReferences,
         setupBuilder: enSetupBuilder
       */
       },
