@@ -1,0 +1,19 @@
+[
+    {
+        "name":"Schulz, Volker, Prof. Dr",
+        "role":["Project Management PROKOREI H2"],
+        "place":"Coblitzallee 1-9, 68163 Mannheim, Room 019 A",
+        "mobile":"+49 621 4105-1324",
+        "landline":"+49 621 4105-1248",
+        "mail":"volker.schulz@dhbw.de",
+        "photo":"img/Schulz_Volker.jpg"
+    },
+    {
+        "name":"Test, people 2",
+        "role":["test"],
+        "place":"test",
+        "mobile":"test",
+        "landline":"test",
+        "mail":"test"
+    }
+]
