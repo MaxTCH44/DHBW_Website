@@ -1,6 +1,11 @@
 import { useState } from 'react';
-import { Container, Title, Text, TextInput, Textarea, Button, Group, Paper, Box } from '@mantine/core';
-import { IconSend } from '@tabler/icons-react';
+import { Container, Title, Text, TextInput, Textarea, Button, Group, Paper, Box, Notification } from '@mantine/core';
+import { IconSend,  IconCheck, IconX } from '@tabler/icons-react';
+import emailjs from '@emailjs/browser';
+
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 /**
  * Renders the Contact page.
@@ -12,6 +17,8 @@ export default function Contact() {
     // --- STATE ---
     const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState('');
+    const [status, setStatus] = useState(null); // 'success' | 'error' | null
+    const [loading, setLoading] = useState(false);
 
     // --- HANDLERS ---
     
@@ -31,14 +38,39 @@ export default function Contact() {
         return true;
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         // Prevent submission if the email structure is invalid
-        if (validateEmail(email)) {
-            // Note: In a production environment, this would fire an API call to a backend or service like EmailJS
-            alert("Your message has been successfully submitted");
-            document.getElementById("messageForm").reset();
+        if (!validateEmail(email)) return;
+
+        setLoading(true);
+        setStatus(null);
+
+        const form = e.currentTarget;
+        console.log(e);
+
+        const templateParams = {
+            name:form.full_name.value,
+            email:email,
+            title:form.subject.value,
+            message:form.message.value,
+        };
+
+        try {
+            await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                templateParams,
+                EMAILJS_PUBLIC_KEY
+            );
+            setStatus('success');
+            form.reset();
             setEmail('');
+        } catch (err) {
+            console.error('EmailJS error:', err);
+            setStatus('error');
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -52,11 +84,42 @@ export default function Contact() {
                 </Text>
             </Box>
 
+            {status === 'success' && (
+                <Notification
+                    icon={<IconCheck size={18} />}
+                    color="teal"
+                    title="Message sent!"
+                    mb="md"
+                    onClose={() => setStatus(null)}
+                >
+                    We'll get back to you as soon as possible.
+                </Notification>
+            )}
+
+            {status === 'error' && (
+                <Notification
+                    icon={<IconX size={18} />}
+                    color="red"
+                    title="Something went wrong"
+                    mb="md"
+                    onClose={() => setStatus(null)}
+                >
+                    Please try again or contact us directly by email.
+                    You can find them in the other section.
+                </Notification>
+            )}
+
             <Paper withBorder shadow="md" p="xl" radius="md">
-                <form id="messageForm" onSubmit={handleSubmit}>
-                    <TextInput label="Full Name" placeholder="Your Name" required mb="md" />
-                    
+                <form onSubmit={handleSubmit}>
                     <TextInput
+                        name="full_name"
+                        label="Full Name"
+                        placeholder="Your Name"
+                        required
+                        mb="md"
+                    />
+                    <TextInput
+                        name="email"
                         label="Email or Lab/Company Address"
                         placeholder="your@email.com"
                         required
@@ -64,25 +127,33 @@ export default function Contact() {
                         value={email}
                         onChange={(e) => {
                             setEmail(e.currentTarget.value);
-                            // Automatically clears the red error state as soon as the user starts typing again
                             if (emailError) setEmailError('');
                         }}
                         onBlur={(e) => validateEmail(e.currentTarget.value)}
                         error={emailError}
                     />
-                    
-                    <TextInput label="Subject" placeholder="E.g., Recycling System Audit" required mb="md" />
-                    
+                    <TextInput
+                        name="subject"
+                        label="Subject"
+                        placeholder="E.g., Recycling System Audit"
+                        required
+                        mb="md"
+                    />
                     <Textarea
+                        name="message"
                         label="Your Message"
                         placeholder="Tell us about your current infrastructure, your gas mixtures, or any questions you have about our mathematical models."
                         minRows={5}
                         required
                         mb="xl"
                     />
-                    
                     <Group justify="flex-end">
-                        <Button type="submit" size="md" rightSection={<IconSend size={18} />} >
+                        <Button
+                            type="submit"
+                            size="md"
+                            loading={loading}
+                            rightSection={!loading ? <IconSend size={18} /> : null}
+                        >
                             Send Message
                         </Button>
                     </Group>
