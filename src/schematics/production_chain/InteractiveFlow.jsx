@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Flex, Stack, Text, ThemeIcon, Box } from '@mantine/core';
 import { IconArrowRight, IconQuestionMark } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -41,9 +42,10 @@ const getArrowTransform = (total, index, isMobile) => {
   return `translate(${x}px, ${y}px) rotate(${rot}deg)`;
 };
 
-export default function InteractiveFlow({ data, iconMap, selectedItem, onNodeClick }) {
+export default function InteractiveFlow({ data, iconMap, selectedItem, onNodeClick, namespace }) {
   const [hoveredId, setHoveredId] = useState(null);
   const isMobile = useMediaQuery('(max-width: 768px)');
+  const { t } = useTranslation(namespace);  
 
   if (!data || data.length === 0) return null;
   const treeData = buildTree(data);
@@ -103,7 +105,7 @@ export default function InteractiveFlow({ data, iconMap, selectedItem, onNodeCli
             ta="center"
             style={{ transition: 'all 0.3s ease' }}
           >
-            {node.label}
+            {t(node.label)}
           </Text>
         </Stack>
 

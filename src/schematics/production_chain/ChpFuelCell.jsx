@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Box, Stack, Text, HoverCard, Group, Badge } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import { useTranslation } from 'react-i18next';
 
 import PemFuelCell from './PemFuelCell'; 
 
@@ -11,6 +12,7 @@ import './ChpFuelCell.css';
 export default function ChpFuelCell() {
     const isMobile = useMediaQuery('(max-width: 768px)');
     const [isZoomed, setIsZoomed] = useState(true);
+    const { t } = useTranslation("productionChain");
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -72,10 +74,10 @@ export default function ChpFuelCell() {
                     <HoverCard.Dropdown bg="#f1f3f5">
                         <Stack gap="xs">
                             <Group gap="xs">
-                                <Badge color="green" variant="filled">Combined Heat & Power (CHP)</Badge>
+                                <Badge color="green" variant="filled">{t("heating.schematic.title")}</Badge>
                             </Group>
                             <Text size="sm">
-                                This Fuel Cell unit electrochemically converts green hydrogen into <b>electricity</b> and useful <b>heat</b>. By recovering the waste heat, the system achieves over <b>85% total efficiency</b> to warm and power the building.
+                                {t("heating.schematic.text1")}<b>{t("heating.schematic.textBold1")}</b> {t("heating.schematic.text2")} <b>{t("heating.schematic.textBold2")}</b>{t("heating.schematic.text3")} <b>{t("heating.schematic.textBold3")}</b> {t("heating.schematic.text4")}
                             </Text>
                         </Stack>
                     </HoverCard.Dropdown>

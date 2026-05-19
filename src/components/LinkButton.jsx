@@ -1,6 +1,7 @@
 import { Button } from "@mantine/core";
 import { Link } from "react-router-dom";
 import { IconChevronRight } from '@tabler/icons-react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * A simple, reusable navigation button that integrates Mantine's UI with React Router.
@@ -10,14 +11,17 @@ import { IconChevronRight } from '@tabler/icons-react';
  * @param {string} props.link - The target path for React Router navigation.
  * @param {string|React.ReactNode} props.label - The text displayed inside the button.
  */
-export default function LinkButton({ link, label }){
+export default function LinkButton({ link, label, namespace }){
+    
+    const { t } = useTranslation(namespace);  
+    
     return(
         <Button
             component={Link}
             to={link}
             leftSection={<IconChevronRight />}
         >
-            {label}
+            {t(label)}
         </Button>
     )
 }

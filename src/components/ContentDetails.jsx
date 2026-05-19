@@ -64,6 +64,31 @@ export default function ContentDetails({ item, namespace, componentList = null }
 
   const { t } = useTranslation(namespace);
 
+  const translateProps = (obj, t) => {
+    if (typeof obj === 'string') {
+      // si la traduction existe => traduit
+      const translated = t(obj);
+
+      // i18next retourne la clé si elle n'existe pas
+      return translated !== obj ? translated : obj;
+    }
+
+    if (Array.isArray(obj)) {
+      return obj.map((item) => translateProps(item, t));
+    }
+
+    if (typeof obj === 'object' && obj !== null) {
+      return Object.fromEntries(
+        Object.entries(obj).map(([key, value]) => [
+          key,
+          translateProps(value, t),
+        ])
+      );
+    }
+
+    return obj;
+  };
+
   return (
     <div>
       {item.content.map((block, index) => {
@@ -139,11 +164,22 @@ export default function ContentDetails({ item, namespace, componentList = null }
         // It looks up the requested component name within the provided `componentList` registry.
         if (block.type === 'component' && componentList) {
           const ComponentToRender = componentList[block.componentName];
-          if (ComponentToRender) {
-            return (
-                <ComponentToRender key={index} {...block.props}>{block.value}</ComponentToRender>
-            )
-          }
+          if (block.type === 'component' && componentList) {
+            const ComponentToRender = componentList[block.componentName];
+
+            if (ComponentToRender) {
+              const translatedProps = translateProps(block.props, t);
+
+              return (
+                <ComponentToRender
+                  key={index}
+                  {...translatedProps}
+                >
+                  {block.value ? t(block.value) : null}
+                </ComponentToRender>
+              );
+            }
+}
         }
         
         // Failsafe for unknown block types to prevent rendering crashes
