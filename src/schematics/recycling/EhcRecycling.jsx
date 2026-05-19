@@ -1,5 +1,6 @@
 import { Box, HoverCard, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import { useTranslation } from 'react-i18next';
 
 import '../electrolyzers/PemElectrolyzer.css';
 
@@ -7,6 +8,7 @@ import '../electrolyzers/PemElectrolyzer.css';
 
 export default function EhcRecycling() {
     const isMobile = useMediaQuery('(max-width: 768px)');
+    const { t } = useTranslation("recyclingProcess");
 
     const handleSvgClick = (e) => {
         e.preventDefault();
@@ -21,7 +23,7 @@ export default function EhcRecycling() {
 
                 <g className="circuit">
                     <rect x="145" y="7" width="116" height="39" fill="black"/>
-                    <text x="203" y="32" fontSize="14" fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>POWER SUPPLY</text>
+                    <text x="203" y="32" fontSize="14" fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.ehc.power")}</text>
                     <rect x="15" y="183" width="118" height="6" fill="black"/>
                     <rect x="17" y="185" width="116" height="2" fill="#FFFF00"/>
                     <rect x="15" y="23" width="6" height="160" fill="black"/>
@@ -49,11 +51,11 @@ export default function EhcRecycling() {
                     <HoverCard.Target>
                         <g className="interactive-element" onClick={handleSvgClick}>
                             <rect x="183" y="116" width="40" height="320" fill="#EDD2B8"/>
-                            <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Membrane</text>
+                            <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.ehc.membrane.title")}</text>
                         </g>
                     </HoverCard.Target>
                     <HoverCard.Dropdown bg="#EDD2B8" c="black" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>Active Molecular Filter (PEM)</b><br/>In recycling, the membrane acts as a perfect filter. It physically blocks all non-hydrogen gases, allowing ONLY protons (H⁺) to cross. This guarantees 99,999% pure hydrogen on the other side.</Text>
+                        <Text size="sm"><b>{t("recyclingProcess.schematics.ehc.membrane.subtitle")}</b><br/>{t("recyclingProcess.schematics.ehc.membrane.explanation")}</Text>
                     </HoverCard.Dropdown>
                 </HoverCard>
 
@@ -70,11 +72,11 @@ export default function EhcRecycling() {
                         <HoverCard.Target>
                             <g className="interactive-element" onClick={handleSvgClick}>
                                 <rect x="133" y="141" width="50" height="270" fill="#6E8BFD"/>
-                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Cathode (-)</text>
+                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.ehc.cathode.title")}</text>
                             </g>
                         </HoverCard.Target>
                         <HoverCard.Dropdown bg="#6E8BFD" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>Cathode (Electrochemical Compression)</b><br/>The extracted protons recombine with electrons to form pure Hydrogen (H₂). Because it's a closed volume and more protons keep arriving, the gas is compressed electrochemically with zero moving parts!</Text>
+                            <Text size="sm"><b>{t("recyclingProcess.schematics.ehc.cathode.subtitle")}</b><br/>{t("recyclingProcess.schematics.ehc.cathode.explanation")}</Text>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </g>
@@ -92,11 +94,11 @@ export default function EhcRecycling() {
                         <HoverCard.Target>
                             <g className="interactive-element">
                                 <rect x="223" y="141" width="50" height="270" fill="#FD6E6E"/>
-                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Anode (+)</text>
+                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.ehc.anode.title")}</text>
                             </g>
                         </HoverCard.Target>
                         <HoverCard.Dropdown bg="#FD6E6E" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>Anode (Gas Mixture Inlet)</b><br/>Exhaust gas mixtures enter here. Only the Hydrogen is ionized into protons (H⁺) and extracted. The remaining impurities (Nitrogen, trace gases) are swept out through the exhaust vent.</Text>
+                            <Text size="sm"><b>{t("recyclingProcess.schematics.ehc.anode.subtitle")}</b><br/>{t("recyclingProcess.schematics.ehc.anode.explanation")}</Text>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </g>
@@ -107,15 +109,15 @@ export default function EhcRecycling() {
                     
                     <path d="M273 248.5L336 211.694V285.306L273 248.5Z" fill="#D9D9D9"/>
                     <rect x="334" y="227" width="60" height="43" fill="#D9D9D9"/>
-                    <text x="343" y="254" fontSize="18" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Mixed gas</text>
+                    <text x="343" y="254" fontSize="18" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.ehc.in")}</text>
                     
                     <path d="M394 354.5L331 391.306V317.694L394 354.5Z" fill="#D9D9D9"/>
                     <rect x="333" y="376" width="60" height="43" transform="rotate(-180 333 376)" fill="#D9D9D9"/>
-                    <text x="325" y="361" fontSize="18" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Exhaust</text>
+                    <text x="325" y="361" fontSize="18" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.ehc.exhaust")}</text>
                     
                     <path d="M12 290.5L75 253.694V327.306L12 290.5Z" fill="#F5A4AF"/>
                     <rect x="73" y="279" width="60" height="23" fill="#F5A4AF"/>
-                    <text x="78" y="295" fontSize="12" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>High Pressure H₂</text>
+                    <text x="78" y="295" fontSize="12" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.ehc.out")}</text>
                 </g>
                 <g className="protons" style={{ pointerEvents: 'none' }}>
                     

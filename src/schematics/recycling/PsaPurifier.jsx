@@ -1,5 +1,6 @@
 import { Box, HoverCard, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import { useTranslation } from 'react-i18next';
 
 import './PsaPurifier.css';
 
@@ -7,6 +8,7 @@ import './PsaPurifier.css';
 
 export default function PsaPurifier() {
     const isMobile = useMediaQuery('(max-width: 768px)');
+    const { t } = useTranslation("recyclingProcess");
 
     const handleSvgClick = (e) => {
         e.preventDefault();
@@ -67,7 +69,7 @@ export default function PsaPurifier() {
                         </g>
                     </HoverCard.Target>
                     <HoverCard.Dropdown bg="blue.5" c="white" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>Adsorbent Beds (Pressure Swing)</b><br/>These beds contain active materials that trap impurities under high pressure. They alternate: while one filters to produce H₂, the other depressurizes to clean itself.</Text>
+                        <Text size="sm"><b>{t("recyclingProcess.schematics.psa.beds.title")}</b><br/>{t("recyclingProcess.schematics.psa.beds.explanation")}</Text>
                     </HoverCard.Dropdown>
                 </HoverCard>
 
@@ -76,11 +78,11 @@ export default function PsaPurifier() {
                         <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
                             <path d="M12 268L52.6116 229.895L52.6116 306.105L12 268Z" fill="#FE7F25"/>
                             <rect x="51.3223" y="245.741" width="38.6777" height="44.5176" fill="#FE7F25"/>
-                            <text x="58" y="225" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Impurities</text>
+                            <text x="58" y="225" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.psa.out1")}</text>
                             
                             <path d="M384 268L343.388 229.895V306.105L384 268Z" fill="#FE7F25"/>
                             <rect width="38.6777" height="44.5176" transform="matrix(-1 0 0 1 344.678 245.741)" fill="#FE7F25"/>
-                            <text x="340" y="225" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Impurities</text>
+                            <text x="340" y="225" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.psa.out2")}</text>
 
                             <g className="pipe-pair-side-left">
                                 <rect x="110" y="259" width="17" height="40" transform="rotate(90 110 259)" fill="#5B5959"/>
@@ -93,7 +95,7 @@ export default function PsaPurifier() {
                         </g>
                     </HoverCard.Target>
                     <HoverCard.Dropdown bg="orange.5" c="white" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>Exhaust (Impurities OUT)</b><br/>When a bed depressurizes to regenerate, the trapped impurities are released and vented out through this exhaust pipe.</Text>
+                        <Text size="sm"><b>{t("recyclingProcess.schematics.psa.exhaust.title")}</b><br/>{t("recyclingProcess.schematics.psa.exhaust.explanation")}</Text>
                     </HoverCard.Dropdown>
                 </HoverCard>
 
@@ -102,8 +104,8 @@ export default function PsaPurifier() {
                         <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
                             <path d="M198 382L236.105 422.612H159.895L198 382Z" fill="#afb1be"/>
                             <rect x="220.259" y="421.322" width="38.6777" height="44.5176" transform="rotate(90 220.259 421.322)" fill="#afb1be"/>
-                            <text x="198" y="420" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}> Mixed </text>  
-                            <text x="198" y="440" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}> gas </text>                          
+                            <text x="198" y="420" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}> {t("recyclingProcess.schematics.psa.in.top")} </text>  
+                            <text x="198" y="440" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}> {t("recyclingProcess.schematics.psa.in.bottom")} </text>                          
 
                             <g className="pipe-pair-bottom-center">
                                 <rect width="17" height="40" transform="matrix(-1 0 0 1 206 343)" fill="#5B5959"/>
@@ -116,7 +118,7 @@ export default function PsaPurifier() {
                         </g>
                     </HoverCard.Target>
                     <HoverCard.Dropdown bg="gray.6" c="white" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>Waste Gas Stream (Mixed IN)</b><br/>The unconsumed gas mixture containing hydrogen, oxygen, moisture, and hydrocarbons enters the system under high pressure.</Text>
+                        <Text size="sm"><b>{t("recyclingProcess.schematics.psa.in.title")}</b><br/>{t("recyclingProcess.schematics.psa.in.explanation")}</Text>
                     </HoverCard.Dropdown>
                 </HoverCard>
 
@@ -138,7 +140,7 @@ export default function PsaPurifier() {
                         </g>
                     </HoverCard.Target>
                     <HoverCard.Dropdown bg="#4DE32F" c="dark.9" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>Pure Hydrogen Output</b><br/>The filtered gas is restored with guaranteed 99,999% purity. It is now ready for direct reinjection into the production line, saving massive amounts of energy and resources.</Text>
+                        <Text size="sm"><b>{t("recyclingProcess.schematics.psa.output.title")}</b><br/>{t("recyclingProcess.schematics.psa.output.explanation")}</Text>
                     </HoverCard.Dropdown>
                 </HoverCard>
 
