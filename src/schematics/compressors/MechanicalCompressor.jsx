@@ -1,9 +1,12 @@
 import { Box, HoverCard, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import './MechanicalCompressor.css';
+import { useTranslation } from 'react-i18next';
 
 export default function MechanicalCompressor() {
     const isMobile = useMediaQuery('(max-width: 768px)');
+
+    const { t } = useTranslation("equipmentOverview");
 
     const handleSvgClick = (e) => {
         e.preventDefault();
@@ -35,7 +38,7 @@ export default function MechanicalCompressor() {
                         </g>
                     </HoverCard.Target>
                     <HoverCard.Dropdown bg="gray.7" c="white" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>Compression Chamber & Piston</b><br/>The mechanical piston moves up and down. Upward motion compresses the gas, drastically increasing its pressure and temperature.</Text>
+                        <Text size="sm"><b>{t("compressors.mechanical.schematic.chamber.title")}</b><br/>{t("compressors.mechanical.schematic.chamber.explanation")}</Text>
                     </HoverCard.Dropdown>
                 </HoverCard>
 
@@ -47,11 +50,11 @@ export default function MechanicalCompressor() {
                             <g className="valve-inlet-container">
                                 <rect className="valve-rect valve-inlet" x="147.299" y="33.9362" width="8.0597" height="45.2766" fill="#484040" rx="1"/>
                             </g>
-                            <text x="81" y="60" fontSize="12" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Low Pressure H₂ IN</text>
+                            <text x="81" y="60" fontSize="12" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("compressors.mechanical.schematic.inlet.title")}</text>
                         </g>
                     </HoverCard.Target>
                     <HoverCard.Dropdown bg="blue.5" c="white" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>Low Pressure Inlet (Blue Side)</b><br/>Hydrogen gas from the electrolyzer (typically 20-30 bar) enters here. The inlet valve opens when the piston moves down, drawing the gas in.</Text>
+                        <Text size="sm"><b>{t("compressors.mechanical.schematic.inlet.subtitle")}</b><br/>{t("compressors.mechanical.schematic.inlet.explanation")}</Text>
                     </HoverCard.Dropdown>
                 </HoverCard>
 
@@ -63,11 +66,11 @@ export default function MechanicalCompressor() {
                             <g className="valve-outlet-container">
                                 <rect className="valve-rect valve-outlet" width="8.0597" height="45.2766" transform="matrix(-1 0 0 1 336.701 33.9362)" fill="#484040" rx="1"/>
                             </g>
-                            <text x="403" y="60" fontSize="12" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>High Pressure H₂ OUT</text>
+                            <text x="403" y="60" fontSize="12" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("compressors.mechanical.schematic.outlet.title")}</text>
                         </g>
                     </HoverCard.Target>
                     <HoverCard.Dropdown bg="red.5" c="white" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>High Pressure Outlet (Red Side)</b><br/>Once target pressure (e.g., 350-700 bar) is reached, the outlet valve opens, releasing the compressed H₂ gas to storage or a cooling system.</Text>
+                        <Text size="sm"><b>{t("compressors.mechanical.schematic.outlet.subtitle")}</b><br/>{t("compressors.mechanical.schematic.outlet.explanation")}</Text>
                     </HoverCard.Dropdown>
                 </HoverCard>
                             <g className="molecules" style={{ pointerEvents: 'none' }}>

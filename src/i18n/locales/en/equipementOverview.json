@@ -245,6 +245,22 @@
                 "highMaintenance": "High maintenance requirements (frequent seal replacements and valve checks)",
                 "noiseAndVibration": "Generates significant noise and vibration during operation",
                 "coolingComplexity": "Requires complex and bulky intercooling systems to manage adiabatic heat generation"
+            },
+            "schematic":{
+                "chamber": {
+                    "title": "Compression Chamber & Piston",
+                    "explanation": "The mechanical piston moves up and down. Upward motion compresses the gas, drastically increasing its pressure and temperature."
+                },
+                "inlet": {
+                    "title": "Low Pressure H₂ IN",
+                    "subtitle": "Low Pressure Inlet (Blue Side)",
+                    "explanation": "Hydrogen gas from the electrolyzer (typically 20-30 bar) enters here. The inlet valve opens when the piston moves down, drawing the gas in."
+                },
+                "outlet": {
+                    "title": "High Pressure H₂ OUT",
+                    "subtitle": "High Pressure Outlet (Red Side)",
+                    "explanation": "Once target pressure (e.g., 350-700 bar) is reached, the outlet valve opens, releasing the compressed H₂ gas to storage or a cooling system."
+                }
             }
         },
 
@@ -275,6 +291,29 @@
                 "limitedFlowRates": "Currently limited to lower volumetric flow rates compared to large industrial mechanical compressors",
                 "scalingComplexity": "To scale up capacity, multiple cell stacks must be added, increasing the footprint",
                 "catalystPoisoning": "The catalyst can be 'poisoned' and degraded by specific severe impurities (like sulfur) in the feed gas"
+            },
+            "schematic": {
+                "power": "POWER SUPPLY",
+                "membrane": {
+                    "title": "Membrane",
+                    "subtitle": "Proton Exchange Membrane",
+                    "explanation": "Acts as a gas-tight barrier. It allows only Protons (H⁺) to cross from the low-pressure side to the high-pressure side, preventing the compressed gas from flowing back."
+                },
+                "cathode": {
+                    "title": "Cathode (-)",
+                    "subtitle": "Cathode (High Pressure)",
+                    "explanation": "Protons and electrons recombine here to form Hydrogen gas (H₂). Because the membrane is gas-tight, the newly formed hydrogen is trapped, building up immense pressure electrochemically."
+                },
+                "anode": {
+                    "title": "Anode (+)",
+                    "subtitle": "Anode (Low Pressure)",
+                    "explanation": "Hydrogen gas (H₂) enters here. A catalyst splits the hydrogen molecules into Protons (H⁺) and electrons (e⁻). The voltage drives them apart."
+                },
+                "pressure":{
+                    "low": "Low Pressure H₂",
+                    "high": "High Pressure H₂"
+                }
+
             }
         }
     }

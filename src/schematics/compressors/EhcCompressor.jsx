@@ -1,5 +1,7 @@
 import { Box, HoverCard, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import { useTranslation } from 'react-i18next';
+
 
 import '../electrolyzers/PemElectrolyzer.css';
 
@@ -7,6 +9,8 @@ import '../electrolyzers/PemElectrolyzer.css';
 
 export default function EhcCompressor() {
     const isMobile = useMediaQuery('(max-width: 768px)');
+
+    const { t } = useTranslation("equipmentOverview");
 
     const handleSvgClick = (e) => {
         e.preventDefault();
@@ -21,7 +25,7 @@ export default function EhcCompressor() {
 
                 <g className="circuit">
                     <rect x="145" y="7" width="116" height="39" fill="black"/>
-                    <text x="203" y="32" fontSize="14" fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>POWER SUPPLY</text>
+                    <text x="203" y="32" fontSize="14" fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("compressors.electrochemical.schematic.power")}</text>
                     <rect x="15" y="183" width="118" height="6" fill="black"/>
                     <rect x="17" y="185" width="116" height="2" fill="#FFFF00"/>
                     <rect x="15" y="23" width="6" height="160" fill="black"/>
@@ -49,11 +53,11 @@ export default function EhcCompressor() {
                     <HoverCard.Target>
                         <g className="interactive-element" onClick={handleSvgClick}>
                             <rect x="183" y="116" width="40" height="320" fill="#EDD2B8"/>
-                            <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Membrane</text>
+                            <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("compressors.electrochemical.schematic.membrane.title")}</text>
                         </g>
                     </HoverCard.Target>
                     <HoverCard.Dropdown bg="#EDD2B8" c="black" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>Proton Exchange Membrane</b><br/>Acts as a gas-tight barrier. It allows only Protons (H⁺) to cross from the low-pressure side to the high-pressure side, preventing the compressed gas from flowing back.</Text>
+                        <Text size="sm"><b>{t("compressors.electrochemical.schematic.membrane.subtitle")}</b><br/>{t("compressors.electrochemical.schematic.membrane.explanation")}</Text>
                     </HoverCard.Dropdown>
                 </HoverCard>
 
@@ -70,11 +74,11 @@ export default function EhcCompressor() {
                         <HoverCard.Target>
                             <g className="interactive-element" onClick={handleSvgClick}>
                                 <rect x="133" y="141" width="50" height="270" fill="#6E8BFD"/>
-                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Cathode (-)</text>
+                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("compressors.electrochemical.schematic.cathode.title")}</text>
                             </g>
                         </HoverCard.Target>
                         <HoverCard.Dropdown bg="#6E8BFD" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>Cathode (High Pressure)</b><br/>Protons and electrons recombine here to form Hydrogen gas (H₂). Because the membrane is gas-tight, the newly formed hydrogen is trapped, building up immense pressure electrochemically.</Text>
+                            <Text size="sm"><b>{t("compressors.electrochemical.schematic.cathode.subtitle")}</b><br/>{t("compressors.electrochemical.schematic.cathode.explanation")}</Text>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </g>
@@ -92,11 +96,11 @@ export default function EhcCompressor() {
                         <HoverCard.Target>
                             <g className="interactive-element">
                                 <rect x="223" y="141" width="50" height="270" fill="#FD6E6E"/>
-                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Anode (+)</text>
+                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("compressors.electrochemical.schematic.anode.title")}</text>
                             </g>
                         </HoverCard.Target>
                         <HoverCard.Dropdown bg="#FD6E6E" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>Anode (Low Pressure)</b><br/>Hydrogen gas (H₂) enters here. A catalyst splits the hydrogen molecules into Protons (H⁺) and electrons (e⁻). The voltage drives them apart.</Text>
+                            <Text size="sm"><b>{t("compressors.electrochemical.schematic.anode.subtitle")}</b><br/>{t("compressors.electrochemical.schematic.anode.explanation")}</Text>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </g>
@@ -107,11 +111,11 @@ export default function EhcCompressor() {
                     
                     <path d="M273 290.5L336 214.723V366.277L273 290.5Z" fill="#B5E2ED"/>
                     <rect x="334" y="246.235" width="60" height="88.5294" fill="#B5E2ED"/>
-                    <text x="340" y="295" fontSize="12" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Low Pressure H₂</text>
+                    <text x="340" y="295" fontSize="12" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("compressors.electrochemical.schematic.pressure.low")}</text>
                     
                     <path d="M12 290.5L75 253.694V327.306L12 290.5Z" fill="#F5A4AF"/>
                     <rect x="73" y="279" width="60" height="23" fill="#F5A4AF"/>
-                    <text x="78" y="295" fontSize="12" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>High Pressure H₂</text>
+                    <text x="78" y="295" fontSize="12" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("compressors.electrochemical.schematic.pressure.high")}</text>
                 </g>
                 <g className="protons" style={{ pointerEvents: 'none' }}>
                     
