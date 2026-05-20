@@ -3,27 +3,29 @@ import { Container, Title, Text, Grid, Card, Group, Badge, Box, Select, Paper, B
 import { useMediaQuery, useSessionStorage } from '@mantine/hooks';
 import { IconMail, IconRecycle, IconCoin, IconClockHour4, IconArrowRight, IconLeaf } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import gasData from '../data/recycling_gases.json';
 
 import SliderInput from '../components/SliderInput';
 import ValueInput from '../components/ValueInput';
 import LabelWithTooltip from '../components/LabelWithTooltip';
+import { t } from 'i18next';
 
-export const ELEC_PRICE_UNITS = [{ label: "€/MWh", factor: 0.001 }, { label: "€/kWh", factor: 1 }];
+export const ELEC_PRICE_UNITS = [{ label: "units.elec_price_mwh", factor: 0.001 }, { label: "units.elec_price_kwh", factor: 1 }];
 
 // --- DATA INITIALIZATION ---
 // Extracts just the 'value' strings from the JSON array to populate the Select component
 const gasOptions = gasData.map(gas => gas.value);
 
 // Local constants for ValueInput units, preventing inline object recreation on every render
-const UNIT_M3_YEAR = { label: "Nm³/year", factor: 1 };
+const UNIT_M3_YEAR = { label: "units.normalized_m3_per_year", factor: 1 };
 const UNITS_M3_YEAR_ARRAY = [UNIT_M3_YEAR];
 
-const UNIT_EUR_KG = { label: "€/kg", factor: 1 };
+const UNIT_EUR_KG = { label: "units.eur_per_kg", factor: 1 };
 const UNITS_EUR_KG_ARRAY = [UNIT_EUR_KG];
 
-const UNIT_EUR = { label: "€", factor: 1 };
+const UNIT_EUR = { label: "units.eur", factor: 1 };
 const UNITS_EUR_ARRAY = [UNIT_EUR];
 
 /**
@@ -34,6 +36,7 @@ const UNITS_EUR_ARRAY = [UNIT_EUR];
 export default function Recycling() {
     const isMobile = useMediaQuery('(max-width: 768px)');
 
+    const { t } = useTranslation("recycling");
 
     const [resetModalOpened, setResetModalOpened] = useState(false);
     function handleResetDefaults(){
@@ -100,13 +103,13 @@ export default function Recycling() {
         co2Avoided
     } = useMemo(() => {
         // Find the technical parameters corresponding to the user's selected gas mixture
-        const info = gasData.find(gas => gas.value === gasType);
+        const info = gasData.find(gas => t(gas.value) === gasType);
         
         // Default fallbacks before the user selects a gas
-        const comp = info ? info.complexity : "Select a gas type";
+        const comp = info ? info.complexity : "gasRecoveryAdvices.default.complexity";
         const color = info ? info.complexityColor : "gray";
         const rate = info ? info.recovery_rate : 0;
-        const adv = info ? info.advice : "Please provide details about your mixed gas to get a preliminary assessment.";
+        const adv = info ? info.advice : "gasRecoveryAdvices.default.advice";
         
         // --- CALCULATIONS ---
         // 1. Calculate raw hydrogen volume in the exhaust stream
@@ -147,10 +150,14 @@ export default function Recycling() {
         <Container size="xl" px="xl" py="lg" mt="150px">
             {/* --- PAGE HEADER --- */}
             <Box mb={20} ta="center">
-                <Title order={1} c="dark.7" mb="md">Hydrogen Recycling Calculator</Title>
+                <Title order={1} c="dark.7" mb="md">
+                    {t("recyclingCalculatorPage.header.title")}
+                </Title>
+
                 <Text size="lg" c="dimmed" maw={800} mx="auto" mb="md">
-                    Stop venting valuable hydrogen into the atmosphere. Calculate how much H₂ you can recover annually and discover your Return on Investment (ROI).
+                    {t("recyclingCalculatorPage.header.description")}
                 </Text>
+
                 <Button 
                     component={Link} 
                     to="/recycling-process" 
@@ -159,9 +166,8 @@ export default function Recycling() {
                     radius="xl"
                     rightSection={<IconArrowRight size={16} />}
                 >
-                    Learn how the recycling process works
+                    {t("recyclingCalculatorPage.header.learnMoreButton")}
                 </Button>
-
             </Box>
 
             <Box mb={10} ta="center">
@@ -173,24 +179,26 @@ export default function Recycling() {
                     mb="xs" 
                     onClick={() => setResetModalOpened(true)}
                 >
-                    Reset all inputs to default values
+                    {t("recyclingCalculatorPage.reset.link")}
                 </Anchor>
 
                 <Modal 
                     opened={resetModalOpened} 
                     onClose={() => setResetModalOpened(false)} 
-                    title="Reset Calculator" 
+                    title={t("recyclingCalculatorPage.reset.modalTitle")}
                     centered
                 >
                     <Text size="sm" mb="xl">
-                        Are you sure you want to clear all your inputs and reset the calculator to its default values? This action cannot be undone.
+                        {t("recyclingCalculatorPage.reset.modalDescription")}
                     </Text>
+
                     <Group justify="flex-end">
                         <Button variant="default" onClick={() => setResetModalOpened(false)}>
-                            Cancel
+                            {t("recyclingCalculatorPage.reset.cancelButton")}
                         </Button>
+
                         <Button color="red" onClick={handleResetDefaults}>
-                            Yes, reset everything
+                            {t("recyclingCalculatorPage.reset.confirmButton")}
                         </Button>
                     </Group>
                 </Modal>
@@ -222,14 +230,22 @@ export default function Recycling() {
                 {/* --- RIGHT COLUMN: RESULTS DASHBOARD --- */}
                 <Grid.Col span={{ base: 12, md: 6 }}>
                     <Card shadow="sm" padding="lg" radius="md" withBorder h="100%" bg="gray.0">
-                        <Title order={3} mb="xl">Estimation Results</Title>
+                        <Title order={3} mb="xl">
+                            {t("recyclingCalculatorPage.results.title")}
+                        </Title>
                         
                         <Group justify="space-between" mb="xs">
-                            <Text fw={500}>System Complexity :</Text>
-                            <Badge color={complexityColor} size="lg" variant="light">{complexity}</Badge>
+                            <Text fw={500}>
+                                {t("recyclingCalculatorPage.results.systemComplexity")}
+                            </Text>
+
+                            <Badge color={complexityColor} size="lg" variant="light">
+                                {t(complexity)}
+                            </Badge>
                         </Group>
+
                         <Text size="sm" c="dimmed" mb="xl">
-                            {advice}
+                            {t(advice)}
                         </Text>
 
                         {/* Renders the financial metrics ONLY if the user has selected a valid gas mixture */}
@@ -239,10 +255,14 @@ export default function Recycling() {
                                 <Paper p="md" radius="md" withBorder bg="white" mb="md">
                                     <Group align="center" gap="sm">
                                         <IconRecycle size={32} color="var(--mantine-color-blue-6)" />
+
                                         <div>
-                                            <Text size="sm" c="dimmed" fw={500}>Recovered Hydrogen</Text>
+                                            <Text size="sm" c="dimmed" fw={500}>
+                                                {t("recyclingCalculatorPage.results.recoveredHydrogen")}
+                                            </Text>
+
                                             <Text size="xl" fw={900} c="blue.7">
-                                                {annualRecoveredH2Kg.toLocaleString('de-DE', { maximumFractionDigits: 0 })} kg / year
+                                                {annualRecoveredH2Kg.toLocaleString('de-DE', { maximumFractionDigits: 0 })} {t("units.kg_per_year")}
                                             </Text>
                                         </div>
                                     </Group>
@@ -252,10 +272,14 @@ export default function Recycling() {
                                 <Paper p="md" radius="md" withBorder bg="white" mb="md">
                                     <Group align="center" gap="sm">
                                         <IconCoin size={32} color="var(--mantine-color-teal-6)" />
+
                                         <div>
-                                            <Text size="sm" c="dimmed" fw={500}>Estimated Gross Savings</Text>
+                                            <Text size="sm" c="dimmed" fw={500}>
+                                                {t("recyclingCalculatorPage.results.estimatedGrossSavings")}
+                                            </Text>
+
                                             <Text size="xl" fw={900} c="teal.6">
-                                                {annualSavings.toLocaleString('de-DE', { maximumFractionDigits: 0 })} € / year
+                                                {annualSavings.toLocaleString('de-DE', { maximumFractionDigits: 0 })} {t("units.eur_per_year")}
                                             </Text>
                                         </div>
                                     </Group>
@@ -265,11 +289,16 @@ export default function Recycling() {
                                 <Paper p="md" radius="md" withBorder bg="white" mb="md">
                                     <Group align="center" gap="sm">
                                         <IconLeaf size={32} color="var(--mantine-color-myColor-9)" />
+
                                         <div>
-                                            <Text size="sm" c="dimmed" fw={500}>Avoided CO₂</Text>
+                                            <Text size="sm" c="dimmed" fw={500}>
+                                                {t("recyclingCalculatorPage.results.avoidedCo2")}
+                                            </Text>
+
                                             <Text size="xl" fw={900} c="myColor.9">
                                                 {co2Avoided !== null 
-                                                    ? `${co2Avoided.toLocaleString('de-DE', { maximumFractionDigits: 1 })} Tons` : "0"
+                                                    ? `${co2Avoided.toLocaleString('de-DE', { maximumFractionDigits: 1 })} ${t("units.tons")}` 
+                                                    : "0"
                                                 }
                                             </Text>
                                         </div>
@@ -280,12 +309,17 @@ export default function Recycling() {
                                 <Paper p="md" radius="md" withBorder bg="var(--mantine-color-myColor-0)" style={{ borderColor: 'var(--mantine-color-myColor-3)' }}>
                                     <Group align="center" gap="sm">
                                         <IconClockHour4 size={32} color="var(--mantine-color-myColor-9)" />
+
                                         <div>
-                                            <Text size="sm" c="dimmed" fw={500}>Return on Investment (ROI)</Text>
+                                            <Text size="sm" c="dimmed" fw={500}>
+                                                {t("recyclingCalculatorPage.results.roi")}
+                                            </Text>
+
                                             <Text size="xl" fw={900} c="myColor.9">
                                                 {roiYears !== null 
-                                                    ? `${roiYears.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} years`
-                                                    : "Never"}
+                                                    ? `${roiYears.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ${t("units.years")}`
+                                                    : t("recyclingCalculatorPage.results.never")
+                                                }
                                             </Text>
                                         </div>
                                     </Group>
@@ -293,15 +327,24 @@ export default function Recycling() {
                             </Box>
                         ) : (
                             // Placeholder shown when no gas is selected
-                            <Paper p="xl" radius="md" mt="xl" bg="white" style={{ borderStyle: 'dashed', borderWidth: 2, borderColor: 'var(--mantine-color-gray-3)' }}>
+                            <Paper 
+                                p="xl" 
+                                radius="md" 
+                                mt="xl" 
+                                bg="white" 
+                                style={{ borderStyle: 'dashed', borderWidth: 2, borderColor: 'var(--mantine-color-gray-3)' }}
+                            >
                                 <Text ta="center" c="dimmed">
-                                    Select a mixed gas type on the left to see your potential savings and ROI.
+                                    {t("recyclingCalculatorPage.results.placeholder")}
                                 </Text>
                             </Paper>
                         )}
+
                         <Box mt="auto" pt="xl">
                             <Text size="xs" c="dimmed" ta="center">
-                                *Calculations assume a recovery rate of {recoveryRate * 100}%. Real-world implementation requires a technical audit.
+                                {t("recyclingCalculatorPage.results.footer", {
+                                    rate: recoveryRate * 100
+                                })}
                             </Text>
                         </Box>
                     </Card>
@@ -310,10 +353,14 @@ export default function Recycling() {
 
             {/* --- CALL TO ACTION (CTA) --- */}
             <Paper radius="md" p="xl" bg="var(--mantine-primary-color-filled)" c="white" ta="center">
-                <Title order={2} mb="md" c="white">Want to Learn More?</Title>
+                <Title order={2} mb="md" c="white">
+                    {t("recyclingCalculatorPage.cta.title")}
+                </Title>
+
                 <Text size="lg" mb="xl" maw={600} mx="auto">
-                    Hydrogen recycling systems are highly specific to the gas mixtures and processes involved. If you need more detailed information, research data, or want to discuss a specific use case, feel free to reach out.
+                    {t("recyclingCalculatorPage.cta.description")}
                 </Text>
+
                 <Button 
                     size={isMobile ? "sm" : "lg"}
                     component={Link}
@@ -324,7 +371,7 @@ export default function Recycling() {
                     leftSection={<IconMail size={20} />}
                     style={{ color: 'var(--mantine-primary-color-filled)' }}
                 >
-                    Contact Us for More Information
+                    {t("recyclingCalculatorPage.cta.button")}
                 </Button>
             </Paper>
         </Container>
@@ -364,27 +411,48 @@ function RecyclingInputs ({
     electricityPrice,
     setElectricityPrice
 }){
+    const { t } = useTranslation("recycling");
     return(
         <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Title order={3} mb="md">Exhaust Gas Parameters</Title>
+            <Title order={3} mb="md">
+                {t("recyclingForm.exhaustGasParametersTitle")}
+            </Title>
             
             <Select
-                label={<LabelWithTooltip label="Mixed Gas Type" tooltip="Which gas is mixed with H₂ ?" />}
-                placeholder="Select secondary gas"
-                data={gasOptions}
+                label={
+                    <LabelWithTooltip
+                        label={t("recyclingForm.mixedGasType.label")}
+                        tooltip={t("recyclingForm.mixedGasType.tooltip")}
+                    />
+                }
+                placeholder={t("recyclingForm.mixedGasType.placeholder")}
+                data={gasOptions.map(gas => t(gas))}
                 value={gasType}
                 onChange={setGasType}
                 mb="md"
             />
+
             <ValueInput
-                label={<LabelWithTooltip label="Annual Mixed Gas Produced" tooltip="Gas volume normalized at 1 atm and 0°C (Nm³)." />}
+                label={
+                    <LabelWithTooltip
+                        label={t("recyclingForm.annualMixedGasProduced.label")}
+                        tooltip={t("recyclingForm.annualMixedGasProduced.tooltip")}
+                    />
+                }
                 value={annualMixedGas}
                 onValueChange={setAnnualMixedGas}
                 units={UNITS_M3_YEAR_ARRAY}
                 currentUnit={UNIT_M3_YEAR}
+                namespace="recycling"
             />
+
             <SliderInput
-                label={<LabelWithTooltip label="H₂ Concentration in Exhaust Gas" tooltip="Percentage of H₂ contained in the mixed gas stream before recovery." />}
+                label={
+                    <LabelWithTooltip
+                        label={t("recyclingForm.h2Concentration.label")}
+                        tooltip={t("recyclingForm.h2Concentration.tooltip")}
+                    />
+                }
                 value={h2Concentration}
                 onValueChange={setH2Concentration}
                 units="%"
@@ -394,41 +462,75 @@ function RecyclingInputs ({
             
             <Divider my="md" />
             
-            <Title order={4} mb="sm" c="dimmed">Financials & Investment</Title>
+            <Title order={4} mb="sm" c="dimmed">
+                {t("recyclingForm.financialsTitle")}
+            </Title>
+
             <ValueInput
-                label={<LabelWithTooltip label="Current Green H₂ Purchase Price" tooltip="The price you currently pay for delivered hydrogen. This serves as a baseline to calculate your potential savings with on-site recycling." />}
+                label={
+                    <LabelWithTooltip
+                        label={t("recyclingForm.currentH2PurchasePrice.label")}
+                        tooltip={t("recyclingForm.currentH2PurchasePrice.tooltip")}
+                    />
+                }
                 value={h2Price}
                 onValueChange={setH2Price}
                 units={UNITS_EUR_KG_ARRAY}
                 currentUnit={UNIT_EUR_KG}
+                namespace="recycling"
             />
+
             <ValueInput
-                label={<LabelWithTooltip label="Estimated Recycling System Price (CAPEX)" tooltip="The estimation of the initial purchase cost (CAPEX)." />}
+                label={
+                    <LabelWithTooltip
+                        label={t("recyclingForm.recyclingSystemPrice.label")}
+                        tooltip={t("recyclingForm.recyclingSystemPrice.tooltip")}
+                    />
+                }
                 value={systemPrice}
                 onValueChange={setSystemPrice}
                 units={UNITS_EUR_ARRAY}
                 currentUnit={UNIT_EUR}
+                namespace="recycling"
             />
 
             <ValueInput
-                label={<LabelWithTooltip label="Maintenance costs (OPEX)" tooltip="Annual operation and maintenance (O&M) costs, generally estimated as a percentage of the initial equipment cost (CAPEX)." />}
+                label={
+                    <LabelWithTooltip
+                        label={t("recyclingForm.maintenanceCosts.label")}
+                        tooltip={t("recyclingForm.maintenanceCosts.tooltip")}
+                    />
+                }
                 value={annualOpexRate}
                 onValueChange={setAnnualOpexRate}
-                units="% CAPEX"
+                units="units.percent_capex"
+                namespace="recycling"
             />
 
             <ValueInput
-                label={<LabelWithTooltip label="Recycling system energy consumption" tooltip="Specific energy consumption of the recycling system itself to produce one kg of hydrogen. This value excludes system-wide auxiliaries like cooling or drying." />}
-                units="kWh/kg"
+                label={
+                    <LabelWithTooltip
+                        label={t("recyclingForm.energyConsumption.label")}
+                        tooltip={t("recyclingForm.energyConsumption.tooltip")}
+                    />
+                }
+                units="units.kwh_per_kg"
                 value={energyConsumption}
                 onValueChange={setEnergyConsumption}
+                namespace="recycling"
             />
 
             <ValueInput
-                label={<LabelWithTooltip label="Electricity price" tooltip="The average grid electricity price. This is the primary cost driver for green hydrogen production." />}
+                label={
+                    <LabelWithTooltip
+                        label={t("recyclingForm.electricityPrice.label")}
+                        tooltip={t("recyclingForm.electricityPrice.tooltip")}
+                    />
+                }
                 units={ELEC_PRICE_UNITS}
                 currentUnit={electricityPrice.unit}
                 value={electricityPrice.value}
+                namespace="recycling"
                 onValueChange={val => setElectricityPrice({ ...electricityPrice, value: val })}
                 onUnitChange={u => setElectricityPrice({ ...electricityPrice, unit: u })}
             />

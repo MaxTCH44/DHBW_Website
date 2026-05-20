@@ -1,44 +1,44 @@
 [
     {
-        "value": "Water Vapor (H2O)",
-        "complexity": "Low (Dehumidification)",
+        "value": "gasRecoveryAdvices.water_vapor.value",
+        "complexity": "gasRecoveryAdvices.water_vapor.complexity",
         "complexityColor": "teal",
         "recovery_rate": 0.95,
-        "advice": "Separating water from hydrogen is a standard process. The investment is generally low and ROI is very fast."
+        "advice": "gasRecoveryAdvices.water_vapor.advice"
     },
     {
-        "value": "Nitrogen (N2)",
-        "complexity": "Medium (PSA System)",
+        "value": "gasRecoveryAdvices.nitrogen.value",
+        "complexity": "gasRecoveryAdvices.nitrogen.complexity",
         "complexityColor": "yellow",
         "recovery_rate": 0.85,
-        "advice": "A Pressure Swing Adsorption (PSA) system will likely be required. It's a proven technology with an excellent lifespan."
+        "advice": "gasRecoveryAdvices.nitrogen.advice"
     },
     {
-        "value": "Oxygen (O2)",
-        "complexity": "Medium (PSA System)",
+        "value": "gasRecoveryAdvices.oxygen.value",
+        "complexity": "gasRecoveryAdvices.oxygen.complexity",
         "complexityColor": "yellow",
         "recovery_rate": 0.85,
-        "advice": "A Pressure Swing Adsorption (PSA) system will likely be required. It's a proven technology with an excellent lifespan."
+        "advice": "gasRecoveryAdvices.oxygen.advice"
     },
     {
-        "value": "Carbon Dioxide (CO2)",
-        "complexity": "High (Membrane / Advanced PSA)",
+        "value": "gasRecoveryAdvices.carbon_dioxide.value",
+        "complexity": "gasRecoveryAdvices.carbon_dioxide.complexity",
         "complexityColor": "orange",
         "recovery_rate": 0.80,
-        "advice": "These gases require specific membrane technologies or advanced PSA. The initial investment is higher, but recovering H₂ remains highly profitable at scale."
+        "advice": "gasRecoveryAdvices.carbon_dioxide.advice"
     },
     {
-        "value": "Argon",
-        "complexity": "High (Membrane / Advanced PSA)",
+        "value": "gasRecoveryAdvices.argon.value",
+        "complexity": "gasRecoveryAdvices.argon.complexity",
         "complexityColor": "orange",
         "recovery_rate": 0.80,
-        "advice": "These gases require specific membrane technologies or advanced PSA. The initial investment is higher, but recovering H₂ remains highly profitable at scale."
+        "advice": "gasRecoveryAdvices.argon.advice"
     },
     {
-        "value": "Mixed / Unknown",
-        "complexity": "Custom Analysis Required",
+        "value": "gasRecoveryAdvices.mixed_unknown.value",
+        "complexity": "gasRecoveryAdvices.mixed_unknown.complexity",
         "complexityColor": "red",
         "recovery_rate": 0.70,
-        "advice": "Our engineers will need to sample and analyze your exhaust gas to design a custom multi-stage separation process."
+        "advice": "gasRecoveryAdvices.mixed_unknown.advice"
     }
 ]
