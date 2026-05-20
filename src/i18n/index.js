@@ -29,7 +29,7 @@ import enNotFound from './locales/en/notFound.json';
 //import frNotFound from './locales/fr/notFound.json';
 //import deNotFound from './locales/de/notFound.json';
 
-//import enOurLab from './locales/en/ourLab.json';
+import enOurLab from './locales/en/ourLab.json';
 //import frOurLab from './locales/fr/ourLab.json';
 //import deOurLab from './locales/de/ourLab.json';
 
@@ -63,7 +63,7 @@ i18n
         equipmentOverview: enEquipementOverview,
         home: enHome,
         notFound: enNotFound,
-        //ourLab: enOurLab,
+        ourLab: enOurLab,
         productionChain: enProductionChain,
         recyclingProcess: enRecyclingProcess,
         /*references: enReferences,
