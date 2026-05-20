@@ -277,7 +277,9 @@
 
     "oversizedWarning": {
       "title": "Oversized Installation Warning",
-      "message": "Your physical installation ({installedCapacity} kW) is oversized compared to your production needs. Your utilization rate is only <b>{utilizationRate}%</b>. This increases the CAPEX share per kg and negatively impacts your LCOH."
+      "messageP1": "Your physical installation (", 
+      "messageP2": " kW) is oversized compared to your production needs. Your utilization rate is only ",
+      "messageP3": ". This increases the CAPEX share per kg and negatively impacts your LCOH."
     },
 
     "metrics": {
@@ -290,7 +292,8 @@
       "savingsVsGrey": "Savings vs Grey H₂",
       "greenPremium": "Green Premium",
 
-      "greyEstimated": "Grey H₂ estimated at {value} €/kg"
+      "greyEstimatedP1": "Grey H₂ estimated at ",
+      "greyEstimatedP2":" €/kg"
     },
 
     "costBreakdown": {

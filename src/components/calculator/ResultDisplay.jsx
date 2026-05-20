@@ -89,10 +89,11 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
                     variant="light"
                     mb="xl"
                 >
-                    {t('dashboard.oversizedWarning.message', {
-                        installedCapacity: metrics.installedCapacity.toLocaleString('de-DE'),
-                        utilizationRate: metrics.utilizationRate.toLocaleString('de-DE', { maximumFractionDigits: 1 })
-                    })}
+                    {t('dashboard.oversizedWarning.messageP1')}
+                    {metrics.installedCapacity.toLocaleString('de-DE')}
+                    {t('dashboard.oversizedWarning.messageP2')}
+                    <b>{metrics.utilizationRate.toLocaleString('de-DE', { maximumFractionDigits: 1 })}%</b>
+                    {t('dashboard.oversizedWarning.messageP3')}
                 </Alert>
             )}
             
@@ -204,12 +205,13 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
                             c={isProfitableGrey ? "teal.9" : "red.9"}
                             fw={500}
                         >
-                            {t('dashboard.metrics.greyEstimated', {
-                                value: greyDetails.smoothed.toLocaleString('de-DE', {
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2
-                                })
+                            {t('dashboard.metrics.greyEstimatedP1')}
+                            {greyDetails.smoothed.toLocaleString('de-DE', {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2
                             })}
+                            {t('dashboard.metrics.greyEstimatedP2')}
+                            
                         </Text>
                     </Box>
                 </Paper>
