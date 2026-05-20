@@ -21,7 +21,7 @@ import enEquipementOverview from './locales/en/equipementOverview.json';
 //import frEquipementOverview from './locales/fr/equipementOverview.json';
 //import deEquipementOverview from './locales/de/equipementOverview.json';
 
-//import enHome from './locales/en/home.json';
+import enHome from './locales/en/home.json';
 //import frHome from './locales/fr/home.json';
 //import deHome from './locales/de/home.json';
 
@@ -61,8 +61,8 @@ i18n
         calculator: enCalculator,
         //contact: enContact,
         equipmentOverview: enEquipementOverview,
-        /*home: enHome,
-        notFound: enNotFound,
+        home: enHome,
+        /*notFound: enNotFound,
         ourLab: enOurLab,*/
         productionChain: enProductionChain,
         recyclingProcess: enRecyclingProcess,

@@ -1,26 +1,26 @@
 [
-    {
-        "title": "H₂ Production Chain",
-        "description": "Understand the complete lifecycle of green hydrogen from water electrolysis to storage and distribution. A macroscopic view of the infrastructure.",
-        "iconName": "IconRoute",
-        "link": "/production"
-    },
-    {
-        "title": "Hydrogen Recycling Process",
-        "description": "Learn about the technologies used to recover, purify, and recompress unconsumed hydrogen from industrial exhaust gases.",
-        "iconName": "IconRecycle",
-        "link": "/recycling-process"
-    },
-    {
-        "title": "Electrolyzer Technologies",
-        "description": "Compare PEM, Alkaline, and AEM core technologies. Analyze efficiency parameters, operational lifespans, and ideal industrial use cases.",
-        "iconName": "IconDroplet",
-        "link": "/electrolyzers"
-    },
-    {
-        "title": "Compression Systems",
-        "description": "Explore mechanical and non-mechanical compression methods necessary for high-density hydrogen storage and grid injection.",
-        "iconName": "IconGauge",
-        "link": "/compressors"
-    }
+  {
+    "title": "homeLearn.productionChain.title",
+    "description": "homeLearn.productionChain.description",
+    "iconName": "IconRoute",
+    "link": "/production"
+  },
+  {
+    "title": "homeLearn.recyclingProcess.title",
+    "description": "homeLearn.recyclingProcess.description",
+    "iconName": "IconRecycle",
+    "link": "/recycling-process"
+  },
+  {
+    "title": "homeLearn.electrolyzerTechnologies.title",
+    "description": "homeLearn.electrolyzerTechnologies.description",
+    "iconName": "IconDroplet",
+    "link": "/electrolyzers"
+  },
+  {
+    "title": "homeLearn.compressionSystems.title",
+    "description": "homeLearn.compressionSystems.description",
+    "iconName": "IconGauge",
+    "link": "/compressors"
+  }
 ]
