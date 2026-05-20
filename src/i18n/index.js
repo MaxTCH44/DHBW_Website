@@ -41,7 +41,7 @@ import enRecyclingProcess from './locales/en/recyclingProcess.json';
 //import frRecyclingProcess from './locales/fr/recyclingProcess.json';
 //import deRecyclingProcess from './locales/de/recyclingProcess.json';
 
-//import enReferences from './locales/en/references.json';
+import enReferences from './locales/en/references.json';
 //import frReferences from './locales/fr/references.json';
 //import deReferences from './locales/de/references.json';
 
@@ -66,9 +66,8 @@ i18n
         ourLab: enOurLab,
         productionChain: enProductionChain,
         recyclingProcess: enRecyclingProcess,
-        /*references: enReferences,
-        setupBuilder: enSetupBuilder
-      */
+        references: enReferences,
+        //setupBuilder: enSetupBuilder
       },
       /*
       fr: {

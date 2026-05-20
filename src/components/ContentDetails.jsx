@@ -8,7 +8,10 @@ import { useTranslation } from 'react-i18next';
  * It handles two layouts: a simple link layout (if only a label is provided) 
  * or a full academic citation layout (authors, journal, year, license).
  */
-function ReferenceLink({ label, authors, year, title, journal, url, license }) {
+function ReferenceLink({ label, authors, year, title, journal, url, license, namespace }) {
+
+    const { t } = useTranslation(namespace);
+
     // Simple layout: generally used for standard web links or basic documentation
     if (label && !authors) {
         return (
@@ -38,7 +41,7 @@ function ReferenceLink({ label, authors, year, title, journal, url, license }) {
                 
                 <Group gap="xs" mt={4}>
                     <Anchor href={url} target="_blank" rel="noopener noreferrer" c="blue.7" size="sm" fw={500}>
-                        Read publication
+                        {t("readPublication")}
                     </Anchor>
                     {license && (
                         <Badge variant="light" color="gray" size="xs">
@@ -156,7 +159,7 @@ export default function ContentDetails({ item, namespace, componentList = null }
 
         // --- EXTERNAL LINKS ---
         if (block.type === 'reference') {
-           return <ReferenceLink key={index} {...block.props} />;
+           return <ReferenceLink key={index} {...block.props} namespace={namespace} />;
         }
 
         // --- DYNAMIC REACT COMPONENTS ---
