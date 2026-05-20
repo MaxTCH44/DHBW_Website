@@ -2,23 +2,24 @@ import { Burger, Container, Group, Title, Drawer, Stack, Button, Flex, Box, Menu
 import { useDisclosure } from '@mantine/hooks';
 import { Link, useLocation } from 'react-router-dom';
 import { IconChevronDown, IconFlask } from '@tabler/icons-react';
+import { useTranslation } from 'react-i18next';
 
 import logoImage from '../assets/logo2.svg';
 
 // --- NAVIGATION CONFIGURATION ---
 // Centralized routing map. Adding a new page to the app only requires updating this array.
 const links = [
-    { link: '/lab', label: <><IconFlask /> <Text fw="900" size="lg" ml="10" >Our Lab</Text></> },
-    { link: '/calculator', label: 'H₂ Calculator' },
-    { link: '/recycling', label: 'H₂ Recycling' },
+    { link: '/lab', label: "header.ourLab",icon: IconFlask },
+    { link: '/calculator', label: "header.calculator" },
+    { link: '/recycling', label: "header.recycling" },
     {
         link: '#learn',
         label: 'Learn',
         links: [
-            { link: '/production', label: 'Production Chain' },
-            { link: '/recycling-process', label: 'Recycling Process' },
-            { link: '/electrolyzers', label: 'Electrolyzers' },
-            { link: '/compressors', label: 'Compressors' },
+            { link: '/production', label: "header.production" },
+            { link: '/recycling-process', label: "header.recyclingProcess" },
+            { link: '/electrolyzers', label: "header.electrolyzers" },
+            { link: '/compressors', label: "header.compressors" },
         ],
     },
 ];
@@ -29,6 +30,9 @@ const links = [
  * It listens to the current router location to dynamically highlight the active page.
  */
 export default function Header() {
+    
+    const { t } = useTranslation("common");
+
     const [opened, { toggle, close }] = useDisclosure(false);
     const location = useLocation();
 
@@ -49,7 +53,7 @@ export default function Header() {
                         fw={isSubActive ? 700 : 500}
                         c={isSubActive ? 'var(--mantine-primary-color-filled)' : undefined}
                     >
-                        {item.label}
+                        {t(item.label)}
                     </Menu.Item>
                 );
             });
@@ -89,8 +93,17 @@ export default function Header() {
                 radius="sm"
                 style={{ fontWeight: 500 }}
             >
-                {link.label}
-            </Button>
+                {link.icon ? (
+                        <>
+                            <link.icon/>
+                            <Text fw="900" size="lg" ml="10">
+                                {t(link.label)}
+                            </Text>
+                        </>
+                    ) : (
+                        t(link.label)
+                    )}
+                </Button>
         );
     });
 

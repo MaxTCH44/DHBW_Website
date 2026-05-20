@@ -7,5 +7,15 @@
         "contact": "Contact",
         "references": "References",
         "setupBuilder": "Setup Builder"
+    },
+    "header": {
+        "ourLab": "Our Lab",
+        "calculator": "H₂ Calculator",
+        "recycling": "H₂ Recycling",
+        "learn": "Learn",
+        "production": "Production Chain",
+        "recyclingProcess": "Recycling Process",
+        "electrolyzers": "Electrolyzers",
+        "compressors": "Compressors"
     }
 }
