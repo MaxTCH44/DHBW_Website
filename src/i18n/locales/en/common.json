@@ -2,5 +2,10 @@
     "detailSection": {
         "open": "Hide details",
         "close": "Show details"
+    },
+    "footer" :{
+        "contact": "Contact",
+        "references": "References",
+        "setupBuilder": "Setup Builder"
     }
 }
