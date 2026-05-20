@@ -1,4 +1,5 @@
 import { Anchor, Collapse, Card } from "@mantine/core"
+import { useTranslation } from 'react-i18next';
 
 /**
  * A reusable collapsible accordion component.
@@ -10,6 +11,7 @@ import { Anchor, Collapse, Card } from "@mantine/core"
  * @param {React.ReactNode} props.children - The advanced inputs or content to be hidden/revealed.
  */
 export default function DetailSection({ openedSections, toggleSection, children }){
+    const { t } = useTranslation("common");
     return(
         <>
             <Collapse in={openedSections}>
@@ -26,7 +28,7 @@ export default function DetailSection({ openedSections, toggleSection, children 
                 mt={openedSections ? "xs" : ""} 
                 onClick={toggleSection}
             >
-                {openedSections ? "Hide details" : "Show details"}
+                {openedSections ? t("detailSection.open") : t("detailSection.close")}
             </Anchor>
         </>
     )

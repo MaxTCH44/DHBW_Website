@@ -4,8 +4,8 @@
     [
         {
             "id" : 1,
-            "name" : "GreenLab Enapter AEM Electrolyser",
-            "type" : "AEM",
+            "name" : "electrolyzer.electrolyzers.aem.name",
+            "type" : "electrolyzer.electrolyzers.aem.type",
             "price" : 34727.54,
             "stack_price" : 9600,
             "max_stacks" : 4,
@@ -19,8 +19,8 @@
         },
         {
             "id" : 2,
-            "name" : "GreenLab PEM Electrolyzer",
-            "type" : "PEM",
+            "name" : "electrolyzer.electrolyzers.pem.name",
+            "type" : "electrolyzer.electrolyzers.pem.type",
             "price" : 440,
             "stack_price": 440,
             "max_stacks" : 1,
@@ -34,8 +34,8 @@
         },
         {
             "id" : 3,
-            "name" : "Ostermeier Calculator Electrolyzer",
-            "type" : "AEM",
+            "name" : "electrolyzer.electrolyzers.ostermeier.name",
+            "type" : "electrolyzer.electrolyzers.ostermeier.type",
             "price" : 73617,
             "stack_price" : 12000,
             "max_stacks" : 4,
@@ -49,8 +49,8 @@
         },
         {
             "id" : 0,
-            "name" : "Custom Electrolyzer",
-            "type" : "PEM",
+            "name" : "electrolyzer.electrolyzers.custom.name",
+            "type" : "electrolyzer.electrolyzers.custom.type",
             "price" : 0,
             "stack_price" : 0,
             "max_stacks" : 1,

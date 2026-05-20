@@ -1,503 +1,504 @@
 [
-    {
-        "id": "step_sys_size",
-        "targetId": "system_size",
-        "title": "System size",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "This defines the total electrical power capacity of your electrolyzer. It is the main driver for both your maximum hydrogen production and your initial investment (CAPEX). If you already know your target annual hydrogen demand, simply adjust this value until the production metric on the dashboard matches your goals."
-            }
-        ]
-    },
-    {
-        "id": "step_self_prod",
-        "targetId": "self_produced",
-        "openSection": "system",
-        "title": "Self-produced",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "This represents the share of electricity you generate on-site (such as from solar panels or wind turbines) rather than buying directly from the grid. Because self-generated power is generally cheaper, increasing this percentage will significantly lower your operational costs. Set it to 0 if you rely entirely on a standard grid connection."
-            }
-        ]
-    },
-    {
-        "id": "step_elec_op_time",
-        "targetId": "electrolyzer_operating_time",
-        "title": "Electrolyser operating time",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "This is the number of hours per year your electrolyzer is actively running (out of a maximum 8,760 hours or 365 days). A higher runtime spreads out your equipment cost over more hydrogen, lowering the final price per kg. If your system runs strictly on solar power, this might be around 2,000 to 3,000 hours. If it is grid-connected, it can operate nearly continuously."
-            }
-        ]
-    },
-    {
-        "id": "step_elec_select",
-        "targetId": "electrolyzer_selector",
-        "title": "Electrolyser selector",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Select the specific technology or model for your project. Choosing a predefined model automatically loads its exact technical specifications and costs, while 'Custom' allows you to manually enter your own numbers. Below this, indicate whether you already own the equipment, or part of it, in which case its purchase cost will be removed from the calculation."
-            }
-        ]
-    },
-    {
-        "id": "step_elec_price",
-        "targetId": "electrolyzer_price",
-        "openSection": "electrolyzer",
-        "isPriceInput": true,
-        "title": "Electrolyzer purchase price",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "This is the total initial purchase cost (CAPEX) for the electrolyzer system. Important: This base price already includes your first operational cell stack, along with all necessary balance-of-plant components (like power electronics and water treatment). Future stack replacements are calculated separately. For custom setups, enter your complete supplier quote in €."
-            }
-        ]
-    },
-    {
-        "id": "step_elec_power",
-        "targetId": "electrolyzer_power",
-        "title": "Stack power",
-        "openSection": "electrolyzer",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "This indicates the nominal electrical power rating of a single cell stack (in kW). It defines the scale of the individual module. The total power of your installation will be this value multiplied by the number of active stacks. You can find this rating on the manufacturer's technical datasheet."
-            }
-        ]
-    },
-    {
-        "id": "step_elec_owned_stacks",
-        "targetId": "electrolyzer_owned_stacks",
-        "title": "Number of owned electrolyser stacks",
-        "openSection": "electrolyzer",
-        "isOwnedStackElectrolyser": true,
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "If you already have spare cell stacks in your inventory for this electrolyzer, indicate the amount here. This will deduct their initial purchase price from your upfront CAPEX, though future stack replacements will still be factored into the project's long-term maintenance timeline."
-            }
-        ]
-    },
-    {
-        "id": "step_elec_stack_price",
-        "targetId": "electrolyzer_stack_price",
-        "title": "Electrolyser stack price",
-        "openSection": "electrolyzer",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Enter the replacement cost for a single electrolyzer cell stack, priced in €. Since stacks degrade over time and must be replaced periodically, this value is essential for accurately projecting your long-term operational and maintenance expenses. You can find this specific cost by requesting a spare parts pricing list from your equipment manufacturer."
-            }
-        ]
-    },
-    {
-        "id": "step_max_stacks_elec",
-        "targetId": "max_stack_per_electrolyzer",
-        "title": "Max stacks per electrolyser",
-        "openSection": "electrolyzer",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Indicate the maximum number of cell stacks that a single electrolyzer frame or cabinet can physically hold. This structural limit dictates how much you can scale up the internal capacity before you are forced to purchase an entirely new secondary electrolyzer unit, which would significantly increase your initial CAPEX."
-            }
-        ]
-    },
-    {
-        "id": "step_elec_cons",
-        "targetId": "electrolyzer_energy_consumption",
-        "title": "Electrolyzer energy consumption",
-        "openSection": "electrolyzer",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Enter the amount of electricity required by the stack to produce one kilogram or one m³ of hydrogen. This metric reflects the core efficiency of the technology. Since electricity is typically the largest operational expense (OPEX) in green hydrogen production, finding the exact number on your manufacturer's technical specifications is crucial for a realistic cost estimate."
-            }
-        ]
-    },
-    {
-        "id": "step_aux_cons",
-        "targetId": "auxiliary_energy_consumption",
-        "title": "Total auxiliary consumption (BoP)",
-        "openSection": "electrolyzer",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Producing hydrogen requires more than just the main stack. This field accounts for the extra power consumed by balance of plant (BoP) components like cooling systems, water pumps, and gas purification units. This value is added to your main energy consumption to calculate the total electricity bill, and can usually be found in the system's operational guidelines."
-            }
-        ]
-    },
-    {
-        "id": "step_water_cons",
-        "targetId": "water_consumption",
-        "title": "Water consumption",
-        "openSection": "electrolyzer",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Specify how much water the system uses during operation. While water generally represents a very small fraction of the final levelized cost of hydrogen, it is physically indispensable for the reaction. The required volume depends heavily on the specific technology and water purity standards of your setup."
-            }
-        ]
-    },
-    {
-        "id": "step_elec_maint",
-        "targetId": "electrolyzer_maintenance_costs",
-        "title": "Electrolyser maintenance costs",
-        "openSection": "electrolyzer",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "This covers your annual operation and maintenance (O&M) expenses, including routine check-ups and minor part replacements. Note that major stack replacements are calculated separately. It is expressed as a percentage of the initial hardware purchase price. If you don't have a specific service contract quote, 2% to 5% is the standard industry estimate. You can also directly specify the exact amount in € if you have the annual value."
-            }
-        ]
-    },
-    {
-        "id": "step_elec_stack_lifetime",
-        "targetId": "electrolyzer_stack_lifetime",
-        "title": "Stack Lifetime",
-        "openSection": "electrolyzer",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Specify the expected operational lifespan of the electrolyzer's cell stack, measured in working hours. Once the system reaches this threshold, the calculator automatically factors in the cost of a full stack replacement. This is a critical metric for accurately forecasting your long-term maintenance expenses. You can typically find this rated lifespan on the manufacturer's technical datasheet."
-            }
-        ]
-    },
-    {
-        "id": "step_electricity_price",
-        "targetId": "electricity_price",
-        "title": "Electricity price",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Enter the cost you pay for grid electricity. Since power is the largest ongoing expense in green hydrogen production, getting this number right is critical for an accurate final cost estimate."
-            }
-        ]
-    },
-    {
-        "id": "step_water_price",
-        "targetId": "water_price",
-        "title": "Water price",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Input your local industrial water supply rate, which you can specify in either €/m³ or €/L. Although highly purified water is strictly necessary for the electrolysis reaction, the raw water cost is generally negligible compared to your electricity and hardware expenses."
-            }
-        ]
-    },
-    {
-        "id": "step_current_h2_price",
-        "targetId": "current_h2_price",
-        "title": "Current H2 price",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Specify the price you currently pay your supplier for delivered hydrogen, typically billed in €/kg. While this doesn't change your new on-site production costs, the dashboard relies on it as a baseline to calculate your exact financial savings and yearly return on investment."
-            }
-        ]
-    },
-    {
-        "id": "step_grey_h2_price",
-        "targetId": "grey_h2_price",
-        "title": "Grey H2 price",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Set the baseline market price for fossil-based grey hydrogen. The calculator compares this against your green hydrogen cost to determine the 'Green Premium', showing you the exact price gap between standard industrial supply and your clean production."
-            }
-        ]
-    },
-    {
-        "id": "step_carbon_tax",
-        "targetId": "carbon_tax",
-        "title": "Carbon Tax",
-        "openSection": "greyH2",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Enter the expected carbon tax rate, measured in € per ton of CO₂. Since producing grey hydrogen emits roughly 9.5 kg of CO₂ per kg of H₂, applying this tax simulates upcoming environmental regulations. It helps you forecast when green hydrogen will become financially more competitive than fossil fuels."
-            }
-        ]
-    },{
-        "id": "step_lifetime",
-        "targetId": "project_lifetime",
-        "title": "Project Lifetime",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Set the financial lifespan of your project, typically between 15 and 20 years. This timeframe is used to amortize your initial investments (CAPEX). A longer project lifetime spreads the equipment costs over a larger volume of hydrogen, reducing the final price per kg, though it may require factoring in more frequent stack replacements."
-            }
-        ]
-    },
-    {
-        "id": "step_inflation",
-        "targetId": "inflation_rate",
-        "title": "Inflation Rate",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Enter the expected annual inflation rate for the duration of your project. This percentage accounts for the general increase in prices over time. It is crucial for projecting how your future operational expenses will grow year over year. A higher inflation rate will compound these ongoing costs, increasing the final levelized cost of your hydrogen."
-            }
-        ]
-    },
-    {
-        "id": "step_comp_needed",
-        "targetId": "is_compressor_needed",
-        "title": "Is compressor needed ?",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Check this if your use case requires the hydrogen to be pressurized for storage, transport, or direct injection into an industrial process. Activating this unlocks the compression section to account for the additional hardware and energy costs, which can significantly impact your final LCOH."
-            }
-        ]
-    },
-    {
-        "id": "step_h2_comp",
-        "targetId": "h2_to_compress",
-        "title": "Hydrogen to compress",
-        "isCompressorSection": true,
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Specify how much of your produced hydrogen actually goes through the compressor. You can input this with the slider or directly as a specific volume in kg. If your entire output needs to be pressurized to reach the end-user or storage tanks, simply leave this at maximum."
-            }
-        ]
-    },
-    {
-        "id": "step_comp_op_time",
-        "targetId": "compressor_operating_time",
-        "title": "Compressor operating time",
-        "isCompressorSection": true,
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Define how long the compressor runs over a year, up to a maximum of 8,760 hours (or 365 days). This often matches your electrolyzer's operating time, but it can be lower if your compressor is oversized and only runs intermittently to fill buffer tanks. This metric directly impacts your hardware sizing and maintenance cycles."
-            }
-        ]
-    },
-    {
-        "id": "step_comp_selector",
-        "targetId": "compressor_selector",
-        "title": "Compressor Setup",
-        "isCompressorSection": true,
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Select the specific compression technology or model for your project. Choosing a predefined model automatically loads its exact technical specifications and costs, while 'Custom' allows you to manually enter your own data. Below this, indicate whether you already own the equipment, or part of it, in which case its purchase cost will be removed from the calculation."
-            }
-        ]
-    },
-    {
-        "id": "step_mech_comp_price",
-        "targetId": "compressor_price",
-        "title": "Compressor purchase price",
-        "isPriceInput": true,
-        "openSection": "compressor",
-        "showIfCompressor": "Mechanical",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "This is the total initial purchase cost (CAPEX) for your mechanical compression system. It must include both the main compressor unit (motor, pistons, etc.) and all necessary auxiliary components like cooling loops or buffering tanks. Predefined models display real-world prices. For a custom setup, contact your supplier for a complete quote and enter the final sum in €."
-            }
-        ]
-    },
-    {
-        "id": "step_elec_comp_price",
-        "targetId": "compressor_price",
-        "title": "Compressor purchase price",
-        "isPriceInput": true,
-        "openSection": "compressor",
-        "showIfCompressor": "Electrochemical",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "This is the total initial purchase cost (CAPEX) for the electrochemical compression system. Important: This base price already includes your first operational cell stack, along with all necessary balance-of-plant components (like power electronics). Future stack replacements are calculated separately. For custom setups, enter your complete supplier quote in €."
-            }
-        ]
-    },
-    {
-        "id": "step_mech_comp_cons",
-        "targetId": "compressor_energy_consumption",
-        "title": "Compressor energy consumption",
-        "openSection": "compressor",
-        "showIfCompressor": "Mechanical",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Enter the total energy required by the mechanical compressor to pressurize one kilogram of hydrogen (in kWh/kg). Mechanical compression relies on electric motors or pneumatic drives. If your system is driven by compressed air, make sure to calculate the equivalent electrical energy used to produce that air and include it in this total. This value significantly impacts your overall operational costs and can be estimated using the manufacturer's datasheet."
-            }
-        ]
-    },
-    {
-        "id": "step_elec_comp_cons",
-        "targetId": "compressor_energy_consumption",
-        "title": "Compressor energy consumption",
-        "openSection": "compressor",
-        "showIfCompressor": "Electrochemical",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Enter the electricity required by the electrochemical compressor to pressurize one kilogram or one m³ of hydrogen. Since this technology uses voltage to drive protons through a membrane rather than using moving parts, its energy profile is unique. This consumption is added to your overall electricity demand to calculate your operational costs. You can find this value in the manufacturer's technical specifications; be sure to look for the total system energy consumption, which includes both the stacks and any auxiliary power units."
-            }
-        ]
-    },
-    {
-        "id": "step_own_stack",
-        "targetId": "compressor_owned_stacks",
-        "title": "Number of owned compressor stacks",
-        "openSection": "compressor",
-        "isOwnedStackCompressor": true,
-        "showIfCompressor": "Electrochemical",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Electrochemical compressors rely on internal cell stacks that degrade over time. If you already have spare cell stacks in your inventory, indicate the amount here. This will deduct their initial purchase price from your upfront CAPEX, though future stack replacements will still be factored into the project's long-term maintenance costs."
-            }
-        ]
-    },
-    {
-        "id": "step_stack_price",
-        "targetId": "compessor_stack_price",
-        "title": "Cell stack price",
-        "openSection": "compressor",
-        "showIfCompressor": "Electrochemical",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Enter the replacement cost for a single electrochemical cell stack, priced in €. Unlike mechanical systems, electrochemical compressors rely on membrane stacks that degrade over time and must be replaced periodically. This value is essential for accurately projecting your long-term operational and maintenance expenses. You can find this specific cost by requesting a detailed spare parts pricing list from your equipment manufacturer."
-            }
-        ]
-    },
-    {
-        "id": "step_cells_per_stack",
-        "targetId": "cells_per_stack",
-        "title": "Cells per stack",
-        "openSection": "compressor",
-        "showIfCompressor": "Electrochemical",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Specify how many individual cells make up one replaceable stack module. This metric defines the physical grouping of the hardware. It helps the calculator determine exactly how many stacks you need to initially purchase, and later replace, to meet your target compression capacity. This exact number is usually listed in the detailed technical datasheet of your chosen electrochemical compressor."
-            }
-        ]
-    },
-    {
-        "id": "step_max_cells",
-        "targetId": "max_cells",
-        "title": "Max cells per compressor",
-        "openSection": "compressor",
-        "showIfCompressor": "Electrochemical",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Indicate the maximum number of cells that a single compressor frame can physically hold. This structural limit dictates how much you can scale up the internal capacity before you are forced to purchase an entirely new secondary compressor unit, which would significantly increase your initial CAPEX. Check the expansion limits or physical layout specifications provided by your supplier to find this number."
-            }
-        ]
-    },
-    {
-        "id": "step_mech_flow",
-        "targetId": "flowrate",
-        "title": "Flowrate per cell",
-        "openSection": "compressor",
-        "showIfCompressor": "Mechanical",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Define the maximum amount of hydrogen gas that one mechanical compressor unit can process, typically entered in kg per day. This determines how many separate compressor machines you need to handle your total production volume. If your output exceeds this limit, the system automatically adds more units to your required investment. Look for the 'nominal flow rate' or 'maximum capacity' on the machine's technical specification sheet."
-            }
-        ]
-    },
-    {
-        "id": "step_elec_flow",
-        "targetId": "flowrate",
-        "title": "Flowrate per cell",
-        "openSection": "compressor",
-        "showIfCompressor": "Electrochemical",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Specify the hydrogen flowrate capacity for a single electrochemical cell, usually measured in kg per day. Since electrochemical systems scale up capacity by adding individual cells rather than whole machines, this exact performance metric determines how many cells are required to process your daily output, directly impacting your hardware costs. This value is typically listed under 'cell capacity' or 'unitary flow rate' in the manufacturer's technical documentation."
-            }
-        ]
-    },
-    {
-        "id": "step_mech_comp_maint",
-        "targetId": "compressor_maintenance_costs",
-        "title": "Compressor maintenance costs",
-        "openSection": "compressor",
-        "showIfCompressor": "Mechanical",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Enter the annual operation and maintenance (O&M) costs for your mechanical compression system. Because mechanical compressors rely on physical moving parts like pistons, valves, and seals, they typically require regular servicing and part replacements to prevent leaks. You can enter this value either as a percentage of the initial purchase price (CAPEX) or as a fixed yearly cost in €. If you do not have a specific service contract quote from your supplier, the industry standard estimate is usually between 3% and 5%."
-            }
-        ]
-    },
-    {
-        "id": "step_elec_comp_maint",
-        "targetId": "compressor_maintenance_costs",
-        "title": "Compressor maintenance costs",
-        "openSection": "compressor",
-        "showIfCompressor": "Electrochemical",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Enter the annual routine maintenance costs for your electrochemical compressor. Since this solid-state technology operates without moving parts, its day-to-day servicing needs are generally much lower than mechanical alternatives (please note that periodic stack replacements are handled and calculated separately). You can input this as a percentage of your initial CAPEX or as a fixed yearly amount in €. This number can be found in your supplier's service level agreement, or estimated around 1% to 2%."
-            }
-        ]
-    },
-    {
-        "id": "step_comp_stack_lifetime",
-        "targetId": "compressor_stack_lifetime",
-        "title": "Compressor stack lifetime",
-        "openSection": "compressor",
-        "showIfCompressor": "Electrochemical",
-        "content": [
-            {
-                "type": "paragraph",
-                "size": "13",
-                "value": "Specify the operational lifespan of the electrochemical compressor's cell stack in working hours. Similar to an electrolyzer, the internal membranes degrade over time and require periodic replacement. The calculator uses this figure to automatically schedule and price future stack replacements over the project's entire lifetime. Check your supplier's technical specifications or warranty documents to find this exact duration."
-            }
-        ]
-    }
+  {
+    "id": "step_sys_size",
+    "targetId": "system_size",
+    "title": "advices.step_sys_size.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_sys_size.content"
+      }
+    ]
+  },
+  {
+    "id": "step_self_prod",
+    "targetId": "self_produced",
+    "openSection": "system",
+    "title": "advices.step_self_prod.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_self_prod.content"
+      }
+    ]
+  },
+  {
+    "id": "step_elec_op_time",
+    "targetId": "electrolyzer_operating_time",
+    "title": "advices.step_elec_op_time.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_elec_op_time.content"
+      }
+    ]
+  },
+  {
+    "id": "step_elec_select",
+    "targetId": "electrolyzer_selector",
+    "title": "advices.step_elec_select.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_elec_select.content"
+      }
+    ]
+  },
+  {
+    "id": "step_elec_price",
+    "targetId": "electrolyzer_price",
+    "openSection": "electrolyzer",
+    "isPriceInput": true,
+    "title": "advices.step_elec_price.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_elec_price.content"
+      }
+    ]
+  },
+  {
+    "id": "step_elec_power",
+    "targetId": "electrolyzer_power",
+    "title": "advices.step_elec_power.title",
+    "openSection": "electrolyzer",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_elec_power.content"
+      }
+    ]
+  },
+  {
+    "id": "step_elec_owned_stacks",
+    "targetId": "electrolyzer_owned_stacks",
+    "title": "advices.step_elec_owned_stacks.title",
+    "openSection": "electrolyzer",
+    "isOwnedStackElectrolyser": true,
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_elec_owned_stacks.content"
+      }
+    ]
+  },
+  {
+    "id": "step_elec_stack_price",
+    "targetId": "electrolyzer_stack_price",
+    "title": "advices.step_elec_stack_price.title",
+    "openSection": "electrolyzer",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_elec_stack_price.content"
+      }
+    ]
+  },
+  {
+    "id": "step_max_stacks_elec",
+    "targetId": "max_stack_per_electrolyzer",
+    "title": "advices.step_max_stacks_elec.title",
+    "openSection": "electrolyzer",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_max_stacks_elec.content"
+      }
+    ]
+  },
+  {
+    "id": "step_elec_cons",
+    "targetId": "electrolyzer_energy_consumption",
+    "title": "advices.step_elec_cons.title",
+    "openSection": "electrolyzer",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_elec_cons.content"
+      }
+    ]
+  },
+  {
+    "id": "step_aux_cons",
+    "targetId": "auxiliary_energy_consumption",
+    "title": "advices.step_aux_cons.title",
+    "openSection": "electrolyzer",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_aux_cons.content"
+      }
+    ]
+  },
+  {
+    "id": "step_water_cons",
+    "targetId": "water_consumption",
+    "title": "advices.step_water_cons.title",
+    "openSection": "electrolyzer",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_water_cons.content"
+      }
+    ]
+  },
+  {
+    "id": "step_elec_maint",
+    "targetId": "electrolyzer_maintenance_costs",
+    "title": "advices.step_elec_maint.title",
+    "openSection": "electrolyzer",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_elec_maint.content"
+      }
+    ]
+  },
+  {
+    "id": "step_elec_stack_lifetime",
+    "targetId": "electrolyzer_stack_lifetime",
+    "title": "advices.step_elec_stack_lifetime.title",
+    "openSection": "electrolyzer",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_elec_stack_lifetime.content"
+      }
+    ]
+  },
+  {
+    "id": "step_electricity_price",
+    "targetId": "electricity_price",
+    "title": "advices.step_electricity_price.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_electricity_price.content"
+      }
+    ]
+  },
+  {
+    "id": "step_water_price",
+    "targetId": "water_price",
+    "title": "advices.step_water_price.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_water_price.content"
+      }
+    ]
+  },
+  {
+    "id": "step_current_h2_price",
+    "targetId": "current_h2_price",
+    "title": "advices.step_current_h2_price.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_current_h2_price.content"
+      }
+    ]
+  },
+  {
+    "id": "step_grey_h2_price",
+    "targetId": "grey_h2_price",
+    "title": "advices.step_grey_h2_price.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_grey_h2_price.content"
+      }
+    ]
+  },
+  {
+    "id": "step_carbon_tax",
+    "targetId": "carbon_tax",
+    "openSection": "greyH2",
+    "title": "advices.step_carbon_tax.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_carbon_tax.content"
+      }
+    ]
+  },
+  {
+    "id": "step_lifetime",
+    "targetId": "project_lifetime",
+    "title": "advices.step_lifetime.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_lifetime.content"
+      }
+    ]
+  },
+  {
+    "id": "step_inflation",
+    "targetId": "inflation_rate",
+    "title": "advices.step_inflation.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_inflation.content"
+      }
+    ]
+  },
+  {
+    "id": "step_comp_needed",
+    "targetId": "is_compressor_needed",
+    "title": "advices.step_comp_needed.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_comp_needed.content"
+      }
+    ]
+  },
+  {
+    "id": "step_h2_comp",
+    "targetId": "h2_to_compress",
+    "isCompressorSection": true,
+    "title": "advices.step_h2_comp.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_h2_comp.content"
+      }
+    ]
+  },
+  {
+    "id": "step_comp_op_time",
+    "targetId": "compressor_operating_time",
+    "isCompressorSection": true,
+    "title": "advices.step_comp_op_time.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_comp_op_time.content"
+      }
+    ]
+  },
+  {
+    "id": "step_comp_selector",
+    "targetId": "compressor_selector",
+    "isCompressorSection": true,
+    "title": "advices.step_comp_selector.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_comp_selector.content"
+      }
+    ]
+  },
+  {
+    "id": "step_mech_comp_price",
+    "targetId": "compressor_price",
+    "title": "advices.step_mech_comp_price.title",
+    "isPriceInput": true,
+    "openSection": "compressor",
+    "showIfCompressor": "Mechanical",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_mech_comp_price.content"
+      }
+    ]
+  },
+  {
+    "id": "step_elec_comp_price",
+    "targetId": "compressor_price",
+    "title": "advices.step_elec_comp_price.title",
+    "isPriceInput": true,
+    "openSection": "compressor",
+    "showIfCompressor": "Electrochemical",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_elec_comp_price.content"
+      }
+    ]
+  },
+  {
+    "id": "step_mech_comp_cons",
+    "targetId": "compressor_energy_consumption",
+    "title": "advices.step_mech_comp_cons.title",
+    "openSection": "compressor",
+    "showIfCompressor": "Mechanical",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_mech_comp_cons.content"
+      }
+    ]
+  },
+  {
+    "id": "step_elec_comp_cons",
+    "targetId": "compressor_energy_consumption",
+    "title": "advices.step_elec_comp_cons.title",
+    "openSection": "compressor",
+    "showIfCompressor": "Electrochemical",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_elec_comp_cons.content"
+      }
+    ]
+  },
+  {
+    "id": "step_own_stack",
+    "targetId": "compressor_owned_stacks",
+    "title": "advices.step_own_stack.title",
+    "openSection": "compressor",
+    "isOwnedStackCompressor": true,
+    "showIfCompressor": "Electrochemical",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_own_stack.content"
+      }
+    ]
+  },
+  {
+    "id": "step_stack_price",
+    "targetId": "compessor_stack_price",
+    "title": "advices.step_stack_price.title",
+    "openSection": "compressor",
+    "showIfCompressor": "Electrochemical",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_stack_price.content"
+      }
+    ]
+  },
+  {
+    "id": "step_cells_per_stack",
+    "targetId": "cells_per_stack",
+    "title": "advices.step_cells_per_stack.title",
+    "openSection": "compressor",
+    "showIfCompressor": "Electrochemical",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_cells_per_stack.content"
+      }
+    ]
+  },
+  {
+    "id": "step_max_cells",
+    "targetId": "max_cells",
+    "title": "advices.step_max_cells.title",
+    "openSection": "compressor",
+    "showIfCompressor": "Electrochemical",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_max_cells.content"
+      }
+    ]
+  },
+  {
+    "id": "step_mech_flow",
+    "targetId": "flowrate",
+    "title": "advices.step_mech_flow.title",
+    "openSection": "compressor",
+    "showIfCompressor": "Mechanical",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_mech_flow.content"
+      }
+    ]
+  },
+  {
+    "id": "step_elec_flow",
+    "targetId": "flowrate",
+    "title": "advices.step_elec_flow.title",
+    "openSection": "compressor",
+    "showIfCompressor": "Electrochemical",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_elec_flow.content"
+      }
+    ]
+  },
+  {
+    "id": "step_mech_comp_maint",
+    "targetId": "compressor_maintenance_costs",
+    "title": "advices.step_mech_comp_maint.title",
+    "openSection": "compressor",
+    "showIfCompressor": "Mechanical",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_mech_comp_maint.content"
+      }
+    ]
+  },
+  {
+    "id": "step_elec_comp_maint",
+    "targetId": "compressor_maintenance_costs",
+    "title": "advices.step_elec_comp_maint.title",
+    "openSection": "compressor",
+    "showIfCompressor": "Electrochemical",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_elec_comp_maint.content"
+      }
+    ]
+  },
+  {
+    "id": "step_comp_stack_lifetime",
+    "targetId": "compressor_stack_lifetime",
+    "title": "advices.step_comp_stack_lifetime.title",
+    "openSection": "compressor",
+    "showIfCompressor": "Electrochemical",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_comp_stack_lifetime.content"
+      }
+    ]
+  }
 ]

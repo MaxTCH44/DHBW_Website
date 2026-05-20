@@ -1,5 +1,6 @@
 import { Card, Text, Paper, Group, Badge, Stack, Anchor, Select } from '@mantine/core';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import ValueInput from '../ValueInput';
 import IncrementalInput from '../IncrementalInput';
@@ -8,6 +9,12 @@ import DetailSection from '../DetailSection';
 import EquipmentSelector from './EquipmentSelector';
 import SliderInput from '../SliderInput';
 import { POWER_UNITS, TIME_PER_YEAR_UNITS, MAINTENANCE_UNITS, H2_VOLUME_POWER_UNITS } from './calculatorConstants';
+
+const MAP_TYPE = {
+    "PEM": "PEM",
+    "Alkaline": "Alkaline", 
+    "AEM": "AEM"
+}
 
 /**
  * Renders the electrolyzer setup form, managing both physical sizing and technical/financial specifications.
@@ -47,28 +54,40 @@ export default function ElectrolyzerSetup ({
     toggleSection,
     isAdvancedMode
 }) {
+    const { t } = useTranslation("calculator");
+
     return(
         <Card shadow="sm" padding="lg" radius="md" withBorder>
             <Text fw={700} size="xl" mb="md" pb="xs" style={{ borderBottom: '2px solid #f0f0f0' }}>
-                Electrolyzer Setup
+                {t('electrolyzer.setup.title')}
             </Text>
 
             {/* --- GENERAL SIZING --- */}
             {isAdvancedMode ? (
                 <ValueInput
                     id="system_size"
-                    label={<LabelWithTooltip label="System size" tooltip="Total electrical power capacity of your electrolyzer setup." />}
+                    label={
+                        <LabelWithTooltip
+                            label={t('electrolyzer.systemSize.label')}
+                            tooltip={t('electrolyzer.systemSize.tooltip')}
+                        />
+                    }
                     units={POWER_UNITS}
                     currentUnit={systemSize.unit}
+                    namespace="calculator"
                     value={systemSize.value}
                     onValueChange={val => setSystemSize({ ...systemSize, value: val })}
                     onUnitChange={u => setSystemSize({ ...systemSize, unit: u })}
                     nullBlocker
                 />
             ) : (
-                // In simple mode, sizing is constrained to perfect multiples of the selected electrolyzer's base power
                 <IncrementalInput
-                    label={<LabelWithTooltip label="System size" tooltip="Total electrical power capacity of your electrolyzer setup." />}
+                    label={
+                        <LabelWithTooltip
+                            label={t('electrolyzer.systemSize.label')}
+                            tooltip={t('electrolyzer.systemSize.tooltip')}
+                        />
+                    }
                     value={systemSize.value}
                     step={selectedElectrolyzer.power}
                     min={selectedElectrolyzer.power}
@@ -78,12 +97,19 @@ export default function ElectrolyzerSetup ({
             )}
 
             {isAdvancedMode && (
-                <DetailSection openedSections={openedSections.system} toggleSection={() => toggleSection('system')}>
-                    {/* Self-produced power (e.g., from an onsite solar array) effectively dilutes the blended electricity rate, lowering the OPEX */}
-                    <SliderInput 
-                        label={<LabelWithTooltip label="Self-produced" tooltip="Percentage of the required electrical power generated on-site (e.g., via solar panels), reducing the energy drawn from the grid." />}
+                <DetailSection
+                    openedSections={openedSections.system}
+                    toggleSection={() => toggleSection('system')}
+                >
+                    <SliderInput
+                        label={
+                            <LabelWithTooltip
+                                label={t('electrolyzer.selfProduced.label')}
+                                tooltip={t('electrolyzer.selfProduced.tooltip')}
+                            />
+                        }
                         id="self_produced"
-                        units={systemSize.unit.label}
+                        units={t(systemSize.unit.label)}
                         value={systemSize.selfProduced}
                         onValueChange={v => setSystemSize({ ...systemSize, selfProduced: v })}
                         min={0}
@@ -92,13 +118,19 @@ export default function ElectrolyzerSetup ({
                 </DetailSection>
             )}
 
-            {/* Operating time directly impacts how the CAPEX is amortized over the volume of H2 produced annually */}
+            {/* Operating time */}
             <ValueInput
                 id="electrolyzer_operating_time"
-                label={<LabelWithTooltip label="Operating time" tooltip="Number of hours or days the electrolyzer system operates continuously per year." />}
+                label={
+                    <LabelWithTooltip
+                        label={t('electrolyzer.operatingTime.label')}
+                        tooltip={t('electrolyzer.operatingTime.tooltip')}
+                    />
+                }
                 units={TIME_PER_YEAR_UNITS}
                 currentUnit={operatingTime.unit}
                 value={operatingTime.value}
+                namespace="calculator"
                 max={365 * 24 / operatingTime.unit.factor}
                 onValueChange={val => setOperatingTime({ ...operatingTime, value: val })}
                 onUnitChange={u => setOperatingTime({ ...operatingTime, unit: u })}
@@ -111,9 +143,12 @@ export default function ElectrolyzerSetup ({
                     id="electrolyzer_selector"
                     label={
                         <Stack gap="xs">
-                            <LabelWithTooltip label="Electrolyzer Setup :" tooltip="Different technologies have distinct efficiencies and costs. Check the 'Learn' section for details." />
+                            <LabelWithTooltip
+                                label={t('electrolyzer.equipment.title')}
+                                tooltip={t('electrolyzer.equipment.tooltip')}
+                            />
                             <Anchor component={Link} to="/electrolyzers" size="xs" mb="sm" c="blue">
-                                Learn more about the different types
+                                {t('electrolyzer.equipment.learnMore')}
                             </Anchor>
                         </Stack>
                     }
@@ -122,16 +157,14 @@ export default function ElectrolyzerSetup ({
                     onItemChange={(val) => {
                         const newElectrolyzer = electrolyzers.list[val];
                         const currentSystemPowerInKw = systemSize.value * systemSize.unit.factor;
-                        
-                        // When switching models in simple mode, we automatically adjust the system size 
-                        // to the nearest valid multiple of the new model's power rating.
+
                         if (!isAdvancedMode) {
                             const numberOfModules = Math.round(currentSystemPowerInKw / newElectrolyzer.power);
-                            const validModules = Math.max(1, numberOfModules); 
+                            const validModules = Math.max(1, numberOfModules);
                             const newPowerKw = validModules * newElectrolyzer.power;
 
-                            setSystemSize({ 
-                                value: Number(newPowerKw.toFixed(2)), 
+                            setSystemSize({
+                                value: Number(newPowerKw.toFixed(2)),
                                 unit: { label: "kW", factor: 1 },
                                 selfProduced: 0
                             });
@@ -141,69 +174,96 @@ export default function ElectrolyzerSetup ({
                             }
                         }
 
-                        // ID 0 is reserved for 'Custom Electrolyzer'
-                        if (newElectrolyzer.id === 0){
-                            if (!openedSections.electrolyzer) {toggleSection('electrolyzer')};
+                        if (newElectrolyzer.id === 0) {
+                            if (!openedSections.electrolyzer) toggleSection('electrolyzer');
                             setSelectedElectrolyzer(customElectrolyzer);
                         } else {
                             setSelectedElectrolyzer(newElectrolyzer);
                         }
                     }}
-                    quantityOwned={electrolyzerSettings.owned} 
+                    quantityOwned={electrolyzerSettings.owned}
                     onOwnedChange={(v) => setElectrolyzerSettings({ ...electrolyzerSettings, owned: v })}
-                    ownedLabel={electrolyzerQuantity <= 1 ? "Already owned (No CAPEX)" : "Pre-owned electrolyzers"}
+                    ownedLabel={
+                        electrolyzerQuantity <= 1
+                            ? t('electrolyzer.hardwareNeeded.ownedNoCapex')
+                            : t('electrolyzer.hardwareNeeded.preowned')
+                    }
                     max={electrolyzerQuantity}
                     isAdvancedMode={isAdvancedMode}
                 />
 
-                {/* Hardware needed summary: Shows the physical reality behind the kW sizing.
-                    Frames dictate the base CAPEX, while Stacks dictate production capacity and maintenance OPEX. */}
-                <Text size="sm" fw={600}>Hardware needed:</Text>
-                <Group mt="sm" mb="sm">   
-                    <Badge color="blue" variant="filled">{electrolyzerQuantity} Electrolyzer Setup(s)</Badge>
-                    <Badge color="teal" variant="filled">{totalStacksNeeded} Stack(s)</Badge>
+                <Text size="sm" fw={600}>
+                    {t('electrolyzer.hardwareNeeded.title')}
+                </Text>
+
+                <Group mt="sm" mb="sm">
+                    <Badge color="blue" variant="filled">
+                        {electrolyzerQuantity} {t('electrolyzer.hardwareNeeded.setup')}
+                    </Badge>
+                    <Badge color="teal" variant="filled">
+                        {totalStacksNeeded} {t('electrolyzer.hardwareNeeded.stacks')}
+                    </Badge>
                 </Group>
 
                 {/* --- FINANCIAL & TECHNICAL DETAILS --- */}
                 {isAdvancedMode && (
-                    <DetailSection openedSections={openedSections.electrolyzer} toggleSection={() => toggleSection('electrolyzer')}>
+                    <DetailSection
+                        openedSections={openedSections.electrolyzer}
+                        toggleSection={() => toggleSection('electrolyzer')}
+                    >
                         {selectedElectrolyzer.id === 0 && (
                             <Select
-                                label="Electrolyzer type"
-                                data={["PEM", "Alkaline", "AEM"]}
+                                label={t('electrolyzer.typeLabel')}
+                                data={[t('electrolyzer.type.pem'), t('electrolyzer.type.alkaline'), t('electrolyzer.type.aem')]}
                                 value={selectedElectrolyzer.type}
-                                onChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, type: val })}
+                                onChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, type: MAP_TYPE[val] })}
                                 mb="md"
                             />
                         )}
 
                         {!(electrolyzerSettings.owned === electrolyzerQuantity) && (
                             <ValueInput
-                                label={<LabelWithTooltip label="Electrolyzer purchase price" tooltip="Total initial purchase cost (CAPEX) including the balance-of-plant. The first cell stack is already included in this base price." />}
+                                label={
+                                    <LabelWithTooltip
+                                        label={t('electrolyzer.price.label')}
+                                        tooltip={t('electrolyzer.price.tooltip')}
+                                    />
+                                }
                                 id="electrolyzer_price"
-                                units="€"
-                                currentUnit="€"
+                                units="units.eur"
+                                currentUnit="units.eur"
+                                namespace="calculator"
                                 value={selectedElectrolyzer.price}
                                 onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, price: val })}
                             />
                         )}
 
                         <ValueInput
-                            label={<LabelWithTooltip label="Stack power" tooltip="The rated electrical power input of a single electrolyzer stack. This determines its individual production capacity." />}
+                            label={
+                                <LabelWithTooltip
+                                    label={t('electrolyzer.stackPower.label')}
+                                    tooltip={t('electrolyzer.stackPower.tooltip')}
+                                />
+                            }
                             id="electrolyzer_power"
-                            units="kW"
-                            currentUnit="kW"
+                            units="units.power_kw"
+                            currentUnit="units.power_kw"
+                            namespace="calculator"
                             value={selectedElectrolyzer.stack_power}
                             onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, stack_power: val })}
                             nullBlocker
                         />
 
-                        {/* Stacks that are already owned reduce the initial CAPEX but remain fully subjected to long-term replacement cycles in the OPEX. */}
                         {(totalStacksNeeded !== 1 || electrolyzerSettings.owned !== 1) && (
                             <SliderInput
-                                label={<LabelWithTooltip label="Number of owned stacks" tooltip="The number of electrolyzer stacks you already own. These will be deducted from your initial upfront costs." />}
+                                label={
+                                    <LabelWithTooltip
+                                        label={t('electrolyzer.ownedStacks.label')}
+                                        tooltip={t('electrolyzer.ownedStacks.tooltip')}
+                                    />
+                                }
                                 id="electrolyzer_owned_stacks"
-                                units="units"
+                                units={t("units.units")}
                                 value={electrolyzerSettings.ownedStacks}
                                 onValueChange={val => setElectrolyzerSettings({ ...electrolyzerSettings, ownedStacks: val })}
                                 min={electrolyzerSettings.owned}
@@ -212,67 +272,106 @@ export default function ElectrolyzerSetup ({
                         )}
 
                         <ValueInput
-                            label={<LabelWithTooltip label="Stack price" tooltip="The cost to purchase a replacement cell stack. This is essential for calculating long-term operational expenses." />}
+                            label={
+                                <LabelWithTooltip
+                                    label={t('electrolyzer.stackPrice.label')}
+                                    tooltip={t('electrolyzer.stackPrice.tooltip')}
+                                />
+                            }
                             id="electrolyzer_stack_price"
-                            units="€"
-                            currentUnit="€"
+                            units="units.eur"
+                            currentUnit="units.eur"
+                            namespace="calculator"
                             value={selectedElectrolyzer.stack_price}
                             onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, stack_price: val })}
                         />
 
                         <ValueInput
-                            label={<LabelWithTooltip label="Max stacks per electrolyzer" tooltip="The physical limit of stacks a single electrolyzer frame can house before a new full unit is required." />}
+                            label={
+                                <LabelWithTooltip
+                                    label={t('electrolyzer.maxStacks.label')}
+                                    tooltip={t('electrolyzer.maxStacks.tooltip')}
+                                />
+                            }
                             id="max_stack_per_electrolyzer"
-                            units="stacks"
-                            currentUnit="stacks"
+                            units="units.stacks"
+                            currentUnit="units.stacks"
+                            namespace="calculator"
                             value={selectedElectrolyzer.max_stacks}
                             onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, max_stacks: val })}
                         />
 
                         <ValueInput
-                            label={<LabelWithTooltip label="Electrolyzer energy consumption" tooltip="Specific energy consumption of the electrolyzer stack itself to produce one unit of hydrogen. This value excludes system-wide auxiliaries like cooling or drying." />}
+                            label={
+                                <LabelWithTooltip
+                                    label={t('electrolyzer.energyConsumption.label')}
+                                    tooltip={t('electrolyzer.energyConsumption.tooltip')}
+                                />
+                            }
                             id="electrolyzer_energy_consumption"
                             units={H2_VOLUME_POWER_UNITS}
                             currentUnit={electrolyzerSettings.cons_unit}
+                            namespace="calculator"
                             value={selectedElectrolyzer.energy_consumption_kwh_per_kg}
                             onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, energy_consumption_kwh_per_kg: val })}
-                            onUnitChange={(u) => setElectrolyzerSettings({ ...electrolyzerSettings, cons_unit : u })}
-                            nullBlocker
                         />
 
                         <ValueInput
-                            label={<LabelWithTooltip label="Total auxiliary consumption (BoP)" tooltip="Fixed electrical power (kW) required by the entire system's supporting hardware (cooling, drying, electronics). This is a global value for the whole setup, regardless of the number of electrolyzer units." />}
+                            label={
+                                <LabelWithTooltip
+                                    label={t('electrolyzer.auxiliaryConsumption.label')}
+                                    tooltip={t('electrolyzer.auxiliaryConsumption.tooltip')}
+                                />
+                            }
                             id="auxiliary_energy_consumption"
-                            units="kW"
-                            currentUnit="kW"
+                            units="units.power_kw"
+                            currentUnit="units.power_kw"
+                            namespace="calculator"
                             value={selectedElectrolyzer.total_auxiliary_consumption}
                             onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, total_auxiliary_consumption: val })}
                         />
 
                         <ValueInput
-                            label={<LabelWithTooltip label="Water consumption" tooltip="The amount of purified water required per hour by a single electrolyzer unit at its rated power." />}
+                            label={
+                                <LabelWithTooltip
+                                    label={t('electrolyzer.waterConsumption.label')}
+                                    tooltip={t('electrolyzer.waterConsumption.tooltip')}
+                                />
+                            }
                             id="water_consumption"
-                            units="L/h"
-                            currentUnit="L/h"
+                            units="units.l_per_hour"
+                            currentUnit="units.l_per_hour"
+                            namespace="calculator"
                             value={selectedElectrolyzer.water_consumption_l_per_h}
                             onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, water_consumption_l_per_h: val })}
                         />
 
                         <ValueInput
-                            label={<LabelWithTooltip label="Maintenance costs" tooltip="Annual operation and maintenance (O&M) costs, generally estimated as a percentage of the initial equipment cost (CAPEX)." />}
+                            label={
+                                <LabelWithTooltip
+                                    label={t('electrolyzer.maintenanceCosts.label')}
+                                    tooltip={t('electrolyzer.maintenanceCosts.tooltip')}
+                                />
+                            }
                             id="electrolyzer_maintenance_costs"
                             units={MAINTENANCE_UNITS}
                             currentUnit={electrolyzerSettings.maint_unit}
+                            namespace="calculator"
                             value={selectedElectrolyzer.maintenance_percent_capex}
                             onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, maintenance_percent_capex: val })}
-                            onUnitChange={(u) => setElectrolyzerSettings({ ...electrolyzerSettings, maint_unit : u })}
                         />
 
                         <ValueInput
-                            label={<LabelWithTooltip label="Stack Lifetime" tooltip="The expected operational lifespan of the cell stack in hours before it degrades and requires replacement. This drives long-term maintenance calculations." />}
+                            label={
+                                <LabelWithTooltip
+                                    label={t('electrolyzer.stackLifetime.label')}
+                                    tooltip={t('electrolyzer.stackLifetime.tooltip')}
+                                />
+                            }
                             id="electrolyzer_stack_lifetime"
-                            units="h"
-                            currentUnit="h"
+                            units="units.hour"
+                            currentUnit="units.hour"
+                            namespace="calculator"
                             value={selectedElectrolyzer.stack_lifetime_hours}
                             onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, stack_lifetime_hours: val })}
                             nullBlocker

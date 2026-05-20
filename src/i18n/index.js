@@ -1,16 +1,16 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-/*import enCommon from './locales/en/common.json';
-import frCommon from './locales/fr/common.json';
+import enCommon from './locales/en/common.json';
+/*import frCommon from './locales/fr/common.json';
 import deCommon from './locales/de/common.json';
 
 import enRecycling from './locales/en/recycling.json';
 import frRecycling from './locales/fr/recycling.json';
 import deRecycling from './locales/de/recycling.json';
-
+*/
 import enCalculator from './locales/en/calculator.json';
-import frCalculator from './locales/fr/calculator.json';
+/*import frCalculator from './locales/fr/calculator.json';
 import deCalculator from './locales/de/calculator.json';
 
 import enContact from './locales/en/contact.json';
@@ -56,10 +56,10 @@ i18n
   .init({
     resources: {
       en: {
-        /*common: enCommon,
-        recycling: enRecycling,
+        common: enCommon,
+        //recycling: enRecycling,
         calculator: enCalculator,
-        contact: enContact,*/
+        //contact: enContact,
         equipmentOverview: enEquipementOverview,
         /*home: enHome,
         notFound: enNotFound,
