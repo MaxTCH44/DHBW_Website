@@ -25,7 +25,7 @@ import enHome from './locales/en/home.json';
 //import frHome from './locales/fr/home.json';
 //import deHome from './locales/de/home.json';
 
-//import enNotFound from './locales/en/notFound.json';
+import enNotFound from './locales/en/notFound.json';
 //import frNotFound from './locales/fr/notFound.json';
 //import deNotFound from './locales/de/notFound.json';
 
@@ -62,8 +62,8 @@ i18n
         //contact: enContact,
         equipmentOverview: enEquipementOverview,
         home: enHome,
-        /*notFound: enNotFound,
-        ourLab: enOurLab,*/
+        notFound: enNotFound,
+        //ourLab: enOurLab,
         productionChain: enProductionChain,
         recyclingProcess: enRecyclingProcess,
         /*references: enReferences,
