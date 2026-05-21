@@ -2,6 +2,7 @@ import { Container, Title } from "@mantine/core";
 import { AreaChart } from "@mantine/charts";
 import { useSearchParams } from "react-router-dom"; 
 import { useState } from "react";
+import { useTranslation } from 'react-i18next';
 import { IconWindmill, IconDroplet, IconCylinder, IconCar, IconBuildingWarehouse, IconFlame } from '@tabler/icons-react';
 
 import production_data from "../data/learn/hydrogen_production_chain.json";
@@ -39,6 +40,8 @@ const COMPONENT_REGISTRY = {
  * allowing users to share direct links to specific stages of the production chain.
  */
 export default function ProductionChain() {
+
+    const { t } = useTranslation("productionChain");
     
     // URL state management: allows deep-linking directly to a specific step like '?step=compression'
     const [searchParams, setSearchParams] = useSearchParams();
@@ -68,7 +71,7 @@ export default function ProductionChain() {
 
     return(
         <Container size="xl" mt="150px">
-            <Title order={1} mb="xl">Green H₂ Production Chain</Title>
+            <Title order={1} mb="xl">{t("title")}</Title>
             
             {/* The visual flowchart component that acts as the primary navigation for this page */}
             <InteractiveFlow 
@@ -76,10 +79,11 @@ export default function ProductionChain() {
                 iconMap={ICON_MAP} 
                 selectedItem={selectedItem}
                 onNodeClick={handleNodeClick}
+                namespace="productionChain"
             />
             
             {/* The dynamic content section that updates based on the clicked flowchart node */}
-            <ContentDetails item={selectedItem} componentList={COMPONENT_REGISTRY}/>
+            <ContentDetails item={selectedItem} componentList={COMPONENT_REGISTRY} namespace="productionChain"/>
 
         </Container>
     );

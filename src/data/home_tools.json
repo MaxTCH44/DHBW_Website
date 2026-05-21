@@ -1,16 +1,16 @@
 [
-    {
-        "title": "Techno-Economic Calculator",
-        "description": "Calculate Levelized Cost of Hydrogen (LCOH), CAPEX, and OPEX. Estimate potential revenue and payback periods for green hydrogen production plants.",
-        "iconName": "IconCalculator",
-        "buttonText": "Run LCOH Simulation",
-        "link": "/calculator"
-    },
-    {
-        "title": "Hydrogen Recovery Calculator",
-        "description": "Estimate the financial viability of capturing unconsumed hydrogen. Calculate annual recovery volumes and Return on Investment (ROI) based on your exhaust gas mixture.",
-        "iconName": "IconRecycle",
-        "buttonText": "Calculate ROI",
-        "link": "/recycling"
-    }
+  {
+    "title": "homeTools.techno_economic_calculator.title",
+    "description": "homeTools.techno_economic_calculator.description",
+    "iconName": "IconCalculator",
+    "buttonText": "homeTools.techno_economic_calculator.buttonText",
+    "link": "/calculator"
+  },
+  {
+    "title": "homeTools.hydrogen_recovery_calculator.title",
+    "description": "homeTools.hydrogen_recovery_calculator.description",
+    "iconName": "IconRecycle",
+    "buttonText": "homeTools.hydrogen_recovery_calculator.buttonText",
+    "link": "/recycling"
+  }
 ]

@@ -1,5 +1,6 @@
 import { Box, HoverCard, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import { useTranslation } from 'react-i18next';
 
 import './AlkalineElectrolyzer.css';
 
@@ -7,6 +8,8 @@ import './AlkalineElectrolyzer.css';
 
 export default function AemElectrolyzer() {
     const isMobile = useMediaQuery('(max-width: 768px)');
+
+    const { t } = useTranslation("equipmentOverview");
 
     const handleSvgClick = (e) => {
         e.preventDefault();
@@ -21,7 +24,7 @@ export default function AemElectrolyzer() {
 
                 <g className="circuit">
                     <rect x="145" y="7" width="116" height="39" fill="black"/>
-                    <text x="203" y="32" fontSize="14" fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>POWER SUPPLY</text>
+                    <text x="203" y="32" fontSize="14" fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.aem.schematic.power")}</text>
                     <rect x="15" y="183" width="118" height="6" fill="black"/>
                     <rect x="17" y="185" width="116" height="2" fill="#FFFF00"/>
                     <rect x="15" y="23" width="6" height="160" fill="black"/>
@@ -50,11 +53,11 @@ export default function AemElectrolyzer() {
                     <HoverCard.Target>
                         <g className="interactive-element" onClick={handleSvgClick}>
                             <rect x="183" y="116" width="40" height="320" fill="#b768ca"/>
-                            <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Membrane</text>
+                            <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.aem.schematic.membrane.title")}</text>
                         </g>
                     </HoverCard.Target>
                     <HoverCard.Dropdown bg="#b768ca" c="white" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>Anion Exchange Membrane (AEM)</b><br/>A solid polymer membrane that conducts negative Hydroxide ions (OH⁻) from the cathode to the anode. It provides the compact design of a PEM but operates in a slightly alkaline environment.</Text>
+                        <Text size="sm"><b>{t("electrolyzers.aem.schematic.membrane.subtitle")}</b><br/>{t("electrolyzers.aem.schematic.membrane.explanation")}</Text>
                     </HoverCard.Dropdown>
                 </HoverCard>
 
@@ -72,11 +75,11 @@ export default function AemElectrolyzer() {
                         <HoverCard.Target>
                             <g className="interactive-element" onClick={handleSvgClick}>
                                 <rect x="133" y="141" width="50" height="270" fill="#6E8BFD"/>
-                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Cathode (-)</text>
+                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.aem.schematic.cathode.title")}</text>
                             </g>
                         </HoverCard.Target>
                         <HoverCard.Dropdown bg="#6E8BFD" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>Cathode (Non-PGM / Nickel-based)</b><br/>Water (H₂O) and electrons (e⁻) react here to form Hydrogen gas (H₂) and OH⁻ ions. Because AEM is not highly acidic, cheaper transition metals can be used instead of Platinum.</Text>
+                            <Text size="sm"><b>{t("electrolyzers.aem.schematic.cathode.subtitle")}</b><br/>{t("electrolyzers.aem.schematic.cathode.explanation")}</Text>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </g>
@@ -95,11 +98,11 @@ export default function AemElectrolyzer() {
                         <HoverCard.Target>
                             <g className="interactive-element">
                                 <rect x="223" y="141" width="50" height="270" fill="#FD6E6E"/>
-                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Anode (+)</text>
+                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.aem.schematic.anode.title")}</text>
                             </g>
                         </HoverCard.Target>
                         <HoverCard.Dropdown bg="#FD6E6E" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>Anode (Non-PGM / Nickel or Iron)</b><br/>The OH⁻ ions that crossed the membrane are oxidized here, releasing Oxygen gas (O₂), water, and electrons (e⁻). No expensive Iridium is required.</Text>
+                            <Text size="sm"><b>{t("electrolyzers.aem.schematic.anode.subtitle")}</b><br/>{t("electrolyzers.aem.schematic.anode.explanation")}</Text>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </g>

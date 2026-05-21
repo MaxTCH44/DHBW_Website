@@ -1,5 +1,6 @@
 import { Card, Title, Group, Paper, Text, Badge, SimpleGrid, RingProgress, Stack, Progress, ThemeIcon, Grid, Box, Alert } from '@mantine/core';
 import { IconBolt, IconDroplet, IconWind, IconTool, IconChartPie, IconAlertCircle, IconLeaf } from '@tabler/icons-react';
+import { useTranslation } from 'react-i18next';
 
 // --- SUB-COMPONENTS ---
 // Small utility components to keep the main render tree clean and readable.
@@ -52,6 +53,8 @@ const CostProgressRow = ({ icon, color, title, value, percent }) => (
  */
 export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, currentCostDifference, currentAnnualDifference, avoidedCO2, breakdown, metrics, greyDetails }) {
     
+    const { t } = useTranslation("calculator");
+
     // Profitability toggles used to dynamically switch card background colors (green for savings, red for losses)
     const isProfitableCurrent = currentCostDifference >= 0;
     const isProfitableGrey = greyCostDifference >= 0;
@@ -74,21 +77,23 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
     return (
         <Card shadow="lg" padding="xl" radius="md" withBorder mt="xl" bg="gray.0">
             <Title order={2} mb="xl" c="dark.8" ta="center">
-                Project Dashboard
+                {t('dashboard.title')}
             </Title>
 
             {/* --- ALERTS --- */}
             {showOversizedWarning && (
                 <Alert 
                     icon={<IconAlertCircle size={20} />} 
-                    title="Oversized Installation Warning" 
+                    title={t('dashboard.oversizedWarning.title')}
                     color="orange" 
                     variant="light"
                     mb="xl"
                 >
-                    Your physical installation ({metrics.installedCapacity.toLocaleString('de-DE')} kW) is oversized compared to your production needs. 
-                    Your utilization rate is only <b>{metrics.utilizationRate.toLocaleString('de-DE', { maximumFractionDigits: 1 })}%</b>. 
-                    This increases the CAPEX share per kg and negatively impacts your LCOH.
+                    {t('dashboard.oversizedWarning.messageP1')}
+                    {metrics.installedCapacity.toLocaleString('de-DE')}
+                    {t('dashboard.oversizedWarning.messageP2')}
+                    <b>{metrics.utilizationRate.toLocaleString('de-DE', { maximumFractionDigits: 1 })}%</b>
+                    {t('dashboard.oversizedWarning.messageP3')}
                 </Alert>
             )}
             
@@ -97,14 +102,22 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
                 
                 {/* Levelized Cost of Hydrogen (LCOH) - The ultimate KPI combining CAPEX + OPEX over lifetime */}
                 <Paper p="md" radius="md" withBorder bg="white">
-                    <Text size="sm" c="dimmed" fw={600} tt="uppercase">LCOH (Green H₂)</Text>
+                    <Text size="sm" c="dimmed" fw={600} tt="uppercase">
+                        {t('dashboard.metrics.lcoh')}
+                    </Text>
+
                     <Text size="xl" fw={900} c="myColor.9" mt="sm">
-                        {cost > 0 && isFinite(cost) ? cost.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "0,00"} € / kg
+                        {cost > 0 && isFinite(cost)
+                            ? cost.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                            : "0,00"} {t('units.eur_per_kg')}
                     </Text>
                 </Paper>
 
                 <Paper p="md" radius="md" withBorder bg="white">
-                    <Text size="sm" c="dimmed" fw={600} tt="uppercase">Total CAPEX</Text>
+                    <Text size="sm" c="dimmed" fw={600} tt="uppercase">
+                        {t('dashboard.metrics.totalCapex')}
+                    </Text>
+
                     <Text size="xl" c="red.7" fw={900} mt="sm">
                         {capex.toLocaleString('de-DE', { maximumFractionDigits: 0 })} €
                     </Text>
@@ -112,31 +125,93 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
 
                 {/* ROI vs User's actual current supply costs */}
                 <Paper p="md" radius="md" withBorder bg={isProfitableCurrent ? "teal.0" : "red.0"}>
-                    <Text size="sm" c={isProfitableCurrent ? "teal.9" : "red.9"} fw={600} tt="uppercase">
-                        {isProfitableCurrent ? "Savings vs Current Cost" : "Loss vs Current Cost"}
+                    <Text
+                        size="sm"
+                        c={isProfitableCurrent ? "teal.9" : "red.9"}
+                        fw={600}
+                        tt="uppercase"
+                    >
+                        {isProfitableCurrent
+                            ? t('dashboard.metrics.savingsVsCurrentCost')
+                            : t('dashboard.metrics.lossVsCurrentCost')}
                     </Text>
-                    <Text size="xl" fw={900} c={isProfitableCurrent ? "teal.7" : "red.7"} mt="sm">
-                        {isProfitableCurrent ? "+" : ""}{(isFinite(currentAnnualDifference) && currentAnnualDifference !== 0) ? currentAnnualDifference.toLocaleString('de-DE', { maximumFractionDigits: 0 }) : "0"} € / year
+
+                    <Text
+                        size="xl"
+                        fw={900}
+                        c={isProfitableCurrent ? "teal.7" : "red.7"}
+                        mt="sm"
+                    >
+                        {isProfitableCurrent ? "+" : ""}
+                        {(isFinite(currentAnnualDifference) && currentAnnualDifference !== 0)
+                            ? currentAnnualDifference.toLocaleString('de-DE', { maximumFractionDigits: 0 })
+                            : "0"} {t('units.eur_per_year')}
                     </Text>
+
                     <Badge color={isProfitableCurrent ? "teal" : "red"} mt="xs" variant="light">
-                        {isProfitableCurrent ? "+" : ""}{isFinite(currentCostDifference) ? currentCostDifference.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "0,00"} € / kg
+                        {isProfitableCurrent ? "+" : ""}
+                        {isFinite(currentCostDifference)
+                            ? currentCostDifference.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                            : "0,00"} {t('units.eur_per_kg')}
                     </Badge>
                 </Paper>
 
-                {/* Market Competitiveness: Green H2 vs highly polluting Grey H2 */}
-                <Paper p="md" radius="md" withBorder bg={isProfitableGrey ? "teal.0" : "red.0"} style={{ opacity: 0.85 }}>
-                    <Text size="sm" c={isProfitableGrey ? "teal.9" : "red.9"} fw={600} tt="uppercase">
-                        {isProfitableGrey ? "Savings vs Grey H₂" : "Green Premium"}
+                <Paper
+                    p="md"
+                    radius="md"
+                    withBorder
+                    bg={isProfitableGrey ? "teal.0" : "red.0"}
+                    style={{ opacity: 0.85 }}
+                >
+                    <Text
+                        size="sm"
+                        c={isProfitableGrey ? "teal.9" : "red.9"}
+                        fw={600}
+                        tt="uppercase"
+                    >
+                        {isProfitableGrey
+                            ? t('dashboard.metrics.savingsVsGrey')
+                            : t('dashboard.metrics.greenPremium')}
                     </Text>
-                    <Text size="xl" fw={900} c={isProfitableGrey ? "teal.7" : "red.7"} mt="sm">
-                        {isProfitableGrey ? "+" : ""}{(isFinite(greyAnnualDifference) && greyAnnualDifference !== 0) ? greyAnnualDifference.toLocaleString('de-DE', { maximumFractionDigits: 0 }) : "0"} € / year
+
+                    <Text
+                        size="xl"
+                        fw={900}
+                        c={isProfitableGrey ? "teal.7" : "red.7"}
+                        mt="sm"
+                    >
+                        {isProfitableGrey ? "+" : ""}
+                        {(isFinite(greyAnnualDifference) && greyAnnualDifference !== 0)
+                            ? greyAnnualDifference.toLocaleString('de-DE', { maximumFractionDigits: 0 })
+                            : "0"} {t('units.eur_per_year')}
                     </Text>
+
                     <Badge color={isProfitableGrey ? "teal" : "red"} mt="xs" variant="light">
-                        {isProfitableGrey ? "+" : ""}{isFinite(greyCostDifference) ? greyCostDifference.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "0,00"} € / kg
+                        {isProfitableGrey ? "+" : ""}
+                        {isFinite(greyCostDifference)
+                            ? greyCostDifference.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                            : "0,00"} {t('units.eur_per_kg')}
                     </Badge>
-                    <Box mt="sm" pt="sm" style={{ borderTop: `1px solid var(--mantine-color-${isProfitableGrey ? 'teal' : 'red'}-2)` }}>
-                        <Text size="xs" c={isProfitableGrey ? "teal.9" : "red.9"} fw={500}>
-                            Grey H₂ estimated at {greyDetails.smoothed.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €/kg
+
+                    <Box
+                        mt="sm"
+                        pt="sm"
+                        style={{
+                            borderTop: `1px solid var(--mantine-color-${isProfitableGrey ? 'teal' : 'red'}-2)`
+                        }}
+                    >
+                        <Text
+                            size="xs"
+                            c={isProfitableGrey ? "teal.9" : "red.9"}
+                            fw={500}
+                        >
+                            {t('dashboard.metrics.greyEstimatedP1')}
+                            {greyDetails.smoothed.toLocaleString('de-DE', {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2
+                            })}
+                            {t('dashboard.metrics.greyEstimatedP2')}
+                            
                         </Text>
                     </Box>
                 </Paper>
@@ -145,7 +220,10 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
             {/* --- LCOH BREAKDOWN CHART --- */}
             {/* Visualizes what is driving the cost. Electricity typically dominates for green hydrogen. */}
             <Paper p="xl" radius="md" withBorder bg="white" mb="xl">
-                <Title order={4} mb="lg" c="dark.7">Cost Breakdown per kg</Title>
+                <Title order={4} mb="lg" c="dark.7">
+                    {t('dashboard.costBreakdown.title')}
+                </Title>
+
                 <Grid align="center">
                     <Grid.Col span={{ base: 12, md: 5 }}>
                         <Group justify="center">
@@ -154,22 +232,69 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
                                 thickness={24}
                                 roundCaps
                                 sections={[
-                                    { value: percents.electricity, color: 'blue.5', tooltip: 'Electricity' },
-                                    { value: percents.capex, color: 'red.5', tooltip: 'CAPEX' },
-                                    { value: percents.maintenance, color: 'orange.5', tooltip: 'Maintenance' },
-                                    { value: percents.water, color: 'cyan.5', tooltip: 'Water' },
+                                    {
+                                        value: percents.electricity,
+                                        color: 'blue.5',
+                                        tooltip: t('dashboard.costBreakdown.electricity')
+                                    },
+                                    {
+                                        value: percents.capex,
+                                        color: 'red.5',
+                                        tooltip: t('dashboard.costBreakdown.capex')
+                                    },
+                                    {
+                                        value: percents.maintenance,
+                                        color: 'orange.5',
+                                        tooltip: t('dashboard.costBreakdown.maintenance')
+                                    },
+                                    {
+                                        value: percents.water,
+                                        color: 'cyan.5',
+                                        tooltip: t('dashboard.costBreakdown.water')
+                                    },
                                 ]}
-                                label={<Text c="dimmed" fw={700} ta="center" size="lg">100%</Text>}
+                                label={
+                                    <Text c="dimmed" fw={700} ta="center" size="lg">
+                                        100%
+                                    </Text>
+                                }
                             />
                         </Group>
                     </Grid.Col>
 
                     <Grid.Col span={{ base: 12, md: 7 }}>
                         <Stack gap="md">
-                            <CostProgressRow icon={<IconBolt size={12}/>} color="blue.5" title="Electricity" value={breakdown.electricity} percent={percents.electricity} />
-                            <CostProgressRow icon={<IconChartPie size={12}/>} color="red.5" title="CAPEX Amortization" value={breakdown.capex} percent={percents.capex} />
-                            <CostProgressRow icon={<IconTool size={12}/>} color="orange.5" title="Maintenance" value={breakdown.maintenance} percent={percents.maintenance} />
-                            <CostProgressRow icon={<IconDroplet size={12}/>} color="cyan.5" title="Water" value={breakdown.water} percent={percents.water} />
+                            <CostProgressRow
+                                icon={<IconBolt size={12}/>}
+                                color="blue.5"
+                                title={t('dashboard.costBreakdown.electricity')}
+                                value={breakdown.electricity}
+                                percent={percents.electricity}
+                            />
+
+                            <CostProgressRow
+                                icon={<IconChartPie size={12}/>}
+                                color="red.5"
+                                title={t('dashboard.costBreakdown.capex')}
+                                value={breakdown.capex}
+                                percent={percents.capex}
+                            />
+
+                            <CostProgressRow
+                                icon={<IconTool size={12}/>}
+                                color="orange.5"
+                                title={t('dashboard.costBreakdown.maintenance')}
+                                value={breakdown.maintenance}
+                                percent={percents.maintenance}
+                            />
+
+                            <CostProgressRow
+                                icon={<IconDroplet size={12}/>}
+                                color="cyan.5"
+                                title={t('dashboard.costBreakdown.water')}
+                                value={breakdown.water}
+                                percent={percents.water}
+                            />
                         </Stack>
                     </Grid.Col>
                 </Grid>
@@ -180,31 +305,35 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
                 <StatCard 
                     icon={<IconWind size={24} />} 
                     color="myColor" 
-                    title="Annual H₂ Prod."
+                    title={t('dashboard.stats.annualProduction')}
                     value={metrics.annualProd.toLocaleString('de-DE', { maximumFractionDigits: 0 })} 
-                    unit="kg" 
+                    unit={t('units.kg')}
                 />
+
                 <StatCard 
                     icon={<IconBolt size={24} />} 
                     color="blue" 
-                    title="Energy Needed" 
+                    title={t('dashboard.stats.energyNeeded')}
                     value={(metrics.annualElec / 1000).toLocaleString('de-DE', { maximumFractionDigits: 1 })} 
-                    unit="MWh" 
+                    unit={t('units.energy_mwh')}
                 />
+
                 <StatCard 
                     icon={<IconDroplet size={24} />} 
                     color="cyan" 
-                    title="Water Needed" 
+                    title={t('dashboard.stats.waterNeeded')}
                     value={metrics.annualWater.toLocaleString('de-DE', { maximumFractionDigits: 0 })} 
-                    unit="L" 
+                    unit={t('units.liters')}
                 />
-                {/* Environmental impact compared to traditional steam methane reforming (grey H2) */}
+
                 <StatCard 
                     icon={<IconLeaf size={24} />} 
                     color="green" 
-                    title="Avoided CO₂" 
-                    value={avoidedCO2 ? avoidedCO2.toLocaleString('de-DE', { maximumFractionDigits: 1 }) : "0"} 
-                    unit="Tons" 
+                    title={t('dashboard.stats.avoidedCo2')}
+                    value={avoidedCO2
+                        ? avoidedCO2.toLocaleString('de-DE', { maximumFractionDigits: 1 })
+                        : "0"} 
+                    unit={t('units.tons')}
                 />
             </SimpleGrid>
         </Card>

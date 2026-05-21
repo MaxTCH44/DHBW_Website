@@ -1,12 +1,17 @@
 import { Text, Image, Title, Group, ThemeIcon, Anchor, Box, Badge, Stack } from '@mantine/core';
 import { IconExternalLink } from '@tabler/icons-react';
+import { useTranslation } from 'react-i18next';
+
 
 /**
  * Sub-component to format and render academic or technical references.
  * It handles two layouts: a simple link layout (if only a label is provided) 
  * or a full academic citation layout (authors, journal, year, license).
  */
-function ReferenceLink({ label, authors, year, title, journal, url, license }) {
+function ReferenceLink({ label, authors, year, title, journal, url, license, namespace }) {
+
+    const { t } = useTranslation(namespace);
+
     // Simple layout: generally used for standard web links or basic documentation
     if (label && !authors) {
         return (
@@ -36,7 +41,7 @@ function ReferenceLink({ label, authors, year, title, journal, url, license }) {
                 
                 <Group gap="xs" mt={4}>
                     <Anchor href={url} target="_blank" rel="noopener noreferrer" c="blue.7" size="sm" fw={500}>
-                        Read publication
+                        {t("readPublication")}
                     </Anchor>
                     {license && (
                         <Badge variant="light" color="gray" size="xs">
@@ -56,8 +61,37 @@ function ReferenceLink({ label, authors, year, title, journal, url, license }) {
  * * @param {Object} props
  * @param {Object} props.item - The structured JSON object containing a `content` array of layout blocks.
  * @param {Object} [props.componentList=null] - A dictionary mapping string names to actual React components, allowing the JSON to inject complex interactive schemas (like SVG electrolyzers).
+ * @param {string} props.namespace - Determines the i18n namespace for the traduction.
  */
-export default function ContentDetails({ item, componentList = null }) {
+export default function ContentDetails({ item, namespace, componentList = null }) {
+
+  const { t } = useTranslation(namespace);
+
+  const translateProps = (obj, t) => {
+    if (typeof obj === 'string') {
+      // si la traduction existe => traduit
+      const translated = t(obj);
+
+      // i18next retourne la clé si elle n'existe pas
+      return translated !== obj ? translated : obj;
+    }
+
+    if (Array.isArray(obj)) {
+      return obj.map((item) => translateProps(item, t));
+    }
+
+    if (typeof obj === 'object' && obj !== null) {
+      return Object.fromEntries(
+        Object.entries(obj).map(([key, value]) => [
+          key,
+          translateProps(value, t),
+        ])
+      );
+    }
+
+    return obj;
+  };
+
   return (
     <div>
       {item.content.map((block, index) => {
@@ -73,7 +107,7 @@ export default function ContentDetails({ item, componentList = null }) {
               mb="sm" 
               c="dark.8"
             >
-              {block.value}
+              {t(block.value)}
             </Title>
           );
         }
@@ -90,7 +124,7 @@ export default function ContentDetails({ item, componentList = null }) {
               fw={block.weight}
               ta={block.align}
             >
-              {block.value}
+              {t(block.value)}
             </Text>
           );
         }
@@ -108,15 +142,15 @@ export default function ContentDetails({ item, componentList = null }) {
               gap="xs"
             >
               <Image
-                title={block.title}
+                title={t(block.title)}
                 src={block.src}
-                alt={block.alt}
+                alt={t(block.alt)}
                 w="100%"
                 radius="md"
               />
               {block.caption && (
                 <Text ta="center" size="sm" c="dimmed" fs="italic" px="sm">
-                  {block.caption}
+                  {t(block.caption)}
                 </Text>
               )}
             </Stack>
@@ -125,7 +159,7 @@ export default function ContentDetails({ item, componentList = null }) {
 
         // --- EXTERNAL LINKS ---
         if (block.type === 'reference') {
-           return <ReferenceLink key={index} {...block.props} />;
+           return <ReferenceLink key={index} {...block.props} namespace={namespace} />;
         }
 
         // --- DYNAMIC REACT COMPONENTS ---
@@ -133,11 +167,22 @@ export default function ContentDetails({ item, componentList = null }) {
         // It looks up the requested component name within the provided `componentList` registry.
         if (block.type === 'component' && componentList) {
           const ComponentToRender = componentList[block.componentName];
-          if (ComponentToRender) {
-            return (
-                <ComponentToRender key={index} {...block.props}>{block.value}</ComponentToRender>
-            )
-          }
+          if (block.type === 'component' && componentList) {
+            const ComponentToRender = componentList[block.componentName];
+
+            if (ComponentToRender) {
+              const translatedProps = translateProps(block.props, t);
+
+              return (
+                <ComponentToRender
+                  key={index}
+                  {...translatedProps}
+                >
+                  {block.value ? t(block.value) : null}
+                </ComponentToRender>
+              );
+            }
+}
         }
         
         // Failsafe for unknown block types to prevent rendering crashes

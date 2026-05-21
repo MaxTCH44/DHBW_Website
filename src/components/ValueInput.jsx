@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NumberInput, Select, Text } from '@mantine/core';
+import { useTranslation } from 'react-i18next';
 
 /**
  * The core numerical input engine used throughout the calculators.
@@ -17,8 +18,10 @@ import { NumberInput, Select, Text } from '@mantine/core';
  * @param {number|null} [props.max=null] - An absolute upper limit. If exceeded, the value snaps back to this max.
  * @param {string|null} [props.id=null] - DOM ID for tutorial targeting (AdviceCards).
  */
-export default function ValueInput({ label, value, units, currentUnit, onValueChange, onUnitChange = (() => {}), nullBlocker = false, max = null, id = null }) {
+export default function ValueInput({ label, value, units, currentUnit, onValueChange, namespace, onUnitChange = (() => {}), nullBlocker = false, max = null, id = null }) {
   
+  const { t } = useTranslation(namespace);
+
   const isArray = Array.isArray(units);
   const hasMultipleUnits = isArray && units.length > 1;
 
@@ -76,10 +79,10 @@ export default function ValueInput({ label, value, units, currentUnit, onValueCh
     }
   }
 
-  const selectData = isArray ? units.map((u) => ({ value: u.label, label: u.label })) : [];
+  const selectData = isArray ? units.map((u) => ({ value: t(u.label), label: t(u.label) })) : [];
 
   function handleSelectChange(selectedValue) {
-    const selectedUnit = units.find(u => u.label === selectedValue);
+    const selectedUnit = units.find(u => t(u.label) === selectedValue);
     if (onUnitChange && selectedUnit) {
       onUnitChange(selectedUnit);
     }
@@ -90,7 +93,7 @@ export default function ValueInput({ label, value, units, currentUnit, onValueCh
   const rightSection = hasMultipleUnits ? (
     <Select
       data={selectData}
-      value={currentUnit?.label}
+      value={t(currentUnit?.label)}
       onChange={handleSelectChange}
       allowDeselect={false}
       withCheckIcon={false}
@@ -122,7 +125,7 @@ export default function ValueInput({ label, value, units, currentUnit, onValueCh
     />
   ) : (
     <Text size="sm" fw={500} c="dimmed" pr="md">
-      {isArray ? units[0].label : units}
+      {isArray ? t(units[0].label) : t(units)}
     </Text>
   );
 

@@ -1,11 +1,13 @@
 import { Anchor, Container, Group, Title, Box, Flex } from '@mantine/core';
 import { Link } from 'react-router-dom'; 
+import { useTranslation } from 'react-i18next';
 
 /**
  * Global application footer.
  * Provides consistent secondary navigation across all pages (contact, literature references, tools).
  */
 export default function Footer() {
+  const { t } = useTranslation("common");
   return (
     <Box 
       component="footer" 
@@ -25,13 +27,13 @@ export default function Footer() {
           </Title>
           <Group mt={{ base: 'md', sm: 0 }}>
             <Anchor component={Link} to="/contact" c="dimmed" size="sm">
-              Contact
+              {t("footer.contact")}
             </Anchor>
             <Anchor component={Link} to="/references" c="dimmed" size="sm">
-              References
+              {t("footer.references")}
             </Anchor>
             <Anchor component={Link} to="/setup" c="dimmed" size="sm">
-              Setup Builder
+              {t("footer.setupBuilder")}
             </Anchor>
           </Group>
         </Flex>

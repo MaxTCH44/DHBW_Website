@@ -4,12 +4,12 @@
     {
       "type": "subtitle",
       "size": 2,
-      "value": "Calculator References"
+      "value": "references.calculator_references"
     },
     {
       "type": "subtitle",
       "size": 4,
-      "value": "Hydrogen Cost Calculator"
+      "value": "references.hydrogen_cost_calculator"
     },
     {
       "type": "reference",
@@ -35,7 +35,7 @@
     {
       "type": "subtitle",
       "size": 4,
-      "value": "Hydrogen Recycling Calculator"
+      "value": "references.hydrogen_recycling_calculator"
     },
     {
       "type": "reference",
@@ -47,12 +47,12 @@
     {
       "type": "subtitle",
       "size": 2,
-      "value": "Green Hydrogen Production Chain"
+      "value": "references.green_hydrogen_production_chain"
     },
     {
       "type": "subtitle",
       "size": 4,
-      "value": "Renewables & Energy Mix"
+      "value": "references.renewables_energy_mix"
     },
     {
       "type": "reference",
@@ -99,7 +99,7 @@
     {
       "type": "subtitle",
       "size": 4,
-      "value": "Electrolysis & Storage Perspectives"
+      "value": "references.electrolysis_storage_perspectives"
     },
     {
       "type": "reference",
@@ -136,7 +136,7 @@
     {
       "type": "subtitle",
       "size": 4,
-      "value": "End-Use Applications (Mobility, Industry, Heating)"
+      "value": "references.end_use_applications"
     },
     {
       "type": "reference",
@@ -186,12 +186,12 @@
     {
       "type": "subtitle",
       "size": 2,
-      "value": "Hydrogen Recycling Technologies"
+      "value": "references.hydrogen_recycling_technologies"
     },
     {
       "type": "subtitle",
       "size": 4,
-      "value": "Industrial Gas Purification & Recovery"
+      "value": "references.industrial_gas_purification_recovery"
     },
     {
       "type": "reference",
@@ -214,7 +214,7 @@
     {
       "type": "subtitle",
       "size": 4,
-      "value": "Electrochemical Hydrogen Compression (EHC)"
+      "value": "references.electrochemical_hydrogen_compression"
     },
     {
       "type": "reference",
@@ -230,7 +230,7 @@
     {
       "type": "subtitle",
       "size": 4,
-      "value": "Chemical Regeneration (Solid-State)"
+      "value": "references.chemical_regeneration"
     },
     {
       "type": "reference",
@@ -246,12 +246,12 @@
     {
       "type": "subtitle",
       "size": 2,
-      "value": "Electrolyzer Technologies"
+      "value": "references.electrolyzer_technologies"
     },
     {
       "type": "subtitle",
       "size": 4,
-      "value": "Proton Exchange Membrane (PEM)"
+      "value": "references.pem"
     },
     {
       "type": "reference",
@@ -285,7 +285,7 @@
     {
       "type": "subtitle",
       "size": 4,
-      "value": "Alkaline Water Electrolysis (AWE)"
+      "value": "references.awe"
     },
     {
       "type": "reference",
@@ -308,7 +308,7 @@
     {
       "type": "subtitle",
       "size": 4,
-      "value": "Anion Exchange Membrane (AEM)"
+      "value": "references.aem"
     },
     {
       "type": "reference",
@@ -349,7 +349,7 @@
     {
       "type": "subtitle",
       "size": 4,
-      "value": "Solid Oxide Electrolyzer Cells (SOEC)"
+      "value": "references.soec"
     },
     {
       "type": "reference",
@@ -379,12 +379,12 @@
     {
       "type": "subtitle",
       "size": 2,
-      "value": "Hydrogen Compression Technologies"
+      "value": "references.hydrogen_compression_technologies"
     },
     {
       "type": "subtitle",
       "size": 4,
-      "value": "Mechanical Compressors"
+      "value": "references.mechanical_compressors"
     },
     {
       "type": "reference",
@@ -403,7 +403,7 @@
     {
       "type": "subtitle",
       "size": 4,
-      "value": "Electrochemical Compressors (Solid-State)"
+      "value": "references.electrochemical_compressors"
     },
     {
       "type": "reference",

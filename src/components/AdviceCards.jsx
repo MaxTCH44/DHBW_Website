@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Card, Group, Button, Text, ActionIcon, Box, Divider, Transition, Tooltip } from '@mantine/core';
 import { IconChevronLeft, IconChevronRight, IconX } from '@tabler/icons-react';
+import { useTranslation } from 'react-i18next';
 
 import ContentDetails from './ContentDetails';
 
@@ -15,7 +16,7 @@ import ContentDetails from './ContentDetails';
  * @param {Bool} props.reset - External reset trigger controlled by the parent component. When set to `true`, the tutorial resets its internal state and returns to the first step.
  * @param {Function} props.setReset - Setter function provided by the parent to clear the reset flag after the reset operation has been processed.
  */
-export default function AdviceCards({ helpData = [], onClose, onStepChange, reset, setReset }) {
+export default function AdviceCards({ helpData = [], onClose, onStepChange, reset, setReset, namespace }) {
     
     // --- STATE & CONSTANTS ---
     const [currentStep, setCurrentStep] = useState(0);
@@ -23,6 +24,8 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange, rese
     const [coords, setCoords] = useState({ top: 0, left: 0, width: 350, isMobile: false });
     const [opened, setOpened] = useState(false);
     const cardRef = useRef(null);
+    const { t } = useTranslation(namespace);
+
 
     useEffect(() => {
         if (reset) {
@@ -201,14 +204,14 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange, rese
                     <Group justify="space-between" mb="sm" wrap="nowrap">
                         <Group gap="sm" wrap="nowrap" style={{ flex: 1 }}>
                             <Text size="xs" fw={700} c="dimmed" tt="uppercase" style={{ whiteSpace: 'nowrap' }}>
-                                Step {currentStep + 1} / {helpData.length}
+                                {t("advices.step")} {currentStep + 1} / {helpData.length}
                             </Text>
                             
                             {/* Custom interactive progress bar */}
                             <Group gap={1} wrap="nowrap" style={{ flex: 1, height: '6px' }}>
                                 {helpData.map((step, index) => (
                                     <Tooltip
-                                        label={"Step " + (index + 1) + " : " + (step.title)}
+                                        label={t("advices.step") + " " + (index + 1) + " : " + t(step.title)}
                                         withArrow
                                         position="top"
                                         zIndex={90}
@@ -244,7 +247,7 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange, rese
                     </Group>
 
                     <Box mb="md" style={{ maxHeight: 'fit-content', overflowY: 'auto' }}>
-                        {step && <ContentDetails item={step} />}
+                        {step && <ContentDetails item={step} namespace="calculator" />}
                     </Box>
 
                     <Divider my="sm" />
@@ -257,12 +260,12 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange, rese
                             disabled={currentStep === 0}
                             size="xs"
                         >
-                            Previous
+                            {t("advices.previous")}
                         </Button>
 
                         {currentStep === helpData.length - 1 ? (
                             <Button variant="light" color="green" size="xs" onClick={onClose}>
-                                Finish
+                                {t("advices.finish")}
                             </Button>
                         ) : (
                             <Button 
@@ -271,7 +274,7 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange, rese
                                 onClick={handleNext}
                                 size="xs"
                             >
-                                Next
+                                {t("advices.next")}
                             </Button>
                         )}
                     </Group>

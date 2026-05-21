@@ -1,5 +1,6 @@
 import { Box, HoverCard, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import { useTranslation } from 'react-i18next';
 
 import './PemFuelCell.css';
 
@@ -7,6 +8,9 @@ import './PemFuelCell.css';
 
 export default function PemFuelCell({ asGroup = false }) {
     const isMobile = useMediaQuery('(max-width: 768px)');
+
+    const { t } = useTranslation("productionChain");
+
 
     const handleSvgClick = (e) => {
         e.preventDefault();
@@ -20,7 +24,7 @@ export default function PemFuelCell({ asGroup = false }) {
                 <g className="circuit">
                     <rect x="145" y="7" width="116" height="39" fill="black"/>
                     <rect x="200" y="46" width="6" height="23" fill="#5B5959"/>
-                    <text x="203" y="32" fontSize="12" fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Electric motor</text>
+                    <text x="203" y="32" fontSize="12" fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("mobility.schematic.power")}</text>
                     <rect x="15" y="183" width="118" height="6" fill="black"/>
                     <rect x="17" y="185" width="116" height="2" fill="#FFFF00"/>
                     <rect x="15" y="23" width="6" height="160" fill="black"/>
@@ -55,11 +59,11 @@ export default function PemFuelCell({ asGroup = false }) {
                     <HoverCard.Target>
                         <g className="interactive-element" onClick={handleSvgClick}>
                             <rect x="183" y="116" width="40" height="320" fill="#EDD2B8"/>
-                            <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Membrane</text>
+                            <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("mobility.schematic.membrane.title")}</text>
                         </g>
                     </HoverCard.Target>
                     <HoverCard.Dropdown bg="#EDD2B8" c="black" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>Proton Exchange Membrane (PEM)</b><br/>A solid polymer membrane that acts as an electrolyte. It allows only the positively charged protons (H⁺) to pass through to the cathode, forcing the electrons to travel through the external circuit.</Text>
+                        <Text size="sm"><b>{t("mobility.schematic.membrane.subtitle")}</b><br/>{t("mobility.schematic.membrane.explanation")}</Text>
                     </HoverCard.Dropdown>
                 </HoverCard>
 
@@ -77,11 +81,11 @@ export default function PemFuelCell({ asGroup = false }) {
                         <HoverCard.Target>
                             <g className="interactive-element" onClick={handleSvgClick}>
                                 <rect x="133" y="141" width="50" height="270" fill="#6E8BFD"/>
-                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Cathode (+)</text>
+                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("mobility.schematic.cathode.title")}</text>
                             </g>
                         </HoverCard.Target>
                         <HoverCard.Dropdown bg="#6E8BFD" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>Cathode (+)</b><br/>Oxygen (O₂) from the air enters here. It combines with the protons (H⁺) crossing the membrane and electrons (e⁻) arriving from the motor to form pure water (H₂O).</Text>
+                            <Text size="sm"><b>{t("mobility.schematic.cathode.subtitle")}</b><br/>{t("mobility.schematic.cathode.explanation")}</Text>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </g>
@@ -100,11 +104,11 @@ export default function PemFuelCell({ asGroup = false }) {
                         <HoverCard.Target>
                             <g className="interactive-element">
                                 <rect x="223" y="141" width="50" height="270" fill="#FD6E6E"/>
-                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>Anode (-)</text>
+                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("mobility.schematic.anode.title")}</text>
                             </g>
                         </HoverCard.Target>
                         <HoverCard.Dropdown bg="#FD6E6E" c="white" style={{ pointerEvents: 'none' }}>
-                           <Text size="sm"><b>Anode (-)</b><br/>Compressed Hydrogen (H₂) enters here. The catalyst splits the H₂ molecules into protons (H⁺) and electrons (e⁻). The electrons flow through the external circuit to power the motor.</Text>
+                           <Text size="sm"><b>{t("mobility.schematic.anode.subtitle")}</b><br/>{t("mobility.schematic.anode.explanation")}</Text>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </g>

@@ -1,11 +1,29 @@
 import { useState } from 'react';
 import { Container, Title, TextInput, Select, Button, Card, Text, Group, Stack, ActionIcon, Grid, Badge, Divider, Box, Paper } from '@mantine/core';
 import { IconPlus, IconTrash, IconServerCog } from '@tabler/icons-react';
+import { useTranslation } from 'react-i18next';
 
 import ValueInput from '../components/ValueInput.jsx';
 import { H2_VOLUME_POWER_UNITS, MAINTENANCE_UNITS } from '../components/calculator/calculatorConstants.js';
 
+const MAP_TYPE = {
+    "PEM": "PEM",
+    "Alkaline": "Alkaline", 
+    "AEM": "AEM",
+    "SOEC": "SOEC"
+}
+
+const REVERSE_MAP_TYPE = {
+    "PEM": "electrolyzer.type.pem",
+    "Alkaline": "electrolyzer.type.alkaline",
+    "AEM": "electrolyzer.type.aem",
+    "SOEC": "electrolyzer.type.soec",
+}
+
 export default function SetupBuilder() {
+
+    const { t } = useTranslation("setupBuilder");
+
     // 1. L'état qui stocke la liste de tous nos setups
     const [setups, setSetups] = useState([]);
 
@@ -93,151 +111,174 @@ export default function SetupBuilder() {
         <Container size="xl" py="xl">
             <Group mb="xl">
                 <IconServerCog size={32} color="var(--mantine-color-blue-6)" />
-                <Title order={2}>Electrolyzer Setup Builder</Title>
+                <Title order={2}>{t("title")}</Title>
             </Group>
 
             <Grid gutter="xl">
                 {/* --- COLONNE GAUCHE : LE FORMULAIRE --- */}
                 <Grid.Col span={{ base: 12, md: 5 }}>
                     <Card withBorder shadow="sm" radius="md">
-                        <Title order={4} mb="md">Create New Setup</Title>
+                        <Title order={4} mb="md">
+                            {t("setupBuilder.create_new_setup")}
+                        </Title>
                         
                         <Stack gap="md">
                             <TextInput 
-                                label="Configuration Name" 
-                                placeholder="e.g., Test Plant Alpha" 
+                                label={t("setupBuilder.configuration_name")}
+                                placeholder={t("setupBuilder.configuration_name_placeholder")}
                                 value={name} 
                                 onChange={(e) => setName(e.currentTarget.value)} 
                                 required 
                             />
+
                             <Select 
-                                label="Technology Type" 
-                                data={['PEM', 'AEM', 'Alkaline', 'SOEC']} 
+                                label={t("setupBuilder.technology_type")}
+                                data={[
+                                    t('electrolyzer.type.pem'),
+                                    t('electrolyzer.type.alkaline'),
+                                    t('electrolyzer.type.aem'),
+                                    t('electrolyzer.type.soec')
+                                ]} 
                                 value={type} 
-                                onChange={setType} 
+                                onChange={(val) => setType(MAP_TYPE[val])} 
                             />
 
-                            <Divider my="xs" label="Electrolyzer Specs" labelPosition="center" />
+                            <Divider 
+                                my="xs" 
+                                label={t("setupBuilder.electrolyzer_specs")}
+                                labelPosition="center" 
+                            />
                             
                             <ValueInput 
-                                label="Stack Power" 
+                                label={t("setupBuilder.stack_power")}
                                 value={stackPower} 
                                 onValueChange={setStackPower} 
-                                units={[{ label: "kW", factor: 1 }]} 
-                                currentUnit={{ label: "kW", factor: 1 }} 
+                                units={[{ label: "units.power_kw", factor: 1 }]} 
+                                currentUnit={{ label: "units.power_kw", factor: 1 }}
+                                namespace="setupBuilder" 
                             />
+
                             <ValueInput 
-                                label="Max Stacks per Unit" 
+                                label={t("setupBuilder.max_stacks_per_unit")}
                                 value={maxStacks} 
                                 onValueChange={setMaxStacks} 
-                                units={[{ label: "stacks", factor: 1 }]} 
-                                currentUnit={{ label: "stacks", factor: 1 }} 
+                                units={[{ label: "units.stacks", factor: 1 }]} 
+                                currentUnit={{ label: "units.stacks", factor: 1 }}
+                                namespace="setupBuilder" 
                             />
+
                             <ValueInput 
-                                label="Energy Consumption" 
+                                label={t("setupBuilder.energy_consumption")}
                                 value={energyConsumption} 
                                 onValueChange={setEnergyConsumption} 
                                 units={H2_VOLUME_POWER_UNITS} 
-                                currentUnit={H2_VOLUME_POWER_UNITS[0]} 
-                            />
-                            <ValueInput 
-                                label="Water Consumption" 
-                                value={waterConsumption} 
-                                onValueChange={setWaterConsumption} 
-                                units={[{ label: "L/h", factor: 1 }]} 
-                                currentUnit={{ label: "L/h", factor: 1 }} 
+                                currentUnit={H2_VOLUME_POWER_UNITS[0]}
+                                namespace="setupBuilder" 
                             />
 
-                            <Divider my="xs" label="Financials" labelPosition="center" />
+                            <ValueInput 
+                                label={t("setupBuilder.water_consumption")}
+                                value={waterConsumption} 
+                                onValueChange={setWaterConsumption} 
+                                units={[{ label: "units.l_per_hour", factor: 1 }]} 
+                                currentUnit={{ label: "units.l_per_hour", factor: 1 }}
+                                namespace="setupBuilder"  
+                            />
+
+                            <Divider 
+                                my="xs" 
+                                label={t("setupBuilder.financials")}
+                                labelPosition="center" 
+                            />
                             
                             <ValueInput 
-                                label="Single Stack Price" 
+                                label={t("setupBuilder.single_stack_price")}
                                 value={stackPrice} 
                                 onValueChange={setStackPrice} 
-                                units={[{ label: "€", factor: 1 }]} 
-                                currentUnit={{ label: "€", factor: 1 }} 
+                                units={[{ label: "units.eur", factor: 1 }]} 
+                                currentUnit={{ label: "units.eur", factor: 1 }}
+                                namespace="setupBuilder"  
                             />
+
                             <ValueInput 
-                                label="Global Maintenance" 
+                                label={t("setupBuilder.global_maintenance")}
                                 value={maintenance} 
                                 onValueChange={setMaintenance} 
                                 units={MAINTENANCE_UNITS} 
-                                currentUnit={MAINTENANCE_UNITS[0]} 
+                                currentUnit={MAINTENANCE_UNITS[0]}
+                                namespace="setupBuilder"  
                             />
+
                             <ValueInput 
-                                label="Stack Lifetime" 
+                                label={t("setupBuilder.stack_lifetime")}
                                 value={lifetime} 
                                 onValueChange={setLifetime} 
-                                units={[{ label: "hours", factor: 1 }]} 
-                                currentUnit={{ label: "hours", factor: 1 }} 
+                                units={[{ label: "units.hours", factor: 1 }]} 
+                                currentUnit={{ label: "units.hours", factor: 1 }}
+                                namespace="setupBuilder"
                             />
 
-                            {/* --- SECTION DES AUXILIAIRES --- */}
-                            <Divider my="xs" label="Auxiliary Equipments (BOP)" labelPosition="center" />
-                            
-                            {auxiliaries.length > 0 && (
-                                <Stack gap="xs">
-                                    {auxiliaries.map(aux => (
-                                        <Group key={aux.id} justify="space-between" bg="light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6))" p="xs" style={{ borderRadius: 'var(--mantine-radius-sm)' }}>
-                                            <div style={{ flex: 1 }}>
-                                                <Text size="sm" fw={500}>{aux.name}</Text>
-                                                <Text size="xs" c="dimmed">
-                                                    ⚡ {aux.power} kW | 💧 {aux.water} L/h | 💶 {aux.price} € <br/>
-                                                    Supports {aux.capacity} electrolyzer(s)
-                                                </Text>
-                                            </div>
-                                            <ActionIcon color="red" variant="subtle" onClick={() => handleRemoveAuxiliary(aux.id)}>
-                                                <IconTrash size={16} />
-                                            </ActionIcon>
-                                        </Group>
-                                    ))}
-                                </Stack>
-                            )}
+                            <Divider 
+                                my="xs" 
+                                label={t("setupBuilder.auxiliary_equipments")}
+                                labelPosition="center" 
+                            />
 
                             <Paper withBorder p="sm" radius="md" bg="light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8))">
-                                <Text size="sm" fw={600} mb="xs">Add Component (Chiller, Dryer, etc.)</Text>
+                                <Text size="sm" fw={600} mb="xs">
+                                    {t("setupBuilder.add_component")}
+                                </Text>
+
                                 <Grid gutter="xs">
                                     <Grid.Col span={12}>
                                         <TextInput 
-                                            placeholder="Component Name" 
+                                            placeholder={t("setupBuilder.component_name")}
                                             value={auxName} 
                                             onChange={(e) => setAuxName(e.currentTarget.value)} 
                                         />
                                     </Grid.Col>
+
                                     <Grid.Col span={6}>
                                         <ValueInput 
-                                            label="Added Power" 
+                                            label={t("setupBuilder.added_power")}
                                             value={auxPower} 
                                             onValueChange={setAuxPower} 
-                                            units={[{ label: "kW", factor: 1 }]} 
-                                            currentUnit={{ label: "kW", factor: 1 }} 
+                                            units={[{ label: "units.power_kw", factor: 1 }]} 
+                                            currentUnit={{ label: "units.power_kw", factor: 1 }}
+                                            namespace="setupBuilder" 
                                         />
                                     </Grid.Col>
+
                                     <Grid.Col span={6}>
                                         <ValueInput 
-                                            label="Added Water" 
+                                            label={t("setupBuilder.added_water")}
                                             value={auxWater} 
                                             onValueChange={setAuxWater} 
-                                            units={[{ label: "L/h", factor: 1 }]} 
-                                            currentUnit={{ label: "L/h", factor: 1 }} 
+                                            units={[{ label: "units.l_per_hour", factor: 1 }]} 
+                                            currentUnit={{ label: "units.l_per_hour", factor: 1 }}
+                                            namespace="setupBuilder" 
                                         />
                                     </Grid.Col>
+
                                     <Grid.Col span={6}>
                                         <ValueInput 
-                                            label="Added CAPEX" 
+                                            label={t("setupBuilder.added_capex")}
                                             value={auxPrice} 
                                             onValueChange={setAuxPrice} 
-                                            units={[{ label: "€", factor: 1 }]} 
-                                            currentUnit={{ label: "€", factor: 1 }} 
+                                            units={[{ label: "units.eur", factor: 1 }]} 
+                                            currentUnit={{ label: "units.eur", factor: 1 }}
+                                            namespace="setupBuilder" 
                                         />
                                     </Grid.Col>
+
                                     <Grid.Col span={6}>
                                         <ValueInput 
-                                            label="Capacity Supported" 
+                                            label={t("setupBuilder.capacity_supported")}
                                             value={auxCapacity} 
                                             onValueChange={setAuxCapacity} 
-                                            units={[{ label: "units", factor: 1 }]} 
-                                            currentUnit={{ label: "units", factor: 1 }} 
+                                            units={[{ label: "units.units", factor: 1 }]} 
+                                            currentUnit={{ label: "units.units", factor: 1 }}
+                                            namespace="setupBuilder" 
                                         />
                                     </Grid.Col>
                                 </Grid>
@@ -250,7 +291,7 @@ export default function SetupBuilder() {
                                     onClick={handleAddAuxiliary}
                                     disabled={!auxName.trim() || auxPower === '' || auxPrice === '' || auxWater === '' || auxCapacity === ''}
                                 >
-                                    Add to Setup
+                                    {t("setupBuilder.add_to_setup")}
                                 </Button>
                             </Paper>
 
@@ -261,7 +302,7 @@ export default function SetupBuilder() {
                                 onClick={handleAddSetup} 
                                 disabled={!name.trim()}
                             >
-                                Save Complete Setup
+                                {t("setupBuilder.save_complete_setup")}
                             </Button>
                         </Stack>
                     </Card>
@@ -270,13 +311,22 @@ export default function SetupBuilder() {
                 {/* --- COLONNE DROITE : LA LISTE DES SETUPS --- */}
                 <Grid.Col span={{ base: 12, md: 7 }}>
                     <Group justify="space-between" mb="md">
-                        <Title order={4}>Saved Configurations</Title>
-                        <Badge size="lg" radius="sm">{setups.length} Setups</Badge>
+                        <Title order={4}>
+                            {t("setupBuilder.saved_configurations")}
+                        </Title>
+
+                        <Badge size="lg" radius="sm">
+                            {setups.length} {t("setupBuilder.setups_count")}
+                        </Badge>
                     </Group>
 
                     {setups.length === 0 ? (
                         <Card withBorder padding="xl" ta="center" bg="var(--mantine-color-gray-0)">
-                            <Text c="dimmed">No setups stored in memory yet.<br/>Create your first configuration on the left.</Text>
+                            <Text c="dimmed">
+                                {t("setupBuilder.no_setups_title")}
+                                <br/>
+                                {t("setupBuilder.no_setups_subtitle")}
+                            </Text>
                         </Card>
                     ) : (
                         <Stack gap="sm">
@@ -287,28 +337,36 @@ export default function SetupBuilder() {
                                             <Group gap="xs" mb="xs">
                                                 <Title order={5}>{setup.name}</Title>
                                                 <Badge color={setup.type === 'AEM' ? 'green' : setup.type === 'PEM' ? 'blue' : setup.type === 'Alkaline' ? 'orange' : 'gray'}>
-                                                    {setup.type}
+                                                    {t(REVERSE_MAP_TYPE[setup.type])}
                                                 </Badge>
                                             </Group>
                                             
                                             {/* Détails consolidés */}
                                             <Group gap="md" rowGap="xs" mb="sm">
-                                                <Text size="sm">⚡ <b>{setup.stack_power}</b> kW/stack <Text span c="dimmed" size="xs">(Max: {setup.max_stacks})</Text></Text>
-                                                <Text size="sm">💧 <b>{setup.water_consumption_l_per_h}</b> L/h</Text>
-                                                <Text size="sm">💶 <b>{setup.price.toLocaleString()}</b> € <Text span c="dimmed" size="xs">(Total CAPEX)</Text></Text>
-                                                <Text size="sm">⚙️ <b>{setup.energy_consumption_kwh_per_kg}</b> kWh/kg</Text>
+                                                <Text size="sm">⚡ <b>{setup.stack_power}</b> {t("units.kW_per_stack")} <Text span c="dimmed" size="xs">({t("setupBuilder.max")}: {setup.max_stacks})</Text></Text>
+                                                <Text size="sm">💧 <b>{setup.water_consumption_l_per_h}</b> {t("units.l_per_hour")}</Text>
+                                                <Text size="sm">💶 <b>{setup.price.toLocaleString()}</b> {t("units.eur")} <Text span c="dimmed" size="xs">{t("setupBuilder.total_capex")}</Text></Text>
+                                                <Text size="sm">⚙️ <b>{setup.energy_consumption_kwh_per_kg}</b> {t("units.kwh_per_kg")}</Text>
                                             </Group>
 
                                             {/* Le bloc décalé pour le détail des auxiliaires */}
                                             {setup.auxiliariesList && setup.auxiliariesList.length > 0 && (
                                                 <Box pl="md" mt="xs" style={{ borderLeft: '3px solid var(--mantine-color-gray-3)' }}>
-                                                    <Text size="xs" fw={700} c="dimmed" mb={4} tt="uppercase">Balance of Plant (Included)</Text>
+                                                    <Text
+                                                        size="xs"
+                                                        fw={700}
+                                                        c="dimmed"
+                                                        mb={4}
+                                                        tt="uppercase"  
+                                                    >
+                                                        {t("setupBuilder.balance_of_plant")}
+                                                    </Text>
                                                     <Stack gap={4}>
                                                         {setup.auxiliariesList.map(aux => (
                                                             <Group key={aux.id} gap="xs" wrap="nowrap">
                                                                 <Text size="xs" fw={500}>• {aux.name}</Text>
                                                                 <Text size="xs" c="dimmed">
-                                                                    (+{aux.power} kW | +{aux.water} L/h | +{aux.price.toLocaleString()} € | Cap: {aux.capacity} sys)
+                                                                    (+{aux.power} {t("units.power_kw")} | +{aux.water} {t("units.l_per_hour")} | +{aux.price.toLocaleString()} {t("units.eur")} | {t("setupBuilder.cap")}: {aux.capacity} {t("setupBuilder.sys")})
                                                                 </Text>
                                                             </Group>
                                                         ))}

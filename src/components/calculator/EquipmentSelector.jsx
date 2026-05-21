@@ -1,5 +1,6 @@
 import { Select, Checkbox, Stack, Tooltip, Box, Text } from '@mantine/core';
 import { useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import SliderInput from '../SliderInput';
 
@@ -8,33 +9,72 @@ import SliderInput from '../SliderInput';
 // It is used to dynamically build the information tooltips when hovering over equipment options.
 const EQUIPMENT_MAPS = {
     electrolyzer: {
-        type: { label: "Type", unit: "" },
-        price: { label: "Price", unit: " €" },
-        power: { label: "System power", unit: " kW" },
-        stack_price : {label : "Stack price", unit : " €" },
-        stack_power : {label : "Stack power", unit : " kW" },
-        max_stacks : {label : "Max stacks per electrolyzer", unit : "" },
-        energy_consumption_kwh_per_kg: { label : "Energy consumption", unit: " kWh/kg" },
-        total_auxiliary_consumption : {label : "Total auxiliary consumption", unit : " kW" },
-        water_consumption_l_per_h : {label : "Water consumption", unit : " L/h" },
-        maintenance_percent_capex: { label: "Maintenance", unit: " %/year" },
-        stack_lifetime_hours: { label: "Stack lifetime", unit: " h" }
-    },
-    compressor: {
-        type: { label: "Type", unit: "" },
-        compression_rate: {label: "Compression rate", unit: "" } ,
-        price: { label: "Price", unit: " €" },
-        cell_stack_price: { label: "Cell stack price", unit: " €" },
-        max_cells: { label: "Maximum number of cells", unit: "" },
-        cells_per_stack: { label: "Number of cells per stack", unit: "" },
-        unitary_flowrate_kg_per_day: { 
-            // Mechanical compressors scale by full units, whereas EHCs scale by individual cells
-            label: (item) => item.type === "Mechanical" ? "Flowrate" : "Flowrate per cell", 
-            unit: " kg/day" 
+        type: { label: "equipment.electrolyzer.type", unit: "" },
+        price: { label: "equipment.electrolyzer.price", unit: "€" },
+        power: { label: "equipment.electrolyzer.power", unit: "kW" },
+
+        stack_price: { label: "equipment.electrolyzer.stack_price", unit: "€" },
+        stack_power: { label: "equipment.electrolyzer.stack_power", unit: "kW" },
+        max_stacks: { label: "equipment.electrolyzer.max_stacks", unit: "" },
+
+        energy_consumption_kwh_per_kg: {
+            label: "equipment.electrolyzer.energy_consumption_kwh_per_kg",
+            unit: "kWh/kg"
         },
-        energy_consumption_kwh_per_kg: { label: "Energy consumption", unit: " kWh/kg" },
-        maintenance_percent_capex: { label: "Maintenance", unit: " %/year" },
-        stack_lifetime_hours: { label: "Stack lifetime", unit: " h" }
+
+        total_auxiliary_consumption: {
+            label: "equipment.electrolyzer.total_auxiliary_consumption",
+            unit: "kW"
+        },
+
+        water_consumption_l_per_h: {
+            label: "equipment.electrolyzer.water_consumption_l_per_h",
+            unit: "L/h"
+        },
+
+        maintenance_percent_capex: {
+            label: "equipment.electrolyzer.maintenance_percent_capex",
+            unit: "equipment.electrolyzer.maintenanceUnit"
+
+        },
+
+        stack_lifetime_hours: {
+            label: "equipment.electrolyzer.stack_lifetime_hours",
+            unit: "h"
+        }
+    },
+
+    compressor: {
+        type: { label: "equipment.compressor.type", unit: "" },
+        compression_rate: { label: "equipment.compressor.compression_rate", unit: "" },
+        price: { label: "equipment.compressor.price", unit: "€" },
+
+        cell_stack_price: { label: "equipment.compressor.cell_stack_price", unit: "€" },
+        max_cells: { label: "equipment.compressor.max_cells", unit: "" },
+        cells_per_stack: { label: "equipment.compressor.cells_per_stack", unit: "" },
+
+        unitary_flowrate_kg_per_day: {
+            label: (item) =>
+                item.type === "Mechanical"
+                    ? "equipment.compressor.unitary_flowrate_kg_per_day"
+                    : "equipment.compressor.unitary_flowrate_kg_per_day_per_cell",
+            unit: "equipment.compressor.flowrate_unit"
+        },
+
+        energy_consumption_kwh_per_kg: {
+            label: "equipment.compressor.energy_consumption_kwh_per_kg",
+            unit: "kWh/kg"
+        },
+
+        maintenance_percent_capex: {
+            label: "equipment.compressor.maintenance_percent_capex",
+            unit: "equipment.compressor.maintenanceUnit"
+        },
+
+        stack_lifetime_hours: {
+            label: "equipment.compressor.stack_lifetime_hours",
+            unit: "h"
+        }
     }
 };
 
@@ -67,6 +107,8 @@ export default function EquipmentSelector({
     id = null 
 }) {
 
+    const { t } = useTranslation("calculator");
+    
     // Prevents the user from owning more units than what the current physical plant sizing actually requires
     useEffect(() => {
         if (max !== null && max !== undefined && quantityOwned > max) {
@@ -76,7 +118,7 @@ export default function EquipmentSelector({
 
     const selectData = itemsList.list.map((item, index) => ({
         value: index.toString(),
-        label: item.name,
+        label: t(item.name),
         ...item 
     }));
 
@@ -93,19 +135,19 @@ export default function EquipmentSelector({
                     if (item[key] !== undefined && item[key] !== null) {
                         
                         const labelToDisplay = typeof config.label === 'function' 
-                            ? config.label(item) 
-                            : config.label;
+                            ? t(config.label(item)) 
+                            : t(config.label);
 
                         // European number formatting (e.g. 1.000,50)
                         const valueToDisplay = typeof item[key] === 'number'
                             ? item[key].toLocaleString('de-DE')
-                            : item[key];
+                            : t(item[key]);
 
                         return (
                             <Box key={key} display="flex" style={{ justifyContent: 'space-between' }}>
-                                <Text size="xs" fw={700} c="gray.4">{labelToDisplay}:</Text>
+                                <Text size="xs" fw={700} c="gray.4">{t(labelToDisplay)}:</Text>
                                 <Text size="xs" fw={500} c="white">
-                                    {valueToDisplay} {config.unit}
+                                    {valueToDisplay} {t(config.unit)}
                                 </Text>
                             </Box>
                         );

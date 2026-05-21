@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Title, SimpleGrid, Card, Text, Stack, SegmentedControl, Tooltip, ActionIcon, Box, Center, Modal, Anchor, Group, Button } from '@mantine/core';
 import { IconQuestionMark } from '@tabler/icons-react';
 import { useSessionStorage, useLocalStorage, useDidUpdate } from '@mantine/hooks';
+import { useTranslation } from 'react-i18next';
 
 import electrolyzers from '../data/calculator/electrolyzers_list.json';
 import compressors from '../data/calculator/compressors_list.json';
@@ -29,6 +30,8 @@ const DEFAULT_CUSTOM_COMPRESSOR = compressors.list.find(e => e.id === 0);
  * * * Note: This component does not take external props. It initializes its state locally and via JSON imports.
  */
 export default function Calculator() {
+
+    const { t } = useTranslation("calculator");
     
     // --- 1. ELECTROLYZER STATE ---
     const [selectedElectrolyzer, setSelectedElectrolyzer] = useSessionStorage({
@@ -344,10 +347,9 @@ export default function Calculator() {
     return (
         <Container size="xl" px="xl" py="lg" mt="150px">
             
-            <Title order={1} ta="center" mb="xl" c="dark.7">Hydrogen Cost Calculator</Title>
+            <Title order={1} ta="center" mb="xl" c="dark.7">{t("title")}</Title>
             <Text c="dimmed" ta="center" maw={800} mx="auto" mb="xl">
-                Estimate the Levelized Cost of Hydrogen (LCOH) and total capital expenditure (CAPEX) for your production plant. 
-                Adjust system parameters, resource costs, and financial variables to simulate different techno-economic scenarios.
+                {t("introText")}
             </Text>
 
             <Center mb="md">
@@ -356,14 +358,14 @@ export default function Calculator() {
                         value={isAdvancedMode ? 'advanced' : 'simple'}
                         onChange={(val) => setIsAdvancedMode(val === 'advanced')}
                         data={[
-                            { label: 'Simple Mode', value: 'simple' },
-                            { label: 'Advanced Calculator', value: 'advanced' },
+                            { label: t("advanceToggle.simple"), value: 'simple' },
+                            { label: t("advanceToggle.advanced"), value: 'advanced' },
                         ]}
                         bg="green.1"
                     />
                     {isAdvancedMode && (
                         <Tooltip 
-                            label="Click for step-by-step help" 
+                            label={t("advanceToggle.tooltipLabel")} 
                             withArrow 
                             position="right"
                         >
@@ -399,7 +401,7 @@ export default function Calculator() {
                 mb="xs" 
                 onClick={() => setResetModalOpened(true)}
             >
-                Reset all inputs to default values
+                {t("reset")}
             </Anchor>
 
             <SimpleGrid cols={{ base: 1, lg: 3 }} spacing="lg" style={{ alignItems: 'flex-start' }}>
@@ -441,25 +443,43 @@ export default function Calculator() {
                     
                     {isAdvancedMode && (
                         <Card shadow="sm" padding="lg" radius="md" withBorder>
-                            <Text fw={700} size="xl" mb="md" pb="xs" style={{ borderBottom: '2px solid var(--mantine-color-gray-2)' }}>
-                                Lifecycle Parameters
+                            <Text
+                                fw={700}
+                                size="xl"
+                                mb="md"
+                                pb="xs"
+                                style={{ borderBottom: '2px solid var(--mantine-color-gray-2)' }}
+                            >
+                                {t("lifecycleParameters.title")}
                             </Text>
 
                             <ValueInput
-                                label={<LabelWithTooltip label="Project Lifetime" tooltip="Expected operational lifespan of the plant to amortize the CAPEX." />}
+                                label={
+                                    <LabelWithTooltip
+                                        label={t("lifecycleParameters.project_lifetime.label")}
+                                        tooltip={t("lifecycleParameters.project_lifetime.tooltip")}
+                                    />
+                                }
                                 id="project_lifetime"
-                                units="years"
-                                currentUnit="years"
+                                units="units.years"
+                                currentUnit="units.years"
+                                namespace="calculator"
                                 value={projectLifetime}
                                 onValueChange={val => setProjectLifetime(val)}
                                 nullBlocker
                             />
 
                             <ValueInput
-                                label={<LabelWithTooltip label="Inflation Rate" tooltip="The average percentage of annual prices increase. " />}
+                                label={
+                                    <LabelWithTooltip
+                                        label={t("lifecycleParameters.inflation_rate.label")}
+                                        tooltip={t("lifecycleParameters.inflation_rate.tooltip")}
+                                    />
+                                }
                                 id="inflation_rate"
-                                units="%"
-                                currentUnit="%"
+                                units="units.pourcent"
+                                currentUnit="units.pourcent"
+                                namespace="calculator"
                                 value={inflationRate}
                                 onValueChange={val => setInflationRate(val)}
                             />
@@ -513,24 +533,25 @@ export default function Calculator() {
                     }}
                     reset={resetHelp}
                     setReset={setResetHelpFalse}
+                    namespace="calculator"
                 />
             )}
 
             <Modal 
                 opened={resetModalOpened} 
                 onClose={() => setResetModalOpened(false)} 
-                title="Reset Calculator" 
+                title={t("resetModal.title")} 
                 centered
             >
                 <Text size="sm" mb="xl">
-                    Are you sure you want to clear all your inputs and reset the calculator to its default values? This action cannot be undone.
+                    {t("resetModal.text")} 
                 </Text>
                 <Group justify="flex-end">
                     <Button variant="default" onClick={() => setResetModalOpened(false)}>
-                        Cancel
+                        {t("resetModal.cancelButton")}
                     </Button>
                     <Button color="red" onClick={handleResetDefaults}>
-                        Yes, reset everything
+                        {t("resetModal.acceptButton")}
                     </Button>
                 </Group>
             </Modal>

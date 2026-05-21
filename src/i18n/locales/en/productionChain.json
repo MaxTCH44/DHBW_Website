@@ -1,0 +1,218 @@
+{
+    "title":"Green H₂ Production Chain",
+    "renewables": {
+    "title": "Renewables",
+
+    "riseTitle": "The Rise of Renewable Energy in Germany (2024)",
+    "riseDescription": "To understand the growing necessity of green hydrogen, we must first look at the current energy landscape. In 2024, Germany reached a historic milestone: renewable energy sources covered 62,7% of the net public electricity generation, injecting approximately 275,2 terawatt-hours (TWh) into the grid.",
+
+    "energyMixTitle": "A Highly Variable Energy Mix",
+    "energyMixWindDescription": "Wind power (both onshore and offshore) remains the backbone of the German system, accounting for 33% of the total electricity mix. However, wind production is highly volatile. This fluctuation is exactly what drives the need for massive energy storage and conversion solutions, such as water electrolysis.",
+    "energyMixSolarDescription": "Solar photovoltaics (PV) represent the fastest-growing sector, covering 14% of the grid. Notably, self-consumption—electricity consumed directly on-site without entering the public grid—jumped to over 12 TWh in 2024. This trend is highly relevant for laboratories and industrial facilities aiming for 100% self-sufficient hydrogen production.",
+    "energyMixOtherDescription": "The remainder of the renewable mix is provided by biomass (7%, providing stable base-load energy) and hydropower (4%).",
+
+    "chartTitle": "Gross electricity production in Germany from 2019 to 2025",
+
+    "chart": {
+      "series": {
+        "nonRenewable": "Non-Renewable (TWh)",
+        "wind": "Wind (TWh)",
+        "solar": "Solar (TWh)",
+        "biomass": "Biomass (TWh)",
+        "hydro": "Hydro (TWh)",
+        "otherGreen": "Other Green (TWh)"
+      }
+    },
+
+    "windPower": {
+      "title": "Wind Power: Harnessing Air Currents",
+
+      "description1": "Wind turbines operate by capturing the kinetic energy of moving air and converting it into mechanical rotation, which drives an electrical generator. To be effective, these systems require open landscapes or offshore marine areas with strong, consistent wind streams.",
+
+      "imageAlt": "Wind Turbine",
+
+      "description2": "While wind power is a remarkably clean and highly scalable energy source capable of generating massive amounts of electricity, its primary drawback is its extreme intermittency. The wind does not always blow when demand is high, and the visual or acoustic footprint of large turbines can sometimes lead to local acceptance challenges.",
+
+      "description3": "This fluctuating nature makes wind energy the perfect candidate for green hydrogen conversion, allowing excess energy produced during windy nights to be stored rather than wasted."
+    },
+
+    "solarPower": {
+      "title": "Solar Photovoltaics: Direct Sunlight Conversion",
+
+      "description1": "Unlike wind, solar energy involves no moving parts. Photovoltaic (PV) cells rely on semiconductor materials, typically silicon, to absorb photons from sunlight and release electrons, directly generating a direct current (DC).",
+
+      "description2": "This technology requires unobstructed access to sunlight and significant surface area, making rooftops and open fields ideal deployment sites. The great advantage of solar power is its scalability and minimal maintenance, making it exceptionally well-suited for localized self-consumption in laboratories or factories.",
+
+      "imageAlt": "Rooftop Solar Panels",
+
+      "description3": "However, its efficiency is heavily dependent on weather conditions and time of day, dropping to zero at night. Consequently, relying heavily on solar energy absolutely requires robust storage architectures, such as battery banks or hydrogen systems, to bridge the nighttime gap."
+    },
+
+    "biomass": {
+      "title": "Biomass: The Dispatchable Organic Baseline",
+
+      "description1": "Biomass energy is generated through the combustion or biological fermentation of organic matter—such as agricultural waste, wood pellets, or biogas—to produce heat and steam, which in turn spin a turbine. Its most significant requirement is a continuous, sustainable supply of organic feedstock.",
+
+      "imageAlt": "Wood Biomass",
+
+      "description2": "Unlike wind and solar, biomass is a 'dispatchable' energy source, meaning it can be ramped up or down on demand to provide a stable, reliable baseload for the power grid regardless of the weather.",
+
+      "description3": "On the downside, the process does release carbon dioxide upon combustion (though it is generally considered carbon-neutral over the plant's lifecycle), and acquiring the necessary biomass requires large amounts of land and water, potentially competing with food agriculture."
+    },
+
+    "hydropower": {
+      "title": "Hydropower: The Reliable Flow",
+
+      "description1": "Hydropower plants harness the continuous flow and gravitational drop of water through rivers or dams to forcefully turn mechanical turbines. This technology demands specific geographical features, namely significant water volume and elevation changes.",
+
+      "imageAlt": "Sardar Sarovar Dam, Gujarat, India",
+
+      "description2": "Where feasible, hydropower is incredibly efficient, highly reliable, and boasts an exceptionally long operational lifespan. Certain setups, like pumped-storage hydroelectricity, can even act as massive physical batteries by pumping water uphill during energy surpluses.",
+
+      "description3": "However, the heavy reliance on local geography limits where new plants can be built, and the construction of large dams can severely disrupt local aquatic ecosystems and alter natural water flows."
+    }
+  },
+  "electrolysis": {
+    "title": "Electrolysis",
+
+    "processTitle": "The Electrolysis Process: Splitting Water",
+    "processDescription": "Electrolysis is the fundamental chemical process at the heart of the green hydrogen value chain. Rather than extracting energy from fossil fuels, this process uses an electrical direct current (DC) to drive an otherwise non-spontaneous chemical reaction. By passing this current through water, the electrical energy physically breaks the chemical bonds holding the water molecules together, separating them into their constituent elements.",
+
+    "inputsOutputsTitle": "Inputs, Outputs, and Byproducts",
+    "inputsOutputsDescription": "The mass balance of this process is remarkably straightforward and clean. The primary inputs are simply ultra-pure water (H₂O) and renewable electricity. On the output side, the process yields high-purity hydrogen gas (H₂) at the cathode and oxygen gas (O₂) at the anode.",
+
+    "processImageAlt": "a diagram showing the process of electrolysis with hydrogen and oxygen bubbles",
+
+    "outputsDescription": "While the hydrogen is captured and compressed for energy storage, the oxygen is often safely vented back into the atmosphere or captured for medical and industrial applications. Additionally, the process generates a significant amount of low-grade heat, which modern facilities increasingly recover to supply local district heating networks, thereby maximizing overall energy efficiency.",
+
+    "environmentalShiftTitle": "The Environmental Shift: Grey, Blue, and Green Hydrogen",
+
+    "greyHydrogenDescription": "To fully grasp the critical importance of water electrolysis, it must be contrasted with the traditional, fossil-based methods used today. Currently, the vast majority of global hydrogen is classified as 'grey hydrogen.' This is produced primarily through Steam Methane Reforming (SMR), a process that extracts hydrogen from natural gas (CH₄) using high-temperature steam. While SMR is currently cheaper, it is an environmental disaster: producing just one kilogram of grey hydrogen emits between 9 to 10 kilograms of CO₂.",
+
+    "blueHydrogenDescription": "As a transitional step, the industry also produces 'blue hydrogen.' This method still relies on fossil fuels and SMR, but it incorporates Carbon Capture and Storage (CCS) technologies to trap a significant portion of the CO₂ emissions underground before they reach the atmosphere. While it significantly reduces the carbon footprint compared to grey hydrogen, it is not entirely emission-free, carries risks of methane leaks, and still depends on finite fossil resources.",
+
+    "greenHydrogenDescription": "In stark contrast, green hydrogen produced via renewable electrolysis generates absolutely zero carbon emissions. When this green hydrogen is later consumed—for instance, in a fuel cell to power a vehicle—the only byproduct released is pure water, creating a completely closed, sustainable, and clean ecological loop.",
+
+    "futureTechnologiesTitle": "Looking Ahead: Electrolyzer Technologies",
+
+    "futureTechnologiesDescription": "While the fundamental chemistry of water electrolysis remains the same, the industrial equipment used to drive this reaction varies significantly. Different technologies, such as Proton Exchange Membrane (PEM), Alkaline (AEL), and Anion Exchange Membrane (AEM), offer distinct advantages in terms of cost, efficiency, and dynamic response. To understand which technology best fits specific industrial needs, explore our dedicated Electrolyzer Technologies page.",
+
+    "linkLabel": "Explore Electrolyzer Technologies"
+  },
+  "storage": {
+    "label": "H₂ Storage",
+
+    "content": {
+      "title": "Hydrogen Compression and Storage: Bridging the Gap",
+
+      "intro": "While green hydrogen is an exceptionally clean energy carrier, it presents a unique physical challenge: it is the lightest element in the universe. Although it boasts an incredibly high gravimetric energy density (energy per kilogram), its volumetric energy density at ambient pressure is extremely low. To store a meaningful amount of energy in a practical space, hydrogen must first be densified, which is typically achieved through mechanical compression.",
+
+      "compressorTitle": "The Role of Compressors",
+
+      "compressorDescription": "Depending on the end-use application, hydrogen exiting the electrolyzer is compressed to high pressures, typically ranging from 30 to 700 bar. This stage requires highly specialized equipment capable of handling the tiny hydrogen molecules safely and efficiently without contamination.",
+
+      "compressorButton": "Explore Compressor Technologies",
+
+      "storageMethodsTitle": "How Hydrogen is Stored: Tanks and Caverns",
+
+      "storageMethodsDescription1": "Once compressed, hydrogen can be stored in several ways depending on the required scale and duration. For short- to medium-term storage, high-pressure composite cylinders (Type III or IV tanks) are standard in industrial facilities and refueling stations.",
+
+      "storageMethodsDescription2": "However, for massive, grid-scale energy storage, the most effective method is geological storage. Pumping compressed hydrogen gas into massive underground salt caverns allows for the safe containment of millions of cubic meters of gas. For specific use cases like aerospace or long-haul marine transport, hydrogen can also be liquefied by cooling it to cryogenic temperatures (-253°C), which maximizes density but requires significant energy input.",
+
+      "comparisonTitle": "Hydrogen vs. Batteries: The Power of Seasonal Storage",
+
+      "comparisonDescription1": "A common question is why we should use hydrogen when we already have advanced lithium-ion batteries. The answer lies in the scale and duration of the storage. Batteries are highly efficient for short-term, daily energy shifting (e.g., storing daytime solar for the evening) but they suffer from self-discharge over time and require massive amounts of heavy, expensive raw materials to scale up capacity.",
+
+      "comparisonDescription2": "The structural advantage of hydrogen is that its storage capacity scales independently of its conversion equipment. To store more energy, a facility only needs larger physical infrastructure, like expanded tanks or caverns, rather than duplicating expensive electrolyzer units. Furthermore, hydrogen is uniquely suited for seasonal energy shifting. It allows entire regions to harvest abundant summer solar energy, store it securely underground for half a year, and convert it back into power during winter—a critical long-term buffering solution that remains beyond the reach of battery technology."
+    }
+  },
+  "mobility": {
+    "label": "Mobility",
+
+    "content": {
+      "title": "Hydrogen in Mobility: Powering Heavy Transport",
+
+      "intro": "While the passenger car market is currently dominated by battery electric vehicles (BEVs), green hydrogen offers an indispensable zero-emission solution for the heavy-duty and long-haul transport sectors. In industries where the immense weight and size of massive battery packs would severely compromise payload capacity and operational efficiency—such as freight trucking, rail networks, maritime shipping, and eventually aviation—hydrogen emerges as the optimal clean energy carrier.",
+
+      "fuelCellTitle": "The Fuel Cell Mechanism: Reversing Electrolysis",
+
+      "fuelCellDescription": "Vehicles powered by this technology are known as Fuel Cell Electric Vehicles (FCEVs). At the core of an FCEV is the fuel cell stack, which essentially performs the exact reverse of the water electrolysis process. Instead of using electricity to split water, the fuel cell continuously receives compressed hydrogen from the vehicle's tanks and oxygen from the ambient air. Through an electrochemical reaction across a polymer membrane, these two elements combine to generate the direct current (DC) electricity needed to drive the electric motor. The only byproduct exhausted from the tailpipe is pure, harmless water vapor.",
+
+      "advantagesTitle": "Refueling and Range Advantages",
+
+      "advantagesDescription": "The most significant operational advantage of hydrogen in mobility is its parity with the convenience of traditional fossil fuels. Refueling a heavy-duty hydrogen truck or bus at a dispenser takes only a matter of minutes, drastically reducing the costly downtime associated with recharging large-scale battery systems. Furthermore, high-pressure hydrogen storage provides a significantly longer driving range regardless of external temperatures. This ensures that global logistical supply chains can seamlessly transition to zero-emission technologies without sacrificing operational uptime or fundamentally altering existing route structures."
+    },
+
+    "schematic": {
+        "power": "Electric motor",
+        "membrane": {
+            "title": "Membrane",
+            "subtitle": "Proton Exchange Membrane (PEM)",
+            "explanation": "A solid polymer membrane that acts as an electrolyte. It allows only the positively charged protons (H⁺) to pass through to the cathode, forcing the electrons to travel through the external circuit."
+        },
+        "cathode": {
+            "title": "Cathode (+)",
+            "subtitle": "Cathode (+)",
+            "explanation": "Oxygen (O₂) from the air enters here. It combines with the protons (H⁺) crossing the membrane and electrons (e⁻) arriving from the motor to form pure water (H₂O)."
+        },
+        "anode": {
+            "title": "Anode (-)",
+            "subtitle": "Anode (-)",
+            "explanation": "Compressed Hydrogen (H₂) enters here. The catalyst splits the H₂ molecules into protons (H⁺) and electrons (e⁻). The electrons flow through the external circuit to power the motor."
+        }
+    }
+  },
+  "industry": {
+    "label": "Industry",
+
+    "content": {
+      "title": "Hydrogen in Industry: Decarbonizing the Heavyweights",
+
+      "intro": "While mobility often captures the public's attention, the industrial sector is currently the largest global consumer of hydrogen. Today, industries use tens of millions of tons of hydrogen annually, primarily for petroleum refining, ammonia production for agricultural fertilizers, and methanol synthesis. However, because nearly all of this current demand is met with fossil-based grey hydrogen, the industrial sector is responsible for massive amounts of CO₂ emissions. Replacing this existing demand with green hydrogen is the most immediate and impactful step in the global energy transition.",
+
+      "steelTitle": "Transforming Steel Production (DRI)",
+
+      "steelDescription1": "Beyond replacing existing grey hydrogen, green hydrogen is unlocking new pathways to decarbonize 'hard-to-abate' sectors—industries where direct electrification is chemically or physically impossible. The most prominent example is steel manufacturing. Traditional steelmaking relies on coal-fired blast furnaces to strip oxygen from iron ore, releasing vast quantities of CO₂.",
+        
+      "imageAlt": "steel coil storage",
+
+      "steelDescription2": "By implementing a technology called Direct Reduced Iron (DRI), hydrogen gas can be used instead of coal as the reducing agent. In this process, the hydrogen reacts with the oxygen in the iron ore, yielding sponge iron and emitting only water vapor. This breakthrough technology has the potential to almost entirely eliminate the carbon footprint of one of the world's most polluting industries.",
+
+      "chemicalTitle": "Chemical Feedstock and High-Temperature Heat",
+
+      "chemicalDescription": "In addition to steel, green hydrogen serves as a vital building block for the chemical industry. It can be combined with captured CO₂ to create synthetic, climate-neutral fuels (e-fuels) for aviation and shipping, or green plastics. Furthermore, for specific industrial processes like cement or glass manufacturing that require extreme, high-temperature heat (often exceeding 1.000°C)—which electric heaters struggle to provide efficiently—the direct combustion of clean hydrogen offers a viable, zero-emission alternative to natural gas."
+    }
+  },
+  "heating": {
+    "label": "Heating",
+
+    "content": {
+      "title": "Hydrogen for Heating and Cogeneration",
+
+      "intro": "Decarbonizing the heating sector—which encompasses both residential space heating and high-temperature industrial processes—remains one of the most formidable challenges in the energy transition. While electric heat pumps are highly effective for well-insulated individual buildings, green hydrogen provides a critical alternative for dense district heating networks and large-scale facilities where direct electrification is economically or physically impractical.",
+
+      "sectorCouplingTitle": "Sector Coupling: Waste Heat Recovery",
+
+      "sectorCouplingDescription": "One of the most efficient applications of hydrogen in the heating sector actually occurs at the very beginning of its lifecycle. The water electrolysis process inherently generates a substantial amount of low-to-medium-grade waste heat. Through a concept known as 'sector coupling,' this thermal energy can be captured and fed directly into local municipal district heating networks. This approach can warm thousands of homes while drastically increasing the overall thermodynamic efficiency of the hydrogen production plant, turning waste into a valuable resource.",
+
+      "chpTitle": "Combined Heat and Power (CHP)",
+
+      "chpDescription": "On the consumption side, stationary hydrogen fuel cells can be deployed as Combined Heat and Power (CHP) units, commonly known as cogeneration systems. Instead of combusting fuel, these advanced systems use green hydrogen to electrochemically generate electricity for a building, campus, or factory. Simultaneously, they capture the byproduct heat from the reaction to provide hot water and space heating. This dual-generation process can push total system efficiencies well beyond 85%, far exceeding traditional power plants.",
+
+      "gridTitle": "Grid Blending and Hydrogen Boilers",
+
+      "gridDescription": "As a transitional strategy to decarbonize heating, many countries are actively testing the blending of green hydrogen (typically up to 20%) into existing natural gas pipelines. This progressively lowers the carbon footprint of conventional heating without requiring immediate changes to end-user appliances. In the longer term, dedicated 100% pure hydrogen boilers are being developed to completely replace fossil gas systems in commercial settings, ensuring that the only emission leaving the chimney is pure water vapor."
+    },
+
+    "schematic":{
+        "title": "Combined Heat & Power (CHP)",
+        "text1": "This Fuel Cell unit electrochemically converts green hydrogen into ",
+        "textBold1": "electricity",
+        "text2": " and useful ",
+        "textBold2": "heat",
+        "text3": ". By recovering the waste heat, the system achieves over ",
+        "textBold3": "85% total efficiency",
+        "text4": "to warm and power the building."
+    }
+  }
+}

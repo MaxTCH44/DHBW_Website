@@ -1,4 +1,5 @@
 import { Card, Text } from '@mantine/core';
+import { useTranslation } from 'react-i18next';
 
 import ValueInput from '../ValueInput';
 import LabelWithTooltip from '../LabelWithTooltip';
@@ -40,40 +41,61 @@ export default function ResourcesCosts ({
     toggleSection,
     isAdvancedMode
 }){
+    const { t } = useTranslation("calculator");
     return(
         <Card shadow="sm" padding="lg" radius="md" withBorder>
             <Text fw={700} size="xl" mb="md" pb="xs" style={{ borderBottom: '2px solid var(--mantine-color-gray-2)' }}>
-                Resources Costs
+                {t("resourcesCosts.title")}
             </Text>
 
             {/* Electricity is universally the largest cost driver for green hydrogen, so it remains visible in both modes */}
             <ValueInput
                 id="electricity_price"
-                label={<LabelWithTooltip label="Electricity price" tooltip="The average grid electricity price. This is the primary cost driver for green hydrogen production." />}
+                label={
+                    <LabelWithTooltip
+                        label={t("resourcesCosts.electricity_price.label")}
+                        tooltip={t("resourcesCosts.electricity_price.tooltip")}
+                    />
+                }
                 units={ELEC_PRICE_UNITS}
                 currentUnit={electricityPrice.unit}
+                namespace="calculator"
                 value={electricityPrice.value}
                 onValueChange={val => setElectricityPrice({ ...electricityPrice, value: val })}
                 onUnitChange={u => setElectricityPrice({ ...electricityPrice, unit: u })}
             />
 
             {/* Water cost is typically negligible compared to electricity, so we hide it in simple mode to reduce cognitive load */}
-            {isAdvancedMode && <ValueInput
-                label={<LabelWithTooltip label="Water price" tooltip="Cost of purified water supply for the electrolysis process." />}
-                id="water_price"
-                units={WATER_VOLUME_PRICE_UNITS}
-                currentUnit={waterPrice.unit}
-                value={waterPrice.value}
-                onValueChange={val => setWaterPrice({ ...waterPrice, value: val })}
-                onUnitChange={u => setWaterPrice({ ...waterPrice, unit: u })}
-            />}
+            {isAdvancedMode && (
+                <ValueInput
+                    label={
+                        <LabelWithTooltip
+                            label={t("resourcesCosts.water_price.label")}
+                            tooltip={t("resourcesCosts.water_price.tooltip")}
+                        />
+                    }
+                    id="water_price"
+                    units={WATER_VOLUME_PRICE_UNITS}
+                    currentUnit={waterPrice.unit}
+                    namespace="calculator"
+                    value={waterPrice.value}
+                    onValueChange={val => setWaterPrice({ ...waterPrice, value: val })}
+                    onUnitChange={u => setWaterPrice({ ...waterPrice, unit: u })}
+                />
+            )}
 
             {/* Used to calculate the strict Return On Investment (ROI) vs what the client is paying today */}
             <ValueInput
-                label={<LabelWithTooltip label="Current H₂ price" tooltip="The price you currently pay for delivered hydrogen. This serves as a baseline to calculate your potential savings with on-site production." />}
+                label={
+                    <LabelWithTooltip
+                        label={t("resourcesCosts.current_h2_price.label")}
+                        tooltip={t("resourcesCosts.current_h2_price.tooltip")}
+                    />
+                }
                 id="current_h2_price"
                 units={H2_VOLUME_PRICE_UNITS}
                 currentUnit={currentHydrogenPrice.unit}
+                namespace="calculator"
                 value={currentHydrogenPrice.value}
                 onValueChange={val => setCurrentHydrogenPrice({ ...currentHydrogenPrice, value: val })}
                 onUnitChange={u => setCurrentHydrogenPrice({ ...currentHydrogenPrice, unit: u })}
@@ -84,10 +106,16 @@ export default function ResourcesCosts ({
             {isAdvancedMode && (
                 <>
                     <ValueInput
-                        label={<LabelWithTooltip label="Grey H₂ price" tooltip="The current market price of grey hydrogen (produced from natural gas). Used as a baseline to calculate your savings." />}
+                        label={
+                            <LabelWithTooltip
+                                label={t("resourcesCosts.grey_h2_price.label")}
+                                tooltip={t("resourcesCosts.grey_h2_price.tooltip")}
+                            />
+                        }
                         id="grey_h2_price"
                         units={H2_VOLUME_PRICE_UNITS}
                         currentUnit={greyHydrogenPrice.unit}
+                        namespace="calculator"
                         value={greyHydrogenPrice.value}
                         onValueChange={val => setGreyHydrogenPrice({ ...greyHydrogenPrice, value: val })}
                         onUnitChange={u => setGreyHydrogenPrice({ ...greyHydrogenPrice, unit: u })}
@@ -96,10 +124,16 @@ export default function ResourcesCosts ({
                     {/* A high carbon tax acts as an artificial price increase on Grey H2, accelerating the financial competitiveness of Green H2 */}
                     <DetailSection openedSections={openedSections.greyH2} toggleSection={() => toggleSection('greyH2')}>
                         <ValueInput
-                            label={<LabelWithTooltip label="Carbon Tax" tooltip="The price applied per ton of CO2 emissions. A higher tax increases the cost of grey hydrogen, making green hydrogen more competitive." />}
+                            label={
+                                <LabelWithTooltip
+                                    label={t("resourcesCosts.carbon_tax.label")}
+                                    tooltip={t("resourcesCosts.carbon_tax.tooltip")}
+                                />
+                            }
                             id="carbon_tax"
-                            units="€/t CO₂"
-                            currentUnit="€/t CO₂"
+                            units="units.eur_per_ton_co2"
+                            currentUnit="units.eur_per_ton_co2"
+                            namespace="calculator"
                             value={carbonTax}
                             onValueChange={val => setCarbonTax(val)}
                         />
