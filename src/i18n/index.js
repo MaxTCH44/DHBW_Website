@@ -13,7 +13,7 @@ import enCalculator from './locales/en/calculator.json';
 //import frCalculator from './locales/fr/calculator.json';
 //import deCalculator from './locales/de/calculator.json';
 
-//import enContact from './locales/en/contact.json';
+import enContact from './locales/en/contact.json';
 //import frContact from './locales/fr/contact.json';
 //import deContact from './locales/de/contact.json';
 
@@ -59,7 +59,7 @@ i18n
         common: enCommon,
         recycling: enRecycling,
         calculator: enCalculator,
-        //contact: enContact,
+        contact: enContact,
         equipmentOverview: enEquipementOverview,
         home: enHome,
         notFound: enNotFound,

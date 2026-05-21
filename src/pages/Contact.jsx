@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Container, Title, Text, Box, SegmentedControl } from '@mantine/core';
+import { useTranslation } from 'react-i18next';
 
 import ContactForm from '../components/ContactForm.jsx';
 import ContactList from '../components/ContactList.jsx';
@@ -11,15 +12,17 @@ import ContactList from '../components/ContactList.jsx';
  */
 export default function Contact() {
 
+    const { t } = useTranslation("contact");
+
     const [showPeople, setShowPeople] = useState(false);
 
     // --- RENDER ---
     return (
         <Container size="sm" py="xl" mt="150px">
             <Box ta="center" mb="xl">
-                <Title order={1} c="dark.7" mb="sm">Contact Our Researchers</Title>
+                <Title order={1} c="dark.7" mb="sm">{t("title")}</Title>
                 <Text c="dimmed" size="lg">
-                    Because every hydrogen and recycling system is unique, contacting our project researchers is highly recommended for proper understanding and implementation.
+                    {t("introText")}
                 </Text>
             </Box>
 
@@ -27,8 +30,8 @@ export default function Contact() {
                 value={showPeople ? 'people' : 'email'}
                 onChange={(val) => setShowPeople(val === 'people')}
                 data={[
-                    { label: 'Contact Form', value: 'email' },
-                    { label: 'Contact List', value: 'people' },
+                    { label: t("segmentedControl.contactFormLabel"), value: 'email' },
+                    { label: t("segmentedControl.contactListLabel"), value: 'people' },
                 ]}
                 bg="green.1"
                 mb="md"

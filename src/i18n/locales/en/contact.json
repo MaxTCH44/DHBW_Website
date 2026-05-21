@@ -1,0 +1,53 @@
+{
+    "title": "Contact Our Researchers",
+    "introText": "Because every hydrogen and recycling system is unique, contacting our project researchers is highly recommended for proper understanding and implementation.",
+    "segmentedControl": {
+        "contactFormLabel": "Contact Form",
+        "contactListLabel": "Contact List"
+    },
+
+    "contactList": {
+        "volker": {
+            "roles": {
+                "role1": "Project Management PROKOREI H2"
+            },
+            "place": "Coblitzallee 1-9, 68163 Mannheim, Room 019 A"
+        }
+    },
+    "contactForm": {
+        "emailError": "Please enter a valid email address (e.g. name@domain.com)",
+        "success": {
+            "title": "Message sent!",
+            "description": "We'll get back to you as soon as possible."
+        },
+
+        "error": {
+        "title": "Something went wrong",
+        "description": "Please try again or contact us directly by email. You can find them in the other section."
+        },
+
+        "fields": {
+        "fullName": {
+            "label": "Full Name",
+            "placeholder": "Your Name"
+        },
+
+        "email": {
+            "label": "Email or Lab/Company Address",
+            "placeholder": "your@email.com"
+        },
+
+        "subject": {
+            "label": "Subject",
+            "placeholder": "E.g., Recycling System Audit"
+        },
+
+        "message": {
+            "label": "Your Message",
+            "placeholder": "Tell us about your current infrastructure, your gas mixtures, or any questions you have about our mathematical models."
+        }
+        },
+
+        "submit": "Send Message"
+    }
+}
