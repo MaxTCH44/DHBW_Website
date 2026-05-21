@@ -1,6 +1,7 @@
 import { Card, Text, ThemeIcon, Button } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { IconArrowRight } from '@tabler/icons-react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Renders a navigational card used in the "Knowledge Base" (Learn) section.
@@ -13,6 +14,9 @@ import { IconArrowRight } from '@tabler/icons-react';
  * @param {string} props.link - The local router path (e.g., '/electrolyzers') to navigate to when the button is clicked.
  */
 export default function LearnCard({ title, description, Icon, link }) {
+
+    const { t } = useTranslation("home");
+
     return (
         <Card 
             shadow="sm" 
@@ -49,7 +53,7 @@ export default function LearnCard({ title, description, Icon, link }) {
                 rightSection={<IconArrowRight size={16} />} 
                 fullWidth
             >
-                Read Documentation
+                {t("homeLearn.readDoc")}
             </Button>
         </Card>
     );

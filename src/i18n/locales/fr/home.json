@@ -40,7 +40,8 @@
     "compressionSystems": {
       "title": "Systèmes de compression",
       "description": "Explorer les méthodes de compression mécaniques et non mécaniques nécessaires au stockage haute densité de l’hydrogène et à son injection dans les réseaux."
-    }
+    },
+    "readDoc": "Lire la documentation"
   },
 
   "homeTools": {
