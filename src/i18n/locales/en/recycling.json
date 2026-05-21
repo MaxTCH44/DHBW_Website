@@ -40,7 +40,8 @@
     "exhaustGasParametersTitle": "Exhaust Gas Parameters",
     "mixedGasType": {
       "label": "Mixed Gas Type",
-      "tooltip": "Which gas is mixed with H₂ ?"
+      "tooltip": "Which gas is mixed with H₂ ?",
+      "placeholder": "Select secondary gas"
     },
     "annualMixedGasProduced": {
       "label": "Annual Mixed Gas Produced",
@@ -105,20 +106,22 @@
   },
   
   "units": {
-    "normalized_m3_per_year": "Nm³ / year",
-    "kg_per_year": "kg / year",
+    "normalized_m3_per_year": "Nm³/year",
+    "kg_per_year": "kg/year",
     
     "pourcent": "%",
 
-    "eur_per_kg": "€ / kg",
-    "eur_per_year": "€ / year",
-    "elec_price_mwh": "€ / MWh",
-    "elec_price_kwh": "€ / kWh",
+    "eur_per_kg": "€/kg",
+    "eur_per_m3": "€/m³",
+    "eur_per_year": "€/year",
+    "elec_price_mwh": "€/MWh",
+    "elec_price_kwh": "€/kWh",
     "eur": "€",
     
     "percent_capex": "% CAPEX",
     
-    "kwh_per_kg": "kWh / kg",
+    "kwh_per_kg": "kWh/kg",
+    "kwh_per_m3": "kWh/m³",
 
     "tons": "Tons",
 

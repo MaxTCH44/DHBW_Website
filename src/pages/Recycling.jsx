@@ -1,32 +1,15 @@
 import { useState, useMemo } from 'react';
-import { Container, Title, Text, Grid, Card, Group, Badge, Box, Select, Paper, Button, Divider, Modal, Anchor } from '@mantine/core';
+import { Container, Title, Text, Grid, Card, Group, Badge, Box, Paper, Button, Modal, Anchor } from '@mantine/core';
 import { useMediaQuery, useSessionStorage } from '@mantine/hooks';
 import { IconMail, IconRecycle, IconCoin, IconClockHour4, IconArrowRight, IconLeaf } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
 
 import gasData from '../data/recycling_gases.json';
 
-import SliderInput from '../components/SliderInput';
-import ValueInput from '../components/ValueInput';
-import LabelWithTooltip from '../components/LabelWithTooltip';
-import { t } from 'i18next';
-
-export const ELEC_PRICE_UNITS = [{ label: "units.elec_price_mwh", factor: 0.001 }, { label: "units.elec_price_kwh", factor: 1 }];
-
-// --- DATA INITIALIZATION ---
-// Extracts just the 'value' strings from the JSON array to populate the Select component
-const gasOptions = gasData.map(gas => gas.value);
-
-// Local constants for ValueInput units, preventing inline object recreation on every render
-const UNIT_M3_YEAR = { label: "units.normalized_m3_per_year", factor: 1 };
-const UNITS_M3_YEAR_ARRAY = [UNIT_M3_YEAR];
-
-const UNIT_EUR_KG = { label: "units.eur_per_kg", factor: 1 };
-const UNITS_EUR_KG_ARRAY = [UNIT_EUR_KG];
-
-const UNIT_EUR = { label: "units.eur", factor: 1 };
-const UNITS_EUR_ARRAY = [UNIT_EUR];
+import { ELEC_PRICE_UNITS, H2_VOLUME_POWER_UNITS, MAINTENANCE_UNITS, H2_VOLUME_PRICE_UNITS } from '../components/calculator/calculatorConstants';
+import RecyclingInputs from '../components/calculator/RecyclingInputs';
 
 /**
  * Main component for the Hydrogen Recycling Calculator.
@@ -64,19 +47,19 @@ export default function Recycling() {
     // Financial baselines to calculate the Return on Investment (ROI)
     const [energyConsumption, setEnergyConsumption] = useSessionStorage({
         key: 'recycling-energy-consumption',
-        defaultValue: 11,
-            getInitialValueInEffect: false
+        defaultValue: { value: 11, unit: H2_VOLUME_POWER_UNITS[0] },
+        getInitialValueInEffect: false
     });
 
     const [electricityPrice, setElectricityPrice] = useSessionStorage({
         key: 'calc-electricity-price',
         defaultValue: { value: 89, unit: ELEC_PRICE_UNITS[0] },
-          getInitialValueInEffect: false
+        getInitialValueInEffect: false
     });
 
     const [h2Price, setH2Price] = useSessionStorage({
         key: 'recycling-h2-price',
-        defaultValue: 6.11,
+        defaultValue: { value: 6.11, unit: H2_VOLUME_PRICE_UNITS[0] },
         getInitialValueInEffect: false
     });
     const [systemPrice, setSystemPrice] = useSessionStorage({
@@ -86,7 +69,7 @@ export default function Recycling() {
     });
     const [annualOpexRate, setAnnualOpexRate] = useSessionStorage({
         key: 'recycling-annualOpexRate',
-        defaultValue: 3,
+        defaultValue: { value: 3, unit: MAINTENANCE_UNITS[0] },
         getInitialValueInEffect: false
     });
 
@@ -111,28 +94,48 @@ export default function Recycling() {
         const rate = info ? info.recovery_rate : 0;
         const adv = info ? info.advice : "gasRecoveryAdvices.default.advice";
         
-        // --- CALCULATIONS ---
-        // 1. Calculate raw hydrogen volume in the exhaust stream
+        // --- 1. VOLUMETRIC & MASS CALCULATIONS ---
         const annualH2Volume = annualMixedGas * (h2Concentration / 100);
-        // 2. Convert volumetric flow (m³) to mass (kg). The density factor used here is roughly 11.1 m³ per kg of H2 at standard conditions.
-        const annualH2Kg = annualH2Volume / 11.126; 
-        // 3. Apply the system's technical recovery efficiency (e.g., PSA systems rarely recover 100%)
+        
+        // Convert volumetric flow (Nm³) to mass (kg). 
+        // Using 11.1 to strictly match the factor in calculatorConstants.js
+        const annualH2Kg = annualH2Volume / 11.1; 
         const recoveredKg = annualH2Kg * rate;
         
-        // 4. Financials
-        const totalElectricityPrice = recoveredKg * energyConsumption * electricityPrice.value * electricityPrice.unit.factor 
-        const savings = recoveredKg * h2Price;
-        const annualOpex = systemPrice * (annualOpexRate / 100) + totalElectricityPrice;
+        // --- 2. ENERGY & UNIT FACTORS ---
+        // Convert to kWh/kg
+        const energyPerKg = energyConsumption.value * energyConsumption.unit.factor; 
+        // Convert to €/kWh
+        const elecPricePerKwh = electricityPrice.value * electricityPrice.unit.factor; 
+        // Convert to €/kg
+        const h2PricePerKg = h2Price.value * h2Price.unit.factor; 
+
+        // --- 3. FINANCIALS ---
+        const totalElectricityPrice = recoveredKg * energyPerKg * elecPricePerKwh; 
+        const savings = recoveredKg * h2PricePerKg;
+
+        // Check if OPEX is a percentage of CAPEX or a flat € rate
+        const isOpexPercent = annualOpexRate.unit.label === "units.percent_capex";
+        const maintenanceCost = isOpexPercent
+            ? systemPrice * (annualOpexRate.value / 100)
+            : annualOpexRate.value;
+
+        const annualOpex = maintenanceCost + totalElectricityPrice;
         const netAnnualSavings = savings - annualOpex;
+        
+        // Prevent division by zero or negative ROI calculation
         const roi = netAnnualSavings > 0 ? systemPrice / netAnnualSavings : null;
 
-        //5. Avoided CO2
+        // --- 4. AVOIDED EMISSIONS (CO2) ---
         const CO2_GRID_INTENSITY = 0.295; // kg CO₂/kWh — EU grid mix 2024
         const H2_GWP = 11.6; // kg CO₂eq/kg H₂ vented — IPCC AR6 2023
 
+        // Calculate the emissions generated by running the recycling equipment
+        const recyclingEmissions = (recoveredKg * energyPerKg) * CO2_GRID_INTENSITY;
+        
         //0 because we assume it's green energy
-        const co2Avoided = (recoveredKg * H2_GWP) - 0; // kg CO₂eq/year
-        const co2AvoidedTons = co2Avoided / 1000; // tCO₂eq/year
+        const co2AvoidedKg = (recoveredKg * H2_GWP) - 0; 
+        const co2AvoidedTons = co2AvoidedKg / 1000;
 
         return {
             complexity: comp,
@@ -140,11 +143,21 @@ export default function Recycling() {
             recoveryRate: rate,
             advice: adv,
             annualRecoveredH2Kg: recoveredKg,
-            annualSavings: savings,
+            annualSavings: savings, // Kept as gross savings to match your UI label "Estimated Gross Savings"
             roiYears: roi,
             co2Avoided: co2AvoidedTons
         };
-    }, [gasType, annualMixedGas, h2Concentration, h2Price, systemPrice, annualOpexRate, energyConsumption, electricityPrice]);
+    }, [
+        gasType, 
+        annualMixedGas, 
+        h2Concentration, 
+        h2Price, 
+        systemPrice, 
+        annualOpexRate, 
+        energyConsumption, 
+        electricityPrice,
+        t
+    ]);
 
     return (
         <Container size="xl" px="xl" py="lg" mt="150px">
@@ -376,164 +389,4 @@ export default function Recycling() {
             </Paper>
         </Container>
     );
-}
-
-/**
- * Sub-component isolating the input form for the recycling calculator.
- * Passing down the state and setters keeps the main component cleaner.
- * * @param {Object} props
- * @param {string|null} props.gasType - The selected mixed gas matrix.
- * @param {Function} props.setGasType - Setter for the gas type.
- * @param {number} props.annualMixedGas - The total volume of exhaust gas produced per year.
- * @param {Function} props.setAnnualMixedGas - Setter for the annual mixed gas volume.
- * @param {number} props.h2Concentration - The percentage of pure hydrogen inside the exhaust gas.
- * @param {Function} props.setH2Concentration - Setter for the H2 concentration.
- * @param {number} props.h2Price - Current baseline cost of hydrogen per kg.
- * @param {Function} props.setH2Price - Setter for the baseline H2 price.
- * @param {number} props.systemPrice - Estimated CAPEX for the recycling plant.
- * @param {Function} props.setSystemPrice - Setter for the recycling system CAPEX.
- */
-function RecyclingInputs ({
-    gasType,
-    setGasType,
-    annualMixedGas,
-    setAnnualMixedGas,
-    h2Concentration,
-    setH2Concentration,
-    h2Price,
-    setH2Price,
-    systemPrice,
-    setSystemPrice,
-    annualOpexRate,
-    setAnnualOpexRate,
-    energyConsumption,
-    setEnergyConsumption,
-    electricityPrice,
-    setElectricityPrice
-}){
-    const { t } = useTranslation("recycling");
-    return(
-        <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Title order={3} mb="md">
-                {t("recyclingForm.exhaustGasParametersTitle")}
-            </Title>
-            
-            <Select
-                label={
-                    <LabelWithTooltip
-                        label={t("recyclingForm.mixedGasType.label")}
-                        tooltip={t("recyclingForm.mixedGasType.tooltip")}
-                    />
-                }
-                placeholder={t("recyclingForm.mixedGasType.placeholder")}
-                data={gasOptions.map(gas => t(gas))}
-                value={gasType}
-                onChange={setGasType}
-                mb="md"
-            />
-
-            <ValueInput
-                label={
-                    <LabelWithTooltip
-                        label={t("recyclingForm.annualMixedGasProduced.label")}
-                        tooltip={t("recyclingForm.annualMixedGasProduced.tooltip")}
-                    />
-                }
-                value={annualMixedGas}
-                onValueChange={setAnnualMixedGas}
-                units={UNITS_M3_YEAR_ARRAY}
-                currentUnit={UNIT_M3_YEAR}
-                namespace="recycling"
-            />
-
-            <SliderInput
-                label={
-                    <LabelWithTooltip
-                        label={t("recyclingForm.h2Concentration.label")}
-                        tooltip={t("recyclingForm.h2Concentration.tooltip")}
-                    />
-                }
-                value={h2Concentration}
-                onValueChange={setH2Concentration}
-                units="%"
-                min={5}
-                max={95}
-            />
-            
-            <Divider my="md" />
-            
-            <Title order={4} mb="sm" c="dimmed">
-                {t("recyclingForm.financialsTitle")}
-            </Title>
-
-            <ValueInput
-                label={
-                    <LabelWithTooltip
-                        label={t("recyclingForm.currentH2PurchasePrice.label")}
-                        tooltip={t("recyclingForm.currentH2PurchasePrice.tooltip")}
-                    />
-                }
-                value={h2Price}
-                onValueChange={setH2Price}
-                units={UNITS_EUR_KG_ARRAY}
-                currentUnit={UNIT_EUR_KG}
-                namespace="recycling"
-            />
-
-            <ValueInput
-                label={
-                    <LabelWithTooltip
-                        label={t("recyclingForm.recyclingSystemPrice.label")}
-                        tooltip={t("recyclingForm.recyclingSystemPrice.tooltip")}
-                    />
-                }
-                value={systemPrice}
-                onValueChange={setSystemPrice}
-                units={UNITS_EUR_ARRAY}
-                currentUnit={UNIT_EUR}
-                namespace="recycling"
-            />
-
-            <ValueInput
-                label={
-                    <LabelWithTooltip
-                        label={t("recyclingForm.maintenanceCosts.label")}
-                        tooltip={t("recyclingForm.maintenanceCosts.tooltip")}
-                    />
-                }
-                value={annualOpexRate}
-                onValueChange={setAnnualOpexRate}
-                units="units.percent_capex"
-                namespace="recycling"
-            />
-
-            <ValueInput
-                label={
-                    <LabelWithTooltip
-                        label={t("recyclingForm.energyConsumption.label")}
-                        tooltip={t("recyclingForm.energyConsumption.tooltip")}
-                    />
-                }
-                units="units.kwh_per_kg"
-                value={energyConsumption}
-                onValueChange={setEnergyConsumption}
-                namespace="recycling"
-            />
-
-            <ValueInput
-                label={
-                    <LabelWithTooltip
-                        label={t("recyclingForm.electricityPrice.label")}
-                        tooltip={t("recyclingForm.electricityPrice.tooltip")}
-                    />
-                }
-                units={ELEC_PRICE_UNITS}
-                currentUnit={electricityPrice.unit}
-                value={electricityPrice.value}
-                namespace="recycling"
-                onValueChange={val => setElectricityPrice({ ...electricityPrice, value: val })}
-                onUnitChange={u => setElectricityPrice({ ...electricityPrice, unit: u })}
-            />
-        </Card>
-    )
 }
