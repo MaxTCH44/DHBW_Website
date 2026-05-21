@@ -45,10 +45,10 @@ import enReferences from './locales/en/references.json';
 //import frReferences from './locales/fr/references.json';
 //import deReferences from './locales/de/references.json';
 
-//import enSetupBuilder from './locales/en/setupBuilder.json';
+import enSetupBuilder from './locales/en/setupBuilder.json';
 //import frSetupBuilder from './locales/fr/setupBuilder.json';
 //import deSetupBuilder from './locales/de/setupBuilder.json';
-//import EquipmentOverview from '../pages/EquipmentOverview';
+
 
 
 i18n
@@ -67,7 +67,7 @@ i18n
         productionChain: enProductionChain,
         recyclingProcess: enRecyclingProcess,
         references: enReferences,
-        //setupBuilder: enSetupBuilder
+        setupBuilder: enSetupBuilder
       },
       /*
       fr: {
