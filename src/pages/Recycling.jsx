@@ -4,29 +4,18 @@ import { useMediaQuery, useSessionStorage } from '@mantine/hooks';
 import { IconMail, IconRecycle, IconCoin, IconClockHour4, IconArrowRight, IconLeaf } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
 
 import gasData from '../data/recycling_gases.json';
 
 import SliderInput from '../components/SliderInput';
 import ValueInput from '../components/ValueInput';
 import LabelWithTooltip from '../components/LabelWithTooltip';
-import { t } from 'i18next';
-
-export const ELEC_PRICE_UNITS = [{ label: "units.elec_price_mwh", factor: 0.001 }, { label: "units.elec_price_kwh", factor: 1 }];
+import { ELEC_PRICE_UNITS, H2_VOLUME_POWER_UNITS, MAINTENANCE_UNITS, H2_VOLUME_PRICE_UNITS } from '../components/calculator/calculatorConstants';
 
 // --- DATA INITIALIZATION ---
 // Extracts just the 'value' strings from the JSON array to populate the Select component
 const gasOptions = gasData.map(gas => gas.value);
-
-// Local constants for ValueInput units, preventing inline object recreation on every render
-const UNIT_M3_YEAR = { label: "units.normalized_m3_per_year", factor: 1 };
-const UNITS_M3_YEAR_ARRAY = [UNIT_M3_YEAR];
-
-const UNIT_EUR_KG = { label: "units.eur_per_kg", factor: 1 };
-const UNITS_EUR_KG_ARRAY = [UNIT_EUR_KG];
-
-const UNIT_EUR = { label: "units.eur", factor: 1 };
-const UNITS_EUR_ARRAY = [UNIT_EUR];
 
 /**
  * Main component for the Hydrogen Recycling Calculator.
@@ -64,19 +53,19 @@ export default function Recycling() {
     // Financial baselines to calculate the Return on Investment (ROI)
     const [energyConsumption, setEnergyConsumption] = useSessionStorage({
         key: 'recycling-energy-consumption',
-        defaultValue: 11,
-            getInitialValueInEffect: false
+        defaultValue: { value: 11, unit: H2_VOLUME_POWER_UNITS[0] },
+        getInitialValueInEffect: false
     });
 
     const [electricityPrice, setElectricityPrice] = useSessionStorage({
         key: 'calc-electricity-price',
         defaultValue: { value: 89, unit: ELEC_PRICE_UNITS[0] },
-          getInitialValueInEffect: false
+        getInitialValueInEffect: false
     });
 
     const [h2Price, setH2Price] = useSessionStorage({
         key: 'recycling-h2-price',
-        defaultValue: 6.11,
+        defaultValue: { value: 6.11, unit: H2_VOLUME_PRICE_UNITS[0] },
         getInitialValueInEffect: false
     });
     const [systemPrice, setSystemPrice] = useSessionStorage({
@@ -86,7 +75,7 @@ export default function Recycling() {
     });
     const [annualOpexRate, setAnnualOpexRate] = useSessionStorage({
         key: 'recycling-annualOpexRate',
-        defaultValue: 3,
+        defaultValue: { value: 3, unit: MAINTENANCE_UNITS[0] },
         getInitialValueInEffect: false
     });
 
@@ -441,8 +430,8 @@ function RecyclingInputs ({
                 }
                 value={annualMixedGas}
                 onValueChange={setAnnualMixedGas}
-                units={UNITS_M3_YEAR_ARRAY}
-                currentUnit={UNIT_M3_YEAR}
+                units="units.normalized_m3_per_year"
+                currentUnit="units.normalized_m3_per_year"
                 namespace="recycling"
             />
 
@@ -473,10 +462,11 @@ function RecyclingInputs ({
                         tooltip={t("recyclingForm.currentH2PurchasePrice.tooltip")}
                     />
                 }
-                value={h2Price}
-                onValueChange={setH2Price}
-                units={UNITS_EUR_KG_ARRAY}
-                currentUnit={UNIT_EUR_KG}
+                units={H2_VOLUME_PRICE_UNITS}
+                currentUnit={h2Price.unit}
+                value={h2Price.value}
+                onValueChange={val => setH2Price({...h2Price, value: val})}
+                onUnitChange={u => setH2Price({...h2Price, unit: u})}
                 namespace="recycling"
             />
 
@@ -489,8 +479,8 @@ function RecyclingInputs ({
                 }
                 value={systemPrice}
                 onValueChange={setSystemPrice}
-                units={UNITS_EUR_ARRAY}
-                currentUnit={UNIT_EUR}
+                units="units.eur"
+                currentUnit="units.eur"
                 namespace="recycling"
             />
 
@@ -501,10 +491,12 @@ function RecyclingInputs ({
                         tooltip={t("recyclingForm.maintenanceCosts.tooltip")}
                     />
                 }
-                value={annualOpexRate}
-                onValueChange={setAnnualOpexRate}
-                units="units.percent_capex"
+                units={MAINTENANCE_UNITS}
+                currentUnit={annualOpexRate.unit}
+                value={annualOpexRate.value}
                 namespace="recycling"
+                onValueChange={val => setAnnualOpexRate({ ...annualOpexRate, value: val })}
+                onUnitChange={u => setAnnualOpexRate({ ...annualOpexRate, unit: u })}
             />
 
             <ValueInput
@@ -514,10 +506,12 @@ function RecyclingInputs ({
                         tooltip={t("recyclingForm.energyConsumption.tooltip")}
                     />
                 }
-                units="units.kwh_per_kg"
-                value={energyConsumption}
-                onValueChange={setEnergyConsumption}
+                units={H2_VOLUME_POWER_UNITS}
+                currentUnit={energyConsumption.unit}
+                value={energyConsumption.value}
                 namespace="recycling"
+                onValueChange={val => setEnergyConsumption({ ...energyConsumption, value: val })}
+                onUnitChange={u => setEnergyConsumption({ ...energyConsumption, unit: u })}
             />
 
             <ValueInput
