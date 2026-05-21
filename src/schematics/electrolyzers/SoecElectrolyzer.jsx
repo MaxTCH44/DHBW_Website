@@ -46,6 +46,7 @@ export default function SoecElectrolyzer() {
                     openDelay={50} 
                     closeDelay={100} 
                     withinPortal={true}
+                    zIndex={50}
                 >
                     <HoverCard.Target>
                         <g className="interactive-element" onClick={handleSvgClick}> 
@@ -67,6 +68,7 @@ export default function SoecElectrolyzer() {
                         openDelay={50} 
                         closeDelay={100} 
                         withinPortal={true}
+                        zIndex={50}
                     >
                         <HoverCard.Target>
                             <g className="interactive-element" onClick={handleSvgClick}>
@@ -89,6 +91,7 @@ export default function SoecElectrolyzer() {
                         openDelay={50} 
                         closeDelay={100} 
                         withinPortal={true}
+                        zIndex={50}
                     >
                         <HoverCard.Target>
                             <g className="interactive-element">

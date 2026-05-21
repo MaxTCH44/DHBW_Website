@@ -21,7 +21,7 @@ export default function MechanicalCompressor() {
             <svg width="100%" viewBox="0 0 484 500" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', margin: 'auto' }}>
                 
                 <rect width="484" height="500" fill="white"/>
-                <HoverCard position={isMobile ? "bottom" : "top"} withArrow shadow="md" width={isMobile ? "90vw" : 300} openDelay={50} closeDelay={100} withinPortal={true}>
+                <HoverCard position={isMobile ? "bottom" : "top"} withArrow shadow="md" width={isMobile ? "90vw" : 300} openDelay={50} closeDelay={100} withinPortal={true} zIndex={50}>
                     <HoverCard.Target>
                         <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
                             <rect x="144.612" y="21" width="194.776" height="287.183" fill="#484040"/>
@@ -39,7 +39,7 @@ export default function MechanicalCompressor() {
                     </HoverCard.Dropdown>
                 </HoverCard>
 
-                <HoverCard position={isMobile ? "bottom" : "left"} withArrow shadow="md" width={isMobile ? "90vw" : 250} openDelay={50} closeDelay={100} withinPortal={true}>
+                <HoverCard position={isMobile ? "bottom" : "left"} withArrow shadow="md" width={isMobile ? "90vw" : 250} openDelay={50} closeDelay={100} withinPortal={true} zIndex={50}>
                     <HoverCard.Target>
                         <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
                             <rect x="17" y="33.9362" width="127.612" height="45.2766" fill="#484040"/>
@@ -55,7 +55,7 @@ export default function MechanicalCompressor() {
                     </HoverCard.Dropdown>
                 </HoverCard>
 
-                <HoverCard position={isMobile ? "bottom" : "right"} withArrow shadow="md" width={isMobile ? "90vw" : 250} openDelay={50} closeDelay={100} withinPortal={true}>
+                <HoverCard position={isMobile ? "bottom" : "right"} withArrow shadow="md" width={isMobile ? "90vw" : 250} openDelay={50} closeDelay={100} withinPortal={true} zIndex={50}>
                     <HoverCard.Target>
                         <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
                             <rect width="127.612" height="45.2766" transform="matrix(-1 0 0 1 467 33.9362)" fill="#484040"/>

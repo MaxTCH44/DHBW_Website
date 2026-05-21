@@ -18,7 +18,7 @@ export default function PsaPurifier() {
             <svg width="100%" viewBox="0 0 396 475" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', margin: 'auto' }}>
                 <rect width="396" height="475" fill="white"/>
                 
-                <HoverCard position={isMobile ? "bottom" : "top"} withArrow shadow="md" width={isMobile ? "90vw" : 320} openDelay={50} closeDelay={100} withinPortal={true}>
+                <HoverCard position={isMobile ? "bottom" : "top"} withArrow shadow="md" width={isMobile ? "90vw" : 320} openDelay={50} closeDelay={100} withinPortal={true} zIndex={50}>
                     <HoverCard.Target>
                         <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
                             <g className="tank-group-left">
@@ -71,7 +71,7 @@ export default function PsaPurifier() {
                     </HoverCard.Dropdown>
                 </HoverCard>
 
-                <HoverCard position={isMobile ? "bottom" : "left"} withArrow shadow="md" width={isMobile ? "90vw" : 250} openDelay={50} closeDelay={100} withinPortal={true}>
+                <HoverCard position={isMobile ? "bottom" : "left"} withArrow shadow="md" width={isMobile ? "90vw" : 250} openDelay={50} closeDelay={100} withinPortal={true} zIndex={50}>
                     <HoverCard.Target>
                         <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
                             <path d="M12 268L52.6116 229.895L52.6116 306.105L12 268Z" fill="#FE7F25"/>
@@ -97,7 +97,7 @@ export default function PsaPurifier() {
                     </HoverCard.Dropdown>
                 </HoverCard>
 
-                <HoverCard position={isMobile ? "bottom" : "bottom"} withArrow shadow="md" width={isMobile ? "90vw" : 250} openDelay={50} closeDelay={100} withinPortal={true}>
+                <HoverCard position={isMobile ? "bottom" : "bottom"} withArrow shadow="md" width={isMobile ? "90vw" : 250} openDelay={50} closeDelay={100} withinPortal={true} zIndex={50}>
                     <HoverCard.Target>
                         <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
                             <path d="M198 382L236.105 422.612H159.895L198 382Z" fill="#afb1be"/>
@@ -120,7 +120,7 @@ export default function PsaPurifier() {
                     </HoverCard.Dropdown>
                 </HoverCard>
 
-                <HoverCard position={isMobile ? "bottom" : "right"} withArrow shadow="md" width={isMobile ? "90vw" : 250} openDelay={50} closeDelay={100} withinPortal={true}>
+                <HoverCard position={isMobile ? "bottom" : "right"} withArrow shadow="md" width={isMobile ? "90vw" : 250} openDelay={50} closeDelay={100} withinPortal={true} zIndex={50}>
                     <HoverCard.Target>
                         <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
                             <path d="M197 15L235.105 55.6116L158.895 55.6116L197 15Z" fill="#4DE32F"/>
