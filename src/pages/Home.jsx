@@ -37,7 +37,7 @@ export default function Home() {
         <>
             {/* --- HERO SECTION --- */}
             <Box bg="linear-gradient(135deg, var(--mantine-color-dark-8) 0%, var(--mantine-primary-color-filled) 100%)" py={{ base: 80, md: 120 }}>
-                <Container size="lg" ta="center">
+                <Container size="lg" ta="center" mt="150">
                 <Title order={1} c="white" fz={{ base: 40, md: 60 }} fw={900} lh={1.1} mb="md">
                     {t("home_hero.titleP1")}
                     <Text component="span" c="var(--mantine-primary-color-3)" inherit>
