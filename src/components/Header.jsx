@@ -5,6 +5,7 @@ import { IconChevronDown, IconFlask } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 
 import logoImage from '../assets/logo2.svg';
+import { LanguagePicker } from './LanguagePicker';
 
 // --- NAVIGATION CONFIGURATION ---
 // Centralized routing map. Adding a new page to the app only requires updating this array.
@@ -192,9 +193,23 @@ export default function Header() {
                         </Title>
                     </Group>
                     
-                    {/* Desktop Navigation */}
-                    <Group gap={5} visibleFrom="sm">
+                    {/* Desktop Navigation + Language Picker */}
+                    <Group gap="5" visibleFrom="sm">
                         {desktopItems}
+
+                        <LanguagePicker />
+                    </Group>
+
+                    {/* Mobile Actions */}
+                    <Group hiddenFrom="sm" gap="xs">
+                        <LanguagePicker />
+
+                        <Burger
+                            opened={opened}
+                            onClick={toggle}
+                            size="sm"
+                            aria-label="Toggle navigation"
+                        />
                     </Group>
                     
                     {/* Mobile Hamburger Icon */}
