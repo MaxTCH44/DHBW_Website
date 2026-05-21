@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 generate-context.js
 context_dump.txt
+
+#env
+.env
