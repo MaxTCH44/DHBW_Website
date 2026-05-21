@@ -1,128 +1,139 @@
 {
   "gasRecoveryAdvices": {
     "default": {
-        "complexity": "Select a gas type",
-        "advice": "Please provide details about your mixed gas to get a preliminary assessment."
+      "complexity": "Sélectionnez un type de gaz",
+      "advice": "Veuillez fournir des informations sur votre mélange gazeux afin d’obtenir une première évaluation."
     },
     "water_vapor": {
-      "value": "Water Vapor (H2O)",
-      "complexity": "Low (Dehumidification)",
-      "advice": "Separating water from hydrogen is a standard process. The investment is generally low and ROI is very fast."
+      "value": "Vapeur d’eau (H₂O)",
+      "complexity": "Faible (Déshumidification)",
+      "advice": "La séparation de l’eau et de l’hydrogène est un procédé standard. L’investissement est généralement faible et le retour sur investissement est très rapide."
     },
     "nitrogen": {
-      "value": "Nitrogen (N2)",
-      "complexity": "Medium (PSA System)",
-      "advice": "A Pressure Swing Adsorption (PSA) system will likely be required. It's a proven technology with an excellent lifespan."
+      "value": "Azote (N₂)",
+      "complexity": "Moyenne (Système PSA)",
+      "advice": "Un système PSA (Pressure Swing Adsorption) sera probablement nécessaire. Il s’agit d’une technologie éprouvée avec une excellente durée de vie."
     },
     "oxygen": {
-      "value": "Oxygen (O2)",
-      "complexity": "Medium (PSA System)",
-      "advice": "A Pressure Swing Adsorption (PSA) system will likely be required. It's a proven technology with an excellent lifespan."
+      "value": "Oxygène (O₂)",
+      "complexity": "Moyenne (Système PSA)",
+      "advice": "Un système PSA (Pressure Swing Adsorption) sera probablement nécessaire. Il s’agit d’une technologie éprouvée avec une excellente durée de vie."
     },
     "carbon_dioxide": {
-      "value": "Carbon Dioxide (CO2)",
-      "complexity": "High (Membrane / Advanced PSA)",
-      "advice": "These gases require specific membrane technologies or advanced PSA. The initial investment is higher, but recovering H₂ remains highly profitable at scale."
+      "value": "Dioxyde de carbone (CO₂)",
+      "complexity": "Élevée (Membrane / PSA avancé)",
+      "advice": "Ces gaz nécessitent des technologies membranaires spécifiques ou des systèmes PSA avancés. L’investissement initial est plus élevé, mais la récupération d’H₂ reste très rentable à grande échelle."
     },
     "argon": {
       "value": "Argon",
-      "complexity": "High (Membrane / Advanced PSA)",
-      "advice": "These gases require specific membrane technologies or advanced PSA. The initial investment is higher, but recovering H₂ remains highly profitable at scale."
+      "complexity": "Élevée (Membrane / PSA avancé)",
+      "advice": "Ces gaz nécessitent des technologies membranaires spécifiques ou des systèmes PSA avancés. L’investissement initial est plus élevé, mais la récupération d’H₂ reste très rentable à grande échelle."
     },
     "mixed_unknown": {
-      "value": "Mixed / Unknown",
-      "complexity": "Custom Analysis Required",
-      "advice": "Our engineers will need to sample and analyze your exhaust gas to design a custom multi-stage separation process."
+      "value": "Mélange / Inconnu",
+      "complexity": "Analyse personnalisée requise",
+      "advice": "Nos ingénieurs devront échantillonner et analyser votre gaz d’échappement afin de concevoir un procédé de séparation multi-étapes adapté."
     }
   },
 
   "recyclingForm": {
-    "exhaustGasParametersTitle": "Exhaust Gas Parameters",
+    "exhaustGasParametersTitle": "Paramètres du gaz d’échappement",
+
     "mixedGasType": {
-      "label": "Mixed Gas Type",
-      "tooltip": "Which gas is mixed with H₂ ?"
+      "label": "Type de gaz mélangé",
+      "tooltip": "Quel gaz est mélangé avec l’H₂ ?"
     },
+
     "annualMixedGasProduced": {
-      "label": "Annual Mixed Gas Produced",
-      "tooltip": "Gas volume normalized at 1 atm and 0°C (Nm³)."
+      "label": "Production annuelle de gaz mélangé",
+      "tooltip": "Volume de gaz normalisé à 1 atm et 0°C (Nm³)."
     },
+
     "h2Concentration": {
-      "label": "H₂ Concentration in Exhaust Gas",
-      "tooltip": "Percentage of H₂ contained in the mixed gas stream before recovery."
+      "label": "Concentration d’H₂ dans le gaz d’échappement",
+      "tooltip": "Pourcentage d’H₂ contenu dans le flux gazeux avant récupération."
     },
-    "financialsTitle": "Financials & Investment",
+
+    "financialsTitle": "Finances & Investissement",
+
     "currentH2PurchasePrice": {
-      "label": "Current Green H₂ Purchase Price",
-      "tooltip": "The price you currently pay for delivered hydrogen. This serves as a baseline to calculate your potential savings with on-site recycling."
+      "label": "Prix actuel d’achat de l’H₂ vert",
+      "tooltip": "Le prix que vous payez actuellement pour l’hydrogène livré. Cette valeur sert de base pour calculer les économies potentielles grâce au recyclage sur site."
     },
+
     "recyclingSystemPrice": {
-      "label": "Estimated Recycling System Price (CAPEX)",
-      "tooltip": "The estimation of the initial purchase cost (CAPEX)."
+      "label": "Prix estimé du système de recyclage (CAPEX)",
+      "tooltip": "Estimation du coût d’achat initial (CAPEX)."
     },
+
     "maintenanceCosts": {
-      "label": "Maintenance costs (OPEX)",
-      "tooltip": "Annual operation and maintenance (O&M) costs, generally estimated as a percentage of the initial equipment cost (CAPEX)."
+      "label": "Coûts de maintenance (OPEX)",
+      "tooltip": "Coûts annuels d’exploitation et de maintenance (O&M), généralement estimés comme un pourcentage du coût initial de l’équipement (CAPEX)."
     },
+
     "energyConsumption": {
-      "label": "Recycling system energy consumption",
-      "tooltip": "Specific energy consumption of the recycling system itself to produce one kg of hydrogen. This value excludes system-wide auxiliaries like cooling or drying."
+      "label": "Consommation énergétique du système de recyclage",
+      "tooltip": "Consommation énergétique spécifique du système de recyclage pour produire un kilogramme d’hydrogène. Cette valeur exclut les auxiliaires globaux du système tels que le refroidissement ou le séchage."
     },
+
     "electricityPrice": {
-      "label": "Electricity price",
-      "tooltip": "The average grid electricity price. This is the primary cost driver for green hydrogen production."
+      "label": "Prix de l’électricité",
+      "tooltip": "Prix moyen de l’électricité du réseau. Il s’agit du principal facteur de coût pour la production d’hydrogène vert."
     }
   },
 
   "recyclingCalculatorPage": {
     "header": {
-      "title": "Hydrogen Recycling Calculator",
-      "description": "Stop venting valuable hydrogen into the atmosphere. Calculate how much H₂ you can recover annually and discover your Return on Investment (ROI).",
-      "learnMoreButton": "Learn how the recycling process works"
+      "title": "Calculateur de recyclage de l’hydrogène",
+      "description": "Arrêtez de rejeter un hydrogène précieux dans l’atmosphère. Calculez la quantité d’H₂ que vous pouvez récupérer chaque année et découvrez votre retour sur investissement (ROI).",
+      "learnMoreButton": "Découvrir le fonctionnement du recyclage"
     },
+
     "reset": {
-      "link": "Reset all inputs to default values",
-      "modalTitle": "Reset Calculator",
-      "modalDescription": "Are you sure you want to clear all your inputs and reset the calculator to its default values? This action cannot be undone.",
-      "cancelButton": "Cancel",
-      "confirmButton": "Yes, reset everything"
+      "link": "Réinitialiser toutes les valeurs par défaut",
+      "modalTitle": "Réinitialiser le calculateur",
+      "modalDescription": "Êtes-vous sûr de vouloir effacer toutes vos données et réinitialiser le calculateur à ses valeurs par défaut ? Cette action est irréversible.",
+      "cancelButton": "Annuler",
+      "confirmButton": "Oui, tout réinitialiser"
     },
+
     "results": {
-      "title": "Estimation Results",
-      "systemComplexity": "System Complexity :",
-      "recoveredHydrogen": "Recovered Hydrogen",
-      "estimatedGrossSavings": "Estimated Gross Savings",
-      "avoidedCo2": "Avoided CO₂",
-      "roi": "Return on Investment (ROI)",
-      "never": "Never",
-      "placeholder": "Select a mixed gas type on the left to see your potential savings and ROI.",
-      "footer": "*Calculations assume a recovery rate of {{rate}}%. Real-world implementation requires a technical audit."
+      "title": "Résultats estimés",
+      "systemComplexity": "Complexité du système :",
+      "recoveredHydrogen": "Hydrogène récupéré",
+      "estimatedGrossSavings": "Économies brutes estimées",
+      "avoidedCo2": "CO₂ évité",
+      "roi": "Retour sur investissement (ROI)",
+      "never": "Jamais",
+      "placeholder": "Sélectionnez un type de gaz mélangé à gauche pour voir vos économies potentielles et votre ROI.",
+      "footer": "*Les calculs supposent un taux de récupération de {{rate}} %. Une implémentation réelle nécessite un audit technique."
     },
+
     "cta": {
-      "title": "Want to Learn More?",
-      "description": "Hydrogen recycling systems are highly specific to the gas mixtures and processes involved. If you need more detailed information, research data, or want to discuss a specific use case, feel free to reach out.",
-      "button": "Contact Us for More Information"
+      "title": "Vous souhaitez en savoir plus ?",
+      "description": "Les systèmes de recyclage de l’hydrogène dépendent fortement des mélanges gazeux et des procédés industriels utilisés. Si vous avez besoin d’informations détaillées, de données de recherche ou souhaitez discuter d’un cas d’usage spécifique, n’hésitez pas à nous contacter.",
+      "button": "Nous contacter pour plus d’informations"
     }
   },
-  
+
   "units": {
-    "normalized_m3_per_year": "Nm³ / year",
-    "kg_per_year": "kg / year",
-    
+    "normalized_m3_per_year": "Nm³ / an",
+    "kg_per_year": "kg / an",
+
     "pourcent": "%",
 
     "eur_per_kg": "€ / kg",
-    "eur_per_year": "€ / year",
+    "eur_per_year": "€ / an",
     "elec_price_mwh": "€ / MWh",
     "elec_price_kwh": "€ / kWh",
     "eur": "€",
-    
+
     "percent_capex": "% CAPEX",
-    
+
     "kwh_per_kg": "kWh / kg",
 
-    "tons": "Tons",
+    "tons": "Tonnes",
 
-    "years": "years"
+    "years": "ans"
   }
-
 }
