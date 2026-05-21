@@ -1,0 +1,19 @@
+{
+  "about": {
+    "title": "Über GreenLabs H₂",
+    "description": "Erfahren Sie mehr über unsere Mission, unsere Forschenden und die Open-Source-Engineering-Tools, die wir für die grüne Wasserstoffindustrie entwickeln.",
+    "sections": {
+      "rethinking_title": "Wasserstofflabore als GreenLabs neu denken",
+      "intro": "Produktion, Recycling und intelligente Steuerung von grünem Wasserstoff und damit Sicherung der Versorgung: Entwicklung eines Open-Source-Tools für die DHBW, für Partner und andere Hochschulen.",
+      "image_1_title": "DHBW-Studierende arbeiten an einem elektrochemischen Kompressor im Wasserstofflabor. Dadurch kann H₂ in einem einzigen Schritt gereinigt, komprimiert und in Druckflaschen bei 200 bar gespeichert werden.",
+      "image_1_alt": "Zwei Studierende mit einem elektrochemischen Kompressor im Wasserstofflabor der DHBW Mannheim, daneben eine Wasserstoffflasche.",
+      "image_1_caption": "BWGreenLabs H2: Durch das GreenLab wird der Umgang mit H₂ – wie hier am elektrochemischen Kompressor – für Studierende zum Alltag.",
+      "paragraph_1": "Mit diesem Projekt verfolgt die DHBW Mannheim das Ziel, am Campus Eppelheim grünen Wasserstoff zu produzieren und zu recyceln. Dadurch werden nicht nur Kosten eingespart, sondern auch ein bedeutender Beitrag zur Energiewende geleistet. Im Mittelpunkt steht ein ganzheitlicher Ansatz, der Wasserstoff nicht nur als Energieträger oder Laborgas betrachtet, sondern auch als Quelle für Strom und Wärme.",
+      "paragraph_2": "Die DHBW Mannheim ist ideal geeignet, Wasserstofflabore als GreenLabs neu zu denken. Seit über 10 Jahren wird hier im Wasserstofflabor zu allen Aspekten der Wasserstoffproduktion, -reinigung, -speicherung und -nutzung geforscht. Dadurch ist der Großteil der Infrastruktur bereits vorhanden, und der Schwerpunkt liegt auf der Entwicklung eines Open-Source-Tools zur Umsetzung einer intelligenten Steuerung, die die Versorgungssicherheit gewährleistet. Dies ermöglicht die Übertragung der Projektergebnisse auf andere Labore sowie eine techno-ökonomische Bewertung. Das Tool wird nicht nur anderen Hochschulen und Forschungseinrichtungen zur Verfügung gestellt, sondern auch allen dualen Partnerunternehmen der DHBW.",
+      "paragraph_3": "Die Produktion und der Umgang mit Wasserstoff vor Ort werden durch GreenLab H2 für dual Studierende zum Alltagserlebnis. Sie fungieren als Botschafter für GreenLab-Maßnahmen und bringen das Know-how in ihre jeweiligen Unternehmen ein.",
+      "paragraph_4": "Das Projekt wird vom Ministerium für Wissenschaft, Forschung und Kunst im Rahmen des Ideenwettbewerbs „BWGreenLabs: Nachhaltiger Energie- und Ressourceneinsatz in Forschungslaboren des Landes Baden-Württemberg“ gefördert.",
+      "image_2_title": "Logo des Ministeriums für Wissenschaft, Forschung und Kunst (MWK) BW",
+      "image_2_alt": "Logo des Ministeriums für Wissenschaft, Forschung und Kunst (MWK) BW"
+    }
+  }
+}

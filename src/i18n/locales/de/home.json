@@ -1,0 +1,58 @@
+{
+  "home_hero": {
+    "titleP1": "Fortschrittliche Werkzeuge für ",
+    "titleGreen": "Grünen Wasserstoff",
+    "titleP2": " Engineering",
+    "subtitle": "Eine spezialisierte Plattform für Labore, Forschende und Industrieingenieure zur Planung, Simulation und Optimierung von H₂-Systemen.",
+    "buttons": {
+      "primary": "Auf Werkzeuge zugreifen",
+      "secondary": "Technologien entdecken"
+    }
+  },
+  "home_lab": {
+    "badge": "Unsere Einrichtung",
+    "title": "Im GreenLab",
+    "description": "Wir sind eine fortschrittliche Forschungseinrichtung, die sich auf die Skalierung grüner Wasserstofftechnologien spezialisiert hat. Über digitale Simulationen hinaus konzentriert sich unser physisches Labor auf das Testen, Optimieren und Entwickeln der nächsten Generation von Elektrolyseuren und Gasrecyclingsystemen.",
+    "button": "Unsere Forschung entdecken"
+  },
+  "home_tools_section": {
+    "title": "Engineering-Werkzeuge",
+    "subtitle": "Direkter Zugriff auf unsere Simulations- und Bewertungsmodelle."
+  },
+  "home_learn_section": {
+    "title": "Wissensdatenbank",
+    "subtitle": "Tauchen Sie tief in die Kerntechnologien der Wasserstoff-Wertschöpfungskette ein. Entdecken Sie unsere umfassende technische Dokumentation."
+  },
+
+  "homeLearn": {
+    "productionChain": {
+      "title": "H₂-Produktionskette",
+      "description": "Verstehen Sie den vollständigen Lebenszyklus von grünem Wasserstoff – von der Wasserelektrolyse bis hin zu Speicherung und Verteilung. Eine makroskopische Sicht auf die Infrastruktur."
+    },
+    "recyclingProcess": {
+      "title": "Wasserstoff-Recyclingprozess",
+      "description": "Erfahren Sie mehr über die Technologien zur Rückgewinnung, Reinigung und erneuten Verdichtung von nicht verbrauchtem Wasserstoff aus industriellen Abgasen."
+    },
+    "electrolyzerTechnologies": {
+      "title": "Elektrolyseur-Technologien",
+      "description": "Vergleichen Sie die Kerntechnologien PEM, alkalisch und AEM. Analysieren Sie Effizienzparameter, Betriebslebensdauer und ideale industrielle Anwendungsfälle."
+    },
+    "compressionSystems": {
+      "title": "Kompressionssysteme",
+      "description": "Entdecken Sie mechanische und nicht-mechanische Verdichtungsmethoden, die für die hochdichte Wasserstoffspeicherung und Netzeinspeisung erforderlich sind."
+    }
+  },
+
+  "homeTools": {
+    "techno_economic_calculator": {
+      "title": "Techno-ökonomischer Rechner",
+      "description": "Berechnen Sie die Wasserstoffgestehungskosten (LCOH), CAPEX und OPEX. Schätzen Sie potenzielle Einnahmen und Amortisationszeiten für Produktionsanlagen von grünem Wasserstoff.",
+      "buttonText": "LCOH-Simulation starten"
+    },
+    "hydrogen_recovery_calculator": {
+      "title": "Wasserstoff-Rückgewinnungsrechner",
+      "description": "Bewerten Sie die wirtschaftliche Machbarkeit der Rückgewinnung von nicht verbrauchtem Wasserstoff. Berechnen Sie jährliche Rückgewinnungsmengen und den Return on Investment (ROI) basierend auf Ihrer Abgasmischung.",
+      "buttonText": "ROI berechnen"
+    }
+  }
+}

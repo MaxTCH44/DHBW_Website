@@ -1,0 +1,75 @@
+{
+  "title": "Grüne H₂-Produktionskette",
+  "renewables": {
+    "title": "Erneuerbare Energien",
+
+    "riseTitle": "Der Aufstieg der erneuerbaren Energien in Deutschland (2024)",
+    "riseDescription": "Um die wachsende Notwendigkeit von grünem Wasserstoff zu verstehen, müssen wir zunächst die aktuelle Energielandschaft betrachten. Im Jahr 2024 erreichte Deutschland einen historischen Meilenstein: Erneuerbare Energiequellen deckten 62,7 % der öffentlichen Nettostromerzeugung und speisten etwa 275,2 Terawattstunden (TWh) in das Netz ein.",
+
+    "energyMixTitle": "Ein stark schwankender Energiemix",
+    "energyMixWindDescription": "Windkraft (Onshore und Offshore) bleibt das Rückgrat des deutschen Systems und macht 33 % des gesamten Strommixes aus. Die Windstromproduktion ist jedoch stark volatil. Genau diese Schwankungen treiben den Bedarf an großflächigen Energiespeicher- und Umwandlungslösungen wie der Wasserelektrolyse voran.",
+    "energyMixSolarDescription": "Solar-Photovoltaik (PV) stellt den am schnellsten wachsenden Sektor dar und deckt 14 % des Netzes ab. Besonders bemerkenswert ist der Eigenverbrauch – also Strom, der direkt vor Ort genutzt wird, ohne in das öffentliche Netz eingespeist zu werden –, der 2024 auf über 12 TWh anstieg. Dieser Trend ist besonders relevant für Labore und Industrieanlagen, die eine 100 % autarke Wasserstoffproduktion anstreben.",
+    "energyMixOtherDescription": "Der verbleibende Anteil des erneuerbaren Energiemixes wird durch Biomasse (7 %, stabile Grundlastenergie) und Wasserkraft (4 %) bereitgestellt.",
+
+    "chartTitle": "Bruttostromerzeugung in Deutschland von 2019 bis 2025",
+
+    "chart": {
+      "series": {
+        "nonRenewable": "Nicht erneuerbar (TWh)",
+        "wind": "Wind (TWh)",
+        "solar": "Solar (TWh)",
+        "biomass": "Biomasse (TWh)",
+        "hydro": "Wasserkraft (TWh)",
+        "otherGreen": "Andere erneuerbare Energien (TWh)"
+      }
+    },
+
+    "windPower": {
+      "title": "Windkraft: Nutzung von Luftströmungen",
+
+      "description1": "Windkraftanlagen arbeiten, indem sie die kinetische Energie bewegter Luft aufnehmen und in mechanische Rotation umwandeln, die einen elektrischen Generator antreibt. Damit diese Systeme effizient funktionieren, benötigen sie offene Landschaften oder Offshore-Gebiete mit starken und konstanten Windströmungen.",
+
+      "imageAlt": "Windkraftanlage",
+
+      "description2": "Obwohl Windkraft eine bemerkenswert saubere und hochskalierbare Energiequelle ist, die enorme Mengen an Strom erzeugen kann, liegt ihr größter Nachteil in ihrer extremen Unbeständigkeit. Der Wind weht nicht immer dann, wenn die Nachfrage hoch ist, und die visuelle oder akustische Wirkung großer Anlagen kann lokal zu Akzeptanzproblemen führen.",
+
+      "description3": "Diese schwankende Natur macht Windenergie zum idealen Kandidaten für die Umwandlung in grünen Wasserstoff, sodass überschüssige Energie aus windreichen Nächten gespeichert statt verschwendet werden kann."
+    },
+
+    "solarPower": {
+      "title": "Solar-Photovoltaik: Direkte Umwandlung von Sonnenlicht",
+
+      "description1": "Im Gegensatz zur Windenergie kommt Solarenergie ohne bewegliche Teile aus. Photovoltaikzellen (PV) basieren auf Halbleitermaterialien, typischerweise Silizium, die Photonen aus dem Sonnenlicht absorbieren und Elektronen freisetzen, wodurch direkt Gleichstrom (DC) erzeugt wird.",
+
+      "description2": "Diese Technologie benötigt ungehinderten Zugang zu Sonnenlicht und große Flächen, weshalb Dächer und offene Felder ideale Einsatzorte darstellen. Der große Vorteil der Solarenergie liegt in ihrer Skalierbarkeit und dem geringen Wartungsaufwand, wodurch sie sich besonders gut für lokalen Eigenverbrauch in Laboren oder Fabriken eignet.",
+
+      "imageAlt": "Solarmodule auf einem Dach",
+
+      "description3": "Ihre Effizienz hängt jedoch stark von Wetterbedingungen und Tageszeit ab und fällt nachts auf null. Daher erfordert eine starke Abhängigkeit von Solarenergie robuste Speicherarchitekturen wie Batteriesysteme oder Wasserstofflösungen, um die Nachtstunden zu überbrücken."
+    },
+
+    "biomass": {
+      "title": "Biomasse: Die steuerbare organische Grundlast",
+
+      "description1": "Biomasseenergie wird durch die Verbrennung oder biologische Fermentation organischer Stoffe – wie landwirtschaftliche Abfälle, Holzpellets oder Biogas – erzeugt, um Wärme und Dampf zu produzieren, die wiederum eine Turbine antreiben. Die wichtigste Voraussetzung ist eine kontinuierliche und nachhaltige Versorgung mit organischem Ausgangsmaterial.",
+
+      "imageAlt": "Holzbiomasse",
+
+      "description2": "Im Gegensatz zu Wind- und Solarenergie ist Biomasse eine „steuerbare“ Energiequelle, was bedeutet, dass sie je nach Bedarf hoch- oder heruntergefahren werden kann, um unabhängig vom Wetter eine stabile und zuverlässige Grundlast für das Stromnetz bereitzustellen.",
+
+      "description3": "Nachteilig ist, dass bei der Verbrennung Kohlendioxid freigesetzt wird (auch wenn Biomasse über den Lebenszyklus der Pflanzen meist als CO₂-neutral gilt). Zudem erfordert die Gewinnung ausreichender Biomasse große Mengen an Land und Wasser und kann mit der Nahrungsmittelproduktion konkurrieren."
+    },
+
+    "hydropower": {
+      "title": "Wasserkraft: Der zuverlässige Fluss",
+
+      "description1": "Wasserkraftwerke nutzen den kontinuierlichen Wasserfluss und das Gefälle von Flüssen oder Staudämmen, um mechanische Turbinen anzutreiben. Diese Technologie erfordert spezielle geografische Bedingungen, insbesondere große Wassermengen und Höhenunterschiede.",
+
+      "imageAlt": "Sardar-Sarovar-Staudamm, Gujarat, Indien",
+
+      "description2": "Wo sie realisierbar ist, ist Wasserkraft äußerst effizient, hochzuverlässig und zeichnet sich durch eine außergewöhnlich lange Betriebsdauer aus. Bestimmte Systeme wie Pumpspeicherkraftwerke können sogar als riesige physische Batterien fungieren, indem Wasser bei Energieüberschüssen bergauf gepumpt wird.",
+
+      "description3": "Die starke Abhängigkeit von lokalen geografischen Gegebenheiten begrenzt jedoch den Bau neuer Anlagen, und große Staudämme können lokale aquatische Ökosysteme erheblich beeinträchtigen und natürliche Wasserläufe verändern."
+    }
+  }
+}

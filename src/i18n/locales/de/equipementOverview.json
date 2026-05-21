@@ -1,0 +1,316 @@
+{
+    "advantages": "Vorteile",
+    "disadvantages": "Nachteile",
+    "electrolyzers": {
+        "title": "Arten von Elektrolyseuren",
+        "introText": "Die Wasserelektrolyse ist der Eckpfeiler der grünen Wasserstoffproduktion und nutzt erneuerbare Energie, um Wassermoleküle in reinen Wasserstoff und Sauerstoff aufzuspalten. Die industrielle Praxis erfordert jedoch vielfältige Lösungen, um Investitionskosten, Energieeffizienz und die dynamische Reaktion auf schwankende Stromnetze in Einklang zu bringen. Entdecken Sie nachfolgend die grundlegenden Mechanismen, Materialhürden und einzigartigen Vorteile jeder Technologie.",
+        "pem": {
+            "label": "PEM-Elektrolyse",
+            "introduction": "Die PEM-Wasserelektrolyse wurde in den 1950er Jahren erstmals konzipiert und entwickelt, um die betrieblichen Nachteile der traditionellen alkalischen Wasserelektrolyse zu überwinden. Das Herzstück dieser Technologie ist eine feste polysulfonierte Polymermembran (wie Nafion), die als Elektrolyt dient und speziell dafür ausgelegt ist, Protonen zu leiten, während sie für Gase undurchlässig bleibt.",
+
+            "mechanismTitle": "Der elektrochemische Mechanismus",
+            "mechanismDescription": "Das Grundprinzip besteht in der Aufspaltung von Wasser an spezifischen Elektroden. Flüssiges Wasser wird direkt zur Anode gepumpt, wo es elektrochemisch in Sauerstoffgas (O₂), Protonen (H⁺) und Elektronen (e⁻) zersetzt wird.",
+
+            "anodeReaction": "Anodenreaktion: H₂O → 2H⁺ + ½ O₂ + 2e⁻",
+
+            "membraneDescription": "Die feste Polymermembran lässt nur positiv geladene Ionen passieren, sodass die Protonen direkt durch die Membran zur Kathode wandern. Die Elektronen fließen durch einen externen Stromkreis und liefern die Treibspannung. An der Kathode rekombinieren sie zu hochreinem Wasserstoffgas.",
+
+            "cathodeReaction": "Kathodenreaktion: 2H⁺ + 2e⁻ → H₂",
+
+            "componentsTitle": "Komponenten und Herausforderungen",
+            "componentsDescription": "Eine PEM-Zelle basiert auf der Membran-Elektroden-Einheit (MEA). Da das System in einer stark korrosiven sauren Umgebung betrieben wird, ist der Einsatz teurer Edelmetalle erforderlich. Für die Kathode (HER) wird typischerweise Platin (Pt) verwendet, während für die Anode (OER) Iridiumdioxid (IrO₂) oder Rutheniumdioxid (RuO₂) benötigt wird. Darüber hinaus müssen Komponenten wie Separatorplatten aus korrosionsbeständigem Titan gefertigt werden, was die Investitionskosten erheblich erhöht.",
+
+            "advantages": {
+                "ultrapureHydrogen": "Erzeugt ultrareinen Wasserstoff (99,99 %) und reinen Sauerstoff als Nebenprodukt",
+                "highCurrentDensity": "Betrieb bei hohen Stromdichten (über 2 A/cm²)",
+                "compactDesign": "Kompaktes Systemdesign mit sehr geringem Platzbedarf",
+                "dynamicOperation": "Hochdynamischer Betrieb mit schnellen Reaktionszeiten, ideal für intermittierende erneuerbare Energien",
+                "highPressure": "Kann bei hohen Drücken betrieben werden (vereinfacht die nachgelagerte Verdichtung)"
+            },
+
+            "disadvantages": {
+                "highCapex": "Hohe Investitionskosten aufgrund teurer Zellkomponenten (Separatorplatten und MEA)",
+                "nobleMetals": "Starke Abhängigkeit von seltenen und teuren Edelmetallen (Platin, Iridium, Ruthenium)",
+                "corrosiveEnvironment": "Die stark korrosive saure Betriebsumgebung degradiert Komponenten mit der Zeit",
+                "lowerDurability": "Geringere Haltbarkeit und Lebensdauer im Vergleich zu ausgereiften alkalischen Systemen",
+                "commercialization": "Die Kommerzialisierung in der Multi-Megawatt-Skala befindet sich noch in der Kurzfristphase"
+            },
+            "schematic": {
+                "power": "STROMVERSORGUNG",
+                "membrane": {
+                    "title": "Membran",
+                    "subtitle": "Protonenaustauschmembran (PEM)",
+                    "explanation": "Eine feste Polymermembran (z. B. Nafion), die als Elektrolyt dient. Sie lässt nur positiv geladene Protonen (H⁺) passieren und zwingt die Elektronen, durch den externen Stromkreis zu fließen."
+                },
+                "cathode": {
+                    "title": "Kathode (-)",
+                    "subtitle": "Kathode (Titan / Platin)",
+                    "explanation": "Protonen (H⁺) aus der Membran verbinden sich mit Elektronen (e⁻) aus dem externen Stromkreis zu reinem Wasserstoffgas (H₂)."
+                },
+                "anode": {
+                    "title": "Anode (+)",
+                    "subtitle": "Anode (Titan)",
+                    "explanation": "Wasser strömt von dieser Seite ein und wird hier oxidiert, um Sauerstoffgas (O₂), Protonen (H⁺) und Elektronen (e⁻) zu erzeugen. Sauerstoff wird freigesetzt, Protonen treten in die Membran ein."
+                }
+            }
+        },
+
+        "alkaline": {
+            "label": "Alkalische Elektrolyse",
+            "introduction": "Die alkalische Wasserelektrolyse ist eine der praktischsten und ausgereiftesten Technologien zur Wasserstoffproduktion mit einer langen und etablierten Geschichte in der Chlor-Alkali-Industrie. Das System arbeitet mit einer hochkonzentrierten wässrigen alkalischen Lösung, typischerweise 20–30 Gew.-% Kaliumhydroxid (KOH), als flüssigem Elektrolyten.",
+
+            "mechanismTitle": "Der elektrochemische Mechanismus",
+            "mechanismDescription": "Im Gegensatz zu PEM-Systemen, die auf Protonen basieren, arbeitet die AWE in einer hochbasischen flüssigen Umgebung, in der Hydroxidanionen (OH⁻) als primäre elektrochemische Ladungsträger fungieren.",
+
+            "cathodeReaction": "Kathodenreaktion: 2H₂O + 2e⁻ → H₂ + 2OH⁻",
+
+            "transportDescription": "An der Kathode wird flüssiges Wasser reduziert, um molekulares Wasserstoffgas und Hydroxidanionen zu erzeugen. Diese Anionen werden durch ein poröses Diaphragma zur Anode transportiert, wo sie oxidiert werden, um molekulares Sauerstoffgas, Wasser und Elektronen freizusetzen.",
+
+            "anodeReaction": "Anodenreaktion: 2OH⁻ → ½ O₂ + H₂O + 2e⁻",
+
+            "componentsTitle": "Komponenten und Katalysatoren",
+            "componentsDescription": "Ein wesentlicher wirtschaftlicher Vorteil der alkalischen Umgebung ist, dass keine teuren Edelmetalle benötigt werden. Die Elektroden bestehen typischerweise aus reichlich vorhandenen Übergangsmetallen wie Raney-Nickel, Ni-beschichtetem Stahl oder Edelstahlnetzen. Um die Vermischung der Produktgase zu verhindern, verwendet die Zelle ein dickes poröses Diaphragma (historisch Asbest, heute moderne poröse Oxide wie Zirfon), das den OH⁻-Ionentransport ermöglicht und gleichzeitig Wasserstoff und Sauerstoff sicher getrennt hält.",
+
+            "advantages": {
+                "cheapCatalysts": "Keine teuren Edelmetalle als Katalysatoren erforderlich (verwendet Ni, Fe, Co)",
+                "matureTechnology": "Ausgereifte, bewährte und vollständig im Megawatt-Maßstab kommerzialisierte Technologie",
+                "lowCapex": "Geringe Investitionskosten (CAPEX) im Vergleich zu PEM-Systemen",
+                "highEfficiency": "Hohe Energieeffizienz (70–80 %)"
+            },
+
+            "disadvantages": {
+                "lowCurrentDensity": "Betrieb bei geringen Stromdichten (unter 400 mA/cm²)",
+                "hazardousElectrolyte": "Verwendung eines stark korrosiven und gefährlichen flüssigen Elektrolyten (KOH)",
+                "poorDynamicResponse": "Geringe Dynamikfähigkeit, wodurch die Anpassung an stark schwankende Wind- oder Solarenergie erschwert wird",
+                "carbonateImpurities": "Verunreinigungen (wie Karbonate) im KOH können katalytische Stellen blockieren und Degradation verursachen",
+                "largeFootprint": "Großer Platzbedarf und komplexe industrielle Infrastruktur für den Großmaßstab erforderlich"
+            },
+            "schematic": {
+                "power": "STROMVERSORGUNG",
+                "diaphragm": {
+                    "title": "Diaphragma",
+                    "subtitle": "Poröses Diaphragma & Elektrolyt",
+                    "explanation": "Ein poröser Separator, der in einem alkalischen Flüssigelektrolyten (meist 20–30 % KOH oder NaOH) eingetaucht ist. Er hält H₂ und O₂ getrennt und lässt gleichzeitig Hydroxidionen (OH⁻) passieren."
+                },
+                "cathode": {
+                    "title": "Kathode (-)",
+                    "subtitle": "Kathode (Nickel-basiert)",
+                    "explanation": "Wasser (H₂O) und Elektronen (e⁻) aus dem externen Stromkreis reagieren hier zu reinem Wasserstoffgas (H₂) und Hydroxidionen (OH⁻). Das Wasser tritt von dieser Seite ins System ein."
+                },
+                "anode": {
+                    "title": "Anode (+)",
+                    "subtitle": "Anode (Nickel-basiert / Stahl)",
+                    "explanation": "Hydroxidionen (OH⁻) aus dem Elektrolyten werden hier oxidiert. Sie setzen Sauerstoffgas (O₂), Wasser und Elektronen (e⁻) frei, die in den externen Stromkreis fließen."
+                }
+            }
+        },
+
+        "aem": {
+            "label": "AEM-Elektrolyse",
+
+            "introduction": "Die AEM-Elektrolyse gilt weithin als der Durchbruch der nächsten Generation in der grünen Wasserstoffproduktion. Sie überbrückt im Wesentlichen die Lücke zwischen der traditionellen alkalischen Wasserelektrolyse (AWE) und den Protonenaustauschmembran-Systemen (PEM). Die Kerninnovation liegt im Einsatz einer festen Polymermembran, die in einer alkalischen Umgebung betrieben wird und selektiv negativ geladene Hydroxidanionen (OH⁻) transportiert.",
+
+            "mechanismTitle": "Der elektrochemische Mechanismus",
+
+            "mechanismDescription": "In einem AEM-Elektrolyseur sind die Halbzellenreaktionen identisch mit denen der traditionellen alkalischen Elektrolyse. Reines Wasser oder eine sehr verdünnte alkalische Lösung wird an der Kathode zugeführt. Hier werden Wassermoleküle reduziert, um reines Wasserstoffgas und Hydroxidionen zu bilden.",
+
+            "cathodeReaction": "Kathodenreaktion: 2H₂O + 2e⁻ → H₂ + 2OH⁻",
+
+            "transportDescription": "Angetrieben durch das elektrische Feld wandern diese Hydroxidanionen direkt durch die feste Anionenaustauschmembran zur Anode. An der Anode werden die Ionen oxidiert, um Sauerstoffgas, Wasser und Elektronen zu erzeugen.",
+
+            "anodeReaction": "Anodenreaktion: 2OH⁻ → ½ O₂ + H₂O + 2e⁻",
+
+            "componentsTitle": "Komponenten und aktuelle Herausforderungen",
+
+            "componentsDescription": "Das größte Versprechen der AEM-Technologie ist ihre Kosteneffizienz. Sie eliminiert den Bedarf an teuren Edelmetallkatalysatoren (wie Platin und Iridium) und Titankomponenten und nutzt stattdessen reichlich vorhandene Übergangsmetalle wie Nickel. Gleichzeitig bietet sie durch den Einsatz einer festen Membran statt eines dicken flüssigen Diaphragmas den kompakten Platzbedarf, die Hochdruckfähigkeiten und die schnelle Dynamik, die für PEM-Systeme typisch sind.",
+
+            "advantages": {
+                "lowCapitalCost": "Geringe Investitionskosten: verwendet günstige, reichlich vorhandene Nicht-Edelmetall-Katalysatoren (Ni, Fe, Co)",
+                "hybridBenefits": "Kombiniert die schnelle Dynamik von PEM mit den günstigen Materialien der alkalischen Elektrolyse",
+                "safeElectrolyte": "Verwendet reines Wasser oder eine sehr verdünnte/sichere alkalische Lösung (1 % KOH statt 30 %)",
+                "pressurizedHydrogen": "Erzeugt hochreines Wasserstoffgas unter Druck und reduziert den Verdichtungsbedarf",
+                "compactDesign": "Kompaktes Systemdesign mit geringem Platzbedarf"
+            },
+
+            "disadvantages": {
+                "membraneDurability": "Die Haltbarkeit der Membran ist ein wesentliches Problem; das Polymergerüst degradiert in alkalischen Umgebungen schnell",
+                "lowerConductivity": "Geringere Ionenleitfähigkeit im Vergleich zu PEM-Systemen",
+                "shorterLifetime": "Die Gesamtlebensdauer der Zelle ist derzeit kürzer als bei kommerziellen PEM- und alkalischen Systemen",
+                "earlyCommercialization": "Noch in der frühen Kommerzialisierungsphase; keine umfangreiche Gigawatt-Maßstab-Einsatzgeschichte"
+            },
+            "schematic": {
+                "power": "STROMVERSORGUNG",
+                "membrane": {
+                    "title": "Membran",
+                    "subtitle": "Anionenaustauschmembran (AEM)",
+                    "explanation": "Eine feste Polymermembran, die negative Hydroxidionen (OH⁻) von der Kathode zur Anode leitet. Sie bietet das kompakte Design einer PEM, arbeitet jedoch in einer leicht alkalischen Umgebung."
+                },
+                "cathode": {
+                    "title": "Kathode (-)",
+                    "subtitle": "Kathode (Nicht-PGM / Nickel-basiert)",
+                    "explanation": "Wasser (H₂O) und Elektronen (e⁻) reagieren hier zu Wasserstoffgas (H₂) und OH⁻-Ionen. Da AEM nicht stark sauer ist, können günstigere Übergangsmetalle anstelle von Platin verwendet werden."
+                },
+                "anode": {
+                    "title": "Anode (+)",
+                    "subtitle": "Anode (Nicht-PGM / Nickel oder Eisen)",
+                    "explanation": "Die OH⁻-Ionen, die die Membran durchquert haben, werden hier oxidiert und setzen Sauerstoffgas (O₂), Wasser und Elektronen (e⁻) frei. Teures Iridium ist nicht erforderlich."
+                }
+            }
+        },
+
+        "soec": {
+            "label": "SOEC-Elektrolyse",
+
+            "introduction": "Festoxid-Elektrolysezellen (SOEC) arbeiten bei extrem hohen Temperaturen, typischerweise zwischen 700 °C und 850 °C, und verwenden Hochtemperaturdampf anstelle von flüssigem Wasser. Durch die Nutzung thermischer Energie zur Unterstützung der Wasserspaltungsreaktion erzielen SOECs beispiellose elektrische Wirkungsgrade, die Niedertemperatursysteme weit übertreffen.",
+
+            "mechanismTitle": "Der elektrochemische Mechanismus",
+
+            "mechanismDescription": "Das Herzstück eines SOEC ist ein fester keramischer Elektrolyt (wie Yttriumoxid-stabilisiertes Zirkoniumdioxid), der negativ geladene Sauerstoffionen (O²⁻) leitet. Dampf wird zur Kathode geführt, wo er zu Wasserstoffgas und Oxidionen reduziert wird.",
+
+            "cathodeReaction": "Kathodenreaktion: H₂O + 2e⁻ → H₂ + O²⁻",
+
+            "transportDescription": "Diese Oxidionen wandern durch das dichte Keramikgitter des Elektrolyten zur Anode. Dort werden die Ionen oxidiert, verbinden sich zu Sauerstoffgas und geben Elektronen zurück in den Stromkreis ab.",
+
+            "anodeReaction": "Anodenreaktion: O²⁻ → ½ O₂ + 2e⁻",
+
+            "componentsTitle": "Materialien und Co-Elektrolyse",
+
+            "componentsDescription": "SOEC-Systeme benötigen keine teuren Edelmetalle; sie verwenden Nickel-Keramik-Verbundwerkstoffe und Perowskit-Oxide. Ein einzigartiger Vorteil des SOEC ist seine Fähigkeit zur „Co-Elektrolyse\" – der gleichzeitigen Elektrolyse von Dampf (H₂O) und Kohlendioxid (CO₂) zur Erzeugung von „Synthesegas\", einem wichtigen Baustein für synthetische grüne Kraftstoffe (E-Fuels). Allerdings beschleunigen die extremen Temperaturen die Materialdegradation und erschweren den dynamischen Betrieb.",
+
+            "advantages": {
+                "highestEfficiency": "Höchste elektrische Effizienz aller Elektrolyseurtypen (überschreitet oft 90 % bei Integration mit Abwärme)",
+                "wasteHeatUsage": "Kann industrielle Abwärme (aus Kern-, Stahl- oder Chemieanlagen) nutzen, um den Strombedarf zu senken",
+                "coElectrolysis": "Fähig zur Co-Elektrolyse (H₂O + CO₂) zur Erzeugung von Synthesegas für E-Fuels",
+                "noNobleMetals": "Benötigt keine teuren Edelmetallkatalysatoren (Platin/Iridium)"
+            },
+
+            "disadvantages": {
+                "materialDegradation": "Erhebliche Materialdegradation durch extreme Betriebstemperaturen (Korrosion, thermische Spannungen)",
+                "poorDynamicResponse": "Schlechte Dynamik und lange Anlaufzeiten, was die Kopplung mit stark intermittierenden erneuerbaren Energien erschwert",
+                "thermalManagement": "Abhängigkeit von komplexen Wärmemanagementsystemen",
+                "limitedCommercialMaturity": "Geringere kommerzielle Reife für den Gigawatt-Maßstab im Vergleich zu alkalischen oder PEM-Systemen"
+            },
+            "schematic": {
+                "power": "STROMVERSORGUNG",
+                "ceramic": {
+                    "title": "Keramik",
+                    "subtitle": "Festoxid-Elektrolyt (Keramik)",
+                    "explanation": "Ein dichtes Keramikmaterial (wie YSZ), das bei extrem hohen Temperaturen (700–1000 °C) arbeitet. Es leitet negative Oxidionen (O²⁻) und blockiert Elektronen und Gase."
+                },
+                "cathode": {
+                    "title": "Kathode (-)",
+                    "subtitle": "Kathode (Brennstoffelektrode)",
+                    "explanation": "Dampf (H₂O-Dampf) tritt hier ein. Hohe Wärme und Elektronen spalten den Dampf in Wasserstoffgas (H₂) und Oxidionen (O²⁻). Die Verwendung von Dampf reduziert den benötigten Strom erheblich."
+                },
+                "anode": {
+                    "title": "Anode (+)",
+                    "subtitle": "Anode (Luft-/Sauerstoffelektrode)",
+                    "explanation": "Die durch die Keramik wandernden Oxidionen (O²⁻) treffen hier ein, wo sie Elektronen (e⁻) abgeben und sich zu reinem Sauerstoffgas (O₂) verbinden."
+                }
+            }
+        }
+    },
+
+    "compressors": {
+        "title": "Arten von Kompressoren",
+        "introText": "Die Verdichtung ist ein entscheidender Schritt in der Wasserstoff-Wertschöpfungskette. Da Wasserstoff das leichteste Element im Universum ist, hat er bei Umgebungsdruck eine sehr geringe volumetrische Energiedichte. Um ihn effizient zu speichern, zu transportieren und zu nutzen, muss er auf extreme Drücke verdichtet werden – oft zwischen 350 und 700 bar. Entdecken Sie die verschiedenen Technologien, von traditionellen mechanischen Systemen bis hin zu innovativen Festkörper-Kompressoren, die eingesetzt werden, um diese anspruchsvollen Anforderungen zu erfüllen.",
+
+        "mechanical": {
+            "label": "Mechanische Verdichtung",
+
+            "introduction": "Die mechanische Verdichtung ist die ausgereifteste und am weitesten verbreitete Technologie zur Verdichtung von grünem Wasserstoff. Um Wasserstoff in praktischen Volumina zu speichern, muss sein Druck vom Elektrolyseur-Ausgangsdruck (10–30 bar) auf extreme Drücke von 350 bis über 700 bar für Mobilitäts- und Industrieanwendungen erhöht werden.",
+
+            "mechanismTitle": "Der Verdichtungsmechanismus",
+
+            "mechanismDescription": "Das Grundprinzip basiert auf der physischen Reduzierung des Gasvolumens. Die zwei bekanntesten Typen sind Hubkolbenkompressoren und Membran-Kompressoren. In diesen Systemen tritt Wasserstoff durch ein Einlassventil in einen Zylinder ein. Ein Kolben (oder eine flexible Metallmembran) – angetrieben durch einen Elektromotor, Hydraulik oder Druckluft – bewegt sich, um das Gas zwangsweise zu verdichten. Sobald der Zieldruck erreicht ist, öffnet ein Auslassventil, um den Hochdruckwasserstoff abzulassen.",
+
+            "purityDescription": "Membran-Kompressoren sind besonders für Brennstoffzellenanwendungen geeignet, da die flexible Metallmembran das Wasserstoffgas vollständig von den mechanischen Kolben und Schmierölen isoliert und so eine 100%ige Gasreinheit gewährleistet.",
+
+            "challengesTitle": "Material- und thermische Herausforderungen",
+
+            "challengesDescription": "Da Wasserstoff das kleinste Molekül ist, erfordern mechanische Kompressoren extrem fortschrittliche dynamische Dichtungen, um Leckagen zu verhindern. Darüber hinaus erzeugt die Gasverdichtung intensive Wärme. Diese Systeme benötigen eine robuste mehrstufige Kühlung, um Überhitzung zu vermeiden. Eine strenge Materialauswahl (wie spezialisierter 316L-Edelstahl) ist ebenfalls zwingend erforderlich, um „Wasserstoffversprödung\" unter massiver mechanischer Belastung zu verhindern.",
+
+            "advantages": {
+                "matureTechnology": "Hochgradig ausgereifte Technologie mit jahrzehntelanger industrieller Betriebsgeschichte",
+                "highPressureCapability": "Fähig, extreme Drücke zu erreichen (bis zu 1.000+ bar)",
+                "gasPurity": "Membranvarianten garantieren nullölverschmutzung, entscheidend für Brennstoffzellen",
+                "scalability": "Hochgradig skalierbar von kleinen Laborboosters bis zu großen industriellen Tankstellen"
+            },
+
+            "disadvantages": {
+                "mechanicalWear": "Zahlreiche bewegliche Teile, die starkem mechanischen Verschleiß unterliegen",
+                "highMaintenance": "Hoher Wartungsaufwand (häufiger Dichter- und Ventilwechsel)",
+                "noiseAndVibration": "Erzeugt im Betrieb erhebliche Geräusche und Vibrationen",
+                "coolingComplexity": "Erfordert komplexe und aufwendige Zwischenkühlsysteme zur Beherrschung der adiabatischen Wärmeentwicklung"
+            },
+            "schematic": {
+                "chamber": {
+                    "title": "Verdichtungskammer & Kolben",
+                    "explanation": "Der mechanische Kolben bewegt sich auf und ab. Die Aufwärtsbewegung verdichtet das Gas und erhöht dabei Druck und Temperatur drastisch."
+                },
+                "inlet": {
+                    "title": "Niederdruckwasserstoff EINLASS",
+                    "subtitle": "Niederdruckeinlass (blaue Seite)",
+                    "explanation": "Wasserstoffgas vom Elektrolyseur (typischerweise 20–30 bar) tritt hier ein. Das Einlassventil öffnet sich, wenn der Kolben nach unten geht, und saugt das Gas an."
+                },
+                "outlet": {
+                    "title": "Hochdruckwasserstoff AUSLASS",
+                    "subtitle": "Hochdruckauslass (rote Seite)",
+                    "explanation": "Sobald der Zieldruck (z. B. 350–700 bar) erreicht ist, öffnet das Auslassventil und gibt das verdichtete H₂-Gas zur Speicherung oder einem Kühlsystem frei."
+                }
+            }
+        },
+
+        "electrochemical": {
+            "label": "Elektrochemische Verdichtung",
+
+            "introduction": "Die elektrochemische Wasserstoffverdichtung (EHC) ist eine innovative Festkörpertechnologie ohne bewegliche Teile. Sie nutzt eine elektrische Spannung, um Wasserstoff durch eine spezialisierte Polymermembran zu treiben, das Gas aktiv zu verdichten und gleichzeitig als hocheffizienter Reiniger zu wirken.",
+
+            "mechanismTitle": "Der elektrochemische Mechanismus",
+
+            "mechanismDescription": "Strukturell einer PEM-Brennstoffzelle ähnlich, wird Niederdruckwasserstoff zur Anode geführt, wo er elektrochemisch in Protonen (H⁺) und Elektronen aufgespalten wird. Die feste Protonenaustauschmembran (PEM) lässt nur die Protonen zur Kathodenseite passieren.",
+
+            "pressureBuildUpDescription": "An der Kathode rekombinieren Protonen und Elektronen zu Wasserstoffgas (H₂). Da die Kathodenkammer versiegelt und eingeschränkt ist, baut die kontinuierliche Gasansammlung natürlich einen massiven Druck auf, ohne jegliche physische mechanische Kraft.",
+
+            "advantagesTitle": "Reinigung und Festkörper-Vorteile",
+
+            "advantagesDescription": "Da die Membran strikt nur für Protonen durchlässig ist, werden Verunreinigungen (wie CO oder Wasser) an der Anode blockiert, wodurch der Ausgang ultrarein ist (99,999 % H₂). Darüber hinaus gewährleistet die Abwesenheit beweglicher Teile einen stillen, vibrationsfreien Betrieb und eliminiert vollständig das Risiko einer Ölverunreinigung.",
+
+            "advantages": {
+                "silentOperation": "Keine beweglichen Teile garantieren einen vollständig geräusch- und vibrationsfreien Betrieb",
+                "purification": "Doppelfunktion: reinigt den Wasserstoff beim Verdichten auf bis zu 99,999 % inhärent",
+                "oilFree": "100 % ölfreies Design verhindert jegliche mechanische Verunreinigung des Gases",
+                "lowMaintenance": "Hohe Zuverlässigkeit und geringer Wartungsaufwand durch den Wegfall mechanischen Verschleißes"
+            },
+
+            "disadvantages": {
+                "highCapex": "Hohe Investitionskosten aufgrund der Abhängigkeit von Edelmetallkatalysatoren (Platin) und spezialisierten Membranen",
+                "limitedFlowRates": "Derzeit auf geringere Volumenströme beschränkt im Vergleich zu großen industriellen mechanischen Kompressoren",
+                "scalingComplexity": "Zur Kapazitätserweiterung müssen mehrere Zellstacks hinzugefügt werden, was den Platzbedarf erhöht",
+                "catalystPoisoning": "Der Katalysator kann durch bestimmte schwere Verunreinigungen (wie Schwefel) im Zuführgas „vergiftet\" und degradiert werden"
+            },
+            "schematic": {
+                "power": "STROMVERSORGUNG",
+                "membrane": {
+                    "title": "Membran",
+                    "subtitle": "Protonenaustauschmembran",
+                    "explanation": "Fungiert als gasdichte Barriere. Sie lässt nur Protonen (H⁺) von der Niederdruckseite zur Hochdruckseite passieren und verhindert, dass das verdichtete Gas zurückströmt."
+                },
+                "cathode": {
+                    "title": "Kathode (-)",
+                    "subtitle": "Kathode (Hochdruck)",
+                    "explanation": "Protonen und Elektronen rekombinieren hier zu Wasserstoffgas (H₂). Da die Membran gasdicht ist, wird das neu gebildete Wasserstoff eingeschlossen und baut elektrochemisch immensen Druck auf."
+                },
+                "anode": {
+                    "title": "Anode (+)",
+                    "subtitle": "Anode (Niederdruck)",
+                    "explanation": "Wasserstoffgas (H₂) tritt hier ein. Ein Katalysator spaltet die Wasserstoffmoleküle in Protonen (H⁺) und Elektronen (e⁻). Die Spannung treibt sie auseinander."
+                },
+                "pressure": {
+                    "low": "Niederdruckwasserstoff",
+                    "high": "Hochdruckwasserstoff"
+                }
+            }
+        }
+    }
+}

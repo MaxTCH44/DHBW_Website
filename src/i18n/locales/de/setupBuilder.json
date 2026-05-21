@@ -1,0 +1,72 @@
+{
+  "title": "Elektrolyseur-Setup-Builder",
+
+  "setupBuilder": {
+    "create_new_setup": "Neues Setup erstellen",
+    "configuration_name": "Konfigurationsname",
+    "configuration_name_placeholder": "z. B. Testanlage Alpha",
+    "technology_type": "Technologietyp",
+
+    "electrolyzer_specs": "Elektrolyseur-Spezifikationen",
+    "stack_power": "Stack-Leistung",
+    "max_stacks_per_unit": "Max. Stacks pro Einheit",
+    "energy_consumption": "Energieverbrauch",
+    "water_consumption": "Wasserverbrauch",
+
+    "financials": "Finanzen",
+    "single_stack_price": "Preis pro Stack",
+    "global_maintenance": "Gesamtwartung",
+    "stack_lifetime": "Stack-Lebensdauer",
+
+    "auxiliary_equipments": "Hilfssysteme (BOP)",
+    "add_component": "Komponente hinzufügen (Kühler, Trockner usw.)",
+    "component_name": "Komponentenname",
+    "added_power": "Zusätzliche Leistung",
+    "added_water": "Zusätzliches Wasser",
+    "added_capex": "Zusätzliches CAPEX",
+    "capacity_supported": "Unterstützte Kapazität",
+    "add_to_setup": "Zum Setup hinzufügen",
+    "save_complete_setup": "Komplettes Setup speichern",
+
+    "saved_configurations": "Gespeicherte Konfigurationen",
+    "setups_count": "Setups",
+
+    "no_setups_title": "Noch keine Setups im Speicher vorhanden.",
+    "no_setups_subtitle": "Erstellen Sie links Ihre erste Konfiguration.",
+
+    "max": "Max",
+    "total_capex": "Gesamtes CAPEX",
+    "cap": "Kap",
+    "sys": "Sys",
+
+    "balance_of_plant": "Balance of Plant (enthalten)"
+  },
+
+  "units": {
+    "kwh_per_kg": "kWh/kg",
+    "kwh_per_m3": "kWh/m³",
+
+    "percent_capex": "% CAPEX",
+    "eur": "€",
+
+    "power_kw": "kW",
+
+    "stacks": "Stacks",
+    "units": "Einheiten",
+
+    "kW_per_stack": "kW/Stack",
+
+    "l_per_hour": "L/h",
+
+    "hours": "Stunden"
+  },
+
+  "electrolyzer": {
+    "type": {
+      "pem": "PEM",
+      "aem": "AEM",
+      "alkaline": "Alkalisch",
+      "soec": "SOEC"
+    }
+  }
+}
