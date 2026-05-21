@@ -1,32 +1,32 @@
 {
-    "title": "Scientific References & Sources",
-    "introText": "The data, models, and explanations used in our calculators and articles are based on peer-reviewed research, institutional reports, and industry standards. Explore the literature below.",
-    
-    "readPublication": "Read publication",
-    
-    "references": {
-        "calculator_references": "Calculator References",
-        "hydrogen_cost_calculator": "Hydrogen Cost Calculator",
-        "hydrogen_recycling_calculator": "Hydrogen Recycling Calculator",
+  "title": "Références scientifiques & sources",
+  "introText": "Les données, modèles et explications utilisés dans nos calculateurs et nos articles reposent sur des recherches évaluées par des pairs, des rapports institutionnels et des standards industriels. Explorez la littérature ci-dessous.",
 
-        "green_hydrogen_production_chain": "Green Hydrogen Production Chain",
-        "renewables_energy_mix": "Renewables & Energy Mix",
-        "electrolysis_storage_perspectives": "Electrolysis & Storage Perspectives",
-        "end_use_applications": "End-Use Applications (Mobility, Industry, Heating)",
+  "readPublication": "Lire la publication",
 
-        "hydrogen_recycling_technologies": "Hydrogen Recycling Technologies",
-        "industrial_gas_purification_recovery": "Industrial Gas Purification & Recovery",
-        "electrochemical_hydrogen_compression": "Electrochemical Hydrogen Compression (EHC)",
-        "chemical_regeneration": "Chemical Regeneration (Solid-State)",
+  "references": {
+    "calculator_references": "Références du calculateur",
+    "hydrogen_cost_calculator": "Calculateur de coût de l’hydrogène",
+    "hydrogen_recycling_calculator": "Calculateur de recyclage de l’hydrogène",
 
-        "electrolyzer_technologies": "Electrolyzer Technologies",
-        "pem": "Proton Exchange Membrane (PEM)",
-        "awe": "Alkaline Water Electrolysis (AWE)",
-        "aem": "Anion Exchange Membrane (AEM)",
-        "soec": "Solid Oxide Electrolyzer Cells (SOEC)",
+    "green_hydrogen_production_chain": "Chaîne de production de l’hydrogène vert",
+    "renewables_energy_mix": "Énergies renouvelables & mix énergétique",
+    "electrolysis_storage_perspectives": "Électrolyse & perspectives de stockage",
+    "end_use_applications": "Applications finales (mobilité, industrie, chauffage)",
 
-        "hydrogen_compression_technologies": "Hydrogen Compression Technologies",
-        "mechanical_compressors": "Mechanical Compressors",
-        "electrochemical_compressors": "Electrochemical Compressors (Solid-State)"
-    }
+    "hydrogen_recycling_technologies": "Technologies de recyclage de l’hydrogène",
+    "industrial_gas_purification_recovery": "Purification et récupération des gaz industriels",
+    "electrochemical_hydrogen_compression": "Compression électrochimique de l’hydrogène (EHC)",
+    "chemical_regeneration": "Régénération chimique (état solide)",
+
+    "electrolyzer_technologies": "Technologies d’électrolyseurs",
+    "pem": "Membrane échangeuse de protons (PEM)",
+    "awe": "Électrolyse alcaline de l’eau (AWE)",
+    "aem": "Membrane échangeuse d’anions (AEM)",
+    "soec": "Cellules d’électrolyse à oxyde solide (SOEC)",
+
+    "hydrogen_compression_technologies": "Technologies de compression de l’hydrogène",
+    "mechanical_compressors": "Compresseurs mécaniques",
+    "electrochemical_compressors": "Compresseurs électrochimiques (état solide)"
+  }
 }
