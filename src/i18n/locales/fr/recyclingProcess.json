@@ -1,0 +1,76 @@
+{
+    "title": "The Hydrogen Recycling Process",
+    "introText": "Explore the technologies used by modern industries to capture, purify, and regenerate hydrogen, driving both economic efficiency and circularity.",
+
+    "recyclingProcess": {
+        "intro": {
+            "title": "1. Introduction to Industrial Recycling",
+            "p1": "In many advanced sectors (semiconductor manufacturing, optical fiber production, metallurgy, glass production), hydrogen is used in massive quantities. In most of these applications, it acts as a carrier gas or a protective atmosphere and is not chemically consumed. It exits the production process simply mixed or contaminated by other gases (argon, nitrogen, carbon residues, or dopants).",
+            "p2": "Traditionally, this exhaust gas is flared or vented into the atmosphere, representing both a colossal financial loss and an environmental nonsense. By installing a closed-loop recycling system, industries can recover, purify, and reuse up to 98% of this hydrogen."
+        },
+
+        "purification": {
+            "title": "2. Gas Purification and Recovery Technologies",
+            "intro": "Industrial gas recycling relies on capturing the exhaust and passing it through high-performance separation systems. Several key technologies are utilized:",
+            "psa": "• Catalytic Purification and PSA (Pressure Swing Adsorption): These systems filter the waste gas stream through adsorbent beds or catalytic reactors to remove impurities (oxygen, moisture, hydrocarbons). They restore the gas to guaranteed 99,999% purity hydrogen, ready for direct reinjection into the production line.",
+            "ehc": "• Electrochemical Hydrogen Separation and Compression (EHC): Acting as an active molecular filter, the polymer membrane of an EHC system only allows hydrogen protons to pass through. By applying an electrical current, this technology selectively extracts hydrogen from a gas mixture while simultaneously compressing it, with zero moving parts, ensuring no mechanical oil contamination."
+        },
+
+        "chemical": {
+            "title": "3. Chemical Regeneration (Solid-State Storage)",
+            "p1": "Hydrogen recycling also applies to the regeneration of chemical storage materials, such as Sodium Borohydride (NaBH₄). NaBH₄ generates pure hydrogen on demand via hydrolysis. However, its lifecycle was hindered by the extreme energy cost required to regenerate its byproduct, sodium metaborate (NaBO₂).",
+            "p2": "Major scientific breakthroughs have demonstrated that NaBH₄ can be regenerated directly from its hydrated byproduct at room temperature. Using a mechanochemical process (ball milling) with low-cost reducing agents like Magnesium (Mg), this chemical recycling achieves yields of nearly 89%, making the solid hydrogen cycle viable on a large scale."
+        },
+
+        "economy": {
+            "title": "4. Economic and Environmental Benefits",
+            "p1": "Implementing recycling infrastructures offers major strategic advantages. Economically, the Return on Investment (ROI) for a purification station is exceptionally fast, as the plant drastically reduces its purchases of new hydrogen. This guarantees independence from supply chain disruptions and price volatility. Environmentally, recycling limits the global demand for fossil-based grey hydrogen and avoids direct emissions, firmly anchoring the industry in the circular economy."
+        },
+
+        "schematics": {
+            "psa": {
+                "beds": {
+                    "title": "Adsorbent Beds (Pressure Swing)",
+                    "explanation": "These beds contain active materials that trap impurities under high pressure. They alternate: while one filters to produce H₂, the other depressurizes to clean itself."
+                },
+                "out1": "Impurities",
+                "out2": "Impurities",
+                "exhaust": {
+                    "title": "Exhaust (Impurities OUT)",
+                    "explanation": "When a bed depressurizes to regenerate, the trapped impurities are released and vented out through this exhaust pipe."
+                },
+                "in": {
+                    "top": "Mixed",
+                    "bottom": "gas",
+                    "title": "Waste Gas Stream (Mixed IN)",
+                    "explanation": "The unconsumed gas mixture containing hydrogen, oxygen, moisture, and hydrocarbons enters the system under high pressure."
+                },
+                "output": {
+                    "title": "Pure Hydrogen Output",
+                    "explanation": "The filtered gas is restored with guaranteed 99,999% purity. It is now ready for direct reinjection into the production line, saving massive amounts of energy and resources."
+                }
+            },
+            "ehc": {
+                "power": "POWER SUPPLY",
+                "membrane": {
+                    "title": "Membrane",
+                    "subtitle": "Active Molecular Filter (PEM)",
+                    "explanation": "In recycling, the membrane acts as a perfect filter. It physically blocks all non-hydrogen gases, allowing ONLY protons (H⁺) to cross. This guarantees 99,999% pure hydrogen on the other side."
+                },
+                "cathode":{
+                    "title": "Cathode (-)",
+                    "subtitle": "Cathode (Electrochemical Compression)",
+                    "explanation": "The extracted protons recombine with electrons to form pure Hydrogen (H₂). Because it's a closed volume and more protons keep arriving, the gas is compressed electrochemically with zero moving parts!"
+                },
+                "anode": {
+                    "title": "Anode (+)",
+                    "subtitle": "Anode (Gas Mixture Inlet)",
+                    "explanation": "Exhaust gas mixtures enter here. Only the Hydrogen is ionized into protons (H⁺) and extracted. The remaining impurities (Nitrogen, trace gases) are swept out through the exhaust vent."
+                },
+                "in": "Mixed gas",
+                "out": "High Pressure H₂",
+                "exhaust": "Exhaust"
+            }
+        }
+    }
+}

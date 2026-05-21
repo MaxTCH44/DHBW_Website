@@ -1,0 +1,74 @@
+{
+    "title": "Electrolyzer Setup Builder",
+
+
+    "setupBuilder": {
+        "create_new_setup": "Create New Setup",
+        "configuration_name": "Configuration Name",
+        "configuration_name_placeholder": "e.g., Test Plant Alpha",
+        "technology_type": "Technology Type",
+
+        "electrolyzer_specs": "Electrolyzer Specs",
+        "stack_power": "Stack Power",
+        "max_stacks_per_unit": "Max Stacks per Unit",
+        "energy_consumption": "Energy Consumption",
+        "water_consumption": "Water Consumption",
+
+        "financials": "Financials",
+        "single_stack_price": "Single Stack Price",
+        "global_maintenance": "Global Maintenance",
+        "stack_lifetime": "Stack Lifetime",
+
+        "auxiliary_equipments": "Auxiliary Equipments (BOP)",
+        "add_component": "Add Component (Chiller, Dryer, etc.)",
+        "component_name": "Component Name",
+        "added_power": "Added Power",
+        "added_water": "Added Water",
+        "added_capex": "Added CAPEX",
+        "capacity_supported": "Capacity Supported",
+        "add_to_setup": "Add to Setup",
+        "save_complete_setup": "Save Complete Setup",
+
+        "saved_configurations": "Saved Configurations",
+        "setups_count": "Setups",
+
+        "no_setups_title": "No setups stored in memory yet.",
+        "no_setups_subtitle": "Create your first configuration on the left.",
+
+        "max": "Max",
+        "total_capex": "Total CAPEX",
+        "cap": "Cap",
+        "sys": "sys",
+
+        "balance_of_plant": "Balance of Plant (Included)"
+    },
+
+    
+    "units": {
+        "kwh_per_kg": "kWh/kg",
+        "kwh_per_m3": "kWh/m³",
+
+        "percent_capex": "% CAPEX",
+        "eur": "€",
+
+        "power_kw": "kW",
+
+        "stacks": "stacks",
+        "units": "units",
+
+        "kW_per_stack": "kW/stack",
+
+        "l_per_hour": "L/h",
+
+        "hours": "hours"
+    },
+
+    "electrolyzer": {
+        "type": {
+            "pem": "PEM",
+            "aem": "AEM",
+            "alkaline": "Alkaline",
+            "soec": "SOEC"
+        }
+    }
+}
