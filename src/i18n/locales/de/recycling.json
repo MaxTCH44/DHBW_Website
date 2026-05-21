@@ -1,0 +1,127 @@
+{
+  "gasRecoveryAdvices": {
+    "default": {
+      "complexity": "Gasart auswählen",
+      "advice": "Bitte geben Sie Details zu Ihrem Gasgemisch an, um eine erste Bewertung zu erhalten."
+    },
+    "water_vapor": {
+      "value": "Wasserdampf (H2O)",
+      "complexity": "Niedrig (Entfeuchtung)",
+      "advice": "Die Trennung von Wasser und Wasserstoff ist ein Standardprozess. Die Investitionskosten sind in der Regel niedrig und der ROI ist sehr schnell."
+    },
+    "nitrogen": {
+      "value": "Stickstoff (N2)",
+      "complexity": "Mittel (PSA-System)",
+      "advice": "Wahrscheinlich wird ein Druckwechsel-Adsorptionssystem (PSA) benötigt. Es ist eine bewährte Technologie mit einer ausgezeichneten Lebensdauer."
+    },
+    "oxygen": {
+      "value": "Sauerstoff (O2)",
+      "complexity": "Mittel (PSA-System)",
+      "advice": "Wahrscheinlich wird ein Druckwechsel-Adsorptionssystem (PSA) benötigt. Es ist eine bewährte Technologie mit einer ausgezeichneten Lebensdauer."
+    },
+    "carbon_dioxide": {
+      "value": "Kohlendioxid (CO2)",
+      "complexity": "Hoch (Membran / fortgeschrittene PSA)",
+      "advice": "Diese Gase erfordern spezielle Membrantechnologien oder fortgeschrittene PSA-Systeme. Die Anfangsinvestition ist höher, aber die Rückgewinnung von H₂ bleibt im großen Maßstab hochprofitabel."
+    },
+    "argon": {
+      "value": "Argon",
+      "complexity": "Hoch (Membran / fortgeschrittene PSA)",
+      "advice": "Diese Gase erfordern spezielle Membrantechnologien oder fortgeschrittene PSA-Systeme. Die Anfangsinvestition ist höher, aber die Rückgewinnung von H₂ bleibt im großen Maßstab hochprofitabel."
+    },
+    "mixed_unknown": {
+      "value": "Gemischt / Unbekannt",
+      "complexity": "Individuelle Analyse erforderlich",
+      "advice": "Unsere Ingenieure müssen Ihr Abgas beproben und analysieren, um einen maßgeschneiderten mehrstufigen Trennprozess zu entwickeln."
+    }
+  },
+
+  "recyclingForm": {
+    "exhaustGasParametersTitle": "Parameter des Abgases",
+    "mixedGasType": {
+      "label": "Gasgemisch-Typ",
+      "tooltip": "Welches Gas ist mit H₂ gemischt?"
+    },
+    "annualMixedGasProduced": {
+      "label": "Jährlich erzeugtes Gasgemisch",
+      "tooltip": "Gasvolumen normiert auf 1 atm und 0°C (Nm³)."
+    },
+    "h2Concentration": {
+      "label": "H₂-Konzentration im Abgas",
+      "tooltip": "Prozentsatz von H₂ im Gasgemisch vor der Rückgewinnung."
+    },
+    "financialsTitle": "Finanzen & Investitionen",
+    "currentH2PurchasePrice": {
+      "label": "Aktueller Einkaufspreis für grünen H₂",
+      "tooltip": "Der Preis, den Sie derzeit für gelieferten Wasserstoff zahlen. Dieser dient als Basis zur Berechnung Ihrer potenziellen Einsparungen durch On-Site-Recycling."
+    },
+    "recyclingSystemPrice": {
+      "label": "Geschätzter Preis des Recyclingsystems (CAPEX)",
+      "tooltip": "Die Schätzung der anfänglichen Investitionskosten (CAPEX)."
+    },
+    "maintenanceCosts": {
+      "label": "Wartungskosten (OPEX)",
+      "tooltip": "Jährliche Betriebs- und Wartungskosten (O&M), in der Regel als Prozentsatz der anfänglichen Anlagenkosten (CAPEX) geschätzt."
+    },
+    "energyConsumption": {
+      "label": "Energieverbrauch des Recyclingsystems",
+      "tooltip": "Spezifischer Energieverbrauch des Recyclingsystems zur Produktion von 1 kg Wasserstoff. Dieser Wert schließt Hilfssysteme wie Kühlung oder Trocknung aus."
+    },
+    "electricityPrice": {
+      "label": "Strompreis",
+      "tooltip": "Der durchschnittliche Strompreis aus dem Netz. Dies ist der wichtigste Kostentreiber für die grüne Wasserstoffproduktion."
+    }
+  },
+
+  "recyclingCalculatorPage": {
+    "header": {
+      "title": "Wasserstoff-Recycling-Rechner",
+      "description": "Verschwenden Sie keinen wertvollen Wasserstoff mehr. Berechnen Sie, wie viel H₂ Sie jährlich zurückgewinnen können, und ermitteln Sie Ihren Return on Investment (ROI).",
+      "learnMoreButton": "Erfahren Sie, wie der Recyclingprozess funktioniert"
+    },
+    "reset": {
+      "link": "Alle Eingaben auf Standardwerte zurücksetzen",
+      "modalTitle": "Rechner zurücksetzen",
+      "modalDescription": "Sind Sie sicher, dass Sie alle Eingaben löschen und den Rechner auf die Standardwerte zurücksetzen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+      "cancelButton": "Abbrechen",
+      "confirmButton": "Ja, alles zurücksetzen"
+    },
+    "results": {
+      "title": "Ergebnis-Schätzung",
+      "systemComplexity": "Systemkomplexität:",
+      "recoveredHydrogen": "Zurückgewonnener Wasserstoff",
+      "estimatedGrossSavings": "Geschätzte Bruttoeinsparungen",
+      "avoidedCo2": "Vermiedenes CO₂",
+      "roi": "Return on Investment (ROI)",
+      "never": "Nie",
+      "placeholder": "Wählen Sie links einen Gasgemisch-Typ aus, um Ihre potenziellen Einsparungen und Ihren ROI zu sehen.",
+      "footer": "*Berechnungen gehen von einer Rückgewinnungsrate von {{rate}}% aus. Die tatsächliche Umsetzung erfordert ein technisches Audit."
+    },
+    "cta": {
+      "title": "Möchten Sie mehr erfahren?",
+      "description": "Wasserstoff-Recyclingsysteme sind stark abhängig von den jeweiligen Gasgemischen und Prozessen. Wenn Sie detailliertere Informationen, Forschungsdaten oder eine spezifische Anwendungsanalyse benötigen, können Sie uns gerne kontaktieren.",
+      "button": "Kontaktieren Sie uns für weitere Informationen"
+    }
+  },
+
+  "units": {
+    "normalized_m3_per_year": "Nm³ / Jahr",
+    "kg_per_year": "kg / Jahr",
+
+    "pourcent": "%",
+
+    "eur_per_kg": "€ / kg",
+    "eur_per_year": "€ / Jahr",
+    "elec_price_mwh": "€ / MWh",
+    "elec_price_kwh": "€ / kWh",
+    "eur": "€",
+
+    "percent_capex": "% CAPEX",
+
+    "kwh_per_kg": "kWh / kg",
+
+    "tons": "Tonnen",
+
+    "years": "Jahre"
+  }
+}

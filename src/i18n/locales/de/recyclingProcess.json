@@ -1,0 +1,76 @@
+{
+  "title": "Der Wasserstoff-Recyclingprozess",
+  "introText": "Entdecken Sie die Technologien, die in modernen Industrien eingesetzt werden, um Wasserstoff zurückzugewinnen, zu reinigen und zu regenerieren und so sowohl wirtschaftliche Effizienz als auch Kreislaufwirtschaft zu fördern.",
+
+  "recyclingProcess": {
+    "intro": {
+      "title": "1. Einführung in das industrielle Recycling",
+      "p1": "In vielen fortgeschrittenen Sektoren (Halbleiterfertigung, Glasfaserproduktion, Metallurgie, Glasproduktion) wird Wasserstoff in großen Mengen eingesetzt. In den meisten dieser Anwendungen dient er als Trägergas oder Schutzatmosphäre und wird nicht chemisch verbraucht. Er verlässt den Produktionsprozess lediglich vermischt oder verunreinigt durch andere Gase (Argon, Stickstoff, Kohlenstoffrückstände oder Dotierstoffe).",
+      "p2": "Traditionell wird dieses Abgas abgefackelt oder in die Atmosphäre abgegeben, was sowohl einen enormen finanziellen Verlust als auch eine ökologische Absurdität darstellt. Durch den Einsatz eines geschlossenen Recyclingkreislaufs können Industrien bis zu 98 % dieses Wasserstoffs zurückgewinnen, reinigen und wiederverwenden."
+    },
+
+    "purification": {
+      "title": "2. Gasreinigung und Rückgewinnungstechnologien",
+      "intro": "Industrielles Gasrecycling basiert auf der Erfassung des Abgases und seiner Behandlung in Hochleistungs-Trennsystemen. Dabei werden mehrere Schlüsseltechnologien eingesetzt:",
+      "psa": "• Katalytische Reinigung und PSA (Druckwechsel-Adsorption): Diese Systeme filtern den Abgasstrom durch Adsorptionsbetten oder katalytische Reaktoren, um Verunreinigungen (Sauerstoff, Feuchtigkeit, Kohlenwasserstoffe) zu entfernen. Sie stellen Wasserstoff mit garantierter Reinheit von 99,999 % wieder her, der direkt in die Produktionslinie zurückgeführt werden kann.",
+      "ehc": "• Elektrochemische Wasserstofftrennung und -verdichtung (EHC): Als aktiver molekularer Filter lässt die Polymermembran eines EHC-Systems ausschließlich Wasserstoffprotonen passieren. Durch Anlegen eines elektrischen Stroms extrahiert diese Technologie selektiv Wasserstoff aus einem Gasgemisch und komprimiert ihn gleichzeitig – ohne bewegliche Teile und ohne Risiko einer Ölverunreinigung."
+    },
+
+    "chemical": {
+      "title": "3. Chemische Regeneration (Feststoffspeicher)",
+      "p1": "Wasserstoffrecycling gilt auch für die Regeneration chemischer Speichermaterialien wie Natriumborhydrid (NaBH₄). NaBH₄ erzeugt auf Abruf reinen Wasserstoff durch Hydrolyse. Seine Lebensdauer wurde jedoch bisher durch den extrem hohen Energieaufwand zur Regeneration des Nebenprodukts Natriummetaborat (NaBO₂) begrenzt.",
+      "p2": "Wichtige wissenschaftliche Durchbrüche haben gezeigt, dass NaBH₄ direkt aus seinem hydratisierten Nebenprodukt bei Raumtemperatur regeneriert werden kann. Mithilfe eines mechanochemischen Prozesses (Kugelmahlen) und kostengünstiger Reduktionsmittel wie Magnesium (Mg) erreicht dieses chemische Recycling Ausbeuten von nahezu 89 %, wodurch der Feststoff-Wasserstoffkreislauf im großen Maßstab realisierbar wird."
+    },
+
+    "economy": {
+      "title": "4. Wirtschaftliche und ökologische Vorteile",
+      "p1": "Die Implementierung von Recyclinginfrastrukturen bietet erhebliche strategische Vorteile. Wirtschaftlich gesehen ist der Return on Investment (ROI) einer Reinigungsanlage außergewöhnlich schnell, da der Bedarf an neu zugekauftem Wasserstoff drastisch sinkt. Dies gewährleistet Unabhängigkeit von Lieferkettenstörungen und Preisvolatilität. Ökologisch reduziert Recycling die globale Nachfrage nach fossilem grauem Wasserstoff und vermeidet direkte Emissionen, wodurch die Industrie fest in der Kreislaufwirtschaft verankert wird."
+    },
+
+    "schematics": {
+      "psa": {
+        "beds": {
+          "title": "Adsorptionsbetten (Druckwechsel)",
+          "explanation": "Diese Betten enthalten aktive Materialien, die Verunreinigungen unter hohem Druck binden. Sie arbeiten im Wechsel: Während eines filtert und erzeugt H₂, wird das andere entspannt und regeneriert."
+        },
+        "out1": "Verunreinigungen",
+        "out2": "Verunreinigungen",
+        "exhaust": {
+          "title": "Abgas (Verunreinigungen AUS)",
+          "explanation": "Wenn ein Bett zur Regeneration entspannt wird, werden die gebundenen Verunreinigungen freigesetzt und über diesen Auslass abgeführt."
+        },
+        "in": {
+          "top": "Gemisch",
+          "bottom": "Gas",
+          "title": "Abgasstrom (Gemisch EIN)",
+          "explanation": "Das ungenutzte Gasgemisch mit Wasserstoff, Sauerstoff, Feuchtigkeit und Kohlenwasserstoffen tritt unter hohem Druck in das System ein."
+        },
+        "output": {
+          "title": "Reiner Wasserstoffausgang",
+          "explanation": "Das gefilterte Gas erreicht eine garantierte Reinheit von 99,999 %. Es kann nun direkt in die Produktionslinie zurückgeführt werden und spart enorme Mengen an Energie und Ressourcen."
+        }
+      },
+      "ehc": {
+        "power": "STROMVERSORGUNG",
+        "membrane": {
+          "title": "Membran",
+          "subtitle": "Aktiver molekularer Filter (PEM)",
+          "explanation": "Im Recycling fungiert die Membran als perfekter Filter. Sie blockiert physisch alle Gase außer Wasserstoff und lässt ausschließlich Protonen (H⁺) passieren. Dies garantiert 99,999 % reinen Wasserstoff auf der anderen Seite."
+        },
+        "cathode": {
+          "title": "Kathode (-)",
+          "subtitle": "Kathode (elektrochemische Kompression)",
+          "explanation": "Die extrahierten Protonen rekombinieren mit Elektronen zu reinem Wasserstoff (H₂). Da es sich um ein geschlossenes Volumen handelt und ständig neue Protonen ankommen, wird das Gas elektrochemisch komprimiert – ohne bewegliche Teile!"
+        },
+        "anode": {
+          "title": "Anode (+)",
+          "subtitle": "Anode (Gaseinlass)",
+          "explanation": "Abgasgemische treten hier ein. Nur der Wasserstoff wird ionisiert (H⁺) und extrahiert. Die verbleibenden Verunreinigungen (Stickstoff, Spurengase) werden über den Auslass abgeführt."
+        },
+        "in": "Gemischtes Gas",
+        "out": "Hochdruck-H₂",
+        "exhaust": "Abgas"
+      }
+    }
+  }
+}
