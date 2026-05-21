@@ -1,15 +1,15 @@
 {
-  "title": "Grüne H₂-Produktionskette",
-  "renewables": {
+    "title":"Grüne H₂-Produktionskette",
+    "renewables": {
     "title": "Erneuerbare Energien",
 
     "riseTitle": "Der Aufstieg der erneuerbaren Energien in Deutschland (2024)",
-    "riseDescription": "Um die wachsende Notwendigkeit von grünem Wasserstoff zu verstehen, müssen wir zunächst die aktuelle Energielandschaft betrachten. Im Jahr 2024 erreichte Deutschland einen historischen Meilenstein: Erneuerbare Energiequellen deckten 62,7 % der öffentlichen Nettostromerzeugung und speisten etwa 275,2 Terawattstunden (TWh) in das Netz ein.",
+    "riseDescription": "Um die wachsende Notwendigkeit von grünem Wasserstoff zu verstehen, müssen wir zunächst die aktuelle Energielandschaft betrachten. Im Jahr 2024 erreichte Deutschland einen historischen Meilenstein: Erneuerbare Energiequellen deckten 62,7 % der öffentlichen Nettostromerzeugung und speisten rund 275,2 Terawattstunden (TWh) in das Netz ein.",
 
-    "energyMixTitle": "Ein stark schwankender Energiemix",
-    "energyMixWindDescription": "Windkraft (Onshore und Offshore) bleibt das Rückgrat des deutschen Systems und macht 33 % des gesamten Strommixes aus. Die Windstromproduktion ist jedoch stark volatil. Genau diese Schwankungen treiben den Bedarf an großflächigen Energiespeicher- und Umwandlungslösungen wie der Wasserelektrolyse voran.",
-    "energyMixSolarDescription": "Solar-Photovoltaik (PV) stellt den am schnellsten wachsenden Sektor dar und deckt 14 % des Netzes ab. Besonders bemerkenswert ist der Eigenverbrauch – also Strom, der direkt vor Ort genutzt wird, ohne in das öffentliche Netz eingespeist zu werden –, der 2024 auf über 12 TWh anstieg. Dieser Trend ist besonders relevant für Labore und Industrieanlagen, die eine 100 % autarke Wasserstoffproduktion anstreben.",
-    "energyMixOtherDescription": "Der verbleibende Anteil des erneuerbaren Energiemixes wird durch Biomasse (7 %, stabile Grundlastenergie) und Wasserkraft (4 %) bereitgestellt.",
+    "energyMixTitle": "Ein hochvariables Energiemix",
+    "energyMixWindDescription": "Windkraft (sowohl Onshore als auch Offshore) bleibt das Rückgrat des deutschen Systems und macht 33 % des gesamten Strommix aus. Die Windproduktion ist jedoch sehr volatil. Genau diese Schwankungen treiben den Bedarf an massiven Energiespeicher- und Umwandlungslösungen wie der Wasserelektrolyse voran.",
+    "energyMixSolarDescription": "Solarenergie (Photovoltaik, PV) stellt den am schnellsten wachsenden Sektor dar und deckt 14 % des Netzes. Bemerkenswert ist, dass der Eigenverbrauch – also Strom, der direkt vor Ort verbraucht wird, ohne das öffentliche Netz zu nutzen – im Jahr 2024 auf über 12 TWh gestiegen ist. Dieser Trend ist äußerst relevant für Labore und Industrieanlagen, die eine 100 % autarke Wasserstoffproduktion anstreben.",
+    "energyMixOtherDescription": "Der Rest des erneuerbaren Energiemix wird durch Biomasse (7 %, liefert stabile Grundlastenergie) und Wasserkraft (4 %) bereitgestellt.",
 
     "chartTitle": "Bruttostromerzeugung in Deutschland von 2019 bis 2025",
 
@@ -20,56 +20,199 @@
         "solar": "Solar (TWh)",
         "biomass": "Biomasse (TWh)",
         "hydro": "Wasserkraft (TWh)",
-        "otherGreen": "Andere erneuerbare Energien (TWh)"
+        "otherGreen": "Sonstige Grüne (TWh)"
       }
     },
 
     "windPower": {
-      "title": "Windkraft: Nutzung von Luftströmungen",
+      "title": "Windkraft: Die Nutzung von Luftströmungen",
 
-      "description1": "Windkraftanlagen arbeiten, indem sie die kinetische Energie bewegter Luft aufnehmen und in mechanische Rotation umwandeln, die einen elektrischen Generator antreibt. Damit diese Systeme effizient funktionieren, benötigen sie offene Landschaften oder Offshore-Gebiete mit starken und konstanten Windströmungen.",
+      "description1": "Windturbinen erzeugen Energie, indem sie die kinetische Energie der bewegten Luft einfangen und in mechanische Rotation umwandeln, die wiederum einen elektrischen Generator antreibt. Für eine effektive Nutzung sind offene Landschaften oder Offshore-Seegebiete mit starken, gleichmäßigen Windströmungen erforderlich.",
 
-      "imageAlt": "Windkraftanlage",
+      "imageAlt": "Windturbine",
 
-      "description2": "Obwohl Windkraft eine bemerkenswert saubere und hochskalierbare Energiequelle ist, die enorme Mengen an Strom erzeugen kann, liegt ihr größter Nachteil in ihrer extremen Unbeständigkeit. Der Wind weht nicht immer dann, wenn die Nachfrage hoch ist, und die visuelle oder akustische Wirkung großer Anlagen kann lokal zu Akzeptanzproblemen führen.",
+      "description2": "Obwohl Windkraft eine bemerkenswert saubere und hochskalierbare Energiequelle ist, die enorme Strommengen erzeugen kann, liegt ihr größter Nachteil in der extremen Unbeständigkeit. Der Wind bläst nicht immer dann, wenn die Nachfrage hoch ist, und der visuelle oder akustische Fußabdruck großer Turbinen kann manchmal zu Akzeptanzproblemen in der Bevölkerung führen.",
 
-      "description3": "Diese schwankende Natur macht Windenergie zum idealen Kandidaten für die Umwandlung in grünen Wasserstoff, sodass überschüssige Energie aus windreichen Nächten gespeichert statt verschwendet werden kann."
+      "description3": "Diese schwankende Natur macht Windenergie zum idealen Kandidaten für die Umwandlung in grünen Wasserstoff, sodass überschüssige Energie, die in windigen Nächten erzeugt wird, gespeichert statt verschwendet werden kann."
     },
 
     "solarPower": {
-      "title": "Solar-Photovoltaik: Direkte Umwandlung von Sonnenlicht",
+      "title": "Solarenergie (Photovoltaik): Direkte Sonnenlichtumwandlung",
 
-      "description1": "Im Gegensatz zur Windenergie kommt Solarenergie ohne bewegliche Teile aus. Photovoltaikzellen (PV) basieren auf Halbleitermaterialien, typischerweise Silizium, die Photonen aus dem Sonnenlicht absorbieren und Elektronen freisetzen, wodurch direkt Gleichstrom (DC) erzeugt wird.",
+      "description1": "Im Gegensatz zu Wind hat Solarenergie keine beweglichen Teile. Photovoltaikzellen (PV) nutzen Halbleitermaterialien – in der Regel Silizium – um Photonen aus dem Sonnenlicht zu absorbieren und Elektronen freizusetzen, wodurch direkt Gleichstrom (DC) erzeugt wird.",
 
-      "description2": "Diese Technologie benötigt ungehinderten Zugang zu Sonnenlicht und große Flächen, weshalb Dächer und offene Felder ideale Einsatzorte darstellen. Der große Vorteil der Solarenergie liegt in ihrer Skalierbarkeit und dem geringen Wartungsaufwand, wodurch sie sich besonders gut für lokalen Eigenverbrauch in Laboren oder Fabriken eignet.",
+      "description2": "Diese Technologie erfordert ungehinderten Zugang zu Sonnenlicht und ausreichend Fläche, was Dächer und offene Felder zu idealen Einsatzorten macht. Der große Vorteil der Solarenergie liegt in ihrer Skalierbarkeit und dem minimalen Wartungsaufwand, was sie besonders gut für den lokalen Eigenverbrauch in Laboren oder Fabriken geeignet macht.",
 
-      "imageAlt": "Solarmodule auf einem Dach",
+      "imageAlt": "Solaranlagen auf dem Dach",
 
-      "description3": "Ihre Effizienz hängt jedoch stark von Wetterbedingungen und Tageszeit ab und fällt nachts auf null. Daher erfordert eine starke Abhängigkeit von Solarenergie robuste Speicherarchitekturen wie Batteriesysteme oder Wasserstofflösungen, um die Nachtstunden zu überbrücken."
+      "description3": "Ihre Effizienz ist jedoch stark von den Wetterbedingungen und der Tageszeit abhängig und sinkt nachts auf null. Folglich erfordert eine starke Abhängigkeit von Solarenergie unbedingt robuste Speicherarchitekturen, wie Batteriespeicher oder Wasserstoffsysteme, um die Nachtstunden zu überbrücken."
     },
 
     "biomass": {
-      "title": "Biomasse: Die steuerbare organische Grundlast",
+      "title": "Biomasse: Die dispatchierbare organische Grundlast",
 
-      "description1": "Biomasseenergie wird durch die Verbrennung oder biologische Fermentation organischer Stoffe – wie landwirtschaftliche Abfälle, Holzpellets oder Biogas – erzeugt, um Wärme und Dampf zu produzieren, die wiederum eine Turbine antreiben. Die wichtigste Voraussetzung ist eine kontinuierliche und nachhaltige Versorgung mit organischem Ausgangsmaterial.",
+      "description1": "Biomasseenergie wird durch die Verbrennung oder biologische Vergärung von organischen Stoffen – wie landwirtschaftlichen Abfällen, Holzpellets oder Biogas – zur Erzeugung von Wärme und Dampf gewonnen, die wiederum eine Turbine antreiben. Die wichtigste Voraussetzung ist eine kontinuierliche, nachhaltige Versorgung mit organischen Ausgangsstoffen.",
 
       "imageAlt": "Holzbiomasse",
 
-      "description2": "Im Gegensatz zu Wind- und Solarenergie ist Biomasse eine „steuerbare“ Energiequelle, was bedeutet, dass sie je nach Bedarf hoch- oder heruntergefahren werden kann, um unabhängig vom Wetter eine stabile und zuverlässige Grundlast für das Stromnetz bereitzustellen.",
+      "description2": "Im Gegensatz zu Wind und Sonne ist Biomasse eine 'dispatchierbare' Energiequelle, das heißt, sie kann bei Bedarf hoch- oder heruntergefahren werden, um unabhängig vom Wetter eine stabile und zuverlässige Grundlast für das Stromnetz zu liefern.",
 
-      "description3": "Nachteilig ist, dass bei der Verbrennung Kohlendioxid freigesetzt wird (auch wenn Biomasse über den Lebenszyklus der Pflanzen meist als CO₂-neutral gilt). Zudem erfordert die Gewinnung ausreichender Biomasse große Mengen an Land und Wasser und kann mit der Nahrungsmittelproduktion konkurrieren."
+      "description3": "Auf der anderen Seite setzt der Verbrennungsprozess Kohlendioxid frei (obwohl er über den Lebenszyklus der Pflanze im Allgemeinen als CO₂-neutral gilt), und die Beschaffung der notwendigen Biomasse erfordert große Mengen an Land und Wasser, was potenziell mit der Nahrungsmittellandwirtschaft konkurriert."
     },
 
     "hydropower": {
       "title": "Wasserkraft: Der zuverlässige Fluss",
 
-      "description1": "Wasserkraftwerke nutzen den kontinuierlichen Wasserfluss und das Gefälle von Flüssen oder Staudämmen, um mechanische Turbinen anzutreiben. Diese Technologie erfordert spezielle geografische Bedingungen, insbesondere große Wassermengen und Höhenunterschiede.",
+      "description1": "Wasserkraftwerke nutzen den kontinuierlichen Fluss und den Höhenunterschied von Wasser in Flüssen oder Staudämmen, um mechanische Turbinen kraftvoll anzutreiben. Diese Technologie erfordert spezifische geografische Gegebenheiten, nämlich ein ausreichendes Wasservolumen und Höhenunterschiede.",
 
       "imageAlt": "Sardar-Sarovar-Staudamm, Gujarat, Indien",
 
-      "description2": "Wo sie realisierbar ist, ist Wasserkraft äußerst effizient, hochzuverlässig und zeichnet sich durch eine außergewöhnlich lange Betriebsdauer aus. Bestimmte Systeme wie Pumpspeicherkraftwerke können sogar als riesige physische Batterien fungieren, indem Wasser bei Energieüberschüssen bergauf gepumpt wird.",
+      "description2": "Wo realisierbar, ist Wasserkraft unglaublich effizient, hochzuverlässig und weist eine außergewöhnlich lange Betriebslebensdauer auf. Bestimmte Anlagen, wie Pumpspeicherkraftwerke, können sogar als massive physische Batterien fungieren, indem sie bei Energieüberschuss Wasser bergauf pumpen.",
 
-      "description3": "Die starke Abhängigkeit von lokalen geografischen Gegebenheiten begrenzt jedoch den Bau neuer Anlagen, und große Staudämme können lokale aquatische Ökosysteme erheblich beeinträchtigen und natürliche Wasserläufe verändern."
+      "description3": "Die starke Abhängigkeit von der lokalen Geografie schränkt jedoch ein, wo neue Kraftwerke gebaut werden können, und der Bau großer Staudämme kann lokale aquatische Ökosysteme erheblich stören und den natürlichen Wasserfluss verändern."
+    }
+  },
+  "electrolysis": {
+    "title": "Elektrolyse",
+
+    "processTitle": "Der Elektrolyseprozess: Wasser spalten",
+    "processDescription": "Elektrolyse ist der grundlegende chemische Prozess im Herzen der grünen Wasserstoffwertschöpfungskette. Anstatt Energie aus fossilen Brennstoffen zu gewinnen, nutzt dieser Prozess einen elektrischen Gleichstrom (DC), um eine ansonsten nicht spontan ablaufende chemische Reaktion anzutreiben. Indem dieser Strom durch Wasser geleitet wird, bricht die elektrische Energie die chemischen Bindungen auf, die die Wassermoleküle zusammenhalten, und trennt sie in ihre Bestandteile.",
+
+    "inputsOutputsTitle": "Eingangsstoffe, Ausgangsstoffe und Nebenprodukte",
+    "inputsOutputsDescription": "Die Massenbilanz dieses Prozesses ist bemerkenswert einfach und sauber. Die wichtigsten Eingangsstoffe sind lediglich hochreines Wasser (H₂O) und erneuerbare Elektrizität. Auf der Ausgangsseite liefert der Prozess hochreines Wasserstoffgas (H₂) an der Kathode und Sauerstoffgas (O₂) an der Anode.",
+
+    "processImageAlt": "ein Diagramm, das den Elektrolyseprozess mit Wasserstoff- und Sauerstoffblasen zeigt",
+
+    "outputsDescription": "Während der Wasserstoff für die Energiespeicherung aufgefangen und komprimiert wird, wird der Sauerstoff häufig sicher in die Atmosphäre abgeleitet oder für medizinische und industrielle Anwendungen aufgefangen. Darüber hinaus erzeugt der Prozess eine erhebliche Menge an Niedertemperaturwärme, die moderne Anlagen zunehmend nutzen, um lokale Fernwärmenetze zu versorgen und damit den gesamten Energiewirkungsgrad zu maximieren.",
+
+    "environmentalShiftTitle": "Der Umweltwandel: Grauer, blauer und grüner Wasserstoff",
+
+    "greyHydrogenDescription": "Um die entscheidende Bedeutung der Wasserelektrolyse vollständig zu erfassen, muss sie mit den heute verwendeten traditionellen, fossilbasierten Methoden verglichen werden. Derzeit wird der überwiegende Teil des globalen Wasserstoffs als 'grauer Wasserstoff' eingestuft. Dieser wird hauptsächlich durch Dampf-Methan-Reformierung (SMR) gewonnen, ein Prozess, der Wasserstoff aus Erdgas (CH₄) mithilfe von Hochtemperaturdampf extrahiert. Obwohl SMR derzeit kostengünstiger ist, ist es eine Umweltkatastrophe: Die Produktion von nur einem Kilogramm grauem Wasserstoff emittiert zwischen 9 und 10 Kilogramm CO₂.",
+
+    "blueHydrogenDescription": "Als Übergangslösung produziert die Industrie auch 'blauen Wasserstoff'. Diese Methode basiert weiterhin auf fossilen Brennstoffen und SMR, integriert jedoch Carbon Capture and Storage (CCS)-Technologien, um einen erheblichen Teil der CO₂-Emissionen unterirdisch einzufangen, bevor sie die Atmosphäre erreichen. Obwohl dies den CO₂-Fußabdruck im Vergleich zu grauem Wasserstoff deutlich reduziert, ist es nicht vollständig emissionsfrei, birgt Risiken von Methanlecks und ist weiterhin von endlichen fossilen Ressourcen abhängig.",
+
+    "greenHydrogenDescription": "Im krassen Gegensatz dazu erzeugt grüner Wasserstoff aus erneuerbarer Elektrolyse absolut null Kohlenstoffemissionen. Wenn dieser grüne Wasserstoff später verbraucht wird – beispielsweise in einer Brennstoffzelle zum Antrieb eines Fahrzeugs – ist das einzige freigesetzte Nebenprodukt reines Wasser, wodurch ein vollständig geschlossener, nachhaltiger und sauberer ökologischer Kreislauf entsteht.",
+
+    "futureTechnologiesTitle": "Ausblick: Elektrolyseur-Technologien",
+
+    "futureTechnologiesDescription": "Während die grundlegende Chemie der Wasserelektrolyse dieselbe bleibt, variiert die industrielle Ausrüstung zur Durchführung dieser Reaktion erheblich. Verschiedene Technologien wie Protonenaustauschmembran (PEM), Alkalische Elektrolyse (AEL) und Anionenaustauschmembran (AEM) bieten unterschiedliche Vorteile hinsichtlich Kosten, Effizienz und Dynamik. Um zu verstehen, welche Technologie am besten für spezifische industrielle Anforderungen geeignet ist, besuchen Sie unsere spezielle Seite zu Elektrolyseur-Technologien.",
+
+    "linkLabel": "Elektrolyseur-Technologien erkunden"
+  },
+  "storage": {
+    "label": "H₂-Speicherung",
+
+    "content": {
+      "title": "Wasserstoffkomprimierung und -speicherung: Die Lücke schließen",
+
+      "intro": "Obwohl grüner Wasserstoff ein außergewöhnlich sauberer Energieträger ist, stellt er eine einzigartige physikalische Herausforderung dar: Er ist das leichteste Element im Universum. Obwohl er eine unglaublich hohe gravimetrische Energiedichte (Energie pro Kilogramm) aufweist, ist seine volumetrische Energiedichte bei Umgebungsdruck extrem gering. Um eine sinnvolle Menge Energie auf praktischem Raum zu speichern, muss Wasserstoff zunächst verdichtet werden, was in der Regel durch mechanische Komprimierung erreicht wird.",
+
+      "compressorTitle": "Die Rolle der Kompressoren",
+
+      "compressorDescription": "Je nach Endanwendung wird der aus dem Elektrolyseur austretende Wasserstoff auf hohe Drücke komprimiert, typischerweise zwischen 30 und 700 bar. Dieser Schritt erfordert hochspezialisierte Geräte, die mit den winzigen Wasserstoffmolekülen sicher und effizient ohne Verunreinigung umgehen können.",
+
+      "compressorButton": "Kompressor-Technologien erkunden",
+
+      "storageMethodsTitle": "Wie Wasserstoff gespeichert wird: Tanks und Kavernen",
+
+      "storageMethodsDescription1": "Nach der Komprimierung kann Wasserstoff je nach erforderlichem Maßstab und Dauer auf verschiedene Arten gespeichert werden. Für kurz- bis mittelfristige Speicherung sind Hochdruck-Verbunddruckbehälter (Typ III oder IV Tanks) Standard in Industrieanlagen und Tankstellen.",
+
+      "storageMethodsDescription2": "Für die massive Energiespeicherung im Netzmaßstab ist jedoch die geologische Speicherung die effektivste Methode. Das Einpressen von komprimiertem Wasserstoffgas in riesige unterirdische Salzkavernen ermöglicht die sichere Einlagerung von Millionen Kubikmetern Gas. Für spezifische Anwendungsfälle wie Luft- und Raumfahrt oder maritimen Langstreckentransport kann Wasserstoff durch Abkühlung auf kryogene Temperaturen (-253°C) verflüssigt werden, was die Dichte maximiert, jedoch erheblichen Energieaufwand erfordert.",
+
+      "comparisonTitle": "Wasserstoff vs. Batterien: Die Stärke der saisonalen Speicherung",
+
+      "comparisonDescription1": "Eine häufige Frage ist, warum wir Wasserstoff verwenden sollten, wenn wir bereits fortschrittliche Lithium-Ionen-Batterien haben. Die Antwort liegt im Maßstab und der Dauer der Speicherung. Batterien sind sehr effizient für kurzfristige, tägliche Energieverschiebung (z. B. Speicherung von Tagessolarlicht für den Abend), leiden jedoch unter Selbstentladung über Zeit und erfordern massive Mengen an schweren, teuren Rohstoffen für die Skalierung.",
+
+      "comparisonDescription2": "Der strukturelle Vorteil von Wasserstoff besteht darin, dass seine Speicherkapazität unabhängig von der Konversionsausrüstung skaliert. Um mehr Energie zu speichern, benötigt eine Anlage lediglich eine größere physische Infrastruktur, wie erweiterte Tanks oder Kavernen, anstatt teure Elektrolyseureinheiten zu duplizieren. Darüber hinaus ist Wasserstoff einzigartig für die saisonale Energieverschiebung geeignet. Er ermöglicht es ganzen Regionen, im Sommer reichlich Solarenergie zu ernten, sie ein halbes Jahr lang sicher unterirdisch zu speichern und im Winter in Strom umzuwandeln – eine kritische Langzeitpufferlösung, die für Batterietechnologie noch unerreichbar bleibt."
+    }
+  },
+  "mobility": {
+    "label": "Mobilität",
+
+    "content": {
+      "title": "Wasserstoff in der Mobilität: Antrieb für den Schwertransport",
+
+      "intro": "Während der PKW-Markt derzeit von batteriebetriebenen Elektrofahrzeugen (BEV) dominiert wird, bietet grüner Wasserstoff eine unverzichtbare emissionsfreie Lösung für den Schwerlast- und Langstreckentransportsektor. In Branchen, wo das enorme Gewicht und die Größe massiver Batteriesätze die Nutzlastkapazität und Betriebseffizienz erheblich beeinträchtigen würden – wie Güterverkehr, Schienennetzwerke, Seeschifffahrt und letztlich Luftfahrt – erweist sich Wasserstoff als optimaler sauberer Energieträger.",
+
+      "fuelCellTitle": "Der Brennstoffzellenmechanismus: Elektrolyse umkehren",
+
+      "fuelCellDescription": "Fahrzeuge, die mit dieser Technologie betrieben werden, sind als Brennstoffzellen-Elektrofahrzeuge (FCEV) bekannt. Im Kern eines FCEV befindet sich der Brennstoffzellenstack, der im Wesentlichen den genauen Umkehrprozess der Wasserelektrolyse durchführt. Anstatt Strom zum Spalten von Wasser zu verwenden, empfängt die Brennstoffzelle kontinuierlich komprimierten Wasserstoff aus den Fahrzeugtanks und Sauerstoff aus der Umgebungsluft. Durch eine elektrochemische Reaktion über eine Polymermembran verbinden sich diese beiden Elemente und erzeugen den Gleichstrom (DC), der zum Antrieb des Elektromotors benötigt wird. Das einzige Abgas am Auspuff ist reiner, harmloser Wasserdampf.",
+
+      "advantagesTitle": "Betankungs- und Reichweitenvorteile",
+
+      "advantagesDescription": "Der bedeutendste betriebliche Vorteil von Wasserstoff in der Mobilität ist seine Vergleichbarkeit mit dem Komfort herkömmlicher fossiler Brennstoffe. Das Betanken eines schweren Wasserstoff-LKW oder Busses an einer Zapfsäule dauert nur wenige Minuten und reduziert damit drastisch die kostspielige Ausfallzeit, die mit dem Aufladen großer Batteriesysteme verbunden ist. Darüber hinaus bietet die Hochdruckwasserstoffspeicherung unabhängig von Außentemperaturen eine deutlich größere Reichweite. Dies gewährleistet, dass globale logistische Lieferketten nahtlos auf emissionsfreie Technologien umgestellt werden können, ohne die Betriebszeit zu beeinträchtigen oder bestehende Routenstrukturen grundlegend zu verändern."
+    },
+
+    "schematic": {
+        "power": "Elektromotor",
+        "membrane": {
+            "title": "Membran",
+            "subtitle": "Protonenaustauschmembran (PEM)",
+            "explanation": "Eine feste Polymermembran, die als Elektrolyt fungiert. Sie lässt nur die positiv geladenen Protonen (H⁺) zur Kathode passieren und zwingt die Elektronen, durch den externen Stromkreis zu fließen."
+        },
+        "cathode": {
+            "title": "Kathode (+)",
+            "subtitle": "Kathode (+)",
+            "explanation": "Sauerstoff (O₂) aus der Luft tritt hier ein. Er verbindet sich mit den Protonen (H⁺), die durch die Membran wandern, und mit den Elektronen (e⁻), die vom Motor ankommen, um reines Wasser (H₂O) zu bilden."
+        },
+        "anode": {
+            "title": "Anode (-)",
+            "subtitle": "Anode (-)",
+            "explanation": "Komprimierter Wasserstoff (H₂) tritt hier ein. Der Katalysator spaltet die H₂-Moleküle in Protonen (H⁺) und Elektronen (e⁻). Die Elektronen fließen durch den externen Stromkreis, um den Motor anzutreiben."
+        }
+    }
+  },
+  "industry": {
+    "label": "Industrie",
+
+    "content": {
+      "title": "Wasserstoff in der Industrie: Dekarbonisierung der Schwergewichte",
+
+      "intro": "Während Mobilität oft die öffentliche Aufmerksamkeit auf sich zieht, ist der Industriesektor derzeit der weltweit größte Wasserstoffverbraucher. Heute verwenden Industrien jährlich Dutzende Millionen Tonnen Wasserstoff, hauptsächlich für die Erdölraffination, die Ammoniakproduktion für landwirtschaftliche Düngemittel und die Methanolsynthese. Da jedoch nahezu der gesamte aktuelle Bedarf mit fossilbasiertem grauem Wasserstoff gedeckt wird, ist der Industriesektor für enorme CO₂-Emissionen verantwortlich. Die Substitution dieses bestehenden Bedarfs durch grünen Wasserstoff ist der unmittelbarste und wirkungsvollste Schritt in der globalen Energiewende.",
+
+      "steelTitle": "Transformation der Stahlproduktion (DRI)",
+
+      "steelDescription1": "Über die Substitution des bestehenden grauen Wasserstoffs hinaus erschließt grüner Wasserstoff neue Wege zur Dekarbonisierung 'schwer abbaubarer' Sektoren – Industrien, in denen eine direkte Elektrifizierung chemisch oder physisch nicht möglich ist. Das prominenteste Beispiel ist die Stahlherstellung. Traditionelle Stahlproduktion nutzt kohlebefeuerte Hochöfen, um Sauerstoff aus Eisenerz zu entfernen, wobei enorme Mengen CO₂ freigesetzt werden.",
+        
+      "imageAlt": "Stahlrollenlager",
+
+      "steelDescription2": "Durch den Einsatz einer Technologie namens Direktreduktion von Eisenerz (DRI) kann Wasserstoffgas anstelle von Kohle als Reduktionsmittel verwendet werden. Bei diesem Prozess reagiert der Wasserstoff mit dem Sauerstoff im Eisenerz und ergibt Schwammeisen, wobei nur Wasserdampf emittiert wird. Diese bahnbrechende Technologie hat das Potenzial, den CO₂-Fußabdruck einer der am stärksten verschmutzenden Industrien der Welt nahezu vollständig zu eliminieren.",
+
+      "chemicalTitle": "Chemischer Rohstoff und Hochtemperaturwärme",
+
+      "chemicalDescription": "Neben Stahl dient grüner Wasserstoff als wichtiger Baustein für die chemische Industrie. Er kann mit abgeschiedenem CO₂ kombiniert werden, um synthetische, klimaneutrale Kraftstoffe (E-Fuels) für die Luft- und Schifffahrt oder grüne Kunststoffe herzustellen. Für bestimmte Industrieprozesse wie Zement- oder Glasherstellung, die extreme Hochtemperaturwärme (oft über 1.000°C) erfordern – die elektrische Heizsysteme nur ineffizient bereitstellen können – bietet die direkte Verbrennung von sauberem Wasserstoff eine praktikable, emissionsfreie Alternative zu Erdgas."
+    }
+  },
+  "heating": {
+    "label": "Wärme",
+
+    "content": {
+      "title": "Wasserstoff für Wärme und Kraft-Wärme-Kopplung",
+
+      "intro": "Die Dekarbonisierung des Wärmesektors – der sowohl die Gebäudeheizung als auch industrielle Hochtemperaturprozesse umfasst – bleibt eine der größten Herausforderungen in der Energiewende. Während elektrische Wärmepumpen für gut gedämmte Einzelgebäude sehr effektiv sind, bietet grüner Wasserstoff eine kritische Alternative für dichte Fernwärmenetze und Großanlagen, bei denen eine direkte Elektrifizierung wirtschaftlich oder physisch unpraktisch ist.",
+
+      "sectorCouplingTitle": "Sektorkopplung: Abwärmerückgewinnung",
+
+      "sectorCouplingDescription": "Eine der effizientesten Anwendungen von Wasserstoff im Wärmesektor findet tatsächlich ganz zu Beginn seines Lebenszyklus statt. Der Wasserelektrolyseprozess erzeugt von Natur aus eine erhebliche Menge an Nieder- bis Mitteltemperaturabwärme. Durch ein Konzept namens 'Sektorkopplung' kann diese thermische Energie aufgefangen und direkt in lokale kommunale Fernwärmenetze eingespeist werden. Dieser Ansatz kann Tausende von Häusern beheizen und gleichzeitig den thermodynamischen Gesamtwirkungsgrad der Wasserstoffproduktionsanlage drastisch steigern, wodurch Abwärme zu einer wertvollen Ressource wird.",
+
+      "chpTitle": "Kraft-Wärme-Kopplung (KWK)",
+
+      "chpDescription": "Auf der Verbrauchsseite können stationäre Wasserstoff-Brennstoffzellen als Kraft-Wärme-Kopplungs-Einheiten (KWK), auch als Blockheizkraftwerke bekannt, eingesetzt werden. Anstatt Brennstoff zu verbrennen, nutzen diese fortschrittlichen Systeme grünen Wasserstoff zur elektrochemischen Stromerzeugung für ein Gebäude, einen Campus oder eine Fabrik. Gleichzeitig wird die Reaktionswärme als Nebenprodukt genutzt, um Warmwasser und Raumwärme bereitzustellen. Dieser duale Erzeugungsprozess kann den Systemgesamtwirkungsgrad weit über 85 % steigern, was herkömmliche Kraftwerke weit übertrifft.",
+
+      "gridTitle": "Netzeinspeisung und Wasserstoffkessel",
+
+      "gridDescription": "Als Übergangsstrategie zur Dekarbonisierung der Wärmeversorgung testen viele Länder aktiv die Beimischung von grünem Wasserstoff (typischerweise bis zu 20 %) in bestehende Erdgaspipelines. Dies senkt schrittweise den CO₂-Fußabdruck der konventionellen Heizung, ohne sofortige Änderungen an den Geräten der Endnutzer zu erfordern. Langfristig werden dedizierte 100 % reine Wasserstoffkessel entwickelt, um fossile Gassysteme in gewerblichen Umgebungen vollständig zu ersetzen und sicherzustellen, dass das einzige Abgas aus dem Schornstein reiner Wasserdampf ist."
+    },
+
+    "schematic":{
+        "title": "Kraft-Wärme-Kopplung (KWK)",
+        "text1": "Diese Brennstoffzelleneinheit wandelt grünen Wasserstoff elektrochemisch in ",
+        "textBold1": "Strom",
+        "text2": " und nutzbare ",
+        "textBold2": "Wärme",
+        "text3": " um. Durch die Rückgewinnung der Abwärme erreicht das System einen Gesamtwirkungsgrad von über ",
+        "textBold3": "85 %",
+        "text4": "um das Gebäude zu beheizen und mit Strom zu versorgen."
     }
   }
 }
