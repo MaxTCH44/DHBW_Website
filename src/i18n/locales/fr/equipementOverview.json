@@ -1,319 +1,313 @@
 {
-    "advantages": "Advantages",
-    "disadvantages": "Disadvantages",
+    "advantages": "Avantages",
+    "disadvantages": "Inconvénients",
     "electrolyzers": {
-        "title": "Types of Electrolyzers",
-        "introText": "Water electrolysis is the cornerstone of green hydrogen production, utilizing renewable electricity to split water molecules into pure hydrogen and oxygen. However, the industrial landscape requires diverse solutions to balance capital costs, energy efficiency, and dynamic response to intermittent power grids. Explore the fundamental mechanisms, material challenges, and unique advantages of each technology below.",
+        "title": "Types d'Électrolyseurs",
+        "introText": "L'électrolyse de l'eau est la pierre angulaire de la production d'hydrogène vert, utilisant l'électricité renouvelable pour scinder les molécules d'eau en hydrogène pur et en oxygène. Cependant, le contexte industriel nécessite des solutions variées pour équilibrer les coûts d'investissement, l'efficacité énergétique et la réponse dynamique aux réseaux alimentés par des sources intermittentes. Explorez ci-dessous les mécanismes fondamentaux, les défis matériaux et les avantages uniques de chaque technologie.",
         "pem": {
-            "label": "PEM Electrolysis",
-            "introduction": "PEM water electrolysis was first idealized in the 1950s and developed to overcome the operational drawbacks of traditional alkaline water electrolysis. At the heart of this technology is a solid polysulfonated polymer membrane (such as Nafion) that acts as the electrolyte, specifically designed to conduct protons while remaining impermeable to gases.",
+            "label": "Électrolyse PEM",
+            "introduction": "L'électrolyse PEM de l'eau a été conceptualisée dans les années 1950 et développée pour surmonter les limitations opérationnelles de l'électrolyse alcaline traditionnelle. Au cœur de cette technologie se trouve une membrane polymère solide polysulfonée (comme le Nafion) qui fait office d'électrolyte, spécifiquement conçue pour conduire les protons tout en restant imperméable aux gaz.",
 
-            "mechanismTitle": "The Electrochemical Mechanism",
-            "mechanismDescription": "The fundamental principle involves splitting water at specific electrodes. Liquid water is pumped directly to the anode, where it is electrochemically decomposed into oxygen gas (O₂), protons (H⁺), and electrons (e⁻).",
+            "mechanismTitle": "Le Mécanisme Électrochimique",
+            "mechanismDescription": "Le principe fondamental consiste à décomposer l'eau au niveau d'électrodes spécifiques. De l'eau liquide est directement pompée vers l'anode, où elle est électrochimiquement décomposée en oxygène gazeux (O₂), en protons (H⁺) et en électrons (e⁻).",
 
-            "anodeReaction": "Anode Reaction: H₂O → 2H⁺ + ½ O₂ + 2e⁻",
+            "anodeReaction": "Réaction à l'anode : H₂O → 2H⁺ + ½ O₂ + 2e⁻",
 
-            "membraneDescription": "The solid polymer membrane only allows positive ions to pass, meaning the protons travel directly through the membrane to the cathode. The electrons travel through an external power circuit, providing the driving voltage. At the cathode, they recombine to produce highly pure hydrogen gas.",
+            "membraneDescription": "La membrane polymère solide ne laisse passer que les ions positifs : les protons traversent directement la membrane vers la cathode, tandis que les électrons circulent dans le circuit électrique externe, fournissant la tension motrice. À la cathode, ils se recombinent pour produire un hydrogène gazeux de très haute pureté.",
 
-            "cathodeReaction": "Cathode Reaction: 2H⁺ + 2e⁻ → H₂",
+            "cathodeReaction": "Réaction à la cathode : 2H⁺ + 2e⁻ → H₂",
 
-            "componentsTitle": "Components and Challenges",
-            "componentsDescription": "A PEM cell is built around the Membrane Electrode Assembly (MEA). Because the system operates in a highly corrosive acidic environment, it necessitates the use of expensive noble metals. Platinum (Pt) is typically used for the cathode (HER), while Iridium dioxide (IrO₂) or Ruthenium dioxide (RuO₂) are required for the anode (OER). Furthermore, components like separator plates must be made of corrosion-resistant titanium, significantly driving up the capital cost.",
+            "componentsTitle": "Composants et Défis",
+            "componentsDescription": "Une cellule PEM est construite autour de l'assemblage membrane-électrodes (MEA). Le système opérant dans un environnement acide très corrosif, il nécessite l'utilisation de métaux nobles coûteux. Le platine (Pt) est généralement utilisé pour la cathode (HER), tandis que le dioxyde d'iridium (IrO₂) ou le dioxyde de ruthénium (RuO₂) sont requis pour l'anode (OER). De plus, les composants tels que les plaques séparatrices doivent être en titane résistant à la corrosion, ce qui alourdit considérablement les coûts d'investissement.",
 
             "advantages": {
-                "ultrapureHydrogen": "Produces ultrapure hydrogen (99,99%) and pure oxygen as a byproduct",
-                "highCurrentDensity": "Operates at high current densities (above 2 A/cm²)",
-                "compactDesign": "Compact system design with a very small physical footprint",
-                "dynamicOperation": "Highly dynamic operation with fast response times, ideal for intermittent renewable energy",
-                "highPressure": "Can operate at high pressures (simplifying downstream compression)"
+                "ultrapureHydrogen": "Produit de l'hydrogène ultrapure (99,99 %) et de l'oxygène pur en sous-produit",
+                "highCurrentDensity": "Fonctionne à haute densité de courant (supérieure à 2 A/cm²)",
+                "compactDesign": "Conception compacte avec une très faible empreinte physique",
+                "dynamicOperation": "Fonctionnement très dynamique avec des temps de réponse rapides, idéal pour les énergies renouvelables intermittentes",
+                "highPressure": "Peut fonctionner à haute pression (simplifiant la compression en aval)"
             },
 
             "disadvantages": {
-                "highCapex": "High capital cost due to expensive cell components (separator plates and MEA)",
-                "nobleMetals": "Relies heavily on scarce and expensive noble metals (Platinum, Iridium, Ruthenium)",
-                "corrosiveEnvironment": "Highly corrosive acidic operating environment degrades components over time",
-                "lowerDurability": "Lower durability and lifespan compared to mature alkaline systems",
-                "commercialization": "Commercialization at massive multi-megawatt scales is still in the near-term phase"
+                "highCapex": "Coût d'investissement élevé en raison des composants de cellule onéreux (plaques séparatrices et MEA)",
+                "nobleMetals": "Dépendance importante aux métaux nobles rares et coûteux (Platine, Iridium, Ruthénium)",
+                "corrosiveEnvironment": "L'environnement acide très corrosif dégrade les composants avec le temps",
+                "lowerDurability": "Durabilité et durée de vie inférieures aux systèmes alcalins matures",
+                "commercialization": "La commercialisation à très grande échelle (multi-mégawatts) est encore en phase d'émergence"
             },
             "schematic": {
-                "power": "POWER SUPPLY",
+                "power": "ALIMENTATION ÉLECTRIQUE",
                 "membrane": {
                     "title": "Membrane",
-                    "subtitle": "Proton Exchange Membrane (PEM)",
-                    "explanation": "A solid polymer membrane (e.g., Nafion) that acts as an electrolyte. It only allows positively charged protons (H⁺) to pass through, while forcing electrons to travel through the external circuit."
+                    "subtitle": "Membrane à Échange de Protons (PEM)",
+                    "explanation": "Une membrane polymère solide (ex. Nafion) qui fait office d'électrolyte. Elle ne laisse passer que les protons chargés positivement (H⁺), forçant les électrons à transiter par le circuit externe."
                 },
                 "cathode": {
                     "title": "Cathode (-)",
-                    "subtitle": "Cathode (Titanium / Platinum)",
-                    "explanation": "Protons (H⁺) from the membrane combine with electrons (e⁻) from the external circuit to form pure Hydrogen gas (H₂)."
+                    "subtitle": "Cathode (Titane / Platine)",
+                    "explanation": "Les protons (H⁺) provenant de la membrane se combinent avec les électrons (e⁻) du circuit externe pour former de l'hydrogène gazeux pur (H₂)."
                 },
                 "anode": {
                     "title": "Anode (+)",
-                    "subtitle": "Anode (Titanium)",
-                    "explanation": "Water flows in from this side and is oxidized here to produce Oxygen gas (O₂), protons (H⁺), and electrons (e⁻). Oxygen is released, protons enter the membrane."
+                    "subtitle": "Anode (Titane)",
+                    "explanation": "L'eau arrive de ce côté et y est oxydée pour produire de l'oxygène gazeux (O₂), des protons (H⁺) et des électrons (e⁻). L'oxygène est libéré, les protons entrent dans la membrane."
                 }
-
             }
         },
 
         "alkaline": {
-            "label": "Alkaline Electrolysis",
-            "introduction": "Alkaline water electrolysis is one of the most practical and advanced technologies for hydrogen production, with a long and established history of utilization in the chlor-alkali industry. The system operates using a highly concentrated aqueous alkaline solution, typically 20-30 wt% potassium hydroxide (KOH), as the liquid electrolyte.",
+            "label": "Électrolyse Alcaline",
+            "introduction": "L'électrolyse alcaline de l'eau est l'une des technologies les plus abouties et les plus éprouvées pour la production d'hydrogène, avec un long historique d'utilisation dans l'industrie chlore-alcali. Le système fonctionne avec une solution aqueuse alcaline très concentrée, typiquement du KOH (hydroxyde de potassium) à 20-30 % en masse, utilisée comme électrolyte liquide.",
 
-            "mechanismTitle": "The Electrochemical Mechanism",
-            "mechanismDescription": "Unlike PEM systems that rely on protons, AWE operates in a high-pH liquid environment where hydroxide anions (OH⁻) act as the primary electrochemical charge carriers.",
+            "mechanismTitle": "Le Mécanisme Électrochimique",
+            "mechanismDescription": "Contrairement aux systèmes PEM qui s'appuient sur les protons, l'électrolyse alcaline fonctionne dans un environnement liquide à pH élevé où les anions hydroxyde (OH⁻) sont les principaux porteurs de charge électrochimique.",
 
-            "cathodeReaction": "Cathode Reaction: 2H₂O + 2e⁻ → H₂ + 2OH⁻",
+            "cathodeReaction": "Réaction à la cathode : 2H₂O + 2e⁻ → H₂ + 2OH⁻",
 
-            "transportDescription": "At the cathode, liquid water is reduced to produce molecular hydrogen gas and hydroxide anions. These anions are transported through a porous diaphragm to the anode, where they are oxidized to release molecular oxygen gas, water, and electrons.",
+            "transportDescription": "À la cathode, l'eau liquide est réduite pour produire de l'hydrogène gazeux et des anions hydroxyde. Ces anions sont transportés à travers un diaphragme poreux jusqu'à l'anode, où ils sont oxydés pour libérer de l'oxygène gazeux, de l'eau et des électrons.",
 
-            "anodeReaction": "Anode Reaction: 2OH⁻ → ½ O₂ + H₂O + 2e⁻",
+            "anodeReaction": "Réaction à l'anode : 2OH⁻ → ½ O₂ + H₂O + 2e⁻",
 
-            "componentsTitle": "Components and Catalysts",
-            "componentsDescription": "A major economic advantage of the alkaline environment is that it does not require expensive noble metals. The electrodes are typically made of abundant transition metals, such as Raney Nickel, Ni-plated steel, or stainless-steel meshes. To prevent the mixing of product gases, the cell uses a thick porous diaphragm (historically asbestos, now modern porous oxides like Zirfon) to allow OH⁻ ion transport while keeping the hydrogen and oxygen safely separated.",
+            "componentsTitle": "Composants et Catalyseurs",
+            "componentsDescription": "L'un des grands avantages économiques de l'environnement alcalin est qu'il ne nécessite pas de métaux nobles coûteux. Les électrodes sont généralement fabriquées à partir de métaux de transition abondants, comme le nickel de Raney, l'acier nickelé ou des grilles en acier inoxydable. Pour éviter le mélange des gaz produits, la cellule utilise un épais diaphragme poreux (historiquement en amiante, désormais en oxydes poreux modernes comme le Zirfon) permettant le transport des ions OH⁻ tout en maintenant l'hydrogène et l'oxygène séparés.",
 
             "advantages": {
-                "cheapCatalysts": "Does not require expensive noble metals for catalysts (uses Ni, Fe, Co)",
-                "matureTechnology": "Mature, well-established, and fully commercialized technology at the Megawatt scale",
-                "lowCapex": "Low capital expenditure (CAPEX) compared to PEM systems",
-                "highEfficiency": "High energy efficiency (70-80%)"
+                "cheapCatalysts": "Ne nécessite pas de métaux nobles coûteux pour les catalyseurs (utilise Ni, Fe, Co)",
+                "matureTechnology": "Technologie mature, bien établie et pleinement commercialisée à l'échelle du mégawatt",
+                "lowCapex": "Faible coût d'investissement (CAPEX) comparé aux systèmes PEM",
+                "highEfficiency": "Haute efficacité énergétique (70-80 %)"
             },
 
             "disadvantages": {
-                "lowCurrentDensity": "Operates at lower current densities (below 400 mA/cm²)",
-                "hazardousElectrolyte": "Uses a highly corrosive and hazardous liquid electrolyte (KOH)",
-                "poorDynamicResponse": "Low dynamic operation capability, making it less adaptable to highly fluctuating wind/solar power",
-                "carbonateImpurities": "Impurities (like carbonates) in the KOH can block catalytic sites and cause degradation",
-                "largeFootprint": "Large physical footprint and complex industrial setup required for large-scale operation"
+                "lowCurrentDensity": "Fonctionne à des densités de courant plus faibles (inférieures à 400 mA/cm²)",
+                "hazardousElectrolyte": "Utilise un électrolyte liquide hautement corrosif et dangereux (KOH)",
+                "poorDynamicResponse": "Faible capacité de fonctionnement dynamique, le rendant moins adaptable aux fortes fluctuations de l'énergie solaire ou éolienne",
+                "carbonateImpurities": "Les impuretés (comme les carbonates) dans le KOH peuvent bloquer les sites catalytiques et provoquer une dégradation",
+                "largeFootprint": "Grande empreinte physique et installation industrielle complexe requise pour une exploitation à grande échelle"
             },
             "schematic": {
-                "power": "POWER SUPPLY",
+                "power": "ALIMENTATION ÉLECTRIQUE",
                 "diaphragm": {
-                    "title": "Diaphragm",
-                    "subtitle": "Porous Diaphragm & Electrolyte",
-                    "explanation": "A porous separator submerged in an alkaline liquid electrolyte (usually 20-30% KOH or NaOH). It keeps H₂ and O₂ gases separated while allowing Hydroxide ions (OH⁻) to pass through."
+                    "title": "Diaphragme",
+                    "subtitle": "Diaphragme Poreux & Électrolyte",
+                    "explanation": "Un séparateur poreux immergé dans un électrolyte liquide alcalin (généralement KOH ou NaOH à 20-30 %). Il maintient les gaz H₂ et O₂ séparés tout en laissant passer les ions hydroxyde (OH⁻)."
                 },
                 "cathode": {
                     "title": "Cathode (-)",
-                    "subtitle": "Cathode (Nickel-based)",
-                    "explanation": "Water (H₂O) and electrons (e⁻) from the external circuit react here to form pure Hydrogen gas (H₂) and Hydroxide ions (OH⁻). Water enters the system from this side."
+                    "subtitle": "Cathode (À base de Nickel)",
+                    "explanation": "L'eau (H₂O) et les électrons (e⁻) du circuit externe réagissent ici pour former de l'hydrogène gazeux pur (H₂) et des ions hydroxyde (OH⁻). L'eau entre dans le système de ce côté."
                 },
                 "anode": {
                     "title": "Anode (+)",
-                    "subtitle": "Anode (Nickel-based / Steel)",
-                    "explanation": "Hydroxide ions (OH⁻) arriving from the electrolyte are oxidized here. They release Oxygen gas (O₂), water, and electrons (e⁻) that flow into the external circuit."
+                    "subtitle": "Anode (Nickel / Acier)",
+                    "explanation": "Les ions hydroxyde (OH⁻) arrivant de l'électrolyte sont oxydés ici. Ils libèrent de l'oxygène gazeux (O₂), de l'eau et des électrons (e⁻) qui circulent dans le circuit externe."
                 }
-
             }
         },
         "aem": {
-            "label": "AEM Electrolysis",
+            "label": "Électrolyse AEM",
 
-            "introduction": "AEM electrolysis is widely considered the next-generation breakthrough in green hydrogen production. It essentially bridges the gap between traditional Alkaline Water Electrolysis (AWE) and Proton Exchange Membrane (PEM) systems. The core innovation lies in the use of a solid polymer membrane that operates in an alkaline environment and selectively transports negatively charged hydroxide anions (OH⁻).",
+            "introduction": "L'électrolyse AEM est largement considérée comme la percée de nouvelle génération dans la production d'hydrogène vert. Elle comble essentiellement le fossé entre l'électrolyse alcaline traditionnelle (AWE) et les systèmes à membrane échangeuse de protons (PEM). L'innovation centrale réside dans l'utilisation d'une membrane polymère solide fonctionnant en milieu alcalin et transportant sélectivement les anions hydroxyde chargés négativement (OH⁻).",
 
-            "mechanismTitle": "The Electrochemical Mechanism",
+            "mechanismTitle": "Le Mécanisme Électrochimique",
 
-            "mechanismDescription": "In an AEM electrolyzer, the half-cell reactions are identical to those of traditional alkaline electrolysis. Pure water or a very dilute alkaline solution is introduced at the cathode. Here, water molecules are reduced to form pure hydrogen gas and hydroxide ions.",
+            "mechanismDescription": "Dans un électrolyseur AEM, les réactions de demi-cellule sont identiques à celles de l'électrolyse alcaline traditionnelle. De l'eau pure ou une solution alcaline très diluée est introduite à la cathode. Les molécules d'eau y sont réduites pour former de l'hydrogène gazeux pur et des ions hydroxyde.",
 
-            "cathodeReaction": "Cathode Reaction: 2H₂O + 2e⁻ → H₂ + 2OH⁻",
+            "cathodeReaction": "Réaction à la cathode : 2H₂O + 2e⁻ → H₂ + 2OH⁻",
 
-            "transportDescription": "Driven by the electric field, these hydroxide anions travel directly through the solid Anion Exchange Membrane to reach the anode. At the anode, the ions are oxidized to produce oxygen gas, water, and electrons.",
+            "transportDescription": "Entraînés par le champ électrique, ces anions hydroxyde traversent directement la membrane solide à échange d'anions pour atteindre l'anode. À l'anode, les ions sont oxydés pour produire de l'oxygène gazeux, de l'eau et des électrons.",
 
-            "anodeReaction": "Anode Reaction: 2OH⁻ → ½ O₂ + H₂O + 2e⁻",
+            "anodeReaction": "Réaction à l'anode : 2OH⁻ → ½ O₂ + H₂O + 2e⁻",
 
-            "componentsTitle": "Components and Current Challenges",
+            "componentsTitle": "Composants et Défis Actuels",
 
-            "componentsDescription": "The greatest promise of AEM technology is its cost-effectiveness. It eliminates the need for expensive noble metal catalysts (like Platinum and Iridium) and titanium components, utilizing abundant transition metals like Nickel instead. Simultaneously, because it uses a solid membrane rather than a thick liquid diaphragm, it offers the compact footprint, high-pressure capabilities, and fast dynamic response typical of PEM systems.",
+            "componentsDescription": "La grande promesse de la technologie AEM est sa compétitivité économique. Elle élimine le besoin de catalyseurs en métaux nobles coûteux (comme le Platine et l'Iridium) et de composants en titane, en utilisant à la place des métaux de transition abondants comme le Nickel. Simultanément, parce qu'elle utilise une membrane solide plutôt qu'un épais diaphragme liquide, elle offre la compacité, les capacités haute pression et la réponse dynamique rapide typiques des systèmes PEM.",
 
             "advantages": {
-                "lowCapitalCost": "Low capital cost: uses cheap, abundant non-noble metal catalysts (Ni, Fe, Co)",
-                "hybridBenefits": "Combines the rapid dynamic response of PEM with the cheap materials of Alkaline",
-                "safeElectrolyte": "Uses pure water or a very dilute/safe alkaline solution (1% KOH instead of 30%)",
-                "pressurizedHydrogen": "Produces high-purity hydrogen gas under pressure, reducing compression needs",
-                "compactDesign": "Compact system design with a small physical footprint"
+                "lowCapitalCost": "Faible coût d'investissement : utilise des catalyseurs en métaux non nobles abondants et bon marché (Ni, Fe, Co)",
+                "hybridBenefits": "Combine la réponse dynamique rapide du PEM avec les matériaux économiques de l'alcalin",
+                "safeElectrolyte": "Utilise de l'eau pure ou une solution alcaline très diluée/sûre (KOH à 1 % au lieu de 30 %)",
+                "pressurizedHydrogen": "Produit de l'hydrogène de haute pureté sous pression, réduisant les besoins en compression",
+                "compactDesign": "Conception compacte avec une faible empreinte physique"
             },
 
             "disadvantages": {
-                "membraneDurability": "Membrane durability is a major issue; the polymer backbone degrades quickly in alkaline environments",
-                "lowerConductivity": "Lower ionic conductivity compared to PEM systems",
-                "shorterLifetime": "Overall cell lifespan is currently shorter than commercial PEM and Alkaline systems",
-                "earlyCommercialization": "Still in the early commercialization phase; lacks massive Gigawatt-scale deployment history"
+                "membraneDurability": "La durabilité de la membrane est un problème majeur : le squelette polymère se dégrade rapidement en milieu alcalin",
+                "lowerConductivity": "Conductivité ionique inférieure à celle des systèmes PEM",
+                "shorterLifetime": "La durée de vie globale de la cellule est actuellement plus courte que celle des systèmes PEM et alcalins commerciaux",
+                "earlyCommercialization": "Encore en phase de commercialisation précoce ; manque d'historique de déploiement massif à l'échelle du gigawatt"
             },
             "schematic": {
-                "power": "POWER SUPPLY",
+                "power": "ALIMENTATION ÉLECTRIQUE",
                 "membrane": {
                     "title": "Membrane",
-                    "subtitle": "Anion Exchange Membrane (AEM)",
-                    "explanation": "A solid polymer membrane that conducts negative Hydroxide ions (OH⁻) from the cathode to the anode. It provides the compact design of a PEM but operates in a slightly alkaline environment."
+                    "subtitle": "Membrane à Échange d'Anions (AEM)",
+                    "explanation": "Une membrane polymère solide qui conduit les ions hydroxyde négatifs (OH⁻) de la cathode vers l'anode. Elle offre la compacité d'un système PEM tout en fonctionnant dans un environnement légèrement alcalin."
                 },
                 "cathode": {
                     "title": "Cathode (-)",
-                    "subtitle": "Cathode (Non-PGM / Nickel-based)",
-                    "explanation": "Water (H₂O) and electrons (e⁻) react here to form Hydrogen gas (H₂) and OH⁻ ions. Because AEM is not highly acidic, cheaper transition metals can be used instead of Platinum."
+                    "subtitle": "Cathode (Sans PGM / À base de Nickel)",
+                    "explanation": "L'eau (H₂O) et les électrons (e⁻) réagissent ici pour former de l'hydrogène gazeux (H₂) et des ions OH⁻. Le milieu n'étant pas fortement acide, des métaux de transition bon marché peuvent remplacer le Platine."
                 },
                 "anode": {
                     "title": "Anode (+)",
-                    "subtitle": "Anode (Non-PGM / Nickel or Iron)",
-                    "explanation": "The OH⁻ ions that crossed the membrane are oxidized here, releasing Oxygen gas (O₂), water, and electrons (e⁻). No expensive Iridium is required."
+                    "subtitle": "Anode (Sans PGM / Nickel ou Fer)",
+                    "explanation": "Les ions OH⁻ ayant traversé la membrane sont oxydés ici, libérant de l'oxygène gazeux (O₂), de l'eau et des électrons (e⁻). Aucun Iridium coûteux n'est nécessaire."
                 }
-
             }
         },
 
         "soec": {
-            "label": "SOEC Electrolysis",
+            "label": "Électrolyse SOEC",
 
-            "introduction": "Solid Oxide Electrolyzer Cells (SOEC) operate at extremely high temperatures, typically between 700°C and 850°C, using high-temperature steam instead of liquid water. By utilizing thermal energy to assist the water-splitting reaction, SOECs achieve unprecedented electrical efficiencies that far exceed low-temperature systems.",
+            "introduction": "Les cellules d'électrolyse à oxyde solide (SOEC) fonctionnent à des températures extrêmement élevées, généralement entre 700 °C et 850 °C, en utilisant de la vapeur à haute température au lieu d'eau liquide. En exploitant l'énergie thermique pour assister la réaction de décomposition de l'eau, les SOEC atteignent des efficacités électriques sans précédent, bien supérieures à celles des systèmes basse température.",
 
-            "mechanismTitle": "The Electrochemical Mechanism",
+            "mechanismTitle": "Le Mécanisme Électrochimique",
 
-            "mechanismDescription": "The core of an SOEC is a solid ceramic electrolyte (like Yttria-Stabilized Zirconia) that conducts negatively charged oxygen ions (O²⁻). Steam is fed to the cathode, where it is reduced to form hydrogen gas and oxide ions.",
+            "mechanismDescription": "Le cœur d'un SOEC est un électrolyte céramique solide (comme la zircone stabilisée à l'yttrium) qui conduit les ions oxyde chargés négativement (O²⁻). De la vapeur est introduite à la cathode, où elle est réduite pour former de l'hydrogène gazeux et des ions oxyde.",
 
-            "cathodeReaction": "Cathode Reaction: H₂O + 2e⁻ → H₂ + O²⁻",
+            "cathodeReaction": "Réaction à la cathode : H₂O + 2e⁻ → H₂ + O²⁻",
 
-            "transportDescription": "These oxide ions migrate through the dense ceramic lattice of the electrolyte to reach the anode. There, the ions are oxidized, combining to form oxygen gas and releasing electrons back into the circuit.",
+            "transportDescription": "Ces ions oxyde migrent à travers le réseau cristallin dense de la céramique électrolyte pour atteindre l'anode. Là, les ions sont oxydés, se combinant pour former de l'oxygène gazeux et libérant des électrons dans le circuit.",
 
-            "anodeReaction": "Anode Reaction: O²⁻ → ½ O₂ + 2e⁻",
+            "anodeReaction": "Réaction à l'anode : O²⁻ → ½ O₂ + 2e⁻",
 
-            "componentsTitle": "Materials and Co-Electrolysis",
+            "componentsTitle": "Matériaux et Co-Électrolyse",
 
-            "componentsDescription": "SOEC systems do not require expensive noble metals; they utilize nickel-ceramic composites and perovskite oxides. A unique advantage of SOEC is its capability for 'co-electrolysis'—simultaneously electrolyzing steam (H₂O) and carbon dioxide (CO₂) to produce 'syngas', a critical building block for synthetic green fuels (e-fuels). However, the extreme temperatures accelerate material degradation and complicate dynamic operation.",
+            "componentsDescription": "Les systèmes SOEC ne nécessitent pas de métaux nobles coûteux ; ils utilisent des composites nickel-céramique et des oxydes de type pérovskite. Un avantage unique du SOEC est sa capacité de 'co-électrolyse' — électrolyser simultanément de la vapeur (H₂O) et du dioxyde de carbone (CO₂) pour produire du 'syngaz', un élément de base essentiel pour les carburants de synthèse verts (e-fuels). Cependant, les températures extrêmes accélèrent la dégradation des matériaux et compliquent le fonctionnement dynamique.",
 
             "advantages": {
-                "highestEfficiency": "Highest electrical efficiency of all electrolyzer types (often exceeding 90% when integrated with waste heat)",
-                "wasteHeatUsage": "Can utilize waste industrial heat (from nuclear, steel, or chemical plants) to reduce electrical demand",
-                "coElectrolysis": "Capable of co-electrolysis (H₂O + CO₂) to produce syngas for e-fuels",
-                "noNobleMetals": "Does not require expensive noble metal catalysts (Platinum/Iridium)"
+                "highestEfficiency": "Efficacité électrique la plus élevée de tous les types d'électrolyseurs (dépassant souvent 90 % lorsqu'intégré avec de la chaleur résiduelle)",
+                "wasteHeatUsage": "Peut utiliser la chaleur résiduelle industrielle (nucléaire, sidérurgie, chimie) pour réduire la consommation électrique",
+                "coElectrolysis": "Capable de co-électrolyse (H₂O + CO₂) pour produire du syngaz destiné aux e-fuels",
+                "noNobleMetals": "Ne nécessite pas de catalyseurs en métaux nobles coûteux (Platine/Iridium)"
             },
 
             "disadvantages": {
-                "materialDegradation": "Severe material degradation due to extreme operating temperatures (corrosion, thermal stress)",
-                "poorDynamicResponse": "Poor dynamic response and long start-up times, making it difficult to pair with highly intermittent renewables",
-                "thermalManagement": "Relies on complex thermal management systems",
-                "limitedCommercialMaturity": "Less commercially mature for massive Gigawatt-scale deployment compared to Alkaline or PEM"
+                "materialDegradation": "Dégradation sévère des matériaux due aux températures de fonctionnement extrêmes (corrosion, contraintes thermiques)",
+                "poorDynamicResponse": "Faible réponse dynamique et longs temps de démarrage, rendant difficile l'association avec des renouvelables très intermittents",
+                "thermalManagement": "Dépend de systèmes complexes de gestion thermique",
+                "limitedCommercialMaturity": "Moins mature commercialement pour un déploiement massif à l'échelle du gigawatt comparé à l'alcalin ou au PEM"
             },
             "schematic": {
-                "power": "POWER SUPPLY",
+                "power": "ALIMENTATION ÉLECTRIQUE",
                 "ceramic": {
-                    "title": "Ceramic",
-                    "subtitle": "Solid Oxide Electrolyte (Ceramic)",
-                    "explanation": "A dense ceramic material (like YSZ) operating at ultra-high temperatures (700-1000°C). It conducts negative Oxide ions (O²⁻) while blocking electrons and gases."
+                    "title": "Céramique",
+                    "subtitle": "Électrolyte à Oxyde Solide (Céramique)",
+                    "explanation": "Un matériau céramique dense (comme la YSZ) fonctionnant à très haute température (700-1 000 °C). Il conduit les ions oxyde négatifs (O²⁻) tout en bloquant les électrons et les gaz."
                 },
                 "cathode": {
                     "title": "Cathode (-)",
-                    "subtitle": "Cathode (Fuel Electrode)",
-                    "explanation": "Steam (H₂O vapor) enters here. High heat and electrons split the steam into Hydrogen gas (H₂) and Oxide ions (O²⁻). Using steam dramatically reduces the electricity required."
+                    "subtitle": "Cathode (Électrode à Combustible)",
+                    "explanation": "La vapeur d'eau (H₂O) entre ici. La chaleur élevée et les électrons décomposent la vapeur en hydrogène gazeux (H₂) et en ions oxyde (O²⁻). L'utilisation de vapeur réduit considérablement l'électricité nécessaire."
                 },
                 "anode": {
                     "title": "Anode (+)",
-                    "subtitle": "Anode (Air/Oxygen Electrode)",
-                    "explanation": "TThe Oxide ions (O²⁻) traveling through the ceramic arrive here, where they release electrons (e⁻) and combine to form pure Oxygen gas (O₂)."
+                    "subtitle": "Anode (Électrode à Air/Oxygène)",
+                    "explanation": "Les ions oxyde (O²⁻) ayant traversé la céramique arrivent ici, où ils libèrent des électrons (e⁻) et se combinent pour former de l'oxygène gazeux pur (O₂)."
                 }
-
             }
         }
-
     },
     "compressors": {
-        "title": "Types of Compressors",
-        "introText": "Compression is a critical step in the hydrogen value chain. Because hydrogen is the lightest element in the universe, it has a very low volumetric energy density at ambient pressure. To be stored, transported, and utilized efficiently, it must be densified to extreme pressures—often between 350 and 700 bar. Explore the different technologies, from traditional mechanical systems to innovative solid-state compressors, used to achieve these demanding requirements.",
-        
+        "title": "Types de Compresseurs",
+        "introText": "La compression est une étape critique dans la chaîne de valeur de l'hydrogène. L'hydrogène étant l'élément le plus léger de l'univers, sa densité énergétique volumique est très faible à pression ambiante. Pour être stocké, transporté et utilisé efficacement, il doit être densifié à des pressions extrêmes — souvent entre 350 et 700 bar. Explorez les différentes technologies, des systèmes mécaniques traditionnels aux compresseurs innovants à l'état solide, utilisées pour répondre à ces exigences.",
+
         "mechanical": {
-            "label": "Mechanical Compression",
+            "label": "Compression Mécanique",
 
-            "introduction": "Mechanical compression is the most mature and widely utilized technology for densifying green hydrogen. To store hydrogen in practical volumes, its pressure must be increased from the electrolyzer's output (10-30 bar) up to extreme pressures of 350 to over 700 bar for mobility and industrial applications.",
+            "introduction": "La compression mécanique est la technologie la plus mature et la plus répandue pour densifier l'hydrogène vert. Pour stocker l'hydrogène dans des volumes pratiques, sa pression doit être augmentée depuis la sortie de l'électrolyseur (10-30 bar) jusqu'à des pressions extrêmes de 350 à plus de 700 bar pour les applications mobilité et industrielles.",
 
-            "mechanismTitle": "The Compression Mechanism",
+            "mechanismTitle": "Le Mécanisme de Compression",
 
-            "mechanismDescription": "The fundamental principle relies on physically reducing the volume of the gas. The two most prominent types are reciprocating piston compressors and diaphragm compressors. In these systems, hydrogen enters a cylinder through an inlet valve. A piston (or a flexible metal membrane)—driven by an electric motor, hydraulics, or compressed air—moves to forcefully compress the gas. Once the target pressure is reached, an exhaust valve opens to discharge the high-pressure hydrogen.",
+            "mechanismDescription": "Le principe fondamental repose sur la réduction physique du volume du gaz. Les deux types les plus courants sont les compresseurs à piston alternatif et les compresseurs à membrane. Dans ces systèmes, l'hydrogène entre dans un cylindre par une soupape d'admission. Un piston (ou une membrane métallique flexible) — entraîné par un moteur électrique, un système hydraulique ou de l'air comprimé — se déplace pour comprimer le gaz de manière forcée. Une fois la pression cible atteinte, une soupape de refoulement s'ouvre pour évacuer l'hydrogène haute pression.",
 
-            "purityDescription": "Diaphragm compressors are particularly favored for fuel cell applications because the flexible metal membrane completely isolates the hydrogen gas from the mechanical pistons and lubricating oils, ensuring 100% gas purity.",
+            "purityDescription": "Les compresseurs à membrane sont particulièrement privilégiés pour les applications piles à combustible, car la membrane métallique flexible isole totalement l'hydrogène des pistons mécaniques et des huiles lubrifiantes, garantissant une pureté gazeuse de 100 %.",
 
-            "challengesTitle": "Material and Thermal Challenges",
+            "challengesTitle": "Défis Matériaux et Thermiques",
 
-            "challengesDescription": "Because hydrogen is the smallest molecule, mechanical compressors require extremely advanced dynamic seals to prevent leakage. Furthermore, compressing gas generates intense heat. These systems require robust multi-stage cooling to prevent overheating. Strict material selection (like specialized 316L stainless steel) is also mandatory to prevent 'hydrogen embrittlement' under massive mechanical stress.",
+            "challengesDescription": "L'hydrogène étant la plus petite molécule, les compresseurs mécaniques nécessitent des joints dynamiques extrêmement perfectionnés pour prévenir les fuites. De plus, la compression des gaz génère une chaleur intense. Ces systèmes requièrent un refroidissement multi-étagé robuste pour éviter la surchauffe. Une sélection rigoureuse des matériaux (comme l'acier inoxydable 316L spécialisé) est également obligatoire pour prévenir la 'fragilisation par l'hydrogène' sous de fortes contraintes mécaniques.",
 
             "advantages": {
-                "matureTechnology": "Highly mature technology with decades of industrial operational history",
-                "highPressureCapability": "Capable of reaching extreme pressures (up to 1.000+ bar)",
-                "gasPurity": "Diaphragm variants guarantee zero oil contamination, crucial for fuel cells",
-                "scalability": "Highly scalable from small laboratory boosters to massive industrial refueling stations"
+                "matureTechnology": "Technologie très mature avec des décennies d'expérience industrielle",
+                "highPressureCapability": "Capable d'atteindre des pressions extrêmes (jusqu'à 1 000+ bar)",
+                "gasPurity": "Les variantes à membrane garantissent une contamination zéro par les huiles, essentielle pour les piles à combustible",
+                "scalability": "Très modulable, des petits surpresseurs de laboratoire aux grandes stations industrielles de ravitaillement"
             },
 
             "disadvantages": {
-                "mechanicalWear": "Numerous moving parts subject to severe mechanical wear and tear",
-                "highMaintenance": "High maintenance requirements (frequent seal replacements and valve checks)",
-                "noiseAndVibration": "Generates significant noise and vibration during operation",
-                "coolingComplexity": "Requires complex and bulky intercooling systems to manage adiabatic heat generation"
+                "mechanicalWear": "Nombreuses pièces mobiles soumises à une usure mécanique sévère",
+                "highMaintenance": "Besoins élevés en maintenance (remplacement fréquent des joints et vérification des soupapes)",
+                "noiseAndVibration": "Génère des bruits et des vibrations significatifs en fonctionnement",
+                "coolingComplexity": "Nécessite des systèmes de refroidissement intercalaire complexes et encombrants pour gérer la chaleur adiabatique générée"
             },
-            "schematic":{
+            "schematic": {
                 "chamber": {
-                    "title": "Compression Chamber & Piston",
-                    "explanation": "The mechanical piston moves up and down. Upward motion compresses the gas, drastically increasing its pressure and temperature."
+                    "title": "Chambre de Compression & Piston",
+                    "explanation": "Le piston mécanique monte et descend. Le mouvement vers le haut comprime le gaz, augmentant drastiquement sa pression et sa température."
                 },
                 "inlet": {
-                    "title": "Low Pressure H₂ IN",
-                    "subtitle": "Low Pressure Inlet (Blue Side)",
-                    "explanation": "Hydrogen gas from the electrolyzer (typically 20-30 bar) enters here. The inlet valve opens when the piston moves down, drawing the gas in."
+                    "title": "H₂ Basse Pression ENTRÉE",
+                    "subtitle": "Admission Basse Pression (Côté Bleu)",
+                    "explanation": "L'hydrogène gazeux provenant de l'électrolyseur (typiquement 20-30 bar) entre ici. La soupape d'admission s'ouvre lorsque le piston descend, aspirant le gaz."
                 },
                 "outlet": {
-                    "title": "High Pressure H₂ OUT",
-                    "subtitle": "High Pressure Outlet (Red Side)",
-                    "explanation": "Once target pressure (e.g., 350-700 bar) is reached, the outlet valve opens, releasing the compressed H₂ gas to storage or a cooling system."
+                    "title": "H₂ Haute Pression SORTIE",
+                    "subtitle": "Refoulement Haute Pression (Côté Rouge)",
+                    "explanation": "Une fois la pression cible atteinte (ex. 350-700 bar), la soupape de refoulement s'ouvre, libérant le H₂ comprimé vers le stockage ou un système de refroidissement."
                 }
             }
         },
 
         "electrochemical": {
-            "label": "Electrochemical Compression",
+            "label": "Compression Électrochimique",
 
-            "introduction": "Electrochemical Hydrogen Compression (EHC) is an innovative, solid-state technology with zero moving parts. It utilizes an electrical voltage to drive hydrogen across a specialized polymer membrane, actively densifying the gas while simultaneously acting as a highly efficient purifier.",
+            "introduction": "La compression électrochimique de l'hydrogène (EHC) est une technologie innovante à l'état solide, sans aucune pièce mobile. Elle utilise une tension électrique pour déplacer l'hydrogène à travers une membrane polymère spécialisée, densifiant activement le gaz tout en agissant simultanément comme un purificateur très efficace.",
 
-            "mechanismTitle": "The Electrochemical Mechanism",
+            "mechanismTitle": "Le Mécanisme Électrochimique",
 
-            "mechanismDescription": "Structurally similar to a PEM fuel cell, low-pressure hydrogen is fed to the anode, where it is electrochemically split into protons (H⁺) and electrons. The solid Proton Exchange Membrane (PEM) only allows the protons to pass through to the cathode side.",
+            "mechanismDescription": "Structurellement similaire à une pile à combustible PEM, de l'hydrogène basse pression est introduit à l'anode, où il est électrochimiquement scindé en protons (H⁺) et en électrons. La membrane à échange de protons (PEM) solide ne laisse passer que les protons vers le côté cathode.",
 
-            "pressureBuildUpDescription": "At the cathode, the protons and electrons recombine to form hydrogen gas (H₂). Because the cathode chamber is sealed and restricted, the continuous accumulation of gas naturally builds up massive pressure without any physical mechanical force.",
+            "pressureBuildUpDescription": "À la cathode, les protons et les électrons se recombinent pour former de l'hydrogène gazeux (H₂). Le compartiment cathode étant hermétique et confiné, l'accumulation continue de gaz engendre naturellement une pression massive sans aucune force mécanique physique.",
 
-            "advantagesTitle": "Purification and Solid-State Advantages",
+            "advantagesTitle": "Purification et Avantages de l'État Solide",
 
-            "advantagesDescription": "Because the membrane is strictly permeable to protons, impurities (like CO or water) are blocked at the anode, ensuring the output is ultra-pure (99,999% H₂). Furthermore, the absence of moving parts ensures silent, vibration-free operation and entirely eliminates the risk of oil contamination.",
+            "advantagesDescription": "La membrane n'étant perméable qu'aux protons, les impuretés (comme le CO ou l'eau) sont bloquées à l'anode, garantissant une sortie ultrapure (99,999 % H₂). De plus, l'absence de pièces mobiles assure un fonctionnement silencieux et sans vibrations, éliminant entièrement le risque de contamination par les huiles.",
 
             "advantages": {
-                "silentOperation": "Zero moving parts ensures completely silent and vibration-free operation",
-                "purification": "Dual function: inherently purifies the hydrogen up to 99,999% as it compresses",
-                "oilFree": "100% oil-free design ensures no mechanical contamination of the gas",
-                "lowMaintenance": "High reliability and low maintenance due to the absence of mechanical wear and tear"
+                "silentOperation": "Zéro pièce mobile pour un fonctionnement complètement silencieux et sans vibrations",
+                "purification": "Double fonction : purifie intrinsèquement l'hydrogène jusqu'à 99,999 % tout en le comprimant",
+                "oilFree": "Conception 100 % sans huile, éliminant toute contamination mécanique du gaz",
+                "lowMaintenance": "Haute fiabilité et faible maintenance grâce à l'absence d'usure mécanique"
             },
 
             "disadvantages": {
-                "highCapex": "Capital costs are high due to reliance on noble metal catalysts (Platinum) and specialized membranes",
-                "limitedFlowRates": "Currently limited to lower volumetric flow rates compared to large industrial mechanical compressors",
-                "scalingComplexity": "To scale up capacity, multiple cell stacks must be added, increasing the footprint",
-                "catalystPoisoning": "The catalyst can be 'poisoned' and degraded by specific severe impurities (like sulfur) in the feed gas"
+                "highCapex": "Coûts d'investissement élevés en raison des catalyseurs en métaux nobles (Platine) et des membranes spécialisées",
+                "limitedFlowRates": "Actuellement limité à des débits volumiques plus faibles comparés aux grands compresseurs mécaniques industriels",
+                "scalingComplexity": "Pour augmenter la capacité, plusieurs stacks de cellules doivent être ajoutés, augmentant l'empreinte",
+                "catalystPoisoning": "Le catalyseur peut être 'empoisonné' et dégradé par certaines impuretés sévères (comme le soufre) dans le gaz d'alimentation"
             },
             "schematic": {
-                "power": "POWER SUPPLY",
+                "power": "ALIMENTATION ÉLECTRIQUE",
                 "membrane": {
                     "title": "Membrane",
-                    "subtitle": "Proton Exchange Membrane",
-                    "explanation": "Acts as a gas-tight barrier. It allows only Protons (H⁺) to cross from the low-pressure side to the high-pressure side, preventing the compressed gas from flowing back."
+                    "subtitle": "Membrane à Échange de Protons",
+                    "explanation": "Fait office de barrière étanche aux gaz. Elle ne laisse passer que les protons (H⁺) du côté basse pression vers le côté haute pression, empêchant le gaz comprimé de refluir."
                 },
                 "cathode": {
                     "title": "Cathode (-)",
-                    "subtitle": "Cathode (High Pressure)",
-                    "explanation": "Protons and electrons recombine here to form Hydrogen gas (H₂). Because the membrane is gas-tight, the newly formed hydrogen is trapped, building up immense pressure electrochemically."
+                    "subtitle": "Cathode (Haute Pression)",
+                    "explanation": "Les protons et les électrons se recombinent ici pour former de l'hydrogène gazeux (H₂). La membrane étant étanche aux gaz, l'hydrogène nouvellement formé est piégé, créant une immense pression par voie électrochimique."
                 },
                 "anode": {
                     "title": "Anode (+)",
-                    "subtitle": "Anode (Low Pressure)",
-                    "explanation": "Hydrogen gas (H₂) enters here. A catalyst splits the hydrogen molecules into Protons (H⁺) and electrons (e⁻). The voltage drives them apart."
+                    "subtitle": "Anode (Basse Pression)",
+                    "explanation": "L'hydrogène gazeux (H₂) entre ici. Un catalyseur scinde les molécules d'hydrogène en protons (H⁺) et en électrons (e⁻). La tension les sépare."
                 },
-                "pressure":{
-                    "low": "Low Pressure H₂",
-                    "high": "High Pressure H₂"
+                "pressure": {
+                    "low": "H₂ Basse Pression",
+                    "high": "H₂ Haute Pression"
                 }
-
             }
         }
     }
