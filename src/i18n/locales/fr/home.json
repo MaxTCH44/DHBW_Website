@@ -1,0 +1,58 @@
+{
+  "home_hero": {
+    "titleP1": "Outils avancés pour l'ingénierie de ",
+    "titleGreen": "l’hydrogène vert",
+    "titleP2": "",
+    "subtitle": "Une plateforme spécialisée conçue pour les laboratoires, chercheurs et ingénieurs industriels afin de planifier, simuler et optimiser les systèmes H₂.",
+    "buttons": {
+      "primary": "Accéder aux outils",
+      "secondary": "Explorer les technologies"
+    }
+  },
+  "home_lab": {
+    "badge": "Notre installation",
+    "title": "Au sein du GreenLab",
+    "description": "Nous sommes un centre de recherche avancé dédié à la mise à l’échelle des technologies de l’hydrogène vert. Au-delà des simulations numériques, notre laboratoire physique se concentre sur le test, l’optimisation et le développement de la nouvelle génération d’électrolyseurs et de systèmes de recyclage de gaz.",
+    "button": "Découvrir nos recherches"
+  },
+  "home_tools_section": {
+    "title": "Outils d’ingénierie",
+    "subtitle": "Accès direct à nos modèles de simulation et d’évaluation."
+  },
+  "home_learn_section": {
+    "title": "Base de connaissances",
+    "subtitle": "Plongez au cœur des technologies de la chaîne d’approvisionnement de l’hydrogène. Explorez notre documentation technique complète."
+  },
+
+  "homeLearn": {
+    "productionChain": {
+      "title": "Chaîne de production de l’H₂",
+      "description": "Comprendre le cycle complet de l’hydrogène vert, de l’électrolyse de l’eau jusqu’au stockage et à la distribution. Une vue macroscopique de l’infrastructure."
+    },
+    "recyclingProcess": {
+      "title": "Processus de recyclage de l’hydrogène",
+      "description": "Découvrir les technologies utilisées pour récupérer, purifier et recomprimer l’hydrogène non consommé dans les gaz industriels."
+    },
+    "electrolyzerTechnologies": {
+      "title": "Technologies d’électrolyseurs",
+      "description": "Comparer les technologies PEM, alcaline et AEM. Analyser les paramètres d’efficacité, la durée de vie opérationnelle et les cas d’usage industriels idéaux."
+    },
+    "compressionSystems": {
+      "title": "Systèmes de compression",
+      "description": "Explorer les méthodes de compression mécaniques et non mécaniques nécessaires au stockage haute densité de l’hydrogène et à son injection dans les réseaux."
+    }
+  },
+
+  "homeTools": {
+    "techno_economic_calculator": {
+      "title": "Calculateur techno-économique",
+      "description": "Calculer le coût nivelé de l’hydrogène (LCOH), le CAPEX et l’OPEX. Estimer les revenus potentiels et les périodes de retour sur investissement pour les installations de production d’hydrogène vert.",
+      "buttonText": "Lancer la simulation LCOH"
+    },
+    "hydrogen_recovery_calculator": {
+      "title": "Calculateur de récupération d’hydrogène",
+      "description": "Estimer la viabilité économique de la capture de l’hydrogène non consommé. Calculer les volumes annuels récupérables et le retour sur investissement (ROI) basé sur votre mélange gazeux.",
+      "buttonText": "Calculer le ROI"
+    }
+  }
+}

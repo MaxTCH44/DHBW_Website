@@ -1,0 +1,7 @@
+{
+  "not_found": {
+    "title": "Page introuvable",
+    "description": "Malheureusement, cette page est une erreur 404. Vous avez peut-être mal saisi l’adresse ou la page a été déplacée vers une autre URL.",
+    "button": "Retourner à l’accueil"
+  }
+}

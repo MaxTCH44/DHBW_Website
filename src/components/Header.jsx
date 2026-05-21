@@ -15,7 +15,7 @@ const links = [
     { link: '/recycling', label: "header.recycling" },
     {
         link: '#learn',
-        label: 'Learn',
+        label: 'header.learn',
         links: [
             { link: '/production', label: "header.production" },
             { link: '/recycling-process', label: "header.recyclingProcess" },
@@ -71,7 +71,7 @@ export default function Header() {
                             style={{ fontWeight: 500 }}
                             rightSection={<IconChevronDown size={14} stroke={1.5} />}
                         >
-                            {link.label}
+                            {t(link.label)}
                         </Button>
                     </Menu.Target>
                     <Menu.Dropdown>{menuItems}</Menu.Dropdown>

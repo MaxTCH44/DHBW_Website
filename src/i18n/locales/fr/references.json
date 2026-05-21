@@ -1,0 +1,32 @@
+{
+  "title": "Références scientifiques & sources",
+  "introText": "Les données, modèles et explications utilisés dans nos calculateurs et nos articles reposent sur des recherches évaluées par des pairs, des rapports institutionnels et des standards industriels. Explorez la littérature ci-dessous.",
+
+  "readPublication": "Lire la publication",
+
+  "references": {
+    "calculator_references": "Références du calculateur",
+    "hydrogen_cost_calculator": "Calculateur de coût de l’hydrogène",
+    "hydrogen_recycling_calculator": "Calculateur de recyclage de l’hydrogène",
+
+    "green_hydrogen_production_chain": "Chaîne de production de l’hydrogène vert",
+    "renewables_energy_mix": "Énergies renouvelables & mix énergétique",
+    "electrolysis_storage_perspectives": "Électrolyse & perspectives de stockage",
+    "end_use_applications": "Applications finales (mobilité, industrie, chauffage)",
+
+    "hydrogen_recycling_technologies": "Technologies de recyclage de l’hydrogène",
+    "industrial_gas_purification_recovery": "Purification et récupération des gaz industriels",
+    "electrochemical_hydrogen_compression": "Compression électrochimique de l’hydrogène (EHC)",
+    "chemical_regeneration": "Régénération chimique (état solide)",
+
+    "electrolyzer_technologies": "Technologies d’électrolyseurs",
+    "pem": "Membrane échangeuse de protons (PEM)",
+    "awe": "Électrolyse alcaline de l’eau (AWE)",
+    "aem": "Membrane échangeuse d’anions (AEM)",
+    "soec": "Cellules d’électrolyse à oxyde solide (SOEC)",
+
+    "hydrogen_compression_technologies": "Technologies de compression de l’hydrogène",
+    "mechanical_compressors": "Compresseurs mécaniques",
+    "electrochemical_compressors": "Compresseurs électrochimiques (état solide)"
+  }
+}

@@ -1,0 +1,554 @@
+{
+  "title": "Calculateur du Coût de l'Hydrogène",
+  "introText": "Estimez le Coût Actualisé de l'Hydrogène (LCOH) et l'investissement total (CAPEX) de votre unité de production. Ajustez les paramètres du système, les coûts des ressources et les variables financières pour simuler différents scénarios technico-économiques.",
+  "advanceToggle": {
+    "simple": "Mode Simple",
+    "advanced": "Calculateur Avancé",
+    "tooltipLabel": "Cliquez pour une aide pas à pas"
+  },
+  "reset": "Réinitialiser toutes les entrées aux valeurs par défaut",
+  "resetModal": {
+    "title": "Réinitialiser le calculateur",
+    "text": "Êtes-vous sûr de vouloir effacer toutes vos entrées et réinitialiser le calculateur à ses valeurs par défaut ? Cette action est irréversible.",
+    "cancelButton": "Annuler",
+    "acceptButton": "Oui, tout réinitialiser"
+  },
+  "electrolyzer": {
+    "electrolyzers": {
+      "aem": {
+        "name": "GreenLab Enapter AEM Électrolyseur",
+        "type": "AEM"
+      },
+      "pem": {
+        "name": "GreenLab Enapter AEM Électrolyseur",
+        "type": "PEM"
+      },
+      "ostermeier": {
+        "name": "Électrolyseur Ostermeier Calculator",
+        "type": "AEM"
+      },
+      "custom": {
+        "name": "Électrolyseur Personnalisé",
+        "type": "PEM"
+      }
+    },
+
+    "type": {
+      "pem": "PEM",
+      "aem": "AEM",
+      "alkaline": "Alcalin"
+    },
+
+    "setup": {
+      "title": "Configuration de l'Électrolyseur"
+    },
+
+    "systemSize": {
+      "label": "Taille du système",
+      "tooltip": "Puissance électrique totale installée de votre configuration d'électrolyseur."
+    },
+
+    "selfProduced": {
+      "label": "Auto-production",
+      "tooltip": "Pourcentage de la puissance électrique nécessaire générée sur site (par ex. via des panneaux solaires), réduisant l'énergie soutirée du réseau."
+    },
+
+    "operatingTime": {
+      "label": "Durée de fonctionnement",
+      "tooltip": "Nombre d'heures ou de jours de fonctionnement continu du système d'électrolyse par an."
+    },
+
+    "equipment": {
+      "title": "Configuration de l'électrolyseur :",
+      "learnMore": "En savoir plus sur les différents types",
+      "tooltip": "Les différentes technologies présentent des rendements et des coûts distincts. Consultez la section 'En savoir plus' pour les détails."
+    },
+
+    "hardwareNeeded": {
+      "title": "Matériel nécessaire :",
+      "setup": "Configuration(s) d'électrolyseur",
+      "stacks": "Stack(s)",
+      "ownedNoCapex": "Déjà possédé (Sans CAPEX)",
+      "preowned": "Électrolyseurs pré-possédés"
+    },
+
+    "typeLabel": "Type d'électrolyseur",
+
+    "price": {
+      "label": "Prix d'achat de l'électrolyseur",
+      "tooltip": "Coût d'achat initial total (CAPEX) incluant le balance of plant. Le premier stack de cellules est déjà inclus dans ce prix de base."
+    },
+
+    "stackPower": {
+      "label": "Puissance du stack",
+      "tooltip": "La puissance électrique nominale en entrée d'un stack d'électrolyse unique. Elle détermine sa capacité de production individuelle."
+    },
+
+    "ownedStacks": {
+      "label": "Nombre de stacks possédés",
+      "tooltip": "Le nombre de stacks d'électrolyse que vous possédez déjà. Ils seront déduits de vos coûts initiaux."
+    },
+
+    "stackPrice": {
+      "label": "Prix du stack",
+      "tooltip": "Le coût d'achat d'un stack de cellules de remplacement. Essentiel pour calculer les dépenses opérationnelles à long terme."
+    },
+
+    "maxStacks": {
+      "label": "Stacks max par électrolyseur",
+      "tooltip": "La limite physique du nombre de stacks qu'un châssis d'électrolyseur unique peut accueillir avant qu'une nouvelle unité complète soit nécessaire."
+    },
+
+    "energyConsumption": {
+      "label": "Consommation énergétique de l'électrolyseur",
+      "tooltip": "Consommation énergétique spécifique du stack d'électrolyse pour produire une unité d'hydrogène. Cette valeur exclut les auxiliaires du système (refroidissement, séchage, etc.)."
+    },
+
+    "auxiliaryConsumption": {
+      "label": "Consommation auxiliaire totale (BoP)",
+      "tooltip": "Puissance électrique fixe (kW) requise par l'ensemble des équipements auxiliaires du système (refroidissement, séchage, électronique). Il s'agit d'une valeur globale pour toute l'installation, indépendamment du nombre d'électrolyseurs."
+    },
+
+    "waterConsumption": {
+      "label": "Consommation d'eau",
+      "tooltip": "Quantité d'eau purifiée requise par heure par une unité d'électrolyseur à sa puissance nominale."
+    },
+
+    "maintenanceCosts": {
+      "label": "Coûts de maintenance",
+      "tooltip": "Coûts annuels d'exploitation et de maintenance (O&M), généralement estimés en pourcentage du coût initial de l'équipement (CAPEX)."
+    },
+
+    "stackLifetime": {
+      "label": "Durée de vie du stack",
+      "tooltip": "Durée de vie opérationnelle attendue du stack de cellules en heures avant dégradation et remplacement nécessaire. Ce paramètre conditionne les calculs de maintenance à long terme."
+    }
+  },
+  "resourcesCosts": {
+    "title": "Coûts des Ressources",
+
+    "electricity_price": {
+      "label": "Prix de l'électricité",
+      "tooltip": "Le prix moyen de l'électricité du réseau. Il s'agit du principal facteur de coût pour la production d'hydrogène vert."
+    },
+
+    "water_price": {
+      "label": "Prix de l'eau",
+      "tooltip": "Coût de l'approvisionnement en eau purifiée pour le processus d'électrolyse."
+    },
+
+    "current_h2_price": {
+      "label": "Prix actuel de l'H₂",
+      "tooltip": "Le prix que vous payez actuellement pour l'hydrogène livré. Sert de référence pour calculer vos économies potentielles avec une production sur site."
+    },
+
+    "grey_h2_price": {
+      "label": "Prix de l'H₂ gris",
+      "tooltip": "Le prix actuel du marché de l'hydrogène gris (produit à partir du gaz naturel). Utilisé comme référence pour calculer vos économies."
+    },
+
+    "carbon_tax": {
+      "label": "Taxe carbone",
+      "tooltip": "Le prix appliqué par tonne de CO₂ émis. Une taxe plus élevée augmente le coût de l'hydrogène gris, rendant l'hydrogène vert plus compétitif."
+    }
+  },
+
+  "lifecycleParameters": {
+    "title": "Paramètres du Cycle de Vie",
+
+    "project_lifetime": {
+      "label": "Durée du projet",
+      "tooltip": "Durée de vie opérationnelle attendue de l'installation pour amortir le CAPEX."
+    },
+
+    "inflation_rate": {
+      "label": "Taux d'inflation",
+      "tooltip": "Le pourcentage moyen d'augmentation annuelle des prix."
+    }
+  },
+  "compressorSetup": {
+    "compressors": {
+      "maximator": {
+        "name": "GreenLab Maximator Station de Compression",
+        "type": "Mécanique",
+        "compressionRate": "De 15 à 200 bars"
+      },
+      "ehc": {
+        "name": "GreenLab HyET EHC",
+        "type": "Électrochimique",
+        "compressionRate": "De 5 à 200 bars"
+      },
+      "custom": {
+        "name": "Compresseur Personnalisé",
+        "type": "Mécanique"
+      }
+    },
+
+    "type": {
+      "mechanical": "Mécanique",
+      "electrochemical": "Électrochimique"
+    },
+
+    "title": "Configuration du Compresseur",
+
+    "useCompressor": "Nous avons besoin d'utiliser un compresseur",
+
+    "hydrogenToCompress": {
+      "label": "Hydrogène à comprimer",
+      "tooltip": "La masse totale d'hydrogène gazeux produite devant être comprimée pour le stockage ou le transport."
+    },
+
+    "operatingTime": {
+      "label": "Durée de fonctionnement",
+      "tooltip": "Nombre d'heures ou de jours de fonctionnement continu du système de compression par an."
+    },
+
+    "equipmentSelector": {
+      "label": "Configuration du compresseur :",
+      "tooltip": "Nécessaire pour comprimer l'hydrogène en vue d'un stockage ou d'un transport efficace.",
+      "learnMore": "En savoir plus sur les différents types"
+    },
+
+    "owned": {
+      "single": "Déjà possédé (Sans CAPEX)",
+      "multiple": "Compresseurs pré-possédés"
+    },
+
+    "hardwareNeeded": "Matériel nécessaire :",
+    "compressorSetupBadge": "Configuration(s) de compresseur",
+    "stackBadge": "Stack(s)",
+
+    "compressorType": "Type de compresseur",
+
+    "purchasePrice": {
+      "label": "Prix d'achat du compresseur",
+      "tooltip": "Coût d'achat initial total (CAPEX) incluant tous les composants auxiliaires nécessaires. Pour les systèmes électrochimiques, le premier stack de cellules est déjà inclus dans ce prix de base."
+    },
+
+    "energyConsumption": {
+      "label": "Consommation énergétique du compresseur",
+      "tooltip": "L'énergie électrique nécessaire au système pour augmenter la pression d'un kilogramme d'hydrogène jusqu'au niveau cible."
+    },
+
+    "ownedStacks": {
+      "label": "Nombre de stacks possédés",
+      "tooltip": "Le nombre total de stacks de cellules individuels actuellement possédés ou installés dans votre compresseur électrochimique."
+    },
+
+    "cellStackPrice": {
+      "label": "Prix du stack de cellules",
+      "tooltip": "Le coût de remplacement d'un stack de cellules électrochimiques unique. Utilisé pour projeter les dépenses de maintenance à long terme sur la durée du projet."
+    },
+
+    "cellsPerStack": {
+      "label": "Cellules par stack",
+      "tooltip": "Le nombre de cellules de compression individuelles au sein de chaque stack. Plus il y a de cellules, plus le débit de compression par stack est élevé."
+    },
+
+    "maxCells": {
+      "label": "Cellules max par compresseur",
+      "tooltip": "La capacité physique maximale du boîtier du compresseur. Détermine la limite de mise à niveau de votre installation."
+    },
+
+    "warning": {
+      "title": "Configuration sous-optimale",
+      "message": "Le nombre maximum de cellules ({maxCells}) n'est pas un multiple parfait des cellules par stack ({cellsPerStack}). L'espace restant ne peut pas être pleinement utilisé."
+    },
+
+    "flowrate": {
+      "perCellLabel": "Débit par cellule",
+      "perCompressorLabel": "Débit par compresseur",
+      "perCellTooltip": "La quantité spécifique d'hydrogène gazeux qu'une cellule électrochimique unique peut comprimer par jour.",
+      "perCompressorTooltip": "La quantité totale d'hydrogène gazeux que le compresseur mécanique peut traiter par jour."
+    },
+
+    "maintenanceCosts": {
+      "label": "Coûts de maintenance",
+      "tooltip": "Coûts annuels d'exploitation et de maintenance (O&M), généralement estimés en pourcentage du coût initial de l'équipement (CAPEX)."
+    },
+
+    "stackLifetime": {
+      "label": "Durée de vie du stack",
+      "tooltip": "La durée de vie opérationnelle du stack de cellules électrochimiques en heures avant remplacement nécessaire. Cela impacte vos dépenses opérationnelles à long terme."
+    }
+  },
+  "dashboard": {
+    "title": "Tableau de Bord du Projet",
+
+    "oversizedWarning": {
+      "title": "Avertissement : Installation surdimensionnée",
+      "messageP1": "Votre installation physique (",
+      "messageP2": " kW) est surdimensionnée par rapport à vos besoins de production. Votre taux d'utilisation n'est que de ",
+      "messageP3": ". Cela augmente la part de CAPEX par kg et impacte négativement votre LCOH."
+    },
+
+    "metrics": {
+      "lcoh": "LCOH (H₂ Vert)",
+      "totalCapex": "CAPEX Total",
+
+      "savingsVsCurrentCost": "Économies vs Coût Actuel",
+      "lossVsCurrentCost": "Perte vs Coût Actuel",
+
+      "savingsVsGrey": "Économies vs H₂ Gris",
+      "greenPremium": "Taxe Verte",
+
+      "greyEstimatedP1": "H₂ gris estimé à ",
+      "greyEstimatedP2": " €/kg"
+    },
+
+    "costBreakdown": {
+      "title": "Décomposition du coût par kg",
+
+      "electricity": "Électricité",
+      "capex": "Amortissement CAPEX",
+      "maintenance": "Maintenance",
+      "water": "Eau"
+    },
+
+    "stats": {
+      "annualProduction": "Prod. annuelle H₂",
+      "energyNeeded": "Énergie nécessaire",
+      "waterNeeded": "Eau nécessaire",
+      "avoidedCo2": "CO₂ évité"
+    }
+  },
+  "equipment": {
+    "electrolyzer": {
+      "type": "Type",
+      "price": "Prix",
+      "power": "Puissance du système",
+
+      "stack_price": "Prix du stack",
+      "stack_power": "Puissance du stack",
+      "max_stacks": "Stacks max par électrolyseur",
+      "energy_consumption_kwh_per_kg": "Consommation énergétique",
+      "total_auxiliary_consumption": "Consommation auxiliaire totale",
+      "water_consumption_l_per_h": "Consommation d'eau",
+      "maintenance_percent_capex": "Maintenance",
+      "maintenanceUnit": "%/an",
+      "stack_lifetime_hours": "Durée de vie du stack"
+    },
+    "compressor": {
+      "type": "Type",
+      "compression_rate": "Taux de compression",
+      "price": "Prix",
+      "cell_stack_price": "Prix du stack de cellules",
+      "max_cells": "Nombre maximum de cellules",
+      "cells_per_stack": "Nombre de cellules par stack",
+      "unitary_flowrate_kg_per_day": "Débit unitaire",
+      "unitary_flowrate_kg_per_day_per_cell": "Débit par cellule",
+      "flowrate_unit": "kg/jour",
+      "energy_consumption_kwh_per_kg": "Consommation énergétique",
+      "maintenance_percent_capex": "Maintenance",
+      "maintenanceUnit": "%/an",
+      "stack_lifetime_hours": "Durée de vie du stack"
+    }
+  },
+
+  "advices": {
+    "step": "Étape",
+    "previous": "Précédent",
+    "finish": "Terminer",
+    "next": "Suivant",
+    "step_sys_size": {
+      "title": "Taille du système",
+      "content": "Ce paramètre définit la puissance électrique totale installée de votre électrolyseur. Il conditionne à la fois votre production maximale d'hydrogène et votre investissement initial (CAPEX). Si vous connaissez déjà votre demande annuelle cible en hydrogène, ajustez simplement cette valeur jusqu'à ce que la métrique de production affichée sur le tableau de bord corresponde à vos objectifs."
+    },
+    "step_self_prod": {
+      "title": "Auto-production",
+      "content": "Ce paramètre représente la part d'électricité que vous produisez sur site (via des panneaux solaires ou des éoliennes, par exemple) plutôt que d'acheter directement au réseau. L'électricité autoproduite étant généralement moins chère, augmenter ce pourcentage réduira significativement vos coûts opérationnels. Laissez-le à 0 si vous dépendez entièrement d'un raccordement réseau standard."
+    },
+    "step_elec_op_time": {
+      "title": "Durée de fonctionnement de l'électrolyseur",
+      "content": "Il s'agit du nombre d'heures par an pendant lesquelles votre électrolyseur fonctionne activement (sur un maximum de 8 760 heures ou 365 jours). Un temps de fonctionnement plus élevé répartit le coût de l'équipement sur davantage d'hydrogène produit, ce qui abaisse le prix final par kg. Si votre système fonctionne exclusivement à l'énergie solaire, ce chiffre sera d'environ 2 000 à 3 000 heures. S'il est connecté au réseau, il peut fonctionner quasi en continu."
+    },
+    "step_elec_select": {
+      "title": "Sélection de l'électrolyseur",
+      "content": "Sélectionnez la technologie ou le modèle spécifique pour votre projet. Choisir un modèle prédéfini charge automatiquement ses spécifications techniques et ses coûts exacts, tandis que l'option 'Personnalisé' vous permet de saisir vos propres données. Indiquez ci-dessous si vous possédez déjà l'équipement, ou une partie de celui-ci, auquel cas son coût d'achat sera exclu du calcul."
+    },
+    "step_elec_price": {
+      "title": "Prix d'achat de l'électrolyseur",
+      "content": "Il s'agit du coût d'achat initial total (CAPEX) du système d'électrolyse. Important : ce prix de base inclut déjà votre premier stack de cellules opérationnel, ainsi que tous les composants de balance of plant nécessaires (électronique de puissance, traitement de l'eau, etc.). Les remplacements futurs de stacks sont calculés séparément. Pour les configurations personnalisées, saisissez le devis complet de votre fournisseur en €."
+    },
+    "step_elec_power": {
+      "title": "Puissance du stack",
+      "content": "Ce paramètre indique la puissance électrique nominale d'un stack de cellules unique (en kW). Il définit l'échelle du module individuel. La puissance totale de votre installation sera cette valeur multipliée par le nombre de stacks actifs. Vous trouverez cette valeur sur la fiche technique du fabricant."
+    },
+    "step_elec_owned_stacks": {
+      "title": "Nombre de stacks d'électrolyse possédés",
+      "content": "Si vous disposez déjà de stacks de cellules de rechange pour cet électrolyseur, indiquez le nombre ici. Leur coût d'achat initial sera déduit de votre CAPEX, bien que les remplacements futurs soient toujours pris en compte dans le calendrier de maintenance à long terme du projet."
+    },
+    "step_elec_stack_price": {
+      "title": "Prix du stack d'électrolyse",
+      "content": "Saisissez le coût de remplacement d'un stack de cellules d'électrolyse, en €. Les stacks se dégradant avec le temps et devant être remplacés périodiquement, cette valeur est essentielle pour projeter avec précision vos dépenses opérationnelles et de maintenance à long terme. Vous pouvez obtenir ce coût spécifique en demandant une liste de tarifs de pièces détachées à votre fabricant."
+    },
+    "step_max_stacks_elec": {
+      "title": "Stacks max par électrolyseur",
+      "content": "Indiquez le nombre maximum de stacks de cellules qu'un châssis ou une armoire d'électrolyseur unique peut physiquement accueillir. Cette limite structurelle détermine jusqu'où vous pouvez augmenter la capacité interne avant d'être contraint d'acheter une nouvelle unité complète, ce qui augmenterait significativement votre CAPEX initial."
+    },
+    "step_elec_cons": {
+      "title": "Consommation énergétique de l'électrolyseur",
+      "content": "Saisissez la quantité d'électricité nécessaire au stack pour produire un kilogramme ou un m³ d'hydrogène. Cette métrique reflète l'efficacité intrinsèque de la technologie. L'électricité étant généralement le poste de dépense opérationnelle (OPEX) le plus important dans la production d'hydrogène vert, il est crucial de trouver la valeur exacte sur les spécifications techniques du fabricant pour obtenir une estimation réaliste des coûts."
+    },
+    "step_aux_cons": {
+      "title": "Consommation auxiliaire totale (BoP)",
+      "content": "La production d'hydrogène nécessite plus que le stack principal. Ce champ prend en compte la puissance supplémentaire consommée par les composants de balance of plant (BoP) tels que les systèmes de refroidissement, les pompes à eau et les unités de purification du gaz. Cette valeur s'ajoute à votre consommation principale pour calculer la facture électrique totale, et se trouve généralement dans les guides opérationnels du système."
+    },
+    "step_water_cons": {
+      "title": "Consommation d'eau",
+      "content": "Spécifiez la quantité d'eau utilisée par le système en fonctionnement. Bien que l'eau représente généralement une très faible fraction du coût actualisé final de l'hydrogène, elle est physiquement indispensable à la réaction. Le volume requis dépend fortement de la technologie spécifique et des normes de pureté de l'eau de votre installation."
+    },
+    "step_elec_maint": {
+      "title": "Coûts de maintenance de l'électrolyseur",
+      "content": "Ce poste couvre vos dépenses annuelles d'exploitation et de maintenance (O&M), incluant les contrôles de routine et les remplacements de pièces mineures. Les remplacements majeurs de stacks sont calculés séparément. Il est exprimé en pourcentage du prix d'achat initial du matériel. Si vous ne disposez pas d'un devis de contrat de service spécifique, 2 % à 5 % est l'estimation standard du secteur. Vous pouvez également saisir directement le montant exact en € si vous connaissez la valeur annuelle."
+    },
+    "step_elec_stack_lifetime": {
+      "title": "Durée de vie du stack",
+      "content": "Spécifiez la durée de vie opérationnelle attendue du stack de cellules de l'électrolyseur, mesurée en heures de fonctionnement. Une fois ce seuil atteint, le calculateur intègre automatiquement le coût d'un remplacement complet du stack. Il s'agit d'un paramètre critique pour prévoir avec précision vos dépenses de maintenance à long terme. Vous trouverez généralement cette durée de vie nominale sur la fiche technique du fabricant."
+    },
+    "step_electricity_price": {
+      "title": "Prix de l'électricité",
+      "content": "Saisissez le coût que vous payez pour l'électricité du réseau. L'électricité étant la dépense opérationnelle la plus importante dans la production d'hydrogène vert, obtenir ce chiffre précis est essentiel pour une estimation finale réaliste."
+    },
+    "step_water_price": {
+      "title": "Prix de l'eau",
+      "content": "Saisissez votre tarif local d'approvisionnement en eau industrielle, que vous pouvez spécifier en €/m³ ou en €/L. Bien que de l'eau hautement purifiée soit strictement nécessaire à la réaction d'électrolyse, le coût brut de l'eau est généralement négligeable par rapport à vos dépenses en électricité et en équipement."
+    },
+    "step_current_h2_price": {
+      "title": "Prix actuel de l'H₂",
+      "content": "Spécifiez le prix que vous payez actuellement à votre fournisseur pour l'hydrogène livré, généralement facturé en €/kg. Bien que cela ne modifie pas vos nouveaux coûts de production sur site, le tableau de bord utilise cette valeur comme référence pour calculer vos économies financières exactes et votre retour sur investissement annuel."
+    },
+    "step_grey_h2_price": {
+      "title": "Prix de l'H₂ gris",
+      "content": "Définissez le prix de marché de référence pour l'hydrogène gris d'origine fossile. Le calculateur le compare à votre coût d'hydrogène vert pour déterminer la 'Prime Verte', vous montrant l'écart de prix exact entre l'approvisionnement industriel standard et votre production propre."
+    },
+    "step_carbon_tax": {
+      "title": "Taxe carbone",
+      "content": "Saisissez le taux de taxe carbone attendu, mesuré en € par tonne de CO₂. La production d'hydrogène gris émettant environ 9,5 kg de CO₂ par kg d'H₂, l'application de cette taxe simule les réglementations environnementales à venir. Cela vous aide à prévoir à quel moment l'hydrogène vert deviendra financièrement plus compétitif que les combustibles fossiles."
+    },
+    "step_lifetime": {
+      "title": "Durée du projet",
+      "content": "Définissez la durée de vie financière de votre projet, généralement entre 15 et 20 ans. Cette période sert à amortir vos investissements initiaux (CAPEX). Une durée de projet plus longue répartit les coûts de l'équipement sur un volume plus important d'hydrogène, réduisant le prix final par kg, bien qu'elle puisse nécessiter de prendre en compte des remplacements de stacks plus fréquents."
+    },
+    "step_inflation": {
+      "title": "Taux d'inflation",
+      "content": "Saisissez le taux d'inflation annuel prévu pour la durée de votre projet. Ce pourcentage tient compte de l'augmentation générale des prix au fil du temps. Il est crucial pour projeter comment vos futures dépenses opérationnelles évolueront d'année en année. Un taux d'inflation plus élevé amplifiera ces coûts récurrents, augmentant le coût actualisé final de votre hydrogène."
+    },
+    "step_comp_needed": {
+      "title": "Un compresseur est-il nécessaire ?",
+      "content": "Cochez cette option si votre cas d'usage nécessite que l'hydrogène soit mis sous pression pour le stockage, le transport ou l'injection directe dans un procédé industriel. Activer cette option déverrouille la section compression pour prendre en compte les coûts supplémentaires en matériel et en énergie, qui peuvent impacter significativement votre LCOH final."
+    },
+    "step_h2_comp": {
+      "title": "Hydrogène à comprimer",
+      "content": "Spécifiez quelle proportion de votre hydrogène produit passe effectivement par le compresseur. Vous pouvez saisir cette valeur via le curseur ou directement en kg. Si la totalité de votre production doit être mise sous pression pour atteindre le client final ou les cuves de stockage, laissez simplement ce paramètre au maximum."
+    },
+    "step_comp_op_time": {
+      "title": "Durée de fonctionnement du compresseur",
+      "content": "Définissez le temps de fonctionnement du compresseur sur une année, jusqu'à un maximum de 8 760 heures (ou 365 jours). Cela correspond souvent au temps de fonctionnement de votre électrolyseur, mais peut être inférieur si votre compresseur est surdimensionné et ne fonctionne qu'en intermittence pour remplir des réservoirs tampons. Ce paramètre impacte directement le dimensionnement du matériel et les cycles de maintenance."
+    },
+    "step_comp_selector": {
+      "title": "Configuration du compresseur",
+      "content": "Sélectionnez la technologie ou le modèle de compression spécifique pour votre projet. Choisir un modèle prédéfini charge automatiquement ses spécifications techniques et ses coûts exacts, tandis que l'option 'Personnalisé' vous permet de saisir vos propres données. Indiquez ci-dessous si vous possédez déjà l'équipement, ou une partie de celui-ci, auquel cas son coût d'achat sera exclu du calcul."
+    },
+    "step_mech_comp_price": {
+      "title": "Prix d'achat du compresseur",
+      "content": "Il s'agit du coût d'achat initial total (CAPEX) de votre système de compression mécanique. Il doit inclure à la fois l'unité de compression principale (moteur, pistons, etc.) et tous les composants auxiliaires nécessaires tels que les circuits de refroidissement ou les réservoirs tampon. Les modèles prédéfinis affichent des prix réels. Pour une configuration personnalisée, contactez votre fournisseur pour un devis complet et saisissez le montant total en €."
+    },
+    "step_elec_comp_price": {
+      "title": "Prix d'achat du compresseur",
+      "content": "Il s'agit du coût d'achat initial total (CAPEX) du système de compression électrochimique. Important : ce prix de base inclut déjà votre premier stack de cellules opérationnel, ainsi que tous les composants de balance of plant nécessaires (électronique de puissance, etc.). Les remplacements futurs de stacks sont calculés séparément. Pour les configurations personnalisées, saisissez le devis complet de votre fournisseur en €."
+    },
+    "step_mech_comp_cons": {
+      "title": "Consommation énergétique du compresseur",
+      "content": "Saisissez l'énergie totale requise par le compresseur mécanique pour mettre sous pression un kilogramme d'hydrogène (en kWh/kg). La compression mécanique repose sur des moteurs électriques ou des entraînements pneumatiques. Si votre système est entraîné par de l'air comprimé, veillez à calculer l'énergie électrique équivalente utilisée pour produire cet air et à l'inclure dans ce total. Cette valeur impacte significativement vos coûts opérationnels globaux et peut être estimée à partir de la fiche technique du fabricant."
+    },
+    "step_elec_comp_cons": {
+      "title": "Consommation énergétique du compresseur",
+      "content": "Saisissez l'électricité requise par le compresseur électrochimique pour mettre sous pression un kilogramme ou un m³ d'hydrogène. Cette technologie utilisant une tension pour déplacer des protons à travers une membrane plutôt que des pièces mobiles, son profil énergétique est unique. Cette consommation s'ajoute à votre demande électrique globale pour calculer vos coûts opérationnels. Vous trouverez cette valeur dans les spécifications techniques du fabricant ; veillez à rechercher la consommation énergétique totale du système, qui inclut à la fois les stacks et les unités d'alimentation auxiliaires."
+    },
+    "step_own_stack": {
+      "title": "Nombre de stacks de compresseur possédés",
+      "content": "Les compresseurs électrochimiques reposent sur des stacks de cellules internes qui se dégradent avec le temps. Si vous disposez déjà de stacks de cellules de rechange, indiquez le nombre ici. Leur coût d'achat initial sera déduit de votre CAPEX, bien que les remplacements futurs soient toujours pris en compte dans les coûts de maintenance à long terme du projet."
+    },
+    "step_stack_price": {
+      "title": "Prix du stack de cellules",
+      "content": "Saisissez le coût de remplacement d'un stack de cellules électrochimiques unique, en €. Contrairement aux systèmes mécaniques, les compresseurs électrochimiques reposent sur des stacks à membrane qui se dégradent avec le temps et doivent être remplacés périodiquement. Cette valeur est essentielle pour projeter avec précision vos dépenses opérationnelles et de maintenance à long terme. Vous pouvez obtenir ce coût spécifique en demandant une liste détaillée de tarifs de pièces détachées à votre fabricant."
+    },
+    "step_cells_per_stack": {
+      "title": "Cellules par stack",
+      "content": "Spécifiez le nombre de cellules individuelles composant un module de stack remplaçable. Cette métrique définit le regroupement physique du matériel. Elle aide le calculateur à déterminer précisément le nombre de stacks à acheter initialement, puis à remplacer, pour atteindre votre capacité de compression cible. Ce nombre exact figure généralement dans la fiche technique détaillée de votre compresseur électrochimique."
+    },
+    "step_max_cells": {
+      "title": "Cellules max par compresseur",
+      "content": "Indiquez le nombre maximum de cellules qu'un châssis de compresseur unique peut physiquement accueillir. Cette limite structurelle détermine jusqu'où vous pouvez augmenter la capacité interne avant d'être contraint d'acheter une nouvelle unité de compression complète, ce qui augmenterait significativement votre CAPEX initial. Consultez les limites d'extension ou les spécifications de disposition physique fournies par votre équipementier pour trouver cette valeur."
+    },
+    "step_mech_flow": {
+      "title": "Débit par cellule",
+      "content": "Définissez la quantité maximale d'hydrogène gazeux qu'une unité de compresseur mécanique peut traiter, généralement saisie en kg par jour. Cela détermine le nombre de machines de compression distinctes nécessaires pour traiter votre volume de production total. Si votre production dépasse cette limite, le système ajoute automatiquement des unités supplémentaires à votre investissement requis. Recherchez le 'débit nominal' ou la 'capacité maximale' sur la fiche de spécifications techniques de la machine."
+    },
+    "step_elec_flow": {
+      "title": "Débit par cellule",
+      "content": "Spécifiez la capacité de débit d'hydrogène pour une cellule électrochimique unique, généralement mesurée en kg par jour. Les systèmes électrochimiques augmentant leur capacité en ajoutant des cellules individuelles plutôt que des machines entières, cette mesure de performance exacte détermine le nombre de cellules nécessaires pour traiter votre production quotidienne, impactant directement vos coûts matériel. Cette valeur est généralement répertoriée sous 'capacité de cellule' ou 'débit unitaire' dans la documentation technique du fabricant."
+    },
+    "step_mech_comp_maint": {
+      "title": "Coûts de maintenance du compresseur",
+      "content": "Saisissez les coûts annuels d'exploitation et de maintenance (O&M) de votre système de compression mécanique. Les compresseurs mécaniques reposant sur des pièces mobiles (pistons, vannes, joints), ils nécessitent généralement un entretien régulier et des remplacements de pièces pour prévenir les fuites. Vous pouvez saisir cette valeur soit en pourcentage du prix d'achat initial (CAPEX), soit en coût annuel fixe en €. Si vous ne disposez pas d'un devis de contrat de service spécifique de votre fournisseur, l'estimation standard du secteur est généralement entre 3 % et 5 %."
+    },
+    "step_elec_comp_maint": {
+      "title": "Coûts de maintenance du compresseur",
+      "content": "Saisissez les coûts de maintenance de routine annuels pour votre compresseur électrochimique. Cette technologie à l'état solide fonctionnant sans pièces mobiles, ses besoins d'entretien quotidiens sont généralement bien inférieurs aux alternatives mécaniques (les remplacements périodiques de stacks étant traités et calculés séparément). Vous pouvez saisir cette valeur en pourcentage de votre CAPEX initial ou en montant annuel fixe en €. Ce chiffre peut être trouvé dans le contrat de niveau de service de votre fournisseur, ou estimé autour de 1 % à 2 %."
+    },
+    "step_comp_stack_lifetime": {
+      "title": "Durée de vie du stack du compresseur",
+      "content": "Spécifiez la durée de vie opérationnelle du stack de cellules du compresseur électrochimique en heures de fonctionnement. Similaire à un électrolyseur, les membranes internes se dégradent avec le temps et nécessitent un remplacement périodique. Le calculateur utilise cette donnée pour planifier et chiffrer automatiquement les futurs remplacements de stacks sur l'ensemble de la durée de vie du projet. Consultez les spécifications techniques ou les documents de garantie de votre fournisseur pour trouver cette durée exacte."
+    }
+  },
+
+  "units": {
+    "elec_price_mwh": "€/MWh",
+    "elec_price_kwh": "€/kWh",
+
+    "power_mw": "MW",
+    "power_kw": "kW",
+
+    "energy_mwh": "MWh",
+    "energy_kwh": "kWh",
+
+    "water_price_m3": "€/m³",
+    "water_price_l": "€/L",
+
+    "time_days_per_year": "jours/an",
+    "time_hours_per_year": "h/an",
+
+    "kg_per_hour": "kg/h",
+    "m3_per_hour": "m³/h",
+    "kg_per_day": "kg/jour",
+    "m3_per_day": "m³/jour",
+    "l_per_hour": "L/h",
+
+    "kg": "kg",
+    "m3": "m³",
+    "liters": "L",
+    "tons": "t",
+
+    "eur_per_kg": "€/kg",
+    "eur_per_m3": "€/m³",
+    "eur_per_year": "€/an",
+
+    "kwh_per_kg": "kWh/kg",
+    "kwh_per_m3": "kWh/m³",
+
+    "percent_capex": "% CAPEX",
+    "eur": "€",
+    "eur_per_ton_co2": "€/t CO₂",
+
+    "units": "unités",
+    "stacks": "stacks",
+    "cells": "cellules",
+
+    "hour": "h",
+    "years": "ans",
+
+    "pourcent": "%"
+  }
+}

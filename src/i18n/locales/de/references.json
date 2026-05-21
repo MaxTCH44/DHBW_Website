@@ -1,0 +1,32 @@
+{
+  "title": "Wissenschaftliche Referenzen & Quellen",
+  "introText": "Die Daten, Modelle und Erklärungen, die in unseren Rechnern und Artikeln verwendet werden, basieren auf peer-reviewten Forschungsarbeiten, institutionellen Berichten und Industriestandards. Entdecken Sie die Literatur unten.",
+  
+  "readPublication": "Publikation lesen",
+  
+  "references": {
+    "calculator_references": "Referenzen für Rechner",
+    "hydrogen_cost_calculator": "Wasserstoff-Kostenrechner",
+    "hydrogen_recycling_calculator": "Wasserstoff-Recycling-Rechner",
+
+    "green_hydrogen_production_chain": "Grüne Wasserstoff-Produktionskette",
+    "renewables_energy_mix": "Erneuerbare Energien & Energiemix",
+    "electrolysis_storage_perspectives": "Elektrolyse & Speicherperspektiven",
+    "end_use_applications": "Endanwendungen (Mobilität, Industrie, Heizung)",
+
+    "hydrogen_recycling_technologies": "Wasserstoff-Recycling-Technologien",
+    "industrial_gas_purification_recovery": "Industrielle Gasreinigung & Rückgewinnung",
+    "electrochemical_hydrogen_compression": "Elektrochemische Wasserstoffkompression (EHC)",
+    "chemical_regeneration": "Chemische Regeneration (Feststoffspeicher)",
+
+    "electrolyzer_technologies": "Elektrolyseur-Technologien",
+    "pem": "Protonenaustauschmembran (PEM)",
+    "awe": "Alkalische Wasserelektrolyse (AWE)",
+    "aem": "Anionenaustauschmembran (AEM)",
+    "soec": "Festoxid-Elektrolysezellen (SOEC)",
+
+    "hydrogen_compression_technologies": "Wasserstoff-Kompressionstechnologien",
+    "mechanical_compressors": "Mechanische Kompressoren",
+    "electrochemical_compressors": "Elektrochemische Kompressoren (Festkörper)"
+  }
+}

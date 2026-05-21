@@ -1,0 +1,56 @@
+{
+  "title": "Contacter nos chercheurs",
+  "introText": "Chaque système hydrogène et chaque infrastructure de recyclage étant uniques, il est fortement recommandé de contacter les chercheurs de notre projet afin de garantir une bonne compréhension et une mise en œuvre adaptée.",
+
+  "segmentedControl": {
+    "contactFormLabel": "Formulaire de contact",
+    "contactListLabel": "Liste des contacts"
+  },
+
+  "contactList": {
+    "volker": {
+      "roles": {
+        "role1": "Gestion du projet PROKOREI H₂"
+      },
+      "place": "Coblitzallee 1-9, 68163 Mannheim, Bureau 019 A"
+    }
+  },
+
+  "contactForm": {
+    "emailError": "Veuillez entrer une adresse e-mail valide (ex. : nom@domaine.com)",
+
+    "success": {
+      "title": "Message envoyé !",
+      "description": "Nous vous répondrons dès que possible."
+    },
+
+    "error": {
+      "title": "Une erreur s’est produite",
+      "description": "Veuillez réessayer ou nous contacter directement par e-mail. Vous pouvez les trouver dans l’autre section."
+    },
+
+    "fields": {
+      "fullName": {
+        "label": "Nom complet",
+        "placeholder": "Votre nom"
+      },
+
+      "email": {
+        "label": "Adresse e-mail ou adresse du laboratoire/de l’entreprise",
+        "placeholder": "votre@email.com"
+      },
+
+      "subject": {
+        "label": "Sujet",
+        "placeholder": "Ex. : Audit d’un système de recyclage"
+      },
+
+      "message": {
+        "label": "Votre message",
+        "placeholder": "Parlez-nous de votre infrastructure actuelle, de vos mélanges gazeux ou de toute question concernant nos modèles mathématiques."
+      }
+    },
+
+    "submit": "Envoyer le message"
+  }
+}

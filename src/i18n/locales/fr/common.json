@@ -1,0 +1,21 @@
+{
+    "detailSection": {
+        "open": "Afficher les détails",
+        "close": "Cacher les détails"
+    },
+    "footer" :{
+        "contact": "Contact",
+        "references": "Références",
+        "setupBuilder": "Constructeur de configuration"
+    },
+    "header": {
+        "ourLab": "Notre Labo",
+        "calculator": "Calculateur H₂",
+        "recycling": "Recyclage H₂",
+        "learn": "Découvrir",
+        "production": "Chaîne de production",
+        "recyclingProcess": "Processus de recyclage",
+        "electrolyzers": "Électrolyseurs",
+        "compressors": "Compresseurs"
+    }
+}

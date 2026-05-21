@@ -1,0 +1,19 @@
+{
+  "about": {
+    "title": "À propos de GreenLabs H₂",
+    "description": "En savoir plus sur notre mission, nos chercheurs et les outils d’ingénierie open source que nous développons pour l’industrie de l’hydrogène vert.",
+    "sections": {
+      "rethinking_title": "Repenser les laboratoires d’hydrogène en GreenLabs",
+      "intro": "Produire, recycler et contrôler intelligemment l’hydrogène vert afin de sécuriser l’approvisionnement : développement d’un outil open source pour la DHBW, ses partenaires et d’autres universités.",
+      "image_1_title": "Des étudiants de la DHBW travaillent sur un compresseur électrochimique dans le laboratoire hydrogène. Celui-ci permet de purifier, comprimer et stocker l’H₂ dans des bouteilles sous 200 bar en une seule étape.",
+      "image_1_alt": "Deux étudiants avec un compresseur électrochimique dans le laboratoire hydrogène de la DHBW Mannheim, à côté d’eux une bouteille d’hydrogène.",
+      "image_1_caption": "BWGreenLabs H₂ : grâce au GreenLab, la manipulation de l’H₂ — comme ici avec le compresseur électrochimique — devient une pratique quotidienne pour les étudiants.",
+      "paragraph_1": "Avec ce projet, la DHBW Mannheim vise à produire et recycler l’hydrogène vert sur son campus d’Eppelheim. Cela permet non seulement de réduire les coûts mais aussi de contribuer significativement à la transition énergétique. L’accent est mis sur une approche globale qui considère l’hydrogène non seulement comme un vecteur ou un gaz de laboratoire, mais aussi comme une source d’électricité et de chaleur.",
+      "paragraph_2": "La DHBW Mannheim est idéalement positionnée pour repenser les laboratoires d’hydrogène en GreenLabs. Depuis plus de 10 ans, des recherches sont menées ici sur l’ensemble des aspects liés à la production, la purification, le stockage et l’utilisation de l’hydrogène. Ainsi, la majorité des infrastructures est déjà en place, et l’objectif est de développer un outil open source permettant une commande intelligente garantissant la sécurité d’approvisionnement. Cela permettra de transférer les résultats vers d’autres laboratoires et de réaliser des analyses techno-économiques. L’outil sera mis à disposition non seulement des autres universités et instituts de recherche, mais aussi des entreprises partenaires des formations en alternance de la DHBW.",
+      "paragraph_3": "La production et la manipulation de l’hydrogène sur site deviennent une expérience quotidienne pour les étudiants en alternance grâce au GreenLab H₂, qui agissent comme ambassadeurs des actions GreenLab et transmettent ce savoir-faire à leurs entreprises respectives.",
+      "paragraph_4": "Le projet est financé par le ministère de la Science, de la Recherche et des Arts dans le cadre du concours d’idées « BWGreenLabs : utilisation durable de l’énergie et des ressources dans les laboratoires de recherche du Land de Bade-Wurtemberg ».",
+      "image_2_title": "Logo du ministère de la Science, de la Recherche et des Arts (MWK) du Bade-Wurtemberg",
+      "image_2_alt": "Logo du ministère de la Science, de la Recherche et des Arts (MWK) du Bade-Wurtemberg"
+    }
+  }
+}

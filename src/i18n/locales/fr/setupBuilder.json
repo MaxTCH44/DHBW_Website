@@ -1,0 +1,72 @@
+{
+  "title": "Constructeur de configurations d’électrolyseurs",
+
+  "setupBuilder": {
+    "create_new_setup": "Créer une nouvelle configuration",
+    "configuration_name": "Nom de la configuration",
+    "configuration_name_placeholder": "ex. : Installation pilote Alpha",
+    "technology_type": "Type de technologie",
+
+    "electrolyzer_specs": "Spécifications de l’électrolyseur",
+    "stack_power": "Puissance d'une stack",
+    "max_stacks_per_unit": "Nombre maximal de stacks par unité",
+    "energy_consumption": "Consommation énergétique",
+    "water_consumption": "Consommation d’eau",
+
+    "financials": "Finances",
+    "single_stack_price": "Prix d’une stack",
+    "global_maintenance": "Maintenance globale",
+    "stack_lifetime": "Durée de vie de la stack",
+
+    "auxiliary_equipments": "Équipements auxiliaires (BOP)",
+    "add_component": "Ajouter un composant (Refroidisseur, sécheur, etc.)",
+    "component_name": "Nom du composant",
+    "added_power": "Puissance ajoutée",
+    "added_water": "Consommation d’eau ajoutée",
+    "added_capex": "CAPEX ajouté",
+    "capacity_supported": "Capacité prise en charge",
+    "add_to_setup": "Ajouter à la configuration",
+    "save_complete_setup": "Enregistrer la configuration complète",
+
+    "saved_configurations": "Configurations enregistrées",
+    "setups_count": "Configurations",
+
+    "no_setups_title": "Aucune configuration enregistrée en mémoire pour le moment.",
+    "no_setups_subtitle": "Créez votre première configuration à gauche.",
+
+    "max": "Max",
+    "total_capex": "CAPEX total",
+    "cap": "Cap",
+    "sys": "sys",
+
+    "balance_of_plant": "Équipements auxiliaires (inclus)"
+  },
+
+  "units": {
+    "kwh_per_kg": "kWh/kg",
+    "kwh_per_m3": "kWh/m³",
+
+    "percent_capex": "% CAPEX",
+    "eur": "€",
+
+    "power_kw": "kW",
+
+    "stacks": "stacks",
+    "units": "unités",
+
+    "kW_per_stack": "kW/stack",
+
+    "l_per_hour": "L/h",
+
+    "hours": "heures"
+  },
+
+  "electrolyzer": {
+    "type": {
+      "pem": "PEM",
+      "aem": "AEM",
+      "alkaline": "Alcalin",
+      "soec": "SOEC"
+    }
+  }
+}

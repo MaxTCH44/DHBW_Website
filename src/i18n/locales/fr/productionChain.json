@@ -1,0 +1,224 @@
+{
+  "title": "Chaîne de production de l’hydrogène vert",
+
+  "renewables": {
+    "title": "Énergies renouvelables",
+
+    "riseTitle": "L’essor des énergies renouvelables en Allemagne (2024)",
+    "riseDescription": "Pour comprendre le besoin croissant d’hydrogène vert, il faut d’abord examiner le paysage énergétique actuel. En 2024, l’Allemagne a atteint une étape historique : les sources d’énergies renouvelables ont couvert 62,7 % de la production nette d’électricité publique, injectant environ 275,2 térawattheures (TWh) dans le réseau.",
+
+    "energyMixTitle": "Un mix énergétique très variable",
+    "energyMixWindDescription": "L’énergie éolienne (onshore et offshore) reste la colonne vertébrale du système allemand, représentant 33 % du mix électrique total. Cependant, la production éolienne est très volatile. Cette fluctuation est précisément ce qui rend nécessaire le développement de solutions massives de stockage et de conversion d’énergie, comme l’électrolyse de l’eau.",
+    "energyMixSolarDescription": "Le solaire photovoltaïque (PV) est le secteur à la croissance la plus rapide, représentant 14 % du réseau. Notamment, l’autoconsommation — l’électricité consommée directement sur site sans passer par le réseau public — a dépassé 12 TWh en 2024. Cette tendance est particulièrement pertinente pour les laboratoires et installations industrielles visant une production d’hydrogène 100 % autonome.",
+    "energyMixOtherDescription": "Le reste du mix renouvelable est assuré par la biomasse (7 %, fournissant une charge de base stable) et l’hydroélectricité (4 %).",
+
+    "chartTitle": "Production brute d’électricité en Allemagne de 2019 à 2025",
+
+    "chart": {
+      "series": {
+        "nonRenewable": "Non renouvelable (TWh)",
+        "wind": "Éolien (TWh)",
+        "solar": "Solaire (TWh)",
+        "biomass": "Biomasse (TWh)",
+        "hydro": "Hydroélectricité (TWh)",
+        "otherGreen": "Autres renouvelables (TWh)"
+      }
+    },
+
+    "windPower": {
+      "title": "Énergie éolienne : exploiter les courants d’air",
+
+      "description1": "Les éoliennes fonctionnent en captant l’énergie cinétique du vent et en la transformant en rotation mécanique, qui entraîne un générateur électrique. Pour être efficaces, ces systèmes nécessitent des espaces ouverts ou des zones offshore avec des vents forts et constants.",
+
+      "imageAlt": "Éolienne",
+
+      "description2": "Bien que l’énergie éolienne soit une source d’énergie extrêmement propre et hautement scalable, son principal inconvénient est son intermittence importante. Le vent ne souffle pas toujours lorsque la demande est élevée, et l’impact visuel ou sonore des grandes installations peut poser des défis d’acceptation locale.",
+
+      "description3": "Cette nature fluctuante fait de l’énergie éolienne un candidat idéal pour la conversion en hydrogène vert, permettant de stocker l’énergie excédentaire produite lors des périodes venteuses plutôt que de la perdre."
+    },
+
+    "solarPower": {
+      "title": "Solaire photovoltaïque : conversion directe de la lumière",
+
+      "description1": "Contrairement à l’éolien, l’énergie solaire ne comporte aucune pièce mobile. Les cellules photovoltaïques utilisent des matériaux semi-conducteurs, généralement du silicium, pour absorber les photons du soleil et libérer des électrons, générant ainsi un courant continu (DC).",
+
+      "description2": "Cette technologie nécessite un accès direct à la lumière du soleil et une surface importante, ce qui rend les toits et terrains ouverts idéaux. Son principal avantage est sa scalabilité et sa faible maintenance, ce qui la rend particulièrement adaptée à l’autoconsommation locale dans les laboratoires ou les industries.",
+
+      "imageAlt": "Panneaux solaires sur toit",
+
+      "description3": "Cependant, son rendement dépend fortement des conditions météorologiques et du cycle jour/nuit, tombant à zéro la nuit. Par conséquent, une dépendance importante au solaire nécessite des systèmes de stockage robustes, comme des batteries ou l’hydrogène, pour combler ces périodes."
+    },
+
+    "biomass": {
+      "title": "Biomasse : la base organique pilotable",
+
+      "description1": "L’énergie biomasse est produite par la combustion ou la fermentation de matières organiques — comme les déchets agricoles, les pellets de bois ou le biogaz — pour générer de la chaleur et de la vapeur, qui entraînent ensuite une turbine. Elle nécessite un approvisionnement continu en matière organique.",
+
+      "imageAlt": "Bois biomasse",
+
+      "description2": "Contrairement à l’éolien et au solaire, la biomasse est une source pilotable, capable de fournir une production stable et fiable indépendamment des conditions météorologiques.",
+
+      "description3": "En revanche, le processus émet du CO₂ lors de la combustion (bien qu’il soit généralement considéré comme neutre sur son cycle de vie), et la production de biomasse nécessite de grandes surfaces agricoles, pouvant entrer en concurrence avec l’alimentation."
+    },
+
+    "hydropower": {
+      "title": "Hydroélectricité : un flux fiable",
+
+      "description1": "Les centrales hydroélectriques exploitent le flux continu et la gravité de l’eau à travers des rivières ou des barrages pour entraîner des turbines mécaniques. Cette technologie nécessite des conditions géographiques spécifiques, notamment un débit d’eau important et des différences d’altitude.",
+
+      "imageAlt": "Barrage de Sardar Sarovar, Gujarat, Inde",
+
+      "description2": "Lorsqu’elle est disponible, l’hydroélectricité est extrêmement efficace, fiable et possède une durée de vie exceptionnelle. Certaines configurations, comme le pompage-turbinage, peuvent même fonctionner comme de véritables batteries physiques.",
+
+      "description3": "Cependant, sa dépendance à la géographie limite fortement les sites exploitables, et la construction de grands barrages peut perturber les écosystèmes aquatiques."
+    }
+  },
+
+  "electrolysis": {
+    "title": "Électrolyse",
+
+    "processTitle": "Le processus d’électrolyse : séparation de l’eau",
+    "processDescription": "L’électrolyse est le processus chimique fondamental au cœur de la chaîne de valeur de l’hydrogène vert. Au lieu d’extraire de l’énergie des combustibles fossiles, ce procédé utilise un courant électrique continu (DC) pour déclencher une réaction chimique non spontanée. En traversant l’eau, ce courant casse les liaisons chimiques des molécules d’eau et les sépare en leurs éléments constitutifs.",
+
+    "inputsOutputsTitle": "Entrées, sorties et sous-produits",
+    "inputsOutputsDescription": "Le bilan matière de ce procédé est remarquablement simple et propre. Les intrants principaux sont uniquement de l’eau ultra-pure (H₂O) et de l’électricité renouvelable. En sortie, on obtient de l’hydrogène pur (H₂) à la cathode et de l’oxygène (O₂) à l’anode.",
+
+    "processImageAlt": "schéma montrant le processus d’électrolyse avec bulles d’hydrogène et d’oxygène",
+
+    "outputsDescription": "Alors que l’hydrogène est capté et compressé pour le stockage énergétique, l’oxygène est souvent relâché dans l’atmosphère ou valorisé dans des applications médicales et industrielles. Le procédé génère également de la chaleur de faible qualité, de plus en plus récupérée pour alimenter des réseaux de chauffage urbain.",
+
+    "environmentalShiftTitle": "Le changement environnemental : hydrogène gris, bleu et vert",
+
+    "greyHydrogenDescription": "Pour comprendre l’importance de l’électrolyse de l’eau, il faut la comparer aux méthodes fossiles actuelles. Aujourd’hui, la majorité de l’hydrogène mondial est dit « gris ». Il est produit principalement par reformage du méthane (SMR), un procédé utilisant du gaz naturel à haute température. Bien que moins cher, il est très polluant : 1 kg d’hydrogène gris émet entre 9 et 10 kg de CO₂.",
+
+    "blueHydrogenDescription": "Comme étape intermédiaire, on parle aussi d’hydrogène « bleu ». Il repose encore sur les combustibles fossiles et le SMR, mais intègre des technologies de capture et stockage du carbone (CCS) pour réduire les émissions. Bien que moins polluant, il reste dépendant des ressources fossiles et n’est pas totalement neutre en carbone.",
+
+    "greenHydrogenDescription": "En revanche, l’hydrogène vert produit par électrolyse renouvelable n’émet absolument aucun CO₂. Lors de son utilisation dans une pile à combustible, le seul sous-produit est de l’eau pure, formant un cycle énergétique totalement propre et durable.",
+
+    "futureTechnologiesTitle": "Perspectives : technologies d’électrolyseurs",
+
+    "futureTechnologiesDescription": "Bien que la chimie de base reste la même, les équipements industriels varient fortement. Les technologies comme PEM, alcaline (AEL) et AEM présentent des avantages différents en termes de coût, efficacité et dynamique. Pour en savoir plus, consultez notre page dédiée aux électrolyseurs.",
+
+    "linkLabel": "Découvrir les technologies d’électrolyseurs"
+  },
+
+  "storage": {
+    "label": "Stockage H₂",
+
+    "content": {
+      "title": "Compression et stockage de l’hydrogène : combler l’écart",
+
+      "intro": "Bien que l’hydrogène vert soit un vecteur énergétique propre, il présente un défi physique majeur : sa très faible densité volumique. Pour stocker une quantité utile d’énergie, il doit être comprimé.",
+
+      "compressorTitle": "Rôle des compresseurs",
+
+      "compressorDescription": "Selon l’usage final, l’hydrogène est comprimé entre 30 et 700 bars. Cela nécessite des équipements spécialisés capables de gérer les molécules d’hydrogène en toute sécurité.",
+
+      "compressorButton": "Découvrir les technologies de compression",
+
+      "storageMethodsTitle": "Stockage : réservoirs et cavernes",
+
+      "storageMethodsDescription1": "Après compression, l’hydrogène peut être stocké dans des réservoirs composites haute pression pour des usages industriels ou stations de recharge.",
+
+      "storageMethodsDescription2": "Pour le stockage massif, on utilise des cavernes de sel souterraines permettant de stocker des millions de m³ d’hydrogène. Dans certains cas, l’hydrogène peut aussi être liquéfié à -253°C.",
+
+      "comparisonTitle": "Hydrogène vs batteries : stockage saisonnier",
+
+      "comparisonDescription1": "Les batteries sont efficaces pour le stockage court terme mais limitées en capacité et durée.",
+
+      "comparisonDescription2": "L’hydrogène permet un stockage indépendant de la puissance installée et est particulièrement adapté au stockage saisonnier à grande échelle."
+    }
+  },
+
+  "mobility": {
+    "label": "Mobilité",
+
+    "content": {
+      "title": "Hydrogène dans la mobilité : transport lourd",
+
+      "intro": "L’hydrogène vert est une solution clé pour les transports lourds où les batteries sont trop lourdes ou peu pratiques.",
+
+      "fuelCellTitle": "Pile à combustible : électrolyse inverse",
+
+      "fuelCellDescription": "Les véhicules à hydrogène utilisent une pile à combustible qui inverse le processus d’électrolyse pour produire de l’électricité à partir de l’hydrogène.",
+
+      "advantagesTitle": "Avantages du ravitaillement",
+
+      "advantagesDescription": "Le ravitaillement est rapide et offre une autonomie élevée, adaptée aux chaînes logistiques mondiales."
+    },
+
+    "schematic": {
+      "power": "Moteur électrique",
+      "membrane": {
+        "title": "Membrane",
+        "subtitle": "Membrane échangeuse de protons (PEM)",
+        "explanation": "Membrane qui laisse passer uniquement les protons."
+      },
+      "cathode": {
+        "title": "Cathode (+)",
+        "subtitle": "Cathode (+)",
+        "explanation": "Oxygène entrant et formation d’eau."
+      },
+      "anode": {
+        "title": "Anode (-)",
+        "subtitle": "Anode (-)",
+        "explanation": "Hydrogène entrant et séparation en protons et électrons."
+      }
+    }
+  },
+
+  "industry": {
+    "label": "Industrie",
+
+    "content": {
+      "title": "Hydrogène dans l’industrie : décarboner les secteurs lourds",
+
+      "intro": "L’industrie est aujourd’hui le plus grand consommateur mondial d’hydrogène, principalement sous forme grise très polluante.",
+
+      "steelTitle": "Révolution de la sidérurgie (DRI)",
+
+      "steelDescription1": "L’hydrogène permet de remplacer le charbon dans la production d’acier via la réduction directe du fer.",
+
+      "imageAlt": "bobines d’acier",
+
+      "steelDescription2": "Ce procédé élimine presque totalement les émissions de CO₂.",
+
+      "chemicalTitle": "Chimie et chaleur industrielle",
+
+      "chemicalDescription": "L’hydrogène vert permet aussi de produire des carburants synthétiques et de fournir de la chaleur haute température sans émissions."
+    }
+  },
+
+  "heating": {
+    "label": "Chauffage",
+
+    "content": {
+      "title": "Hydrogène pour le chauffage et la cogénération",
+
+      "intro": "Le chauffage est un secteur difficile à décarboner où l’hydrogène joue un rôle complémentaire aux pompes à chaleur.",
+
+      "sectorCouplingTitle": "Couplage sectoriel : récupération de chaleur",
+
+      "sectorCouplingDescription": "La chaleur issue de l’électrolyse peut alimenter les réseaux de chauffage urbain.",
+
+      "chpTitle": "Cogénération (CHP)",
+
+      "chpDescription": "Les piles à combustible permettent de produire simultanément électricité et chaleur avec un rendement élevé.",
+
+      "gridTitle": "Mélange et chaudières hydrogène",
+
+      "gridDescription": "Le mélange avec le gaz naturel permet une transition progressive vers des systèmes 100 % hydrogène."
+    },
+
+    "schematic": {
+      "title": "Cogénération (CHP)",
+      "text1": "Cette pile à combustible convertit l’hydrogène en ",
+      "textBold1": "électricité",
+      "text2": " et en ",
+      "textBold2": "chaleur",
+      "text3": ". Elle atteint plus de ",
+      "textBold3": "85 % d’efficacité",
+      "text4": "."
+    }
+  }
+}

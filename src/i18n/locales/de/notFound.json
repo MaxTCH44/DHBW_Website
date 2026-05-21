@@ -1,0 +1,7 @@
+{
+  "not_found": {
+    "title": "Seite nicht gefunden",
+    "description": "Leider handelt es sich hierbei nur um eine 404-Seite. Möglicherweise haben Sie die Adresse falsch eingegeben oder die Seite wurde auf eine andere URL verschoben.",
+    "button": "Zurück zur Startseite"
+  }
+}

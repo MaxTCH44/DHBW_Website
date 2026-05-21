@@ -1,0 +1,554 @@
+{
+  "title": "Wasserstoffkostenrechner",
+  "introText": "Schätzen Sie die nivellierten Wasserstoffkosten (LCOH) und die gesamten Investitionsausgaben (CAPEX) für Ihre Produktionsanlage. Passen Sie Systemparameter, Ressourcenkosten und Finanzvariablen an, um verschiedene techno-ökonomische Szenarien zu simulieren.",
+  "advanceToggle": {
+    "simple": "Einfacher Modus",
+    "advanced": "Erweiterter Rechner",
+    "tooltipLabel": "Klicken Sie für schrittweise Hilfe"
+  },
+  "reset": "Alle Eingaben auf Standardwerte zurücksetzen",
+  "resetModal": {
+    "title": "Rechner zurücksetzen",
+    "text": "Möchten Sie wirklich alle Ihre Eingaben löschen und den Rechner auf seine Standardwerte zurücksetzen? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "cancelButton": "Abbrechen",
+    "acceptButton": "Ja, alles zurücksetzen"
+  },
+  "electrolyzer": {
+    "electrolyzers": {
+      "aem": {
+        "name": "GreenLab Enapter AEM Elektrolyseur",
+        "type": "AEM"
+      },
+      "pem": {
+        "name": "GreenLab Enapter AEM Elektrolyseur",
+        "type": "PEM"
+      },
+      "ostermeier": {
+        "name": "Ostermeier Rechner Elektrolyseur",
+        "type": "AEM"
+      },
+      "custom": {
+        "name": "Benutzerdefinierter Elektrolyseur",
+        "type": "PEM"
+      }
+    },
+
+    "type": {
+      "pem": "PEM",
+      "aem": "AEM",
+      "alkaline": "Alkalisch"
+    },
+
+    "setup": {
+      "title": "Elektrolyseur-Konfiguration"
+    },
+
+    "systemSize": {
+      "label": "Systemgröße",
+      "tooltip": "Gesamte elektrische Leistungskapazität Ihrer Elektrolyseur-Anlage."
+    },
+
+    "selfProduced": {
+      "label": "Selbst erzeugt",
+      "tooltip": "Prozentualer Anteil der vor Ort erzeugten elektrischen Leistung (z. B. über Solaranlagen), der den Strombezug aus dem Netz reduziert."
+    },
+
+    "operatingTime": {
+      "label": "Betriebszeit",
+      "tooltip": "Anzahl der Stunden oder Tage, die das Elektrolyseur-System pro Jahr kontinuierlich betrieben wird."
+    },
+
+    "equipment": {
+      "title": "Elektrolyseur-Konfiguration:",
+      "learnMore": "Mehr über die verschiedenen Typen erfahren",
+      "tooltip": "Verschiedene Technologien haben unterschiedliche Wirkungsgrade und Kosten. Weitere Details finden Sie im Bereich „Lernen\"."
+    },
+
+    "hardwareNeeded": {
+      "title": "Benötigte Hardware:",
+      "setup": "Elektrolyseur-Konfiguration(en)",
+      "stacks": "Stack(s)",
+      "ownedNoCapex": "Bereits vorhanden (kein CAPEX)",
+      "preowned": "Gebrauchte Elektrolyseure"
+    },
+
+    "typeLabel": "Elektrolyseur-Typ",
+
+    "price": {
+      "label": "Elektrolyseur-Kaufpreis",
+      "tooltip": "Gesamte anfängliche Anschaffungskosten (CAPEX) einschließlich der Balance-of-Plant. Der erste Zellstack ist in diesem Grundpreis bereits enthalten."
+    },
+
+    "stackPower": {
+      "label": "Stack-Leistung",
+      "tooltip": "Die elektrische Nennleistung eines einzelnen Elektrolyseur-Stacks. Diese bestimmt seine individuelle Produktionskapazität."
+    },
+
+    "ownedStacks": {
+      "label": "Anzahl eigener Stacks",
+      "tooltip": "Die Anzahl der Elektrolyseur-Stacks, die Sie bereits besitzen. Diese werden von Ihren anfänglichen Anschaffungskosten abgezogen."
+    },
+
+    "stackPrice": {
+      "label": "Stack-Preis",
+      "tooltip": "Die Kosten für den Kauf eines Ersatz-Zellstacks. Dieser ist für die Berechnung langfristiger Betriebskosten unerlässlich."
+    },
+
+    "maxStacks": {
+      "label": "Max. Stacks pro Elektrolyseur",
+      "tooltip": "Die physische Grenze der Stacks, die ein einzelnes Elektrolyseur-Gehäuse aufnehmen kann, bevor eine neue vollständige Einheit erforderlich ist."
+    },
+
+    "energyConsumption": {
+      "label": "Energieverbrauch des Elektrolyseurs",
+      "tooltip": "Spezifischer Energieverbrauch des Elektrolyseur-Stacks selbst zur Erzeugung einer Einheit Wasserstoff. Dieser Wert schließt systemweite Hilfssysteme wie Kühlung oder Trocknung aus."
+    },
+
+    "auxiliaryConsumption": {
+      "label": "Gesamter Hilfsverbrauch (BoP)",
+      "tooltip": "Feste elektrische Leistung (kW), die von der gesamten unterstützenden Hardware des Systems (Kühlung, Trocknung, Elektronik) benötigt wird. Dies ist ein globaler Wert für die gesamte Anlage, unabhängig von der Anzahl der Elektrolyseur-Einheiten."
+    },
+
+    "waterConsumption": {
+      "label": "Wasserverbrauch",
+      "tooltip": "Die Menge an gereinigtem Wasser, die eine einzelne Elektrolyseur-Einheit bei Nennleistung pro Stunde benötigt."
+    },
+
+    "maintenanceCosts": {
+      "label": "Wartungskosten",
+      "tooltip": "Jährliche Betriebs- und Wartungskosten (O&M), im Allgemeinen als Prozentsatz der anfänglichen Ausrüstungskosten (CAPEX) geschätzt."
+    },
+
+    "stackLifetime": {
+      "label": "Stack-Lebensdauer",
+      "tooltip": "Die erwartete Betriebslebensdauer des Zellstacks in Stunden, bevor er degradiert und ersetzt werden muss. Dies treibt langfristige Wartungsberechnungen an."
+    }
+  },
+  "resourcesCosts": {
+    "title": "Ressourcenkosten",
+
+    "electricity_price": {
+      "label": "Strompreis",
+      "tooltip": "Der durchschnittliche Netzstrompreis. Dies ist der primäre Kostentreiber für die grüne Wasserstoffproduktion."
+    },
+
+    "water_price": {
+      "label": "Wasserpreis",
+      "tooltip": "Kosten für die Versorgung mit gereinigtem Wasser für den Elektrolyseprozess."
+    },
+
+    "current_h2_price": {
+      "label": "Aktueller H₂-Preis",
+      "tooltip": "Der Preis, den Sie derzeit für gelieferten Wasserstoff zahlen. Dieser dient als Ausgangspunkt zur Berechnung Ihrer potenziellen Einsparungen durch die eigene Produktion."
+    },
+
+    "grey_h2_price": {
+      "label": "Grauer H₂-Preis",
+      "tooltip": "Der aktuelle Marktpreis für grauen Wasserstoff (aus Erdgas gewonnen). Wird als Ausgangspunkt zur Berechnung Ihrer Einsparungen verwendet."
+    },
+
+    "carbon_tax": {
+      "label": "CO₂-Steuer",
+      "tooltip": "Der Preis pro Tonne CO₂-Emissionen. Eine höhere Steuer erhöht die Kosten für grauen Wasserstoff und macht grünen Wasserstoff wettbewerbsfähiger."
+    }
+  },
+
+  "lifecycleParameters": {
+    "title": "Lebenszyklusparameter",
+
+    "project_lifetime": {
+      "label": "Projektlaufzeit",
+      "tooltip": "Erwartete Betriebslebensdauer der Anlage zur Amortisierung des CAPEX."
+    },
+
+    "inflation_rate": {
+      "label": "Inflationsrate",
+      "tooltip": "Der durchschnittliche jährliche Prozentsatz des Preisanstiegs."
+    }
+  },
+  "compressorSetup": {
+    "compressors": {
+      "maximator": {
+        "name": "GreenLab Maximator Booster Station",
+        "type": "Mechanisch",
+        "compressionRate": "Von 15 bis 200 bar"
+      },
+      "ehc": {
+        "name": "GreenLab HyET EHC",
+        "type": "Elektrochemisch",
+        "compressionRate": "Von 5 bis 200 bar"
+      },
+      "custom": {
+        "name": "Benutzerdefinierter Kompressor",
+        "type": "Mechanisch"
+      }
+    },
+
+    "type": {
+      "mechanical": "Mechanisch",
+      "electrochemical": "Elektrochemisch"
+    },
+
+    "title": "Kompressor-Konfiguration",
+
+    "useCompressor": "Wir müssen einen Kompressor verwenden",
+
+    "hydrogenToCompress": {
+      "label": "Zu komprimierender Wasserstoff",
+      "tooltip": "Die gesamte Masse des erzeugten Wasserstoffgases, die für Lagerung oder Transport komprimiert werden muss."
+    },
+
+    "operatingTime": {
+      "label": "Betriebszeit",
+      "tooltip": "Anzahl der Stunden oder Tage, die das Kompressor-System pro Jahr kontinuierlich betrieben wird."
+    },
+
+    "equipmentSelector": {
+      "label": "Kompressor-Konfiguration:",
+      "tooltip": "Erforderlich, um den Wasserstoff für eine effiziente Lagerung oder Transport zu komprimieren.",
+      "learnMore": "Mehr über die verschiedenen Typen erfahren"
+    },
+
+    "owned": {
+      "single": "Bereits vorhanden (kein CAPEX)",
+      "multiple": "Gebrauchte Kompressoren"
+    },
+
+    "hardwareNeeded": "Benötigte Hardware:",
+    "compressorSetupBadge": "Kompressor-Konfiguration(en)",
+    "stackBadge": "Stack(s)",
+
+    "compressorType": "Kompressor-Typ",
+
+    "purchasePrice": {
+      "label": "Kompressor-Kaufpreis",
+      "tooltip": "Gesamte anfängliche Anschaffungskosten (CAPEX) einschließlich aller notwendigen Hilfskomponenten. Bei elektrochemischen Systemen ist der erste Zellstack bereits in diesem Grundpreis enthalten."
+    },
+
+    "energyConsumption": {
+      "label": "Energieverbrauch des Kompressors",
+      "tooltip": "Die elektrische Energie, die das System benötigt, um den Druck eines Kilogramms Wasserstoff auf das Zielniveau zu erhöhen."
+    },
+
+    "ownedStacks": {
+      "label": "Anzahl eigener Stacks",
+      "tooltip": "Die Gesamtzahl der einzelnen Zellstacks, die sich derzeit in Ihrem elektrochemischen Kompressorgehäuse befinden oder dort installiert sind."
+    },
+
+    "cellStackPrice": {
+      "label": "Zellstack-Preis",
+      "tooltip": "Die Ersatzkosten eines einzelnen elektrochemischen Zellstacks. Dieser wird verwendet, um langfristige Wartungskosten über die Projektlaufzeit zu prognostizieren."
+    },
+
+    "cellsPerStack": {
+      "label": "Zellen pro Stack",
+      "tooltip": "Die Anzahl der einzelnen Kompressionszellen innerhalb jedes Stacks. Mehr Zellen bedeuten einen höheren Kompressionsdurchsatz pro Stack."
+    },
+
+    "maxCells": {
+      "label": "Max. Zellen pro Kompressor",
+      "tooltip": "Die maximale physische Kapazität des Kompressorgehäuses. Bestimmt die Upgrade-Grenze Ihrer Konfiguration."
+    },
+
+    "warning": {
+      "title": "Suboptimale Konfiguration",
+      "message": "Die maximale Zellenanzahl ({maxCells}) ist kein genaues Vielfaches der Zellen pro Stack ({cellsPerStack}). Der verbleibende Platz kann nicht vollständig genutzt werden."
+    },
+
+    "flowrate": {
+      "perCellLabel": "Durchsatz pro Zelle",
+      "perCompressorLabel": "Durchsatz pro Kompressor",
+      "perCellTooltip": "Die spezifische Menge an Wasserstoffgas, die eine einzelne elektrochemische Zelle pro Tag komprimieren kann.",
+      "perCompressorTooltip": "Die gesamte Menge an Wasserstoffgas, die der mechanische Kompressor pro Tag verarbeiten kann."
+    },
+
+    "maintenanceCosts": {
+      "label": "Wartungskosten",
+      "tooltip": "Jährliche Betriebs- und Wartungskosten (O&M), im Allgemeinen als Prozentsatz der anfänglichen Ausrüstungskosten (CAPEX) geschätzt."
+    },
+
+    "stackLifetime": {
+      "label": "Stack-Lebensdauer",
+      "tooltip": "Die Betriebslebensdauer des elektrochemischen Zellstacks in Stunden, bevor ein Ersatz benötigt wird. Dies beeinflusst Ihre langfristigen Betriebsausgaben."
+    }
+  },
+  "dashboard": {
+    "title": "Projekt-Dashboard",
+
+    "oversizedWarning": {
+      "title": "Warnung: Überdimensionierte Installation",
+      "messageP1": "Ihre physische Installation (",
+      "messageP2": " kW) ist im Vergleich zu Ihrem Produktionsbedarf überdimensioniert. Ihre Auslastungsrate beträgt nur ",
+      "messageP3": ". Dies erhöht den CAPEX-Anteil pro kg und wirkt sich negativ auf Ihren LCOH aus."
+    },
+
+    "metrics": {
+      "lcoh": "LCOH (Grüner H₂)",
+      "totalCapex": "Gesamt-CAPEX",
+
+      "savingsVsCurrentCost": "Einsparungen ggü. aktuellen Kosten",
+      "lossVsCurrentCost": "Verlust ggü. aktuellen Kosten",
+
+      "savingsVsGrey": "Einsparungen ggü. grauem H₂",
+      "greenPremium": "Grüner Aufschlag",
+
+      "greyEstimatedP1": "Grauer H₂ geschätzt bei ",
+      "greyEstimatedP2": " €/kg"
+    },
+
+    "costBreakdown": {
+      "title": "Kostenaufschlüsselung pro kg",
+
+      "electricity": "Strom",
+      "capex": "CAPEX-Amortisierung",
+      "maintenance": "Wartung",
+      "water": "Wasser"
+    },
+
+    "stats": {
+      "annualProduction": "Jährl. H₂-Prod.",
+      "energyNeeded": "Benötigte Energie",
+      "waterNeeded": "Benötigtes Wasser",
+      "avoidedCo2": "Vermiedenes CO₂"
+    }
+  },
+  "equipment": {
+    "electrolyzer": {
+      "type": "Typ",
+      "price": "Preis",
+      "power": "Systemleistung",
+
+      "stack_price": "Stack-Preis",
+      "stack_power": "Stack-Leistung",
+      "max_stacks": "Max. Stacks pro Elektrolyseur",
+      "energy_consumption_kwh_per_kg": "Energieverbrauch",
+      "total_auxiliary_consumption": "Gesamter Hilfsverbrauch",
+      "water_consumption_l_per_h": "Wasserverbrauch",
+      "maintenance_percent_capex": "Wartung",
+      "maintenanceUnit": "%/Jahr",
+      "stack_lifetime_hours": "Stack-Lebensdauer"
+    },
+    "compressor": {
+      "type": "Typ",
+      "compression_rate": "Kompressionsrate",
+      "price": "Preis",
+      "cell_stack_price": "Zellstack-Preis",
+      "max_cells": "Maximale Zellenanzahl",
+      "cells_per_stack": "Anzahl der Zellen pro Stack",
+      "unitary_flowrate_kg_per_day": "Durchsatz",
+      "unitary_flowrate_kg_per_day_per_cell": "Durchsatz pro Zelle",
+      "flowrate_unit": "kg/Tag",
+      "energy_consumption_kwh_per_kg": "Energieverbrauch",
+      "maintenance_percent_capex": "Wartung",
+      "maintenanceUnit": "%/Jahr",
+      "stack_lifetime_hours": "Stack-Lebensdauer"
+    }
+  },
+
+  "advices": {
+    "step": "Schritt",
+    "previous": "Zurück",
+    "finish": "Fertigstellen",
+    "next": "Weiter",
+    "step_sys_size": {
+      "title": "Systemgröße",
+      "content": "Dies definiert die gesamte elektrische Leistungskapazität Ihres Elektrolyseurs. Es ist der wichtigste Treiber sowohl für Ihre maximale Wasserstoffproduktion als auch für Ihre anfängliche Investition (CAPEX). Wenn Sie Ihren jährlichen Wasserstoffbedarf bereits kennen, passen Sie diesen Wert einfach an, bis die Produktionskennzahl im Dashboard Ihren Zielen entspricht."
+    },
+    "step_self_prod": {
+      "title": "Selbst erzeugt",
+      "content": "Dies stellt den Anteil an Strom dar, den Sie vor Ort erzeugen (z. B. aus Solaranlagen oder Windturbinen), anstatt ihn direkt aus dem Netz zu beziehen. Da selbst erzeugter Strom in der Regel günstiger ist, senkt eine Erhöhung dieses Prozentsatzes Ihre Betriebskosten erheblich. Setzen Sie ihn auf 0, wenn Sie ausschließlich auf einen Standard-Netzanschluss angewiesen sind."
+    },
+    "step_elec_op_time": {
+      "title": "Betriebszeit des Elektrolyseurs",
+      "content": "Dies ist die Anzahl der Stunden pro Jahr, in denen Ihr Elektrolyseur aktiv betrieben wird (bei einem Maximum von 8.760 Stunden bzw. 365 Tagen). Eine höhere Laufzeit verteilt Ihre Ausrüstungskosten auf mehr Wasserstoff und senkt den Endpreis pro kg. Wenn Ihr System ausschließlich mit Solarstrom betrieben wird, könnte dies etwa 2.000 bis 3.000 Stunden betragen. Bei Netzanschluss kann es nahezu kontinuierlich betrieben werden."
+    },
+    "step_elec_select": {
+      "title": "Elektrolyseur-Auswahl",
+      "content": "Wählen Sie die spezifische Technologie oder das Modell für Ihr Projekt. Die Auswahl eines vordefinierten Modells lädt automatisch dessen genaue technische Spezifikationen und Kosten, während „Benutzerdefiniert\" es Ihnen ermöglicht, eigene Zahlen manuell einzugeben. Geben Sie unten an, ob Sie die Ausrüstung bereits vollständig oder teilweise besitzen – in diesem Fall werden die Anschaffungskosten aus der Berechnung entfernt."
+    },
+    "step_elec_price": {
+      "title": "Elektrolyseur-Kaufpreis",
+      "content": "Dies sind die gesamten anfänglichen Anschaffungskosten (CAPEX) für das Elektrolyseur-System. Wichtig: Dieser Grundpreis enthält bereits Ihren ersten betriebsbereiten Zellstack sowie alle notwendigen Balance-of-Plant-Komponenten (wie Leistungselektronik und Wasseraufbereitung). Zukünftige Stack-Ersatzteile werden separat berechnet. Für benutzerdefinierte Konfigurationen geben Sie Ihr vollständiges Lieferantenangebot in € ein."
+    },
+    "step_elec_power": {
+      "title": "Stack-Leistung",
+      "content": "Dies gibt die elektrische Nennleistung eines einzelnen Zellstacks (in kW) an. Sie definiert den Maßstab des einzelnen Moduls. Die Gesamtleistung Ihrer Anlage ergibt sich aus diesem Wert multipliziert mit der Anzahl der aktiven Stacks. Diese Angabe finden Sie auf dem technischen Datenblatt des Herstellers."
+    },
+    "step_elec_owned_stacks": {
+      "title": "Anzahl eigener Elektrolyseur-Stacks",
+      "content": "Wenn Sie bereits Reserve-Zellstacks für diesen Elektrolyseur in Ihrem Lager haben, geben Sie die Menge hier an. Dadurch werden die anfänglichen Anschaffungskosten von Ihrem CAPEX abgezogen, obwohl zukünftige Stack-Ersatzteile weiterhin in der langfristigen Wartungsplanung des Projekts berücksichtigt werden."
+    },
+    "step_elec_stack_price": {
+      "title": "Elektrolyseur-Stack-Preis",
+      "content": "Geben Sie die Ersatzkosten für einen einzelnen Elektrolyseur-Zellstack in € an. Da Stacks mit der Zeit degradieren und periodisch ersetzt werden müssen, ist dieser Wert für eine genaue Prognose Ihrer langfristigen Betriebs- und Wartungskosten unerlässlich. Sie können diese spezifischen Kosten durch Anforderung einer Ersatzteilpreisliste bei Ihrem Gerätehersteller ermitteln."
+    },
+    "step_max_stacks_elec": {
+      "title": "Max. Stacks pro Elektrolyseur",
+      "content": "Geben Sie die maximale Anzahl von Zellstacks an, die ein einzelnes Elektrolyseur-Gehäuse oder -Schrank physisch aufnehmen kann. Diese strukturelle Grenze bestimmt, wie weit Sie die interne Kapazität skalieren können, bevor Sie gezwungen sind, eine völlig neue zweite Elektrolyseur-Einheit zu kaufen, was Ihre anfänglichen CAPEX erheblich erhöhen würde."
+    },
+    "step_elec_cons": {
+      "title": "Energieverbrauch des Elektrolyseurs",
+      "content": "Geben Sie die Strommenge ein, die der Stack benötigt, um ein Kilogramm oder einen m³ Wasserstoff zu produzieren. Dieser Wert spiegelt die Kerneffizienz der Technologie wider. Da Strom in der Regel die größten Betriebskosten (OPEX) bei der grünen Wasserstoffproduktion darstellt, ist die genaue Angabe aus den technischen Spezifikationen des Herstellers für eine realistische Kostenschätzung entscheidend."
+    },
+    "step_aux_cons": {
+      "title": "Gesamter Hilfsverbrauch (BoP)",
+      "content": "Die Wasserstoffproduktion erfordert mehr als nur den Hauptstack. Dieses Feld berücksichtigt den zusätzlichen Stromverbrauch durch Balance-of-Plant-Komponenten (BoP) wie Kühlsysteme, Wasserpumpen und Gasreinigungseinheiten. Dieser Wert wird zu Ihrem Hauptenergieverbrauch addiert, um die gesamte Stromrechnung zu berechnen, und ist in der Regel in den Betriebsrichtlinien des Systems zu finden."
+    },
+    "step_water_cons": {
+      "title": "Wasserverbrauch",
+      "content": "Geben Sie an, wie viel Wasser das System während des Betriebs verbraucht. Obwohl Wasser in der Regel einen sehr kleinen Teil der nivellierten Wasserstoffkosten ausmacht, ist es physisch unverzichtbar für die Reaktion. Die benötigte Menge hängt stark von der spezifischen Technologie und den Wasserreinheitsstandards Ihrer Anlage ab."
+    },
+    "step_elec_maint": {
+      "title": "Elektrolyseur-Wartungskosten",
+      "content": "Dies deckt Ihre jährlichen Betriebs- und Wartungskosten (O&M) ab, einschließlich routinemäßiger Überprüfungen und kleinerer Teilersätze. Beachten Sie, dass größere Stack-Ersätze separat berechnet werden. Sie werden als Prozentsatz des anfänglichen Gerätekaufpreises ausgedrückt. Wenn Sie kein spezifisches Serviceangebot haben, liegt die branchenübliche Schätzung bei 2 % bis 5 %. Sie können auch direkt den genauen Betrag in € angeben, wenn Sie den Jahreswert kennen."
+    },
+    "step_elec_stack_lifetime": {
+      "title": "Stack-Lebensdauer",
+      "content": "Geben Sie die erwartete Betriebslebensdauer des Elektrolyseur-Zellstacks in Betriebsstunden an. Sobald das System diesen Schwellenwert erreicht, berechnet der Rechner automatisch die Kosten eines vollständigen Stack-Austauschs. Dies ist ein entscheidender Parameter für eine genaue Prognose Ihrer langfristigen Wartungskosten. Diese Lebensdauer finden Sie in der Regel auf dem technischen Datenblatt des Herstellers."
+    },
+    "step_electricity_price": {
+      "title": "Strompreis",
+      "content": "Geben Sie die Kosten ein, die Sie für Netzstrom zahlen. Da Strom die größte laufende Ausgabe bei der grünen Wasserstoffproduktion ist, ist eine genaue Angabe dieses Wertes für eine realistische Endkostenschätzung entscheidend."
+    },
+    "step_water_price": {
+      "title": "Wasserpreis",
+      "content": "Geben Sie Ihren lokalen industriellen Wasserversorgungstarif ein, den Sie entweder in €/m³ oder €/L angeben können. Obwohl hochgereinigtes Wasser für die Elektrolysereaktion unbedingt erforderlich ist, sind die reinen Wasserkosten im Vergleich zu Ihren Strom- und Hardwareausgaben in der Regel vernachlässigbar."
+    },
+    "step_current_h2_price": {
+      "title": "Aktueller H₂-Preis",
+      "content": "Geben Sie den Preis an, den Sie derzeit Ihrem Lieferanten für gelieferten Wasserstoff zahlen, typischerweise in €/kg abgerechnet. Obwohl dies Ihre neuen Produktionskosten vor Ort nicht verändert, verwendet das Dashboard diesen Wert als Ausgangspunkt, um Ihre genauen finanziellen Einsparungen und den jährlichen Return on Investment zu berechnen."
+    },
+    "step_grey_h2_price": {
+      "title": "Grauer H₂-Preis",
+      "content": "Legen Sie den Basismarktpreis für fossilbasierten grauen Wasserstoff fest. Der Rechner vergleicht diesen mit Ihren grünen Wasserstoffkosten, um den „Grünen Aufschlag\" zu bestimmen und zeigt Ihnen die genaue Preisdifferenz zwischen dem Standard-Industrieangebot und Ihrer sauberen Produktion."
+    },
+    "step_carbon_tax": {
+      "title": "CO₂-Steuer",
+      "content": "Geben Sie den erwarteten CO₂-Steuersatz in € pro Tonne CO₂ ein. Da die Produktion von grauem Wasserstoff etwa 9,5 kg CO₂ pro kg H₂ ausstößt, simuliert die Anwendung dieser Steuer bevorstehende Umweltvorschriften. Sie hilft Ihnen zu prognostizieren, wann grüner Wasserstoff finanziell wettbewerbsfähiger als fossile Brennstoffe wird."
+    },
+    "step_lifetime": {
+      "title": "Projektlaufzeit",
+      "content": "Legen Sie die finanzielle Laufzeit Ihres Projekts fest, in der Regel zwischen 15 und 20 Jahren. Dieser Zeitraum wird verwendet, um Ihre anfänglichen Investitionen (CAPEX) zu amortisieren. Eine längere Projektlaufzeit verteilt die Ausrüstungskosten auf eine größere Wasserstoffmenge und senkt den Endpreis pro kg, erfordert jedoch möglicherweise die Berücksichtigung häufigerer Stack-Ersätze."
+    },
+    "step_inflation": {
+      "title": "Inflationsrate",
+      "content": "Geben Sie die erwartete jährliche Inflationsrate für die Dauer Ihres Projekts ein. Dieser Prozentsatz berücksichtigt den allgemeinen Preisanstieg über die Zeit. Er ist entscheidend für die Prognose, wie Ihre zukünftigen Betriebskosten von Jahr zu Jahr steigen werden. Eine höhere Inflationsrate wird diese laufenden Kosten kumulieren und die nivellierten Wasserstoffkosten erhöhen."
+    },
+    "step_comp_needed": {
+      "title": "Wird ein Kompressor benötigt?",
+      "content": "Aktivieren Sie diese Option, wenn Ihr Anwendungsfall erfordert, dass der Wasserstoff für Lagerung, Transport oder direkte Einspeisung in einen industriellen Prozess unter Druck gesetzt wird. Durch die Aktivierung wird der Kompressionsbereich freigeschaltet, um die zusätzlichen Hardware- und Energiekosten zu berücksichtigen, die Ihren endgültigen LCOH erheblich beeinflussen können."
+    },
+    "step_h2_comp": {
+      "title": "Zu komprimierender Wasserstoff",
+      "content": "Geben Sie an, wie viel Ihres produzierten Wasserstoffs tatsächlich durch den Kompressor geführt wird. Sie können dies mit dem Schieberegler oder direkt als spezifisches Volumen in kg eingeben. Wenn Ihre gesamte Produktion unter Druck gesetzt werden muss, um den Endverbraucher oder die Lagertanks zu erreichen, lassen Sie diesen Wert einfach auf Maximum."
+    },
+    "step_comp_op_time": {
+      "title": "Betriebszeit des Kompressors",
+      "content": "Definieren Sie, wie lange der Kompressor über ein Jahr läuft, bis zu einem Maximum von 8.760 Stunden (bzw. 365 Tagen). Dies entspricht häufig der Betriebszeit Ihres Elektrolyseurs, kann jedoch geringer sein, wenn Ihr Kompressor überdimensioniert ist und nur intermittierend zum Befüllen von Puffertanks läuft. Dieser Parameter wirkt sich direkt auf die Hardware-Dimensionierung und Wartungszyklen aus."
+    },
+    "step_comp_selector": {
+      "title": "Kompressor-Konfiguration",
+      "content": "Wählen Sie die spezifische Kompressionstechnologie oder das Modell für Ihr Projekt. Die Auswahl eines vordefinierten Modells lädt automatisch dessen genaue technische Spezifikationen und Kosten, während „Benutzerdefiniert\" es Ihnen ermöglicht, eigene Daten manuell einzugeben. Geben Sie unten an, ob Sie die Ausrüstung bereits vollständig oder teilweise besitzen – in diesem Fall werden die Anschaffungskosten aus der Berechnung entfernt."
+    },
+    "step_mech_comp_price": {
+      "title": "Kompressor-Kaufpreis",
+      "content": "Dies sind die gesamten anfänglichen Anschaffungskosten (CAPEX) für Ihr mechanisches Kompressionssystem. Es müssen sowohl die Hauptkompressoreinheit (Motor, Kolben usw.) als auch alle notwendigen Hilfskomponenten wie Kühlkreisläufe oder Puffertanks enthalten sein. Vordefinierte Modelle zeigen reale Preise an. Für eine benutzerdefinierte Konfiguration wenden Sie sich an Ihren Lieferanten für ein vollständiges Angebot und geben Sie die Gesamtsumme in € ein."
+    },
+    "step_elec_comp_price": {
+      "title": "Kompressor-Kaufpreis",
+      "content": "Dies sind die gesamten anfänglichen Anschaffungskosten (CAPEX) für das elektrochemische Kompressionssystem. Wichtig: Dieser Grundpreis enthält bereits Ihren ersten betriebsbereiten Zellstack sowie alle notwendigen Balance-of-Plant-Komponenten (wie Leistungselektronik). Zukünftige Stack-Ersatzteile werden separat berechnet. Für benutzerdefinierte Konfigurationen geben Sie Ihr vollständiges Lieferantenangebot in € ein."
+    },
+    "step_mech_comp_cons": {
+      "title": "Energieverbrauch des Kompressors",
+      "content": "Geben Sie die gesamte Energie ein, die der mechanische Kompressor benötigt, um ein Kilogramm Wasserstoff zu verdichten (in kWh/kg). Mechanische Verdichtung basiert auf Elektromotoren oder pneumatischen Antrieben. Wenn Ihr System mit Druckluft betrieben wird, stellen Sie sicher, dass Sie die äquivalente elektrische Energie berechnen, die zur Erzeugung dieser Luft verwendet wird, und diese in diesen Gesamtwert einbeziehen. Dieser Wert beeinflusst Ihre Gesamtbetriebskosten erheblich und kann anhand des Datenblatts des Herstellers geschätzt werden."
+    },
+    "step_elec_comp_cons": {
+      "title": "Energieverbrauch des Kompressors",
+      "content": "Geben Sie den Strombedarf des elektrochemischen Kompressors ein, um ein Kilogramm oder einen m³ Wasserstoff zu verdichten. Da diese Technologie Spannung verwendet, um Protonen durch eine Membran zu treiben, anstatt bewegliche Teile zu verwenden, ist ihr Energieprofil einzigartig. Dieser Verbrauch wird zu Ihrem gesamten Strombedarf addiert, um Ihre Betriebskosten zu berechnen. Diesen Wert finden Sie in den technischen Spezifikationen des Herstellers; achten Sie darauf, den Gesamtenergieverbrauch des Systems zu suchen, der sowohl die Stacks als auch alle Hilfsleistungseinheiten umfasst."
+    },
+    "step_own_stack": {
+      "title": "Anzahl eigener Kompressor-Stacks",
+      "content": "Elektrochemische Kompressoren basieren auf internen Zellstacks, die mit der Zeit degradieren. Wenn Sie bereits Reserve-Zellstacks in Ihrem Lager haben, geben Sie die Menge hier an. Dadurch werden die anfänglichen Anschaffungskosten von Ihrem CAPEX abgezogen, obwohl zukünftige Stack-Ersatzteile weiterhin in den langfristigen Wartungskosten des Projekts berücksichtigt werden."
+    },
+    "step_stack_price": {
+      "title": "Zellstack-Preis",
+      "content": "Geben Sie die Ersatzkosten für einen einzelnen elektrochemischen Zellstack in € an. Im Gegensatz zu mechanischen Systemen basieren elektrochemische Kompressoren auf Membranstacks, die mit der Zeit degradieren und periodisch ersetzt werden müssen. Dieser Wert ist für eine genaue Prognose Ihrer langfristigen Betriebs- und Wartungskosten unerlässlich. Sie können diese spezifischen Kosten durch Anforderung einer detaillierten Ersatzteilpreisliste bei Ihrem Gerätehersteller ermitteln."
+    },
+    "step_cells_per_stack": {
+      "title": "Zellen pro Stack",
+      "content": "Geben Sie an, aus wie vielen einzelnen Zellen ein austauschbares Stack-Modul besteht. Dieser Parameter definiert die physische Gruppierung der Hardware. Er hilft dem Rechner, genau zu bestimmen, wie viele Stacks Sie anfänglich kaufen und später ersetzen müssen, um Ihre Zielkompressionskapazität zu erreichen. Diese genaue Zahl ist in der Regel im detaillierten technischen Datenblatt Ihres gewählten elektrochemischen Kompressors aufgeführt."
+    },
+    "step_max_cells": {
+      "title": "Max. Zellen pro Kompressor",
+      "content": "Geben Sie die maximale Anzahl von Zellen an, die ein einzelnes Kompressorgehäuse physisch aufnehmen kann. Diese strukturelle Grenze bestimmt, wie weit Sie die interne Kapazität skalieren können, bevor Sie gezwungen sind, eine völlig neue zweite Kompressoreinheit zu kaufen, was Ihre anfänglichen CAPEX erheblich erhöhen würde. Überprüfen Sie die Erweiterungsgrenzen oder physischen Layout-Spezifikationen Ihres Lieferanten, um diese Zahl zu finden."
+    },
+    "step_mech_flow": {
+      "title": "Durchsatz pro Zelle",
+      "content": "Definieren Sie die maximale Menge an Wasserstoffgas, die eine mechanische Kompressoreinheit verarbeiten kann, typischerweise in kg pro Tag angegeben. Dies bestimmt, wie viele separate Kompressormaschinen Sie benötigen, um Ihr gesamtes Produktionsvolumen zu bewältigen. Wenn Ihre Produktion dieses Limit überschreitet, fügt das System automatisch weitere Einheiten zu Ihrer erforderlichen Investition hinzu. Suchen Sie nach dem „Nennvolumenstrom\" oder der „Maximalen Kapazität\" auf dem technischen Spezifikationsblatt der Maschine."
+    },
+    "step_elec_flow": {
+      "title": "Durchsatz pro Zelle",
+      "content": "Geben Sie die Wasserstoffdurchsatzkapazität für eine einzelne elektrochemische Zelle an, üblicherweise in kg pro Tag gemessen. Da elektrochemische Systeme die Kapazität durch Hinzufügen einzelner Zellen statt ganzer Maschinen skalieren, bestimmt dieser genaue Leistungsparameter, wie viele Zellen zur Verarbeitung Ihrer täglichen Produktion erforderlich sind, was sich direkt auf Ihre Hardwarekosten auswirkt. Dieser Wert ist in der Regel unter „Zellkapazität\" oder „Einzelner Volumenstrom\" in der technischen Dokumentation des Herstellers aufgeführt."
+    },
+    "step_mech_comp_maint": {
+      "title": "Kompressor-Wartungskosten",
+      "content": "Geben Sie die jährlichen Betriebs- und Wartungskosten (O&M) für Ihr mechanisches Kompressionssystem ein. Da mechanische Kompressoren auf physischen beweglichen Teilen wie Kolben, Ventilen und Dichtungen basieren, erfordern sie in der Regel regelmäßige Wartung und Teilersätze, um Lecks zu verhindern. Sie können diesen Wert entweder als Prozentsatz des anfänglichen Kaufpreises (CAPEX) oder als feste jährliche Kosten in € eingeben. Wenn Sie kein spezifisches Serviceangebot Ihres Lieferanten haben, liegt die branchenübliche Schätzung in der Regel zwischen 3 % und 5 %."
+    },
+    "step_elec_comp_maint": {
+      "title": "Kompressor-Wartungskosten",
+      "content": "Geben Sie die jährlichen Routinewartungskosten für Ihren elektrochemischen Kompressor ein. Da diese Festkörpertechnologie ohne bewegliche Teile betrieben wird, sind ihre täglichen Wartungsanforderungen im Allgemeinen viel geringer als bei mechanischen Alternativen (beachten Sie, dass periodische Stack-Ersätze separat berechnet werden). Sie können dies als Prozentsatz Ihres anfänglichen CAPEX oder als festen Jahresbetrag in € eingeben. Diese Zahl finden Sie in der Servicevereinbarung Ihres Lieferanten oder kann auf etwa 1 % bis 2 % geschätzt werden."
+    },
+    "step_comp_stack_lifetime": {
+      "title": "Kompressor-Stack-Lebensdauer",
+      "content": "Geben Sie die Betriebslebensdauer des elektrochemischen Kompressor-Zellstacks in Betriebsstunden an. Ähnlich wie bei einem Elektrolyseur degradieren die internen Membranen mit der Zeit und müssen periodisch ersetzt werden. Der Rechner verwendet diese Zahl, um zukünftige Stack-Ersätze automatisch zu planen und über die gesamte Projektlaufzeit zu bepreisen. Überprüfen Sie die technischen Spezifikationen oder Garantieunterlagen Ihres Lieferanten, um diese genaue Dauer zu ermitteln."
+    }
+  },
+
+  "units": {
+    "elec_price_mwh": "€/MWh",
+    "elec_price_kwh": "€/kWh",
+
+    "power_mw": "MW",
+    "power_kw": "kW",
+
+    "energy_mwh": "MWh",
+    "energy_kwh": "kWh",
+
+    "water_price_m3": "€/m³",
+    "water_price_l": "€/L",
+
+    "time_days_per_year": "Tage/Jahr",
+    "time_hours_per_year": "Std./Jahr",
+
+    "kg_per_hour": "kg/h",
+    "m3_per_hour": "m³/h",
+    "kg_per_day": "kg/Tag",
+    "m3_per_day": "m³/Tag",
+    "l_per_hour": "L/h",
+
+    "kg": "kg",
+    "m3": "m³",
+    "liters": "L",
+    "tons": "t",
+
+    "eur_per_kg": "€/kg",
+    "eur_per_m3": "€/m³",
+    "eur_per_year": "€/Jahr",
+
+    "kwh_per_kg": "kWh/kg",
+    "kwh_per_m3": "kWh/m³",
+
+    "percent_capex": "% CAPEX",
+    "eur": "€",
+    "eur_per_ton_co2": "€/t CO₂",
+
+    "units": "Einheiten",
+    "stacks": "Stacks",
+    "cells": "Zellen",
+
+    "hour": "Std.",
+    "years": "Jahre",
+
+    "pourcent": "%"
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "gasRecoveryAdvices": {
+    "default": {
+      "complexity": "Sélectionnez un type de gaz",
+      "advice": "Veuillez fournir des informations sur votre mélange gazeux afin d’obtenir une première évaluation."
+    },
+    "water_vapor": {
+      "value": "Vapeur d’eau (H₂O)",
+      "complexity": "Faible (Déshumidification)",
+      "advice": "La séparation de l’eau et de l’hydrogène est un procédé standard. L’investissement est généralement faible et le retour sur investissement est très rapide."
+    },
+    "nitrogen": {
+      "value": "Azote (N₂)",
+      "complexity": "Moyenne (Système PSA)",
+      "advice": "Un système PSA (Pressure Swing Adsorption) sera probablement nécessaire. Il s’agit d’une technologie éprouvée avec une excellente durée de vie."
+    },
+    "oxygen": {
+      "value": "Oxygène (O₂)",
+      "complexity": "Moyenne (Système PSA)",
+      "advice": "Un système PSA (Pressure Swing Adsorption) sera probablement nécessaire. Il s’agit d’une technologie éprouvée avec une excellente durée de vie."
+    },
+    "carbon_dioxide": {
+      "value": "Dioxyde de carbone (CO₂)",
+      "complexity": "Élevée (Membrane / PSA avancé)",
+      "advice": "Ces gaz nécessitent des technologies membranaires spécifiques ou des systèmes PSA avancés. L’investissement initial est plus élevé, mais la récupération d’H₂ reste très rentable à grande échelle."
+    },
+    "argon": {
+      "value": "Argon",
+      "complexity": "Élevée (Membrane / PSA avancé)",
+      "advice": "Ces gaz nécessitent des technologies membranaires spécifiques ou des systèmes PSA avancés. L’investissement initial est plus élevé, mais la récupération d’H₂ reste très rentable à grande échelle."
+    },
+    "mixed_unknown": {
+      "value": "Mélange / Inconnu",
+      "complexity": "Analyse personnalisée requise",
+      "advice": "Nos ingénieurs devront échantillonner et analyser votre gaz d’échappement afin de concevoir un procédé de séparation multi-étapes adapté."
+    }
+  },
+
+  "recyclingForm": {
+    "exhaustGasParametersTitle": "Paramètres du gaz d’échappement",
+
+    "mixedGasType": {
+      "label": "Type de gaz mélangé",
+      "tooltip": "Quel gaz est mélangé avec l’H₂ ?"
+    },
+
+    "annualMixedGasProduced": {
+      "label": "Production annuelle de gaz mélangé",
+      "tooltip": "Volume de gaz normalisé à 1 atm et 0°C (Nm³)."
+    },
+
+    "h2Concentration": {
+      "label": "Concentration d’H₂ dans le gaz d’échappement",
+      "tooltip": "Pourcentage d’H₂ contenu dans le flux gazeux avant récupération."
+    },
+
+    "financialsTitle": "Finances & Investissement",
+
+    "currentH2PurchasePrice": {
+      "label": "Prix actuel d’achat de l’H₂ vert",
+      "tooltip": "Le prix que vous payez actuellement pour l’hydrogène livré. Cette valeur sert de base pour calculer les économies potentielles grâce au recyclage sur site."
+    },
+
+    "recyclingSystemPrice": {
+      "label": "Prix estimé du système de recyclage (CAPEX)",
+      "tooltip": "Estimation du coût d’achat initial (CAPEX)."
+    },
+
+    "maintenanceCosts": {
+      "label": "Coûts de maintenance (OPEX)",
+      "tooltip": "Coûts annuels d’exploitation et de maintenance (O&M), généralement estimés comme un pourcentage du coût initial de l’équipement (CAPEX)."
+    },
+
+    "energyConsumption": {
+      "label": "Consommation énergétique du système de recyclage",
+      "tooltip": "Consommation énergétique spécifique du système de recyclage pour produire un kilogramme d’hydrogène. Cette valeur exclut les auxiliaires globaux du système tels que le refroidissement ou le séchage."
+    },
+
+    "electricityPrice": {
+      "label": "Prix de l’électricité",
+      "tooltip": "Prix moyen de l’électricité du réseau. Il s’agit du principal facteur de coût pour la production d’hydrogène vert."
+    }
+  },
+
+  "recyclingCalculatorPage": {
+    "header": {
+      "title": "Calculateur de recyclage de l’hydrogène",
+      "description": "Arrêtez de rejeter un hydrogène précieux dans l’atmosphère. Calculez la quantité d’H₂ que vous pouvez récupérer chaque année et découvrez votre retour sur investissement (ROI).",
+      "learnMoreButton": "Découvrir le fonctionnement du recyclage"
+    },
+
+    "reset": {
+      "link": "Réinitialiser toutes les valeurs par défaut",
+      "modalTitle": "Réinitialiser le calculateur",
+      "modalDescription": "Êtes-vous sûr de vouloir effacer toutes vos données et réinitialiser le calculateur à ses valeurs par défaut ? Cette action est irréversible.",
+      "cancelButton": "Annuler",
+      "confirmButton": "Oui, tout réinitialiser"
+    },
+
+    "results": {
+      "title": "Résultats estimés",
+      "systemComplexity": "Complexité du système :",
+      "recoveredHydrogen": "Hydrogène récupéré",
+      "estimatedGrossSavings": "Économies brutes estimées",
+      "avoidedCo2": "CO₂ évité",
+      "roi": "Retour sur investissement (ROI)",
+      "never": "Jamais",
+      "placeholder": "Sélectionnez un type de gaz mélangé à gauche pour voir vos économies potentielles et votre ROI.",
+      "footer": "*Les calculs supposent un taux de récupération de {{rate}} %. Une implémentation réelle nécessite un audit technique."
+    },
+
+    "cta": {
+      "title": "Vous souhaitez en savoir plus ?",
+      "description": "Les systèmes de recyclage de l’hydrogène dépendent fortement des mélanges gazeux et des procédés industriels utilisés. Si vous avez besoin d’informations détaillées, de données de recherche ou souhaitez discuter d’un cas d’usage spécifique, n’hésitez pas à nous contacter.",
+      "button": "Nous contacter pour plus d’informations"
+    }
+  },
+
+  "units": {
+    "normalized_m3_per_year": "Nm³ / an",
+    "kg_per_year": "kg / an",
+
+    "pourcent": "%",
+
+    "eur_per_kg": "€ / kg",
+    "eur_per_year": "€ / an",
+    "elec_price_mwh": "€ / MWh",
+    "elec_price_kwh": "€ / kWh",
+    "eur": "€",
+
+    "percent_capex": "% CAPEX",
+
+    "kwh_per_kg": "kWh / kg",
+
+    "tons": "Tonnes",
+
+    "years": "ans"
+  }
+}

@@ -1,0 +1,53 @@
+{
+    "title": "Unsere Forscher kontaktieren",
+    "introText": "Da jedes Wasserstoff- und Recyclingsystem einzigartig ist, wird die Kontaktaufnahme mit unseren Projektforschern für ein fundiertes Verständnis und eine korrekte Umsetzung dringend empfohlen.",
+    "segmentedControl": {
+        "contactFormLabel": "Kontaktformular",
+        "contactListLabel": "Kontaktliste"
+    },
+
+    "contactList": {
+        "volker": {
+            "roles": {
+                "role1": "Projektmanagement PROKOREI H2"
+            },
+            "place": "Coblitzallee 1-9, 68163 Mannheim, Raum 019 A"
+        }
+    },
+    "contactForm": {
+        "emailError": "Bitte geben Sie eine gültige E-Mail-Adresse ein (z. B. name@domain.com)",
+        "success": {
+            "title": "Nachricht gesendet!",
+            "description": "Wir werden uns so schnell wie möglich bei Ihnen melden."
+        },
+
+        "error": {
+            "title": "Etwas ist schiefgelaufen",
+            "description": "Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt per E-Mail. Diese finden Sie im anderen Bereich."
+        },
+
+        "fields": {
+            "fullName": {
+                "label": "Vollständiger Name",
+                "placeholder": "Ihr Name"
+            },
+
+            "email": {
+                "label": "E-Mail oder Labor-/Unternehmensadresse",
+                "placeholder": "ihre@email.com"
+            },
+
+            "subject": {
+                "label": "Betreff",
+                "placeholder": "Z. B. Recyclingsystem-Prüfung"
+            },
+
+            "message": {
+                "label": "Ihre Nachricht",
+                "placeholder": "Erzählen Sie uns von Ihrer aktuellen Infrastruktur, Ihren Gasgemischen oder stellen Sie uns Ihre Fragen zu unseren mathematischen Modellen."
+            }
+        },
+
+        "submit": "Nachricht senden"
+    }
+}

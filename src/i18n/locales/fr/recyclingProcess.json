@@ -1,0 +1,105 @@
+{
+  "title": "Le processus de recyclage de l’hydrogène",
+
+  "introText": "Découvrez les technologies utilisées par les industries modernes pour capturer, purifier et régénérer l’hydrogène, favorisant à la fois l’efficacité économique et l’économie circulaire.",
+
+  "recyclingProcess": {
+    "intro": {
+      "title": "1. Introduction au recyclage industriel",
+
+      "p1": "Dans de nombreux secteurs avancés (fabrication de semi-conducteurs, production de fibres optiques, métallurgie, production de verre), l’hydrogène est utilisé en très grandes quantités. Dans la plupart de ces applications, il agit comme gaz vecteur ou atmosphère protectrice et n’est pas chimiquement consommé. Il quitte simplement le procédé de production mélangé ou contaminé par d’autres gaz (argon, azote, résidus carbonés ou dopants).",
+
+      "p2": "Traditionnellement, ces gaz d’échappement sont brûlés à la torchère ou rejetés dans l’atmosphère, représentant à la fois une perte financière colossale et une absurdité environnementale. En installant un système de recyclage en boucle fermée, les industries peuvent récupérer, purifier et réutiliser jusqu’à 98 % de cet hydrogène."
+    },
+
+    "purification": {
+      "title": "2. Technologies de purification et de récupération des gaz",
+
+      "intro": "Le recyclage des gaz industriels repose sur la capture des gaz d’échappement puis leur passage dans des systèmes de séparation haute performance. Plusieurs technologies clés sont utilisées :",
+
+      "psa": "• Purification catalytique et PSA (Pressure Swing Adsorption) : ces systèmes filtrent le flux gazeux via des adsorbants ou des réacteurs catalytiques afin d’éliminer les impuretés (oxygène, humidité, hydrocarbures). Ils restaurent un hydrogène d’une pureté garantie de 99,999 %, prêt à être directement réinjecté dans la ligne de production.",
+
+      "ehc": "• Séparation et compression électrochimique de l’hydrogène (EHC) : agissant comme un filtre moléculaire actif, la membrane polymère d’un système EHC ne laisse passer que les protons d’hydrogène. En appliquant un courant électrique, cette technologie extrait sélectivement l’hydrogène d’un mélange gazeux tout en le comprimant simultanément, sans aucune pièce mobile, garantissant ainsi l’absence de contamination par des huiles mécaniques."
+    },
+
+    "chemical": {
+      "title": "3. Régénération chimique (stockage solide)",
+
+      "p1": "Le recyclage de l’hydrogène s’applique également à la régénération de matériaux de stockage chimique tels que le borohydrure de sodium (NaBH₄). Le NaBH₄ génère de l’hydrogène pur à la demande via hydrolyse. Cependant, son cycle de vie était limité par le coût énergétique extrêmement élevé nécessaire à la régénération de son sous-produit, le métaborate de sodium (NaBO₂).",
+
+      "p2": "Des avancées scientifiques majeures ont démontré que le NaBH₄ peut être régénéré directement à partir de son sous-produit hydraté à température ambiante. Grâce à un procédé mécanochimique (broyage à billes) utilisant des agents réducteurs à faible coût comme le magnésium (Mg), ce recyclage chimique atteint des rendements proches de 89 %, rendant viable le cycle de l’hydrogène solide à grande échelle."
+    },
+
+    "economy": {
+      "title": "4. Avantages économiques et environnementaux",
+
+      "p1": "La mise en place d’infrastructures de recyclage offre des avantages stratégiques majeurs. D’un point de vue économique, le retour sur investissement (ROI) d’une station de purification est extrêmement rapide, car l’installation réduit drastiquement ses achats de nouvel hydrogène. Cela garantit une indépendance vis-à-vis des ruptures d’approvisionnement et de la volatilité des prix. Sur le plan environnemental, le recyclage limite la demande mondiale en hydrogène gris issu des énergies fossiles et évite les émissions directes, ancrant fermement l’industrie dans une logique d’économie circulaire."
+    },
+
+    "schematics": {
+      "psa": {
+        "beds": {
+          "title": "Lits adsorbants (Pressure Swing)",
+
+          "explanation": "Ces réservoirs contiennent des matériaux actifs qui piègent les impuretés sous haute pression. Ils alternent leur fonctionnement : pendant que l’un filtre pour produire de l’H₂, l’autre se dépressurise pour se nettoyer."
+        },
+
+        "out1": "Impuretés",
+        "out2": "Impuretés",
+
+        "exhaust": {
+          "title": "Échappement (Impuretés SORTIE)",
+
+          "explanation": "Lorsqu’un réservoir se dépressurise pour se régénérer, les impuretés piégées sont relâchées puis évacuées par cette conduite d’échappement."
+        },
+
+        "in": {
+          "top": "Gaz",
+          "bottom": "mélangé",
+
+          "title": "Flux de gaz usé (Entrée mélange)",
+
+          "explanation": "Le mélange gazeux non consommé contenant hydrogène, oxygène, humidité et hydrocarbures entre dans le système sous haute pression."
+        },
+
+        "output": {
+          "title": "Sortie hydrogène pur",
+
+          "explanation": "Le gaz filtré retrouve une pureté garantie de 99,999 %. Il est désormais prêt à être réinjecté directement dans la ligne de production, permettant d’économiser d’importantes quantités d’énergie et de ressources."
+        }
+      },
+
+      "ehc": {
+        "power": "ALIMENTATION ÉLECTRIQUE",
+
+        "membrane": {
+          "title": "Membrane",
+
+          "subtitle": "Filtre moléculaire actif (PEM)",
+
+          "explanation": "Dans le recyclage, la membrane agit comme un filtre parfait. Elle bloque physiquement tous les gaz autres que l’hydrogène et permet UNIQUEMENT aux protons (H⁺) de traverser. Cela garantit un hydrogène pur à 99,999 % de l’autre côté."
+        },
+
+        "cathode": {
+          "title": "Cathode (-)",
+
+          "subtitle": "Cathode (Compression électrochimique)",
+
+          "explanation": "Les protons extraits se recombinent avec les électrons pour reformer de l’hydrogène pur (H₂). Comme il s’agit d’un volume fermé et que de nouveaux protons continuent d’arriver, le gaz est comprimé électrochimiquement sans aucune pièce mobile !"
+        },
+
+        "anode": {
+          "title": "Anode (+)",
+
+          "subtitle": "Anode (Entrée du mélange gazeux)",
+
+          "explanation": "Les mélanges gazeux d’échappement entrent ici. Seul l’hydrogène est ionisé en protons (H⁺) puis extrait. Les impuretés restantes (azote, gaz traces) sont évacuées via la sortie d’échappement."
+        },
+
+        "in": "Gaz mélangé",
+        "out": "H₂ haute pression",
+        "exhaust": "Échappement"
+      }
+    }
+  }
+}
