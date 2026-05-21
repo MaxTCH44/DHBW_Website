@@ -108,7 +108,7 @@ export default function SetupBuilder() {
     };
 
     return (
-        <Container size="xl" py="xl">
+        <Container size="xl" py="xl" mt="150">
             <Group mb="xl">
                 <IconServerCog size={32} color="var(--mantine-color-blue-6)" />
                 <Title order={2}>{t("title")}</Title>
