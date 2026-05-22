@@ -48,16 +48,16 @@
         "out2": "Impuretés",
 
         "exhaust": {
-          "title": "Échappement (Impuretés SORTIE)",
+          "title": "Échappement (Sortie des impuretés)",
 
           "explanation": "Lorsqu’un réservoir se dépressurise pour se régénérer, les impuretés piégées sont relâchées puis évacuées par cette conduite d’échappement."
         },
 
         "in": {
-          "top": "Gaz",
-          "bottom": "mélangé",
+          "top": "Mix de",
+          "bottom": "gaz",
 
-          "title": "Flux de gaz usé (Entrée mélange)",
+          "title": "Flux de gaz usé (Entrée du mélange)",
 
           "explanation": "Le mélange gazeux non consommé contenant hydrogène, oxygène, humidité et hydrocarbures entre dans le système sous haute pression."
         },
@@ -70,7 +70,7 @@
       },
 
       "ehc": {
-        "power": "ALIMENTATION ÉLECTRIQUE",
+        "power": "ALIMENTATION",
 
         "membrane": {
           "title": "Membrane",
@@ -96,7 +96,7 @@
           "explanation": "Les mélanges gazeux d’échappement entrent ici. Seul l’hydrogène est ionisé en protons (H⁺) puis extrait. Les impuretés restantes (azote, gaz traces) sont évacuées via la sortie d’échappement."
         },
 
-        "in": "Gaz mélangé",
+        "in": "Mix de gaz",
         "out": "H₂ haute pression",
         "exhaust": "Échappement"
       }

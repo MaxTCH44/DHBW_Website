@@ -8,7 +8,7 @@ import './PsaPurifier.css';
 
 export default function PsaPurifier() {
     const isMobile = useMediaQuery('(max-width: 768px)');
-    const { t } = useTranslation("recyclingProcess");
+    const { t, i18n } = useTranslation("recyclingProcess");
 
     const handleSvgClick = (e) => {
         e.preventDefault();
@@ -78,11 +78,11 @@ export default function PsaPurifier() {
                         <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
                             <path d="M12 268L52.6116 229.895L52.6116 306.105L12 268Z" fill="#FE7F25"/>
                             <rect x="51.3223" y="245.741" width="38.6777" height="44.5176" fill="#FE7F25"/>
-                            <text x="58" y="225" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.psa.out1")}</text>
+                            <text x="58" y="225" fontSize={i18n.language === 'de' ? 12 : 14} fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.psa.out1")}</text>
                             
                             <path d="M384 268L343.388 229.895V306.105L384 268Z" fill="#FE7F25"/>
                             <rect width="38.6777" height="44.5176" transform="matrix(-1 0 0 1 344.678 245.741)" fill="#FE7F25"/>
-                            <text x="340" y="225" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.psa.out2")}</text>
+                            <text x="340" y="225" fontSize={i18n.language === 'de' ? 12 : 14} fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.psa.out2")}</text>
 
                             <g className="pipe-pair-side-left">
                                 <rect x="110" y="259" width="17" height="40" transform="rotate(90 110 259)" fill="#5B5959"/>
