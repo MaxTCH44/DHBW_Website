@@ -85,7 +85,7 @@ export default function Home() {
                     </Badge>
 
                     <Title order={2} mb="md" lh={1.2}>
-                        Inside the <Text component="span" c="var(--mantine-primary-color-filled)" inherit>GreenLab</Text>
+                        {t("home_lab.title")} <Text component="span" c="var(--mantine-primary-color-filled)" inherit>GreenLab</Text>
                     </Title>
 
                     <Text c="dimmed" size="lg" mb="xl" lh={1.6}>

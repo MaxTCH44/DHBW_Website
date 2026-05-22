@@ -40,7 +40,8 @@
     "compressionSystems": {
       "title": "Kompressionssysteme",
       "description": "Entdecken Sie mechanische und nicht-mechanische Verdichtungsmethoden, die für die hochdichte Wasserstoffspeicherung und Netzeinspeisung erforderlich sind."
-    }
+    },
+    "readDoc": "Dokumentation lesen"
   },
 
   "homeTools": {

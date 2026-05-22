@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Group, Tooltip, ActionIcon } from '@mantine/core';
+import { Group, Tooltip, ActionIcon, Box } from '@mantine/core';
 import { IconInfoCircle } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
 
@@ -19,35 +19,44 @@ export default function LabelWithTooltip({ label, tooltip }) {
     // since 'hover' states do not exist natively on smartphones.
     const isMobile = useMediaQuery('(max-width: 768px)');
 
+    // Sépare le dernier mot du reste pour le coller à l'icône
+    const words = label.split(' ');
+    const lastWord = words.pop();
+    const firstPart = words.join(' ');
+
     return (
-        <Group gap="xs" style={{ display: 'inline-flex' }}>
-            <span>{label}</span>
-            <Tooltip 
-                label={tooltip} 
-                withArrow 
-                multiline 
-                w={250} 
-                position="top"
-                opened={opened}
-            >
-                <ActionIcon 
-                    variant="transparent" 
-                    color="gray" 
-                    size="xs"
-                    // Desktop behavior: Opens cleanly on mouse hover
-                    onMouseEnter={() => !isMobile && setOpened(true)}
-                    onMouseLeave={() => !isMobile && setOpened(false)}
-                    // Mobile behavior: Opens strictly via explicit taps
-                    onClick={() => {
-                        if (isMobile) {
-                            setOpened((o) => !o);
-                        }
-                    }}
-                    onBlur={() => setOpened(false)}
+        <span style={{ lineHeight: 1.4 }}>
+            {firstPart && <>{firstPart} </>}
+            <span style={{ whiteSpace: 'nowrap' }}>
+                {lastWord}
+                <Tooltip
+                    label={tooltip}
+                    withArrow
+                    multiline
+                    w={250}
+                    position="top"
+                    opened={opened}
                 >
-                    <IconInfoCircle size={16} />
-                </ActionIcon>
-            </Tooltip>
-        </Group>
+                    <ActionIcon
+                        component="span"
+                        variant="transparent"
+                        color="gray"
+                        size="xs"
+                        style={{
+                            display: 'inline-flex',
+                            verticalAlign: 'middle',
+                            marginLeft: 4,
+                            marginBottom: 2,
+                        }}
+                        onMouseEnter={() => !isMobile && setOpened(true)}
+                        onMouseLeave={() => !isMobile && setOpened(false)}
+                        onClick={() => isMobile && setOpened((o) => !o)}
+                        onBlur={() => setOpened(false)}
+                    >
+                        <IconInfoCircle size={16} />
+                    </ActionIcon>
+                </Tooltip>
+            </span>
+        </span>
     );
 }
