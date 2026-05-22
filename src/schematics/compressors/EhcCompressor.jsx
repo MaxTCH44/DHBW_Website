@@ -10,7 +10,7 @@ import '../electrolyzers/PemElectrolyzer.css';
 export default function EhcCompressor() {
     const isMobile = useMediaQuery('(max-width: 768px)');
 
-    const { t } = useTranslation("equipmentOverview");
+    const { t, i18n } = useTranslation("equipmentOverview");
 
     const handleSvgClick = (e) => {
         e.preventDefault();
@@ -25,7 +25,7 @@ export default function EhcCompressor() {
 
                 <g className="circuit">
                     <rect x="145" y="7" width="116" height="39" fill="black"/>
-                    <text x="203" y="32" fontSize="14" fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("compressors.electrochemical.schematic.power")}</text>
+                    <text x="203" y="32" fontSize={i18n.language === 'de' ? 11 : 14} fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("compressors.electrochemical.schematic.power")}</text>
                     <rect x="15" y="183" width="118" height="6" fill="black"/>
                     <rect x="17" y="185" width="116" height="2" fill="#FFFF00"/>
                     <rect x="15" y="23" width="6" height="160" fill="black"/>
@@ -114,11 +114,11 @@ export default function EhcCompressor() {
                     
                     <path d="M273 290.5L336 214.723V366.277L273 290.5Z" fill="#B5E2ED"/>
                     <rect x="334" y="246.235" width="60" height="88.5294" fill="#B5E2ED"/>
-                    <text x="340" y="295" fontSize="12" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("compressors.electrochemical.schematic.pressure.low")}</text>
+                    <text x="336" y="295" fontSize={i18n.language === 'de' ? 10 : 12} fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("compressors.electrochemical.schematic.pressure.low")}</text>
                     
                     <path d="M12 290.5L75 253.694V327.306L12 290.5Z" fill="#F5A4AF"/>
                     <rect x="73" y="279" width="60" height="23" fill="#F5A4AF"/>
-                    <text x="78" y="295" fontSize="12" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("compressors.electrochemical.schematic.pressure.high")}</text>
+                    <text x="78" y="295" fontSize={i18n.language === 'de' ? 10 : 12} fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("compressors.electrochemical.schematic.pressure.high")}</text>
                 </g>
                 <g className="protons" style={{ pointerEvents: 'none' }}>
                     

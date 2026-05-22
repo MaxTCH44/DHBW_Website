@@ -36,7 +36,7 @@
                 "commercialization": "La commercialisation à très grande échelle (multi-mégawatts) est encore en phase d'émergence"
             },
             "schematic": {
-                "power": "ALIMENTATION ÉLECTRIQUE",
+                "power": "ALIMENTATION",
                 "membrane": {
                     "title": "Membrane",
                     "subtitle": "Membrane à Échange de Protons (PEM)",
@@ -86,7 +86,7 @@
                 "largeFootprint": "Grande empreinte physique et installation industrielle complexe requise pour une exploitation à grande échelle"
             },
             "schematic": {
-                "power": "ALIMENTATION ÉLECTRIQUE",
+                "power": "ALIMENTATION",
                 "diaphragm": {
                     "title": "Diaphragme",
                     "subtitle": "Diaphragme Poreux & Électrolyte",
@@ -138,7 +138,7 @@
                 "earlyCommercialization": "Encore en phase de commercialisation précoce ; manque d'historique de déploiement massif à l'échelle du gigawatt"
             },
             "schematic": {
-                "power": "ALIMENTATION ÉLECTRIQUE",
+                "power": "ALIMENTATION",
                 "membrane": {
                     "title": "Membrane",
                     "subtitle": "Membrane à Échange d'Anions (AEM)",
@@ -190,7 +190,7 @@
                 "limitedCommercialMaturity": "Moins mature commercialement pour un déploiement massif à l'échelle du gigawatt comparé à l'alcalin ou au PEM"
             },
             "schematic": {
-                "power": "ALIMENTATION ÉLECTRIQUE",
+                "power": "ALIMENTATION",
                 "ceramic": {
                     "title": "Céramique",
                     "subtitle": "Électrolyte à Oxyde Solide (Céramique)",
@@ -247,13 +247,13 @@
                     "explanation": "Le piston mécanique monte et descend. Le mouvement vers le haut comprime le gaz, augmentant drastiquement sa pression et sa température."
                 },
                 "inlet": {
-                    "title": "H₂ Basse Pression ENTRÉE",
-                    "subtitle": "Admission Basse Pression (Côté Bleu)",
+                    "title": "H₂ Basse Pression",
+                    "subtitle": "Admission Basse Pression",
                     "explanation": "L'hydrogène gazeux provenant de l'électrolyseur (typiquement 20-30 bar) entre ici. La soupape d'admission s'ouvre lorsque le piston descend, aspirant le gaz."
                 },
                 "outlet": {
-                    "title": "H₂ Haute Pression SORTIE",
-                    "subtitle": "Refoulement Haute Pression (Côté Rouge)",
+                    "title": "H₂ Haute Pression",
+                    "subtitle": "Refoulement Haute Pression",
                     "explanation": "Une fois la pression cible atteinte (ex. 350-700 bar), la soupape de refoulement s'ouvre, libérant le H₂ comprimé vers le stockage ou un système de refroidissement."
                 }
             }
@@ -288,7 +288,7 @@
                 "catalystPoisoning": "Le catalyseur peut être 'empoisonné' et dégradé par certaines impuretés sévères (comme le soufre) dans le gaz d'alimentation"
             },
             "schematic": {
-                "power": "ALIMENTATION ÉLECTRIQUE",
+                "power": "ALIMENTATION",
                 "membrane": {
                     "title": "Membrane",
                     "subtitle": "Membrane à Échange de Protons",
