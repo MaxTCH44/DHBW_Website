@@ -1,5 +1,5 @@
 import { NumberInput, Slider, Box, Text } from '@mantine/core';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 /**
  * A composite input component blending a precise NumberInput with a visual Slider.
@@ -16,6 +16,12 @@ import { useEffect } from 'react';
  * @param {string} [props.id=null] - Optional HTML id, primarily used by the interactive tutorial (AdviceCards) to target this specific element.
  */
 export default function SliderInput({ label, value, units, onValueChange, min, max, step = 1, id = null }) {
+  const [sliderValue, setSliderValue] = useState(typeof value === 'string' ? 0 : value);
+
+  // Sync local slider value if parent changes the value externally
+  useEffect(() => {
+    setSliderValue(typeof value === 'string' ? 0 : value);
+  }, [value]);
 
   // Automatically clamps the value down if the parent component dynamically reduces the maximum limit
   // (For example, if the user lowers the total hydrogen production, the mass to compress must lower accordingly)
@@ -27,7 +33,7 @@ export default function SliderInput({ label, value, units, onValueChange, min, m
 
   // Ensures that leaving the input entirely empty gracefully falls back to zero instead of crashing
   function handleBlur() {
-    if (value === '' || value === null){
+    if (value === '' || value === null) {
       onValueChange(0);
     }
   }
@@ -36,13 +42,13 @@ export default function SliderInput({ label, value, units, onValueChange, min, m
     <Box pos="relative" mb="sm">
       <NumberInput
         id={id}
-        value={value}
+        value={sliderValue}
         onChange={onValueChange}
         onBlur={handleBlur}
         label={label}
         min={min}
         max={max}
-        hideControls // Hide the default +/- buttons to keep the UI clean (the slider replaces their function)
+        hideControls
         rightSection={<Text pr='sm'>{units}</Text>}
         rightSectionWidth="auto"
         styles={{
@@ -57,11 +63,11 @@ export default function SliderInput({ label, value, units, onValueChange, min, m
       <Slider
         max={max}
         min={min}
-        // Auto-calculates a smooth stepping scale if no strict step is provided, ensuring fluid slider movement
-        step={Number.isInteger(max) || step !== 1 ? step : Number((max/10).toFixed(3))}
-        label={null} // Tooltip is disabled as the NumberInput directly above already shows the exact value
-        value={typeof value === 'string' ? 0 : value}
-        onChange={onValueChange}
+        step={Number.isInteger(max) || step !== 1 ? step : Number((max / 10).toFixed(3))}
+        label={null}
+        value={sliderValue}
+        onChange={setSliderValue}        // Met à jour uniquement l'état local → animation fluide
+        onChangeEnd={onValueChange}      // Propage au parent uniquement au relâchement
         size={3}
         aria-label={label}
         styles={{
