@@ -9,7 +9,7 @@ import './AlkalineElectrolyzer.css';
 export default function AemElectrolyzer() {
     const isMobile = useMediaQuery('(max-width: 768px)');
 
-    const { t } = useTranslation("equipmentOverview");
+    const { t, i18n } = useTranslation("equipmentOverview");
 
     const handleSvgClick = (e) => {
         e.preventDefault();
@@ -24,7 +24,7 @@ export default function AemElectrolyzer() {
 
                 <g className="circuit">
                     <rect x="145" y="7" width="116" height="39" fill="black"/>
-                    <text x="203" y="32" fontSize="14" fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.aem.schematic.power")}</text>
+                    <text x="203" y="32" fontSize={i18n.language === 'de' ? 11 : 14} fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.aem.schematic.power")}</text>
                     <rect x="15" y="183" width="118" height="6" fill="black"/>
                     <rect x="17" y="185" width="116" height="2" fill="#FFFF00"/>
                     <rect x="15" y="23" width="6" height="160" fill="black"/>

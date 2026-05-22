@@ -8,7 +8,7 @@ import '../electrolyzers/PemElectrolyzer.css';
 
 export default function EhcRecycling() {
     const isMobile = useMediaQuery('(max-width: 768px)');
-    const { t } = useTranslation("recyclingProcess");
+    const { t, i18n } = useTranslation("recyclingProcess");
 
     const handleSvgClick = (e) => {
         e.preventDefault();
@@ -23,7 +23,7 @@ export default function EhcRecycling() {
 
                 <g className="circuit">
                     <rect x="145" y="7" width="116" height="39" fill="black"/>
-                    <text x="203" y="32" fontSize="14" fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.ehc.power")}</text>
+                    <text x="203" y="32" fontSize={i18n.language === 'de' ? 11 : 14} fill="white" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.ehc.power")}</text>
                     <rect x="15" y="183" width="118" height="6" fill="black"/>
                     <rect x="17" y="185" width="116" height="2" fill="#FFFF00"/>
                     <rect x="15" y="23" width="6" height="160" fill="black"/>
@@ -112,11 +112,11 @@ export default function EhcRecycling() {
                     
                     <path d="M273 248.5L336 211.694V285.306L273 248.5Z" fill="#D9D9D9"/>
                     <rect x="334" y="227" width="60" height="43" fill="#D9D9D9"/>
-                    <text x="343" y="254" fontSize="18" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.ehc.in")}</text>
+                    <text x="343" y="254" fontSize={i18n.language === 'de' ? 13 : 18} fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.ehc.in")}</text>
                     
                     <path d="M394 354.5L331 391.306V317.694L394 354.5Z" fill="#D9D9D9"/>
                     <rect x="333" y="376" width="60" height="43" transform="rotate(-180 333 376)" fill="#D9D9D9"/>
-                    <text x="325" y="361" fontSize="18" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.ehc.exhaust")}</text>
+                    <text x="325" y="361" fontSize={i18n.language === 'fr' ? 16 : 18} fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.ehc.exhaust")}</text>
                     
                     <path d="M12 290.5L75 253.694V327.306L12 290.5Z" fill="#F5A4AF"/>
                     <rect x="73" y="279" width="60" height="23" fill="#F5A4AF"/>
