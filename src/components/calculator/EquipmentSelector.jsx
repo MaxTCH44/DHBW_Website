@@ -1,5 +1,5 @@
 import { Select, Checkbox, Stack, Tooltip, Box, Text } from '@mantine/core';
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import SliderInput from '../SliderInput';
