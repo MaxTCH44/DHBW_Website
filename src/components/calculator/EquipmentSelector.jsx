@@ -116,11 +116,13 @@ export default function EquipmentSelector({
         }
     }, [max, quantityOwned, onOwnedChange]);
 
-    const selectData = itemsList.list.map((item, index) => ({
-        value: index.toString(),
-        label: t(item.name),
-        ...item 
-    }));
+    const selectData = useMemo(() => {
+        return itemsList.list.map((item, index) => ({
+            value: index.toString(),
+            label: t(item.name),
+            ...item 
+        }));
+    }, [itemsList.list, t]);
 
     const selectedIndex = itemsList.list.findIndex(item => item.id === selectedItem.id).toString();
 
