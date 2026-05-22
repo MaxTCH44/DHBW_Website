@@ -12,13 +12,13 @@
           { "type": "subtitle", "value": "electrolyzers.pem.mechanismTitle" },
           { "type": "paragraph", "value": "electrolyzers.pem.mechanismDescription" },
 
-          { "type": "paragraph", "value": "electrolyzers.pem.anodeReaction" },
+          { "type": "paragraph", "value": "electrolyzers.pem.anodeReaction", "size": "lg", "weight": "bold", "color": "#FD6E6E" },
 
           { "type": "component", "componentName": "PemElectrolyzer" },
 
           { "type": "paragraph", "value": "electrolyzers.pem.membraneDescription" },
 
-          { "type": "paragraph", "value": "electrolyzers.pem.cathodeReaction" },
+          { "type": "paragraph", "value": "electrolyzers.pem.cathodeReaction", "size": "lg", "weight": "bold", "color": "#6E8BFD" },
 
           { "type": "subtitle", "value": "electrolyzers.pem.componentsTitle" },
           { "type": "paragraph", "value": "electrolyzers.pem.componentsDescription" }
@@ -50,13 +50,13 @@
           { "type": "subtitle", "value": "electrolyzers.alkaline.mechanismTitle" },
           { "type": "paragraph", "value": "electrolyzers.alkaline.mechanismDescription" },
 
-          { "type": "paragraph", "value": "electrolyzers.alkaline.cathodeReaction" },
+          { "type": "paragraph", "value": "electrolyzers.alkaline.cathodeReaction", "size": "lg", "weight": "bold", "color": "#6E8BFD" },
 
           { "type": "component", "componentName": "AlkalineElectrolyzer" },
 
           { "type": "paragraph", "value": "electrolyzers.alkaline.transportDescription" },
 
-          { "type": "paragraph", "value": "electrolyzers.alkaline.anodeReaction" },
+          { "type": "paragraph", "value": "electrolyzers.alkaline.anodeReaction", "size": "lg", "weight": "bold", "color": "#FD6E6E" },
 
           { "type": "subtitle", "value": "electrolyzers.alkaline.componentsTitle" },
           { "type": "paragraph", "value": "electrolyzers.alkaline.componentsDescription" }
@@ -87,13 +87,13 @@
           { "type": "subtitle", "value": "electrolyzers.aem.mechanismTitle" },
           { "type": "paragraph", "value": "electrolyzers.aem.mechanismDescription" },
 
-          { "type": "paragraph", "value": "electrolyzers.aem.cathodeReaction" },
+          { "type": "paragraph", "value": "electrolyzers.aem.cathodeReaction", "size": "lg", "weight": "bold", "color": "#6E8BFD" },
 
           { "type": "component", "componentName": "AemElectrolyzer" },
 
           { "type": "paragraph", "value": "electrolyzers.aem.transportDescription" },
 
-          { "type": "paragraph", "value": "electrolyzers.aem.anodeReaction" },
+          { "type": "paragraph", "value": "electrolyzers.aem.anodeReaction", "size": "lg", "weight": "bold", "color": "#FD6E6E" },
 
           { "type": "subtitle", "value": "electrolyzers.aem.componentsTitle" },
 
@@ -125,13 +125,13 @@
           { "type": "subtitle", "value": "electrolyzers.soec.mechanismTitle" },
           { "type": "paragraph", "value": "electrolyzers.soec.mechanismDescription" },
 
-          { "type": "paragraph", "value": "electrolyzers.soec.cathodeReaction" },
+          { "type": "paragraph", "value": "electrolyzers.soec.cathodeReaction", "size": "lg", "weight": "bold", "color": "#6E8BFD" },
 
           { "type": "component", "componentName": "SoecElectrolyzer" },
 
           { "type": "paragraph", "value": "electrolyzers.soec.transportDescription" },
 
-          { "type": "paragraph", "value": "electrolyzers.soec.anodeReaction" },
+          { "type": "paragraph", "value": "electrolyzers.soec.anodeReaction", "size": "lg", "weight": "bold", "color": "#FD6E6E" },
 
           { "type": "subtitle", "value": "electrolyzers.soec.componentsTitle" },
 
