@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 export default function MechanicalCompressor() {
     const isMobile = useMediaQuery('(max-width: 768px)');
 
-    const { t } = useTranslation("equipmentOverview");
+    const { t, i18n } = useTranslation("equipmentOverview");
 
     const handleSvgClick = (e) => {
         e.preventDefault();
@@ -50,7 +50,7 @@ export default function MechanicalCompressor() {
                             <g className="valve-inlet-container">
                                 <rect className="valve-rect valve-inlet" x="147.299" y="33.9362" width="8.0597" height="45.2766" fill="#484040" rx="1"/>
                             </g>
-                            <text x="81" y="60" fontSize="12" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("compressors.mechanical.schematic.inlet.title")}</text>
+                            <text x="81" y="60" fontSize={i18n.language === 'de' ? 11 : 12} fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("compressors.mechanical.schematic.inlet.title")}</text>
                         </g>
                     </HoverCard.Target>
                     <HoverCard.Dropdown bg="blue.5" c="white" style={{ pointerEvents: 'none' }}>
