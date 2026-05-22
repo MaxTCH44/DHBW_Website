@@ -152,17 +152,17 @@
       "membrane": {
         "title": "Membrane",
         "subtitle": "Membrane échangeuse de protons (PEM)",
-        "explanation": "Membrane qui laisse passer uniquement les protons."
+        "explanation": "Une membrane polymère solide qui fait office d'électrolyte. Elle ne laisse passer vers la cathode que les protons chargés positivement (H⁺), obligeant ainsi les électrons à circuler dans le circuit externe."
       },
       "cathode": {
         "title": "Cathode (+)",
         "subtitle": "Cathode (+)",
-        "explanation": "Oxygène entrant et formation d’eau."
+        "explanation": "L'oxygène (O₂) présent dans l'air pénètre ici. Il se combine avec les protons (H⁺) qui traversent la membrane et les électrons (e⁻) provenant du moteur pour former de l'eau pure (H₂O)."
       },
       "anode": {
         "title": "Anode (-)",
         "subtitle": "Anode (-)",
-        "explanation": "Hydrogène entrant et séparation en protons et électrons."
+        "explanation": "L'hydrogène comprimé (H₂) entre par ici. Le catalyseur scinde les molécules d'H₂ en protons (H⁺) et en électrons (e⁻). Les électrons circulent dans le circuit externe pour alimenter le moteur."
       }
     }
   },
