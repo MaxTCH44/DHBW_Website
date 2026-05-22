@@ -33,7 +33,7 @@ export default function SliderInput({ label, value, units, onValueChange, min, m
   }
 
   return (
-    <Box pos="relative">
+    <Box pos="relative" mb="sm">
       <NumberInput
         id={id}
         value={value}
