@@ -510,6 +510,11 @@
     "valueAdjusted": "Wert wurde auf den maximal zulässigen Wert angepasst ({{max}})"
   },
 
+  "comparison": {
+    "saveButtonlabel": "Save to Compare",
+    "setup": "Konfiguration"
+  },
+
   "units": {
     "elec_price_mwh": "€/MWh",
     "elec_price_kwh": "€/kWh",

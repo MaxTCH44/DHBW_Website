@@ -18,6 +18,7 @@ import { ELEC_PRICE_UNITS, POWER_UNITS, WATER_VOLUME_PRICE_UNITS, TIME_PER_YEAR_
 import ElectrolyzerSetup from '../components/calculator/ElectrolyzerSetup.jsx';
 import ResourcesCosts from '../components/calculator/ResourcesCosts.jsx';
 import CompressorSetup from '../components/calculator/CompressorSetup.jsx';
+import ComparisonSetup from '../components/calculator/ComparisonSetup.jsx';
 
 const DEFAULT_CUSTOM_ELECTROLYZER = electrolyzers.list.find(e => e.id === 0);
 const DEFAULT_CUSTOM_COMPRESSOR = compressors.list.find(e => e.id === 0);
@@ -567,6 +568,21 @@ export default function Calculator() {
             >        
                 {t("comparison.saveButtonlabel")}
             </Button>
+            
+            {comparisonSetups.length > 0 && (
+                <Card shadow="lg" padding="xl" radius="md" withBorder mt="xl" bg="gray.0">
+                    <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="md">
+                        {comparisonSetups.map((setup, i) => (
+                            <ComparisonSetup
+                                key={i}
+                                setup={setup}
+                                index={i}
+                                onRemove={(ind) => setComparisonSetups(prev => prev.filter((_, i) => i !== ind))}
+                            />
+                        ))}
+                    </SimpleGrid>
+                </Card>
+            )}
 
             <Modal 
                 opened={resetModalOpened} 

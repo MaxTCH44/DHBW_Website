@@ -511,7 +511,8 @@
   },
 
   "comparison": {
-    "saveButtonlabel": "Save to Compare"
+    "saveButtonlabel": "Save to Compare",
+    "setup": "Setup"
   },
 
   "units": {
