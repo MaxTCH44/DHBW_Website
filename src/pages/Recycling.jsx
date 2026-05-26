@@ -19,7 +19,7 @@ import RecyclingInputs from '../components/calculator/RecyclingInputs';
 export default function Recycling() {
     const isMobile = useMediaQuery('(max-width: 768px)');
 
-    const { t } = useTranslation("recycling");
+    const { t, i18n } = useTranslation("recycling");
 
     const [resetModalOpened, setResetModalOpened] = useState(false);
     function handleResetDefaults(){
@@ -86,7 +86,7 @@ export default function Recycling() {
         co2Avoided
     } = useMemo(() => {
         // Find the technical parameters corresponding to the user's selected gas mixture
-        const info = gasData.find(gas => t(gas.value) === gasType);
+        const info = gasData.find(gas => gas.value === gasType);
         
         // Default fallbacks before the user selects a gas
         const comp = info ? info.complexity : "gasRecoveryAdvices.default.complexity";
@@ -275,7 +275,7 @@ export default function Recycling() {
                                             </Text>
 
                                             <Text size="xl" fw={900} c="blue.7">
-                                                {annualRecoveredH2Kg.toLocaleString('de-DE', { maximumFractionDigits: 0 })} {t("units.kg_per_year")}
+                                                {annualRecoveredH2Kg.toLocaleString(i18n.language, { maximumFractionDigits: 0 })} {t("units.kg_per_year")}
                                             </Text>
                                         </div>
                                     </Group>
@@ -292,7 +292,7 @@ export default function Recycling() {
                                             </Text>
 
                                             <Text size="xl" fw={900} c="teal.6">
-                                                {annualSavings.toLocaleString('de-DE', { maximumFractionDigits: 0 })} {t("units.eur_per_year")}
+                                                {annualSavings.toLocaleString(i18n.language, { maximumFractionDigits: 0 })} {t("units.eur_per_year")}
                                             </Text>
                                         </div>
                                     </Group>
@@ -310,7 +310,7 @@ export default function Recycling() {
 
                                             <Text size="xl" fw={900} c="myColor.9">
                                                 {co2Avoided !== null 
-                                                    ? `${co2Avoided.toLocaleString('de-DE', { maximumFractionDigits: 1 })} ${t("units.tons")}` 
+                                                    ? `${co2Avoided.toLocaleString(i18n.language, { maximumFractionDigits: 1 })} ${t("units.tons")}` 
                                                     : "0"
                                                 }
                                             </Text>
@@ -330,7 +330,7 @@ export default function Recycling() {
 
                                             <Text size="xl" fw={900} c="myColor.9">
                                                 {roiYears !== null 
-                                                    ? `${roiYears.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ${t("units.years")}`
+                                                    ? `${roiYears.toLocaleString(i18n.language, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ${t("units.years")}`
                                                     : t("recyclingCalculatorPage.results.never")
                                                 }
                                             </Text>

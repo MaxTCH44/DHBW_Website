@@ -12,7 +12,7 @@
         "purification": {
             "title": "2. Gas Purification and Recovery Technologies",
             "intro": "Industrial gas recycling relies on capturing the exhaust and passing it through high-performance separation systems. Several key technologies are utilized:",
-            "psa": "• Catalytic Purification and PSA (Pressure Swing Adsorption): These systems filter the waste gas stream through adsorbent beds or catalytic reactors to remove impurities (oxygen, moisture, hydrocarbons). They restore the gas to guaranteed 99,999% purity hydrogen, ready for direct reinjection into the production line.",
+            "psa": "• Catalytic Purification and PSA (Pressure Swing Adsorption): These systems filter the waste gas stream through adsorbent beds or catalytic reactors to remove impurities (oxygen, moisture, hydrocarbons). They restore the gas to guaranteed 99.999% purity hydrogen, ready for direct reinjection into the production line.",
             "ehc": "• Electrochemical Hydrogen Separation and Compression (EHC): Acting as an active molecular filter, the polymer membrane of an EHC system only allows hydrogen protons to pass through. By applying an electrical current, this technology selectively extracts hydrogen from a gas mixture while simultaneously compressing it, with zero moving parts, ensuring no mechanical oil contamination."
         },
 
@@ -55,7 +55,7 @@
                 "membrane": {
                     "title": "Membrane",
                     "subtitle": "Active Molecular Filter (PEM)",
-                    "explanation": "In recycling, the membrane acts as a perfect filter. It physically blocks all non-hydrogen gases, allowing ONLY protons (H⁺) to cross. This guarantees 99,999% pure hydrogen on the other side."
+                    "explanation": "In recycling, the membrane acts as a perfect filter. It physically blocks all non-hydrogen gases, allowing ONLY protons (H⁺) to cross. This guarantees 99.999% pure hydrogen on the other side."
                 },
                 "cathode":{
                     "title": "Cathode (-)",

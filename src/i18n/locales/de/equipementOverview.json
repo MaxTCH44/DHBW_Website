@@ -195,7 +195,7 @@
                 "ceramic": {
                     "title": "Keramik",
                     "subtitle": "Festoxid-Elektrolyt (Keramik)",
-                    "explanation": "Ein dichtes Keramikmaterial (wie YSZ), das bei extrem hohen Temperaturen (700–1000 °C) arbeitet. Es leitet negative Oxidionen (O²⁻) und blockiert Elektronen und Gase."
+                    "explanation": "Ein dichtes Keramikmaterial (wie YSZ), das bei extrem hohen Temperaturen (700–1.000 °C) arbeitet. Es leitet negative Oxidionen (O²⁻) und blockiert Elektronen und Gase."
                 },
                 "cathode": {
                     "title": "Kathode (-)",
