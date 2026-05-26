@@ -343,7 +343,15 @@ export default function Calculator() {
         });
     }, [selectedCompressor?.type, isCompressorNeeded, electrolyzerQuantity, electrolyzerSettings.owned, compressorQuantity, compressorSettings.owned, advices]);
 
-    // --- 9. RENDER ---
+    // --- 9. COMPARISON ---
+
+    const [comparisonSetups, setComparisonSetups] = useSessionStorage({
+        key: 'calc-comparison-setups',
+        defaultValue: [],
+        getInitialValueInEffect: false
+    });
+
+    // --- 10. RENDER ---
     return (
         <Container size="xl" px="xl" py="lg" mt="150px">
             
@@ -536,6 +544,29 @@ export default function Calculator() {
                     namespace="calculator"
                 />
             )}
+
+            <Button 
+                variant="filled"
+                size="md" 
+                radius="md"
+                mt="lg" 
+                onClick={() => setComparisonSetups(prev => ([
+                    ...prev,{
+                        "cost": lcoh,
+                        "capex": capex,
+                        "greyCostDifference": costDifference, 
+                        "greyAnnualDifference": annualDifference,
+                        "currentCostDifference": currentCostDifference,
+                        "currentAnnualDifference": currentAnnualDifference,
+                        "avoidedCO2": avoidedCO2,
+                        "breakdown": costBreakdown, 
+                        "metrics": extraMetrics,
+                        "greyDetails": greyDetails
+                    }
+                ]))}
+            >        
+                {t("comparison.saveButtonlabel")}
+            </Button>
 
             <Modal 
                 opened={resetModalOpened} 
