@@ -18,8 +18,11 @@ const C = {
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-const fmt = (v, decimals = 2) =>
-    v == null || isNaN(v) ? 'N/A' : Number(v).toFixed(decimals);
+const fmt = (v, lang, decimals = 2) =>
+    v == null || isNaN(v) ? 'N/A' : Number(v).toLocaleString(lang, { 
+                                                                        minimumFractionDigits: decimals, 
+                                                                        maximumFractionDigits: decimals,
+                                                                    }).replace(/\u202F/g, ' ');
 
 const setFont = (doc, size, style = 'normal', color = C.textDark) => {
     doc.setFontSize(size);
@@ -29,14 +32,14 @@ const setFont = (doc, size, style = 'normal', color = C.textDark) => {
 
 // ─── Header ───────────────────────────────────────────────────────────────────
 
-function drawHeader(doc, pageW, t) {
+function drawHeader(doc, pageW, t, lang) {
     doc.setFillColor(...C.primary);
     doc.rect(0, 0, pageW, 22, 'F');
     setFont(doc, 16, 'bold', C.white);
     doc.text('GreenLabs', 14, 10);
     setFont(doc, 8, 'normal', C.white);
     doc.text(
-        `${t("export.date")} ${new Date().toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' })}`,
+        `${t("export.date")} ${new Date().toLocaleDateString(lang, { day: '2-digit', month: 'long', year: 'numeric' })}`,
         14, 17
     );
     doc.setFillColor(...C.accent);
@@ -95,20 +98,20 @@ function drawKPICard(doc, x, y, w, h, { label, value, unit, color }) {
     
 }
 
-function drawKPIRow(doc, outputs, pageW, y, t) {
+function drawKPIRow(doc, outputs, pageW, y, t, lang) {
     const margin = 14;
     const gap = 4;
     const cardW = (pageW - margin * 2 - gap * 4) / 5;
     const cardH = 32;
 
     const kpis = [
-        { label: t('dashboard.metrics.lcoh'), value:fmt(outputs.lcoh), unit: t('units.eur_per_kg'), color: C.primary },
-        { label: t('dashboard.metrics.totalCapex'), value:fmt(outputs.capex), unit:t('units.eur'), color: C.secondary },
-        { label: t('dashboard.stats.avoidedCo2'), value:fmt(outputs.avoidedCO2, 1), unit: t('units.tons'), color: C.teal },
-        { label: t('dashboard.stats.annualProduction'), value:fmt(outputs.extraMetrics.annualProd, 0), unit:t('units.kg'),    color: C.accent },
+        { label: t('dashboard.metrics.lcoh'), value:fmt(outputs.lcoh, lang), unit: t('units.eur_per_kg'), color: C.primary },
+        { label: t('dashboard.metrics.totalCapex'), value:fmt(outputs.capex, lang), unit:t('units.eur'), color: C.secondary },
+        { label: t('dashboard.stats.avoidedCo2'), value:fmt(outputs.avoidedCO2, lang, 1), unit: t('units.tons'), color: C.teal },
+        { label: t('dashboard.stats.annualProduction'), value:fmt(outputs.extraMetrics.annualProd, lang, 0), unit:t('units.kg'),    color: C.accent },
         {
             label: t('dashboard.metrics.lossVsCurrentCost'),
-            value: fmt(outputs.currentCostDifference),
+            value: fmt(outputs.currentCostDifference, lang),
             unit: t('units.eur_per_kg'),
             color: outputs.currentCostDifference >= 0 ? C.primary : C.danger
         },
@@ -123,7 +126,7 @@ function drawKPIRow(doc, outputs, pageW, y, t) {
 
 // ─── Cost Graph ───────────────────────────────────────
 
-function drawCostBreakdown(doc, outputs, pageW, y, t) {
+function drawCostBreakdown(doc, outputs, pageW, y, t, lang) {
     const margin = 14;
     const chartW = pageW - margin * 2;
     const { costBreakdown, lcoh } = outputs;
@@ -165,7 +168,7 @@ function drawCostBreakdown(doc, outputs, pageW, y, t) {
         doc.setFillColor(...item.color);
         doc.rect(margin + barW + 6, legendY - 3, 4, 4, 'F');
         setFont(doc, 7, 'normal', C.textDark);
-        doc.text(`${item.label}: ${fmt(item.value)} ${t('units.eur')} (${pct}${t('units.pourcent')})`, margin + barW + 13, legendY);
+        doc.text(`${item.label}: ${fmt(item.value, lang)} ${t('units.eur')} (${pct}${t('units.pourcent')})`, margin + barW + 13, legendY);
         legendY += 6;
     });
 
@@ -175,7 +178,7 @@ function drawCostBreakdown(doc, outputs, pageW, y, t) {
 
 // ─── Tabs ─────────────────────────────────────────────────────
 
-function drawTables(doc, inputs, outputs, pageW, y, t) {
+function drawTables(doc, inputs, outputs, pageW, y, t, lang) {
     const margin = 14;
     const rightX = pageW / 2 + 3;
     const { extraMetrics, greyDetails, costBreakdown } = outputs;
@@ -197,22 +200,20 @@ function drawTables(doc, inputs, outputs, pageW, y, t) {
         columnStyles: { 0: { fontStyle: 'bold', cellWidth: 42 }, 1: { cellWidth: 'auto' } },
     };
 
-    console.log(inputs.systemSize.unit)
-
     // input table (left)
     autoTable(doc, {
         startY: y,
         head: [[t('export.parameter'), t('export.value')]],
         body: [
             [t('export.electrolyzer'), t(inputs.selectedElectrolyzer.name)],
-            [t('electrolyzer.systemSize.label'), `${inputs.systemSize.value} ${t(inputs.systemSize.unit.label)}`],
-            [t('electrolyzer.operatingTime.label'), `${inputs.operatingTime.value} ${t(inputs.operatingTime.unit.label)}`],
-            [t('resourcesCosts.electricity_price.label'), `${inputs.electricityPrice.value} ${t(inputs.electricityPrice.unit.label)}`],
-            [t('export.current_h2_price'), `${inputs.currentHydrogenPrice.value} ${t(inputs.currentHydrogenPrice.unit.label)}`],
-            [t('export.grey_h2_price'), `${inputs.greyHydrogenPrice.value} ${t(inputs.greyHydrogenPrice.unit.label)}`],
-            [t('resourcesCosts.carbon_tax.label'), `${inputs.carbonTax} ${t('export.ton_co2_per_year')}`],
-            [t('lifecycleParameters.project_lifetime.label'), `${inputs.projectLifetime} ${t(inputs.projectLifetime.unit)}`],
-            [t('lifecycleParameters.inflation_rate.label'), `${inputs.inflationRate} ${t(inputs.inflationRate.unit)}`],
+            [t('electrolyzer.systemSize.label'), `${fmt(inputs.systemSize.value, lang)} ${t(inputs.systemSize.unit.label)}`],
+            [t('electrolyzer.operatingTime.label'), `${fmt(inputs.operatingTime.value, lang)} ${t(inputs.operatingTime.unit.label)}`],
+            [t('resourcesCosts.electricity_price.label'), `${fmt(inputs.electricityPrice.value, lang)} ${t(inputs.electricityPrice.unit.label)}`],
+            [t('export.current_h2_price'), `${fmt(inputs.currentHydrogenPrice.value, lang)} ${t(inputs.currentHydrogenPrice.unit.label)}`],
+            [t('export.grey_h2_price'), `${fmt(inputs.greyHydrogenPrice.value, lang)} ${t(inputs.greyHydrogenPrice.unit.label)}`],
+            [t('resourcesCosts.carbon_tax.label'), `${fmt(inputs.carbonTax, lang)} ${t('export.ton_co2_per_year')}`],
+            [t('lifecycleParameters.project_lifetime.label'), `${fmt(inputs.projectLifetime, lang, 0)} ${t('units.years')}`],
+            [t('lifecycleParameters.inflation_rate.label'), `${fmt(inputs.inflationRate, lang)} ${t('units.pourcent')}`],
             [t('export.compressor'), inputs.isCompressorNeeded ? t(inputs.selectedCompressor.name) : t('compressorSetup.useCompressor')],
         ],
         margin: { left: margin, right: pageW / 2 + 3 },
@@ -225,22 +226,22 @@ function drawTables(doc, inputs, outputs, pageW, y, t) {
         startY: y,
         head: [[t('export.indicator'), t('export.value')]],
         body: [
-            [t('export.lcoh'), `${fmt(outputs.lcoh)} ${t('units.eur_per_kg')}`],
-            [t('dashboard.metrics.totalCapex'), `${fmt(outputs.capex)} ${t('units.eur')}`],
-            [t('dashboard.costBreakdown.capex'), `${fmt(costBreakdown.capex)} ${t('units.eur_per_kg')}`],
-            [t('dashboard.costBreakdown.electricity'), `${fmt(costBreakdown.electricity)} ${t('units.eur_per_kg')}`],
-            [t('dashboard.costBreakdown.maintenance'), `${fmt(costBreakdown.maintenance)} ${t('units.eur_per_kg')}`],
-            [t('dashboard.costBreakdown.water'), `${fmt(costBreakdown.water)} ${t('units.eur_per_kg')}`],
-            [t('dashboard.metrics.lossVsCurrentCost'), `${fmt(outputs.currentCostDifference)} ${t('units.eur_per_kg')}`],
-            [t('export.savingsVsGrey'), `${fmt(outputs.costDifference)} ${t('units.eur_per_kg')}`],
-            [t('dashboard.metrics.greenPremium'), `${fmt(greyDetails.tax)} ${t('units.eur_per_kg')}`],
-            [t('export.annualProduction'), `${fmt(extraMetrics.annualProd, 0)} ${t('units.kg_per_year')}`],
-            [t('dashboard.stats.energyNeeded'), `${fmt(extraMetrics.annualElec, 0)} ${t('units.kWh_per_year')}`],
-            [t('dashboard.stats.waterNeeded'), `${fmt(extraMetrics.annualWater, 0)} ${t('units.l_per_year')}`],
-            [t('export.useRate'), `${fmt(extraMetrics.utilizationRate, 1)} ${t('units.pourcent')}`],
-            [t('export.avoidedCo2'), `${fmt(outputs.avoidedCO2, 1)} ${t('export.ton_co2_per_year')}`],
-            [t('export.electrolyzer'), String(outputs.electrolyzerQuantity)],
-            [t('electrolyzer.hardwareNeeded.stacks'), String(outputs.totalStacksNeeded)],
+            [t('export.lcoh'), `${fmt(outputs.lcoh, lang)} ${t('units.eur_per_kg')}`],
+            [t('dashboard.metrics.totalCapex'), `${fmt(outputs.capex, lang)} ${t('units.eur')}`],
+            [t('dashboard.costBreakdown.capex'), `${fmt(costBreakdown.capex, lang)} ${t('units.eur_per_kg')}`],
+            [t('dashboard.costBreakdown.electricity'), `${fmt(costBreakdown.electricity, lang)} ${t('units.eur_per_kg')}`],
+            [t('dashboard.costBreakdown.maintenance'), `${fmt(costBreakdown.maintenance, lang)} ${t('units.eur_per_kg')}`],
+            [t('dashboard.costBreakdown.water'), `${fmt(costBreakdown.water, lang)} ${t('units.eur_per_kg')}`],
+            [t('dashboard.metrics.lossVsCurrentCost'), `${fmt(outputs.currentCostDifference, lang)} ${t('units.eur_per_kg')}`],
+            [t('export.savingsVsGrey'), `${fmt(outputs.costDifference, lang)} ${t('units.eur_per_kg')}`],
+            [t('dashboard.metrics.greenPremium'), `${fmt(greyDetails.tax, lang)} ${t('units.eur_per_kg')}`],
+            [t('export.annualProduction'), `${fmt(extraMetrics.annualProd, lang, 0)} ${t('units.kg_per_year')}`],
+            [t('dashboard.stats.energyNeeded'), `${fmt(extraMetrics.annualElec, lang, 0)} ${t('units.kWh_per_year')}`],
+            [t('dashboard.stats.waterNeeded'), `${fmt(extraMetrics.annualWater, lang, 0)} ${t('units.l_per_year')}`],
+            [t('export.useRate'), `${fmt(extraMetrics.utilizationRate, lang, 1)} ${t('units.pourcent')}`],
+            [t('export.avoidedCo2'), `${fmt(outputs.avoidedCO2, lang, 1)} ${t('export.ton_co2_per_year')}`],
+            [t('export.electrolyzer'), fmt(outputs.electrolyzerQuantity, lang, 0)],
+            [t('electrolyzer.hardwareNeeded.stacks'), fmt(outputs.totalStacksNeeded, lang, 0)],
         ],
         margin: { left: rightX, right: margin },
         headStyles: { fillColor: C.secondary, textColor: C.white, fontStyle: 'bold' },
@@ -259,7 +260,7 @@ function drawFooter(doc, pageW, pageH, t) {
 
 // ─── Export public ────────────────────────────────────────────────────────────
 
-export function exportPDF(inputs, outputs, t) {
+export function exportPDF(inputs, outputs, t, lang) {
     const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
     const pageW = doc.internal.pageSize.getWidth();
     const pageH = doc.internal.pageSize.getHeight();
@@ -267,12 +268,12 @@ export function exportPDF(inputs, outputs, t) {
     doc.setFillColor(...C.bg);
     doc.rect(0, 0, pageW, pageH, 'F');
 
-    drawHeader(doc, pageW, t);
+    drawHeader(doc, pageW, t, lang);
     let y = 30;
-    y = drawKPIRow(doc, outputs.calcResults, pageW, y, t);
-    y = drawCostBreakdown(doc, outputs.calcResults, pageW, y, t);
-    drawTables(doc, inputs, outputs.calcResults, pageW, y, t);
-    drawFooter(doc, pageW, pageH, t);
+    y = drawKPIRow(doc, outputs.calcResults, pageW, y, t, lang);
+    y = drawCostBreakdown(doc, outputs.calcResults, pageW, y, t, lang);
+    drawTables(doc, inputs, outputs.calcResults, pageW, y, t, lang);
+    drawFooter(doc, pageW, pageH, t, lang);
 
     doc.save(`${t('export.title')}-${new Date().toISOString().slice(0, 10)}.pdf`);
 }

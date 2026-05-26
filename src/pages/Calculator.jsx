@@ -33,7 +33,7 @@ const DEFAULT_CUSTOM_COMPRESSOR = compressors.list.find(e => e.id === 0);
  */
 export default function Calculator() {
 
-    const { t } = useTranslation("calculator");
+    const { t, i18n } = useTranslation("calculator");
     
     // --- 1. ELECTROLYZER STATE ---
     const [selectedElectrolyzer, setSelectedElectrolyzer] = useSessionStorage({
@@ -186,10 +186,10 @@ export default function Calculator() {
         setExportError(null);
         await new Promise(r => setTimeout(r, 50)); // laisse le DOM se mettre à jour
         try {
-            if (format === 'csv') exportCSV(inputs, outputs, t);
-            if (format === 'pdf') exportPDF(inputs, outputs, t);
+            if (format === 'csv') exportCSV(inputs, outputs, t, i18n.language);
+            if (format === 'pdf') exportPDF(inputs, outputs, t, i18n.language);
         } catch (err) {
-            setExportError(t('export.error'));
+            setExportError(`${t('export.error')} --  ${err.message}`);
             setTimeout(() => setExportError(null), 4000);
         }
     };
