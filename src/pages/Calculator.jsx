@@ -346,7 +346,7 @@ export default function Calculator() {
 
     // --- 9. COMPARISON ---
 
-    const [comparisonSetups, setComparisonSetups] = useSessionStorage({
+    const [comparisonSetups, setComparisonSetups] = useLocalStorage({
         key: 'calc-comparison-setups',
         defaultValue: [],
         getInitialValueInEffect: false
