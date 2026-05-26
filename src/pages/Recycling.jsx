@@ -22,10 +22,13 @@ export default function Recycling() {
     const { t, i18n } = useTranslation("recycling");
 
     const [resetModalOpened, setResetModalOpened] = useState(false);
-    function handleResetDefaults(){
-        sessionStorage.clear(); 
-        window.location.reload(); 
-    };
+    
+    function handleResetDefaults() {
+        Object.keys(sessionStorage)
+            .filter(key => key.startsWith('recycling-'))
+            .forEach(key => sessionStorage.removeItem(key));
+        window.location.reload();
+    }
 
     // --- STATE MANAGEMENT ---
     const [gasType, setGasType] = useSessionStorage({

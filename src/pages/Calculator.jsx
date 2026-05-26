@@ -165,10 +165,12 @@ export default function Calculator() {
         }));
     }, []);
 
-    function handleResetDefaults(){
-        sessionStorage.clear(); 
-        window.location.reload(); 
-    };
+    function handleResetDefaults() {
+        Object.keys(sessionStorage)
+            .filter(key => key.startsWith('calc-'))
+            .forEach(key => sessionStorage.removeItem(key));
+        window.location.reload();
+    }
 
     const [exportError, setExportError] = useState(null);
 
