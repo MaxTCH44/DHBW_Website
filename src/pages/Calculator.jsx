@@ -18,6 +18,7 @@ import { ELEC_PRICE_UNITS, POWER_UNITS, WATER_VOLUME_PRICE_UNITS, TIME_PER_YEAR_
 import ElectrolyzerSetup from '../components/calculator/ElectrolyzerSetup.jsx';
 import ResourcesCosts from '../components/calculator/ResourcesCosts.jsx';
 import CompressorSetup from '../components/calculator/CompressorSetup.jsx';
+import ComparisonSetup from '../components/calculator/ComparisonSetup.jsx';
 
 const DEFAULT_CUSTOM_ELECTROLYZER = electrolyzers.list.find(e => e.id === 0);
 const DEFAULT_CUSTOM_COMPRESSOR = compressors.list.find(e => e.id === 0);
@@ -343,7 +344,15 @@ export default function Calculator() {
         });
     }, [selectedCompressor?.type, isCompressorNeeded, electrolyzerQuantity, electrolyzerSettings.owned, compressorQuantity, compressorSettings.owned, advices]);
 
-    // --- 9. RENDER ---
+    // --- 9. COMPARISON ---
+
+    const [comparisonSetups, setComparisonSetups] = useSessionStorage({
+        key: 'calc-comparison-setups',
+        defaultValue: [],
+        getInitialValueInEffect: false
+    });
+
+    // --- 10. RENDER ---
     return (
         <Container size="xl" px="xl" py="lg" mt="150px">
             
@@ -535,6 +544,80 @@ export default function Calculator() {
                     setReset={setResetHelpFalse}
                     namespace="calculator"
                 />
+            )}
+
+            <Button 
+                variant="filled"
+                size="md" 
+                radius="md"
+                mt="lg" 
+                onClick={() => setComparisonSetups(prev => ([
+                    ...prev,{
+                        "results": {
+                            "cost": lcoh,
+                            "capex": capex,
+                            "greyCostDifference": costDifference, 
+                            "greyAnnualDifference": annualDifference,
+                            "currentCostDifference": currentCostDifference,
+                            "currentAnnualDifference": currentAnnualDifference,
+                            "avoidedCO2": avoidedCO2,
+                            "breakdown": costBreakdown, 
+                            "metrics": extraMetrics,
+                            "greyDetails": greyDetails
+                        },
+                        "inputs": {
+                            "systemSize": systemSize,
+                            "selectedElectrolyzer": selectedElectrolyzer,
+                            "electrolyzerSettings": electrolyzerSettings,
+                            "isCompressorNeeded": isCompressorNeeded,
+                            "massToCompress": massToCompress,
+                            "selectedCompressor": selectedCompressor,
+                            "compressorSettings": compressorSettings,
+                            "projectLifetime": projectLifetime,
+                            "inflationRate": inflationRate,
+                            "electricityPrice": electricityPrice,
+                            "carbonTax": carbonTax,
+                            "greyHydrogenPrice": greyHydrogenPrice,
+                            "waterPrice": waterPrice,
+                            "currentHydrogenPrice": currentHydrogenPrice,
+                            "operatingTime": operatingTime
+                        }
+                    }
+                ]))}
+            >        
+                {t("comparison.saveButtonlabel")}
+            </Button>
+            
+            {comparisonSetups.length > 0 && (
+                <Card shadow="lg" padding="xl" radius="md" withBorder mt="xl" bg="gray.0">
+                    <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="md">
+                        {comparisonSetups.map((setup, i) => (
+                            <ComparisonSetup
+                                key={i}
+                                setup={setup.results}
+                                index={i}
+                                onRemove={(ind) => setComparisonSetups(prev => prev.filter((_, i) => i !== ind))}
+                                setCalculatorToSetup={() => {
+                                    setSystemSize(setup.inputs.systemSize);
+                                    setSelectedElectrolyzer(setup.inputs.selectedElectrolyzer);
+                                    setElectrolyzerSettings(setup.inputs.electrolyzerSettings);
+                                    setIsCompressorNeeded(setup.inputs.isCompressorNeeded);
+                                    setMassToCompress(setup.inputs.massToCompress);
+                                    setSelectedCompressor(setup.inputs.selectedCompressor);
+                                    setCompressorSettings(setup.inputs.compressorSettings);
+                                    setProjectLifetime(setup.inputs.projectLifetime);
+                                    setInflationRate(setup.inputs.inflationRate);
+                                    setElectricityPrice(setup.inputs.electricityPrice);
+                                    setCarbonTax(setup.inputs.carbonTax);
+                                    setGreyHydrogenPrice(setup.inputs.greyHydrogenPrice);
+                                    setWaterPrice(setup.inputs.waterPrice);
+                                    setCurrentHydrogenPrice(setup.inputs.currentHydrogenPrice);
+                                    setOperatingTime(setup.inputs.operatingTime)
+                                }}
+                            />
+                        ))}
+                    </SimpleGrid>
+                </Card>
             )}
 
             <Modal 

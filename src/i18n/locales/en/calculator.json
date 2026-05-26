@@ -20,7 +20,7 @@
         "type": "AEM"
       },
       "pem": {
-        "name": "GreenLab Enapter AEM Electrolyser",
+        "name": "GreenLab PEM Electrolyser",
         "type": "PEM"
       },
       "ostermeier": {
@@ -508,6 +508,12 @@
     "error0NotAllowed": "Value cannot be 0",
     "errorMax": "Value cannot be more than ",
     "valueAdjusted": "Value adjusted to maximum allowed ({{max}})"
+  },
+
+  "comparison": {
+    "saveButtonlabel": "Save to Compare",
+    "loadInputLabel": "Load inputs",
+    "setup": "Setup"
   },
 
   "units": {
