@@ -504,6 +504,28 @@
     }
   },
 
+  "export": {
+    "date": "Generated on",
+    "config": "Configuration",
+    "results": "Detailed results",
+    "parameter": "Parameter",
+    "value": "Value",
+    "electrolyzer": "Electrolyzer",
+    "compressor": "Compressor",
+    "indicator": "Indicator",
+    "useRate": "Utilization rate",
+    "footer": "Automatically generated report — data for indicative purposes only",
+    "error": "an unexpected error occurred",
+    "current_h2_price": "Current H2 price",
+    "grey_h2_price": "Grey H2 price",
+    "lcoh": " LCOH (Green H2)",
+    "savingsVsGrey": "Savings vs Grey H2",
+    "annualProduction": "Annual H2 Prod.",
+    "avoidedCo2": "Avoided CO2",
+    "ton_co2_per_year": "tCO2/yr",
+    "title": "h2-lcoh-report"
+  },
+
   "units": {
     "elec_price_mwh": "€/MWh",
     "elec_price_kwh": "€/kWh",
@@ -525,6 +547,10 @@
     "kg_per_day": "kg/day",
     "m3_per_day": "m³/day",
     "l_per_hour": "L/h",
+    "kg_per_year": "kg/yr",
+    "kWh_per_year": "kWh/yr",
+    "l_per_year": "L/yr",
+    "ton_co2_per_year": "tCO₂/yr",
 
     "kg": "kg",
     "m3": "m³",

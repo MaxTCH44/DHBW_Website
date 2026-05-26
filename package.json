@@ -20,6 +20,8 @@
     "@tabler/icons-react": "^3.40.0",
     "embla-carousel-react": "^8.6.0",
     "i18next": "^26.2.0",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.8",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-i18next": "^17.0.8",
