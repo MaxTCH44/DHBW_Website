@@ -107,7 +107,7 @@ export default function EquipmentSelector({
     id = null 
 }) {
 
-    const { t } = useTranslation("calculator");
+    const { t, i18n } = useTranslation("calculator");
     
     // Prevents the user from owning more units than what the current physical plant sizing actually requires
     useEffect(() => {
@@ -142,7 +142,7 @@ export default function EquipmentSelector({
 
                         // European number formatting (e.g. 1.000,50)
                         const valueToDisplay = typeof item[key] === 'number'
-                            ? item[key].toLocaleString('de-DE')
+                            ? item[key].toLocaleString(i18n.language)
                             : t(item[key]);
 
                         return (
@@ -158,7 +158,7 @@ export default function EquipmentSelector({
                 })}
             </Box>
         );
-    }, [itemsList.type]);
+    }, [itemsList.type, t]);
 
     // Custom render for the dropdown options. Injects the tooltip on hover.
     const renderOption = useCallback(({ option }) => {

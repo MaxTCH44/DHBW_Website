@@ -22,7 +22,7 @@ const StatCard = ({ icon, color, title, value, unit }) => (
     </Paper>
 );
 
-const CostProgressRow = ({ icon, color, title, value, percent }) => (
+const CostProgressRow = ({ icon, color, title, value, percent, lang }) => (
     <Box>
         <Group justify="space-between" mb="xs">
             <Group gap="xs">
@@ -30,7 +30,7 @@ const CostProgressRow = ({ icon, color, title, value, percent }) => (
                 <Text size="sm" fw={600}>{title}</Text>
             </Group>
             <Text size="sm" fw={700}>
-                {value.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} € ({percent.toFixed(0)}%)
+                {value.toLocaleString(lang, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} € ({percent.toFixed(0)}%)
             </Text>
         </Group>
         <Progress value={percent} color={color} size="md" radius="xl" />
@@ -54,7 +54,7 @@ const CostProgressRow = ({ icon, color, title, value, percent }) => (
  */
 function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, currentCostDifference, currentAnnualDifference, avoidedCO2, breakdown, metrics, greyDetails }) {
     
-    const { t } = useTranslation("calculator");
+    const { t, i18n } = useTranslation("calculator");
 
     // Profitability toggles used to dynamically switch card background colors (green for savings, red for losses)
     const isProfitableCurrent = currentCostDifference >= 0;
@@ -91,9 +91,9 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                     mb="xl"
                 >
                     {t('dashboard.oversizedWarning.messageP1')}
-                    {metrics.installedCapacity.toLocaleString('de-DE')}
+                    {metrics.installedCapacity.toLocaleString(i18n.language)}
                     {t('dashboard.oversizedWarning.messageP2')}
-                    <b>{metrics.utilizationRate.toLocaleString('de-DE', { maximumFractionDigits: 1 })}%</b>
+                    <b>{metrics.utilizationRate.toLocaleString(i18n.language, { maximumFractionDigits: 1 })}%</b>
                     {t('dashboard.oversizedWarning.messageP3')}
                 </Alert>
             )}
@@ -109,7 +109,7 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
 
                     <Text size="xl" fw={900} c="myColor.9" mt="sm">
                         {cost > 0 && isFinite(cost)
-                            ? cost.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                            ? cost.toLocaleString(i18n.language, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
                             : "0,00"} {t('units.eur_per_kg')}
                     </Text>
                 </Paper>
@@ -120,7 +120,7 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                     </Text>
 
                     <Text size="xl" c="red.7" fw={900} mt="sm">
-                        {capex.toLocaleString('de-DE', { maximumFractionDigits: 0 })} €
+                        {capex.toLocaleString(i18n.language, { maximumFractionDigits: 0 })} €
                     </Text>
                 </Paper>
 
@@ -145,14 +145,14 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                     >
                         {isProfitableCurrent ? "+" : ""}
                         {(isFinite(currentAnnualDifference) && currentAnnualDifference !== 0)
-                            ? currentAnnualDifference.toLocaleString('de-DE', { maximumFractionDigits: 0 })
+                            ? currentAnnualDifference.toLocaleString(i18n.language, { maximumFractionDigits: 0 })
                             : "0"} {t('units.eur_per_year')}
                     </Text>
 
                     <Badge color={isProfitableCurrent ? "teal" : "red"} mt="xs" variant="light">
                         {isProfitableCurrent ? "+" : ""}
                         {isFinite(currentCostDifference)
-                            ? currentCostDifference.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                            ? currentCostDifference.toLocaleString(i18n.language, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
                             : "0,00"} {t('units.eur_per_kg')}
                     </Badge>
                 </Paper>
@@ -183,14 +183,14 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                     >
                         {isProfitableGrey ? "+" : ""}
                         {(isFinite(greyAnnualDifference) && greyAnnualDifference !== 0)
-                            ? greyAnnualDifference.toLocaleString('de-DE', { maximumFractionDigits: 0 })
+                            ? greyAnnualDifference.toLocaleString(i18n.language, { maximumFractionDigits: 0 })
                             : "0"} {t('units.eur_per_year')}
                     </Text>
 
                     <Badge color={isProfitableGrey ? "teal" : "red"} mt="xs" variant="light">
                         {isProfitableGrey ? "+" : ""}
                         {isFinite(greyCostDifference)
-                            ? greyCostDifference.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                            ? greyCostDifference.toLocaleString(i18n.language, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
                             : "0,00"} {t('units.eur_per_kg')}
                     </Badge>
 
@@ -207,7 +207,7 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                             fw={500}
                         >
                             {t('dashboard.metrics.greyEstimatedP1')}
-                            {greyDetails.smoothed.toLocaleString('de-DE', {
+                            {greyDetails.smoothed.toLocaleString(i18n.language, {
                                 minimumFractionDigits: 2,
                                 maximumFractionDigits: 2
                             })}
@@ -271,6 +271,7 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                                 title={t('dashboard.costBreakdown.electricity')}
                                 value={breakdown.electricity}
                                 percent={percents.electricity}
+                                lang={i18n.language}
                             />
 
                             <CostProgressRow
@@ -279,6 +280,7 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                                 title={t('dashboard.costBreakdown.capex')}
                                 value={breakdown.capex}
                                 percent={percents.capex}
+                                lang={i18n.language}
                             />
 
                             <CostProgressRow
@@ -287,6 +289,7 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                                 title={t('dashboard.costBreakdown.maintenance')}
                                 value={breakdown.maintenance}
                                 percent={percents.maintenance}
+                                lang={i18n.language}
                             />
 
                             <CostProgressRow
@@ -295,6 +298,7 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                                 title={t('dashboard.costBreakdown.water')}
                                 value={breakdown.water}
                                 percent={percents.water}
+                                lang={i18n.language}
                             />
                         </Stack>
                     </Grid.Col>
@@ -307,7 +311,7 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                     icon={<IconWind size={24} />} 
                     color="myColor" 
                     title={t('dashboard.stats.annualProduction')}
-                    value={metrics.annualProd.toLocaleString('de-DE', { maximumFractionDigits: 0 })} 
+                    value={metrics.annualProd.toLocaleString(i18n.language, { maximumFractionDigits: 0 })} 
                     unit={t('units.kg')}
                 />
 
@@ -315,7 +319,7 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                     icon={<IconBolt size={24} />} 
                     color="blue" 
                     title={t('dashboard.stats.energyNeeded')}
-                    value={(metrics.annualElec / 1000).toLocaleString('de-DE', { maximumFractionDigits: 1 })} 
+                    value={(metrics.annualElec / 1000).toLocaleString(i18n.language, { maximumFractionDigits: 1 })} 
                     unit={t('units.energy_mwh')}
                 />
 
@@ -323,7 +327,7 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                     icon={<IconDroplet size={24} />} 
                     color="cyan" 
                     title={t('dashboard.stats.waterNeeded')}
-                    value={metrics.annualWater.toLocaleString('de-DE', { maximumFractionDigits: 0 })} 
+                    value={metrics.annualWater.toLocaleString(i18n.language, { maximumFractionDigits: 0 })} 
                     unit={t('units.liters')}
                 />
 
@@ -332,7 +336,7 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                     color="green" 
                     title={t('dashboard.stats.avoidedCo2')}
                     value={avoidedCO2
-                        ? avoidedCO2.toLocaleString('de-DE', { maximumFractionDigits: 1 })
+                        ? avoidedCO2.toLocaleString(i18n.language, { maximumFractionDigits: 1 })
                         : "0"} 
                     unit={t('units.tons')}
                 />
