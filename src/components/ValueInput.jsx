@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { NumberInput, Select, Text } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
 
@@ -79,7 +79,9 @@ export default function ValueInput({ label, value, units, currentUnit, onValueCh
     }
   }
 
-  const selectData = isArray ? units.map((u) => ({ value: t(u.label), label: t(u.label) })) : [];
+  const selectData = useMemo(() => {
+    return isArray ? units.map((u) => ({ value: t(u.label), label: t(u.label) })) : [];
+  }, [isArray, units, t]);
 
   function handleSelectChange(selectedValue) {
     const selectedUnit = units.find(u => t(u.label) === selectedValue);

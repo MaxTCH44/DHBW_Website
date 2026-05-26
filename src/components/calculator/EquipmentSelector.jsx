@@ -1,5 +1,5 @@
 import { Select, Checkbox, Stack, Tooltip, Box, Text } from '@mantine/core';
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import SliderInput from '../SliderInput';
@@ -116,11 +116,13 @@ export default function EquipmentSelector({
         }
     }, [max, quantityOwned, onOwnedChange]);
 
-    const selectData = itemsList.list.map((item, index) => ({
-        value: index.toString(),
-        label: t(item.name),
-        ...item 
-    }));
+    const selectData = useMemo(() => {
+        return itemsList.list.map((item, index) => ({
+            value: index.toString(),
+            label: t(item.name),
+            ...item 
+        }));
+    }, [itemsList.list, t]);
 
     const selectedIndex = itemsList.list.findIndex(item => item.id === selectedItem.id).toString();
 

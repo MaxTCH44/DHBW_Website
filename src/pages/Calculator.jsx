@@ -155,12 +155,12 @@ export default function Calculator() {
         setResetHelp(false);
     }, []);
 
-    function toggleSection (sectionName){
+    const toggleSection = useCallback((section) => {
         setOpenedSections((prev) => ({
             ...prev,
-            [sectionName]: !prev[sectionName]
+            [section]: !prev[section]
         }));
-    };
+    }, []);
 
     function handleResetDefaults(){
         sessionStorage.clear(); 

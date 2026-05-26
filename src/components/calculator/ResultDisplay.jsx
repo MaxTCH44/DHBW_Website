@@ -1,6 +1,7 @@
 import { Card, Title, Group, Paper, Text, Badge, SimpleGrid, RingProgress, Stack, Progress, ThemeIcon, Grid, Box, Alert } from '@mantine/core';
 import { IconBolt, IconDroplet, IconWind, IconTool, IconChartPie, IconAlertCircle, IconLeaf } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
 
 // --- SUB-COMPONENTS ---
 // Small utility components to keep the main render tree clean and readable.
@@ -51,7 +52,7 @@ const CostProgressRow = ({ icon, color, title, value, percent }) => (
  * @param {Object} props.metrics - Additional physical plant metrics (annual production, energy needed, utilization rate).
  * @param {Object} props.greyDetails - Contextual market data regarding grey hydrogen (base price, carbon tax impact).
  */
-export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, currentCostDifference, currentAnnualDifference, avoidedCO2, breakdown, metrics, greyDetails }) {
+function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, currentCostDifference, currentAnnualDifference, avoidedCO2, breakdown, metrics, greyDetails }) {
     
     const { t } = useTranslation("calculator");
 
@@ -339,3 +340,5 @@ export default function ResultDisplay({ cost, capex, greyCostDifference, greyAnn
         </Card>
     );
 }
+
+export default memo(ResultDisplay);
