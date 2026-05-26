@@ -504,6 +504,12 @@
     }
   },
 
+  "valueInput":{
+    "error0NotAllowed": "Value cannot be 0",
+    "errorMax": "Value cannot be more than ",
+    "valueAdjusted": "Value adjusted to maximum allowed ({{max}})"
+  },
+
   "units": {
     "elec_price_mwh": "€/MWh",
     "elec_price_kwh": "€/kWh",
