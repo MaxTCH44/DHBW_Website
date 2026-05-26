@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Title, SimpleGrid, Card, Text, Stack, SegmentedControl, Tooltip, ActionIcon, Box, Center, Modal, Anchor, Group, Button } from '@mantine/core';
-import { IconQuestionMark } from '@tabler/icons-react';
+import { IconQuestionMark, IconDownload } from '@tabler/icons-react';
 import { useSessionStorage, useLocalStorage, useDidUpdate } from '@mantine/hooks';
 import { useTranslation } from 'react-i18next';
 
@@ -18,6 +18,8 @@ import { ELEC_PRICE_UNITS, POWER_UNITS, WATER_VOLUME_PRICE_UNITS, TIME_PER_YEAR_
 import ElectrolyzerSetup from '../components/calculator/ElectrolyzerSetup.jsx';
 import ResourcesCosts from '../components/calculator/ResourcesCosts.jsx';
 import CompressorSetup from '../components/calculator/CompressorSetup.jsx';
+import { exportCSV } from '../utils/export-csv.js';
+import { exportPDF } from '../utils/export-pdf.js';
 import ComparisonSetup from '../components/calculator/ComparisonSetup.jsx';
 
 const DEFAULT_CUSTOM_ELECTROLYZER = electrolyzers.list.find(e => e.id === 0);
@@ -32,7 +34,7 @@ const DEFAULT_CUSTOM_COMPRESSOR = compressors.list.find(e => e.id === 0);
  */
 export default function Calculator() {
 
-    const { t } = useTranslation("calculator");
+    const { t, i18n } = useTranslation("calculator");
     
     // --- 1. ELECTROLYZER STATE ---
     const [selectedElectrolyzer, setSelectedElectrolyzer] = useSessionStorage({
@@ -166,6 +168,31 @@ export default function Calculator() {
     function handleResetDefaults(){
         sessionStorage.clear(); 
         window.location.reload(); 
+    };
+
+    const [exportError, setExportError] = useState(null);
+
+    const handleExport = async (format) => {
+        const inputs={
+            selectedElectrolyzer, electrolyzerSettings,
+            systemSize, operatingTime,
+            electricityPrice, waterPrice,
+            currentHydrogenPrice, greyHydrogenPrice,
+            carbonTax, projectLifetime, inflationRate,
+            isCompressorNeeded, selectedCompressor,
+            compressorSettings, massToCompress,
+        }
+        const outputs={calcResults}
+
+        setExportError(null);
+        await new Promise(r => setTimeout(r, 50)); // laisse le DOM se mettre à jour
+        try {
+            if (format === 'csv') exportCSV(inputs, outputs, t, i18n.language);
+            if (format === 'pdf') exportPDF(inputs, outputs, t, i18n.language);
+        } catch (err) {
+            setExportError(`${t('export.error')} --  ${err.message}`);
+            setTimeout(() => setExportError(null), 4000);
+        }
     };
     
     // --- 6. DYNAMIC CALCULATIONS & SAFETY LIMITS ---
@@ -529,6 +556,28 @@ export default function Calculator() {
                 metrics={extraMetrics}
                 greyDetails={greyDetails}
             />
+            
+            {exportError && (
+                <Group justify="center" mt="20">
+                    ⚠️ {exportError}
+                </Group>
+            )}
+
+            <Group justify="center" mt="20">
+                <Button
+                    rightSection={<IconDownload size={14} />}
+                    onClick={() => handleExport('csv')}
+                >
+                    CSV
+                </Button>
+
+                <Button 
+                    rightSection={<IconDownload size={14} />}
+                    onClick={() => handleExport('pdf')}
+                >
+                    PDF
+                </Button>
+            </Group>
 
             {/* INTERACTIVE TUTORIAL OVERLAY */}
             {showHelp && (

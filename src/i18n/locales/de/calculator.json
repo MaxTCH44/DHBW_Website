@@ -504,6 +504,35 @@
     }
   },
 
+  "export": {
+    "date": "Erstellt am",
+    "config": "Konfiguration",
+    "results": "Detaillierte Ergebnisse",
+    "parameter": "Parameter",
+    "value": "Wert",
+    "electrolyzer": "Elektrolyseur",
+    "compressor": "Kompressor",
+    "indicator": "Indikator",
+    "useRate": "Auslastungsgrad",
+    "footer": "Automatisch generierter Bericht — Daten nur zu Informationszwecken",
+    "error": "Ein unerwarteter Fehler ist aufgetreten",
+    "current_h2_price": "Aktueller H2-Preis",
+    "grey_h2_price": "Grauer H2-Preis",
+    "lcoh": "LCOH (Grüner H2)",
+    "savingsVsGrey": "Einsparungen ggü. grauem H2",
+    "annualProduction": "Jährl. H2-Prod.",
+    "avoidedCo2": "Vermiedenes CO2",
+    "ton_co2_per_year": "tCO2/Jahr",
+    "title": "h2-lcoh-bericht",
+    "section": "Abschnitt",
+    "units": "Einheit",
+    "ownedUnits": "Besessene Einheiten",
+    "annual_savings_grey": "Jährliche Ersparnis vs. grauer H₂",
+    "annual_savings_current": "Jährliche Ersparnis vs. aktuellen Kosten",
+    "grey_smoothed": "Grauer H₂ + Steuer (geglättet)",
+    "installed_capacity": "Installierte Kapazität"
+  },
+  
   "valueInput": {
     "error0NotAllowed": "Der Wert darf nicht 0 sein",
     "errorMax": "Der Wert darf nicht größer sein als ",
@@ -537,6 +566,10 @@
     "kg_per_day": "kg/Tag",
     "m3_per_day": "m³/Tag",
     "l_per_hour": "L/h",
+    "kg_per_year": "kg/Jahr",
+    "kWh_per_year": "kWh/Jahr",
+    "l_per_year": "L/Jahr",
+    "ton_co2_per_year": "tCO₂/Jahr",
 
     "kg": "kg",
     "m3": "m³",
