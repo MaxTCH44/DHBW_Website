@@ -21,7 +21,7 @@
             "componentsDescription": "A PEM cell is built around the Membrane Electrode Assembly (MEA). Because the system operates in a highly corrosive acidic environment, it necessitates the use of expensive noble metals. Platinum (Pt) is typically used for the cathode (HER), while Iridium dioxide (IrO₂) or Ruthenium dioxide (RuO₂) are required for the anode (OER). Furthermore, components like separator plates must be made of corrosion-resistant titanium, significantly driving up the capital cost.",
 
             "advantages": {
-                "ultrapureHydrogen": "Produces ultrapure hydrogen (99,99%) and pure oxygen as a byproduct",
+                "ultrapureHydrogen": "Produces ultrapure hydrogen (99.99%) and pure oxygen as a byproduct",
                 "highCurrentDensity": "Operates at high current densities (above 2 A/cm²)",
                 "compactDesign": "Compact system design with a very small physical footprint",
                 "dynamicOperation": "Highly dynamic operation with fast response times, ideal for intermittent renewable energy",
@@ -197,7 +197,7 @@
                 "ceramic": {
                     "title": "Ceramic",
                     "subtitle": "Solid Oxide Electrolyte (Ceramic)",
-                    "explanation": "A dense ceramic material (like YSZ) operating at ultra-high temperatures (700-1000°C). It conducts negative Oxide ions (O²⁻) while blocking electrons and gases."
+                    "explanation": "A dense ceramic material (like YSZ) operating at ultra-high temperatures (700-1,000°C). It conducts negative Oxide ions (O²⁻) while blocking electrons and gases."
                 },
                 "cathode": {
                     "title": "Cathode (-)",
@@ -235,7 +235,7 @@
 
             "advantages": {
                 "matureTechnology": "Highly mature technology with decades of industrial operational history",
-                "highPressureCapability": "Capable of reaching extreme pressures (up to 1.000+ bar)",
+                "highPressureCapability": "Capable of reaching extreme pressures (up to 1,000+ bar)",
                 "gasPurity": "Diaphragm variants guarantee zero oil contamination, crucial for fuel cells",
                 "scalability": "Highly scalable from small laboratory boosters to massive industrial refueling stations"
             },
@@ -277,11 +277,11 @@
 
             "advantagesTitle": "Purification and Solid-State Advantages",
 
-            "advantagesDescription": "Because the membrane is strictly permeable to protons, impurities (like CO or water) are blocked at the anode, ensuring the output is ultra-pure (99,999% H₂). Furthermore, the absence of moving parts ensures silent, vibration-free operation and entirely eliminates the risk of oil contamination.",
+            "advantagesDescription": "Because the membrane is strictly permeable to protons, impurities (like CO or water) are blocked at the anode, ensuring the output is ultra-pure (99.999% H₂). Furthermore, the absence of moving parts ensures silent, vibration-free operation and entirely eliminates the risk of oil contamination.",
 
             "advantages": {
                 "silentOperation": "Zero moving parts ensures completely silent and vibration-free operation",
-                "purification": "Dual function: inherently purifies the hydrogen up to 99,999% as it compresses",
+                "purification": "Dual function: inherently purifies the hydrogen up to 99.999% as it compresses",
                 "oilFree": "100% oil-free design ensures no mechanical contamination of the gas",
                 "lowMaintenance": "High reliability and low maintenance due to the absence of mechanical wear and tear"
             },

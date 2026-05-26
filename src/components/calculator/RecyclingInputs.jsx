@@ -1,5 +1,6 @@
 import { Title, Card, Text, Select, Divider } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
+import { useMemo } from 'react';
 
 import ValueInput from '../ValueInput';
 import SliderInput from '../SliderInput';
@@ -7,6 +8,7 @@ import LabelWithTooltip from '../LabelWithTooltip';
 
 import gasData from '../../data/recycling_gases.json';
 import { ELEC_PRICE_UNITS, H2_VOLUME_POWER_UNITS, MAINTENANCE_UNITS, H2_VOLUME_PRICE_UNITS } from './calculatorConstants';
+import React from 'react';
 
 /**
  * Sub-component isolating the input form for the recycling calculator.
@@ -43,7 +45,12 @@ export default function RecyclingInputs ({
 }){
     const { t } = useTranslation("recycling");
 
-    const gasOptions = gasData.map(gas => t(gas.value));
+    const gasOptions = useMemo(() => {
+        return gasData.map(gas => ({
+            value: gas.value,       
+            label: t(gas.value)     
+        }));
+    }, [t]);
 
     return(
         <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -59,7 +66,7 @@ export default function RecyclingInputs ({
                     />
                 }
                 placeholder={t("recyclingForm.mixedGasType.placeholder")}
-                data={gasOptions.map(gas => t(gas))}
+                data={gasOptions}
                 value={gasType}
                 onChange={setGasType}
                 mb="md"

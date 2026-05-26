@@ -2,6 +2,7 @@ import { Card, Text, Box, Checkbox, Paper, Group, Badge, Alert, Stack, Anchor, S
 import { Link } from 'react-router-dom';
 import { IconAlertCircle } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
 
 import ValueInput from '../ValueInput';
 import SliderInput from '../SliderInput';
@@ -39,7 +40,7 @@ const MAP_TYPE = {
  * @param {Function} props.toggleSection - Handler to toggle the visibility of specific sections.
  * @param {boolean} props.isAdvancedMode - Toggles between a simplified view and full technical customization.
  */
-export default function CompressorSetup ({
+function CompressorSetup ({
     compressors,
     isCompressorNeeded,
     setIsCompressorNeeded,
@@ -378,3 +379,5 @@ export default function CompressorSetup ({
         </Card>
     );
 }
+
+export default memo(CompressorSetup);

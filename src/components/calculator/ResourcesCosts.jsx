@@ -1,5 +1,6 @@
 import { Card, Text } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
 
 import ValueInput from '../ValueInput';
 import LabelWithTooltip from '../LabelWithTooltip';
@@ -26,7 +27,7 @@ import { ELEC_PRICE_UNITS, WATER_VOLUME_PRICE_UNITS, H2_VOLUME_PRICE_UNITS } fro
  * @param {Function} props.toggleSection - Handler to toggle accordion visibility.
  * @param {boolean} props.isAdvancedMode - Toggles between simple OPEX inputs and full economic parametrization.
  */
-export default function ResourcesCosts ({
+function ResourcesCosts ({
     electricityPrice,
     setElectricityPrice,
     waterPrice,
@@ -143,3 +144,5 @@ export default function ResourcesCosts ({
         </Card>
     )
 }
+
+export default memo(ResourcesCosts);
