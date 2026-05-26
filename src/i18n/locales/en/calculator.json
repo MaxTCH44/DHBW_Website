@@ -523,7 +523,14 @@
     "annualProduction": "Annual H2 Prod.",
     "avoidedCo2": "Avoided CO2",
     "ton_co2_per_year": "tCO2/yr",
-    "title": "h2-lcoh-report"
+    "title": "h2-lcoh-report",
+    "section": "Section",
+    "units": "Unit",
+    "ownedUnits": "Owned Units",
+    "annual_savings_grey": "Annual savings vs grey H₂",
+    "annual_savings_current": "Annual savings vs current cost",
+    "grey_smoothed": "Grey H₂ + tax (smoothed)",
+    "installed_capacity": "Installed capacity"
   },
 
   "units": {

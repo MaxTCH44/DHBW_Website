@@ -1,24 +1,21 @@
-// utils/export-csv.js
-// Génère un CSV en deux sections : INPUTS puis OUTPUTS
-
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
-// Les unit.label sont des clés i18n → on utilise unit.value (ex: "€/MWh")
-const unitStr = (u) => {
-    if (!u) return '';
-    if (typeof u === 'string') return u;
-    return u.value ?? u.label ?? '';
-};
+const fmt = (v, lang, decimals = 2) =>
+    v == null || isNaN(v)
+        ? 'N/A'
+        : Number(v).toLocaleString(lang, {
+              minimumFractionDigits: decimals,
+              maximumFractionDigits: decimals,
+              useGrouping: false,
+          })
 
-const fmt = (v, decimals = 2) =>
-    v == null || isNaN(v) ? 'N/A' : Number(v).toFixed(decimals);
-
-const row = (label, value, unit = '') =>
-    `"${label}","${value}","${unit}"`;
+// Section, Paramètre, Valeur, Unité
+const row = (sep, section, label, value, unit = '') =>
+    `"${section}"${sep}"${label}"${sep}"${value}"${sep}"${unit}"`;
 
 // ─── Builder ──────────────────────────────────────────────────────────────────
 
-function buildCSV(inputs, outputs) {
+function buildCSV(inputs, outputs, t, lang) {
     const {
         selectedElectrolyzer, electrolyzerSettings,
         systemSize, operatingTime,
@@ -40,110 +37,91 @@ function buildCSV(inputs, outputs) {
 
     const lines = [];
 
+    const sep = (1.1).toLocaleString(lang).includes(',') ? ';' : ',';
+
+    // ── En-tête ───────────────────────────────────────────────────────────────
+    lines.push(`"${t('export.date')}"${sep}"${new Date().toISOString().slice(0, 10)}"${sep}""${sep}""`);
+    lines.push('');
+    lines.push(`"${t('export.section')}"${sep}"${t('export.parameter')}"${sep}"${t('export.value')}"${sep}"${t('export.units')}"`);
+
     // ── INPUTS ────────────────────────────────────────────────────────────────
-    lines.push('## INPUTS');
-    lines.push('"Paramètre","Valeur","Unité"');
 
-    lines.push('');
-    lines.push('"--- Électrolyseur ---","",""');
-    lines.push(row('Modèle', selectedElectrolyzer.name));
-    lines.push(row('Puissance unitaire', fmt(selectedElectrolyzer.power), 'kW'));
-    lines.push(row('Efficacité', fmt(selectedElectrolyzer.energy_consumption_kwh_per_kg), 'kWh/kg'));
-    lines.push(row('Prix unitaire', fmt(selectedElectrolyzer.price, 0), '€'));
-    lines.push(row('Maintenance', fmt(selectedElectrolyzer.maintenance_percent_capex), '%'));
-    lines.push(row('Unités possédées', electrolyzerSettings.owned));
-    lines.push(row('Stacks possédés', electrolyzerSettings.ownedStacks));
+    lines.push(row(sep, t('export.config'), t('export.electrolyzer'),                 t(selectedElectrolyzer.name)));
+    lines.push(row(sep, t('export.config'), t('equipment.electrolyzer.type'),         t(selectedElectrolyzer.type)));
+    lines.push(row(sep, t('export.config'), t('equipment.electrolyzer.power'),        fmt(selectedElectrolyzer.power, lang), t('units.power_kw')));
+    lines.push(row(sep, t('export.config'), t('equipment.electrolyzer.energy_consumption_kwh_per_kg'), fmt(selectedElectrolyzer.energy_consumption_kwh_per_kg, lang), t('units.kwh_per_kg')));
+    lines.push(row(sep, t('export.config'), t('electrolyzer.price.label'),            fmt(selectedElectrolyzer.price, lang, 0), t('units.eur')));
+    lines.push(row(sep, t('export.config'), t('equipment.electrolyzer.maintenance_percent_capex'), fmt(selectedElectrolyzer.maintenance_percent_capex, lang), t('equipment.electrolyzer.maintenanceUnit')));
+    lines.push(row(sep, t('export.config'), t('export.ownedUnits'),                       electrolyzerSettings.owned));
+    lines.push(row(sep, t('export.config'), t('electrolyzer.ownedStacks.label'),      electrolyzerSettings.ownedStacks));
+    lines.push(row(sep, t('export.config'), t('electrolyzer.systemSize.label'),       fmt(systemSize.value, lang), t(systemSize.unit.label)));
+    lines.push(row(sep, t('export.config'), t('electrolyzer.operatingTime.label'),    fmt(operatingTime.value, lang), t(operatingTime.unit.label)));
+    lines.push(row(sep, t('export.config'), t('resourcesCosts.electricity_price.label'), fmt(electricityPrice.value, lang), t(electricityPrice.unit.label)));
+    lines.push(row(sep, t('export.config'), t('resourcesCosts.water_price.label'),    fmt(waterPrice.value, lang), t(waterPrice.unit.label)));
+    lines.push(row(sep, t('export.config'), t('export.current_h2_price'),             fmt(currentHydrogenPrice.value, lang), t(currentHydrogenPrice.unit.label)));
+    lines.push(row(sep, t('export.config'), t('export.grey_h2_price'),                fmt(greyHydrogenPrice.value, lang), t(greyHydrogenPrice.unit.label)));
+    lines.push(row(sep, t('export.config'), t('resourcesCosts.carbon_tax.label'),     fmt(carbonTax, lang), t('export.ton_co2_per_year')));
+    lines.push(row(sep, t('export.config'), t('lifecycleParameters.project_lifetime.label'), fmt(projectLifetime, lang, 0), t('units.years')));
+    lines.push(row(sep, t('export.config'), t('lifecycleParameters.inflation_rate.label'),   fmt(inflationRate, lang), t('units.pourcent')));
+    lines.push(row(sep, t('export.config'), t('export.compressor'),                   isCompressorNeeded ? t(selectedCompressor.name) : t('compressorSetup.useCompressor')));
 
-    lines.push('');
-    lines.push('"--- Dimensionnement & exploitation ---","",""');
-    lines.push(row('Taille du système', systemSize.value, unitStr(systemSize.unit)));
-    lines.push(row("Temps d'exploitation", operatingTime.value, unitStr(operatingTime.unit)));
-
-    lines.push('');
-    lines.push('"--- Prix & macro-économie ---","",""');
-    lines.push(row("Prix de l'électricité", electricityPrice.value, unitStr(electricityPrice.unit)));
-    lines.push(row("Prix de l'eau", waterPrice.value, unitStr(waterPrice.unit)));
-    lines.push(row("Prix H₂ actuel", currentHydrogenPrice.value, unitStr(currentHydrogenPrice.unit)));
-    lines.push(row("Prix H₂ gris", greyHydrogenPrice.value, unitStr(greyHydrogenPrice.unit)));
-    lines.push(row("Taxe carbone", carbonTax, '€/tCO₂'));
-
-    lines.push('');
-    lines.push('"--- Cycle de vie ---","",""');
-    lines.push(row("Durée de vie du projet", projectLifetime, 'ans'));
-    lines.push(row("Taux d'inflation", inflationRate, '%'));
-
-    lines.push('');
-    lines.push('"--- Compresseur ---","",""');
-    lines.push(row('Compresseur requis', isCompressorNeeded ? 'Oui' : 'Non'));
     if (isCompressorNeeded) {
-        lines.push(row('Modèle compresseur', selectedCompressor.name));
-        lines.push(row('Type', selectedCompressor.type));
-        lines.push(row('Prix unitaire', fmt(selectedCompressor.price, 0), '€'));
-        lines.push(row('Masse à comprimer', massToCompress === -1 ? 'Auto' : fmt(massToCompress, 0), 'kg/an'));
-        lines.push(row('Unités possédées', compressorSettings.owned));
-        lines.push(row("Temps d'exploitation", compressorSettings.operatingTime.value, unitStr(compressorSettings.operatingTime.unit)));
+        lines.push(row(sep, t('export.config'), t('compressorSetup.compressorType'),  t(selectedCompressor.type)));
+        lines.push(row(sep, t('export.config'), t('compressorSetup.purchasePrice.label'), fmt(selectedCompressor.price, lang, 0), t('units.eur')));
+        lines.push(row(sep, t('export.config'), t('compressorSetup.hydrogenToCompress.label'), massToCompress === -1 ? 'Auto' : fmt(massToCompress, lang, 0), massToCompress === -1 ? '' : t('units.kg_per_year')));
+        lines.push(row(sep, t('export.config'), t('export.ownedUnits'),              compressorSettings.owned));
+        lines.push(row(sep, t('export.config'), t('compressorSetup.operatingTime.label'), fmt(compressorSettings.operatingTime.value, lang), t(compressorSettings.operatingTime.unit.label)));
     }
 
     // ── OUTPUTS ───────────────────────────────────────────────────────────────
-    lines.push('');
-    lines.push('');
-    lines.push('## OUTPUTS');
-    lines.push('"Indicateur","Valeur","Unité"');
 
-    lines.push('');
-    lines.push('"--- Dimensionnement ---","",""');
-    lines.push(row("Quantité d'électrolyseurs", electrolyzerQuantity));
-    lines.push(row('Stacks nécessaires', totalStacksNeeded));
+    lines.push(row(sep, t('export.results'), t('electrolyzer.hardwareNeeded.setup'),  `${electrolyzerQuantity}`));
+    lines.push(row(sep, t('export.results'), t('electrolyzer.hardwareNeeded.stacks'), `${totalStacksNeeded}`));
+
     if (isCompressorNeeded) {
-        lines.push(row('Quantité de compresseurs', compressorQuantity));
-        lines.push(row('Stacks compresseurs', totalCompStacksNeeded));
+        lines.push(row(sep, t('export.results'), t('compressorSetup.compressorSetupBadge'), `${compressorQuantity}`));
+        lines.push(row(sep, t('export.results'), t('compressorSetup.stackBadge'),     `${totalCompStacksNeeded}`));
     }
 
-    lines.push('');
-    lines.push('"--- CAPEX ---","",""');
-    lines.push(row('CAPEX total', fmt(capex, 0), '€'));
+    lines.push(row(sep, t('export.results'), t('dashboard.metrics.totalCapex'),       fmt(capex, lang, 0),                                              t('units.eur')));
+    lines.push(row(sep, t('export.results'), t('export.lcoh'),                        fmt(lcoh, lang),                                                  t('units.eur_per_kg')));
+    lines.push(row(sep, t('export.results'), t('dashboard.metrics.savingsVsGrey'),    fmt(costDifference, lang),                                        t('units.eur_per_kg')));
+    lines.push(row(sep, t('export.results'), t('annual_savings_grey'),                fmt(annualDifference, lang, 0),                                   t('units.eur_per_year')));
+    lines.push(row(sep, t('export.results'), t('dashboard.metrics.savingsVsCurrentCost'), fmt(currentCostDifference, lang),                             t('units.eur_per_kg')));
+    lines.push(row(sep, t('export.results'), t('annual_savings_current'),             fmt(currentAnnualDifference, lang, 0),                            t('units.eur_per_year')));
 
-    lines.push('');
-    lines.push('"--- Coût de l\'hydrogène ---","",""');
-    lines.push(row('LCOH (H₂ vert)', fmt(lcoh), '€/kg H₂'));
-    lines.push(row('Écart vs H₂ gris (avec taxe)', fmt(costDifference), '€/kg'));
-    lines.push(row('Économie annuelle vs H₂ gris', fmt(annualDifference, 0), '€/an'));
-    lines.push(row('Écart vs H₂ actuel', fmt(currentCostDifference), '€/kg'));
-    lines.push(row('Économie annuelle vs H₂ actuel', fmt(currentAnnualDifference, 0), '€/an'));
     if (greyDetails) {
-        lines.push(row('Prix H₂ gris de base', fmt(greyDetails.base), '€/kg'));
-        lines.push(row('Taxe carbone / kg', fmt(greyDetails.tax), '€/kg'));
-        lines.push(row('H₂ gris + taxe (lissé)', fmt(greyDetails.smoothed), '€/kg'));
+        lines.push(row(sep, t('export.results'), t('export.grey_h2_price'),           fmt(greyDetails.base, lang),                                      t('units.eur_per_kg')));
+        lines.push(row(sep, t('export.results'), t('dashboard.metrics.greenPremium'), fmt(greyDetails.tax, lang),                                       t('units.eur_per_kg')));
+        lines.push(row(sep, t('export.results'), t('grey_smoothed'),                  fmt(greyDetails.smoothed, lang),                                  t('units.eur_per_kg')));
     }
 
-    lines.push('');
-    lines.push('"--- Décomposition des coûts (par kg H₂) ---","",""');
-    lines.push(row('Amortissement CAPEX', fmt(costBreakdown.capex), '€/kg'));
-    lines.push(row('Électricité', fmt(costBreakdown.electricity), '€/kg'));
-    lines.push(row('Maintenance', fmt(costBreakdown.maintenance), '€/kg'));
-    lines.push(row('Eau', fmt(costBreakdown.water), '€/kg'));
+    lines.push(row(sep, t('export.results'), t('dashboard.costBreakdown.capex'),      fmt(costBreakdown.capex, lang),                                   t('units.eur_per_kg')));
+    lines.push(row(sep, t('export.results'), t('dashboard.costBreakdown.electricity'),fmt(costBreakdown.electricity, lang),                            t('units.eur_per_kg')));
+    lines.push(row(sep, t('export.results'), t('dashboard.costBreakdown.maintenance'),fmt(costBreakdown.maintenance, lang),                            t('units.eur_per_kg')));
+    lines.push(row(sep, t('export.results'), t('dashboard.costBreakdown.water'),      fmt(costBreakdown.water, lang),                                   t('units.eur_per_kg')));
+    lines.push(row(sep, t('export.results'), t('export.annualProduction'),            fmt(extraMetrics.annualProd, lang, 0),                            t('units.kg_per_year')));
+    lines.push(row(sep, t('export.results'), t('dashboard.costBreakdown.electricity'),fmt(extraMetrics.annualElec, lang, 0),                            t('units.kWh_per_year')));
+    lines.push(row(sep, t('export.results'), t('dashboard.costBreakdown.water'),      fmt(extraMetrics.annualWater, lang, 0),                           t('units.l_per_year')));
+    lines.push(row(sep, t('export.results'), t('export.installed_capacity'),          fmt(extraMetrics.installedCapacity, lang),                        t('units.power_kw')));
+    lines.push(row(sep, t('export.results'), t('export.useRate'),                     fmt(extraMetrics.utilizationRate, lang),                          t('units.pourcent')));
+    lines.push(row(sep, t('export.results'), t('export.avoidedCo2'),                  fmt(avoidedCO2, lang, 1),                                        t('units.ton_co2_per_year')));
 
     lines.push('');
-    lines.push('"--- Production & ressources ---","",""');
-    lines.push(row('Production annuelle H₂', fmt(extraMetrics.annualProd, 0), 'kg/an'));
-    lines.push(row('Énergie nécessaire', fmt(extraMetrics.annualElec, 0), 'kWh/an'));
-    lines.push(row('Eau nécessaire', fmt(extraMetrics.annualWater, 0), 'L/an'));
-    lines.push(row('Capacité installée', fmt(extraMetrics.installedCapacity), 'kW'));
-    lines.push(row("Taux d'utilisation", fmt(extraMetrics.utilizationRate), '%'));
-    lines.push(row('CO₂ évité', fmt(avoidedCO2, 1), 'tCO₂/an'));
+    lines.push(`"${t('export.footer')}"${sep}""${sep}""${sep}""`);
 
     return lines.join('\n');
 }
 
 // ─── Export public ────────────────────────────────────────────────────────────
 
-export function exportCSV(inputs, outputs, t) {
-    const csv = buildCSV(inputs, outputs);
+export function exportCSV(inputs, outputs, t, lang) {
+    const csv = buildCSV(inputs, outputs, t, lang);
     const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `h2-lcoh-export-${new Date().toISOString().slice(0, 10)}.csv`;
+    link.download = `${t('export.title')}-${new Date().toISOString().slice(0, 10)}.csv`;
     link.click();
     URL.revokeObjectURL(url);
 }

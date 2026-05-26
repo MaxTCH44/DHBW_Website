@@ -523,7 +523,14 @@
     "annualProduction": "Jährl. H2-Prod.",
     "avoidedCo2": "Vermiedenes CO2",
     "ton_co2_per_year": "tCO2/Jahr",
-    "title": "h2-lcoh-bericht"
+    "title": "h2-lcoh-bericht",
+    "section": "Abschnitt",
+    "units": "Einheit",
+    "ownedUnits": "Besessene Einheiten",
+    "annual_savings_grey": "Jährliche Ersparnis vs. grauer H₂",
+    "annual_savings_current": "Jährliche Ersparnis vs. aktuellen Kosten",
+    "grey_smoothed": "Grauer H₂ + Steuer (geglättet)",
+    "installed_capacity": "Installierte Kapazität"
   },
 
   "units": {
