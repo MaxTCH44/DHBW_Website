@@ -3,7 +3,7 @@ import { Paper, Text, Group, Badge, Divider, RingProgress, Box, ThemeIcon, Stack
 import { IconBolt, IconDroplet, IconLeaf, IconChartPie, IconTool } from '@tabler/icons-react';
 
 export default function ComparisonSetup({ setup, index, onRemove }) {
-    const { t } = useTranslation("calculator");
+    const { t, i18n } = useTranslation("calculator");
 
     const { cost, capex, greyCostDifference, greyAnnualDifference,
             currentCostDifference, currentAnnualDifference,
@@ -20,8 +20,8 @@ export default function ComparisonSetup({ setup, index, onRemove }) {
         water:       (breakdown.water       / safeCost) * 100,
     };
 
-    const fmt  = (n, d = 2) => (isFinite(n) ? n.toLocaleString('de-DE', { minimumFractionDigits: d, maximumFractionDigits: d }) : '0,00');
-    const fmt0 = (n)        => (isFinite(n) ? n.toLocaleString('de-DE', { maximumFractionDigits: 0 }) : '0');
+    const fmt  = (n, d = 2) => (isFinite(n) ? n.toLocaleString(i18n.language, { minimumFractionDigits: d, maximumFractionDigits: d }) : '0,00');
+    const fmt0 = (n)        => (isFinite(n) ? n.toLocaleString(i18n.language, { maximumFractionDigits: 0 }) : '0');
 
     return (
         <Paper p="md" radius="md" withBorder bg="white" style={{ flexShrink: 0, position: 'relative' }}>
