@@ -1,6 +1,7 @@
 import { Card, Text, Paper, Group, Badge, Stack, Anchor, Select } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
 
 import ValueInput from '../ValueInput';
 import IncrementalInput from '../IncrementalInput';
@@ -36,7 +37,7 @@ const MAP_TYPE = {
  * @param {Function} props.toggleSection - Toggles the visibility of specific detail sections.
  * @param {boolean} props.isAdvancedMode - Toggles the UI between a simplified view and full technical parameter customization.
  */
-export default function ElectrolyzerSetup ({
+function ElectrolyzerSetup ({
     electrolyzers,
     systemSize, 
     setSystemSize, 
@@ -382,3 +383,5 @@ export default function ElectrolyzerSetup ({
         </Card>
     );
 }
+
+export default memo(ElectrolyzerSetup);

@@ -77,29 +77,29 @@
   "electrolysis": {
     "title": "Électrolyse",
 
-    "processTitle": "Le processus d’électrolyse : séparation de l’eau",
-    "processDescription": "L’électrolyse est le processus chimique fondamental au cœur de la chaîne de valeur de l’hydrogène vert. Au lieu d’extraire de l’énergie des combustibles fossiles, ce procédé utilise un courant électrique continu (DC) pour déclencher une réaction chimique non spontanée. En traversant l’eau, ce courant casse les liaisons chimiques des molécules d’eau et les sépare en leurs éléments constitutifs.",
+    "processTitle": "Le processus d’électrolyse : séparer l’eau",
+    "processDescription": "L’électrolyse est le processus chimique fondamental au cœur de la chaîne de valeur de l’hydrogène vert. Au lieu d’extraire de l’énergie à partir de combustibles fossiles, ce procédé utilise un courant électrique continu (DC) afin de provoquer une réaction chimique normalement non spontanée. En faisant passer ce courant à travers l’eau, l’énergie électrique rompt physiquement les liaisons chimiques qui maintiennent les molécules d’eau ensemble, les séparant ainsi en leurs éléments constitutifs.",
 
     "inputsOutputsTitle": "Entrées, sorties et sous-produits",
-    "inputsOutputsDescription": "Le bilan matière de ce procédé est remarquablement simple et propre. Les intrants principaux sont uniquement de l’eau ultra-pure (H₂O) et de l’électricité renouvelable. En sortie, on obtient de l’hydrogène pur (H₂) à la cathode et de l’oxygène (O₂) à l’anode.",
+    "inputsOutputsDescription": "Le bilan massique de ce processus est remarquablement simple et propre. Les principales entrées sont uniquement de l’eau ultra-pure (H₂O) et de l’électricité renouvelable. En sortie, le procédé produit de l’hydrogène gazeux de haute pureté (H₂) à la cathode et de l’oxygène gazeux (O₂) à l’anode.",
 
-    "processImageAlt": "schéma montrant le processus d’électrolyse avec bulles d’hydrogène et d’oxygène",
+    "processImageAlt": "un schéma montrant le processus d’électrolyse avec des bulles d’hydrogène et d’oxygène",
 
-    "outputsDescription": "Alors que l’hydrogène est capté et compressé pour le stockage énergétique, l’oxygène est souvent relâché dans l’atmosphère ou valorisé dans des applications médicales et industrielles. Le procédé génère également de la chaleur de faible qualité, de plus en plus récupérée pour alimenter des réseaux de chauffage urbain.",
+    "outputsDescription": "Alors que l’hydrogène est capturé et comprimé pour le stockage énergétique, l’oxygène est souvent rejeté en toute sécurité dans l’atmosphère ou récupéré pour des applications médicales et industrielles. De plus, le procédé génère une quantité importante de chaleur basse température, que les installations modernes récupèrent de plus en plus pour alimenter des réseaux de chauffage urbain, maximisant ainsi l’efficacité énergétique globale.",
 
-    "environmentalShiftTitle": "Le changement environnemental : hydrogène gris, bleu et vert",
+    "environmentalShiftTitle": "La transition environnementale : hydrogène gris, bleu et vert",
 
-    "greyHydrogenDescription": "Pour comprendre l’importance de l’électrolyse de l’eau, il faut la comparer aux méthodes fossiles actuelles. Aujourd’hui, la majorité de l’hydrogène mondial est dit « gris ». Il est produit principalement par reformage du méthane (SMR), un procédé utilisant du gaz naturel à haute température. Bien que moins cher, il est très polluant : 1 kg d’hydrogène gris émet entre 9 et 10 kg de CO₂.",
+    "greyHydrogenDescription": "Pour comprendre pleinement l’importance cruciale de l’électrolyse de l’eau, il faut la comparer aux méthodes traditionnelles basées sur les énergies fossiles encore utilisées aujourd’hui. Actuellement, la grande majorité de l’hydrogène mondial est classée comme « hydrogène gris ». Celui-ci est principalement produit par reformage du méthane à la vapeur (SMR), un procédé qui extrait l’hydrogène du gaz naturel (CH₄) à l’aide de vapeur à haute température. Bien que le SMR soit actuellement moins coûteux, il constitue une catastrophe environnementale : produire un seul kilogramme d’hydrogène gris émet entre 9 et 10 kilogrammes de CO₂.",
 
-    "blueHydrogenDescription": "Comme étape intermédiaire, on parle aussi d’hydrogène « bleu ». Il repose encore sur les combustibles fossiles et le SMR, mais intègre des technologies de capture et stockage du carbone (CCS) pour réduire les émissions. Bien que moins polluant, il reste dépendant des ressources fossiles et n’est pas totalement neutre en carbone.",
+    "blueHydrogenDescription": "Comme étape transitoire, l’industrie produit également de « l’hydrogène bleu ». Cette méthode repose toujours sur les combustibles fossiles et le SMR, mais elle intègre des technologies de captage et stockage du carbone (CCS) afin de piéger une partie importante des émissions de CO₂ avant qu’elles n’atteignent l’atmosphère. Bien qu’elle réduise significativement l’empreinte carbone par rapport à l’hydrogène gris, cette solution n’est pas totalement exempte d’émissions, présente des risques de fuites de méthane et dépend toujours de ressources fossiles limitées.",
 
-    "greenHydrogenDescription": "En revanche, l’hydrogène vert produit par électrolyse renouvelable n’émet absolument aucun CO₂. Lors de son utilisation dans une pile à combustible, le seul sous-produit est de l’eau pure, formant un cycle énergétique totalement propre et durable.",
+    "greenHydrogenDescription": "À l’inverse, l’hydrogène vert produit par électrolyse alimentée par des énergies renouvelables ne génère absolument aucune émission de carbone. Lorsque cet hydrogène vert est ensuite consommé — par exemple dans une pile à combustible pour alimenter un véhicule — le seul sous-produit rejeté est de l’eau pure, créant ainsi une boucle écologique totalement fermée, durable et propre.",
 
-    "futureTechnologiesTitle": "Perspectives : technologies d’électrolyseurs",
+    "futureTechnologiesTitle": "Vers l’avenir : les technologies d’électrolyseurs",
 
-    "futureTechnologiesDescription": "Bien que la chimie de base reste la même, les équipements industriels varient fortement. Les technologies comme PEM, alcaline (AEL) et AEM présentent des avantages différents en termes de coût, efficacité et dynamique. Pour en savoir plus, consultez notre page dédiée aux électrolyseurs.",
+    "futureTechnologiesDescription": "Bien que la chimie fondamentale de l’électrolyse de l’eau reste identique, les équipements industriels utilisés pour réaliser cette réaction varient considérablement. Différentes technologies, telles que la membrane échangeuse de protons (PEM), l’électrolyse alcaline (AEL) et la membrane échangeuse d’anions (AEM), offrent chacune des avantages spécifiques en matière de coût, d’efficacité et de réponse dynamique. Pour comprendre quelle technologie répond le mieux à des besoins industriels précis, consultez notre page dédiée aux technologies d’électrolyseurs.",
 
-    "linkLabel": "Découvrir les technologies d’électrolyseurs"
+    "linkLabel": "Explorer les technologies d’électrolyseurs"
   },
 
   "storage": {
@@ -108,25 +108,25 @@
     "content": {
       "title": "Compression et stockage de l’hydrogène : combler l’écart",
 
-      "intro": "Bien que l’hydrogène vert soit un vecteur énergétique propre, il présente un défi physique majeur : sa très faible densité volumique. Pour stocker une quantité utile d’énergie, il doit être comprimé.",
+      "intro": "Bien que l’hydrogène vert soit un vecteur énergétique exceptionnellement propre, il présente un défi physique unique : c’est l’élément le plus léger de l’univers. Bien qu’il possède une densité énergétique massique extrêmement élevée (énergie par kilogramme), sa densité énergétique volumique à pression ambiante est très faible. Afin de stocker une quantité significative d’énergie dans un espace pratique, l’hydrogène doit d’abord être densifié, ce qui est généralement réalisé par compression mécanique.",
 
-      "compressorTitle": "Rôle des compresseurs",
+      "compressorTitle": "Le rôle des compresseurs",
 
-      "compressorDescription": "Selon l’usage final, l’hydrogène est comprimé entre 30 et 700 bars. Cela nécessite des équipements spécialisés capables de gérer les molécules d’hydrogène en toute sécurité.",
+      "compressorDescription": "Selon l’application finale, l’hydrogène sortant de l’électrolyseur est comprimé à de hautes pressions, généralement comprises entre 30 et 700 bars. Cette étape nécessite des équipements hautement spécialisés capables de manipuler les minuscules molécules d’hydrogène de manière sûre et efficace, sans contamination.",
 
-      "compressorButton": "Découvrir les technologies de compression",
+      "compressorButton": "Explorer les technologies de compression",
 
-      "storageMethodsTitle": "Stockage : réservoirs et cavernes",
+      "storageMethodsTitle": "Comment l’hydrogène est stocké : réservoirs et cavernes",
 
-      "storageMethodsDescription1": "Après compression, l’hydrogène peut être stocké dans des réservoirs composites haute pression pour des usages industriels ou stations de recharge.",
+      "storageMethodsDescription1": "Une fois comprimé, l’hydrogène peut être stocké de différentes manières selon l’échelle et la durée nécessaires. Pour le stockage à court et moyen terme, les cylindres composites haute pression (réservoirs de type III ou IV) sont la norme dans les installations industrielles et les stations de ravitaillement.",
 
-      "storageMethodsDescription2": "Pour le stockage massif, on utilise des cavernes de sel souterraines permettant de stocker des millions de m³ d’hydrogène. Dans certains cas, l’hydrogène peut aussi être liquéfié à -253°C.",
+      "storageMethodsDescription2": "Cependant, pour le stockage massif d’énergie à l’échelle du réseau, la méthode la plus efficace est le stockage géologique. Injecter de l’hydrogène comprimé dans d’immenses cavernes salines souterraines permet de contenir en toute sécurité des millions de mètres cubes de gaz. Pour certains usages spécifiques, comme l’aérospatial ou le transport maritime longue distance, l’hydrogène peut également être liquéfié en le refroidissant à des températures cryogéniques (-253°C), ce qui maximise sa densité mais nécessite un apport énergétique considérable.",
 
-      "comparisonTitle": "Hydrogène vs batteries : stockage saisonnier",
+      "comparisonTitle": "Hydrogène vs batteries : la puissance du stockage saisonnier",
 
-      "comparisonDescription1": "Les batteries sont efficaces pour le stockage court terme mais limitées en capacité et durée.",
+      "comparisonDescription1": "Une question fréquente est de savoir pourquoi utiliser l’hydrogène alors que nous disposons déjà de batteries lithium-ion avancées. La réponse réside dans l’échelle et la durée du stockage. Les batteries sont très efficaces pour le décalage énergétique à court terme et au quotidien (par exemple stocker l’énergie solaire de la journée pour le soir), mais elles souffrent d’auto-décharge au fil du temps et nécessitent d’énormes quantités de matières premières lourdes et coûteuses pour augmenter leur capacité.",
 
-      "comparisonDescription2": "L’hydrogène permet un stockage indépendant de la puissance installée et est particulièrement adapté au stockage saisonnier à grande échelle."
+      "comparisonDescription2": "L’avantage structurel de l’hydrogène réside dans le fait que sa capacité de stockage évolue indépendamment de ses équipements de conversion. Pour stocker davantage d’énergie, une installation a seulement besoin d’infrastructures physiques plus grandes, comme des réservoirs ou des cavernes étendus, plutôt que de dupliquer des unités d’électrolyse coûteuses. De plus, l’hydrogène est particulièrement adapté au stockage saisonnier de l’énergie. Il permet à des régions entières de capter l’abondante énergie solaire estivale, de la stocker en toute sécurité sous terre pendant six mois, puis de la reconvertir en électricité durant l’hiver — une solution de tamponnage à long terme essentielle qui reste hors de portée des technologies de batteries."
     }
   },
 
@@ -134,35 +134,38 @@
     "label": "Mobilité",
 
     "content": {
-      "title": "Hydrogène dans la mobilité : transport lourd",
+      "title": "L’Hydrogène dans la Mobilité : Alimenter les Transports Lourds",
 
-      "intro": "L’hydrogène vert est une solution clé pour les transports lourds où les batteries sont trop lourdes ou peu pratiques.",
+      "intro": "Alors que le marché des voitures particulières est actuellement dominé par les véhicules électriques à batterie (BEV), l’hydrogène vert offre une solution zéro émission indispensable pour les secteurs du transport lourd et longue distance. Dans les domaines où le poids et le volume considérables des batteries compromettraient fortement la capacité de charge utile et l’efficacité opérationnelle — comme le transport routier de marchandises, les réseaux ferroviaires, le transport maritime et, à terme, l’aviation — l’hydrogène apparaît comme le vecteur énergétique propre le plus adapté.",
 
-      "fuelCellTitle": "Pile à combustible : électrolyse inverse",
+      "fuelCellTitle": "Le Fonctionnement de la Pile à Combustible : L’Électrolyse Inversée",
 
-      "fuelCellDescription": "Les véhicules à hydrogène utilisent une pile à combustible qui inverse le processus d’électrolyse pour produire de l’électricité à partir de l’hydrogène.",
+      "fuelCellDescription": "Les véhicules utilisant cette technologie sont appelés véhicules électriques à pile à combustible (FCEV). Au cœur d’un FCEV se trouve la pile à combustible, qui réalise essentiellement l’inverse exact du processus d’électrolyse de l’eau. Au lieu d’utiliser de l’électricité pour séparer l’eau, la pile reçoit en continu de l’hydrogène comprimé provenant des réservoirs du véhicule ainsi que de l’oxygène provenant de l’air ambiant. Grâce à une réaction électrochimique à travers une membrane polymère, ces deux éléments se combinent afin de produire le courant continu (DC) nécessaire pour alimenter le moteur électrique. Le seul sous-produit rejeté par l’échappement est de la vapeur d’eau pure et inoffensive.",
 
-      "advantagesTitle": "Avantages du ravitaillement",
+      "advantagesTitle": "Avantages en Matière de Recharge et d’Autonomie",
 
-      "advantagesDescription": "Le ravitaillement est rapide et offre une autonomie élevée, adaptée aux chaînes logistiques mondiales."
+      "advantagesDescription": "Le principal avantage opérationnel de l’hydrogène dans la mobilité réside dans sa proximité d’usage avec les carburants fossiles traditionnels. Le ravitaillement d’un camion ou d’un bus à hydrogène lourd ne prend que quelques minutes, réduisant drastiquement les temps d’arrêt coûteux associés à la recharge de batteries de grande capacité. De plus, le stockage d’hydrogène sous haute pression offre une autonomie nettement supérieure, indépendamment des températures extérieures. Cela permet aux chaînes logistiques mondiales de passer aux technologies zéro émission sans compromettre leur disponibilité opérationnelle ni modifier fondamentalement les infrastructures et itinéraires existants."
     },
 
     "schematic": {
       "power": "Moteur électrique",
+
       "membrane": {
         "title": "Membrane",
         "subtitle": "Membrane échangeuse de protons (PEM)",
-        "explanation": "Membrane qui laisse passer uniquement les protons."
+        "explanation": "Une membrane polymère solide jouant le rôle d’électrolyte. Elle permet uniquement aux protons chargés positivement (H⁺) de traverser vers la cathode, forçant ainsi les électrons à circuler dans le circuit externe."
       },
+
       "cathode": {
         "title": "Cathode (+)",
         "subtitle": "Cathode (+)",
-        "explanation": "Oxygène entrant et formation d’eau."
+        "explanation": "L’oxygène (O₂) provenant de l’air entre ici. Il se combine avec les protons (H⁺) traversant la membrane ainsi qu’avec les électrons (e⁻) provenant du moteur pour former de l’eau pure (H₂O)."
       },
+
       "anode": {
         "title": "Anode (-)",
         "subtitle": "Anode (-)",
-        "explanation": "Hydrogène entrant et séparation en protons et électrons."
+        "explanation": "L’hydrogène comprimé (H₂) entre ici. Le catalyseur sépare les molécules de H₂ en protons (H⁺) et électrons (e⁻). Les électrons circulent ensuite dans le circuit externe afin d’alimenter le moteur."
       }
     }
   },
@@ -171,21 +174,21 @@
     "label": "Industrie",
 
     "content": {
-      "title": "Hydrogène dans l’industrie : décarboner les secteurs lourds",
+      "title": "L’Hydrogène dans l’Industrie : Décarboner les Secteurs Lourds",
 
-      "intro": "L’industrie est aujourd’hui le plus grand consommateur mondial d’hydrogène, principalement sous forme grise très polluante.",
+      "intro": "Bien que la mobilité capte souvent l’attention du grand public, le secteur industriel est actuellement le plus grand consommateur mondial d’hydrogène. Aujourd’hui, les industries utilisent des dizaines de millions de tonnes d’hydrogène par an, principalement pour le raffinage du pétrole, la production d’ammoniac pour les engrais agricoles et la synthèse du méthanol. Cependant, comme la quasi-totalité de cette demande est couverte par de l’hydrogène gris d’origine fossile, le secteur industriel est responsable d’émissions massives de CO₂. Remplacer cette demande existante par de l’hydrogène vert constitue l’étape la plus immédiate et la plus impactante de la transition énergétique mondiale.",
 
-      "steelTitle": "Révolution de la sidérurgie (DRI)",
+      "steelTitle": "Transformer la Production d’Acier (DRI)",
 
-      "steelDescription1": "L’hydrogène permet de remplacer le charbon dans la production d’acier via la réduction directe du fer.",
+      "steelDescription1": "Au-delà du remplacement de l’hydrogène gris existant, l’hydrogène vert ouvre de nouvelles voies pour décarboner les secteurs dits « difficiles à abattre » — des industries où l’électrification directe est chimiquement ou physiquement impossible. L’exemple le plus emblématique est la sidérurgie. La production traditionnelle d’acier repose sur des hauts fourneaux alimentés au charbon pour extraire l’oxygène du minerai de fer, ce qui génère d’importantes quantités de CO₂.",
+        
+      "imageAlt": "stockage de bobines d’acier",
 
-      "imageAlt": "bobines d’acier",
+      "steelDescription2": "En utilisant une technologie appelée réduction directe du fer (DRI), l’hydrogène peut remplacer le charbon comme agent réducteur. Dans ce procédé, l’hydrogène réagit avec l’oxygène contenu dans le minerai de fer, produisant du fer spongieux et de la vapeur d’eau uniquement. Cette technologie de rupture a le potentiel d’éliminer presque entièrement l’empreinte carbone de l’une des industries les plus polluantes au monde.",
 
-      "steelDescription2": "Ce procédé élimine presque totalement les émissions de CO₂.",
+      "chemicalTitle": "Matière Première Chimique et Chaleur Haute Température",
 
-      "chemicalTitle": "Chimie et chaleur industrielle",
-
-      "chemicalDescription": "L’hydrogène vert permet aussi de produire des carburants synthétiques et de fournir de la chaleur haute température sans émissions."
+      "chemicalDescription": "En plus de la sidérurgie, l’hydrogène vert constitue une matière première essentielle pour l’industrie chimique. Il peut être combiné au CO₂ capté pour produire des carburants synthétiques neutres en carbone (e-fuels) destinés à l’aviation et au transport maritime, ou encore des plastiques verts. Par ailleurs, pour certains procédés industriels comme la production de ciment ou de verre nécessitant des températures extrêmement élevées (souvent supérieures à 1 000°C) — que les systèmes de chauffage électriques peinent à atteindre efficacement — la combustion directe de l’hydrogène propre constitue une alternative viable et zéro émission au gaz naturel."
     }
   },
 
@@ -193,32 +196,32 @@
     "label": "Chauffage",
 
     "content": {
-      "title": "Hydrogène pour le chauffage et la cogénération",
+      "title": "L’Hydrogène pour le Chauffage et la Cogénération",
 
-      "intro": "Le chauffage est un secteur difficile à décarboner où l’hydrogène joue un rôle complémentaire aux pompes à chaleur.",
+      "intro": "La décarbonation du secteur du chauffage — qui englobe à la fois le chauffage résidentiel et les procédés industriels à haute température — reste l’un des défis les plus complexes de la transition énergétique. Bien que les pompes à chaleur électriques soient très efficaces pour les bâtiments individuels bien isolés, l’hydrogène vert constitue une alternative essentielle pour les réseaux de chaleur urbains denses et les installations à grande échelle où l’électrification directe est économiquement ou techniquement impraticable.",
 
-      "sectorCouplingTitle": "Couplage sectoriel : récupération de chaleur",
+      "sectorCouplingTitle": "Couplage des Secteurs : Récupération de la Chaleur Fatale",
 
-      "sectorCouplingDescription": "La chaleur issue de l’électrolyse peut alimenter les réseaux de chauffage urbain.",
+      "sectorCouplingDescription": "L’une des applications les plus efficaces de l’hydrogène dans le secteur du chauffage intervient en réalité dès le début de son cycle de vie. Le processus d’électrolyse de l’eau génère naturellement une quantité importante de chaleur fatale de basse à moyenne température. Grâce au concept de « couplage des secteurs », cette énergie thermique peut être récupérée et injectée directement dans les réseaux de chaleur urbains locaux. Cette approche permet de chauffer des milliers de logements tout en augmentant fortement l’efficacité thermodynamique globale de l’installation de production d’hydrogène, transformant ainsi un déchet en ressource précieuse.",
 
-      "chpTitle": "Cogénération (CHP)",
+      "chpTitle": "Cogénération (CHP - Combined Heat and Power)",
 
-      "chpDescription": "Les piles à combustible permettent de produire simultanément électricité et chaleur avec un rendement élevé.",
+      "chpDescription": "Du côté de la consommation, les piles à combustible stationnaires peuvent être déployées comme unités de cogénération (CHP). Au lieu de brûler un combustible, ces systèmes avancés utilisent l’hydrogène vert pour produire de l’électricité de manière électrochimique pour un bâtiment, un campus ou une usine. Simultanément, ils récupèrent la chaleur issue de la réaction pour fournir de l’eau chaude et du chauffage. Ce processus de double production peut porter le rendement global du système à plus de 85 %, dépassant largement les centrales électriques traditionnelles.",
 
-      "gridTitle": "Mélange et chaudières hydrogène",
+      "gridTitle": "Injection dans le Réseau et Chaudières à Hydrogène",
 
-      "gridDescription": "Le mélange avec le gaz naturel permet une transition progressive vers des systèmes 100 % hydrogène."
+      "gridDescription": "Comme stratégie de transition pour décarboner le chauffage, de nombreux pays testent actuellement le mélange d’hydrogène vert (généralement jusqu’à 20 %) dans les réseaux de gaz naturel existants. Cela réduit progressivement l’empreinte carbone du chauffage conventionnel sans nécessiter de modification immédiate des équipements des utilisateurs finaux. À plus long terme, des chaudières fonctionnant à 100 % à l’hydrogène sont en cours de développement afin de remplacer totalement les systèmes au gaz fossile dans les bâtiments commerciaux, garantissant que la seule émission issue de la cheminée soit de la vapeur d’eau pure."
     },
 
     "schematic": {
       "title": "Cogénération (CHP)",
-      "text1": "Cette pile à combustible convertit l’hydrogène en ",
+      "text1": "Cette pile à combustible convertit électrochimiquement l’hydrogène vert en ",
       "textBold1": "électricité",
       "text2": " et en ",
       "textBold2": "chaleur",
-      "text3": ". Elle atteint plus de ",
-      "textBold3": "85 % d’efficacité",
-      "text4": "."
+      "text3": ". En récupérant la chaleur fatale, le système atteint plus de ",
+      "textBold3": "85 % de rendement global",
+      "text4": " pour chauffer et alimenter le bâtiment."
     }
   }
 }

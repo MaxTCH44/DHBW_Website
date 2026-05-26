@@ -40,7 +40,8 @@
         "compressionSystems": {
         "title": "Compression Systems",
         "description": "Explore mechanical and non-mechanical compression methods necessary for high-density hydrogen storage and grid injection."
-        }
+        },
+        "readDoc": "Read Documentation"
     },
   
     "homeTools": {

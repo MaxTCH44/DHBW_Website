@@ -195,7 +195,7 @@
                 "ceramic": {
                     "title": "Keramik",
                     "subtitle": "Festoxid-Elektrolyt (Keramik)",
-                    "explanation": "Ein dichtes Keramikmaterial (wie YSZ), das bei extrem hohen Temperaturen (700–1000 °C) arbeitet. Es leitet negative Oxidionen (O²⁻) und blockiert Elektronen und Gase."
+                    "explanation": "Ein dichtes Keramikmaterial (wie YSZ), das bei extrem hohen Temperaturen (700–1.000 °C) arbeitet. Es leitet negative Oxidionen (O²⁻) und blockiert Elektronen und Gase."
                 },
                 "cathode": {
                     "title": "Kathode (-)",
@@ -249,13 +249,13 @@
                     "explanation": "Der mechanische Kolben bewegt sich auf und ab. Die Aufwärtsbewegung verdichtet das Gas und erhöht dabei Druck und Temperatur drastisch."
                 },
                 "inlet": {
-                    "title": "Niederdruckwasserstoff EINLASS",
-                    "subtitle": "Niederdruckeinlass (blaue Seite)",
+                    "title": "Niederdruckwasserstoff",
+                    "subtitle": "Niederdruckeinlass",
                     "explanation": "Wasserstoffgas vom Elektrolyseur (typischerweise 20–30 bar) tritt hier ein. Das Einlassventil öffnet sich, wenn der Kolben nach unten geht, und saugt das Gas an."
                 },
                 "outlet": {
-                    "title": "Hochdruckwasserstoff AUSLASS",
-                    "subtitle": "Hochdruckauslass (rote Seite)",
+                    "title": "Hochdruckwasserstoff",
+                    "subtitle": "Hochdruckauslass",
                     "explanation": "Sobald der Zieldruck (z. B. 350–700 bar) erreicht ist, öffnet das Auslassventil und gibt das verdichtete H₂-Gas zur Speicherung oder einem Kühlsystem frei."
                 }
             }

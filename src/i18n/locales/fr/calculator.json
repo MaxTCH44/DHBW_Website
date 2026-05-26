@@ -16,15 +16,15 @@
   "electrolyzer": {
     "electrolyzers": {
       "aem": {
-        "name": "GreenLab Enapter AEM Électrolyseur",
+        "name": "Électrolyseur AEM Enapter GreenLab",
         "type": "AEM"
       },
       "pem": {
-        "name": "GreenLab Enapter AEM Électrolyseur",
+        "name": "Électrolyseur PEM GreenLab",
         "type": "PEM"
       },
       "ostermeier": {
-        "name": "Électrolyseur Ostermeier Calculator",
+        "name": "Électrolyseur du Calculateur d'Ostermeier ",
         "type": "AEM"
       },
       "custom": {
@@ -169,12 +169,12 @@
   "compressorSetup": {
     "compressors": {
       "maximator": {
-        "name": "GreenLab Maximator Station de Compression",
+        "name": "Station de Compression Maximator GreenLab",
         "type": "Mécanique",
         "compressionRate": "De 15 à 200 bars"
       },
       "ehc": {
-        "name": "GreenLab HyET EHC",
+        "name": "EHC HyET GreenLab",
         "type": "Électrochimique",
         "compressionRate": "De 5 à 200 bars"
       },
@@ -531,6 +531,18 @@
     "annual_savings_current": "Économie annuelle vs coût actuel",
     "grey_smoothed": "H₂ gris + taxe (lissé)",
     "installed_capacity": "Capacité installée"
+  },
+  
+  "valueInput":{
+    "error0NotAllowed": "La valeur ne peut pas être 0",
+    "errorMax": "La valeur ne peut pas dépasser ",
+    "valueAdjusted": "La valeur a été ajustée au maximum autorisé ({{max}})"
+  },
+
+  "comparison": {
+    "saveButtonlabel": "Sauvegarder pour comparer",
+    "loadInputLabel": "Charger les paramètres",
+    "setup": "Configuration"
   },
 
   "units": {

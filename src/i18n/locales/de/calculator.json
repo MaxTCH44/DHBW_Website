@@ -20,7 +20,7 @@
         "type": "AEM"
       },
       "pem": {
-        "name": "GreenLab Enapter AEM Elektrolyseur",
+        "name": "GreenLab PEM Elektrolyseur",
         "type": "PEM"
       },
       "ostermeier": {
@@ -531,6 +531,18 @@
     "annual_savings_current": "Jährliche Ersparnis vs. aktuellen Kosten",
     "grey_smoothed": "Grauer H₂ + Steuer (geglättet)",
     "installed_capacity": "Installierte Kapazität"
+  },
+  
+  "valueInput": {
+    "error0NotAllowed": "Der Wert darf nicht 0 sein",
+    "errorMax": "Der Wert darf nicht größer sein als ",
+    "valueAdjusted": "Wert wurde auf den maximal zulässigen Wert angepasst ({{max}})"
+  },
+
+  "comparison": {
+    "saveButtonlabel": "Zum Vergleich speichern",
+    "loadInputLabel": "Eingaben laden",
+    "setup": "Konfiguration"
   },
 
   "units": {

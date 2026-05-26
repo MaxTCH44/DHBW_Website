@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { NumberInput, Select, Text } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
 
@@ -49,7 +49,7 @@ export default function ValueInput({ label, value, units, currentUnit, onValueCh
   // Force-clamps the value immediately if the parent dynamically lowers the max threshold
   useEffect(() => {
     if (max !== null && value > max) {
-      setErrorMsg("Value adjusted to maximum allowed (" + max + ")");
+      setErrorMsg(t("valueInput.valueAdjusted", {max: max}));
       setLocalValue(max);
       onValueChange(max); 
     }
@@ -62,11 +62,11 @@ export default function ValueInput({ label, value, units, currentUnit, onValueCh
   // Master validation checkpoint: Fires when the user clicks away from the input field
   function handleBlur() {
     if (nullBlocker && (localValue === 0 || localValue === '' || localValue === null || localValue === undefined)) {
-      setErrorMsg("Value cannot be 0");
+      setErrorMsg(t("valueInput.error0NotAllowed"));
       setLocalValue(value); // Revert to previous valid state
       onValueChange(value);
     } else if (max && localValue > max) {
-      setErrorMsg("Value cannot be more than " + max);
+      setErrorMsg(t("valueInput.errorMax") + max);
       onValueChange(max);
       setLocalValue(max);
     } else if (localValue === '') {
@@ -79,7 +79,9 @@ export default function ValueInput({ label, value, units, currentUnit, onValueCh
     }
   }
 
-  const selectData = isArray ? units.map((u) => ({ value: t(u.label), label: t(u.label) })) : [];
+  const selectData = useMemo(() => {
+    return isArray ? units.map((u) => ({ value: t(u.label), label: t(u.label) })) : [];
+  }, [isArray, units, t]);
 
   function handleSelectChange(selectedValue) {
     const selectedUnit = units.find(u => t(u.label) === selectedValue);
