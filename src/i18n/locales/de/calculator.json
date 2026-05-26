@@ -512,6 +512,7 @@
 
   "comparison": {
     "saveButtonlabel": "Zum Vergleich speichern",
+    "loadInputLabel": "Eingaben laden",
     "setup": "Konfiguration"
   },
 

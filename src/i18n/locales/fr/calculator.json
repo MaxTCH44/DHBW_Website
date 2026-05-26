@@ -512,6 +512,7 @@
 
   "comparison": {
     "saveButtonlabel": "Sauvegarder pour comparer",
+    "loadInputLabel": "Charger les paramètres",
     "setup": "Configuration"
   },
 

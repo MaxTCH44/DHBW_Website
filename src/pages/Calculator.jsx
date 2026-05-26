@@ -553,16 +553,35 @@ export default function Calculator() {
                 mt="lg" 
                 onClick={() => setComparisonSetups(prev => ([
                     ...prev,{
-                        "cost": lcoh,
-                        "capex": capex,
-                        "greyCostDifference": costDifference, 
-                        "greyAnnualDifference": annualDifference,
-                        "currentCostDifference": currentCostDifference,
-                        "currentAnnualDifference": currentAnnualDifference,
-                        "avoidedCO2": avoidedCO2,
-                        "breakdown": costBreakdown, 
-                        "metrics": extraMetrics,
-                        "greyDetails": greyDetails
+                        "results": {
+                            "cost": lcoh,
+                            "capex": capex,
+                            "greyCostDifference": costDifference, 
+                            "greyAnnualDifference": annualDifference,
+                            "currentCostDifference": currentCostDifference,
+                            "currentAnnualDifference": currentAnnualDifference,
+                            "avoidedCO2": avoidedCO2,
+                            "breakdown": costBreakdown, 
+                            "metrics": extraMetrics,
+                            "greyDetails": greyDetails
+                        },
+                        "inputs": {
+                            "systemSize": systemSize,
+                            "selectedElectrolyzer": selectedElectrolyzer,
+                            "electrolyzerSettings": electrolyzerSettings,
+                            "isCompressorNeeded": isCompressorNeeded,
+                            "massToCompress": massToCompress,
+                            "selectedCompressor": selectedCompressor,
+                            "compressorSettings": compressorSettings,
+                            "projectLifetime": projectLifetime,
+                            "inflationRate": inflationRate,
+                            "electricityPrice": electricityPrice,
+                            "carbonTax": carbonTax,
+                            "greyHydrogenPrice": greyHydrogenPrice,
+                            "waterPrice": waterPrice,
+                            "currentHydrogenPrice": currentHydrogenPrice,
+                            "operatingTime": operatingTime
+                        }
                     }
                 ]))}
             >        
@@ -575,9 +594,26 @@ export default function Calculator() {
                         {comparisonSetups.map((setup, i) => (
                             <ComparisonSetup
                                 key={i}
-                                setup={setup}
+                                setup={setup.results}
                                 index={i}
                                 onRemove={(ind) => setComparisonSetups(prev => prev.filter((_, i) => i !== ind))}
+                                setCalculatorToSetup={() => {
+                                    setSystemSize(setup.inputs.systemSize);
+                                    setSelectedElectrolyzer(setup.inputs.selectedElectrolyzer);
+                                    setElectrolyzerSettings(setup.inputs.electrolyzerSettings);
+                                    setIsCompressorNeeded(setup.inputs.isCompressorNeeded);
+                                    setMassToCompress(setup.inputs.massToCompress);
+                                    setSelectedCompressor(setup.inputs.selectedCompressor);
+                                    setCompressorSettings(setup.inputs.compressorSettings);
+                                    setProjectLifetime(setup.inputs.projectLifetime);
+                                    setInflationRate(setup.inputs.inflationRate);
+                                    setElectricityPrice(setup.inputs.electricityPrice);
+                                    setCarbonTax(setup.inputs.carbonTax);
+                                    setGreyHydrogenPrice(setup.inputs.greyHydrogenPrice);
+                                    setWaterPrice(setup.inputs.waterPrice);
+                                    setCurrentHydrogenPrice(setup.inputs.currentHydrogenPrice);
+                                    setOperatingTime(setup.inputs.operatingTime)
+                                }}
                             />
                         ))}
                     </SimpleGrid>

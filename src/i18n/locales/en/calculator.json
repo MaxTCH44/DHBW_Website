@@ -512,6 +512,7 @@
 
   "comparison": {
     "saveButtonlabel": "Save to Compare",
+    "loadInputLabel": "Load inputs",
     "setup": "Setup"
   },
 

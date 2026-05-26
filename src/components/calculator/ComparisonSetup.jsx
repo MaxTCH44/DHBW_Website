@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { Paper, Text, Group, Badge, Divider, RingProgress, Box, ThemeIcon, Stack } from '@mantine/core';
+import { Paper, Text, Group, Badge, Divider, RingProgress, Box, ThemeIcon, Stack, Anchor } from '@mantine/core';
 import { IconBolt, IconDroplet, IconLeaf, IconChartPie, IconTool } from '@tabler/icons-react';
 
-export default function ComparisonSetup({ setup, index, onRemove }) {
+export default function ComparisonSetup({ setup, index, onRemove, setCalculatorToSetup }) {
     const { t, i18n } = useTranslation("calculator");
 
     const { cost, capex, greyCostDifference, greyAnnualDifference,
@@ -29,6 +29,14 @@ export default function ComparisonSetup({ setup, index, onRemove }) {
             {/* ---- HEADER ---- */}
             <Group justify="space-between" mb="sm">
                 <Badge variant="filled" color="myColor" size="lg">{t("comparison.setup")} #{index + 1}</Badge>
+                <Anchor
+                    component="button" 
+                    type="button" 
+                    size="xs"
+                    c="dimmed"
+                    style={{ cursor: 'pointer' }}
+                    onClick={setCalculatorToSetup}
+                >{t("comparison.loadInputLabel")}</Anchor>
                 <Text
                     size="xs"
                     c="dimmed"
