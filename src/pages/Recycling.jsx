@@ -340,7 +340,7 @@ export default function Recycling() {
                                                 {t("recyclingCalculatorPage.results.recoveredHydrogen")}
                                             </Text>
 
-                                            <Text size="xl" fw={900} c="blue.7">
+                                            <Text size="xl" fw={900} c="blue.7" ta='left'>
                                                 {annualRecoveredH2Kg.toLocaleString(i18n.language, { maximumFractionDigits: 0 })} {t("units.kg_per_year")}
                                             </Text>
                                         </div>
@@ -357,7 +357,7 @@ export default function Recycling() {
                                                 {t("recyclingCalculatorPage.results.estimatedGrossSavings")}
                                             </Text>
 
-                                            <Text size="xl" fw={900} c="teal.6">
+                                            <Text size="xl" fw={900} c="teal.6" ta='left'>
                                                 {annualSavings.toLocaleString(i18n.language, { maximumFractionDigits: 0 })} {t("units.eur_per_year")}
                                             </Text>
                                         </div>
@@ -374,7 +374,7 @@ export default function Recycling() {
                                                 {t("recyclingCalculatorPage.results.avoidedCo2")}
                                             </Text>
 
-                                            <Text size="xl" fw={900} c="myColor.9">
+                                            <Text size="xl" fw={900} c="myColor.9" ta='left'>
                                                 {co2Avoided !== null 
                                                     ? `${co2Avoided.toLocaleString(i18n.language, { maximumFractionDigits: 1 })} ${t("units.tons")}` 
                                                     : "0"
@@ -394,7 +394,7 @@ export default function Recycling() {
                                                 {t("recyclingCalculatorPage.results.roi")}
                                             </Text>
 
-                                            <Text size="xl" fw={900} c="myColor.9">
+                                            <Text size="xl" fw={900} c="myColor.9" ta='left'>
                                                 {roiYears !== null 
                                                     ? `${roiYears.toLocaleString(i18n.language, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ${t("units.years")}`
                                                     : t("recyclingCalculatorPage.results.never")
