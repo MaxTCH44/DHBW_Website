@@ -93,7 +93,7 @@ function buildCSV(inputs, outputs, t, lang) {
     if (greyDetails) {
         lines.push(row(sep, t('export.results'), t('export.grey_h2_price'),           fmt(greyDetails.base, lang),                                      t('units.eur_per_kg')));
         lines.push(row(sep, t('export.results'), t('dashboard.metrics.greenPremium'), fmt(greyDetails.tax, lang),                                       t('units.eur_per_kg')));
-        lines.push(row(sep, t('export.results'), t('grey_smoothed'),                  fmt(greyDetails.smoothed, lang),                                  t('units.eur_per_kg')));
+        lines.push(row(sep, t('export.results'), t('export.grey_smoothed'),                  fmt(greyDetails.smoothed, lang),                                  t('units.eur_per_kg')));
     }
 
     lines.push(row(sep, t('export.results'), t('dashboard.costBreakdown.capex'),      fmt(costBreakdown.capex, lang),                                   t('units.eur_per_kg')));
