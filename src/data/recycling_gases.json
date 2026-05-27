@@ -1,44 +1,170 @@
 [
     {
-        "value": "gasRecoveryAdvices.water_vapor.value",
-        "complexity": "gasRecoveryAdvices.water_vapor.complexity",
-        "complexityColor": "teal",
-        "recovery_rate": 0.95,
-        "advice": "gasRecoveryAdvices.water_vapor.advice"
+  "value": "gasRecoveryAdvices.water_vapor.value",
+  "complexity": "gasRecoveryAdvices.water_vapor.complexity",
+  "complexityColor": "teal",
+  "advice": "gasRecoveryAdvices.water_vapor.advice",
+  "scaling": {
+    "baseVolume": 5000,
+    "baseCapex": 6000,
+    "exponent": 0.6
+  },
+  "tiers": [
+    { 
+      "maxVolume": 5000, 
+      "energy_kwh_per_kg": 0.5,
+      "recovery_rate": 0.98
     },
+    { 
+      "maxVolume": 50000, 
+      "energy_kwh_per_kg": 0.3,
+      "recovery_rate": 0.98
+    },
+    { 
+      "maxVolume": 999999999, 
+      "energy_kwh_per_kg": 0.15,
+      "recovery_rate": 0.99
+    }
+  ]
+},
     {
         "value": "gasRecoveryAdvices.nitrogen.value",
         "complexity": "gasRecoveryAdvices.nitrogen.complexity",
         "complexityColor": "yellow",
-        "recovery_rate": 0.85,
-        "advice": "gasRecoveryAdvices.nitrogen.advice"
+        "advice": "gasRecoveryAdvices.nitrogen.advice",
+        "scaling": {
+            "baseVolume": 5000,
+            "baseCapex": 35000,
+            "exponent": 0.6
+        },
+        "tiers": [
+            { 
+            "maxVolume": 5000, 
+            "energy_kwh_per_kg": 2.5,
+            "recovery_rate": 0.80
+            },
+            { 
+            "maxVolume": 50000, 
+            "energy_kwh_per_kg": 1.5,
+            "recovery_rate": 0.85
+            },
+            { 
+            "maxVolume": 999999999, 
+            "energy_kwh_per_kg": 0.8,
+            "recovery_rate": 0.90
+            }
+        ]
     },
     {
         "value": "gasRecoveryAdvices.oxygen.value",
         "complexity": "gasRecoveryAdvices.oxygen.complexity",
         "complexityColor": "yellow",
-        "recovery_rate": 0.85,
-        "advice": "gasRecoveryAdvices.oxygen.advice"
+        "advice": "gasRecoveryAdvices.oxygen.advice",
+        "scaling": {
+            "baseVolume": 5000,
+            "baseCapex": 42000,
+            "exponent": 0.6
+        },
+        "tiers": [
+            { 
+            "maxVolume": 5000, 
+            "energy_kwh_per_kg": 2.8,
+            "recovery_rate": 0.80
+            },
+            { 
+            "maxVolume": 50000, 
+            "energy_kwh_per_kg": 1.7,
+            "recovery_rate": 0.85
+            },
+            { 
+            "maxVolume": 999999999, 
+            "energy_kwh_per_kg": 0.9,
+            "recovery_rate": 0.90
+            }
+        ]
     },
     {
         "value": "gasRecoveryAdvices.carbon_dioxide.value",
         "complexity": "gasRecoveryAdvices.carbon_dioxide.complexity",
         "complexityColor": "orange",
-        "recovery_rate": 0.80,
-        "advice": "gasRecoveryAdvices.carbon_dioxide.advice"
+        "advice": "gasRecoveryAdvices.carbon_dioxide.advice",
+        "scaling": {
+        "baseVolume": 5000,
+        "baseCapex": 45000,
+        "exponent": 0.6
+        },
+        "tiers": [
+        { 
+            "maxVolume": 5000, 
+            "energy_kwh_per_kg": 3.2,
+            "recovery_rate": 0.80
+        },
+        { 
+            "maxVolume": 50000, 
+            "energy_kwh_per_kg": 1.8,
+            "recovery_rate": 0.85
+        },
+        { 
+            "maxVolume": 999999999, 
+            "energy_kwh_per_kg": 1.0,
+            "recovery_rate": 0.88
+        }
+        ]
     },
     {
         "value": "gasRecoveryAdvices.argon.value",
         "complexity": "gasRecoveryAdvices.argon.complexity",
         "complexityColor": "orange",
-        "recovery_rate": 0.80,
-        "advice": "gasRecoveryAdvices.argon.advice"
+        "advice": "gasRecoveryAdvices.argon.advice",
+        "scaling": {
+        "baseVolume": 5000,
+        "baseCapex": 48000,
+        "exponent": 0.6
+        },
+        "tiers": [
+        { 
+            "maxVolume": 5000, 
+            "energy_kwh_per_kg": 3.5,
+            "recovery_rate": 0.78
+        },
+        { 
+            "maxVolume": 50000, 
+            "energy_kwh_per_kg": 2.0,
+            "recovery_rate": 0.83
+        },
+        { 
+            "maxVolume": 999999999, 
+            "energy_kwh_per_kg": 1.2,
+            "recovery_rate": 0.88
+        }
+        ]
     },
     {
         "value": "gasRecoveryAdvices.mixed_unknown.value",
         "complexity": "gasRecoveryAdvices.mixed_unknown.complexity",
         "complexityColor": "red",
-        "recovery_rate": 0.70,
-        "advice": "gasRecoveryAdvices.mixed_unknown.advice"
+        "advice": "gasRecoveryAdvices.mixed_unknown.advice",
+        "scaling": {
+        "baseVolume": 5000,
+        "baseCapex": 55000,
+        "exponent": 0.6
+        },
+        "tiers": [
+        { 
+            "maxVolume": 5000, 
+            "energy_kwh_per_kg": 4.0,
+            "recovery_rate": 0.85
+        },
+        { 
+            "maxVolume": 50000, 
+            "energy_kwh_per_kg": 2.5,
+            "recovery_rate": 0.90
+        },
+        { 
+            "maxVolume": 999999999, 
+            "energy_kwh_per_kg": 1.5,
+            "recovery_rate": 0.95
+        }
+        ]
     }
 ]
