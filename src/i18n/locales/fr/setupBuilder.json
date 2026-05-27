@@ -1,72 +1,92 @@
 {
-  "title": "Constructeur de configurations d’électrolyseurs",
+    "title": "Générateur de Configuration d'Électrolyseur",
+    "description": "Créez vos propres modèles d'électrolyseurs en combinant une unité de base et des équipements auxiliaires.",
 
-  "setupBuilder": {
-    "create_new_setup": "Créer une nouvelle configuration",
-    "configuration_name": "Nom de la configuration",
-    "configuration_name_placeholder": "ex. : Installation pilote Alpha",
-    "technology_type": "Type de technologie",
+    "setupBuilder": {
+        "create_new_setup": "Créer une nouvelle configuration",
+        "configuration_name": "Nom de la configuration",
+        "configuration_name_placeholder": "Ex: Usine Test Alpha",
+        "technology_type": "Technologie",
 
-    "electrolyzer_specs": "Spécifications de l’électrolyseur",
-    "stack_power": "Puissance d'une stack",
-    "max_stacks_per_unit": "Nombre maximal de stacks par unité",
-    "energy_consumption": "Consommation énergétique",
-    "water_consumption": "Consommation d’eau",
+        "electrolyzer_specs": "Spécificités de l'électrolyseur",
+        "stack_power": "Puissance d'un Stack",
+        "max_stacks_per_unit": "Stacks max par unité",
+        "max_capacity": "Capacité max (Stacks possibles)",
+        "included_stacks": "Nombre de Stacks inclus",
+        "total_power": "Puissance totale",
+        "total_power_tooltip": "La capacité électrique totale de la machine",
+        "base_water_consumption": "Conso. d'Eau de base",
+        "energy_consumption": "Conso. Électrique",
+        "water_consumption": "Consommation d'Eau",
 
-    "financials": "Finances",
-    "single_stack_price": "Prix d’une stack",
-    "global_maintenance": "Maintenance globale",
-    "stack_lifetime": "Durée de vie de la stack",
+        "financials": "Données Financières",
+        "single_stack_price": "Prix d'un Stack interne",
+        "global_maintenance": "Maintenance annuelle",
+        "maintenance_tooltip": "Pourcentage du CAPEX alloué chaque année à la maintenance",
+        "stack_lifetime": "Durée de vie d'un Stack",
 
-    "auxiliary_equipments": "Équipements auxiliaires (BOP)",
-    "add_component": "Ajouter un composant (Refroidisseur, sécheur, etc.)",
-    "component_name": "Nom du composant",
-    "added_power": "Puissance ajoutée",
-    "added_water": "Consommation d’eau ajoutée",
-    "added_capex": "CAPEX ajouté",
-    "capacity_supported": "Capacité prise en charge",
-    "add_to_setup": "Ajouter à la configuration",
-    "save_complete_setup": "Enregistrer la configuration complète",
+        "auxiliary_equipments": "Équipements Auxiliaires (BOP)",
+        "auxiliary_equipments_description": "Ajoutez des compresseurs, pompes ou refroidisseurs.",
+        "add_component": "Ajouter l'équipement",
+        "component_name": "Nom de l'auxiliaire",
+        "component_name_placeholder": "Ex: Chiller 5kW",
+        "price": "Prix",
+        "power_consumption": "Conso. Électrique",
+        "water_consumption_short": "Conso. d'Eau",
+        
+        "added_power": "Puissance ajoutée",
+        "added_water": "Eau ajoutée",
+        "added_capex": "CAPEX ajouté",
+        "capacity_supported": "Capacité supportée",
+        "add_to_setup": "Ajouter à la configuration",
+        
+        "estimated_total_price": "Prix Total Estimé",
+        "price_recap_details": "({{count}} Stacks à {{stackPrice}} {{currency}} + {{auxPrice}} {{currency}} d'auxiliaires)",
+        
+        "cancel_edit": "Annuler la modification",
+        "update_setup": "Mettre à jour la configuration",
+        "save_complete_setup": "Sauvegarder et compiler la configuration",
 
-    "saved_configurations": "Configurations enregistrées",
-    "setups_count": "Configurations",
+        "saved_configurations": "Inventaire des Configurations",
+        "setups_count": "Configurations",
 
-    "no_setups_title": "Aucune configuration enregistrée en mémoire pour le moment.",
-    "no_setups_subtitle": "Créez votre première configuration à gauche.",
+        "no_setups_title": "Aucune configuration sauvegardée pour le moment.",
+        "no_setups_subtitle": "Créez votre première configuration sur la gauche.",
+        
+        "edit_setup_tooltip": "Modifier la configuration",
+        "delete_setup_tooltip": "Supprimer la configuration",
+        "edit_mode": "Mode Édition : Modifier l'Électrolyseur",
+        "step1_title": "1. Paramètres de l'Électrolyseur de base",
 
-    "max": "Max",
-    "total_capex": "CAPEX total",
-    "cap": "Cap",
-    "sys": "sys",
+        "max": "Max",
+        "total_capex": "Prix Total",
+        "power": "Puissance",
+        "bop_consumption": "Conso. BOP (Aux)",
+        "total_water_consumption": "Conso. Eau Totale",
+        "cap": "Cap",
+        "sys": "sys",
 
-    "balance_of_plant": "Équipements auxiliaires (inclus)"
-  },
+        "balance_of_plant": "Balance of Plant (Inclus)"
+    },
+    
+    "units": {
+        "kwh_per_kg": "kWh/kg",
+        "kwh_per_m3": "kWh/m³",
+        "percent_capex": "% CAPEX",
+        "eur": "€",
+        "power_kw": "kW",
+        "stacks": "Stacks",
+        "l_per_h": "L/h",
+        "hours": "h",
+        "percent": "%"
+    },
 
-  "units": {
-    "kwh_per_kg": "kWh/kg",
-    "kwh_per_m3": "kWh/m³",
-
-    "percent_capex": "% CAPEX",
-    "eur": "€",
-
-    "power_kw": "kW",
-
-    "stacks": "stacks",
-    "units": "unités",
-
-    "kW_per_stack": "kW/stack",
-
-    "l_per_hour": "L/h",
-
-    "hours": "heures"
-  },
-
-  "electrolyzer": {
-    "type": {
-      "pem": "PEM",
-      "aem": "AEM",
-      "alkaline": "Alcalin",
-      "soec": "SOEC"
+    "electrolyzer": {
+        "type": {
+            "pem": "PEM",
+            "aem": "AEM",
+            "alkaline": "Alcalin",
+            "soec": "SOEC"
+        }
     }
-  }
 }

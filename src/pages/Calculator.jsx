@@ -140,6 +140,20 @@ export default function Calculator() {
         defaultValue: DEFAULT_CUSTOM_COMPRESSOR,
         getInitialValueInEffect: false
     });
+    const [customSetups] = useLocalStorage({
+        key: 'greenlab-custom-setups',
+        defaultValue: [],
+        getInitialValueInEffect: false
+    });
+    const combinedElectrolyzers = useMemo(() => {
+        return {
+            ...electrolyzers,
+            list: [
+                ...customSetups,
+                ...electrolyzers.list
+            ]     
+        };
+    }, [customSetups]);
 
     // --- 5. UI CONTROLS STATE ---
     // Tracks which accordions are open to show/hide advanced parameters
@@ -300,13 +314,13 @@ export default function Calculator() {
     // Filters the dropdown menu options based on the active mode (hides the 'Custom' option in Simple mode)
     const availableElectrolyzers = useMemo(() => {
         if (isAdvancedMode) {
-            return electrolyzers;
+            return combinedElectrolyzers;
         }
         return {
-            ...electrolyzers,
+            ...combinedElectrolyzers,
             list: electrolyzers.list.filter(e => e.id !== 0)
         };
-    }, [isAdvancedMode]);
+    }, [isAdvancedMode,combinedElectrolyzers]);
 
     // --- 7. EXECUTING THE CORE MATH HOOK ---
     const calcResults = useCalculatorLogic({
@@ -444,7 +458,7 @@ export default function Calculator() {
 
             <SimpleGrid cols={{ base: 1, lg: 3 }} spacing="lg" style={{ alignItems: 'flex-start' }}>
                 <ElectrolyzerSetup 
-                    electrolyzers={electrolyzers}
+                    electrolyzers={combinedElectrolyzers}
                     systemSize={systemSize}
                     setSystemSize={setSystemSize}
                     operatingTime={operatingTime}

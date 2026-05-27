@@ -61,6 +61,11 @@ export default function ValueInput({ label, value, units, currentUnit, onValueCh
 
   // Master validation checkpoint: Fires when the user clicks away from the input field
   function handleBlur() {
+    let numericValue = Number(localValue);
+    
+    if (isNaN(numericValue)) {
+        numericValue = 0;
+    }
     if (nullBlocker && (localValue === 0 || localValue === '' || localValue === null || localValue === undefined)) {
       setErrorMsg(t("valueInput.error0NotAllowed"));
       setLocalValue(value); // Revert to previous valid state
@@ -75,7 +80,8 @@ export default function ValueInput({ label, value, units, currentUnit, onValueCh
       setLocalValue(0);
     } else {
       setErrorMsg(null);
-      onValueChange(localValue);
+      onValueChange(numericValue);
+      setLocalValue(numericValue);
     }
   }
 

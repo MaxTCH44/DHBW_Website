@@ -1,6 +1,6 @@
 {
     "title": "Electrolyzer Setup Builder",
-
+    "description": "Create your own electrolyzer models by combining a base unit and auxiliary equipments.",
 
     "setupBuilder": {
         "create_new_setup": "Create New Setup",
@@ -11,22 +11,40 @@
         "electrolyzer_specs": "Electrolyzer Specs",
         "stack_power": "Stack Power",
         "max_stacks_per_unit": "Max Stacks per Unit",
+        "max_capacity": "Max Capacity (Possible Stacks)",
+        "included_stacks": "Number of Stacks included",
+        "total_power": "Total Power",
+        "total_power_tooltip": "The total electrical capacity of the machine",
+        "base_water_consumption": "Base Water Consumption",
         "energy_consumption": "Energy Consumption",
         "water_consumption": "Water Consumption",
 
         "financials": "Financials",
         "single_stack_price": "Single Stack Price",
         "global_maintenance": "Global Maintenance",
+        "maintenance_tooltip": "Percentage of CAPEX allocated each year for maintenance",
         "stack_lifetime": "Stack Lifetime",
 
         "auxiliary_equipments": "Auxiliary Equipments (BOP)",
-        "add_component": "Add Component (Chiller, Dryer, etc.)",
+        "auxiliary_equipments_description": "Add compressors, pumps, or chillers.",
+        "add_component": "Add Equipment",
         "component_name": "Component Name",
+        "component_name_placeholder": "e.g., Chiller 5kW",
+        "price": "Price",
+        "power_consumption": "Power Cons.",
+        "water_consumption_short": "Water Cons.",
+        
         "added_power": "Added Power",
         "added_water": "Added Water",
         "added_capex": "Added CAPEX",
         "capacity_supported": "Capacity Supported",
         "add_to_setup": "Add to Setup",
+        
+        "estimated_total_price": "Estimated Total Price",
+        "price_recap_details": "({{count}} Stacks at {{stackPrice}} {{currency}} + {{auxPrice}} {{currency}} for auxiliaries)",
+        
+        "cancel_edit": "Cancel modification",
+        "update_setup": "Update Configuration",
         "save_complete_setup": "Save Complete Setup",
 
         "saved_configurations": "Saved Configurations",
@@ -34,33 +52,33 @@
 
         "no_setups_title": "No setups stored in memory yet.",
         "no_setups_subtitle": "Create your first configuration on the left.",
+        
+        "edit_setup_tooltip": "Edit configuration",
+        "delete_setup_tooltip": "Delete configuration",
+        "edit_mode": "Edit Mode: Modify Electrolyzer",
+        "step1_title": "1. Base Electrolyzer Parameters",
 
         "max": "Max",
-        "total_capex": "Total CAPEX",
+        "total_capex": "Total Price",
+        "power": "Power",
+        "bop_consumption": "BOP Cons. (Aux)",
+        "total_water_consumption": "Total Water Cons.",
         "cap": "Cap",
         "sys": "sys",
 
         "balance_of_plant": "Balance of Plant (Included)"
     },
-
     
     "units": {
         "kwh_per_kg": "kWh/kg",
         "kwh_per_m3": "kWh/m³",
-
         "percent_capex": "% CAPEX",
         "eur": "€",
-
         "power_kw": "kW",
-
-        "stacks": "stacks",
-        "units": "units",
-
-        "kW_per_stack": "kW/stack",
-
-        "l_per_hour": "L/h",
-
-        "hours": "hours"
+        "stacks": "Stacks",
+        "l_per_h": "L/h",
+        "hours": "h",
+        "percent": "%"
     },
 
     "electrolyzer": {
