@@ -63,9 +63,9 @@ function buildCSV(inputs, outputs, t, lang) {
     lines.push(row(sep, t('export.config'), t('resourcesCosts.carbon_tax.label'),     fmt(carbonTax, lang), t('export.ton_co2_per_year')));
     lines.push(row(sep, t('export.config'), t('lifecycleParameters.project_lifetime.label'), fmt(projectLifetime, lang, 0), t('units.years')));
     lines.push(row(sep, t('export.config'), t('lifecycleParameters.inflation_rate.label'),   fmt(inflationRate, lang), t('units.pourcent')));
-    lines.push(row(sep, t('export.config'), t('export.compressor'),                   isCompressorNeeded ? t(selectedCompressor.name) : t('compressorSetup.useCompressor')));
 
     if (isCompressorNeeded) {
+        lines.push(row(sep, t('export.config'), t('export.compressor'), t(selectedCompressor.name)));
         lines.push(row(sep, t('export.config'), t('compressorSetup.compressorType'),  t(selectedCompressor.type)));
         lines.push(row(sep, t('export.config'), t('compressorSetup.purchasePrice.label'), fmt(selectedCompressor.price, lang, 0), t('units.eur')));
         lines.push(row(sep, t('export.config'), t('compressorSetup.hydrogenToCompress.label'), massToCompress === -1 ? 'Auto' : fmt(massToCompress, lang, 0), massToCompress === -1 ? '' : t('units.kg_per_year')));
@@ -85,10 +85,10 @@ function buildCSV(inputs, outputs, t, lang) {
 
     lines.push(row(sep, t('export.results'), t('dashboard.metrics.totalCapex'),       fmt(capex, lang, 0),                                              t('units.eur')));
     lines.push(row(sep, t('export.results'), t('export.lcoh'),                        fmt(lcoh, lang),                                                  t('units.eur_per_kg')));
-    lines.push(row(sep, t('export.results'), t('dashboard.metrics.savingsVsGrey'),    fmt(costDifference, lang),                                        t('units.eur_per_kg')));
-    lines.push(row(sep, t('export.results'), t('annual_savings_grey'),                fmt(annualDifference, lang, 0),                                   t('units.eur_per_year')));
-    lines.push(row(sep, t('export.results'), t('dashboard.metrics.savingsVsCurrentCost'), fmt(currentCostDifference, lang),                             t('units.eur_per_kg')));
-    lines.push(row(sep, t('export.results'), t('annual_savings_current'),             fmt(currentAnnualDifference, lang, 0),                            t('units.eur_per_year')));
+    costDifference > 0 ? lines.push(row(sep, t('export.results'), t('dashboard.metrics.savingsVsGrey'),    fmt(costDifference, lang), t('units.eur_per_kg'))) : lines.push(row(sep, t('export.results'), t('dashboard.metrics.greenPremium'),    fmt(costDifference, lang), t('units.eur_per_kg')));
+    costDifference > 0 ? lines.push(row(sep, t('export.results'), t('dashboard.metrics.savingsVsGrey'),    fmt(annualDifference, lang, 0), t('units.eur_per_year'))) : lines.push(row(sep, t('export.results'), t('dashboard.metrics.greenPremium'),    fmt(annualDifference, lang, 0), t('units.eur_per_year')));
+    currentCostDifference > 0 ? lines.push(row(sep, t('export.results'), t('dashboard.metrics.savingsVsCurrentCost'), fmt(currentCostDifference, lang), t('units.eur_per_kg'))) : lines.push(row(sep, t('export.results'), t('dashboard.metrics.lossVsCurrentCost'), fmt(currentCostDifference, lang), t('units.eur_per_kg')));
+    currentCostDifference > 0 ? lines.push(row(sep, t('export.results'), t('dashboard.metrics.savingsVsCurrentCost'), fmt(currentAnnualDifference, lang, 0), t('units.eur_per_year'))) : lines.push(row(sep, t('export.results'), t('dashboard.metrics.lossVsCurrentCost'), fmt(currentAnnualDifference, lang, 0), t('units.eur_per_year')));
 
     if (greyDetails) {
         lines.push(row(sep, t('export.results'), t('export.grey_h2_price'),           fmt(greyDetails.base, lang),                                      t('units.eur_per_kg')));
