@@ -45,6 +45,23 @@
       }
     },
     {
+      "type": "reference",
+      "props": {
+        "authors": "Yan V. S. Rodrigues, Leonardo O. S. Santana, Gustavo S. dos Santos, Victor L. S. Dias, Jonatas de O. S. Cavalcante, Fernando L. P. Pessoa",
+        "year": "2025",
+        "title": "Comparative Performance Analysis of Green Hydrogen Purification via Pressure Swing Adsorption and Supersonic Separation",
+        "journal": "Chemical Engineering Transactions, Vol. 119",
+        "url": "https://doi.org/10.3303/CET25119018"
+      }
+    },
+    {
+      "type": "reference",
+      "props": {
+        "label": "ON2Quest - Hydrogen Purification: PSA Systems (Technical Specifications, April 2024)",
+        "url": "https://on2quest.com/equipments/gas-purification/hydrogen-psa-systems/"
+      }
+    },
+    {
       "type": "subtitle",
       "size": 2,
       "value": "references.green_hydrogen_production_chain"
