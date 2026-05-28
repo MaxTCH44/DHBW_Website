@@ -110,7 +110,7 @@ function drawKPIRow(doc, outputs, pageW, y, t, lang) {
         { label: t('dashboard.stats.avoidedCo2'), value:fmt(outputs.avoidedCO2, lang, 1), unit: t('units.tons'), color: C.teal },
         { label: t('dashboard.stats.annualProduction'), value:fmt(outputs.extraMetrics.annualProd, lang, 0), unit:t('units.kg'),    color: C.accent },
         {
-            label: t('dashboard.metrics.lossVsCurrentCost'),
+            label: outputs.currentCostDifference < 0 ? t('dashboard.metrics.lossVsCurrentCost') : t('dashboard.metrics.savingsVsCurrentCost'),
             value: fmt(outputs.currentCostDifference, lang),
             unit: t('units.eur_per_kg'),
             color: outputs.currentCostDifference >= 0 ? C.primary : C.danger
@@ -246,9 +246,8 @@ function drawTables(doc, inputs, outputs, pageW, y, t, lang) {
             [t('dashboard.costBreakdown.electricity'), `${fmt(costBreakdown.electricity, lang)} ${t('units.eur_per_kg')}`],
             [t('dashboard.costBreakdown.maintenance'), `${fmt(costBreakdown.maintenance, lang)} ${t('units.eur_per_kg')}`],
             [t('dashboard.costBreakdown.water'), `${fmt(costBreakdown.water, lang)} ${t('units.eur_per_kg')}`],
-            [t('dashboard.metrics.lossVsCurrentCost'), `${fmt(outputs.currentCostDifference, lang)} ${t('units.eur_per_kg')}`],
-            [t('export.savingsVsGrey'), `${fmt(outputs.costDifference, lang)} ${t('units.eur_per_kg')}`],
-            [t('dashboard.metrics.greenPremium'), `${fmt(greyDetails.tax, lang)} ${t('units.eur_per_kg')}`],
+            outputs.currentCostDifference < 0 ? [t('dashboard.metrics.lossVsCurrentCost'), `${fmt(outputs.currentCostDifference, lang)} ${t('units.eur_per_kg')}`] : [t('dashboard.metrics.savingsVsCurrentCost'), `${fmt(outputs.currentCostDifference, lang)} ${t('units.eur_per_kg')}`],
+            outputs.costDifference < 0 ? [t('dashboard.metrics.greenPremium'), `${fmt(outputs.costDifference, lang)} ${t('units.eur_per_kg')}`] : [t('export.savingsVsGrey'), `${fmt(outputs.costDifference, lang)} ${t('units.eur_per_kg')}`],
             [t('export.annualProduction'), `${fmt(extraMetrics.annualProd, lang, 0)} ${t('units.kg_per_year')}`],
             [t('dashboard.stats.energyNeeded'), `${fmt(extraMetrics.annualElec, lang, 0)} ${t('units.kWh_per_year')}`],
             [t('dashboard.stats.waterNeeded'), `${fmt(extraMetrics.annualWater, lang, 0)} ${t('units.l_per_year')}`],
