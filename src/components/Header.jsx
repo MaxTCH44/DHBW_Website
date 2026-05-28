@@ -115,7 +115,7 @@ export default function Header() {
             return (
                 <Stack key={link.label} gap={5} mt="sm">
                     <Text size="xs" fw={700} c="dimmed" px="sm" style={{ letterSpacing: 1 }}>
-                        {link.label.toUpperCase()}
+                        {t(link.label).toUpperCase()}
                     </Text>
                     {link.links.map((item) => {
                         const isSubActive = location.pathname === item.link;
@@ -133,7 +133,7 @@ export default function Header() {
                                 justify="flex-start"
                                 style={{ fontWeight: 500 }}
                             >
-                                {item.label}
+                                {t(item.label)}
                             </Button>
                         );
                     })}
@@ -156,7 +156,7 @@ export default function Header() {
                 justify="flex-start"
                 style={{ fontWeight: 500 }}
             >
-                {link.label}
+                {t(link.label)}
             </Button>
         );
     });
@@ -196,20 +196,12 @@ export default function Header() {
                     {/* Desktop Navigation + Language Picker */}
                     <Group gap="5" visibleFrom="sm">
                         {desktopItems}
-
                         <LanguagePicker />
                     </Group>
 
                     {/* Mobile Actions */}
                     <Group hiddenFrom="sm" gap="xs">
                         <LanguagePicker />
-
-                        <Burger
-                            opened={opened}
-                            onClick={toggle}
-                            size="sm"
-                            aria-label="Toggle navigation"
-                        />
                     </Group>
                     
                     {/* Mobile Hamburger Icon */}
