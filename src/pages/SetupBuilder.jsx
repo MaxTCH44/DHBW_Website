@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Container, Title, Text, Card, Grid, Stack, Group, TextInput, Button, Divider, ActionIcon, Paper, Select, Badge, ScrollArea, Box} from '@mantine/core';
+import { Container, Title, Text, Card, Grid, Stack, Group, TextInput, Button, Divider, ActionIcon, Paper, Select, Badge, ScrollArea, Box, Tooltip } from '@mantine/core';
 import { useLocalStorage } from '@mantine/hooks';
-import { IconPlus, IconTrash, IconDeviceFloppy, IconBolt, IconDroplet, IconCurrencyEuro, IconPencil } from '@tabler/icons-react';
+import { IconPlus, IconTrash, IconDeviceFloppy, IconBolt, IconDroplet, IconCurrencyEuro, IconPencil, IconInfoCircle } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 
 import { H2_VOLUME_POWER_UNITS, MAINTENANCE_UNITS } from '../components/calculator/calculatorConstants';
@@ -403,6 +403,38 @@ export default function SetupBuilder() {
                                                 <Badge color="green" mt={4} variant="light">{setup.type}</Badge>
                                             </Box>
                                             <Group gap="xs">
+                                                <Tooltip 
+                                                    label={
+                                                        <Box p="xs">
+                                                            <Text size="xs"><b>{t('setupBuilder.single_stack_price')} :</b> {setup.stack_price.toLocaleString()} {t('units.eur')}</Text>
+                                                            <Text size="xs"><b>{t('setupBuilder.max_capacity')} :</b> {setup.max_stacks} {t('units.stacks')}</Text>
+                                                            <Text size="xs"><b>{t('setupBuilder.included_stacks')} :</b> {setup.included_stacks}</Text>
+                                                            <Text size="xs"><b>{t('setupBuilder.stack_power')} :</b> {setup.stack_power} {t('units.power_kw')}</Text>
+                                                            <Text size="xs"><b>{t('setupBuilder.base_water_consumption')} :</b> {setup.base_water_consumption} {t('units.l_per_h')}</Text>
+                                                            <Text size="xs"><b>{t('setupBuilder.global_maintenance')} :</b> {setup.maintenance_percent_capex} {t('units.percent')}</Text>
+                                                            <Text size="xs"><b>{t('setupBuilder.stack_lifetime')} :</b> {setup.stack_lifetime_hours} {t('units.hours')}</Text>
+                                                            
+                                                            {setup.auxiliaries && setup.auxiliaries.length > 0 && (
+                                                                <>
+                                                                    <Divider my="xs" opacity={0.3} />
+                                                                    <Text size="xs" fw={700} mb={4}>{t('setupBuilder.auxiliary_equipments')} :</Text>
+                                                                    {setup.auxiliaries.map(aux => (
+                                                                        <Text key={aux.id} size="xs">• {aux.name} ({aux.price.toLocaleString()}{t('units.eur')}, {aux.power}{t('units.power_kw')}, {aux.water}{t('units.l_per_h')})</Text>
+                                                                    ))}
+                                                                </>
+                                                            )}
+                                                        </Box>
+                                                    }
+                                                    position="left"
+                                                    withArrow
+                                                    multiline
+                                                    bg="dark.7"
+                                                >
+                                                    <ActionIcon color="gray" variant="light">
+                                                        <IconInfoCircle size={16} />
+                                                    </ActionIcon>
+                                                </Tooltip>
+
                                                 <ActionIcon color="blue" variant="light" title={t('setupBuilder.edit_setup_tooltip')} onClick={() => handleEditSetup(setup)}>
                                                     <IconPencil size={16} />
                                                 </ActionIcon>
