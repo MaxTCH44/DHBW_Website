@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import { 
-    Container, Title, Text, Card, Grid, Stack, Group, TextInput, 
-    Button, Divider, ActionIcon, Paper, Select, Badge, ScrollArea, Box
-} from '@mantine/core';
+import { Container, Title, Text, Card, Grid, Stack, Group, TextInput, Button, Divider, ActionIcon, Paper, Select, Badge, ScrollArea, Box} from '@mantine/core';
 import { useLocalStorage } from '@mantine/hooks';
 import { IconPlus, IconTrash, IconDeviceFloppy, IconBolt, IconDroplet, IconCurrencyEuro, IconPencil } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
+
+import { H2_VOLUME_POWER_UNITS, MAINTENANCE_UNITS } from '../components/calculator/calculatorConstants';
 
 // === CUSTOM COMPONENTS IMPORTS ===
 import ValueInput from '../components/ValueInput';
@@ -41,8 +40,13 @@ export default function SetupBuilder() {
     const [stackPower, setStackPower] = useState(2.4); 
     
     const [energyCons, setEnergyCons] = useState(50); 
+    const [energyConsUnit, setEnergyConsUnit] = useState(H2_VOLUME_POWER_UNITS[0]);
+
     const [waterCons, setWaterCons] = useState(0.42); 
+
     const [maintenance, setMaintenance] = useState(5); 
+    const [maintenanceUnit, setMaintenanceUnit] = useState(MAINTENANCE_UNITS[0]);
+
     const [stackLifetime, setStackLifetime] = useState(35000); 
 
     // 3. Balance of Plant (BOP) / Auxiliaries State
@@ -83,13 +87,15 @@ export default function SetupBuilder() {
         setEditingId(null);
         setSetupName('');
         setType(t('electrolyzer.type.pem'));
-        setStackPrice(1000);
+        setStackPrice(10000);
         setSystemMaxStacks(4);
         setIncludedStacks(1);
         setStackPower(2.4);
         setEnergyCons(50);
+        setEnergyConsUnit(H2_VOLUME_POWER_UNITS[0]);
         setWaterCons(0.42);
         setMaintenance(5);
+        setMaintenanceUnit(MAINTENANCE_UNITS[0]);
         setStackLifetime(35000);
         setAuxiliaries([]);
         setAuxName('');
@@ -101,6 +107,15 @@ export default function SetupBuilder() {
     const handleSaveSetup = () => {
         if (!setupName.trim()) return;
 
+        const normalizedEnergyCons = energyCons * (energyConsUnit.factor || 1);
+
+        let normalizedMaintenancePercent = maintenance;
+        if (maintenanceUnit.label.includes('eur') || maintenanceUnit.label.includes('€')) {
+            normalizedMaintenancePercent = calculatedTotalPrice > 0 ? (maintenance / calculatedTotalPrice) * 100 : 0;
+        } else {
+            normalizedMaintenancePercent = maintenance * (maintenanceUnit.factor || 1);
+        }
+
         const setupPayload = {
             name: setupName,
             type: type,
@@ -110,11 +125,11 @@ export default function SetupBuilder() {
             included_stacks: includedStacks,
             power: calculatedTotalPower,
             stack_power: stackPower,
-            energy_consumption_kwh_per_kg: energyCons,
+            energy_consumption_kwh_per_kg: Number(normalizedEnergyCons.toFixed(3)),
             total_auxiliary_consumption: totalAuxPower,
             water_consumption_l_per_h: waterCons + totalAuxWater,
             base_water_consumption: waterCons,
-            maintenance_percent_capex: maintenance,
+            maintenance_percent_capex: Number(normalizedMaintenancePercent.toFixed(3)),
             stack_lifetime_hours: stackLifetime,
             auxiliaries: auxiliaries,
             isCustom: true
@@ -137,8 +152,14 @@ export default function SetupBuilder() {
         setSystemMaxStacks(setup.max_stacks);
         setIncludedStacks(setup.included_stacks || setup.max_stacks);
         setStackPower(setup.stack_power);
-        setEnergyCons(setup.energy_consumption_kwh_per_kg);
+        
+        // On recharge les valeurs sous leur unité par défaut (% CAPEX et kWh/kg)
+        setEnergyCons(setup.energy_consumption_kwh_per_kg / (H2_VOLUME_POWER_UNITS[0].factor || 1));
+        setEnergyConsUnit(H2_VOLUME_POWER_UNITS[0]);
+        
         setMaintenance(setup.maintenance_percent_capex);
+        setMaintenanceUnit(MAINTENANCE_UNITS[0]);
+        
         setStackLifetime(setup.stack_lifetime_hours);
         
         setAuxiliaries(setup.auxiliaries || []);
@@ -186,8 +207,9 @@ export default function SetupBuilder() {
                                 <ValueInput 
                                     label={t('setupBuilder.max_capacity')} 
                                     value={systemMaxStacks} 
-                                    onValueChange={setSystemMaxStacks} 
-                                    units={t('units.stacks')} 
+                                    onValueChange={setSystemMaxStacks}
+                                    namespace="setupBuilder" 
+                                    units='units.stacks' 
                                     nullBlocker 
                                 />
                             </Grid.Col>
@@ -208,7 +230,8 @@ export default function SetupBuilder() {
                                     label={t('setupBuilder.single_stack_price')} 
                                     value={stackPrice} 
                                     onValueChange={setStackPrice} 
-                                    units={t('units.eur')} 
+                                    namespace="setupBuilder"
+                                    units='units.eur' 
                                 />
                             </Grid.Col>
                             <Grid.Col span={4}>
@@ -216,7 +239,8 @@ export default function SetupBuilder() {
                                     label={t('setupBuilder.stack_power')} 
                                     value={stackPower} 
                                     onValueChange={setStackPower} 
-                                    units={t('units.power_kw')} 
+                                    namespace="setupBuilder"
+                                    units='units.power_kw' 
                                     nullBlocker 
                                 />
                             </Grid.Col>
@@ -235,7 +259,10 @@ export default function SetupBuilder() {
                                     label={t('setupBuilder.energy_consumption')} 
                                     value={energyCons} 
                                     onValueChange={setEnergyCons} 
-                                    units={t('units.kwh_per_kg')} 
+                                    namespace="setupBuilder"
+                                    units={H2_VOLUME_POWER_UNITS} 
+                                    currentUnit={energyConsUnit}
+                                    onUnitChange={setEnergyConsUnit}
                                 />
                             </Grid.Col>
                             <Grid.Col span={6}>
@@ -243,7 +270,8 @@ export default function SetupBuilder() {
                                     label={t('setupBuilder.base_water_consumption')} 
                                     value={waterCons} 
                                     onValueChange={setWaterCons} 
-                                    units={t('units.l_per_h')} 
+                                    namespace="setupBuilder"
+                                    units='units.l_per_h'
                                 />
                             </Grid.Col>
 
@@ -252,7 +280,10 @@ export default function SetupBuilder() {
                                     label={<LabelWithTooltip label={t('setupBuilder.global_maintenance')} tooltip={t('setupBuilder.maintenance_tooltip')} />} 
                                     value={maintenance} 
                                     onValueChange={setMaintenance} 
-                                    units={t('units.percent')} 
+                                    namespace="setupBuilder"
+                                    units={MAINTENANCE_UNITS} 
+                                    currentUnit={maintenanceUnit}
+                                    onUnitChange={setMaintenanceUnit}
                                 />
                             </Grid.Col>
                             <Grid.Col span={6}>
@@ -260,7 +291,8 @@ export default function SetupBuilder() {
                                     label={t('setupBuilder.stack_lifetime')} 
                                     value={stackLifetime} 
                                     onValueChange={setStackLifetime} 
-                                    units={t('units.hours')} 
+                                    namespace="setupBuilder"
+                                    units='units.hours'
                                 />
                             </Grid.Col>
                         </Grid>
@@ -277,14 +309,14 @@ export default function SetupBuilder() {
                                     <TextInput label={t('setupBuilder.component_name')} placeholder={t('setupBuilder.component_name_placeholder')} value={auxName} onChange={(e) => setAuxName(e.currentTarget.value)} mb="sm" />
                                 </Grid.Col>
                                 <Grid.Col span={{ base: 12, sm: 6 }}>
-                                    <ValueInput label={t('setupBuilder.price')} value={auxPrice} onValueChange={setAuxPrice} units={t('units.eur')} />
+                                    <ValueInput label={t('setupBuilder.price')} value={auxPrice} onValueChange={setAuxPrice} namespace="setupBuilder" units='units.eur' />
                                 </Grid.Col>
                                 
                                 <Grid.Col span={{ base: 12, sm: 4 }}>
-                                    <ValueInput label={t('setupBuilder.power_consumption')} value={auxPower} onValueChange={setAuxPower} units={t('units.power_kw')} />
+                                    <ValueInput label={t('setupBuilder.power_consumption')} value={auxPower} onValueChange={setAuxPower} namespace="setupBuilder" units='units.power_kw' />
                                 </Grid.Col>
                                 <Grid.Col span={{ base: 12, sm: 4 }}>
-                                    <ValueInput label={t('setupBuilder.water_consumption_short')} value={auxWater} onValueChange={setAuxWater} units={t('units.l_per_h')} />
+                                    <ValueInput label={t('setupBuilder.water_consumption_short')} value={auxWater} onValueChange={setAuxWater} namespace="setupBuilder" units='units.l_per_h' />
                                 </Grid.Col>
                                 <Grid.Col span={{ base: 12, sm: 4 }}>
                                     <Button fullWidth onClick={handleAddAuxiliary} leftSection={<IconPlus size={16} />} px={0} mb="sm" color="green" disabled={!auxName.trim()}>
@@ -355,7 +387,7 @@ export default function SetupBuilder() {
                     {savedSetups.length === 0 ? (
                         <Text c="dimmed">{t('setupBuilder.no_setups_title')}</Text>
                     ) : (
-                        <ScrollArea h={800} offsetScrollbars type="auto">
+                        <ScrollArea h={1042} offsetScrollbars type="auto">
                             <Stack gap="md" pr="sm">
                                 {savedSetups.map(setup => (
                                     <Card 
