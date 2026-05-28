@@ -502,18 +502,6 @@
     ]
   },
   {
-    "id": "step_export",
-    "targetId": "export_buttons",
-    "title": "advices.step_export.title",
-    "content": [
-      {
-        "type": "paragraph",
-        "size": "13",
-        "value": "advices.step_export.content"
-      }
-    ]
-  },
-  {
     "id": "step_save_to_compare",
     "targetId": "save_to_compare",
     "title": "advices.step_save_to_compare.title",
@@ -522,6 +510,18 @@
         "type": "paragraph",
         "size": "13",
         "value": "advices.step_save_to_compare.content"
+      }
+    ]
+  },
+  {
+    "id": "step_export",
+    "targetId": "export_buttons",
+    "title": "advices.step_export.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_export.content"
       }
     ]
   }
