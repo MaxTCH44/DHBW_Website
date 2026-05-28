@@ -594,7 +594,8 @@ export default function Calculator() {
                 </Group>
             )}
 
-            <Group justify="center" mt="20">
+            <Group justify="center" mt="20" id="export_buttons">
+                
                 <Button
                     rightSection={<IconDownload size={14} />}
                     onClick={() => handleExport('csv')}
@@ -631,6 +632,7 @@ export default function Calculator() {
                 size="md" 
                 radius="md"
                 mt="lg" 
+                id="save_to_compare"
                 onClick={() => setComparisonSetups(prev => ([
                     ...prev,{
                         "results": {
