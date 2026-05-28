@@ -1,72 +1,92 @@
 {
-  "title": "Elektrolyseur-Setup-Builder",
+    "title": "Elektrolyseur-Konfigurator",
+    "description": "Erstellen Sie Ihre eigenen Elektrolyseur-Modelle durch die Kombination einer Basiseinheit und Zusatzgeräten.",
 
-  "setupBuilder": {
-    "create_new_setup": "Neues Setup erstellen",
-    "configuration_name": "Konfigurationsname",
-    "configuration_name_placeholder": "z. B. Testanlage Alpha",
-    "technology_type": "Technologietyp",
+    "setupBuilder": {
+        "create_new_setup": "Neue Konfiguration erstellen",
+        "configuration_name": "Name der Konfiguration",
+        "configuration_name_placeholder": "z.B. Testanlage Alpha",
+        "technology_type": "Technologietyp",
 
-    "electrolyzer_specs": "Elektrolyseur-Spezifikationen",
-    "stack_power": "Stack-Leistung",
-    "max_stacks_per_unit": "Max. Stacks pro Einheit",
-    "energy_consumption": "Energieverbrauch",
-    "water_consumption": "Wasserverbrauch",
+        "electrolyzer_specs": "Elektrolyseur-Spezifikationen",
+        "stack_power": "Stack-Leistung",
+        "max_stacks_per_unit": "Max. Stacks pro Einheit",
+        "max_capacity": "Max. Kapazität (Mögliche Stacks)",
+        "included_stacks": "Anzahl der enthaltenen Stacks",
+        "total_power": "Gesamtleistung",
+        "total_power_tooltip": "Die gesamte elektrische Kapazität der Maschine",
+        "base_water_consumption": "Basis-Wasserverbrauch",
+        "energy_consumption": "Energieverbrauch",
+        "water_consumption": "Wasserverbrauch",
 
-    "financials": "Finanzen",
-    "single_stack_price": "Preis pro Stack",
-    "global_maintenance": "Gesamtwartung",
-    "stack_lifetime": "Stack-Lebensdauer",
+        "financials": "Finanzen",
+        "single_stack_price": "Preis pro Stack",
+        "global_maintenance": "Jährliche Wartung",
+        "maintenance_tooltip": "Prozentsatz des CAPEX, der jährlich für die Wartung vorgesehen ist",
+        "stack_lifetime": "Stack-Lebensdauer",
 
-    "auxiliary_equipments": "Hilfssysteme (BOP)",
-    "add_component": "Komponente hinzufügen (Kühler, Trockner usw.)",
-    "component_name": "Komponentenname",
-    "added_power": "Zusätzliche Leistung",
-    "added_water": "Zusätzliches Wasser",
-    "added_capex": "Zusätzliches CAPEX",
-    "capacity_supported": "Unterstützte Kapazität",
-    "add_to_setup": "Zum Setup hinzufügen",
-    "save_complete_setup": "Komplettes Setup speichern",
+        "auxiliary_equipments": "Zusatzgeräte (BOP)",
+        "auxiliary_equipments_description": "Fügen Sie Kompressoren, Pumpen oder Kühler hinzu.",
+        "add_component": "Gerät hinzufügen",
+        "component_name": "Gerätename",
+        "component_name_placeholder": "z.B. Kühler 5kW",
+        "price": "Preis",
+        "power_consumption": "Stromverbr.",
+        "water_consumption_short": "Wasserverbr.",
+        
+        "added_power": "Zusätzliche Leistung",
+        "added_water": "Zusätzliches Wasser",
+        "added_capex": "Zusätzlicher CAPEX",
+        "capacity_supported": "Unterstützte Kapazität",
+        "add_to_setup": "Zur Konfiguration hinzufügen",
+        
+        "estimated_total_price": "Geschätzter Gesamtpreis",
+        "price_recap_details": "({{count}} Stacks zu {{stackPrice}} {{currency}} + {{auxPrice}} {{currency}} für Zusatzgeräte)",
+        
+        "cancel_edit": "Bearbeitung abbrechen",
+        "update_setup": "Konfiguration aktualisieren",
+        "save_complete_setup": "Komplette Konfiguration speichern",
 
-    "saved_configurations": "Gespeicherte Konfigurationen",
-    "setups_count": "Setups",
+        "saved_configurations": "Gespeicherte Konfigurationen",
+        "setups_count": "Konfigurationen",
 
-    "no_setups_title": "Noch keine Setups im Speicher vorhanden.",
-    "no_setups_subtitle": "Erstellen Sie links Ihre erste Konfiguration.",
+        "no_setups_title": "Noch keine Konfigurationen im Speicher vorhanden.",
+        "no_setups_subtitle": "Erstellen Sie Ihre erste Konfiguration auf der linken Seite.",
+        
+        "edit_setup_tooltip": "Konfiguration bearbeiten",
+        "delete_setup_tooltip": "Konfiguration löschen",
+        "edit_mode": "Bearbeitungsmodus: Elektrolyseur ändern",
+        "step1_title": "1. Basis-Elektrolyseur-Parameter",
 
-    "max": "Max",
-    "total_capex": "Gesamtes CAPEX",
-    "cap": "Kap",
-    "sys": "Sys",
+        "max": "Max",
+        "total_capex": "Gesamtpreis",
+        "power": "Leistung",
+        "bop_consumption": "BOP-Verbr. (Zusatz)",
+        "total_water_consumption": "Gesamter Wasserverbr.",
+        "cap": "Kap",
+        "sys": "Sys",
 
-    "balance_of_plant": "Balance of Plant (enthalten)"
-  },
+        "balance_of_plant": "Balance of Plant (Inbegriffen)"
+    },
+    
+    "units": {
+        "kwh_per_kg": "kWh/kg",
+        "kwh_per_m3": "kWh/m³",
+        "percent_capex": "% CAPEX",
+        "eur": "€",
+        "power_kw": "kW",
+        "stacks": "Stacks",
+        "l_per_h": "L/h",
+        "hours": "Std.",
+        "percent": "%"
+    },
 
-  "units": {
-    "kwh_per_kg": "kWh/kg",
-    "kwh_per_m3": "kWh/m³",
-
-    "percent_capex": "% CAPEX",
-    "eur": "€",
-
-    "power_kw": "kW",
-
-    "stacks": "Stacks",
-    "units": "Einheiten",
-
-    "kW_per_stack": "kW/Stack",
-
-    "l_per_hour": "L/h",
-
-    "hours": "Stunden"
-  },
-
-  "electrolyzer": {
-    "type": {
-      "pem": "PEM",
-      "aem": "AEM",
-      "alkaline": "Alkalisch",
-      "soec": "SOEC"
+    "electrolyzer": {
+        "type": {
+            "pem": "PEM",
+            "aem": "AEM",
+            "alkaline": "Alkalisch",
+            "soec": "SOEC"
+        }
     }
-  }
 }

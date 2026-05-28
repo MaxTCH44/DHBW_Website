@@ -5,8 +5,7 @@
         {
             "id" : 1,
             "name" : "compressorSetup.compressors.maximator.name",
-            "type": "Mechanical",
-            "uiType" : "compressorSetup.compressors.maximator.type",
+            "type": "compressorSetup.type.mechanical",
             "compression_rate" : "compressorSetup.compressors.maximator.compressionRate",
             "price" : 20000,
             "cell_stack_price" : null,
@@ -20,8 +19,7 @@
         {
             "id" : 2,
             "name" : "compressorSetup.compressors.ehc.name",
-            "type": "Electrochemical",
-            "uiType" : "compressorSetup.compressors.ehc.type",
+            "type": "compressorSetup.type.electrochemical",
             "compression_rate" : "compressorSetup.compressors.ehc.compressionRate",
             "price" : 9500,
             "cell_stack_price" : 5400,
@@ -35,8 +33,7 @@
         {
             "id" : 0,
             "name" : "compressorSetup.compressors.custom.name",
-            "type": "Mechanical",
-            "uiType" : "compressorSetup.compressors.ehc.type",
+            "type": "compressorSetup.type.mechanical",
             "price" : 0,
             "cell_stack_price" : 0,
             "max_cells" : 1,
