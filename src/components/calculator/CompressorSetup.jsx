@@ -190,7 +190,7 @@ function CompressorSetup ({
                                         { value: 'compressorSetup.type.electrochemical', label: t("compressorSetup.type.electrochemical") }
                                     ]} 
                                     value={selectedCompressor.type}
-                                    onChange={val => setSelectedCompressor({ ...selectedCompressor, type: MAP_TYPE[val] })}
+                                    onChange={val => setSelectedCompressor({ ...selectedCompressor, type: val })}
                                     mb="md"
                                 />
                             )}

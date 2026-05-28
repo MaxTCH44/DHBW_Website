@@ -244,6 +244,8 @@ export default function Recycling() {
                     color="myColor"
                     radius="xl"
                     rightSection={<IconArrowRight size={16} />}
+                    maw="100%"
+                    styles={{ root: { height: 'auto', minHeight: 36, padding: '8px 16px' }, label: { whiteSpace: 'normal', textAlign: 'center' } }}
                 >
                     {t("recyclingCalculatorPage.header.learnMoreButton")}
                 </Button>
@@ -449,6 +451,7 @@ export default function Recycling() {
                     color="dark" 
                     leftSection={<IconMail size={20} />}
                     style={{ color: 'var(--mantine-primary-color-filled)' }}
+                    styles={{ root: { height: 'auto', minHeight: isMobile ? 38 : 50, padding: '8px 16px' }, label: { whiteSpace: 'normal', textAlign: 'center' } }}
                 >
                     {t("recyclingCalculatorPage.cta.button")}
                 </Button>

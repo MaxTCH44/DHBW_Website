@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Text, Container, Card, Collapse, Anchor, Group, Avatar } from '@mantine/core';
+import { Text, Container, Card, Collapse, Anchor, Group, Avatar, Box } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
 
 import { IconMapPin, IconPhone, IconPhoneCall, IconMail } from '@tabler/icons-react';
@@ -32,34 +32,41 @@ function ContactCard({ contact }) {
             </Anchor>
 
             <Collapse in={opened}>
-                <Group justify="space-between" align="flex-start">
-                    <Card>
-                        <Group gap="xs" align="flex-start" mb="xs">
+                <Group 
+                    justify="space-between" 
+                    align="center" 
+                    wrap="wrap" 
+                    mt="md" 
+                >
+                    <Card p={0} style={{ flex: '1 1 300px' }}> 
+                        <Group gap="xs" align="flex-start" mb="xs" wrap="nowrap">
                             <IconMapPin size={16} style={{ marginTop: 2, flexShrink: 0 }} />
                             <Text size="sm">{t(contact.place)}</Text>
                         </Group>
 
-                        <Group gap="xs" mb="xs">
+                        <Group gap="xs" mb="xs" wrap="nowrap">
                             <IconPhone size={16} style={{ flexShrink: 0 }} />
                             <Text size="sm">{contact.mobile}</Text>
                         </Group>
 
-                        <Group gap="xs" mb="xs">
+                        <Group gap="xs" mb="xs" wrap="nowrap">
                             <IconPhoneCall size={16} style={{ flexShrink: 0 }} />
                             <Text size="sm">{contact.landline}</Text>
                         </Group>
 
-                        <Group gap="xs" mb="xs">
+                        <Group gap="xs" mb="xs" wrap="nowrap">
                             <IconMail size={16} style={{ flexShrink: 0 }} />
-                            <Text size="sm">{contact.mail}</Text>
+                            <Text size="sm" style={{ wordBreak: 'break-word' }}>{contact.mail}</Text>
                         </Group>
                     </Card>
 
-                    <Avatar
-                        src={contact.photo}
-                        size="150"
-                        radius="md"
-                    />
+                    <Box style={{ flex: '0 0 auto', margin: '0 auto' }}>
+                        <Avatar
+                            src={contact.photo}
+                            size="150"
+                            radius="md"
+                        />
+                    </Box>
                 </Group>
             </Collapse>
 
