@@ -398,7 +398,7 @@ export default function SetupBuilder() {
                                         style={editingId === setup.id ? { borderColor: 'var(--mantine-color-blue-5)', borderWidth: '2px' } : {}}
                                     >
                                         <Group justify="space-between" mb="xs" align="flex-start">
-                                            <Box>
+                                            <Box align="left">
                                                 <Title order={5}>{setup.name}</Title>
                                                 <Badge color="green" mt={4} variant="light">{setup.type}</Badge>
                                             </Box>

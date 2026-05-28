@@ -49,7 +49,7 @@ export default function SliderInput({ label, value, units, onValueChange, min, m
         min={min}
         max={max}
         hideControls
-        rightSection={<Text pr='sm'>{units}</Text>}
+        rightSection={<Text size="sm" fw={500} c="dimmed" pr="md">{units}</Text>}
         rightSectionWidth="auto"
         styles={{
           input: {
