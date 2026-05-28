@@ -594,21 +594,76 @@ export default function Calculator() {
                 </Group>
             )}
 
-            <Group justify="center" mt="20" id="export_buttons">
-                
-                <Button
-                    rightSection={<IconDownload size={14} />}
-                    onClick={() => handleExport('csv')}
-                >
-                    CSV
+            <Group justify="center" mt="20">
+                <Button 
+                    variant="filled"
+                    size="md" 
+                    radius="md"
+                    mt="lg" 
+                    id="save_to_compare"
+                    onClick={() => setComparisonSetups(prev => ([
+                        ...prev,{
+                            "results": {
+                                "cost": lcoh,
+                                "capex": capex,
+                                "greyCostDifference": costDifference, 
+                                "greyAnnualDifference": annualDifference,
+                                "currentCostDifference": currentCostDifference,
+                                "currentAnnualDifference": currentAnnualDifference,
+                                "avoidedCO2": avoidedCO2,
+                                "breakdown": costBreakdown, 
+                                "metrics": extraMetrics,
+                                "greyDetails": greyDetails
+                            },
+                            "inputs": {
+                                "systemSize": systemSize,
+                                "selectedElectrolyzer": selectedElectrolyzer,
+                                "electrolyzerSettings": electrolyzerSettings,
+                                "isCompressorNeeded": isCompressorNeeded,
+                                "massToCompress": massToCompress,
+                                "selectedCompressor": selectedCompressor,
+                                "compressorSettings": compressorSettings,
+                                "projectLifetime": projectLifetime,
+                                "inflationRate": inflationRate,
+                                "electricityPrice": electricityPrice,
+                                "carbonTax": carbonTax,
+                                "greyHydrogenPrice": greyHydrogenPrice,
+                                "waterPrice": waterPrice,
+                                "currentHydrogenPrice": currentHydrogenPrice,
+                                "operatingTime": operatingTime
+                            }
+                        }
+                    ]))}
+                >        
+                    {t("comparison.saveButtonlabel")}
                 </Button>
 
-                <Button 
-                    rightSection={<IconDownload size={14} />}
-                    onClick={() => handleExport('pdf')}
+                <Box
+                    id="export_buttons"
+                    display="inline-flex"
+                    mt="lg"
+                    style={{ gap: 8, borderRadius: 8 }}
                 >
-                    PDF
-                </Button>
+                    <Button
+                        variant="filled"
+                        size="md" 
+                        radius="md"
+                        rightSection={<IconDownload size={14} />}
+                        onClick={() => handleExport('csv')}
+                    >
+                        CSV
+                    </Button>
+
+                    <Button
+                        variant="filled"
+                        size="md" 
+                        radius="md"
+                        rightSection={<IconDownload size={14} />}
+                        onClick={() => handleExport('pdf')}
+                    >
+                        PDF
+                    </Button>
+                </Box>
             </Group>
 
             {/* INTERACTIVE TUTORIAL OVERLAY */}
@@ -626,49 +681,6 @@ export default function Calculator() {
                     namespace="calculator"
                 />
             )}
-
-            <Button 
-                variant="filled"
-                size="md" 
-                radius="md"
-                mt="lg" 
-                id="save_to_compare"
-                onClick={() => setComparisonSetups(prev => ([
-                    ...prev,{
-                        "results": {
-                            "cost": lcoh,
-                            "capex": capex,
-                            "greyCostDifference": costDifference, 
-                            "greyAnnualDifference": annualDifference,
-                            "currentCostDifference": currentCostDifference,
-                            "currentAnnualDifference": currentAnnualDifference,
-                            "avoidedCO2": avoidedCO2,
-                            "breakdown": costBreakdown, 
-                            "metrics": extraMetrics,
-                            "greyDetails": greyDetails
-                        },
-                        "inputs": {
-                            "systemSize": systemSize,
-                            "selectedElectrolyzer": selectedElectrolyzer,
-                            "electrolyzerSettings": electrolyzerSettings,
-                            "isCompressorNeeded": isCompressorNeeded,
-                            "massToCompress": massToCompress,
-                            "selectedCompressor": selectedCompressor,
-                            "compressorSettings": compressorSettings,
-                            "projectLifetime": projectLifetime,
-                            "inflationRate": inflationRate,
-                            "electricityPrice": electricityPrice,
-                            "carbonTax": carbonTax,
-                            "greyHydrogenPrice": greyHydrogenPrice,
-                            "waterPrice": waterPrice,
-                            "currentHydrogenPrice": currentHydrogenPrice,
-                            "operatingTime": operatingTime
-                        }
-                    }
-                ]))}
-            >        
-                {t("comparison.saveButtonlabel")}
-            </Button>
             
             {comparisonSetups.length > 0 && (
                 <Card shadow="lg" padding="xl" radius="md" withBorder mt="xl" bg="gray.0">
