@@ -11,11 +11,6 @@ import EquipmentSelector from './EquipmentSelector';
 import SliderInput from '../SliderInput';
 import { POWER_UNITS, TIME_PER_YEAR_UNITS, MAINTENANCE_UNITS, H2_VOLUME_POWER_UNITS } from './calculatorConstants';
 
-const MAP_TYPE = {
-    "PEM": "PEM",
-    "Alkaline": "Alkaline", 
-    "AEM": "AEM"
-}
 
 /**
  * Renders the electrolyzer setup form, managing both physical sizing and technical/financial specifications.
@@ -222,7 +217,7 @@ function ElectrolyzerSetup ({
                                         { value: 'electrolyzer.type.soec', label: t('electrolyzer.type.soec') }
                                     ]} 
                                 value={selectedElectrolyzer.type}
-                                onChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, type: MAP_TYPE[val] })}
+                                onChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, type: val })}
                                 mb="md"
                             />
                         )}

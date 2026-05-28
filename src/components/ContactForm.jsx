@@ -136,6 +136,7 @@ export default function ContactForm({ link, label }){
                         minRows={5}
                         required
                         mb="xl"
+                        h="auto"
                     />
 
                     <Group justify="flex-end">

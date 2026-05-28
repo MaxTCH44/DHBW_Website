@@ -36,7 +36,8 @@
     "type": {
       "pem": "PEM",
       "aem": "AEM",
-      "alkaline": "Alkalisch"
+      "alkaline": "Alkalisch",
+      "soec": "SOEC"
     },
 
     "setup": {
