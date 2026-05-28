@@ -231,6 +231,21 @@ export default function Calculator() {
         prevMaxRef.current = newMax;
     }, [annualProd]);
 
+    useEffect(() => {
+        const setupExists = combinedElectrolyzers.list.some(e => e.id === selectedElectrolyzer.id);
+        
+        if (!setupExists) {
+            const baseCustom = electrolyzers.list.find(e => e.id === 0);
+
+            setSelectedElectrolyzer(prev => ({
+                ...prev,
+                id: 0,
+                name: baseCustom ? baseCustom.name : "Custom",
+                isCustom: false
+            }));
+        }
+    }, [combinedElectrolyzers, selectedElectrolyzer.id, setSelectedElectrolyzer]);
+
     // Keep Custom models synced in state so users don't lose their typed values when switching tabs
     useEffect(() => {
         if (selectedElectrolyzer.id === 0) {

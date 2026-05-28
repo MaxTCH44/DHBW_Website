@@ -5,7 +5,7 @@
         {
             "id" : 1,
             "name" : "electrolyzer.electrolyzers.aem.name",
-            "type" : "electrolyzer.electrolyzers.aem.type",
+            "type" : "electrolyzer.type.aem",
             "price" : 34727.54,
             "stack_price" : 9600,
             "max_stacks" : 4,
@@ -20,7 +20,7 @@
         {
             "id" : 2,
             "name" : "electrolyzer.electrolyzers.pem.name",
-            "type" : "electrolyzer.electrolyzers.pem.type",
+            "type" : "electrolyzer.type.pem",
             "price" : 440,
             "stack_price": 440,
             "max_stacks" : 1,
@@ -35,7 +35,7 @@
         {
             "id" : 3,
             "name" : "electrolyzer.electrolyzers.ostermeier.name",
-            "type" : "electrolyzer.electrolyzers.ostermeier.type",
+            "type" : "electrolyzer.type.aem",
             "price" : 73617,
             "stack_price" : 12000,
             "max_stacks" : 4,
@@ -50,7 +50,7 @@
         {
             "id" : 0,
             "name" : "electrolyzer.electrolyzers.custom.name",
-            "type" : "electrolyzer.electrolyzers.custom.type",
+            "type" : "electrolyzer.type.pem",
             "price" : 0,
             "stack_price" : 0,
             "max_stacks" : 1,

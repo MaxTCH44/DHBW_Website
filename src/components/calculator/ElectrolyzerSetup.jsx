@@ -215,7 +215,12 @@ function ElectrolyzerSetup ({
                         {selectedElectrolyzer.id === 0 && (
                             <Select
                                 label={t('electrolyzer.typeLabel')}
-                                data={[t('electrolyzer.type.pem'), t('electrolyzer.type.alkaline'), t('electrolyzer.type.aem')]}
+                                data={[
+                                        { value: 'electrolyzer.type.pem', label: t('electrolyzer.type.pem') },
+                                        { value: 'electrolyzer.type.alkaline', label: t('electrolyzer.type.alkaline') },
+                                        { value: 'electrolyzer.type.aem', label: t('electrolyzer.type.aem') },
+                                        { value: 'electrolyzer.type.soec', label: t('electrolyzer.type.soec') }
+                                    ]} 
                                 value={selectedElectrolyzer.type}
                                 onChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, type: MAP_TYPE[val] })}
                                 mb="md"

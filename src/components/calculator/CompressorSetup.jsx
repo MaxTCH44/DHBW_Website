@@ -11,10 +11,6 @@ import DetailSection from '../DetailSection';
 import EquipmentSelector from './EquipmentSelector';
 import { VOLUME_PER_TIME_UNITS, MAINTENANCE_UNITS, TIME_PER_YEAR_UNITS, H2_VOLUME_POWER_UNITS } from './calculatorConstants';
 
-const MAP_TYPE = {
-    "Mechanical": "Mechanical",
-    "Electrochemical": "Electrochemical"
-}
 
 
 /**
@@ -189,8 +185,11 @@ function CompressorSetup ({
                             {selectedCompressor.id === 0 && (
                                 <Select
                                     label={t('compressorSetup.compressorType')}
-                                    data={[t("compressorSetup.type.mechanical"), t("compressorSetup.type.electrochemical")]}
-                                    value={t(selectedCompressor.uiType)}
+                                    data={[
+                                        { value: 'compressorSetup.type.mechanical', label: t("compressorSetup.type.mechanical") },
+                                        { value: 'compressorSetup.type.electrochemical', label: t("compressorSetup.type.electrochemical") }
+                                    ]} 
+                                    value={selectedCompressor.type}
                                     onChange={val => setSelectedCompressor({ ...selectedCompressor, type: MAP_TYPE[val] })}
                                     mb="md"
                                 />

@@ -24,7 +24,7 @@ export default function SetupBuilder() {
     // 2. Main Form State
     const [editingId, setEditingId] = useState(null);
     const [setupName, setSetupName] = useState('');
-    const [type, setType] = useState(t('electrolyzer.type.pem'));
+    const [type, setType] = useState('electrolyzer.type.pem');
     const [stackPrice, setStackPrice] = useState(10000);
     
     // Stack Configuration
@@ -86,7 +86,7 @@ export default function SetupBuilder() {
     const resetForm = () => {
         setEditingId(null);
         setSetupName('');
-        setType(t('electrolyzer.type.pem'));
+        setType('electrolyzer.type.pem');
         setStackPrice(10000);
         setSystemMaxStacks(4);
         setIncludedStacks(1);
@@ -199,7 +199,19 @@ export default function SetupBuilder() {
                                 <TextInput label={t('setupBuilder.configuration_name')} placeholder={t('setupBuilder.configuration_name_placeholder')} value={setupName} onChange={(e) => setSetupName(e.currentTarget.value)} required mb="sm" />
                             </Grid.Col>
                             <Grid.Col span={4}>
-                                <Select label={t('setupBuilder.technology_type')} data={[t('electrolyzer.type.pem'), t('electrolyzer.type.alkaline'), t('electrolyzer.type.aem'), t('electrolyzer.type.soec')]} value={type} onChange={setType} allowDeselect={false} mb="sm" />
+                                <Select 
+                                    label={t('setupBuilder.technology_type')} 
+                                    data={[
+                                        { value: 'electrolyzer.type.pem', label: t('electrolyzer.type.pem') },
+                                        { value: 'electrolyzer.type.alkaline', label: t('electrolyzer.type.alkaline') },
+                                        { value: 'electrolyzer.type.aem', label: t('electrolyzer.type.aem') },
+                                        { value: 'electrolyzer.type.soec', label: t('electrolyzer.type.soec') }
+                                    ]} 
+                                    value={type} 
+                                    onChange={setType} 
+                                    allowDeselect={false} 
+                                    mb="sm" 
+                                />
                             </Grid.Col>
 
                            
@@ -400,7 +412,7 @@ export default function SetupBuilder() {
                                         <Group justify="space-between" mb="xs" align="flex-start">
                                             <Box align="left">
                                                 <Title order={5}>{setup.name}</Title>
-                                                <Badge color="green" mt={4} variant="light">{setup.type}</Badge>
+                                                <Badge color="green" mt={4} variant="light">{t(setup.type)}</Badge>
                                             </Box>
                                             <Group gap="xs">
                                                 <Tooltip 
