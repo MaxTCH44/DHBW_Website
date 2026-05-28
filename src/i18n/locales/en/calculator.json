@@ -501,6 +501,15 @@
     "step_comp_stack_lifetime": {
       "title": "Compressor stack lifetime",
       "content": "Specify the operational lifespan of the electrochemical compressor's cell stack in working hours. Similar to an electrolyzer, the internal membranes degrade over time and require periodic replacement. The calculator uses this figure to automatically schedule and price future stack replacements over the project's entire lifetime. Check your supplier's technical specifications or warranty documents to find this exact duration."
+    },
+    "step_export": {
+      "title": "Export Your Results",
+      "content": "Once you have found a configuration that meets your goals, use the export buttons to save a copy of your results. The 'PDF' button generates a formatted report combining your input parameters and calculated results — LCOH, CAPEX, cost breakdown, and key physical metrics. The 'CSV' button exports the raw numbers as a spreadsheet file. We recommend exporting only when your configuration is finalized, as both files reflect the exact state of the calculator at the moment of export. "
+    }
+    ,
+    "step_save_to_compare": {
+      "title": "Save to Compare",
+      "content": "Once the calculator has produced results, use the 'Save to Compare' button to take a snapshot of your current configuration. Each saved setup is displayed as a summary card below the dashboard, showing its key financial and physical metrics side by side. You can save up multiple setups to compare the impact of different parameters — such as electrolyzer technology, electricity price, or project lifetime — at a glance. Use the 'Load inputs' button on any saved card to instantly restore the calculator to that exact configuration and continue exploring from there."
     }
   },
 

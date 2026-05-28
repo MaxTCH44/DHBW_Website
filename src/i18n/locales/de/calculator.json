@@ -501,6 +501,15 @@
     "step_comp_stack_lifetime": {
       "title": "Kompressor-Stack-Lebensdauer",
       "content": "Geben Sie die Betriebslebensdauer des elektrochemischen Kompressor-Zellstacks in Betriebsstunden an. Ähnlich wie bei einem Elektrolyseur degradieren die internen Membranen mit der Zeit und müssen periodisch ersetzt werden. Der Rechner verwendet diese Zahl, um zukünftige Stack-Ersätze automatisch zu planen und über die gesamte Projektlaufzeit zu bepreisen. Überprüfen Sie die technischen Spezifikationen oder Garantieunterlagen Ihres Lieferanten, um diese genaue Dauer zu ermitteln."
+    },
+    "step_export": {
+      "title": "Ergebnisse exportieren",
+      "content": "Sobald Sie eine Konfiguration gefunden haben, die Ihren Anforderungen entspricht, können Sie die Export-Schaltflächen verwenden, um eine Kopie Ihrer Ergebnisse zu speichern. Die Schaltfläche 'PDF' erstellt einen formatierten Bericht, der Ihre Eingabeparameter und berechneten Ergebnisse — LCOH, CAPEX, Kostenaufschlüsselung und wichtige physikalische Kennzahlen. Die Schaltfläche 'CSV' exportiert die Rohdaten als Tabellendatei. Wir empfehlen den Export erst dann durchzuführen, wenn Ihre Konfiguration abgeschlossen ist, da beide Dateien den genauen Zustand des Rechners zum Zeitpunkt des Exports widerspiegeln."
+    }
+    ,
+    "step_save_to_compare": {
+      "title": "Zum Vergleich speichern",
+      "content": "Sobald der Rechner Ergebnisse anzeigt, können Sie mit der Schaltfläche 'Zum Vergleich speichern' eine Momentaufnahme Ihrer aktuellen Konfiguration erstellen. Jede gespeicherte Konfiguration wird als kompakte Karte unterhalb des Dashboards angezeigt und stellt die wichtigsten finanziellen und technischen Kennzahlen direkt nebeneinander dar. Sie können mehrere Konfigurationen speichern, um den Einfluss verschiedener Parameter — wie Elektrolyseur-Technologie, Strompreis oder Projektlaufzeit — auf einen Blick zu vergleichen. Klicken Sie auf 'Eingaben laden' auf einer gespeicherten Karte, um den Rechner sofort in genau diesen Zustand zurückzuversetzen und Ihre Analyse von dort fortzuführen."
     }
   },
 

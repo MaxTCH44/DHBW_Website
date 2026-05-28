@@ -501,6 +501,15 @@
     "step_comp_stack_lifetime": {
       "title": "Durée de vie du stack du compresseur",
       "content": "Spécifiez la durée de vie opérationnelle du stack de cellules du compresseur électrochimique en heures de fonctionnement. Similaire à un électrolyseur, les membranes internes se dégradent avec le temps et nécessitent un remplacement périodique. Le calculateur utilise cette donnée pour planifier et chiffrer automatiquement les futurs remplacements de stacks sur l'ensemble de la durée de vie du projet. Consultez les spécifications techniques ou les documents de garantie de votre fournisseur pour trouver cette durée exacte."
+    },
+    "step_export": {
+      "title": "Exporter vos Résultats",
+      "content": "Une fois que vous avez trouvé une configuration adaptée à vos objectifs, utilisez les boutons d'export pour conserver une copie de vos résultats. Le bouton 'PDF' génère un rapport mis en forme combinant vos paramètres d'entrée et les résultats calculés — LCOH, CAPEX, décomposition des coûts et principaux indicateurs physiques. Le bouton 'CSV' exporte les données brutes sous forme de tableur. Nous vous recommandons d'exporter uniquement lorsque votre configuration est finalisée, les deux fichiers reflétant l'état exact du calculateur au moment de l'export."
+    }
+    ,
+    "step_save_to_compare": {
+      "title": "Sauvegarder pour comparer",
+      "content": "Une fois les résultats calculés, utilisez le bouton 'Sauvegarder pour comparer' pour prendre un instantané de votre configuration actuelle. Chaque configuration sauvegardée s'affiche sous forme de carte résumée sous le tableau de bord, présentant côte à côte les principaux indicateurs financiers et physiques. Vous pouvez sauvegarder plusieurs configurations pour comparer en un coup d'œil l'impact de différents paramètres — technologie d'électrolyseur, prix de l'électricité, durée du projet, etc. Utilisez le bouton 'Charger les paramètres' sur une carte sauvegardée pour restaurer instantanément le calculateur dans cet état exact et continuer votre analyse."
     }
   },
 
