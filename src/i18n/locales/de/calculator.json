@@ -123,7 +123,9 @@
     "stackLifetime": {
       "label": "Stack-Lebensdauer",
       "tooltip": "Die erwartete Betriebslebensdauer des Zellstacks in Stunden, bevor er degradiert und ersetzt werden muss. Dies treibt langfristige Wartungsberechnungen an."
-    }
+    },
+
+    "setupBuilder": "Verwenden Sie den Konfigurations-Builder, um Ihre eigenen detaillierten Konfigurationen zu speichern"
   },
   "resourcesCosts": {
     "title": "Ressourcenkosten",

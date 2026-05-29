@@ -123,7 +123,9 @@
     "stackLifetime": {
       "label": "Stack Lifetime",
       "tooltip": "The expected operational lifespan of the cell stack in hours before it degrades and requires replacement. This drives long-term maintenance calculations."
-    }
+    },
+
+    "setupBuilder": "Use the Setup Builder to save your own detailed configurations"
   },
   "resourcesCosts": {
     "title": "Resources Costs",

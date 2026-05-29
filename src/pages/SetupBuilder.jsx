@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Container, Title, Text, Card, Grid, Stack, Group, TextInput, Button, Divider, ActionIcon, Paper, Select, Badge, ScrollArea, Box, Tooltip, Flex } from '@mantine/core';
+import { Container, Title, Text, Card, Grid, Stack, Group, TextInput, Button, Divider, ActionIcon, Paper, Select, Badge, ScrollArea, Box, Tooltip, Flex, Modal } from '@mantine/core';
 import { useLocalStorage, useMediaQuery } from '@mantine/hooks';
 import { IconPlus, IconTrash, IconDeviceFloppy, IconBolt, IconDroplet, IconCurrencyEuro, IconPencil, IconInfoCircle } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
@@ -16,8 +16,9 @@ export default function SetupBuilder() {
     
     const { t } = useTranslation("setupBuilder");
     const isMobile = useMediaQuery('(max-width: 768px)');
-    
-    // État pour contrôler l'ouverture du tooltip au clic sur mobile
+
+    const [setupToDelete, setSetupToDelete] = useState(null);
+
     const [openedTooltipId, setOpenedTooltipId] = useState(null);
     
     // 1. Local storage for saved custom configurations
@@ -159,7 +160,6 @@ export default function SetupBuilder() {
         setIncludedStacks(setup.included_stacks || setup.max_stacks);
         setStackPower(setup.stack_power);
         
-        // On recharge les valeurs sous leur unité par défaut (% CAPEX et kWh/kg)
         setEnergyCons(setup.energy_consumption_kwh_per_kg / (H2_VOLUME_POWER_UNITS[0].factor || 1));
         setEnergyConsUnit(H2_VOLUME_POWER_UNITS[0]);
         
@@ -203,8 +203,8 @@ export default function SetupBuilder() {
                         <Grid>
                             <Grid.Col span={{ base: 12, sm: 8 }}>
                                 <BufferedTextInput 
-                                    label={t('setupBuilder.configuration_name')} 
-                                    placeholder={t('setupBuilder.configuration_name_placeholder')} 
+                                    label={<LabelWithTooltip label={t('setupBuilder.configuration_name.label')} tooltip={t('setupBuilder.configuration_name.tooltip')} />} 
+                                    placeholder={t('setupBuilder.configuration_name.placeholder')} 
                                     value={setupName} 
                                     onValueChange={setSetupName}
                                     required 
@@ -213,7 +213,7 @@ export default function SetupBuilder() {
                             </Grid.Col>
                             <Grid.Col span={{ base: 12, sm: 4 }}>
                                 <Select 
-                                    label={t('setupBuilder.technology_type')} 
+                                    label={<LabelWithTooltip label={t('setupBuilder.technology_type.label')} tooltip={t('setupBuilder.technology_type.tooltip')} />} 
                                     data={[
                                         { value: 'electrolyzer.type.pem', label: t('electrolyzer.type.pem') },
                                         { value: 'electrolyzer.type.alkaline', label: t('electrolyzer.type.alkaline') },
@@ -230,7 +230,7 @@ export default function SetupBuilder() {
                            
                             <Grid.Col span={{ base: 12, sm: 6 }}>
                                 <ValueInput 
-                                    label={t('setupBuilder.max_capacity')} 
+                                    label={<LabelWithTooltip label={t('setupBuilder.max_capacity.label')} tooltip={t('setupBuilder.max_capacity.tooltip')} />} 
                                     value={systemMaxStacks} 
                                     onValueChange={setSystemMaxStacks}
                                     namespace="setupBuilder" 
@@ -241,7 +241,7 @@ export default function SetupBuilder() {
 
                             <Grid.Col span={{ base: 12, sm: 6 }}>
                                 <SliderInput 
-                                    label={t('setupBuilder.included_stacks', { count: includedStacks })}
+                                    label={<LabelWithTooltip label={t('setupBuilder.included_stacks.label')} tooltip={t('setupBuilder.included_stacks.tooltip')} />}
                                     value={includedStacks} 
                                     onValueChange={setIncludedStacks}
                                     min={1}
@@ -252,7 +252,7 @@ export default function SetupBuilder() {
                             </Grid.Col>
                             <Grid.Col span={{ base: 12, sm: 4 }}>
                                 <ValueInput 
-                                    label={t('setupBuilder.single_stack_price')} 
+                                    label={<LabelWithTooltip label={t('setupBuilder.single_stack_price.label')} tooltip={t('setupBuilder.single_stack_price.tooltip')} />} 
                                     value={stackPrice} 
                                     onValueChange={setStackPrice} 
                                     namespace="setupBuilder"
@@ -261,7 +261,7 @@ export default function SetupBuilder() {
                             </Grid.Col>
                             <Grid.Col span={{ base: 12, sm: 4 }}>
                                 <ValueInput 
-                                    label={t('setupBuilder.stack_power')} 
+                                    label={<LabelWithTooltip label={t('setupBuilder.stack_power.label')} tooltip={t('setupBuilder.stack_power.tooltip')} />} 
                                     value={stackPower} 
                                     onValueChange={setStackPower} 
                                     namespace="setupBuilder"
@@ -271,7 +271,7 @@ export default function SetupBuilder() {
                             </Grid.Col>
                             <Grid.Col span={{ base: 12, sm: 4 }}>
                                 <TextInput 
-                                    label={<LabelWithTooltip label={t('setupBuilder.total_power')} tooltip={t('setupBuilder.total_power_tooltip')} />} 
+                                    label={<LabelWithTooltip label={t('setupBuilder.total_power.label')} tooltip={t('setupBuilder.total_power.tooltip')} />} 
                                     value={`${calculatedTotalPower} ${t('units.power_kw')}`} 
                                     readOnly
                                     variant="filled"
@@ -281,7 +281,7 @@ export default function SetupBuilder() {
 
                             <Grid.Col span={{ base: 12, sm: 6 }}>
                                 <ValueInput 
-                                    label={t('setupBuilder.energy_consumption')} 
+                                    label={<LabelWithTooltip label={t('setupBuilder.energy_consumption.label')} tooltip={t('setupBuilder.energy_consumption.tooltip')} />} 
                                     value={energyCons} 
                                     onValueChange={setEnergyCons} 
                                     namespace="setupBuilder"
@@ -292,7 +292,7 @@ export default function SetupBuilder() {
                             </Grid.Col>
                             <Grid.Col span={{ base: 12, sm: 6 }}>
                                 <ValueInput 
-                                    label={t('setupBuilder.base_water_consumption')} 
+                                    label={<LabelWithTooltip label={t('setupBuilder.base_water_consumption.label')} tooltip={t('setupBuilder.base_water_consumption.tooltip')} />} 
                                     value={waterCons} 
                                     onValueChange={setWaterCons} 
                                     namespace="setupBuilder"
@@ -302,7 +302,7 @@ export default function SetupBuilder() {
 
                             <Grid.Col span={{ base: 12, sm: 6 }}>
                                 <ValueInput 
-                                    label={<LabelWithTooltip label={t('setupBuilder.global_maintenance')} tooltip={t('setupBuilder.maintenance_tooltip')} />} 
+                                    label={<LabelWithTooltip label={t('setupBuilder.global_maintenance.label')} tooltip={t('setupBuilder.global_maintenance.tooltip')} />} 
                                     value={maintenance} 
                                     onValueChange={setMaintenance} 
                                     namespace="setupBuilder"
@@ -313,7 +313,7 @@ export default function SetupBuilder() {
                             </Grid.Col>
                             <Grid.Col span={{ base: 12, sm: 6 }}>
                                 <ValueInput 
-                                    label={t('setupBuilder.stack_lifetime')} 
+                                    label={<LabelWithTooltip label={t('setupBuilder.stack_lifetime.label')} tooltip={t('setupBuilder.stack_lifetime.tooltip')} />} 
                                     value={stackLifetime} 
                                     onValueChange={setStackLifetime} 
                                     namespace="setupBuilder"
@@ -330,24 +330,24 @@ export default function SetupBuilder() {
                         
                         <Paper withBorder p="md" radius="md" bg="gray.0" mb="md">
                             <Grid align="flex-end">
-                                <Grid.Col span={{ base: 12, sm: 6 }}>
+                                <Grid.Col span={{ base: 12, sm: 7 }}>
                                     <BufferedTextInput 
-                                        label={t('setupBuilder.component_name')} 
-                                        placeholder={t('setupBuilder.component_name_placeholder')} 
+                                        label={<LabelWithTooltip label={t('setupBuilder.component_name.label')} tooltip={t('setupBuilder.component_name.tooltip')} />} 
+                                        placeholder={t('setupBuilder.component_name.placeholder')} 
                                         value={auxName} 
                                         onValueChange={setAuxName}
                                         mb="sm" 
                                     />
                                 </Grid.Col>
-                                <Grid.Col span={{ base: 12, sm: 6 }}>
-                                    <ValueInput label={t('setupBuilder.price')} value={auxPrice} onValueChange={setAuxPrice} namespace="setupBuilder" units='units.eur' />
+                                <Grid.Col span={{ base: 12, sm: 5 }}>
+                                    <ValueInput label={<LabelWithTooltip label={t('setupBuilder.price.label')} tooltip={t('setupBuilder.price.tooltip')} />} value={auxPrice} onValueChange={setAuxPrice} namespace="setupBuilder" units='units.eur' />
                                 </Grid.Col>
                                 
                                 <Grid.Col span={{ base: 12, sm: 4 }}>
-                                    <ValueInput label={t('setupBuilder.power_consumption')} value={auxPower} onValueChange={setAuxPower} namespace="setupBuilder" units='units.power_kw' />
+                                    <ValueInput label={<LabelWithTooltip label={t('setupBuilder.power_consumption.label')} tooltip={t('setupBuilder.power_consumption.tooltip')} />} value={auxPower} onValueChange={setAuxPower} namespace="setupBuilder" units='units.power_kw' />
                                 </Grid.Col>
                                 <Grid.Col span={{ base: 12, sm: 4 }}>
-                                    <ValueInput label={t('setupBuilder.water_consumption_short')} value={auxWater} onValueChange={setAuxWater} namespace="setupBuilder" units='units.l_per_h' />
+                                    <ValueInput label={<LabelWithTooltip label={t('setupBuilder.water_consumption_short.label')} tooltip={t('setupBuilder.water_consumption_short.tooltip')} />} value={auxWater} onValueChange={setAuxWater} namespace="setupBuilder" units='units.l_per_h' />
                                 </Grid.Col>
                                 <Grid.Col span={{ base: 12, sm: 4 }}>
                                     <Button 
@@ -459,13 +459,13 @@ export default function SetupBuilder() {
                                                 <Tooltip 
                                                     label={
                                                         <Box p="xs">
-                                                            <Text size="xs"><b>{t('setupBuilder.single_stack_price')} :</b> {setup.stack_price.toLocaleString()} {t('units.eur')}</Text>
-                                                            <Text size="xs"><b>{t('setupBuilder.max_capacity')} :</b> {setup.max_stacks} {t('units.stacks')}</Text>
-                                                            <Text size="xs"><b>{t('setupBuilder.included_stacks')} :</b> {setup.included_stacks}</Text>
-                                                            <Text size="xs"><b>{t('setupBuilder.stack_power')} :</b> {setup.stack_power} {t('units.power_kw')}</Text>
-                                                            <Text size="xs"><b>{t('setupBuilder.base_water_consumption')} :</b> {setup.base_water_consumption} {t('units.l_per_h')}</Text>
-                                                            <Text size="xs"><b>{t('setupBuilder.global_maintenance')} :</b> {setup.maintenance_percent_capex} {t('units.percent')}</Text>
-                                                            <Text size="xs"><b>{t('setupBuilder.stack_lifetime')} :</b> {setup.stack_lifetime_hours} {t('units.hours')}</Text>
+                                                            <Text size="xs"><b>{t('setupBuilder.single_stack_price.label')} :</b> {setup.stack_price.toLocaleString()} {t('units.eur')}</Text>
+                                                            <Text size="xs"><b>{t('setupBuilder.max_capacity.label')} :</b> {setup.max_stacks} {t('units.stacks')}</Text>
+                                                            <Text size="xs"><b>{t('setupBuilder.included_stacks.label')} :</b> {setup.included_stacks}</Text>
+                                                            <Text size="xs"><b>{t('setupBuilder.stack_power.label')} :</b> {setup.stack_power} {t('units.power_kw')}</Text>
+                                                            <Text size="xs"><b>{t('setupBuilder.base_water_consumption.label')} :</b> {setup.base_water_consumption} {t('units.l_per_h')}</Text>
+                                                            <Text size="xs"><b>{t('setupBuilder.global_maintenance.label')} :</b> {setup.maintenance_percent_capex} {t('units.percent')}</Text>
+                                                            <Text size="xs"><b>{t('setupBuilder.stack_lifetime.label')} :</b> {setup.stack_lifetime_hours} {t('units.hours')}</Text>
                                                             
                                                             {setup.auxiliaries && setup.auxiliaries.length > 0 && (
                                                                 <>
@@ -482,7 +482,7 @@ export default function SetupBuilder() {
                                                     withArrow
                                                     multiline
                                                     bg="dark.7"
-                                                    zIndex={50} // S'assure que le tooltip passe sous le Header
+                                                    zIndex={50}
                                                     opened={isMobile ? openedTooltipId === setup.id : undefined}
                                                 >
                                                     <ActionIcon 
@@ -501,7 +501,7 @@ export default function SetupBuilder() {
                                                 <ActionIcon color="blue" variant="light" title={t('setupBuilder.edit_setup_tooltip')} onClick={() => handleEditSetup(setup)}>
                                                     <IconPencil size={16} />
                                                 </ActionIcon>
-                                                <ActionIcon color="red" variant="light" title={t('setupBuilder.delete_setup_tooltip')} onClick={() => handleDeleteSetup(setup.id)}>
+                                                <ActionIcon color="red" variant="light" title={t('setupBuilder.delete_setup_tooltip')} onClick={() => setSetupToDelete(setup.id)}>
                                                     <IconTrash size={16} />
                                                 </ActionIcon>
                                             </Group>
@@ -512,7 +512,7 @@ export default function SetupBuilder() {
                                         <Grid gutter="xs">
                                             <Grid.Col span={{ base: 12, sm: 6 }}><Text size="xs" c="dimmed" tt="uppercase">{t('setupBuilder.total_capex')}</Text><Text fw={700} c="dark.8">{setup.price.toLocaleString()} {t('units.eur')}</Text></Grid.Col>
                                             <Grid.Col span={{ base: 12, sm: 6 }}><Text size="xs" c="dimmed" tt="uppercase">{t('setupBuilder.power')}</Text><Text fw={700} c="dark.8">{setup.power} {t('units.power_kw')}</Text></Grid.Col>
-                                            <Grid.Col span={{ base: 12, sm: 6 }}><Text size="xs" c="dimmed" tt="uppercase">{t('setupBuilder.energy_consumption')}</Text><Text fw={700} c="dark.8">{setup.energy_consumption_kwh_per_kg} {t('units.kwh_per_kg')}</Text></Grid.Col>
+                                            <Grid.Col span={{ base: 12, sm: 6 }}><Text size="xs" c="dimmed" tt="uppercase">{t('setupBuilder.energy_consumption.label')}</Text><Text fw={700} c="dark.8">{setup.energy_consumption_kwh_per_kg} {t('units.kwh_per_kg')}</Text></Grid.Col>
                                             <Grid.Col span={{ base: 12, sm: 6 }}><Text size="xs" c="dimmed" tt="uppercase">{t('setupBuilder.bop_consumption')}</Text><Text fw={700} c="dark.8">{setup.total_auxiliary_consumption} {t('units.power_kw')}</Text></Grid.Col>
                                             <Grid.Col span={12}><Text size="xs" c="dimmed" tt="uppercase">{t('setupBuilder.total_water_consumption')}</Text><Text fw={700} c="dark.8">{setup.water_consumption_l_per_h} {t('units.l_per_h')}</Text></Grid.Col>
                                         </Grid>
@@ -523,6 +523,30 @@ export default function SetupBuilder() {
                     )}
                 </Grid.Col>
             </Grid>
+            <Modal 
+                opened={setupToDelete !== null} 
+                onClose={() => setSetupToDelete(null)} 
+                title={t("setupBuilder.deleteModal.title")} 
+                centered
+            >
+                <Text size="sm" mb="xl">
+                    {t("setupBuilder.deleteModal.text")} 
+                </Text>
+                <Group justify="flex-end">
+                    <Button variant="default" onClick={() => setSetupToDelete(null)}>
+                        {t("setupBuilder.deleteModal.cancelButton")}
+                    </Button>
+                    <Button 
+                        color="red" 
+                        onClick={() => {
+                            handleDeleteSetup(setupToDelete);
+                            setSetupToDelete(null);
+                        }}
+                    >
+                        {t("setupBuilder.deleteModal.acceptButton")}
+                    </Button>
+                </Group>
+            </Modal>
         </Container>
     );
 }

@@ -123,7 +123,9 @@
     "stackLifetime": {
       "label": "Durée de vie du stack",
       "tooltip": "Durée de vie opérationnelle attendue du stack de cellules en heures avant dégradation et remplacement nécessaire. Ce paramètre conditionne les calculs de maintenance à long terme."
-    }
+    },
+
+    "setupBuilder": "Utilisez le Constructeur de configuration pour enregistrer vos propres configurations détaillées"
   },
   "resourcesCosts": {
     "title": "Coûts des Ressources",
