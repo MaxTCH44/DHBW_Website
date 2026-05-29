@@ -377,6 +377,10 @@ function ElectrolyzerSetup ({
                             onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, stack_lifetime_hours: val })}
                             nullBlocker
                         />
+
+                        {selectedElectrolyzer.id === 0 && <Anchor component={Link} to="/setup" size="xs" mb="sm" c="blue">
+                            {t('electrolyzer.setupBuilder')}
+                        </Anchor>}
                     </DetailSection>
                 )}
             </Paper>

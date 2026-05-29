@@ -4,35 +4,80 @@
 
     "setupBuilder": {
         "create_new_setup": "Créer une nouvelle configuration",
-        "configuration_name": "Nom de la configuration",
-        "configuration_name_placeholder": "Ex: Usine Test Alpha",
-        "technology_type": "Technologie",
+        
+        "configuration_name": {
+            "label": "Nom de la configuration",
+            "placeholder": "Ex: Usine Test Alpha",
+            "tooltip": "Le nom sous lequel cette configuration sera sauvegardée."
+        },
+        "technology_type": {
+            "label": "Technologie",
+            "tooltip": "Le type de technologie de l'électrolyseur (PEM, Alcalin, AEM, SOEC)."
+        },
 
         "electrolyzer_specs": "Spécificités de l'électrolyseur",
-        "stack_power": "Puissance d'un Stack",
+        "stack_power": {
+            "label": "Puissance d'un Stack",
+            "tooltip": "La puissance électrique requise pour faire fonctionner un seul stack."
+        },
         "max_stacks_per_unit": "Stacks max par unité",
-        "max_capacity": "Capacité max (Stacks possibles)",
-        "included_stacks": "Nombre de Stacks inclus",
-        "total_power": "Puissance totale",
-        "total_power_tooltip": "La capacité électrique totale de la machine",
-        "base_water_consumption": "Conso. d'Eau de base",
-        "energy_consumption": "Conso. Électrique",
+        "max_capacity": {
+            "label": "Capacité max (Stacks possibles)",
+            "tooltip": "Le nombre maximum de stacks que l'unité de base peut accueillir physiquement."
+        },
+        "included_stacks": {
+            "label": "Nombre de Stacks inclus",
+            "tooltip": "Le nombre de stacks réellement installés dans la configuration de départ."
+        },
+        "total_power": {
+            "label": "Puissance totale",
+            "tooltip": "La capacité électrique totale de la machine."
+        },
+        "base_water_consumption": {
+            "label": "Conso. d'Eau de base",
+            "tooltip": "La consommation d'eau de l'électrolyseur seul, sans compter ses auxiliaires."
+        },
+        "energy_consumption": {
+            "label": "Conso. Électrique",
+            "tooltip": "L'énergie électrique nécessaire pour produire un kilogramme d'hydrogène."
+        },
         "water_consumption": "Consommation d'Eau",
 
         "financials": "Données Financières",
-        "single_stack_price": "Prix d'un Stack interne",
-        "global_maintenance": "Maintenance annuelle",
-        "maintenance_tooltip": "Pourcentage du CAPEX alloué chaque année à la maintenance",
-        "stack_lifetime": "Durée de vie d'un Stack",
+        "single_stack_price": {
+            "label": "Prix d'un Stack interne",
+            "tooltip": "Le coût d'achat unitaire pour un seul stack."
+        },
+        "global_maintenance": {
+            "label": "Maintenance annuelle",
+            "tooltip": "Pourcentage du CAPEX (coût total) alloué chaque année à la maintenance."
+        },
+        "stack_lifetime": {
+            "label": "Durée de vie d'un Stack",
+            "tooltip": "Le nombre d'heures de fonctionnement estimé avant de devoir remplacer le stack."
+        },
 
         "auxiliary_equipments": "Équipements Auxiliaires (BOP)",
         "auxiliary_equipments_description": "Ajoutez des compresseurs, pompes ou refroidisseurs.",
         "add_component": "Ajouter l'équipement",
-        "component_name": "Nom de l'auxiliaire",
-        "component_name_placeholder": "Ex: Chiller 5kW",
-        "price": "Prix",
-        "power_consumption": "Conso. Électrique",
-        "water_consumption_short": "Conso. d'Eau",
+        
+        "component_name": {
+            "label": "Nom de l'auxiliaire",
+            "placeholder": "Ex: Chiller 5kW",
+            "tooltip": "Le nom de l'équipement additionnel."
+        },
+        "price": {
+            "label": "Prix",
+            "tooltip": "Le coût d'achat de cet équipement auxiliaire."
+        },
+        "power_consumption": {
+            "label": "Conso. Électrique",
+            "tooltip": "La puissance électrique supplémentaire consommée par cet équipement."
+        },
+        "water_consumption_short": {
+            "label": "Conso. d'Eau",
+            "tooltip": "La consommation en eau spécifique générée par cet équipement."
+        },
         
         "added_power": "Puissance ajoutée",
         "added_water": "Eau ajoutée",
@@ -66,7 +111,14 @@
         "cap": "Cap",
         "sys": "sys",
 
-        "balance_of_plant": "Balance of Plant (Inclus)"
+        "balance_of_plant": "Balance of Plant (Inclus)",
+
+        "deleteModal": {
+            "title": "Supprimer la configuration",
+            "text": "Êtes-vous sûr de vouloir supprimer cette configuration ? Cette action est irréversible.",
+            "cancelButton": "Annuler",
+            "acceptButton": "Supprimer"
+        }
     },
     
     "units": {
