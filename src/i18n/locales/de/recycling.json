@@ -77,7 +77,8 @@
     "header": {
       "title": "Wasserstoff-Recycling-Rechner",
       "description": "Verschwenden Sie keinen wertvollen Wasserstoff mehr. Berechnen Sie, wie viel H₂ Sie jährlich zurückgewinnen können, und ermitteln Sie Ihren Return on Investment (ROI).",
-      "learnMoreButton": "Erfahren Sie, wie der Recyclingprozess funktioniert"
+      "learnMoreButton": "Erfahren Sie, wie der Recyclingprozess funktioniert",
+      "tooltipLabel": "Klicken Sie für schrittweise Hilfe"
     },
     "reset": {
       "link": "Alle Eingaben auf Standardwerte zurücksetzen",
@@ -123,5 +124,44 @@
     "tons": "Tonnen",
 
     "years": "Jahre"
+  },
+
+  "advices": {
+    "step": "Schritt",
+    "previous": "Zurück",
+    "next": "Weiter",
+    "finish": "Beenden",
+    "step_mixed_gas_type": {
+      "title": "Mischgastyp",
+      "content": "Wählen Sie die Art des industriellen Abgases aus, das Wasserstoff enthält. Dies bestimmt die Komplexität und die erforderlichen Trenntechnologien (PSA, EHC)."
+    },
+    "step_annual_mixed_gas": {
+      "title": "Jährliches Mischgasvolumen",
+      "content": "Geben Sie das Gesamtvolumen des pro Jahr produzierten Abgases an. Dies hilft bei der Dimensionierung der Kapazität der Recyclinganlage."
+    },
+    "step_h2_concentration": {
+      "title": "H2-Konzentration",
+      "content": "Geben Sie den prozentualen Anteil an reinem Wasserstoff im Abgas an. Eine höhere Konzentration verbessert die Rentabilität erheblich."
+    },
+    "step_current_h2_price": {
+      "title": "Aktueller H2-Kaufpreis",
+      "content": "Geben Sie den Preis ein, zu dem Sie derzeit externen Wasserstoff beziehen. Dies dient als Grundlage zur Berechnung Ihrer Kapitalrendite (ROI)."
+    },
+    "step_system_price": {
+      "title": "CAPEX des Recyclingsystems",
+      "content": "Schätzen Sie die anfänglichen Investitionsausgaben für das System. Dieser Wert wird automatisch basierend auf dem Gastyp berechnet, kann aber manuell angepasst werden."
+    },
+    "step_maintenance_costs": {
+      "title": "Wartungskosten",
+      "content": "Legen Sie die jährlichen Wartungskosten (OPEX) für das System fest, entweder als Pauschalbetrag (€) oder als Prozentsatz der Anfangsinvestition."
+    },
+    "step_energy_consumption": {
+      "title": "Energieverbrauch",
+      "content": "Geben Sie die Energie an, die für das Recycling von 1 kg Wasserstoff erforderlich ist. Komplexe Reinigungssysteme (wie PSA) verbrauchen mehr Energie."
+    },
+    "step_electricity_price": {
+      "title": "Strompreis",
+      "content": "Geben Sie Ihre Stromkosten ein. Dies ist der Hauptfaktor, der Ihre Betriebskosten für die Wasserstoffrückgewinnung beeinflusst."
+    }
   }
 }
