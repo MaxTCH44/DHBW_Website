@@ -1,5 +1,5 @@
 import { Select, Checkbox, Stack, Tooltip, Box, Text } from '@mantine/core';
-import { useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import SliderInput from '../SliderInput';
@@ -94,7 +94,7 @@ const EQUIPMENT_MAPS = {
  * @param {boolean} [props.isAdvancedMode=true] - Toggles the visibility of advanced inventory features.
  * @param {string} [props.id=null] - Optional HTML id for DOM targeting and tutorial steps.
  */
-export default function EquipmentSelector({ 
+function EquipmentSelector({ 
     label, 
     itemsList, 
     selectedItem, 
@@ -108,6 +108,12 @@ export default function EquipmentSelector({
 }) {
 
     const { t, i18n } = useTranslation("calculator");
+
+    const [localChecked, setLocalChecked] = useState(quantityOwned === 1);
+
+    useEffect(() => {
+        setLocalChecked(quantityOwned === 1);
+    }, [quantityOwned]);
     
     // Prevents the user from owning more units than what the current physical plant sizing actually requires
     useEffect(() => {
@@ -202,8 +208,12 @@ export default function EquipmentSelector({
                 max <= 1 ?
                 <Checkbox
                     label={ownedLabel}
-                    checked={quantityOwned === 1}
-                    onChange={(e) => onOwnedChange(e.currentTarget.checked ? 1 : 0)}
+                    checked={localChecked}
+                    onChange={(e) => {
+                        const isChecked = e.currentTarget.checked;
+                        setLocalChecked(isChecked);
+                        onOwnedChange(isChecked ? 1 : 0)
+                    }}
                     mt="xs"
                 />
                 :
@@ -219,3 +229,5 @@ export default function EquipmentSelector({
         </Stack>
     );
 }
+
+export default memo(EquipmentSelector);
