@@ -144,36 +144,36 @@
     "next": "Suivant",
     "finish": "Terminer",
     "step_mixed_gas_type": {
-      "title": "Type de gaz mélangé",
-      "content": "Sélectionnez le type de gaz d'échappement industriel contenant l'hydrogène. Cela détermine la complexité et les technologies de séparation (PSA, EHC) nécessaires."
+      "title": "Type de gaz d'échappement",
+      "content": "Sélectionnez le gaz dominant qui accompagne l'hydrogène dans les rejets de votre usine. Cette information (généralement disponible dans vos fiches de sécurité ou rapports d'analyse) détermine la complexité de la séparation nécessaire (PSA, membranes) et calibre automatiquement l'estimation initiale de votre investissement (CAPEX)."
     },
     "step_annual_mixed_gas": {
       "title": "Volume annuel de gaz",
-      "content": "Saisissez le volume total de gaz d'échappement produit par an. Cette donnée est cruciale pour dimensionner la capacité de la centrale de recyclage."
+      "content": "Renseignez le volume total du mélange gazeux relâché dans l'atmosphère chaque année, que vous pouvez relever sur vos compteurs de débit ou bilans massiques. Ce paramètre dimensionne la capacité de la centrale de recyclage : plus le volume est élevé, plus d'importantes économies d'échelle s'appliquent."
     },
     "step_h2_concentration": {
       "title": "Concentration en H2",
-      "content": "Indiquez le pourcentage d'hydrogène pur présent dans le gaz d'échappement. Une concentration plus élevée améliore drastiquement la rentabilité de la récupération."
+      "content": "Indiquez le pourcentage exact d'hydrogène pur contenu dans le gaz d'échappement (via vos capteurs CEMS ou rapports de chromatographie). Une concentration élevée (par exemple >40%) rend l'extraction beaucoup moins énergivore et augmente radicalement le taux de récupération."
     },
     "step_current_h2_price": {
-      "title": "Prix d'achat actuel de l'H2",
-      "content": "Renseignez le prix auquel vous achetez actuellement l'hydrogène externe. Cela sert de référence pour calculer vos économies (Retour sur Investissement)."
+      "title": "Prix d'achat actuel (H2)",
+      "content": "Il s'agit du coût auquel vous achetez l'hydrogène neuf à vos fournisseurs pour compenser vos pertes de procédé (vérifiable sur vos factures ou contrats d'approvisionnement). C'est la base financière du modèle : chaque kilo recyclé sera multiplié par ce prix pour définir vos économies brutes annuelles."
     },
     "step_system_price": {
-      "title": "CAPEX du système",
-      "content": "Coût d'investissement initial estimé pour le système de recyclage. Cette valeur est calculée automatiquement selon le gaz, mais peut être ajustée manuellement."
+      "title": "Investissement initial (CAPEX)",
+      "content": "Coût estimé pour l'achat, l'installation et la mise en route du système. Le calculateur propose une estimation automatique basée sur des algorithmes industriels. Pour l'affiner, vous pouvez saisir manuellement le montant d'un devis réel (ce qui désactivera l'estimation automatique). C'est le montant total à amortir."
     },
     "step_maintenance_costs": {
-      "title": "Coûts de maintenance",
-      "content": "Définissez les coûts annuels de maintenance (OPEX) du système. Ils peuvent être fixés en valeur absolue (€) ou en pourcentage de l'investissement initial."
+      "title": "Frais de maintenance (OPEX)",
+      "content": "Coûts récurrents pour assurer le bon fonctionnement du système (filtres, révision des compresseurs, etc.). En l'absence de contrat de maintenance (SLA), le standard industriel est d'environ 3% du CAPEX. Cette charge d'exploitation sera déduite de vos économies annuelles pour calculer votre véritable Retour sur Investissement."
     },
     "step_energy_consumption": {
-      "title": "Consommation énergétique",
-      "content": "Indiquez l'énergie requise pour recycler 1 kg d'hydrogène. Les systèmes de purification complexes (comme le PSA) sont plus énergivores."
+      "title": "Consommation du système",
+      "content": "Énergie électrique nécessaire pour extraire, purifier et recompresser 1 kg d'hydrogène. L'algorithme l'estime selon le gaz sélectionné, mais vous pouvez écraser cette valeur en utilisant les fiches techniques de votre équipement. Cela représente le principal coût variable de votre installation."
     },
     "step_electricity_price": {
       "title": "Prix de l'électricité",
-      "content": "Renseignez le coût de votre électricité (réseau ou autoproduite). C'est le principal facteur qui impactera vos coûts opérationnels (OPEX)."
+      "content": "Le coût moyen payé par votre usine pour s'alimenter en électricité, trouvable sur vos factures ou contrat d'achat (PPA). Multiplié par la consommation de la machine, il détermine directement le coût opérationnel de production de votre hydrogène recyclé."
     }
   }
 }

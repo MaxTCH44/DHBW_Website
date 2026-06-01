@@ -132,36 +132,36 @@
     "next": "Weiter",
     "finish": "Beenden",
     "step_mixed_gas_type": {
-      "title": "Mischgastyp",
-      "content": "Wählen Sie die Art des industriellen Abgases aus, das Wasserstoff enthält. Dies bestimmt die Komplexität und die erforderlichen Trenntechnologien (PSA, EHC)."
+      "title": "Abgastyp",
+      "content": "Wählen Sie das Hauptgas, das den Wasserstoff in Ihren industriellen Abgasen begleitet. Diese Information (zu finden in Sicherheitsdatenblättern oder Abgasanalysen) bestimmt die Komplexität der Trennung (PSA, Membranen) und berechnet automatisch die erste Schätzung Ihrer Investition (CAPEX)."
     },
     "step_annual_mixed_gas": {
       "title": "Jährliches Mischgasvolumen",
-      "content": "Geben Sie das Gesamtvolumen des pro Jahr produzierten Abgases an. Dies hilft bei der Dimensionierung der Kapazität der Recyclinganlage."
+      "content": "Geben Sie das jährliche Gesamtvolumen des Gasgemisches an, das in die Atmosphäre abgegeben wird (abzulesen an Durchflussmessern oder Massenbilanzen). Dieser Parameter dimensioniert die Kapazität der Recyclinganlage: Bei höheren Volumina greifen stärkere Skaleneffekte."
     },
     "step_h2_concentration": {
       "title": "H2-Konzentration",
-      "content": "Geben Sie den prozentualen Anteil an reinem Wasserstoff im Abgas an. Eine höhere Konzentration verbessert die Rentabilität erheblich."
+      "content": "Geben Sie den genauen prozentualen Anteil an reinem Wasserstoff im Abgas an (via CEMS-Sensoren oder Chromatographie-Berichte). Eine hohe Konzentration (z. B. >40%) senkt den Energieverbrauch der Extraktion drastisch und erhöht die Rückgewinnungsrate deutlich."
     },
     "step_current_h2_price": {
-      "title": "Aktueller H2-Kaufpreis",
-      "content": "Geben Sie den Preis ein, zu dem Sie derzeit externen Wasserstoff beziehen. Dies dient als Grundlage zur Berechnung Ihrer Kapitalrendite (ROI)."
+      "title": "Aktueller Einkaufspreis (H2)",
+      "content": "Dies sind die Kosten, zu denen Sie frischen Wasserstoff einkaufen, um Prozessverluste auszugleichen (zu finden in Rechnungen oder Lieferverträgen). Dies ist die finanzielle Basis des Modells: Jedes recycelte Kilo wird mit diesem Preis multipliziert, um Ihre jährlichen Bruttoeinsparungen zu definieren."
     },
     "step_system_price": {
-      "title": "CAPEX des Recyclingsystems",
-      "content": "Schätzen Sie die anfänglichen Investitionsausgaben für das System. Dieser Wert wird automatisch basierend auf dem Gastyp berechnet, kann aber manuell angepasst werden."
+      "title": "Anfangsinvestition (CAPEX)",
+      "content": "Geschätzte Kosten für Kauf, Installation und Inbetriebnahme des Systems. Der Rechner bietet eine automatische Schätzung basierend auf Industriealgorithmen. Für genauere Werte können Sie ein echtes Angebot manuell eingeben (wodurch die automatische Schätzung deaktiviert wird). Dies ist der abzuschreibende Gesamtbetrag."
     },
     "step_maintenance_costs": {
-      "title": "Wartungskosten",
-      "content": "Legen Sie die jährlichen Wartungskosten (OPEX) für das System fest, entweder als Pauschalbetrag (€) oder als Prozentsatz der Anfangsinvestition."
+      "title": "Wartungskosten (OPEX)",
+      "content": "Wiederkehrende Kosten für den ordnungsgemäßen Betrieb des Systems (Filter, Kompressorwartung etc.). Ohne Wartungsvertrag (SLA) liegt der Industriestandard bei ca. 3% des CAPEX. Diese Betriebskosten werden von Ihren jährlichen Einsparungen abgezogen, um den tatsächlichen ROI zu berechnen."
     },
     "step_energy_consumption": {
-      "title": "Energieverbrauch",
-      "content": "Geben Sie die Energie an, die für das Recycling von 1 kg Wasserstoff erforderlich ist. Komplexe Reinigungssysteme (wie PSA) verbrauchen mehr Energie."
+      "title": "Systemverbrauch",
+      "content": "Elektrische Energie, die zur Extraktion, Reinigung und Komprimierung von 1 kg Wasserstoff benötigt wird. Der Algorithmus schätzt dies je nach Gas, Sie können diesen Wert jedoch anhand der Datenblätter Ihrer Geräte überschreiben. Dies stellt die wichtigsten variablen Kosten Ihrer Anlage dar."
     },
     "step_electricity_price": {
       "title": "Strompreis",
-      "content": "Geben Sie Ihre Stromkosten ein. Dies ist der Hauptfaktor, der Ihre Betriebskosten für die Wasserstoffrückgewinnung beeinflusst."
+      "content": "Die durchschnittlichen Stromkosten Ihrer Anlage, zu finden auf Stromrechnungen oder in PPA-Verträgen. Multipliziert mit dem Verbrauch der Maschine bestimmt dies direkt die Betriebskosten Ihres recycelten Wasserstoffs."
     }
   }
 }

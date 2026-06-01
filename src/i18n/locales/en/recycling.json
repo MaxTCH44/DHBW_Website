@@ -135,37 +135,36 @@
     "next": "Next",
     "finish": "Finish",
     "step_mixed_gas_type": {
-      "title": "Mixed Gas Type",
-      "content": "Select the type of industrial exhaust gas containing hydrogen. This determines the complexity and the recycling technologies (PSA, EHC) required."
+      "title": "Exhaust Gas Type",
+      "content": "Select the dominant gas that accompanies hydrogen in your plant's emissions. This information (found in MSDS or emission reports) determines the complexity of separation required (PSA, membranes) and automatically calibrates the baseline estimate of your investment (CAPEX)."
     },
     "step_annual_mixed_gas": {
       "title": "Annual Mixed Gas Volume",
-      "content": "Enter the total volume of exhaust gas produced per year. This helps size the processing capacity of the recycling plant."
+      "content": "Enter the total volume of the gas mixture released into the atmosphere each year, which can be read from flow meters or mass balances. This parameter sizes the recycling plant's capacity: higher volumes trigger stronger economies of scale."
     },
     "step_h2_concentration": {
       "title": "H2 Concentration",
-      "content": "Specify the percentage of pure hydrogen present in the exhaust gas. A higher concentration improves recovery rates and profitability."
+      "content": "Indicate the exact percentage of pure hydrogen in the exhaust gas (via CEMS sensors or chromatography reports). A high concentration (e.g., >40%) makes extraction much less energy-intensive and drastically increases the recovery rate."
     },
     "step_current_h2_price": {
-      "title": "Current H2 Purchase Price",
-      "content": "Enter the price at which you currently buy external hydrogen. This establishes the baseline for calculating your Return on Investment (ROI)."
+      "title": "Current Purchase Price (H2)",
+      "content": "This is the cost at which you buy fresh hydrogen from suppliers to cover process losses (found in invoices or contracts). This forms the financial baseline of the model: every recycled kilogram is multiplied by this price to define your gross annual savings."
     },
     "step_system_price": {
-      "title": "Recycling System CAPEX",
-      "content": "Estimate the initial capital expenditure for the recycling system. This value is auto-calculated based on the gas type but can be adjusted manually."
+      "title": "Initial Investment (CAPEX)",
+      "content": "Estimated cost for the purchase, installation, and commissioning of the system. The calculator offers an automatic estimate based on industrial algorithms. To refine it, you can manually enter a real quote amount (which disables the automatic estimation). This is the total amount to amortize."
     },
     "step_maintenance_costs": {
-      "title": "Maintenance Costs",
-      "content": "Set the annual operational and maintenance costs (OPEX) for the system, either as a flat fee (€) or a percentage of the initial CAPEX."
+      "title": "Maintenance Costs (OPEX)",
+      "content": "Recurring costs to keep the system running properly (filters, compressor overhauls, etc.). Without a maintenance contract (SLA), the industry standard is around 3% of CAPEX. These operating expenses are deducted from your annual savings to calculate the true Return on Investment."
     },
     "step_energy_consumption": {
-      "title": "Energy Consumption",
-      "content": "Indicate the energy required to recycle 1 kg of hydrogen. Complex purification systems like PSA will consume more energy."
+      "title": "System Consumption",
+      "content": "Electrical energy required to extract, purify, and recompress 1 kg of hydrogen. The algorithm estimates this based on the selected gas, but you can overwrite this value using your equipment's datasheets. This represents the main variable cost of your installation."
     },
     "step_electricity_price": {
       "title": "Electricity Price",
-      "content": "Enter the cost of your grid electricity. This directly impacts the operational costs of hydrogen recovery."
+      "content": "The average electricity cost paid by your plant, found on utility bills or PPA contracts. Multiplied by the machine's consumption, it directly determines the operating cost of producing your recycled hydrogen."
     }
   }
-
 }
