@@ -221,23 +221,21 @@ function ElectrolyzerSetup ({
                                 mb="md"
                             />
                         )}
-
-                        {!(electrolyzerSettings.owned === electrolyzerQuantity) && (
-                            <ValueInput
-                                label={
-                                    <LabelWithTooltip
-                                        label={t('electrolyzer.price.label')}
-                                        tooltip={t('electrolyzer.price.tooltip')}
-                                    />
-                                }
-                                id="electrolyzer_price"
-                                units="units.eur"
-                                currentUnit="units.eur"
-                                namespace="calculator"
-                                value={selectedElectrolyzer.price}
-                                onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, price: val })}
-                            />
-                        )}
+                    
+                        <ValueInput
+                            label={
+                                <LabelWithTooltip
+                                    label={t('electrolyzer.price.label')}
+                                    tooltip={t('electrolyzer.price.tooltip')}
+                                />
+                            }
+                            id="electrolyzer_price"
+                            units="units.eur"
+                            currentUnit="units.eur"
+                            namespace="calculator"
+                            value={selectedElectrolyzer.price}
+                            onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, price: val })}
+                        />
 
                         <ValueInput
                             label={

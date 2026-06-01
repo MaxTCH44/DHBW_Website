@@ -186,8 +186,8 @@ function CompressorSetup ({
                                 <Select
                                     label={t('compressorSetup.compressorType')}
                                     data={[
-                                        { value: 'compressorSetup.type.mechanical', label: t("compressorSetup.type.mechanical") },
-                                        { value: 'compressorSetup.type.electrochemical', label: t("compressorSetup.type.electrochemical") }
+                                        { value: 'Mechanical', label: t("compressorSetup.type.mechanical") },
+                                        { value: 'Electrochemical', label: t("compressorSetup.type.electrochemical") }
                                     ]} 
                                     value={selectedCompressor.type}
                                     onChange={val => setSelectedCompressor({ ...selectedCompressor, type: val })}
@@ -195,22 +195,20 @@ function CompressorSetup ({
                                 />
                             )}
 
-                            {!(compressorSettings.owned === compressorQuantity) && (
-                                <ValueInput
-                                    label={
-                                        <LabelWithTooltip 
-                                            label={t('compressorSetup.purchasePrice.label')} 
-                                            tooltip={t('compressorSetup.purchasePrice.tooltip')} 
-                                        />
-                                    }
-                                    id="compressor_price"
-                                    units="units.eur"
-                                    currentUnit="units.eur"
-                                    namespace="calculator"
-                                    value={selectedCompressor.price}
-                                    onValueChange={val => setSelectedCompressor({ ...selectedCompressor, price: val })}
-                                />
-                            )}
+                            <ValueInput
+                                label={
+                                    <LabelWithTooltip 
+                                        label={t('compressorSetup.purchasePrice.label')} 
+                                        tooltip={t('compressorSetup.purchasePrice.tooltip')} 
+                                    />
+                                }
+                                id="compressor_price"
+                                units="units.eur"
+                                currentUnit="units.eur"
+                                namespace="calculator"
+                                value={selectedCompressor.price}
+                                onValueChange={val => setSelectedCompressor({ ...selectedCompressor, price: val })}
+                            />
 
                             <ValueInput
                                 label={

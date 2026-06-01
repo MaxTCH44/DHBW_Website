@@ -386,12 +386,6 @@ export default function Calculator() {
             if ((step.isCompressorSection || step.openSection === "compressor") && !isCompressorNeeded) {
                 return false;
             }
-            if (step.isPriceInput && step.openSection === "electrolyzer" && electrolyzerQuantity === electrolyzerSettings.owned) {
-                return false;
-            }
-            if (step.isPriceInput && step.openSection === "compressor" && compressorQuantity === compressorSettings.owned) {
-                return false;
-            }
             if (step.isOwnedStackElectrolyser && step.openSection === "electrolyzer" && totalStacksNeeded === 1 && electrolyzerSettings.owned === 1){
                 return false;
             }
@@ -400,7 +394,7 @@ export default function Calculator() {
             }
             return true;
         });
-    }, [selectedCompressor?.type, isCompressorNeeded, electrolyzerQuantity, electrolyzerSettings.owned, compressorQuantity, compressorSettings.owned, advices]);
+    }, [selectedCompressor?.type, isCompressorNeeded, electrolyzerSettings.owned, compressorSettings.owned, totalStacksNeeded, totalCompStacksNeeded, advices]);
 
     // --- 9. COMPARISON ---
 

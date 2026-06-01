@@ -169,6 +169,10 @@
       "tooltip": "The average percentage of annual prices increase."
     }
   },
+
+  "Mechanical": "Mechanical",
+  "Electrochemical": "Electrochemical",
+
   "compressorSetup": {
     "compressors": {
       "maximator": {

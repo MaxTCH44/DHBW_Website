@@ -169,6 +169,10 @@
       "tooltip": "Der durchschnittliche jährliche Prozentsatz des Preisanstiegs."
     }
   },
+
+  "Mechanical": "Mechanisch",
+  "Electrochemical": "Elektrochemisch",
+
   "compressorSetup": {
     "compressors": {
       "maximator": {
