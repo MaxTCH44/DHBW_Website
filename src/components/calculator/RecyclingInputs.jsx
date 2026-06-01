@@ -66,6 +66,7 @@ export default function RecyclingInputs ({
                     />
                 }
                 placeholder={t("recyclingForm.mixedGasType.placeholder")}
+                id="mixed_gas_type"
                 data={gasOptions}
                 value={gasType}
                 onChange={setGasType}
@@ -79,6 +80,7 @@ export default function RecyclingInputs ({
                         tooltip={t("recyclingForm.annualMixedGasProduced.tooltip")}
                     />
                 }
+                id="annual_mixed_gas"
                 value={annualMixedGas}
                 onValueChange={setAnnualMixedGas}
                 units="units.normalized_m3_per_year"
@@ -93,6 +95,7 @@ export default function RecyclingInputs ({
                         tooltip={t("recyclingForm.h2Concentration.tooltip")}
                     />
                 }
+                id="h2_concentration"
                 value={h2Concentration}
                 onValueChange={setH2Concentration}
                 units="%"
@@ -113,6 +116,7 @@ export default function RecyclingInputs ({
                         tooltip={t("recyclingForm.currentH2PurchasePrice.tooltip")}
                     />
                 }
+                id="current_h2_price"
                 units={H2_VOLUME_PRICE_UNITS}
                 currentUnit={h2Price.unit}
                 value={h2Price.value}
@@ -128,6 +132,7 @@ export default function RecyclingInputs ({
                         tooltip={t("recyclingForm.recyclingSystemPrice.tooltip")}
                     />
                 }
+                id="system_price"
                 value={systemPrice}
                 onValueChange={setSystemPrice}
                 units="units.eur"
@@ -142,6 +147,7 @@ export default function RecyclingInputs ({
                         tooltip={t("recyclingForm.maintenanceCosts.tooltip")}
                     />
                 }
+                id="maintenance_costs"
                 units={MAINTENANCE_UNITS}
                 currentUnit={annualOpexRate.unit}
                 value={annualOpexRate.value}
@@ -157,6 +163,7 @@ export default function RecyclingInputs ({
                         tooltip={t("recyclingForm.energyConsumption.tooltip")}
                     />
                 }
+                id="energy_consumption"
                 units={H2_VOLUME_POWER_UNITS}
                 currentUnit={energyConsumption.unit}
                 value={energyConsumption.value}
@@ -172,6 +179,7 @@ export default function RecyclingInputs ({
                         tooltip={t("recyclingForm.electricityPrice.tooltip")}
                     />
                 }
+                id="electricity_price"
                 units={ELEC_PRICE_UNITS}
                 currentUnit={electricityPrice.unit}
                 value={electricityPrice.value}

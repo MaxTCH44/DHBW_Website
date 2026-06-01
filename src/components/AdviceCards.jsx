@@ -211,13 +211,13 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange, rese
                             <Group gap={1} wrap="nowrap" style={{ flex: 1, height: '6px' }}>
                                 {helpData.map((step, index) => (
                                     <Tooltip
+                                        key={index}
                                         label={t("advices.step") + " " + (index + 1) + " : " + t(step.title)}
                                         withArrow
                                         position="top"
                                         zIndex={90}
                                     >
                                         <Box
-                                            key={index}
                                             onClick={() => setCurrentStep(index)}
                                             onMouseEnter={() => handleMouseEnterStep(index)}
                                             onMouseLeave={() => handleMouseLeaveStep(index)}
@@ -247,7 +247,7 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange, rese
                     </Group>
 
                     <Box mb="md" style={{ maxHeight: 'fit-content', overflowY: 'auto' }}>
-                        {step && <ContentDetails item={step} namespace="calculator" />}
+                        {step && <ContentDetails item={step} namespace={namespace} />}
                     </Box>
 
                     <Divider my="sm" />

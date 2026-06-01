@@ -78,7 +78,8 @@
     "header": {
       "title": "Hydrogen Recycling Calculator",
       "description": "Stop venting valuable hydrogen into the atmosphere. Calculate how much H₂ you can recover annually and discover your Return on Investment (ROI).",
-      "learnMoreButton": "Learn how the recycling process works"
+      "learnMoreButton": "Learn how the recycling process works",
+      "tooltipLabel": "Click for step-by-step help"
     },
     "reset": {
       "link": "Reset all inputs to default values",
@@ -126,6 +127,45 @@
     "tons": "Tons",
 
     "years": "years"
+  },
+
+  "advices": {
+    "step": "Step",
+    "previous": "Previous",
+    "next": "Next",
+    "finish": "Finish",
+    "step_mixed_gas_type": {
+      "title": "Mixed Gas Type",
+      "content": "Select the type of industrial exhaust gas containing hydrogen. This determines the complexity and the recycling technologies (PSA, EHC) required."
+    },
+    "step_annual_mixed_gas": {
+      "title": "Annual Mixed Gas Volume",
+      "content": "Enter the total volume of exhaust gas produced per year. This helps size the processing capacity of the recycling plant."
+    },
+    "step_h2_concentration": {
+      "title": "H2 Concentration",
+      "content": "Specify the percentage of pure hydrogen present in the exhaust gas. A higher concentration improves recovery rates and profitability."
+    },
+    "step_current_h2_price": {
+      "title": "Current H2 Purchase Price",
+      "content": "Enter the price at which you currently buy external hydrogen. This establishes the baseline for calculating your Return on Investment (ROI)."
+    },
+    "step_system_price": {
+      "title": "Recycling System CAPEX",
+      "content": "Estimate the initial capital expenditure for the recycling system. This value is auto-calculated based on the gas type but can be adjusted manually."
+    },
+    "step_maintenance_costs": {
+      "title": "Maintenance Costs",
+      "content": "Set the annual operational and maintenance costs (OPEX) for the system, either as a flat fee (€) or a percentage of the initial CAPEX."
+    },
+    "step_energy_consumption": {
+      "title": "Energy Consumption",
+      "content": "Indicate the energy required to recycle 1 kg of hydrogen. Complex purification systems like PSA will consume more energy."
+    },
+    "step_electricity_price": {
+      "title": "Electricity Price",
+      "content": "Enter the cost of your grid electricity. This directly impacts the operational costs of hydrogen recovery."
+    }
   }
 
 }

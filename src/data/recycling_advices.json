@@ -1,0 +1,98 @@
+[
+  {
+    "id": "step_mixed_gas_type",
+    "targetId": "mixed_gas_type",
+    "title": "advices.step_mixed_gas_type.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_mixed_gas_type.content"
+      }
+    ]
+  },
+  {
+    "id": "step_annual_mixed_gas",
+    "targetId": "annual_mixed_gas",
+    "title": "advices.step_annual_mixed_gas.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_annual_mixed_gas.content"
+      }
+    ]
+  },
+  {
+    "id": "step_h2_concentration",
+    "targetId": "h2_concentration",
+    "title": "advices.step_h2_concentration.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_h2_concentration.content"
+      }
+    ]
+  },
+  {
+    "id": "step_current_h2_price",
+    "targetId": "current_h2_price",
+    "title": "advices.step_current_h2_price.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_current_h2_price.content"
+      }
+    ]
+  },
+  {
+    "id": "step_system_price",
+    "targetId": "system_price",
+    "title": "advices.step_system_price.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_system_price.content"
+      }
+    ]
+  },
+  {
+    "id": "step_maintenance_costs",
+    "targetId": "maintenance_costs",
+    "title": "advices.step_maintenance_costs.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_maintenance_costs.content"
+      }
+    ]
+  },
+  {
+    "id": "step_energy_consumption",
+    "targetId": "energy_consumption",
+    "title": "advices.step_energy_consumption.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_energy_consumption.content"
+      }
+    ]
+  },
+  {
+    "id": "step_electricity_price",
+    "targetId": "electricity_price",
+    "title": "advices.step_electricity_price.title",
+    "content": [
+      {
+        "type": "paragraph",
+        "size": "13",
+        "value": "advices.step_electricity_price.content"
+      }
+    ]
+  }
+]

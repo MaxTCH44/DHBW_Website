@@ -1,14 +1,16 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
-import { Container, Title, Text, Grid, Card, Group, Badge, Box, Paper, Button, Modal, Anchor } from '@mantine/core';
+import { Container, Title, Text, Grid, Card, Group, Badge, Box, Paper, Button, Modal, Anchor, Tooltip, ActionIcon } from '@mantine/core';
 import { useMediaQuery, useSessionStorage } from '@mantine/hooks';
-import { IconMail, IconRecycle, IconCoin, IconClockHour4, IconArrowRight, IconLeaf } from '@tabler/icons-react';
+import { IconMail, IconRecycle, IconCoin, IconClockHour4, IconArrowRight, IconLeaf, IconQuestionMark } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { t } from 'i18next';
 
 import gasData from '../data/recycling_gases.json';
+import recyclingAdvices from '../data/recycling_advices.json';
 
 import { ELEC_PRICE_UNITS, H2_VOLUME_POWER_UNITS, MAINTENANCE_UNITS, H2_VOLUME_PRICE_UNITS } from '../components/calculator/calculatorConstants';
+import AdviceCards from '../components/AdviceCards';
 import RecyclingInputs from '../components/calculator/RecyclingInputs';
 
 /**
@@ -22,6 +24,14 @@ export default function Recycling() {
     const { t, i18n } = useTranslation("recycling");
 
     const [resetModalOpened, setResetModalOpened] = useState(false);
+
+    const [showHelp, setShowHelp] = useState(false);
+    const [resetHelp, setResetHelp] = useState(false);
+
+    const handleStartTutorial = () => {
+        setShowHelp(true);
+        setResetHelp(true);
+    };
     
     function handleResetDefaults() {
         Object.keys(sessionStorage)
@@ -245,23 +255,57 @@ export default function Recycling() {
                     radius="xl"
                     rightSection={<IconArrowRight size={16} />}
                     maw="100%"
-                    styles={{ root: { height: 'auto', minHeight: 36, padding: '8px 16px' }, label: { whiteSpace: 'normal', textAlign: 'center' } }}
+                    styles={{ 
+                        root: { height: 'auto', minHeight: 36, padding: '10px 16px' }, 
+                        label: { whiteSpace: 'normal', textAlign: 'center', lineHeight: 1.4 } 
+                    }}
                 >
                     {t("recyclingCalculatorPage.header.learnMoreButton")}
                 </Button>
             </Box>
 
             <Box mb={10} ta="center">
-                <Anchor 
-                    component="button" 
-                    type="button" 
-                    size="sm" 
-                    c="dimmed" 
-                    mb="xs" 
-                    onClick={() => setResetModalOpened(true)}
-                >
-                    {t("recyclingCalculatorPage.reset.link")}
-                </Anchor>
+                <Group justify="center" mt="xl" mb="sm">
+                    <Box pos="relative" display="inline-flex" style={{ alignItems: 'center' }}>
+        
+                        <Anchor 
+                            component="button" 
+                            type="button" 
+                            size="sm" 
+                            c="dimmed" 
+                            onClick={() => setResetModalOpened(true)}
+                        >
+                            {t("recyclingCalculatorPage.reset.link")}
+                        </Anchor>
+
+                        <Tooltip 
+                            label={t("recyclingCalculatorPage.header.tooltipLabel")} 
+                            withArrow 
+                            position="right"
+                        >
+                            <ActionIcon 
+                                variant="light" 
+                                color="blue" 
+                                radius="xl" 
+                                size="md" 
+                                onClick={() => {
+                                    setShowHelp(true);
+                                    setResetHelp(true);
+                                }}
+                                pos="absolute"
+                                style={{
+                                    left: 'calc(100% + 12px)', 
+                                    top: '50%',
+                                    transform: 'translateY(-50%)',
+                                    whiteSpace: 'nowrap'
+                                }}
+                            >
+                                <IconQuestionMark size={16} stroke={2.5} />
+                            </ActionIcon>
+                        </Tooltip>
+                        
+                    </Box>
+                </Group>
 
                 <Modal 
                     opened={resetModalOpened} 
@@ -283,6 +327,14 @@ export default function Recycling() {
                         </Button>
                     </Group>
                 </Modal>
+
+                {showHelp && (<AdviceCards 
+                    helpData={recyclingAdvices} 
+                    onClose={() => setShowHelp(false)} 
+                    reset={resetHelp} 
+                    setReset={() => setResetHelp(false)} 
+                    namespace="recycling"
+                />)}
             </Box>
 
             <Grid gutter="xl" mb={60}>
@@ -451,7 +503,7 @@ export default function Recycling() {
                     color="dark" 
                     leftSection={<IconMail size={20} />}
                     style={{ color: 'var(--mantine-primary-color-filled)' }}
-                    styles={{ root: { height: 'auto', minHeight: isMobile ? 38 : 50, padding: '8px 16px' }, label: { whiteSpace: 'normal', textAlign: 'center' } }}
+                    styles={{ root: { height: 'auto', minHeight: 40, padding: '8px 16px' }, label: { whiteSpace: 'normal', textAlign: 'center' } }}
                 >
                     {t("recyclingCalculatorPage.cta.button")}
                 </Button>

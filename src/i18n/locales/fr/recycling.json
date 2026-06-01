@@ -86,7 +86,8 @@
     "header": {
       "title": "Calculateur de recyclage de l’hydrogène",
       "description": "Arrêtez de rejeter un hydrogène précieux dans l’atmosphère. Calculez la quantité d’H₂ que vous pouvez récupérer chaque année et découvrez votre retour sur investissement (ROI).",
-      "learnMoreButton": "Découvrir le fonctionnement du recyclage"
+      "learnMoreButton": "Découvrir le fonctionnement du recyclage",
+      "tooltipLabel": "Cliquez pour une aide pas à pas"
     },
 
     "reset": {
@@ -135,5 +136,44 @@
     "tons": "Tonnes",
 
     "years": "ans"
+  },
+
+  "advices": {
+    "step": "Étape",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "finish": "Terminer",
+    "step_mixed_gas_type": {
+      "title": "Type de gaz mélangé",
+      "content": "Sélectionnez le type de gaz d'échappement industriel contenant l'hydrogène. Cela détermine la complexité et les technologies de séparation (PSA, EHC) nécessaires."
+    },
+    "step_annual_mixed_gas": {
+      "title": "Volume annuel de gaz",
+      "content": "Saisissez le volume total de gaz d'échappement produit par an. Cette donnée est cruciale pour dimensionner la capacité de la centrale de recyclage."
+    },
+    "step_h2_concentration": {
+      "title": "Concentration en H2",
+      "content": "Indiquez le pourcentage d'hydrogène pur présent dans le gaz d'échappement. Une concentration plus élevée améliore drastiquement la rentabilité de la récupération."
+    },
+    "step_current_h2_price": {
+      "title": "Prix d'achat actuel de l'H2",
+      "content": "Renseignez le prix auquel vous achetez actuellement l'hydrogène externe. Cela sert de référence pour calculer vos économies (Retour sur Investissement)."
+    },
+    "step_system_price": {
+      "title": "CAPEX du système",
+      "content": "Coût d'investissement initial estimé pour le système de recyclage. Cette valeur est calculée automatiquement selon le gaz, mais peut être ajustée manuellement."
+    },
+    "step_maintenance_costs": {
+      "title": "Coûts de maintenance",
+      "content": "Définissez les coûts annuels de maintenance (OPEX) du système. Ils peuvent être fixés en valeur absolue (€) ou en pourcentage de l'investissement initial."
+    },
+    "step_energy_consumption": {
+      "title": "Consommation énergétique",
+      "content": "Indiquez l'énergie requise pour recycler 1 kg d'hydrogène. Les systèmes de purification complexes (comme le PSA) sont plus énergivores."
+    },
+    "step_electricity_price": {
+      "title": "Prix de l'électricité",
+      "content": "Renseignez le coût de votre électricité (réseau ou autoproduite). C'est le principal facteur qui impactera vos coûts opérationnels (OPEX)."
+    }
   }
 }
