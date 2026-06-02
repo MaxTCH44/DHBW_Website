@@ -151,7 +151,7 @@ function ElectrolyzerSetup ({
                     itemsList={availableElectrolyzers}
                     selectedItem={selectedElectrolyzer}
                     onItemChange={(val) => {
-                        const newElectrolyzer = electrolyzers.list[val];
+                        const newElectrolyzer = availableElectrolyzers.list[val];
                         const currentSystemPowerInKw = systemSize.value * systemSize.unit.factor;
 
                         if (!isAdvancedMode) {

@@ -83,12 +83,12 @@ export default function Calculator() {
     });
     const [currentHydrogenPrice, setCurrentHydrogenPrice] = useSessionStorage({
         key: 'calc-current-h2-price',
-        defaultValue: {value : 6.11, unit: H2_VOLUME_PRICE_UNITS[0] },
+        defaultValue: { value : 6.11, unit: H2_VOLUME_PRICE_UNITS[0] },
         getInitialValueInEffect: false
     });
     const [greyHydrogenPrice, setGreyHydrogenPrice] = useSessionStorage({
         key: 'calc-grey-h2-price',
-        defaultValue: {value : 3.5, unit: H2_VOLUME_PRICE_UNITS[0] },
+        defaultValue: { value : 3.5, unit: H2_VOLUME_PRICE_UNITS[0] },
         getInitialValueInEffect: false
     });
     const [carbonTax, setCarbonTax] = useSessionStorage({
@@ -201,7 +201,7 @@ export default function Calculator() {
         const outputs={calcResults}
 
         setExportError(null);
-        await new Promise(r => setTimeout(r, 50)); // laisse le DOM se mettre à jour
+        await new Promise(r => setTimeout(r, 50));
         try {
             if (format === 'csv') exportCSV(inputs, outputs, t, i18n.language);
             if (format === 'pdf') exportPDF(inputs, outputs, t, i18n.language);
@@ -262,23 +262,75 @@ export default function Calculator() {
     // UI Engine: Toggling between Simple and Advanced modes requires strict data cleanup
     useDidUpdate(() => {
         if (!isAdvancedMode) {
+            
+            // --- 1. ELECTROLYZER ---
             let activeElectrolyzer = selectedElectrolyzer;
             
-            // "Custom" mode is too complex for Simple mode. We force a fallback to a standard commercial unit.
             if (selectedElectrolyzer.id === 0) {
-                const fallback = electrolyzers.list.find(e => e.id !== 0);
-                if (fallback) {
-                    activeElectrolyzer = fallback;
-                    setSelectedElectrolyzer(fallback);
-                }
+                // If "Custom", we force a fallback to the first valid standard model
+                const fallback = combinedElectrolyzers.list.find(e => e.id !== 0);
+                if (fallback) activeElectrolyzer = fallback;
+            } else {
+                // Otherwise, we restore factory values from the JSON (overrides manual modifications)
+                const originalElec = combinedElectrolyzers.list.find(e => e.id === selectedElectrolyzer.id);
+                if (originalElec) activeElectrolyzer = originalElec;
             }
+            setSelectedElectrolyzer(activeElectrolyzer);
+            
+            setElectrolyzerSettings({
+                owned: 0,
+                ownedStacks: 0,
+                maint_unit: MAINTENANCE_UNITS[0], 
+                cons_unit: H2_VOLUME_POWER_UNITS[0]
+            });
 
-            // In Simple mode, the system size MUST be a perfect multiple of the hardware's base power.
-            // (e.g. You cannot buy 1.5 machines). We round the size to the nearest valid physical configuration.
+            // Strict recalculation of the system size according to the factory model's power
             const currentPowerKw = systemSize.value * systemSize.unit.factor;
             const numberOfModules = Math.round(currentPowerKw / activeElectrolyzer.power);
             const validModules = Math.max(1, numberOfModules);
+            const nextSystemSizeValue = Number((validModules * activeElectrolyzer.power).toFixed(2));
 
+            setSystemSize({ 
+                value: nextSystemSizeValue, 
+                unit: POWER_UNITS[1],
+                selfProduced: 0 // Reset self-produced logic for Simple mode
+            });
+
+            // --- 2. COMPRESSOR ---
+            let activeCompressor = selectedCompressor;
+            
+            if (selectedCompressor.id === 0) {
+                const fallbackComp = compressors.list.find(c => c.id !== 0);
+                if (fallbackComp) activeCompressor = fallbackComp;
+            } else {
+                // Restore compressor factory values
+                const originalComp = compressors.list.find(c => c.id === selectedCompressor.id);
+                if (originalComp) activeCompressor = originalComp;
+            }
+            setSelectedCompressor(activeCompressor);
+            
+            setCompressorSettings({
+                owned: 0,
+                ownedStacks: 0,
+                operatingTime: { value: 4000, unit: TIME_PER_YEAR_UNITS[1] },
+                cons_unit: H2_VOLUME_POWER_UNITS[0],
+                maint_unit: MAINTENANCE_UNITS[0],
+                flow_unit: VOLUME_PER_TIME_UNITS[2]
+            });
+
+            // Recalculate MAX annual production (since the electrolyzer or its size may have changed)
+            // Apply it immediately to the mass to compress to avoid state-lag
+            const nextAnnualProd = (nextSystemSizeValue * (operatingTime.value * operatingTime.unit.factor)) / activeElectrolyzer.energy_consumption_kwh_per_kg;
+            setMassToCompress(Math.round(nextAnnualProd));
+
+            // --- 3. ADVANCED PARAMETERS ---
+            setWaterPrice({ value: 2, unit: WATER_VOLUME_PRICE_UNITS[0] });
+            setGreyHydrogenPrice({ value : 3.5, unit: H2_VOLUME_PRICE_UNITS[0] });
+            setCarbonTax(50); // Resets the carbon tax to default
+            setProjectLifetime(15);
+            setInflationRate(2);
+
+            // --- 4. UI ENGINE ---
             // Close all advanced accordions
             const closedSections = Object.keys(openedSections).reduce((acc, key) => {
                 acc[key] = false;
@@ -286,12 +338,6 @@ export default function Calculator() {
             }, {});
             setOpenedSections(closedSections);
             setShowHelp(false);
-
-            setSystemSize({ 
-                value: Number((validModules * activeElectrolyzer.power).toFixed(2)), 
-                unit:  POWER_UNITS[1],
-                selfProduced: 0 // Reset self-produced logic for Simple mode
-            });
         }
     }, [isAdvancedMode]);
 
@@ -333,7 +379,7 @@ export default function Calculator() {
         }
         return {
             ...combinedElectrolyzers,
-            list: electrolyzers.list.filter(e => e.id !== 0)
+            list: combinedElectrolyzers.list.filter(e => e.id !== 0)
         };
     }, [isAdvancedMode,combinedElectrolyzers]);
 
