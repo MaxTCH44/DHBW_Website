@@ -268,15 +268,16 @@ export default function Calculator() {
             
             if (selectedElectrolyzer.id === 0) {
                 // If "Custom", we force a fallback to the first valid standard model
-                const fallback = combinedElectrolyzers.list.find(e => e.id !== 0);
+                const fallback = electrolyzers.list.find(e => e.id !== 0);
                 if (fallback) activeElectrolyzer = fallback;
             } else {
                 // Otherwise, we restore factory values from the JSON (overrides manual modifications)
-                const originalElec = combinedElectrolyzers.list.find(e => e.id === selectedElectrolyzer.id);
+                const originalElec = electrolyzers.list.find(e => e.id === selectedElectrolyzer.id);
                 if (originalElec) activeElectrolyzer = originalElec;
             }
             setSelectedElectrolyzer(activeElectrolyzer);
             
+            // Full reset of electrolyzer settings including default units
             setElectrolyzerSettings({
                 owned: 0,
                 ownedStacks: 0,
@@ -297,22 +298,15 @@ export default function Calculator() {
             });
 
             // --- 2. COMPRESSOR ---
-            let activeCompressor = selectedCompressor;
+            // Automatically force the Maximator compressor in Simple mode
+            const maximatorCompressor = compressors.list.find(c => c.name.toLowerCase().includes('maximator')) || compressors.list[0];
+            setSelectedCompressor(maximatorCompressor);
             
-            if (selectedCompressor.id === 0) {
-                const fallbackComp = compressors.list.find(c => c.id !== 0);
-                if (fallbackComp) activeCompressor = fallbackComp;
-            } else {
-                // Restore compressor factory values
-                const originalComp = compressors.list.find(c => c.id === selectedCompressor.id);
-                if (originalComp) activeCompressor = originalComp;
-            }
-            setSelectedCompressor(activeCompressor);
-            
+            // Full reset of compressor settings, matching the electrolyzer's operating time
             setCompressorSettings({
                 owned: 0,
                 ownedStacks: 0,
-                operatingTime: { value: 4000, unit: TIME_PER_YEAR_UNITS[1] },
+                operatingTime: { ...operatingTime },
                 cons_unit: H2_VOLUME_POWER_UNITS[0],
                 maint_unit: MAINTENANCE_UNITS[0],
                 flow_unit: VOLUME_PER_TIME_UNITS[2]
@@ -340,6 +334,21 @@ export default function Calculator() {
             setShowHelp(false);
         }
     }, [isAdvancedMode]);
+
+    useEffect(() => {
+        if (!isAdvancedMode) {
+            setCompressorSettings(prev => {
+                // Prevent unnecessary state updates if values are already strictly identical
+                if (prev.operatingTime.value === operatingTime.value && prev.operatingTime.unit.label === operatingTime.unit.label) {
+                    return prev;
+                }
+                return {
+                    ...prev,
+                    operatingTime: { ...operatingTime }
+                };
+            });
+        }
+    }, [operatingTime, isAdvancedMode, setCompressorSettings]);
 
     // Inventory constraints: You cannot own more sub-components (stacks) than the total number of full units you own
     useEffect(() => {
