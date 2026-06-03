@@ -177,7 +177,7 @@ export function useCalculatorLogic({
         
         // Routine Maintenance (O&M)
         // Can be defined as a flat fee per year (€) or as a percentage of the initial CAPEX (%).
-        const annualElectrolyzerMaintenance = electrolyzerSettings.maint_unit.label === "€" 
+        const annualElectrolyzerMaintenance = electrolyzerSettings.maint_unit.label === "units.eur" 
             ? (selectedElectrolyzer.maintenance_percent_capex * electrolyzerQuantity)
             : (selectedElectrolyzer.price * electrolyzerQuantity) * (selectedElectrolyzer.maintenance_percent_capex / 100);
 
@@ -185,7 +185,7 @@ export function useCalculatorLogic({
                                              (extraCompStacksNeeded * (selectedCompressor.cell_stack_price || 0));
         
         const annualCompressorMaintenance = isCompressorNeeded 
-            ? (compressorSettings.maint_unit.label === "€" 
+            ? (compressorSettings.maint_unit.label === "units.eur" 
                 ? (selectedCompressor.maintenance_percent_capex * compressorQuantity)
                 : totalCompressorHardwareValue * (selectedCompressor.maintenance_percent_capex / 100))
             : 0;

@@ -44,58 +44,90 @@ function buildCSV(inputs, outputs, t, lang) {
     lines.push('');
     lines.push(`"${t('export.section')}"${sep}"${t('export.parameter')}"${sep}"${t('export.value')}"${sep}"${t('export.units')}"`);
 
-    // ── INPUTS ────────────────────────────────────────────────────────────────
+    // ── GENERAL CONFIGURATION ─────────────────────────────────────────────────
+    lines.push(row(sep, t('export.gen_config'), t('electrolyzer.systemSize.label'),       fmt(systemSize.value, lang), t(systemSize.unit.label)));
+    lines.push(row(sep, t('export.gen_config'), t('electrolyzer.systemSize.selfProduced'), fmt(systemSize.selfProduced, lang), t('units.pourcent')));
+    lines.push(row(sep, t('export.gen_config'), t('resourcesCosts.electricity_price.label'), fmt(electricityPrice.value, lang), t(electricityPrice.unit.label)));
+    lines.push(row(sep, t('export.gen_config'), t('resourcesCosts.water_price.label'),    fmt(waterPrice.value, lang), t(waterPrice.unit.label)));
+    lines.push(row(sep, t('export.gen_config'), t('export.current_h2_price'),             fmt(currentHydrogenPrice.value, lang), t(currentHydrogenPrice.unit.label)));
+    lines.push(row(sep, t('export.gen_config'), t('export.grey_h2_price'),                fmt(greyHydrogenPrice.value, lang), t(greyHydrogenPrice.unit.label)));
+    lines.push(row(sep, t('export.gen_config'), t('resourcesCosts.carbon_tax.label'),     fmt(carbonTax, lang), t('units.eur_per_ton_co2')));
+    lines.push(row(sep, t('export.gen_config'), t('lifecycleParameters.project_lifetime.label'), fmt(projectLifetime, lang, 0), t('units.years')));
+    lines.push(row(sep, t('export.gen_config'), t('lifecycleParameters.inflation_rate.label'),   fmt(inflationRate, lang), t('units.pourcent')));
 
-    lines.push(row(sep, t('export.config'), t('export.electrolyzer'),                 t(selectedElectrolyzer.name)));
-    lines.push(row(sep, t('export.config'), t('equipment.electrolyzer.type'),         t(selectedElectrolyzer.type)));
-    lines.push(row(sep, t('export.config'), t('equipment.electrolyzer.power'),        fmt(selectedElectrolyzer.power, lang), t('units.power_kw')));
-    lines.push(row(sep, t('export.config'), t('equipment.electrolyzer.energy_consumption_kwh_per_kg'), fmt(selectedElectrolyzer.energy_consumption_kwh_per_kg, lang), t('units.kwh_per_kg')));
-    lines.push(row(sep, t('export.config'), t('electrolyzer.price.label'),            fmt(selectedElectrolyzer.price, lang, 0), t('units.eur')));
-    lines.push(row(sep, t('export.config'), t('equipment.electrolyzer.maintenance_percent_capex'), fmt(selectedElectrolyzer.maintenance_percent_capex, lang), t('equipment.electrolyzer.maintenanceUnit')));
-    lines.push(row(sep, t('export.config'), t('export.ownedUnits'),                       electrolyzerSettings.owned));
-    lines.push(row(sep, t('export.config'), t('electrolyzer.ownedStacks.label'),      electrolyzerSettings.ownedStacks));
-    lines.push(row(sep, t('export.config'), t('electrolyzer.systemSize.label'),       fmt(systemSize.value, lang), t(systemSize.unit.label)));
-    lines.push(row(sep, t('export.config'), t('electrolyzer.operatingTime.label'),    fmt(operatingTime.value, lang), t(operatingTime.unit.label)));
-    lines.push(row(sep, t('export.config'), t('resourcesCosts.electricity_price.label'), fmt(electricityPrice.value, lang), t(electricityPrice.unit.label)));
-    lines.push(row(sep, t('export.config'), t('resourcesCosts.water_price.label'),    fmt(waterPrice.value, lang), t(waterPrice.unit.label)));
-    lines.push(row(sep, t('export.config'), t('export.current_h2_price'),             fmt(currentHydrogenPrice.value, lang), t(currentHydrogenPrice.unit.label)));
-    lines.push(row(sep, t('export.config'), t('export.grey_h2_price'),                fmt(greyHydrogenPrice.value, lang), t(greyHydrogenPrice.unit.label)));
-    lines.push(row(sep, t('export.config'), t('resourcesCosts.carbon_tax.label'),     fmt(carbonTax, lang), t('export.ton_co2_per_year')));
-    lines.push(row(sep, t('export.config'), t('lifecycleParameters.project_lifetime.label'), fmt(projectLifetime, lang, 0), t('units.years')));
-    lines.push(row(sep, t('export.config'), t('lifecycleParameters.inflation_rate.label'),   fmt(inflationRate, lang), t('units.pourcent')));
+    // ── ELECTROLYZER CONFIGURATION ────────────────────────────────────────────
+    lines.push(row(sep, t('export.elec_config'), t('export.electrolyzer'),                 t(selectedElectrolyzer.name)));
+    lines.push(row(sep, t('export.elec_config'), t('equipment.electrolyzer.type'),         t(selectedElectrolyzer.type)));
+    lines.push(row(sep, t('export.elec_config'), t('equipment.electrolyzer.power'),        fmt(selectedElectrolyzer.power, lang), t('units.power_kw')));
+    lines.push(row(sep, t('export.elec_config'), t('equipment.electrolyzer.energy_consumption_kwh_per_kg'), fmt(selectedElectrolyzer.energy_consumption_kwh_per_kg, lang), t('units.kwh_per_kg')));
+    lines.push(row(sep, t('export.elec_config'), t('electrolyzer.auxiliaryConsumption.label'), fmt(selectedElectrolyzer.total_auxiliary_consumption, lang), t('units.power_kw')));
+    lines.push(row(sep, t('export.elec_config'), t('electrolyzer.waterConsumption.label'), fmt(selectedElectrolyzer.water_consumption_l_per_h, lang), t('units.l_per_hour')));
+    lines.push(row(sep, t('export.elec_config'), t('electrolyzer.price.label'),            fmt(selectedElectrolyzer.price, lang, 0), t('units.eur')));
+    lines.push(row(sep, t('export.elec_config'), t('electrolyzer.stackPower.label'),       fmt(selectedElectrolyzer.stack_power, lang), t('units.power_kw')));
+    lines.push(row(sep, t('export.elec_config'), t('electrolyzer.stackPrice.label'),       fmt(selectedElectrolyzer.stack_price, lang, 0), t('units.eur')));
+    lines.push(row(sep, t('export.elec_config'), t('electrolyzer.maxStacks.label'),        fmt(selectedElectrolyzer.max_stacks, lang, 0), t('units.stacks')));
+    lines.push(row(sep, t('export.elec_config'), t('electrolyzer.stackLifetime.label'),    fmt(selectedElectrolyzer.stack_lifetime_hours, lang, 0), t('units.hour')));
+    lines.push(row(sep, t('export.elec_config'), t('electrolyzer.maintenanceCosts.label'), fmt(selectedElectrolyzer.maintenance_percent_capex, lang), t(electrolyzerSettings.maint_unit.label)));
+    lines.push(row(sep, t('export.elec_config'), t('export.ownedUnits'),                   electrolyzerSettings.owned));
+    lines.push(row(sep, t('export.elec_config'), t('electrolyzer.ownedStacks.label'),      electrolyzerSettings.ownedStacks));
+    lines.push(row(sep, t('export.elec_config'), t('electrolyzer.operatingTime.label'),    fmt(operatingTime.value, lang), t(operatingTime.unit.label)));
 
+    // ── COMPRESSOR CONFIGURATION ──────────────────────────────────────────────
     if (isCompressorNeeded) {
-        lines.push(row(sep, t('export.config'), t('export.compressor'), t(selectedCompressor.name)));
-        lines.push(row(sep, t('export.config'), t('compressorSetup.compressorType'),  t(selectedCompressor.type)));
-        lines.push(row(sep, t('export.config'), t('compressorSetup.purchasePrice.label'), fmt(selectedCompressor.price, lang, 0), t('units.eur')));
-        lines.push(row(sep, t('export.config'), t('compressorSetup.hydrogenToCompress.label'), massToCompress === -1 ? 'Auto' : fmt(massToCompress, lang, 0), massToCompress === -1 ? '' : t('units.kg_per_year')));
-        lines.push(row(sep, t('export.config'), t('export.ownedUnits'),              compressorSettings.owned));
-        lines.push(row(sep, t('export.config'), t('compressorSetup.operatingTime.label'), fmt(compressorSettings.operatingTime.value, lang), t(compressorSettings.operatingTime.unit.label)));
+        lines.push(row(sep, t('export.comp_config'), t('export.compressor'), t(selectedCompressor.name)));
+        lines.push(row(sep, t('export.comp_config'), t('compressorSetup.compressorType'),  t(selectedCompressor.type)));
+        lines.push(row(sep, t('export.comp_config'), t('compressorSetup.purchasePrice.label'), fmt(selectedCompressor.price, lang, 0), t('units.eur')));
+        lines.push(row(sep, t('export.comp_config'), t('compressorSetup.energyConsumption.label'), fmt(selectedCompressor.energy_consumption_kwh_per_kg, lang), t('units.kwh_per_kg')));
+
+        if (selectedCompressor.type === 'Electrochemical') {
+            lines.push(row(sep, t('export.comp_config'), t('compressorSetup.cellStackPrice.label'), fmt(selectedCompressor.cell_stack_price, lang, 0), t('units.eur')));
+            lines.push(row(sep, t('export.comp_config'), t('compressorSetup.cellsPerStack.label'), fmt(selectedCompressor.cells_per_stack, lang, 0), t('units.cells')));
+            lines.push(row(sep, t('export.comp_config'), t('compressorSetup.maxCells.label'), fmt(selectedCompressor.max_cells, lang, 0), t('units.cells')));
+            lines.push(row(sep, t('export.comp_config'), t('compressorSetup.flowrate.perCellLabel'), fmt(selectedCompressor.unitary_flowrate_kg_per_day, lang), t(compressorSettings.flow_unit.label)));
+            lines.push(row(sep, t('export.comp_config'), t('compressorSetup.maintenanceCosts.label'), fmt(selectedCompressor.maintenance_percent_capex, lang), t(compressorSettings.maint_unit.label)));
+            lines.push(row(sep, t('export.comp_config'), t('compressorSetup.stackLifetime.label'), fmt(selectedCompressor.stack_lifetime_hours, lang, 0), t('units.hour')));
+            lines.push(row(sep, t('export.comp_config'), t('export.ownedUnits'), compressorSettings.owned));
+            lines.push(row(sep, t('export.comp_config'), t('compressorSetup.ownedStacks.label'), compressorSettings.ownedStacks));
+        } else {
+            lines.push(row(sep, t('export.comp_config'), t('compressorSetup.flowrate.perCompressorLabel'), fmt(selectedCompressor.unitary_flowrate_kg_per_day, lang), t(compressorSettings.flow_unit.label)));
+            lines.push(row(sep, t('export.comp_config'), t('compressorSetup.maintenanceCosts.label'), fmt(selectedCompressor.maintenance_percent_capex, lang), t(compressorSettings.maint_unit.label)));
+            lines.push(row(sep, t('export.comp_config'), t('export.ownedUnits'), compressorSettings.owned));
+        }
+
+        lines.push(row(sep, t('export.comp_config'), t('compressorSetup.hydrogenToCompress.label'), massToCompress === -1 ? 'Auto' : fmt(massToCompress, lang, 0), massToCompress === -1 ? '' : t('units.kg_per_year')));
+        lines.push(row(sep, t('export.comp_config'), t('compressorSetup.operatingTime.label'), fmt(compressorSettings.operatingTime.value, lang), t(compressorSettings.operatingTime.unit.label)));
     }
 
     // ── OUTPUTS ───────────────────────────────────────────────────────────────
-
+    
+    // Equipment required
     lines.push(row(sep, t('export.results'), t('electrolyzer.hardwareNeeded.setup'),  `${electrolyzerQuantity}`));
-    lines.push(row(sep, t('export.results'), t('electrolyzer.hardwareNeeded.stacks'), `${totalStacksNeeded}`));
+    lines.push(row(sep, t('export.results'), t('export.elec_stacks'), `${totalStacksNeeded}`));
 
     if (isCompressorNeeded) {
         lines.push(row(sep, t('export.results'), t('compressorSetup.compressorSetupBadge'), `${compressorQuantity}`));
-        lines.push(row(sep, t('export.results'), t('compressorSetup.stackBadge'),     `${totalCompStacksNeeded}`));
+        if (selectedCompressor.type === 'Electrochemical') {
+            lines.push(row(sep, t('export.results'), t('export.comp_stacks'), `${totalCompStacksNeeded}`));
+        }
     }
 
+    // Financial Indicators
     lines.push(row(sep, t('export.results'), t('dashboard.metrics.totalCapex'),       fmt(capex, lang, 0),                                              t('units.eur')));
     lines.push(row(sep, t('export.results'), t('export.lcoh'),                        fmt(lcoh, lang),                                                  t('units.eur_per_kg')));
+    
     costDifference > 0 ? lines.push(row(sep, t('export.results'), t('dashboard.metrics.savingsVsGrey'),    fmt(costDifference, lang), t('units.eur_per_kg'))) : lines.push(row(sep, t('export.results'), t('dashboard.metrics.greenPremium'),    fmt(costDifference, lang), t('units.eur_per_kg')));
     costDifference > 0 ? lines.push(row(sep, t('export.results'), t('dashboard.metrics.savingsVsGrey'),    fmt(annualDifference, lang, 0), t('units.eur_per_year'))) : lines.push(row(sep, t('export.results'), t('dashboard.metrics.greenPremium'),    fmt(annualDifference, lang, 0), t('units.eur_per_year')));
     currentCostDifference > 0 ? lines.push(row(sep, t('export.results'), t('dashboard.metrics.savingsVsCurrentCost'), fmt(currentCostDifference, lang), t('units.eur_per_kg'))) : lines.push(row(sep, t('export.results'), t('dashboard.metrics.lossVsCurrentCost'), fmt(currentCostDifference, lang), t('units.eur_per_kg')));
     currentCostDifference > 0 ? lines.push(row(sep, t('export.results'), t('dashboard.metrics.savingsVsCurrentCost'), fmt(currentAnnualDifference, lang, 0), t('units.eur_per_year'))) : lines.push(row(sep, t('export.results'), t('dashboard.metrics.lossVsCurrentCost'), fmt(currentAnnualDifference, lang, 0), t('units.eur_per_year')));
 
+    // Details of the Grey H2
     if (greyDetails) {
         lines.push(row(sep, t('export.results'), t('export.grey_h2_price'),           fmt(greyDetails.base, lang),                                      t('units.eur_per_kg')));
         lines.push(row(sep, t('export.results'), t('dashboard.metrics.greenPremium'), fmt(greyDetails.tax, lang),                                       t('units.eur_per_kg')));
-        lines.push(row(sep, t('export.results'), t('export.grey_smoothed'),                  fmt(greyDetails.smoothed, lang),                                  t('units.eur_per_kg')));
+        lines.push(row(sep, t('export.results'), t('export.grey_smoothed'),           fmt(greyDetails.smoothed, lang),                                  t('units.eur_per_kg')));
     }
 
+    // Distribution and physical performance
     lines.push(row(sep, t('export.results'), t('dashboard.costBreakdown.capex'),      fmt(costBreakdown.capex, lang),                                   t('units.eur_per_kg')));
     lines.push(row(sep, t('export.results'), t('dashboard.costBreakdown.electricity'),fmt(costBreakdown.electricity, lang),                            t('units.eur_per_kg')));
     lines.push(row(sep, t('export.results'), t('dashboard.costBreakdown.maintenance'),fmt(costBreakdown.maintenance, lang),                            t('units.eur_per_kg')));
@@ -106,7 +138,6 @@ function buildCSV(inputs, outputs, t, lang) {
     lines.push(row(sep, t('export.results'), t('export.installed_capacity'),          fmt(extraMetrics.installedCapacity, lang),                        t('units.power_kw')));
     lines.push(row(sep, t('export.results'), t('export.useRate'),                     fmt(extraMetrics.utilizationRate, lang),                          t('units.pourcent')));
     lines.push(row(sep, t('export.results'), t('export.avoidedCo2'),                  fmt(avoidedCO2, lang, 1),                                        t('units.ton_co2_per_year')));
-
     lines.push('');
     lines.push(`"${t('export.footer')}"${sep}""${sep}""${sep}""`);
 

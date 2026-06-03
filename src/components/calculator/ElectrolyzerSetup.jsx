@@ -87,7 +87,7 @@ function ElectrolyzerSetup ({
                     value={systemSize.value}
                     step={selectedElectrolyzer.power}
                     min={selectedElectrolyzer.power}
-                    unit="kW"
+                    unit={t('units.power_kw')}
                     onValueChange={val => setSystemSize({ ...systemSize, value: val })}
                 />
             )}
@@ -161,7 +161,7 @@ function ElectrolyzerSetup ({
 
                             setSystemSize({
                                 value: Number(newPowerKw.toFixed(2)),
-                                unit: { label: "kW", factor: 1 },
+                                unit: POWER_UNITS[1],
                                 selfProduced: 0
                             });
                         } else {
@@ -313,6 +313,7 @@ function ElectrolyzerSetup ({
                             namespace="calculator"
                             value={selectedElectrolyzer.energy_consumption_kwh_per_kg}
                             onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, energy_consumption_kwh_per_kg: val })}
+                            onUnitChange={u => setElectrolyzerSettings({ ...electrolyzerSettings, cons_unit: u })}
                         />
 
                         <ValueInput
@@ -358,6 +359,7 @@ function ElectrolyzerSetup ({
                             namespace="calculator"
                             value={selectedElectrolyzer.maintenance_percent_capex}
                             onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, maintenance_percent_capex: val })}
+                            onUnitChange={u => setElectrolyzerSettings({ ...electrolyzerSettings, maint_unit: u })}
                         />
 
                         <ValueInput

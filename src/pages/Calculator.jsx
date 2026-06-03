@@ -665,6 +665,7 @@ export default function Calculator() {
                                 "greyDetails": greyDetails
                             },
                             "inputs": {
+                                "isAdvancedMode": isAdvancedMode,
                                 "systemSize": systemSize,
                                 "selectedElectrolyzer": selectedElectrolyzer,
                                 "electrolyzerSettings": electrolyzerSettings,
@@ -741,6 +742,8 @@ export default function Calculator() {
                                 index={i}
                                 onRemove={(ind) => setComparisonSetups(prev => prev.filter((_, i) => i !== ind))}
                                 setCalculatorToSetup={() => {
+                                    const targetAdvancedMode = setup.inputs.isAdvancedMode
+                                    setIsAdvancedMode(targetAdvancedMode);
                                     setSystemSize(setup.inputs.systemSize);
                                     setSelectedElectrolyzer(setup.inputs.selectedElectrolyzer);
                                     setElectrolyzerSettings(setup.inputs.electrolyzerSettings);
