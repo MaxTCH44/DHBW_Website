@@ -87,7 +87,7 @@ function ElectrolyzerSetup ({
                     value={systemSize.value}
                     step={selectedElectrolyzer.power}
                     min={selectedElectrolyzer.power}
-                    unit="kW"
+                    unit={t('units.power_kw')}
                     onValueChange={val => setSystemSize({ ...systemSize, value: val })}
                 />
             )}
@@ -161,7 +161,7 @@ function ElectrolyzerSetup ({
 
                             setSystemSize({
                                 value: Number(newPowerKw.toFixed(2)),
-                                unit: { label: "kW", factor: 1 },
+                                unit: POWER_UNITS[1],
                                 selfProduced: 0
                             });
                         } else {
