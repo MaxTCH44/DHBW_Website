@@ -313,6 +313,7 @@ function ElectrolyzerSetup ({
                             namespace="calculator"
                             value={selectedElectrolyzer.energy_consumption_kwh_per_kg}
                             onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, energy_consumption_kwh_per_kg: val })}
+                            onUnitChange={u => setElectrolyzerSettings({ ...electrolyzerSettings, cons_unit: u })}
                         />
 
                         <ValueInput
@@ -358,6 +359,7 @@ function ElectrolyzerSetup ({
                             namespace="calculator"
                             value={selectedElectrolyzer.maintenance_percent_capex}
                             onValueChange={val => setSelectedElectrolyzer({ ...selectedElectrolyzer, maintenance_percent_capex: val })}
+                            onUnitChange={u => setElectrolyzerSettings({ ...electrolyzerSettings, maint_unit: u })}
                         />
 
                         <ValueInput
