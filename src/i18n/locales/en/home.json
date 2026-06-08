@@ -3,7 +3,7 @@
         "titleP1": "Advanced Tools for ",
         "titleGreen": "Green Hydrogen",
         "titleP2": " Engineering",
-        "subtitle": "A specialized platform designed for laboratories, researchers, and industrial engineers to plan, simulate, and optimize H₂ systems.",
+        "subtitle": "A specialized platform designed for laboratories, researchers, industrial engineers to plan, calculate and optimize H₂ systems.",
         "buttons": {
         "primary": "Access Tools",
         "secondary": "Explore Technologies"
@@ -11,7 +11,7 @@
     },
     "home_lab": {
         "badge": "Our Facility",
-        "title": "Inside the GreenLab",
+        "title": "Inside the ",
         "description": "We are an advanced research facility dedicated to scaling green hydrogen technologies. Beyond digital simulations, our physical lab focuses on testing, optimizing, and developing the next generation of electrolyzers and gas recycling systems.",
         "button": "Discover our Research"
     },
@@ -46,12 +46,12 @@
   
     "homeTools": {
         "techno_economic_calculator": {
-        "title": "Techno-Economic Calculator",
+        "title": "H₂ Calculator",
         "description": "Calculate Levelized Cost of Hydrogen (LCOH), CAPEX, and OPEX. Estimate potential revenue and payback periods for green hydrogen production plants.",
         "buttonText": "Run LCOH Simulation"
         },
         "hydrogen_recovery_calculator": {
-        "title": "Hydrogen Recovery Calculator",
+        "title": "H₂ Recycling",
         "description": "Estimate the financial viability of capturing unconsumed hydrogen. Calculate annual recovery volumes and Return on Investment (ROI) based on your exhaust gas mixture.",
         "buttonText": "Calculate ROI"
         }

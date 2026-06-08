@@ -32,7 +32,8 @@ export default function LearnCard({ title, description, Icon, link }) {
                 radius="md" 
                 variant="light" 
                 color="var(--mantine-primary-color-filled)" 
-                mb="md"
+                mx="auto"
+                mb="lg"
             >
                 <Icon size={34} stroke={1.5} />
             </ThemeIcon>

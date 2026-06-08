@@ -1,17 +1,17 @@
 {
   "home_hero": {
-    "titleP1": "Fortschrittliche Werkzeuge für ",
-    "titleGreen": "Grünen Wasserstoff",
-    "titleP2": " Engineering",
-    "subtitle": "Eine spezialisierte Plattform für Labore, Forschende und Industrieingenieure zur Planung, Simulation und Optimierung von H₂-Systemen.",
+    "titleP1": "Fortgeschrittene Engineeringtools zum Thema ",
+    "titleGreen": "grüner Wasserstoff",
+    "titleP2": "",
+    "subtitle": "Eine spezialisierte Plattform für Labore, Forschende, Industrieingenieure zur Planung, Berechnung und Optimierung von H₂-Systemen.",
     "buttons": {
-      "primary": "Auf Werkzeuge zugreifen",
+      "primary": "Zu den Berechnungwerkzeugen",
       "secondary": "Technologien entdecken"
     }
   },
   "home_lab": {
     "badge": "Unsere Einrichtung",
-    "title": "Im GreenLab",
+    "title": "Im ",
     "description": "Wir sind eine fortschrittliche Forschungseinrichtung, die sich auf die Skalierung grüner Wasserstofftechnologien spezialisiert hat. Über digitale Simulationen hinaus konzentriert sich unser physisches Labor auf das Testen, Optimieren und Entwickeln der nächsten Generation von Elektrolyseuren und Gasrecyclingsystemen.",
     "button": "Unsere Forschung entdecken"
   },
@@ -35,23 +35,23 @@
     },
     "electrolyzerTechnologies": {
       "title": "Elektrolyseur-Technologien",
-      "description": "Vergleichen Sie die Kerntechnologien PEM, alkalisch und AEM. Analysieren Sie Effizienzparameter, Betriebslebensdauer und ideale industrielle Anwendungsfälle."
+      "description": "Vergleichen Sie die Kerntechnologien PEM-, AEM- und alkalischer Elektrolyse. Analysieren Sie Effizienzparameter, Standzeit und ideale industrielle Anwendungsfälle."
     },
     "compressionSystems": {
       "title": "Kompressionssysteme",
-      "description": "Entdecken Sie mechanische und nicht-mechanische Verdichtungsmethoden, die für die hochdichte Wasserstoffspeicherung und Netzeinspeisung erforderlich sind."
+      "description": "Entdecken Sie mechanische und nicht-mechanische Verdichtungsmethoden, die für die Wasserstoffspeicherung unter hohem Druck und Netzeinspeisung erforderlich sind."
     },
     "readDoc": "Dokumentation lesen"
   },
 
   "homeTools": {
     "techno_economic_calculator": {
-      "title": "Techno-ökonomischer Rechner",
-      "description": "Berechnen Sie die Wasserstoffgestehungskosten (LCOH), CAPEX und OPEX. Schätzen Sie potenzielle Einnahmen und Amortisationszeiten für Produktionsanlagen von grünem Wasserstoff.",
+      "title": "H₂-Rechner",
+      "description": "Berechnen Sie die laufenden Herstellungskosten von Wasserstoff (LCOH), CAPEX und OPEX. Schätzen Sie potenzielle Einnahmen und Amortisationszeiten für Produktionsanlagen von grünem Wasserstoff.",
       "buttonText": "LCOH-Simulation starten"
     },
     "hydrogen_recovery_calculator": {
-      "title": "Wasserstoff-Rückgewinnungsrechner",
+      "title": "H₂-Recycling",
       "description": "Bewerten Sie die wirtschaftliche Machbarkeit der Rückgewinnung von nicht verbrauchtem Wasserstoff. Berechnen Sie jährliche Rückgewinnungsmengen und den Return on Investment (ROI) basierend auf Ihrer Abgasmischung.",
       "buttonText": "ROI berechnen"
     }

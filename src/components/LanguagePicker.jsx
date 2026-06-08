@@ -20,12 +20,12 @@ export function LanguagePicker() {
   const [opened, setOpened] = useState(false);
 
   const [selected, setSelected] = useState(
-    languages.find((lang) => lang.code === i18n.language) || languages[0]
+    languages.find((lang) => i18n.language?.startsWith(lang.code)) || languages[0]
   );
 
   useEffect(() => {
     const current =
-      languages.find((lang) => lang.code === i18n.language) || languages[0];
+      languages.find((lang) => i18n.language?.startsWith(lang.code)) || languages[0];
 
     setSelected(current);
   }, [i18n.language]);

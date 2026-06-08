@@ -1,6 +1,6 @@
 {
   "title": "Wasserstoffkostenrechner",
-  "introText": "Schätzen Sie die nivellierten Wasserstoffkosten (LCOH) und die gesamten Investitionsausgaben (CAPEX) für Ihre Produktionsanlage. Passen Sie Systemparameter, Ressourcenkosten und Finanzvariablen an, um verschiedene techno-ökonomische Szenarien zu simulieren.",
+  "introText": "Schätzen Sie die laufenden Kosten zur Herstellung von Wasserstoff (LCOH) und die gesamten Investitionsausgaben (CAPEX) für Ihre Produktionsanlage. Passen Sie Systemparameter, Ressourcenkosten und Finanzvariablen an, um verschiedene techno-ökonomische Szenarien zu simulieren.",
   "advanceToggle": {
     "simple": "Einfacher Modus",
     "advanced": "Erweiterter Rechner",
@@ -46,7 +46,7 @@
 
     "systemSize": {
       "label": "Systemgröße",
-      "tooltip": "Gesamte elektrische Leistungskapazität Ihrer Elektrolyseur-Anlage."
+      "tooltip": "Elektrische Leistung Ihrer Elektrolyse-Anlage."
     },
 
     "selfProduced": {
@@ -56,7 +56,7 @@
 
     "operatingTime": {
       "label": "Betriebszeit",
-      "tooltip": "Anzahl der Stunden oder Tage, die das Elektrolyseur-System pro Jahr kontinuierlich betrieben wird."
+      "tooltip": "Anzahl der Stunden oder Tage, die das Elektrolyse-System pro Jahr kontinuierlich betrieben wird."
     },
 
     "equipment": {
@@ -77,17 +77,17 @@
 
     "price": {
       "label": "Elektrolyseur-Kaufpreis",
-      "tooltip": "Gesamte anfängliche Anschaffungskosten (CAPEX) einschließlich der Balance-of-Plant. Der erste Zellstack ist in diesem Grundpreis bereits enthalten."
+      "tooltip": "Gesamte grundsätzlich Anschaffungskosten (CAPEX) einschließlich der Balance-of-Plant. Der erste Zellstack ist in diesem Grundpreis bereits enthalten."
     },
 
     "stackPower": {
       "label": "Stack-Leistung",
-      "tooltip": "Die elektrische Nennleistung eines einzelnen Elektrolyseur-Stacks. Diese bestimmt seine individuelle Produktionskapazität."
+      "tooltip": "Die elektrische Nennleistung eines einzelnen Elektrolyse-Stacks. Diese bestimmt die individuelle Produktionskapazität des Elektrolyse-Stacks."
     },
 
     "ownedStacks": {
       "label": "Anzahl eigener Stacks",
-      "tooltip": "Die Anzahl der Elektrolyseur-Stacks, die Sie bereits besitzen. Diese werden von Ihren anfänglichen Anschaffungskosten abgezogen."
+      "tooltip": "Die Anzahl der Elektrolyse-Stacks, die Sie bereits besitzen. Diese werden von Ihren anfänglichen Anschaffungskosten abgezogen."
     },
 
     "stackPrice": {
@@ -97,38 +97,38 @@
 
     "maxStacks": {
       "label": "Max. Stacks pro Elektrolyseur",
-      "tooltip": "Die physische Grenze der Stacks, die ein einzelnes Elektrolyseur-Gehäuse aufnehmen kann, bevor eine neue vollständige Einheit erforderlich ist."
+      "tooltip": "Die physische Grenze der Stacks, die ein einzelnes Elektrolyse-Schaltschrank aufnehmen kann, bevor eine neuer Schaltschrank erforderlich ist."
     },
 
     "energyConsumption": {
       "label": "Energieverbrauch des Elektrolyseurs",
-      "tooltip": "Spezifischer Energieverbrauch des Elektrolyseur-Stacks selbst zur Erzeugung einer Einheit Wasserstoff. Dieser Wert schließt systemweite Hilfssysteme wie Kühlung oder Trocknung aus."
+      "tooltip": "Spezifischer Energieverbrauch des Elektrolyse-Stacks zur Erzeugung von Wasserstoff in der Einheit ihrer Wahl. Nicht mit Inbegriffen in diesem Wert ist zum Beispiel die Leistung für Kühlung oder Trocknung."
     },
 
     "auxiliaryConsumption": {
       "label": "Gesamter Hilfsverbrauch (BoP)",
-      "tooltip": "Feste elektrische Leistung (kW), die von der gesamten unterstützenden Hardware des Systems (Kühlung, Trocknung, Elektronik) benötigt wird. Dies ist ein globaler Wert für die gesamte Anlage, unabhängig von der Anzahl der Elektrolyseur-Einheiten."
+      "tooltip": "Feste elektrische Leistung (kW), die von der gesamten unterstützenden Hardware des Systems (Kühlung, Trocknung, Elektronik) benötigt wird. Dies ist ein globaler Wert für die gesamte Anlage, unabhängig von der Anzahl der Elektrolyse-Einheiten."
     },
 
     "waterConsumption": {
       "label": "Wasserverbrauch",
-      "tooltip": "Die Menge an gereinigtem Wasser, die eine einzelne Elektrolyseur-Einheit bei Nennleistung pro Stunde benötigt."
+      "tooltip": "Die Menge an gereinigtem Wasser, die eine einzelne Elektrolyse-Einheit bei Nennleistung pro Stunde benötigt."
     },
 
     "maintenanceCosts": {
       "label": "Wartungskosten",
-      "tooltip": "Jährliche Betriebs- und Wartungskosten (O&M), im Allgemeinen als Prozentsatz der anfänglichen Ausrüstungskosten (CAPEX) geschätzt."
+      "tooltip": "Jährliche Betriebs- und Wartungskosten (O&M), im Allgemeinen geschätzt als Prozentsatz der anfänglichen Beschaffungskosten (CAPEX)."
     },
 
     "stackLifetime": {
       "label": "Stack-Lebensdauer",
-      "tooltip": "Die erwartete Betriebslebensdauer des Zellstacks in Stunden, bevor er degradiert und ersetzt werden muss. Dies treibt langfristige Wartungsberechnungen an."
+      "tooltip": "Die erwartete Betriebslebensdauer des Zellstacks in Stunden, bevor die Degratation einsetzt und der Elektrolyse-Stack ersetzt werden muss. Dies treibt die langfristige Wartungskosten in die Höhe."
     },
 
-    "setupBuilder": "Verwenden Sie den Konfigurations-Builder, um Ihre eigenen detaillierten Konfigurationen zu speichern"
+    "setupBuilder": "Verwenden Sie die Möglichkeit der persönlichen Konfiguration, um Ihre eigenen Konfigurationen zu erstellen und speichern"
   },
   "resourcesCosts": {
-    "title": "Ressourcenkosten",
+    "title": "Produktionskosten",
 
     "electricity_price": {
       "label": "Strompreis",
@@ -136,8 +136,8 @@
     },
 
     "water_price": {
-      "label": "Wasserpreis",
-      "tooltip": "Kosten für die Versorgung mit gereinigtem Wasser für den Elektrolyseprozess."
+      "label": "Preis pro Einheit Wasser",
+      "tooltip": "Kosten zur Versorgung des Elektrolyseprozess mit gereinigtem Wasser."
     },
 
     "current_h2_price": {
@@ -161,12 +161,12 @@
 
     "project_lifetime": {
       "label": "Projektlaufzeit",
-      "tooltip": "Erwartete Betriebslebensdauer der Anlage zur Amortisierung des CAPEX."
+      "tooltip": "Erwartete Standzeit der Anlage zur Amortisierung des CAPEX."
     },
 
     "inflation_rate": {
       "label": "Inflationsrate",
-      "tooltip": "Der durchschnittliche jährliche Prozentsatz des Preisanstiegs."
+      "tooltip": "Der durchschnittliche jährliche Prozentsatz des Preissteigerung."
     }
   },
 
@@ -229,7 +229,7 @@
 
     "purchasePrice": {
       "label": "Kompressor-Kaufpreis",
-      "tooltip": "Gesamte anfängliche Anschaffungskosten (CAPEX) einschließlich aller notwendigen Hilfskomponenten. Bei elektrochemischen Systemen ist der erste Zellstack bereits in diesem Grundpreis enthalten."
+      "tooltip": "Gesamte anfängliche Anschaffungskosten (CAPEX) einschließlich aller notwendigen Hilfskomponenten. Bei elektrochemischen Systemen ist der erste Zellstack bereits im Grundpreis enthalten."
     },
 
     "energyConsumption": {
@@ -239,7 +239,7 @@
 
     "ownedStacks": {
       "label": "Anzahl eigener Stacks",
-      "tooltip": "Die Gesamtzahl der einzelnen Zellstacks, die sich derzeit in Ihrem elektrochemischen Kompressorgehäuse befinden oder dort installiert sind."
+      "tooltip": "Die Anzahl der EHC-Zellstappel in ihre Besitz."
     },
 
     "cellStackPrice": {
@@ -249,17 +249,17 @@
 
     "cellsPerStack": {
       "label": "Zellen pro Stack",
-      "tooltip": "Die Anzahl der einzelnen Kompressionszellen innerhalb jedes Stacks. Mehr Zellen bedeuten einen höheren Kompressionsdurchsatz pro Stack."
+      "tooltip": "Die Anzahl der Membran-Elektroden-Einheiten innerhalb ihres Stacks. Mehr Membran-Elektroden-Einheiten pro Stack bedeuten einen höheren Kompressionsdurchsatz."
     },
 
     "maxCells": {
       "label": "Max. Zellen pro Kompressor",
-      "tooltip": "Die maximale physische Kapazität des Kompressorgehäuses. Bestimmt die Upgrade-Grenze Ihrer Konfiguration."
+      "tooltip": "Die maximale physische Kapazität eines Zellstacks. Bestimmt die maximale Anzahl von Membran-Elektroden-Einheiten in Ihrem EHC-Stacks."
     },
 
     "warning": {
       "title": "Suboptimale Konfiguration",
-      "message": "Die maximale Zellenanzahl ({maxCells}) ist kein genaues Vielfaches der Zellen pro Stack ({cellsPerStack}). Der verbleibende Platz kann nicht vollständig genutzt werden."
+      "message": "Ihre angegebenen Zahl im Feld \"Zellen pro Stack({cellsPerStack})\" passt nicht zu der von Ihnen angegebene Zahl im Feld \"Max. Zellen pro Komressor({maxCells})\". Die Zahl im zweiten Feld muss das Vielfache der Zahl im ersten Feld sein."
     },
 
     "flowrate": {
@@ -276,7 +276,7 @@
 
     "stackLifetime": {
       "label": "Stack-Lebensdauer",
-      "tooltip": "Die Betriebslebensdauer des elektrochemischen Zellstacks in Stunden, bevor ein Ersatz benötigt wird. Dies beeinflusst Ihre langfristigen Betriebsausgaben."
+      "tooltip": "Die Standzeit des elektrochemischen Zellstacks in Stunden, bevor ein Ersatz benötigt wird. Dies beeinflusst Ihre langfristigen Betriebskosten."
     }
   },
   "dashboard": {
