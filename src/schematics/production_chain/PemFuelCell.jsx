@@ -1,6 +1,8 @@
-import { Box, HoverCard, Text } from '@mantine/core';
+import { Box, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { useTranslation } from 'react-i18next';
+
+import ResponsiveHoverCard from '../../components/ResponsiveHoverCard';
 
 import './PemFuelCell.css';
 
@@ -10,12 +12,6 @@ export default function PemFuelCell({ asGroup = false }) {
     const isMobile = useMediaQuery('(max-width: 768px)');
 
     const { t } = useTranslation("productionChain");
-
-
-    const handleSvgClick = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-    };
 
     const svgContent = (
         <>
@@ -45,30 +41,38 @@ export default function PemFuelCell({ asGroup = false }) {
                     <path d="M199.632 69.2648C193.801 64.3244 187.161 58.2699 189.68 52.027C192.2 45.7842 209.327 33.0228 206.638 42.2362C203.95 51.4497 205.157 57.0994 206.698 65.1853L199.632 69.2648Z" fill="#D9D9D9"/>
                 </g>
 
-                <HoverCard 
+                <ResponsiveHoverCard 
                     position={isMobile ? "bottom" : "top"} 
                     withArrow 
                     shadow="md" 
-                    bg='green.4'
                     width={isMobile ? "90vw" : 300}
                     openDelay={50} 
                     closeDelay={100} 
                     withinPortal={true}
                     zIndex={50}
-                >
-                    <HoverCard.Target>
-                        <g className="interactive-element" onClick={handleSvgClick}>
+                    dropdownProps={{
+                        bg: "#EDD2B8",
+                        c: "black",
+                        style: { pointerEvents: 'none' }
+                    }}
+                    target={
+                        <g className="interactive-element" style={{ cursor: 'pointer' }}>
                             <rect x="183" y="116" width="40" height="320" fill="#EDD2B8"/>
-                            <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("mobility.schematic.membrane.title")}</text>
+                            <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>
+                                {t("mobility.schematic.membrane.title")}
+                            </text>
                         </g>
-                    </HoverCard.Target>
-                    <HoverCard.Dropdown bg="#EDD2B8" c="black" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>{t("mobility.schematic.membrane.subtitle")}</b><br/>{t("mobility.schematic.membrane.explanation")}</Text>
-                    </HoverCard.Dropdown>
-                </HoverCard>
+                    }
+                    dropdown={
+                        <Text size="sm">
+                            <b>{t("mobility.schematic.membrane.subtitle")}</b><br/>
+                            {t("mobility.schematic.membrane.explanation")}
+                        </Text>
+                    }
+                />
 
                 <g>
-                    <HoverCard 
+                    <ResponsiveHoverCard 
                         position={isMobile ? "bottom" : "left"} 
                         withArrow 
                         shadow="md" 
@@ -77,21 +81,30 @@ export default function PemFuelCell({ asGroup = false }) {
                         closeDelay={100} 
                         withinPortal={true}
                         zIndex={50}
-                    >
-                        <HoverCard.Target>
-                            <g className="interactive-element" onClick={handleSvgClick}>
+                        dropdownProps={{
+                            bg: "#6E8BFD",
+                            c: "white",
+                            style: { pointerEvents: 'none' }
+                        }}
+                        target={
+                            <g className="interactive-element" style={{ cursor: 'pointer' }}>
                                 <rect x="133" y="141" width="50" height="270" fill="#6E8BFD"/>
-                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("mobility.schematic.cathode.title")}</text>
+                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>
+                                    {t("mobility.schematic.cathode.title")}
+                                </text>
                             </g>
-                        </HoverCard.Target>
-                        <HoverCard.Dropdown bg="#6E8BFD" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>{t("mobility.schematic.cathode.subtitle")}</b><br/>{t("mobility.schematic.cathode.explanation")}</Text>
-                        </HoverCard.Dropdown>
-                    </HoverCard>
+                        }
+                        dropdown={
+                            <Text size="sm">
+                                <b>{t("mobility.schematic.cathode.subtitle")}</b><br/>
+                                {t("mobility.schematic.cathode.explanation")}
+                            </Text>
+                        }
+                    />
                 </g>
 
                 <g>
-                    <HoverCard 
+                    <ResponsiveHoverCard 
                         position={isMobile ? "bottom" : "right"} 
                         withArrow 
                         shadow="md" 
@@ -100,17 +113,26 @@ export default function PemFuelCell({ asGroup = false }) {
                         closeDelay={100} 
                         withinPortal={true}
                         zIndex={50}
-                    >
-                        <HoverCard.Target>
-                            <g className="interactive-element">
+                        dropdownProps={{
+                            bg: "#FD6E6E",
+                            c: "white",
+                            style: { pointerEvents: 'none' }
+                        }}
+                        target={
+                            <g className="interactive-element" style={{ cursor: 'pointer' }}>
                                 <rect x="223" y="141" width="50" height="270" fill="#FD6E6E"/>
-                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("mobility.schematic.anode.title")}</text>
+                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>
+                                    {t("mobility.schematic.anode.title")}
+                                </text>
                             </g>
-                        </HoverCard.Target>
-                        <HoverCard.Dropdown bg="#FD6E6E" c="white" style={{ pointerEvents: 'none' }}>
-                           <Text size="sm"><b>{t("mobility.schematic.anode.subtitle")}</b><br/>{t("mobility.schematic.anode.explanation")}</Text>
-                        </HoverCard.Dropdown>
-                    </HoverCard>
+                        }
+                        dropdown={
+                            <Text size="sm">
+                                <b>{t("mobility.schematic.anode.subtitle")}</b><br/>
+                                {t("mobility.schematic.anode.explanation")}
+                            </Text>
+                        }
+                    />
                 </g>
                 
                 <g className="decorations" style={{ pointerEvents: 'none' }}>

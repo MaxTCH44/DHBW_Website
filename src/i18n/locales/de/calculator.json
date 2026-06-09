@@ -259,7 +259,7 @@
 
     "warning": {
       "title": "Suboptimale Konfiguration",
-      "message": "Ihre angegebenen Zahl im Feld \"Zellen pro Stack({cellsPerStack})\" passt nicht zu der von Ihnen angegebene Zahl im Feld \"Max. Zellen pro Komressor({maxCells})\". Die Zahl im zweiten Feld muss das Vielfache der Zahl im ersten Feld sein."
+      "message": "Ihre angegebenen Zahl im Feld \"Zellen pro Stack\" ({{cellsPerStack}}) passt nicht zu der von Ihnen angegebene Zahl im Feld \"Max. Zellen pro Komressor\" ({{maxCells}}). Die Zahl im zweiten Feld muss das Vielfache der Zahl im ersten Feld sein."
     },
 
     "flowrate": {
@@ -300,7 +300,10 @@
       "greenPremium": "Grüner Aufschlag",
 
       "greyEstimatedP1": "Grauer H₂ geschätzt bei ",
-      "greyEstimatedP2": " €/kg"
+      "greyEstimatedP2": " €/kg",
+
+      "currentPriceP1": "Der aktuelle H₂-Preis beträgt ",
+      "currentPriceP2":" €/kg"
     },
 
     "costBreakdown": {

@@ -1,6 +1,8 @@
-import { Box, HoverCard, Text } from '@mantine/core';
+import { Box, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { useTranslation } from 'react-i18next';
+
+import ResponsiveHoverCard from '../../components/ResponsiveHoverCard.jsx';
 
 import './PemElectrolyzer.css';
 
@@ -11,12 +13,6 @@ export default function PemElectrolyzer() {
 
     const { t, i18n } = useTranslation("equipmentOverview");
     
-
-    const handleSvgClick = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-    };
-
     return (
         <Box w={{ base: '100%', sm: '50%' }} mx="auto" ta="center" p="xl" style={{ overflow: 'hidden' }}>
             <svg width="100%" viewBox="0 0 406 470" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ maxWidth: 800, margin: 'auto', display: 'block' }}>
@@ -40,30 +36,44 @@ export default function PemElectrolyzer() {
                     <rect width="126" height="2" transform="matrix(-1 0 0 1 387 25)" fill="#FFFF00"/>
                 </g>
 
-                <HoverCard 
+                <ResponsiveHoverCard 
                     position={isMobile ? "bottom" : "top"} 
                     withArrow 
                     shadow="md" 
-                    bg='green.4'
                     width={isMobile ? "90vw" : 300}
                     openDelay={50} 
                     closeDelay={100} 
                     withinPortal={true}
                     zIndex={50}
-                >
-                    <HoverCard.Target>
-                        <g className="interactive-element" onClick={handleSvgClick}>
+
+                    dropdownProps={{
+                        bg: "#EDD2B8",
+                        c: "black",
+                        style: { pointerEvents: 'none' }
+                    }}
+
+                    target={
+                        <g 
+                            className="interactive-element" 
+                            style={{ cursor: 'pointer' }}
+                        >
                             <rect x="183" y="116" width="40" height="320" fill="#EDD2B8"/>
-                            <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.pem.schematic.membrane.title")}</text>
+                            <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>
+                                {t("electrolyzers.pem.schematic.membrane.title")}
+                            </text>
                         </g>
-                    </HoverCard.Target>
-                    <HoverCard.Dropdown bg="#EDD2B8" c="black" style={{ pointerEvents: 'none' }}>
-                        <Text size="sm"><b>{t("electrolyzers.pem.schematic.membrane.subtitle")}</b><br/>{t("electrolyzers.pem.schematic.membrane.explanation")}</Text>
-                    </HoverCard.Dropdown>
-                </HoverCard>
+                    }
+
+                    dropdown={
+                        <Text size="sm">
+                            <b>{t("electrolyzers.pem.schematic.membrane.subtitle")}</b><br/>
+                            {t("electrolyzers.pem.schematic.membrane.explanation")}
+                        </Text>
+                    }
+                />
 
                 <g>
-                    <HoverCard 
+                    <ResponsiveHoverCard 
                         position={isMobile ? "bottom" : "left"} 
                         withArrow 
                         shadow="md" 
@@ -72,21 +82,36 @@ export default function PemElectrolyzer() {
                         closeDelay={100} 
                         withinPortal={true}
                         zIndex={50}
-                    >
-                        <HoverCard.Target>
-                            <g className="interactive-element" onClick={handleSvgClick}>
+                        
+                        dropdownProps={{
+                            bg: "#6E8BFD",
+                            c: "white",
+                            style: { pointerEvents: 'none' }
+                        }}
+
+                        target={
+                            <g 
+                                className="interactive-element"
+                                style={{ cursor: 'pointer' }}
+                            >
                                 <rect x="133" y="141" width="50" height="270" fill="#6E8BFD"/>
-                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.pem.schematic.cathode.title")}</text>
+                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>
+                                    {t("electrolyzers.pem.schematic.cathode.title")}
+                                </text>
                             </g>
-                        </HoverCard.Target>
-                        <HoverCard.Dropdown bg="#6E8BFD" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>{t("electrolyzers.pem.schematic.cathode.subtitle")}</b><br/>{t("electrolyzers.pem.schematic.cathode.explanation")}</Text>
-                        </HoverCard.Dropdown>
-                    </HoverCard>
+                        }
+
+                        dropdown={
+                            <Text size="sm">
+                                <b>{t("electrolyzers.pem.schematic.cathode.subtitle")}</b><br/>
+                                {t("electrolyzers.pem.schematic.cathode.explanation")}
+                            </Text>
+                        }
+                    />
                 </g>
 
                 <g>
-                    <HoverCard 
+                    <ResponsiveHoverCard 
                         position={isMobile ? "bottom" : "right"} 
                         withArrow 
                         shadow="md" 
@@ -95,17 +120,32 @@ export default function PemElectrolyzer() {
                         closeDelay={100} 
                         withinPortal={true}
                         zIndex={50}
-                    >
-                        <HoverCard.Target>
-                            <g className="interactive-element">
+
+                        dropdownProps={{
+                            bg: "#FD6E6E",
+                            c: "white",
+                            style: { pointerEvents: 'none' }
+                        }}
+
+                        target={
+                            <g 
+                                className="interactive-element"
+                                style={{ cursor: 'pointer' }}
+                            >
                                 <rect x="223" y="141" width="50" height="270" fill="#FD6E6E"/>
-                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.pem.schematic.anode.title")}</text>
+                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>
+                                    {t("electrolyzers.pem.schematic.anode.title")}
+                                </text>
                             </g>
-                        </HoverCard.Target>
-                        <HoverCard.Dropdown bg="#FD6E6E" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>{t("electrolyzers.pem.schematic.anode.subtitle")}</b><br/>{t("electrolyzers.pem.schematic.anode.explanation")}</Text>
-                        </HoverCard.Dropdown>
-                    </HoverCard>
+                        }
+
+                        dropdown={
+                            <Text size="sm">
+                                <b>{t("electrolyzers.pem.schematic.anode.subtitle")}</b><br/>
+                                {t("electrolyzers.pem.schematic.anode.explanation")}
+                            </Text>
+                        }
+                    />
                 </g>
                 
                 <g className="decorations" style={{ pointerEvents: 'none' }}>

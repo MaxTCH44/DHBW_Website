@@ -106,6 +106,7 @@ export default function ContentDetails({ item, namespace, componentList = null }
               mt="xl" 
               mb="sm" 
               c="dark.8"
+              {...block.options}
             >
               {t(block.value)}
             </Title>
@@ -122,7 +123,8 @@ export default function ContentDetails({ item, namespace, componentList = null }
               c={block.color}
               size={block.size}
               fw={block.weight}
-              ta={block.align}
+              ta={block.align || "left"}
+              {...block.options}
             >
               {t(block.value)}
             </Text>

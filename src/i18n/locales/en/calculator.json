@@ -259,7 +259,7 @@
 
     "warning": {
       "title": "Suboptimal Configuration",
-      "message": "The maximum number of cells ({maxCells}) is not a perfect multiple of the cells per stack ({cellsPerStack}). The remaining space cannot be fully utilized."
+      "message": "The maximum number of cells ({{maxCells}}) is not a perfect multiple of the cells per stack ({{cellsPerStack}}). The remaining space cannot be fully utilized."
     },
 
     "flowrate": {
@@ -300,7 +300,10 @@
       "greenPremium": "Green Premium",
 
       "greyEstimatedP1": "Grey H₂ estimated at ",
-      "greyEstimatedP2":" €/kg"
+      "greyEstimatedP2":" €/kg",
+
+      "currentPriceP1": "Current H₂ price is ",
+      "currentPriceP2":" €/kg"
     },
 
     "costBreakdown": {

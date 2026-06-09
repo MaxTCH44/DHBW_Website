@@ -259,7 +259,7 @@
 
     "warning": {
       "title": "Configuration sous-optimale",
-      "message": "Le nombre maximum de cellules ({maxCells}) n'est pas un multiple parfait des cellules par stack ({cellsPerStack}). L'espace restant ne peut pas être pleinement utilisé."
+      "message": "Le nombre maximum de cellules ({{maxCells}}) n'est pas un multiple parfait des cellules par stack ({{cellsPerStack}}). L'espace restant ne peut pas être pleinement utilisé."
     },
 
     "flowrate": {
@@ -300,7 +300,10 @@
       "greenPremium": "Taxe Verte",
 
       "greyEstimatedP1": "H₂ gris estimé à ",
-      "greyEstimatedP2": " €/kg"
+      "greyEstimatedP2": " €/kg",
+
+      "currentPriceP1": "Le prix actuel de l'H₂ est à ",
+      "currentPriceP2":" €/kg"
     },
 
     "costBreakdown": {

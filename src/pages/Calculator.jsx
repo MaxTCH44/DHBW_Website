@@ -631,6 +631,7 @@ export default function Calculator() {
                 greyAnnualDifference={annualDifference}
                 currentCostDifference={currentCostDifference}
                 currentAnnualDifference={currentAnnualDifference}
+                currentHydrogenPrice={currentHydrogenPrice.value * currentHydrogenPrice.unit.factor}
                 avoidedCO2={avoidedCO2}
                 breakdown={costBreakdown} 
                 metrics={extraMetrics}

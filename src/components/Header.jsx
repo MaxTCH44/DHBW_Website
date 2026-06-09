@@ -1,7 +1,7 @@
 import { Burger, Container, Group, Title, Drawer, Stack, Button, Flex, Box, Menu, Text, Image } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { Link, useLocation } from 'react-router-dom';
-import { IconChevronDown, IconFlask } from '@tabler/icons-react';
+import { IconChevronDown, IconFlask, IconCompass } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 
 import logoImage from '../assets/logo2.svg';
@@ -110,56 +110,75 @@ export default function Header() {
 
     // --- MOBILE MENU RENDERER ---
     const mobileItems = links.map((link) => {
-        // Flattens the nested menus into categorized stacks for the mobile drawer
-        if (link.links) {
-            return (
-                <Stack key={link.label} gap={5} mt="sm">
-                    <Text size="xs" fw={700} c="dimmed" px="sm" style={{ letterSpacing: 1 }}>
-                        {t(link.label).toUpperCase()}
-                    </Text>
-                    {link.links.map((item) => {
-                        const isSubActive = location.pathname === item.link;
-                        return (
-                            <Button
-                                key={item.label}
-                                component={Link}
-                                to={item.link}
-                                variant={isSubActive ? 'filled' : 'subtle'}
-                                color={isSubActive ? 'var(--mantine-primary-color-filled)' : 'gray'}
-                                c={isSubActive ? 'white' : 'light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0))'}
-                                onClick={close}
-                                px="sm"
-                                radius="sm"
-                                justify="flex-start"
-                                style={{ fontWeight: 500 }}
-                            >
-                                {t(item.label)}
-                            </Button>
-                        );
-                    })}
-                </Stack>
-            );
-        }
-
-        const isActive = location.pathname === link.link;
+    if (link.links) {
         return (
-            <Button
-                key={link.label}
-                component={Link}
-                to={link.link}
-                variant={isActive ? 'filled' : 'subtle'}
-                color={isActive ? 'var(--mantine-primary-color-filled)' : 'gray'}
-                c={isActive ? 'white' : 'light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0))'}
-                onClick={close}
-                px="sm"
-                radius="sm"
-                justify="flex-start"
-                style={{ fontWeight: 500 }}
-            >
-                {t(link.label)}
-            </Button>
+            <Stack key={link.label} gap={5} mt="sm">
+                <Text size="xs" fw={700} c="dimmed" px="sm" style={{ letterSpacing: 1 }}>
+                    {t(link.label).toUpperCase()}
+                </Text>
+                
+                <Box ml="md" pl="xs" style={{ borderLeft: '2px solid var(--mantine-color-gray-3)' }}>
+                    <Stack gap={5}>
+                        {link.links.map((item) => {
+                            const isSubActive = location.pathname === item.link;
+                            return (
+                                <Button
+                                    key={item.label}
+                                    component={Link}
+                                    to={item.link}
+                                    variant={isSubActive ? 'filled' : 'subtle'}
+                                    color={isSubActive ? 'var(--mantine-primary-color-filled)' : 'gray'}
+                                    c={isSubActive ? 'white' : 'light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0))'}
+                                    onClick={close}
+                                    px="sm"
+                                    radius="sm"
+                                    justify="flex-start"
+                                    style={{ fontWeight: 500 }}
+                                    fullWidth
+                                >
+                                    {t(item.label)}
+                                </Button>
+                            );
+                        })}
+                    </Stack>
+                </Box>
+            </Stack>
         );
-    });
+    }
+
+    const isActive = location.pathname === link.link;
+    
+    const isOurLab = link.label === 'header.ourLab' || link.label.toLowerCase().includes('ourlab');
+
+
+    return (
+        <Button
+            key={link.label}
+            component={Link}
+            to={link.link}
+            variant={isActive ? 'filled' : 'subtle'}
+            color={isActive ? 'var(--mantine-primary-color-filled)' : 'gray'}
+            c={isActive ? 'white' : 'light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0))'}
+            onClick={close}
+            px="sm"
+            mt={isOurLab ? "sm" : 0}
+            radius="sm"
+            justify="flex-start"
+            fullWidth
+            leftSection={link.icon ? <link.icon size={isOurLab ? 22 : 18} /> : null}
+        >
+            {link.icon ? (
+                <Text fw={900} size="lg">
+                    {t(link.label)}
+                </Text>
+            ) : (
+                <Text fw={500}>
+                    {t(link.label)}
+                </Text>
+            )}
+        </Button>
+    );
+});
 
     return (
         <Box 
@@ -220,7 +239,14 @@ export default function Header() {
                 opened={opened}
                 onClose={close}
                 size="xs"
-                title="Menu"
+                title={
+                    <Group gap="sm">
+                        <IconCompass size={18} stroke={2} />
+                        <Text fw={600} size="md">
+                            {t("header.navigate")}
+                        </Text>
+                    </Group>
+                }
                 hiddenFrom="sm"
                 zIndex={1000000} // Ensures the drawer overlays any floating tooltips or advice cards
             >
