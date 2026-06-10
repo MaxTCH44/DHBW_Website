@@ -402,7 +402,7 @@
     },
     "step_aux_cons": {
       "title": "Total auxiliary consumption (BoP)",
-      "content": "Producing hydrogen requires more than just the main stack. This field accounts for the extra power consumed by balance of plant (BoP) components like cooling systems, water pumps, and gas purification units. This value is added to your main energy consumption to calculate the total electricity bill, and can usually be found in the system's operational guidelines."
+      "content": "Producing hydrogen requires more than just the main stack. This field accounts for the extra power consumed by balance of plant (BoP) components like cooling systems, water purification and gas drying units. This value is added to your main energy consumption to calculate the total electricity bill, and can usually be found in the system's operational guidelines."
     },
     "step_water_cons": {
       "title": "Water consumption",

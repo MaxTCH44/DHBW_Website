@@ -122,7 +122,7 @@
 
     "stackLifetime": {
       "label": "Stack-Lebensdauer",
-      "tooltip": "Die erwartete Betriebslebensdauer des Zellstacks in Stunden, bevor die Degratation einsetzt und der Elektrolyse-Stack ersetzt werden muss. Dies treibt die langfristige Wartungskosten in die Höhe."
+      "tooltip": "Die erwartete Standzeit des Zellstacks in Stunden, bevor die Degratation einsetzt und der Elektrolyse-Stack ersetzt werden muss. Dies treibt die langfristige Wartungskosten in die Höhe."
     },
 
     "setupBuilder": "Verwenden Sie die Möglichkeit der persönlichen Konfiguration, um Ihre eigenen Konfigurationen zu erstellen und speichern"
@@ -366,35 +366,35 @@
     },
     "step_self_prod": {
       "title": "Selbst erzeugt",
-      "content": "Dies stellt den Anteil an Strom dar, den Sie vor Ort erzeugen (z. B. aus Solaranlagen oder Windturbinen), anstatt ihn direkt aus dem Netz zu beziehen. Da selbst erzeugter Strom in der Regel günstiger ist, senkt eine Erhöhung dieses Prozentsatzes Ihre Betriebskosten erheblich. Setzen Sie ihn auf 0, wenn Sie ausschließlich auf einen Standard-Netzanschluss angewiesen sind."
+      "content": "Dies stellt den Anteil an Strom dar, den Sie vor Ort erzeugen (z. B. aus Solaranlagen oder Windrädern), anstatt ihn direkt aus dem Netz zu beziehen. Da selbst erzeugter Strom in der Regel günstiger ist, senkt eine Erhöhung dieses Prozentsatzes Ihre Betriebskosten erheblich. Setzen Sie ihn auf 0, wenn Sie ausschließlich auf einen Standard-Netzanschluss angewiesen sind."
     },
     "step_elec_op_time": {
       "title": "Betriebszeit des Elektrolyseurs",
-      "content": "Dies ist die Anzahl der Stunden pro Jahr, in denen Ihr Elektrolyseur aktiv betrieben wird (bei einem Maximum von 8.760 Stunden bzw. 365 Tagen). Eine höhere Laufzeit verteilt Ihre Ausrüstungskosten auf mehr Wasserstoff und senkt den Endpreis pro kg. Wenn Ihr System ausschließlich mit Solarstrom betrieben wird, könnte dies etwa 2.000 bis 3.000 Stunden betragen. Bei Netzanschluss kann es nahezu kontinuierlich betrieben werden."
+      "content": "Dies ist die Anzahl der Stunden pro Jahr, in denen Ihr Elektrolyseur aktiv betrieben wird (bei einem Maximum von 8.760 Stunden bzw. 365 Tagen). Eine höhere Laufzeit verteilt Ihre Amortisierungskosten auf mehr Wasserstoff und senkt den Endpreis pro kg. Wenn Ihr System ausschließlich mit Solarstrom betrieben wird, könnte dies etwa 2.000 bis 3.000 Stunden betragen. Bei Netzanschluss kann es nahezu kontinuierlich betrieben werden."
     },
     "step_elec_select": {
-      "title": "Elektrolyseur-Auswahl",
-      "content": "Wählen Sie die spezifische Technologie oder das Modell für Ihr Projekt. Die Auswahl eines vordefinierten Modells lädt automatisch dessen genaue technische Spezifikationen und Kosten, während „Benutzerdefiniert\" es Ihnen ermöglicht, eigene Zahlen manuell einzugeben. Geben Sie unten an, ob Sie die Ausrüstung bereits vollständig oder teilweise besitzen – in diesem Fall werden die Anschaffungskosten aus der Berechnung entfernt."
+      "title": "Art des Elektrolyseurs",
+      "content": "Wählen Sie die spezifische Technologie oder das Modell für Ihr Projekt. Die Auswahl eines vordefinierten Modells lädt automatisch dessen genaue technische Spezifikationen und Kosten, während „Benutzerdefiniert\" es Ihnen ermöglicht, eigene Zahlen manuell einzugeben. Geben Sie unten an, ob Sie die Ausrüstung bereits vollständig oder teilweise besitzen – in diesem Fall entfallen die Anschaffungskosten bei der Berechnung."
     },
     "step_elec_price": {
-      "title": "Elektrolyseur-Kaufpreis",
-      "content": "Dies sind die gesamten anfänglichen Anschaffungskosten (CAPEX) für das Elektrolyseur-System. Wichtig: Dieser Grundpreis enthält bereits Ihren ersten betriebsbereiten Zellstack sowie alle notwendigen Balance-of-Plant-Komponenten (wie Leistungselektronik und Wasseraufbereitung). Zukünftige Stack-Ersatzteile werden separat berechnet. Für benutzerdefinierte Konfigurationen geben Sie Ihr vollständiges Lieferantenangebot in € ein."
+      "title": "Kaufpreis des Elektrolyseurs",
+      "content": "Dies sind die gesamten anfänglichen Anschaffungskosten (CAPEX) für das Elektrolyse-System. Wichtig: Dieser Grundpreis enthält bereits Ihren ersten betriebsbereiten Zellstack sowie alle notwendigen Balance-of-Plant-Komponenten (wie Leistungselektronik und Wasseraufbereitung). Zukünftige Stack-Ersatzteile werden separat berechnet. Für benutzerdefinierte Konfigurationen geben Sie Ihr vollständiges Lieferantenangebot in € ein."
     },
     "step_elec_power": {
       "title": "Stack-Leistung",
-      "content": "Dies gibt die elektrische Nennleistung eines einzelnen Zellstacks (in kW) an. Sie definiert den Maßstab des einzelnen Moduls. Die Gesamtleistung Ihrer Anlage ergibt sich aus diesem Wert multipliziert mit der Anzahl der aktiven Stacks. Diese Angabe finden Sie auf dem technischen Datenblatt des Herstellers."
+      "content": "Dies gibt die elektrische Nennleistung eines einzelnen Zellstacks (in kW) an. Sie definiert die Skalierung des einzelnen Moduls. Die Gesamtleistung Ihrer Anlage ergibt sich aus diesem Wert multipliziert mit der Anzahl der aktiven Stacks. Diese Angabe finden Sie auf dem technischen Datenblatt des Herstellers."
     },
     "step_elec_owned_stacks": {
-      "title": "Anzahl eigener Elektrolyseur-Stacks",
+      "title": "Anzahl eigener Elektrolyse-Stacks",
       "content": "Wenn Sie bereits Reserve-Zellstacks für diesen Elektrolyseur in Ihrem Lager haben, geben Sie die Menge hier an. Dadurch werden die anfänglichen Anschaffungskosten von Ihrem CAPEX abgezogen, obwohl zukünftige Stack-Ersatzteile weiterhin in der langfristigen Wartungsplanung des Projekts berücksichtigt werden."
     },
     "step_elec_stack_price": {
-      "title": "Elektrolyseur-Stack-Preis",
-      "content": "Geben Sie die Ersatzkosten für einen einzelnen Elektrolyseur-Zellstack in € an. Da Stacks mit der Zeit degradieren und periodisch ersetzt werden müssen, ist dieser Wert für eine genaue Prognose Ihrer langfristigen Betriebs- und Wartungskosten unerlässlich. Sie können diese spezifischen Kosten durch Anforderung einer Ersatzteilpreisliste bei Ihrem Gerätehersteller ermitteln."
+      "title": "Elektrolyse-Stack-Preis",
+      "content": "Geben Sie die Ersatzkosten für einen einzelnen Elektrolyse-Zellstack in € an. Da Stacks mit der Zeit degradieren und periodisch ersetzt werden müssen, ist dieser Wert für eine genaue Prognose Ihrer langfristigen Betriebs- und Wartungskosten unerlässlich. Sie können diese spezifischen Kosten durch Anforderung einer Preisliste für Ersatzteile bei Ihrem Gerätehersteller ermitteln."
     },
     "step_max_stacks_elec": {
-      "title": "Max. Stacks pro Elektrolyseur",
-      "content": "Geben Sie die maximale Anzahl von Zellstacks an, die ein einzelnes Elektrolyseur-Gehäuse oder -Schrank physisch aufnehmen kann. Diese strukturelle Grenze bestimmt, wie weit Sie die interne Kapazität skalieren können, bevor Sie gezwungen sind, eine völlig neue zweite Elektrolyseur-Einheit zu kaufen, was Ihre anfänglichen CAPEX erheblich erhöhen würde."
+      "title": "Max. Stacks pro Elektrolyse-Schaltschrank",
+      "content": "Geben Sie die maximale Anzahl von Zellstacks an, die ihr Elektrolyse-Schaltschrank physisch aufnehmen kann. Diese strukturelle Grenze bestimmt, wie weit Sie die interne Kapazität skalieren können, bevor Sie gezwungen sind, eine völlig neuen zweiten Elektrolyse-Schaltschrank zu kaufen, was Ihre anfänglichen CAPEX erheblich erhöhen würde."
     },
     "step_elec_cons": {
       "title": "Energieverbrauch des Elektrolyseurs",
@@ -402,19 +402,19 @@
     },
     "step_aux_cons": {
       "title": "Gesamter Hilfsverbrauch (BoP)",
-      "content": "Die Wasserstoffproduktion erfordert mehr als nur den Hauptstack. Dieses Feld berücksichtigt den zusätzlichen Stromverbrauch durch Balance-of-Plant-Komponenten (BoP) wie Kühlsysteme, Wasserpumpen und Gasreinigungseinheiten. Dieser Wert wird zu Ihrem Hauptenergieverbrauch addiert, um die gesamte Stromrechnung zu berechnen, und ist in der Regel in den Betriebsrichtlinien des Systems zu finden."
+      "content": "Die Wasserstoffproduktion erfordert mehr als nur den Elektrolyse-Stack. Dieses Feld berücksichtigt den zusätzlichen Stromverbrauch durch Balance-of-Plant-Komponenten (BoP) wie Kühlsysteme, Wasserfiltration und Gastrocknungsmodule. Dieser Wert wird zu Ihrem Hauptenergieverbrauch addiert, um die gesamte Kosten für Strom zu berechnen und ist in der Regel im Datenblatt des Systems zu finden."
     },
     "step_water_cons": {
       "title": "Wasserverbrauch",
-      "content": "Geben Sie an, wie viel Wasser das System während des Betriebs verbraucht. Obwohl Wasser in der Regel einen sehr kleinen Teil der nivellierten Wasserstoffkosten ausmacht, ist es physisch unverzichtbar für die Reaktion. Die benötigte Menge hängt stark von der spezifischen Technologie und den Wasserreinheitsstandards Ihrer Anlage ab."
+      "content": "Geben Sie an, wie viel Wasser das System während des Betriebs verbraucht. Obwohl Wasser in der Regel einen sehr kleinen Teil der laufenden Kosten zur Herstellung von Wasserstoff ausmacht, ist es unverzichtbar für den Elektrolyseprozess. Die benötigte Menge hängt stark von der spezifischen Technologie und den Wasserreinheitsstandards Ihrer Anlage ab."
     },
     "step_elec_maint": {
       "title": "Elektrolyseur-Wartungskosten",
-      "content": "Dies deckt Ihre jährlichen Betriebs- und Wartungskosten (O&M) ab, einschließlich routinemäßiger Überprüfungen und kleinerer Teilersätze. Beachten Sie, dass größere Stack-Ersätze separat berechnet werden. Sie werden als Prozentsatz des anfänglichen Gerätekaufpreises ausgedrückt. Wenn Sie kein spezifisches Serviceangebot haben, liegt die branchenübliche Schätzung bei 2 % bis 5 %. Sie können auch direkt den genauen Betrag in € angeben, wenn Sie den Jahreswert kennen."
+      "content": "Dies deckt Ihre jährlichen Betriebs- und Wartungskosten (O&M) ab, einschließlich routinemäßiger Überprüfungen und kleinerer Reperaturen. Beachten Sie, dass größere Stack-Täusche separat berechnet werden. Sie werden als Prozentsatz des anfänglichen Gerätekaufpreises angerechnet. Wenn Sie kein spezifisches Serviceangebot haben, liegt die branchenübliche Schätzung bei 2 % bis 5 % des Kaufpreises. Sie können auch direkt den genauen Betrag in € angeben, wenn Sie Ihre durchschnittlichen jährlichen Wartungskosten kennen."
     },
     "step_elec_stack_lifetime": {
       "title": "Stack-Lebensdauer",
-      "content": "Geben Sie die erwartete Betriebslebensdauer des Elektrolyseur-Zellstacks in Betriebsstunden an. Sobald das System diesen Schwellenwert erreicht, berechnet der Rechner automatisch die Kosten eines vollständigen Stack-Austauschs. Dies ist ein entscheidender Parameter für eine genaue Prognose Ihrer langfristigen Wartungskosten. Diese Lebensdauer finden Sie in der Regel auf dem technischen Datenblatt des Herstellers."
+      "content": "Geben Sie die erwartete Lebendsdauer des Elektrolyseur-Zellstacks in Betriebsstunden an. Sobald das System diesen Schwellenwert erreicht, berechnet der Rechner automatisch die Kosten eines vollständigen Stack-Austauschs. Dies ist ein entscheidender Parameter für eine genaue Prognose Ihrer langfristigen Wartungskosten. Diese Lebensdauer finden Sie in der Regel auf dem technischen Datenblatt des Herstellers."
     },
     "step_electricity_price": {
       "title": "Strompreis",
@@ -422,15 +422,15 @@
     },
     "step_water_price": {
       "title": "Wasserpreis",
-      "content": "Geben Sie Ihren lokalen industriellen Wasserversorgungstarif ein, den Sie entweder in €/m³ oder €/L angeben können. Obwohl hochgereinigtes Wasser für die Elektrolysereaktion unbedingt erforderlich ist, sind die reinen Wasserkosten im Vergleich zu Ihren Strom- und Hardwareausgaben in der Regel vernachlässigbar."
+      "content": "Geben Sie Ihren lokalen industriellen Wasserversorgungstarif ein, den Sie entweder in €/m³ oder €/L angeben können. Obwohl hochreines Wasser für die Elektrolysereaktion erforderlich ist, sind die reinen Wasserkosten im Vergleich zu Ihren Strom- und Hardwareausgaben in der Regel vernachlässigbar."
     },
     "step_current_h2_price": {
       "title": "Aktueller H₂-Preis",
-      "content": "Geben Sie den Preis an, den Sie derzeit Ihrem Lieferanten für gelieferten Wasserstoff zahlen, typischerweise in €/kg abgerechnet. Obwohl dies Ihre neuen Produktionskosten vor Ort nicht verändert, verwendet das Dashboard diesen Wert als Ausgangspunkt, um Ihre genauen finanziellen Einsparungen und den jährlichen Return on Investment zu berechnen."
+      "content": "Geben Sie den Preis an, den Sie derzeit Ihrem Lieferanten für Wasserstoff zahlen, typischerweise in €/kg abgerechnet. Obwohl dies Ihre neuen Produktionskosten vor Ort nicht verändert, verwendet das Dashboard diesen Wert als Ausgangspunkt, um Ihre finanziellen Einsparungen und den jährlichen Return on Investment zu berechnen."
     },
     "step_grey_h2_price": {
       "title": "Grauer H₂-Preis",
-      "content": "Legen Sie den Basismarktpreis für fossilbasierten grauen Wasserstoff fest. Der Rechner vergleicht diesen mit Ihren grünen Wasserstoffkosten, um den „Grünen Aufschlag\" zu bestimmen und zeigt Ihnen die genaue Preisdifferenz zwischen dem Standard-Industrieangebot und Ihrer sauberen Produktion."
+      "content": "Legen Sie den Basismarktpreis für fossilbasierten grauen Wasserstoff fest. Der Rechner vergleicht diesen mit Ihren grünen Wasserstoffkosten, um den „Grünen Aufschlag\" zu bestimmen und zeigt Ihnen die genaue Preisdifferenz zwischen dem Standard-Industrieangebot und Ihrem grün produzierten Wasserstoff."
     },
     "step_carbon_tax": {
       "title": "CO₂-Steuer",
@@ -438,23 +438,23 @@
     },
     "step_lifetime": {
       "title": "Projektlaufzeit",
-      "content": "Legen Sie die finanzielle Laufzeit Ihres Projekts fest, in der Regel zwischen 15 und 20 Jahren. Dieser Zeitraum wird verwendet, um Ihre anfänglichen Investitionen (CAPEX) zu amortisieren. Eine längere Projektlaufzeit verteilt die Ausrüstungskosten auf eine größere Wasserstoffmenge und senkt den Endpreis pro kg, erfordert jedoch möglicherweise die Berücksichtigung häufigerer Stack-Ersätze."
+      "content": "Legen Sie die finanzielle Laufzeit Ihres Projekts fest, in der Regel zwischen 15 und 20 Jahren. Dieser Zeitraum wird verwendet, um Ihre anfänglichen Investitionen (CAPEX) zu amortisieren. Eine längere Projektlaufzeit verteilt die Amortisierungskosten auf eine größere Wasserstoffmenge und senkt den Endpreis pro kg, erfordert jedoch möglicherweise die Berücksichtigung häufigerer Stack-Täusche."
     },
     "step_inflation": {
       "title": "Inflationsrate",
-      "content": "Geben Sie die erwartete jährliche Inflationsrate für die Dauer Ihres Projekts ein. Dieser Prozentsatz berücksichtigt den allgemeinen Preisanstieg über die Zeit. Er ist entscheidend für die Prognose, wie Ihre zukünftigen Betriebskosten von Jahr zu Jahr steigen werden. Eine höhere Inflationsrate wird diese laufenden Kosten kumulieren und die nivellierten Wasserstoffkosten erhöhen."
+      "content": "Geben Sie die erwartete jährliche Inflationsrate für die Dauer Ihres Projekts ein. Dieser Prozentsatz berücksichtigt den allgemeinen Preisanstieg über die Zeit. Er ist entscheidend für die Prognose, wie Ihre zukünftigen Betriebskosten von Jahr zu Jahr steigen werden. Eine höhere Inflationsrate wird diese laufenden Kosten kumulieren und die laufenden Kosten erhöhen."
     },
     "step_comp_needed": {
       "title": "Wird ein Kompressor benötigt?",
-      "content": "Aktivieren Sie diese Option, wenn Ihr Anwendungsfall erfordert, dass der Wasserstoff für Lagerung, Transport oder direkte Einspeisung in einen industriellen Prozess unter Druck gesetzt wird. Durch die Aktivierung wird der Kompressionsbereich freigeschaltet, um die zusätzlichen Hardware- und Energiekosten zu berücksichtigen, die Ihren endgültigen LCOH erheblich beeinflussen können."
+      "content": "Aktivieren Sie diese Option, wenn Ihr Anwendungsfall erfordert, dass der Wasserstoff für Lagerung, Transport oder direkte Einspeisung in einen industriellen Prozess in Tanks verdichtet wird. Durch die Aktivierung wird der Kompressionsbereich freigeschaltet, um die zusätzlichen Hardware- und Energiekosten zu berücksichtigen, die Ihren endgültigen LCOH erheblich beeinflussen können."
     },
     "step_h2_comp": {
       "title": "Zu komprimierender Wasserstoff",
-      "content": "Geben Sie an, wie viel Ihres produzierten Wasserstoffs tatsächlich durch den Kompressor geführt wird. Sie können dies mit dem Schieberegler oder direkt als spezifisches Volumen in kg eingeben. Wenn Ihre gesamte Produktion unter Druck gesetzt werden muss, um den Endverbraucher oder die Lagertanks zu erreichen, lassen Sie diesen Wert einfach auf Maximum."
+      "content": "Geben Sie an, wie viel Ihres produzierten Wasserstoffs tatsächlich durch den Kompressor komprimiert wird. Sie können dies mit dem Schieberegler oder direkt als spezifisches Volumen in kg eingeben. Wenn Ihre gesamte Produktion in Tanks komprimiert werden muss, um den Endverbraucher oder die Lagertanks zu erreichen, lassen Sie diesen Wert einfach auf Maximum."
     },
     "step_comp_op_time": {
       "title": "Betriebszeit des Kompressors",
-      "content": "Definieren Sie, wie lange der Kompressor über ein Jahr läuft, bis zu einem Maximum von 8.760 Stunden (bzw. 365 Tagen). Dies entspricht häufig der Betriebszeit Ihres Elektrolyseurs, kann jedoch geringer sein, wenn Ihr Kompressor überdimensioniert ist und nur intermittierend zum Befüllen von Puffertanks läuft. Dieser Parameter wirkt sich direkt auf die Hardware-Dimensionierung und Wartungszyklen aus."
+      "content": "Definieren Sie, wie lange der Kompressor über ein Jahr läuft, bis zu einem Maximum von 8.760 Stunden (bzw. 365 Tagen). Dies entspricht häufig der Betriebszeit Ihres Elektrolyseurs, kann jedoch geringer sein, wenn Ihr Kompressor größer als der Elektrolyseur dimensioniert ist und nur zeitweise zum Befüllen von Puffertanks läuft. Dieser Parameter wirkt sich direkt auf die Hardware-Dimensionierung und Wartungszyklen aus."
     },
     "step_comp_selector": {
       "title": "Kompressor-Konfiguration",
