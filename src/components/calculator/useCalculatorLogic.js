@@ -71,8 +71,8 @@ export function useCalculatorLogic({
         const newExtraElecStacks = Math.max(-electrolyzerQuantity, elecExtraStacksNeeded - ownedExtraElecStacks); 
 
         // Initial CAPEX = Price of newly required full systems + any additional internal cell stacks needed
-        const electrolyzerCapex = (newElecFrames * (selectedElectrolyzer.price || 0)) + 
-                                  (newExtraElecStacks * (selectedElectrolyzer.stack_price || 0));
+        const electrolyzerCapex = Math.max((newElecFrames * (selectedElectrolyzer.price || 0)) + 
+                                  (newExtraElecStacks * (selectedElectrolyzer.stack_price || 0)), 0);
 
         // --- ELECTROLYZER LIFECYCLE (STACK REPLACEMENT) ---
         // Cell stacks degrade over time. We calculate how many full replacements are needed 
@@ -120,8 +120,8 @@ export function useCalculatorLogic({
                 const ownedExtraCompStacks = Math.max(0, actualOwnedCompStacks - (compressorSettings.owned || 0));
                 const newExtraCompStacks = Math.max(-compressorQuantity, extraCompStacksNeeded - ownedExtraCompStacks);
                 
-                compressorCapex = (newComps * (selectedCompressor.price || 0)) + 
-                                  (newExtraCompStacks * (selectedCompressor.cell_stack_price || 0));
+                compressorCapex = Math.max((newComps * (selectedCompressor.price || 0)) + 
+                                  (newExtraCompStacks * (selectedCompressor.cell_stack_price || 0)), 0);
 
                 // --- EHC LIFECYCLE (STACK REPLACEMENT) ---
                 const compStackLifetimeHours = selectedCompressor.stack_lifetime_hours || 60000;

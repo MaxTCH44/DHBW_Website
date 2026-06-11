@@ -51,7 +51,7 @@
 
     "selfProduced": {
       "label": "Self-produced",
-      "tooltip": "Percentage of the required electrical power generated on-site (e.g., via solar panels), reducing the energy drawn from the grid."
+      "tooltip": "Part of the required electrical power generated on-site (e.g., via solar panels), reducing the energy drawn from the grid."
     },
 
     "operatingTime": {

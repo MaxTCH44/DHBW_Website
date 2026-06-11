@@ -46,12 +46,12 @@
 
     "systemSize": {
       "label": "Taille du système",
-      "tooltip": "Puissance électrique totale installée de votre configuration d'électrolyseur."
+      "tooltip": "Puissance électrique totale de votre configuration d'électrolyseur."
     },
 
     "selfProduced": {
       "label": "Auto-production",
-      "tooltip": "Pourcentage de la puissance électrique nécessaire générée sur site (par ex. via des panneaux solaires), réduisant l'énergie soutirée du réseau."
+      "tooltip": "Part de la puissance électrique nécessaire générée sur site (par ex. via des panneaux solaires), réduisant l'énergie soutirée du réseau."
     },
 
     "operatingTime": {
