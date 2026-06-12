@@ -79,11 +79,13 @@ export default function InteractiveFlow({ data, iconMap, selectedItem, onNodeCli
       >
         <Stack
           align="center"
+          justify="flex-start"
           gap="xs"
           onMouseEnter={() => setHoveredId(node.id)}
           onMouseLeave={() => setHoveredId(null)}
           onClick={() => { if (onNodeClick) onNodeClick(node); }}
           style={{ cursor: 'pointer', zIndex: 2 }}
+          w={isMobile ? 85 : 120}
         >
           <ThemeIcon
             size={isMobile ? 60 : 80}
@@ -98,11 +100,14 @@ export default function InteractiveFlow({ data, iconMap, selectedItem, onNodeCli
           >
             <ActiveIcon size={isMobile ? 30 : 40} stroke={1.5} />
           </ThemeIcon>
+
           <Text
             size="sm"
             fw={isActive ? 700 : 500}
             c={isActive ? 'myColor.9' : 'dimmed'}
             ta="center"
+            lh={1.2}
+            h={isMobile ? 'auto' : 20}
             style={{ transition: 'all 0.3s ease' }}
           >
             {t(node.label)}
