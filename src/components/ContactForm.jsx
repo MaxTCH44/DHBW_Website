@@ -1,16 +1,9 @@
 import { useState } from 'react';
 import { Container, TextInput, Textarea, Button, Group, Paper, Notification } from '@mantine/core';
-import { IconSend,  IconCheck, IconX } from '@tabler/icons-react';
-import emailjs from '@emailjs/browser';
+import { IconSend, IconCheck, IconX } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 
-
-const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-export default function ContactForm({ link, label }){
-
+export default function ContactForm({ link, label }) {
     const { t } = useTranslation("contact");
 
     // --- STATE ---
@@ -39,6 +32,7 @@ export default function ContactForm({ link, label }){
 
     async function handleSubmit(e) {
         e.preventDefault();
+        
         // Prevent submission if the email structure is invalid
         if (!validateEmail(email)) return;
 
@@ -46,31 +40,41 @@ export default function ContactForm({ link, label }){
         setStatus(null);
 
         const form = e.currentTarget;
-        const templateParams = {
-            name:form.full_name.value,
-            email:email,
-            title:form.subject.value,
-            message:form.message.value,
+        
+        // We pack the form data to send it to our local Node.js backend
+        const formData = {
+            name: form.full_name.value,
+            email: email,
+            subject: form.subject.value,
+            message: form.message.value,
         };
 
         try {
-            await emailjs.send(
-                EMAILJS_SERVICE_ID,
-                EMAILJS_TEMPLATE_ID,
-                templateParams,
-                EMAILJS_PUBLIC_KEY
-            );
-            setStatus('success');
-            form.reset();
-            setEmail('');
+            // Send the envelope (JSON) to our local post office (Node.js)
+            const response = await fetch('http://localhost:3001/api/contact', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setStatus('success');
+                form.reset();
+                setEmail('');
+            } else {
+                setStatus('error');
+            }
         } catch (err) {
-            console.error('EmailJS error:', err);
+            console.error('Fetch error:', err);
             setStatus('error');
         } finally {
             setLoading(false);
         }
     }
-    return(
+
+    return (
         <Container>
             {status === 'success' && (
                 <Notification
@@ -152,5 +156,5 @@ export default function ContactForm({ link, label }){
                 </form>
             </Paper>
         </Container>
-    )
+    );
 }
