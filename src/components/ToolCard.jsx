@@ -1,4 +1,4 @@
-import { Card, Text, Button, ThemeIcon, Group } from '@mantine/core';
+import { Card, Text, Button, ThemeIcon, Group, Box } from '@mantine/core';
 import { Link } from 'react-router-dom';
 
 /**
@@ -33,6 +33,7 @@ export default function ToolCard({ title, description, Icon, buttonText, link })
                 <Text fw={700} size="xl" style={{ flex: 1 }}>
                     {title}
                 </Text>
+                <Box w={50} />
             </Group>
 
             <Text c="dimmed" size="md" mb="xl" style={{ flexGrow: 1 }}>

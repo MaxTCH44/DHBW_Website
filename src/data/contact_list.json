@@ -7,13 +7,5 @@
         "landline":"+49 621 4105-1248",
         "mail":"volker.schulz@dhbw.de",
         "photo":"img/Schulz_Volker.jpg"
-    },
-    {
-        "name":"Test, people 2",
-        "role":["test"],
-        "place":"test",
-        "mobile":"test",
-        "landline":"test",
-        "mail":"test"
     }
 ]

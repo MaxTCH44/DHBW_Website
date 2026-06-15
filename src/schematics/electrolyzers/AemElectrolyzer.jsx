@@ -1,6 +1,8 @@
-import { Box, HoverCard, Text } from '@mantine/core';
+import { Box, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { useTranslation } from 'react-i18next';
+
+import ResponsiveHoverCard from '../../components/ResponsiveHoverCard';
 
 import './AlkalineElectrolyzer.css';
 
@@ -10,11 +12,6 @@ export default function AemElectrolyzer() {
     const isMobile = useMediaQuery('(max-width: 768px)');
 
     const { t, i18n } = useTranslation("equipmentOverview");
-
-    const handleSvgClick = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-    };
 
     return (
         <Box w={{ base: '100%', sm: '50%' }} mx="auto" ta="center" p="xl" style={{ overflow: 'hidden' }}>
@@ -39,7 +36,7 @@ export default function AemElectrolyzer() {
                     <rect width="126" height="2" transform="matrix(-1 0 0 1 387 25)" fill="#FFFF00"/>
                 </g>
 
-                <HoverCard 
+                <ResponsiveHoverCard 
                     position={isMobile ? "bottom" : "top"} 
                     withArrow 
                     shadow="md" 
@@ -49,20 +46,26 @@ export default function AemElectrolyzer() {
                     closeDelay={100} 
                     withinPortal={true}
                     zIndex={50}
-                >
-                    <HoverCard.Target>
-                        <g className="interactive-element" onClick={handleSvgClick}>
+
+                    dropdownProps={{bg:"#b768ca",
+                        c:"white",
+                        style:{ pointerEvents: 'none' }}
+                    }
+
+                    target={
+                        <g className="interactive-element">
                             <rect x="183" y="116" width="40" height="320" fill="#b768ca"/>
                             <text x="203" y="456" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.aem.schematic.membrane.title")}</text>
                         </g>
-                    </HoverCard.Target>
-                    <HoverCard.Dropdown bg="#b768ca" c="white" style={{ pointerEvents: 'none' }}>
+                    }
+                    
+                    dropdown={
                         <Text size="sm"><b>{t("electrolyzers.aem.schematic.membrane.subtitle")}</b><br/>{t("electrolyzers.aem.schematic.membrane.explanation")}</Text>
-                    </HoverCard.Dropdown>
-                </HoverCard>
+                    }
+                />
 
                 <g>
-                    <HoverCard 
+                    <ResponsiveHoverCard 
                         position={isMobile ? "bottom" : "left"} 
                         withArrow 
                         shadow="md" 
@@ -71,21 +74,33 @@ export default function AemElectrolyzer() {
                         closeDelay={100} 
                         withinPortal={true}
                         zIndex={50}
-                    >
-                        <HoverCard.Target>
-                            <g className="interactive-element" onClick={handleSvgClick}>
+                        
+                        dropdownProps={{
+                            bg: "#6E8BFD",
+                            c: "white",
+                            style: { pointerEvents: 'none' }
+                        }}
+
+                        target={
+                            <g className="interactive-element" style={{ cursor: 'pointer' }}>
                                 <rect x="133" y="141" width="50" height="270" fill="#6E8BFD"/>
-                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.aem.schematic.cathode.title")}</text>
+                                <text x="138" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>
+                                    {t("electrolyzers.aem.schematic.cathode.title")}
+                                </text>
                             </g>
-                        </HoverCard.Target>
-                        <HoverCard.Dropdown bg="#6E8BFD" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>{t("electrolyzers.aem.schematic.cathode.subtitle")}</b><br/>{t("electrolyzers.aem.schematic.cathode.explanation")}</Text>
-                        </HoverCard.Dropdown>
-                    </HoverCard>
+                        }
+
+                        dropdown={
+                            <Text size="sm">
+                                <b>{t("electrolyzers.aem.schematic.cathode.subtitle")}</b><br/>
+                                {t("electrolyzers.aem.schematic.cathode.explanation")}
+                            </Text>
+                        }
+                    />
                 </g>
 
                 <g>
-                    <HoverCard 
+                    <ResponsiveHoverCard 
                         position={isMobile ? "bottom" : "right"} 
                         withArrow 
                         shadow="md" 
@@ -94,17 +109,29 @@ export default function AemElectrolyzer() {
                         closeDelay={100} 
                         withinPortal={true}
                         zIndex={50}
-                    >
-                        <HoverCard.Target>
-                            <g className="interactive-element">
+
+                        dropdownProps={{
+                            bg: "#FD6E6E",
+                            c: "white",
+                            style: { pointerEvents: 'none' }
+                        }}
+
+                        target={
+                            <g className="interactive-element" style={{ cursor: 'pointer' }}>
                                 <rect x="223" y="141" width="50" height="270" fill="#FD6E6E"/>
-                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("electrolyzers.aem.schematic.anode.title")}</text>
+                                <text x="263" y="432" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>
+                                    {t("electrolyzers.aem.schematic.anode.title")}
+                                </text>
                             </g>
-                        </HoverCard.Target>
-                        <HoverCard.Dropdown bg="#FD6E6E" c="white" style={{ pointerEvents: 'none' }}>
-                            <Text size="sm"><b>{t("electrolyzers.aem.schematic.anode.subtitle")}</b><br/>{t("electrolyzers.aem.schematic.anode.explanation")}</Text>
-                        </HoverCard.Dropdown>
-                    </HoverCard>
+                        }
+
+                        dropdown={
+                            <Text size="sm">
+                                <b>{t("electrolyzers.aem.schematic.anode.subtitle")}</b><br/>
+                                {t("electrolyzers.aem.schematic.anode.explanation")}
+                            </Text>
+                        }
+                    />
                 </g>
                 
                 <g className="decorations" style={{ pointerEvents: 'none' }}>

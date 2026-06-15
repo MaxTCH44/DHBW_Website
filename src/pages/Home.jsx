@@ -159,7 +159,18 @@ export default function Home() {
                     slideGap="md"
                     emblaOptions={{ loop: true, align: "start" }}
                     mt={40}
-                    style={{ paddingBottom: '40px' }}
+                    pb={40}
+                    styles={{
+                        control: {
+                            backgroundColor: 'var(--mantine-color-green-3)',
+                            color: 'var(--mantine-color-white)',
+                            border: 'none',
+                            boxShadow: 'var(--mantine-shadow-sm)',
+                            '&:hover': {
+                                backgroundColor: 'var(--mantine-color-green-4)',
+                            }
+                        }
+                    }}
                 >
                     {learnData.map((item, index) => {
                     const IconComponent = ICON_MAP[item.iconName];

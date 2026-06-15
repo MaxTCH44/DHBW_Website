@@ -1,6 +1,8 @@
-import { Box, HoverCard, Text } from '@mantine/core';
+import { Box, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { useTranslation } from 'react-i18next';
+
+import ResponsiveHoverCard from '../../components/ResponsiveHoverCard';
 
 import './PsaPurifier.css';
 
@@ -10,19 +12,27 @@ export default function PsaPurifier() {
     const isMobile = useMediaQuery('(max-width: 768px)');
     const { t, i18n } = useTranslation("recyclingProcess");
 
-    const handleSvgClick = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-    };
-
     return (
         <Box w={{ base: '100%', sm: '80%', md: '60%', lg: '50%' }} mx="auto" ta="center" p="xl" style={{ overflow: 'hidden' }}>
             <svg width="100%" viewBox="0 0 396 475" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', margin: 'auto' }}>
                 <rect width="396" height="475" fill="white"/>
                 
-                <HoverCard position={isMobile ? "bottom" : "top"} withArrow shadow="md" width={isMobile ? "90vw" : 320} openDelay={50} closeDelay={100} withinPortal={true} zIndex={50}>
-                    <HoverCard.Target>
-                        <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
+                <ResponsiveHoverCard 
+                    position={isMobile ? "bottom" : "top"} 
+                    withArrow 
+                    shadow="md"
+                    width={isMobile ? "90vw" : 320} 
+                    openDelay={50} 
+                    closeDelay={100} 
+                    withinPortal={true} 
+                    zIndex={50}
+                    dropdownProps={{ 
+                        bg:"blue.5",
+                        c:"white",
+                        style:{ pointerEvents: 'none' }}
+                    }
+                    target={
+                        <g className="interactive-element" style={{ outline: 'none' }}>
                             <g className="tank-group-left">
                                 <rect x="112" y="155" width="73" height="145" fill="#B5E2ED" stroke="#5B5959" strokeWidth="4"/>
                                 <g className="pipe-pair-top-left">
@@ -67,15 +77,28 @@ export default function PsaPurifier() {
                                 </g>
                             </g>
                         </g>
-                    </HoverCard.Target>
-                    <HoverCard.Dropdown bg="blue.5" c="white" style={{ pointerEvents: 'none' }}>
+                    }
+                    dropdown={
                         <Text size="sm"><b>{t("recyclingProcess.schematics.psa.beds.title")}</b><br/>{t("recyclingProcess.schematics.psa.beds.explanation")}</Text>
-                    </HoverCard.Dropdown>
-                </HoverCard>
+                    }
+                />
 
-                <HoverCard position={isMobile ? "bottom" : "left"} withArrow shadow="md" width={isMobile ? "90vw" : 250} openDelay={50} closeDelay={100} withinPortal={true} zIndex={50}>
-                    <HoverCard.Target>
-                        <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
+                <ResponsiveHoverCard 
+                    position={isMobile ? "bottom" : "left"} 
+                    withArrow 
+                    shadow="md" 
+                    width={isMobile ? "90vw" : 250} 
+                    openDelay={50} 
+                    closeDelay={100} 
+                    withinPortal={true} 
+                    zIndex={50}
+                    dropdownProps={{
+                        bg: "orange.5",
+                        c: "white",
+                        style: { pointerEvents: 'none' }
+                    }}
+                    target={
+                        <g className="interactive-element" style={{ outline: 'none', cursor: 'pointer' }}>
                             <path d="M12 268L52.6116 229.895L52.6116 306.105L12 268Z" fill="#FE7F25"/>
                             <rect x="51.3223" y="245.741" width="38.6777" height="44.5176" fill="#FE7F25"/>
                             <text x="58" y="225" fontSize={i18n.language === 'de' ? 12 : 14} fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}>{t("recyclingProcess.schematics.psa.out1")}</text>
@@ -93,19 +116,32 @@ export default function PsaPurifier() {
                                 <rect width="11" height="44" transform="matrix(0 1 1 0 282 262)" fill="#F5F5F5"/>
                             </g>
                         </g>
-                    </HoverCard.Target>
-                    <HoverCard.Dropdown bg="orange.5" c="white" style={{ pointerEvents: 'none' }}>
+                    }
+                    dropdown={
                         <Text size="sm"><b>{t("recyclingProcess.schematics.psa.exhaust.title")}</b><br/>{t("recyclingProcess.schematics.psa.exhaust.explanation")}</Text>
-                    </HoverCard.Dropdown>
-                </HoverCard>
+                    }
+                />
 
-                <HoverCard position={isMobile ? "bottom" : "bottom"} withArrow shadow="md" width={isMobile ? "90vw" : 250} openDelay={50} closeDelay={100} withinPortal={true} zIndex={50}>
-                    <HoverCard.Target>
-                        <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
+                <ResponsiveHoverCard 
+                    position={isMobile ? "bottom" : "bottom"} 
+                    withArrow 
+                    shadow="md" 
+                    width={isMobile ? "90vw" : 250} 
+                    openDelay={50} 
+                    closeDelay={100} 
+                    withinPortal={true} 
+                    zIndex={50}
+                    dropdownProps={{
+                        bg: "gray.6",
+                        c: "white",
+                        style: { pointerEvents: 'none' }
+                    }}
+                    target={
+                        <g className="interactive-element" style={{ outline: 'none', cursor: 'pointer' }}>
                             <path d="M198 382L236.105 422.612H159.895L198 382Z" fill="#afb1be"/>
                             <rect x="220.259" y="421.322" width="38.6777" height="44.5176" transform="rotate(90 220.259 421.322)" fill="#afb1be"/>
                             <text x="198" y="420" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}> {t("recyclingProcess.schematics.psa.in.top")} </text>  
-                            <text x="198" y="440" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}> {t("recyclingProcess.schematics.psa.in.bottom")} </text>                          
+                            <text x="198" y="440" fontSize="14" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}> {t("recyclingProcess.schematics.psa.in.bottom")} </text>                                  
 
                             <g className="pipe-pair-bottom-center">
                                 <rect width="17" height="40" transform="matrix(-1 0 0 1 206 343)" fill="#5B5959"/>
@@ -116,15 +152,28 @@ export default function PsaPurifier() {
                                 <rect width="11" height="43" transform="matrix(-1 0 0 1 203 339)" fill="#F5F5F5"/>
                             </g>
                         </g>
-                    </HoverCard.Target>
-                    <HoverCard.Dropdown bg="gray.6" c="white" style={{ pointerEvents: 'none' }}>
+                    }
+                    dropdown={
                         <Text size="sm"><b>{t("recyclingProcess.schematics.psa.in.title")}</b><br/>{t("recyclingProcess.schematics.psa.in.explanation")}</Text>
-                    </HoverCard.Dropdown>
-                </HoverCard>
+                    }
+                />
 
-                <HoverCard position={isMobile ? "bottom" : "right"} withArrow shadow="md" width={isMobile ? "90vw" : 250} openDelay={50} closeDelay={100} withinPortal={true} zIndex={50}>
-                    <HoverCard.Target>
-                        <g className="interactive-element" onClick={handleSvgClick} style={{ outline: 'none' }}>
+                <ResponsiveHoverCard 
+                    position={isMobile ? "bottom" : "right"} 
+                    withArrow 
+                    shadow="md" 
+                    width={isMobile ? "90vw" : 250} 
+                    openDelay={50} 
+                    closeDelay={100} 
+                    withinPortal={true} 
+                    zIndex={50}
+                    dropdownProps={{
+                        bg: "#4DE32F",
+                        c: "dark.9",
+                        style: { pointerEvents: 'none' }
+                    }}
+                    target={
+                        <g className="interactive-element" style={{ outline: 'none', cursor: 'pointer' }}>
                             <path d="M197 15L235.105 55.6116L158.895 55.6116L197 15Z" fill="#4DE32F"/>
                             <rect x="219.259" y="54.3223" width="38.6777" height="44.5176" transform="rotate(90 219.259 54.3223)" fill="#4DE32F"/>
                             <text x="198" y="60" fontSize="24" fill="black" fontWeight="bold" textAnchor="middle" style={{ pointerEvents: 'none' }}> H₂ </text>
@@ -138,11 +187,11 @@ export default function PsaPurifier() {
                                 <rect x="203" y="116" width="11" height="43" transform="rotate(-180 203 116)" fill="#F5F5F5"/>
                             </g>
                         </g>
-                    </HoverCard.Target>
-                    <HoverCard.Dropdown bg="#4DE32F" c="dark.9" style={{ pointerEvents: 'none' }}>
+                    }
+                    dropdown={
                         <Text size="sm"><b>{t("recyclingProcess.schematics.psa.output.title")}</b><br/>{t("recyclingProcess.schematics.psa.output.explanation")}</Text>
-                    </HoverCard.Dropdown>
-                </HoverCard>
+                    }
+                />
 
             </svg>
         </Box>

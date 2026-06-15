@@ -3,7 +3,7 @@
     "titleP1": "Outils avancés pour l'ingénierie de ",
     "titleGreen": "l’hydrogène vert",
     "titleP2": "",
-    "subtitle": "Une plateforme spécialisée conçue pour les laboratoires, chercheurs et ingénieurs industriels afin de planifier, simuler et optimiser les systèmes H₂.",
+    "subtitle": "Une plateforme spécialisée conçue pour les laboratoires, chercheurs et ingénieurs industriels afin de planifier, calculer et optimiser les systèmes H₂.",
     "buttons": {
       "primary": "Accéder aux outils",
       "secondary": "Explorer les technologies"
@@ -46,12 +46,12 @@
 
   "homeTools": {
     "techno_economic_calculator": {
-      "title": "Calculateur techno-économique",
+      "title": "Calculateur H₂",
       "description": "Calculer le coût nivelé de l’hydrogène (LCOH), le CAPEX et l’OPEX. Estimer les revenus potentiels et les périodes de retour sur investissement pour les installations de production d’hydrogène vert.",
       "buttonText": "Lancer la simulation LCOH"
     },
     "hydrogen_recovery_calculator": {
-      "title": "Calculateur de récupération d’hydrogène",
+      "title": "Recyclage H₂",
       "description": "Estimer la viabilité économique de la capture de l’hydrogène non consommé. Calculer les volumes annuels récupérables et le retour sur investissement (ROI) basé sur votre mélange gazeux.",
       "buttonText": "Calculer le ROI"
     }

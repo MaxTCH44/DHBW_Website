@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Box, Stack, Text, HoverCard, Group, Badge } from '@mantine/core';
+import { Box, Stack, Text, Group, Badge } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { useTranslation } from 'react-i18next';
+
+import ResponsiveHoverCard from '../../components/ResponsiveHoverCard';
 
 import PemFuelCell from './PemFuelCell'; 
 
@@ -61,8 +63,9 @@ export default function ChpFuelCell() {
                 </g>
 
 
-                <HoverCard width={320} shadow="md" disabled={isZoomed} openDelay={100}>
-                    <HoverCard.Target>
+                <ResponsiveHoverCard width={320} shadow="md" disabled={isZoomed} openDelay={100}
+                    dropdownProps={{bg:"#f1f3f5"}}
+                    target={
                         <g 
                             className={`fuel-cell-layer ${!isZoomed ? 'miniaturized' : ''}`}
                             style={{ cursor: "pointer" }}
@@ -70,8 +73,8 @@ export default function ChpFuelCell() {
                             <PemFuelCell asGroup={true} />
                             {!isZoomed && <rect width="406" height="407" fill="transparent" style={{ pointerEvents: 'auto' }} />}
                         </g>
-                    </HoverCard.Target>
-                    <HoverCard.Dropdown bg="#f1f3f5">
+                    }
+                    dropdown={
                         <Stack gap="xs">
                             <Group gap="xs">
                                 <Badge color="green" variant="filled">{t("heating.schematic.title")}</Badge>
@@ -80,8 +83,8 @@ export default function ChpFuelCell() {
                                 {t("heating.schematic.text1")}<b>{t("heating.schematic.textBold1")}</b> {t("heating.schematic.text2")} <b>{t("heating.schematic.textBold2")}</b>{t("heating.schematic.text3")} <b>{t("heating.schematic.textBold3")}</b> {t("heating.schematic.text4")}
                             </Text>
                         </Stack>
-                    </HoverCard.Dropdown>
-                </HoverCard>
+                    }
+                />
 
                 {!isZoomed && (
                     <g className="energy-outputs" transform="translate(13, 9.5)" style={{ pointerEvents: 'none' }}>

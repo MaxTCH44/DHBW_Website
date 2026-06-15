@@ -52,7 +52,7 @@ const CostProgressRow = ({ icon, color, title, value, percent, lang }) => (
  * @param {Object} props.metrics - Additional physical plant metrics (annual production, energy needed, utilization rate).
  * @param {Object} props.greyDetails - Contextual market data regarding grey hydrogen (base price, carbon tax impact).
  */
-function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, currentCostDifference, currentAnnualDifference, avoidedCO2, breakdown, metrics, greyDetails }) {
+function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, currentCostDifference, currentAnnualDifference, currentHydrogenPrice, avoidedCO2, breakdown, metrics, greyDetails }) {
     
     const { t, i18n } = useTranslation("calculator");
 
@@ -103,58 +103,96 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                 
                 {/* Levelized Cost of Hydrogen (LCOH) - The ultimate KPI combining CAPEX + OPEX over lifetime */}
                 <Paper p="md" radius="md" withBorder bg="white">
-                    <Text size="sm" c="dimmed" fw={600} tt="uppercase">
-                        {t('dashboard.metrics.lcoh')}
-                    </Text>
+                    <Stack h="100%" justify="center" gap="sm">
+                        <Text size="sm" c="dimmed" fw={600} tt="uppercase">
+                            {t('dashboard.metrics.lcoh')}
+                        </Text>
 
-                    <Text size="xl" fw={900} c="myColor.9" mt="sm">
-                        {cost > 0 && isFinite(cost)
-                            ? cost.toLocaleString(i18n.language, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                            : "0,00"} {t('units.eur_per_kg')}
-                    </Text>
+                        <Text size="xl" fw={900} c="myColor.9">
+                            {cost > 0 && isFinite(cost)
+                                ? cost.toLocaleString(i18n.language, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                                : "0,00"} {t('units.eur_per_kg')}
+                        </Text>
+                    </Stack>
                 </Paper>
 
                 <Paper p="md" radius="md" withBorder bg="white">
-                    <Text size="sm" c="dimmed" fw={600} tt="uppercase">
-                        {t('dashboard.metrics.totalCapex')}
-                    </Text>
+                    <Stack h="100%" justify="center" gap="sm">
+                        <Text size="sm" c="dimmed" fw={600} tt="uppercase">
+                            {t('dashboard.metrics.totalCapex')}
+                        </Text>
 
-                    <Text size="xl" c="red.7" fw={900} mt="sm">
-                        {capex.toLocaleString(i18n.language, { maximumFractionDigits: 0 })} €
-                    </Text>
+                        <Text size="xl" c="red.7" fw={900}>
+                            {capex.toLocaleString(i18n.language, { maximumFractionDigits: 0 })} €
+                        </Text>
+                    </Stack>
                 </Paper>
 
                 {/* ROI vs User's actual current supply costs */}
-                <Paper p="md" radius="md" withBorder bg={isProfitableCurrent ? "teal.0" : "red.0"}>
+                <Paper
+                    p="md"
+                    radius="md"
+                    withBorder
+                    bg={isProfitableCurrent ? "teal.0" : "red.0"}
+                    h="100%"
+                    display="flex"
+                    style={{
+                        flexDirection: 'column'
+                    }}
+                >
                     <Text
                         size="sm"
                         c={isProfitableCurrent ? "teal.9" : "red.9"}
                         fw={600}
                         tt="uppercase"
+                        mt="auto"
                     >
                         {isProfitableCurrent
                             ? t('dashboard.metrics.savingsVsCurrentCost')
                             : t('dashboard.metrics.lossVsCurrentCost')}
                     </Text>
 
-                    <Text
-                        size="xl"
-                        fw={900}
-                        c={isProfitableCurrent ? "teal.7" : "red.7"}
-                        mt="sm"
-                    >
-                        {isProfitableCurrent ? "+" : ""}
-                        {(isFinite(currentAnnualDifference) && currentAnnualDifference !== 0)
-                            ? currentAnnualDifference.toLocaleString(i18n.language, { maximumFractionDigits: 0 })
-                            : "0"} {t('units.eur_per_year')}
-                    </Text>
+                    <Box mt="auto">
+                        <Text
+                            size="xl"
+                            fw={900}
+                            c={isProfitableCurrent ? "teal.7" : "red.7"}
+                            mt="sm"
+                        >
+                            {isProfitableCurrent ? "+" : ""}
+                            {(isFinite(currentAnnualDifference) && currentAnnualDifference !== 0)
+                                ? currentAnnualDifference.toLocaleString(i18n.language, { maximumFractionDigits: 0 })
+                                : "0"} {t('units.eur_per_year')}
+                        </Text>
 
-                    <Badge color={isProfitableCurrent ? "teal" : "red"} mt="xs" variant="light">
-                        {isProfitableCurrent ? "+" : ""}
-                        {isFinite(currentCostDifference)
-                            ? currentCostDifference.toLocaleString(i18n.language, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                            : "0,00"} {t('units.eur_per_kg')}
-                    </Badge>
+                        <Badge color={isProfitableCurrent ? "teal" : "red"} mt="xs" variant="light">
+                            {isProfitableCurrent ? "+" : ""}
+                            {isFinite(currentCostDifference)
+                                ? currentCostDifference.toLocaleString(i18n.language, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                                : "0,00"} {t('units.eur_per_kg')}
+                        </Badge>
+
+                        <Box
+                            mt="sm"
+                            pt="sm"
+                            style={{
+                                borderTop: `1px solid var(--mantine-color-${isProfitableCurrent ? 'teal' : 'red'}-2)`
+                            }}
+                        >
+                            <Text
+                                size="xs"
+                                c={isProfitableCurrent ? "teal.9" : "red.9"}
+                                fw={500}
+                            >
+                                {t('dashboard.metrics.currentPriceP1')}
+                                {currentHydrogenPrice.toLocaleString(i18n.language, {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })}
+                                {t('dashboard.metrics.currentPriceP2')}
+                            </Text>
+                        </Box>
+                    </Box>
                 </Paper>
 
                 <Paper
@@ -162,58 +200,58 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                     radius="md"
                     withBorder
                     bg={isProfitableGrey ? "teal.0" : "red.0"}
-                    style={{ opacity: 0.85 }}
+                    h="100%"
+                    display="flex"
+                    style={{ 
+                        opacity: 0.85, 
+                        flexDirection: 'column'
+                    }}
                 >
                     <Text
                         size="sm"
                         c={isProfitableGrey ? "teal.9" : "red.9"}
                         fw={600}
                         tt="uppercase"
+                        mt="auto"
                     >
                         {isProfitableGrey
                             ? t('dashboard.metrics.savingsVsGrey')
                             : t('dashboard.metrics.greenPremium')}
                     </Text>
 
-                    <Text
-                        size="xl"
-                        fw={900}
-                        c={isProfitableGrey ? "teal.7" : "red.7"}
-                        mt="sm"
-                    >
-                        {isProfitableGrey ? "+" : ""}
-                        {(isFinite(greyAnnualDifference) && greyAnnualDifference !== 0)
-                            ? greyAnnualDifference.toLocaleString(i18n.language, { maximumFractionDigits: 0 })
-                            : "0"} {t('units.eur_per_year')}
-                    </Text>
-
-                    <Badge color={isProfitableGrey ? "teal" : "red"} mt="xs" variant="light">
-                        {isProfitableGrey ? "+" : ""}
-                        {isFinite(greyCostDifference)
-                            ? greyCostDifference.toLocaleString(i18n.language, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                            : "0,00"} {t('units.eur_per_kg')}
-                    </Badge>
-
-                    <Box
-                        mt="sm"
-                        pt="sm"
-                        style={{
-                            borderTop: `1px solid var(--mantine-color-${isProfitableGrey ? 'teal' : 'red'}-2)`
-                        }}
-                    >
-                        <Text
-                            size="xs"
-                            c={isProfitableGrey ? "teal.9" : "red.9"}
-                            fw={500}
-                        >
-                            {t('dashboard.metrics.greyEstimatedP1')}
-                            {greyDetails.smoothed.toLocaleString(i18n.language, {
-                                minimumFractionDigits: 2,
-                                maximumFractionDigits: 2
-                            })}
-                            {t('dashboard.metrics.greyEstimatedP2')}
-                            
+                    <Box mt="auto">
+                        
+                        <Text size="xl" fw={900} c={isProfitableGrey ? "teal.7" : "red.7"} mt="sm">
+                            {isProfitableGrey ? "+" : ""}
+                            {(isFinite(greyAnnualDifference) && greyAnnualDifference !== 0)
+                                ? greyAnnualDifference.toLocaleString(i18n.language, { maximumFractionDigits: 0 })
+                                : "0"} {t('units.eur_per_year')}
                         </Text>
+
+                        <Badge color={isProfitableGrey ? "teal" : "red"} mt="xs" variant="light">
+                            {isProfitableGrey ? "+" : ""}
+                            {isFinite(greyCostDifference)
+                                ? greyCostDifference.toLocaleString(i18n.language, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                                : "0,00"} {t('units.eur_per_kg')}
+                        </Badge>
+
+                        <Box
+                            mt="sm"
+                            pt="sm"
+                            style={{
+                                borderTop: `1px solid var(--mantine-color-${isProfitableGrey ? 'teal' : 'red'}-2)`
+                            }}
+                        >
+                            <Text size="xs" c={isProfitableGrey ? "teal.9" : "red.9"} fw={500}>
+                                {t('dashboard.metrics.greyEstimatedP1')}
+                                {greyDetails.smoothed.toLocaleString(i18n.language, {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })}
+                                {t('dashboard.metrics.greyEstimatedP2')}
+                            </Text>
+                        </Box>
+
                     </Box>
                 </Paper>
             </SimpleGrid>

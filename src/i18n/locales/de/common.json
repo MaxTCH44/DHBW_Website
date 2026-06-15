@@ -9,6 +9,7 @@
         "setupBuilder": "Konfigurations-Builder"
     },
     "header": {
+        "navigate": "Navigation",
         "ourLab": "Unser Labor",
         "calculator": "H₂-Rechner",
         "recycling": "H₂-Recycling",
