@@ -79,7 +79,8 @@
       "title": "Hydrogen Recycling Calculator",
       "description": "Stop venting valuable hydrogen into the atmosphere. Calculate how much H₂ you can recover annually and discover your Return on Investment (ROI).",
       "learnMoreButton": "Learn how the recycling process works",
-      "tooltipLabel": "Click for step-by-step help"
+      "tooltipLabel": "Click for step-by-step help",
+      "tooltipButton": "Step-by-step help"
     },
     "reset": {
       "link": "Reset all inputs to default values",

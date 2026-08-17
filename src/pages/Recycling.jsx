@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
-import { Container, Title, Text, Grid, Card, Group, Badge, Box, Paper, Button, Modal, Anchor, Tooltip, ActionIcon } from '@mantine/core';
+import { Container, Title, Text, Grid, Card, Group, Badge, Box, Paper, Button, Modal, Anchor, Tooltip, ActionIcon, Stack } from '@mantine/core';
 import { useMediaQuery, useSessionStorage } from '@mantine/hooks';
 import { IconMail, IconRecycle, IconCoin, IconClockHour4, IconArrowRight, IconLeaf, IconQuestionMark } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
@@ -265,47 +265,36 @@ export default function Recycling() {
             </Box>
 
             <Box mb={10} ta="center">
-                <Group justify="center" mt="xl" mb="sm">
-                    <Box pos="relative" display="inline-flex" style={{ alignItems: 'center' }}>
-        
-                        <Anchor 
-                            component="button" 
-                            type="button" 
-                            size="sm" 
-                            c="#495057" 
-                            onClick={() => setResetModalOpened(true)}
+                <Stack align="center" gap="xs" mb="sm">
+                    <Tooltip
+                        label={t("recyclingCalculatorPage.header.tooltipLabel")}
+                        withArrow
+                        position="right"
+                    >
+                        <Button
+                            variant="light"
+                            color="#00a41b"
+                            radius="xl"
+                            size="sm"
+                            onClick={() => {
+                                setShowHelp(true);
+                                setResetHelp(true);
+                            }}
                         >
-                            {t("recyclingCalculatorPage.reset.link")}
-                        </Anchor>
-
-                        <Tooltip 
-                            label={t("recyclingCalculatorPage.header.tooltipLabel")} 
-                            withArrow 
-                            position="right"
-                        >
-                            <ActionIcon 
-                                variant="light" 
-                                color="blue" 
-                                radius="xl" 
-                                size="md" 
-                                onClick={() => {
-                                    setShowHelp(true);
-                                    setResetHelp(true);
-                                }}
-                                pos="absolute"
-                                style={{
-                                    left: 'calc(100% + 12px)', 
-                                    top: '50%',
-                                    transform: 'translateY(-50%)',
-                                    whiteSpace: 'nowrap'
-                                }}
-                            >
-                                <IconQuestionMark size={16} stroke={2.5} />
-                            </ActionIcon>
-                        </Tooltip>
-                        
-                    </Box>
-                </Group>
+                            {t("recyclingCalculatorPage.header.tooltipButton")}
+                        </Button>
+                    </Tooltip>
+                    
+                    <Anchor
+                        component="button"
+                        type="button"
+                        size="sm"
+                        c="#495057"
+                        onClick={() => setResetModalOpened(true)}
+                    >
+                        {t("recyclingCalculatorPage.reset.link")}
+                    </Anchor>
+                </Stack>
 
                 <Modal 
                     opened={resetModalOpened} 
