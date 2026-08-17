@@ -66,7 +66,7 @@ export default function Home() {
                     size="xl"
                     radius="md"
                     variant="white"
-                    c="var(--mantine-primary-color-filled)"
+                    c="#00a41b"
                     leftSection={<IconBook size={24} />}
                     >
                     {t("home_hero.buttons.secondary")}
@@ -80,12 +80,12 @@ export default function Home() {
                 <Paper radius="lg" p={{ base: 'xl', md: 50 }} bg="gray.0" style={{ border: '1px solid var(--mantine-color-gray-2)' }}>
                 <Grid align="center" gutter={{ base: 'xl', md: 50 }}>
                     <Grid.Col span={{ base: 12, md: 7 }}>
-                    <Badge color="var(--mantine-primary-color-filled)" variant="light" size="lg" mb="sm">
+                    <Badge color="#00a41b" variant="light" size="lg" mb="sm">
                         {t("home_lab.badge")}
                     </Badge>
 
                     <Title order={2} mb="md" lh={1.2}>
-                        {t("home_lab.title")} <Text component="span" c="var(--mantine-primary-color-filled)" inherit>GreenLab</Text>
+                        {t("home_lab.title")} <Text component="span" c="#00a41b" inherit>GreenLab</Text>
                     </Title>
 
                     <Text c="#495057" size="lg" mb="xl" lh={1.6}>
@@ -98,7 +98,7 @@ export default function Home() {
                         size="md"
                         radius="md"
                         variant="outline"
-                        color="var(--mantine-primary-color-filled)"
+                        color="#00a41b"
                         rightSection={<IconArrowRight size={18} />}
                     >
                         {t("home_lab.button")}

@@ -29,8 +29,7 @@ export default function LearnCard({ title, description, Icon, link }) {
         >
             <ThemeIcon 
                 size={60} 
-                radius="md" 
-                variant="light" 
+                radius="md"  
                 color="var(--mantine-primary-color-filled)" 
                 mx="auto"
                 mb="lg"
@@ -49,8 +48,7 @@ export default function LearnCard({ title, description, Icon, link }) {
             <Button 
                 component={Link} 
                 to={link} 
-                variant="light" 
-                color="var(--mantine-primary-color-filled)" 
+                variant="filled"
                 rightSection={<IconArrowRight size={16} />} 
                 fullWidth
             >
