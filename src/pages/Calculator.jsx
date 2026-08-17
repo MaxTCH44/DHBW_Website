@@ -469,7 +469,7 @@ export default function Calculator() {
             </Text>
 
             <Center mb="md">
-                <Box pos="relative">
+                <Stack align="center" gap="xs">
                     <SegmentedControl
                         value={isAdvancedMode ? 'advanced' : 'simple'}
                         onChange={(val) => setIsAdvancedMode(val === 'advanced')}
@@ -479,34 +479,28 @@ export default function Calculator() {
                         ]}
                         bg="green.1"
                     />
+
                     {isAdvancedMode && (
-                        <Tooltip 
-                            label={t("advanceToggle.tooltipLabel")} 
-                            withArrow 
+                        <Tooltip
+                            label={t("advanceToggle.tooltipLabel")}
+                            withArrow
                             position="right"
                         >
-                            <Button 
-                                variant="light" 
-                                color="#00a41b" 
-                                radius="xl" 
+                            <Button
+                                variant="light"
+                                color="#00a41b"
+                                radius="xl"
                                 size="m"
                                 onClick={() => {
                                     setShowHelp(true);
                                     setResetHelp(true);
-                                }}
-                                pos="absolute"
-                                style={{
-                                    left: 'calc(100% + 12px)', 
-                                    top: '50%',
-                                    transform: 'translateY(-50%)',
-                                    whiteSpace: 'nowrap'
                                 }}
                             >
                                 {t("advanceToggle.tooltipButton")}
                             </Button>
                         </Tooltip>
                     )}
-                </Box>
+                </Stack>
             </Center>
 
             <Anchor 
