@@ -251,7 +251,7 @@ export default function Recycling() {
                     component={Link} 
                     to="/recycling-process" 
                     variant="light" 
-                    color="myColor"
+                    color="#00a41b"
                     radius="xl"
                     rightSection={<IconArrowRight size={16} />}
                     maw="100%"
@@ -502,7 +502,7 @@ export default function Recycling() {
                     variant="white" 
                     color="dark" 
                     leftSection={<IconMail size={20} />}
-                    style={{ color: 'var(--mantine-primary-color-filled)' }}
+                    style={{ color: "#00a41b" }}
                     styles={{ root: { height: 'auto', minHeight: 40, padding: '8px 16px' }, label: { whiteSpace: 'normal', textAlign: 'center' } }}
                 >
                     {t("recyclingCalculatorPage.cta.button")}
