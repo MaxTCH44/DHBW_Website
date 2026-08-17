@@ -92,9 +92,9 @@ export default function Header() {
                 key={link.label}
                 component={Link}
                 to={link.link}
-                variant={isActive ? 'filled' : 'subtle'}
+                variant={isActive ? 'light' : 'subtle'}
                 color={isActive ? 'var(--mantine-primary-color-filled)' : 'gray'}
-                c={isActive ? 'white' : 'light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0))'}
+                c={isActive ? "#00a41b" : 'light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0))'}
                 onClick={close}
                 px="sm"
                 radius="sm"
