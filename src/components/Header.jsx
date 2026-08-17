@@ -113,7 +113,7 @@ export default function Header() {
     if (link.links) {
         return (
             <Stack key={link.label} gap={5} mt="sm">
-                <Text size="xs" fw={700} c="dimmed" px="sm" style={{ letterSpacing: 1 }}>
+                <Text size="xs" fw={700} c="#495057" px="sm" style={{ letterSpacing: 1 }}>
                     {t(link.label).toUpperCase()}
                 </Text>
                 

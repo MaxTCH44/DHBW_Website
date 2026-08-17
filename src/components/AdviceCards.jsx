@@ -203,7 +203,7 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange, rese
                 >
                     <Group justify="space-between" mb="sm" wrap="nowrap">
                         <Group gap="sm" wrap="nowrap" style={{ flex: 1 }}>
-                            <Text size="xs" fw={700} c="dimmed" tt="uppercase" style={{ whiteSpace: 'nowrap' }}>
+                            <Text size="xs" fw={700} c="#495057" tt="uppercase" style={{ whiteSpace: 'nowrap' }}>
                                 {t("advices.step")} {currentStep + 1} / {helpData.length}
                             </Text>
                             

@@ -33,13 +33,13 @@ export default function ComparisonSetup({ setup, index, onRemove, setCalculatorT
                     component="button" 
                     type="button" 
                     size="xs"
-                    c="dimmed"
+                    c="#495057"
                     style={{ cursor: 'pointer' }}
                     onClick={setCalculatorToSetup}
                 >{t("comparison.loadInputLabel")}</Anchor>
                 <Text
                     size="xs"
-                    c="dimmed"
+                    c="#495057"
                     style={{ cursor: 'pointer' }}
                     onClick={() => onRemove(index)}
                 >✕</Text>
@@ -48,11 +48,11 @@ export default function ComparisonSetup({ setup, index, onRemove, setCalculatorT
             {/* ---- LCOH + CAPEX ---- */}
             <Group grow mb="sm">
                 <Box>
-                    <Text size="xs" c="dimmed" fw={600} tt="uppercase">{t('dashboard.metrics.lcoh')}</Text>
+                    <Text size="xs" c="#495057" fw={600} tt="uppercase">{t('dashboard.metrics.lcoh')}</Text>
                     <Text size="xl" fw={900} c="myColor.9">{fmt(cost)} {t('units.eur_per_kg')}</Text>
                 </Box>
                 <Box>
-                    <Text size="xs" c="dimmed" fw={600} tt="uppercase">{t('dashboard.metrics.totalCapex')}</Text>
+                    <Text size="xs" c="#495057" fw={600} tt="uppercase">{t('dashboard.metrics.totalCapex')}</Text>
                     <Text size="xl" fw={900} c="red.7">{fmt0(capex)} €</Text>
                 </Box>
             </Group>
@@ -62,7 +62,7 @@ export default function ComparisonSetup({ setup, index, onRemove, setCalculatorT
             {/* ---- ROI BADGES ---- */}
             <Stack gap="xs" mb="sm">
                 <Group justify="space-between">
-                    <Text size="xs" c="dimmed" fw={600} tt="uppercase">
+                    <Text size="xs" c="#495057" fw={600} tt="uppercase">
                         {isProfitableCurrent ? t('dashboard.metrics.savingsVsCurrentCost') : t('dashboard.metrics.lossVsCurrentCost')}
                     </Text>
                     <Badge color={isProfitableCurrent ? 'teal' : 'red'} variant="light">
@@ -70,7 +70,7 @@ export default function ComparisonSetup({ setup, index, onRemove, setCalculatorT
                     </Badge>
                 </Group>
                 <Group justify="space-between">
-                    <Text size="xs" c="dimmed" fw={600} tt="uppercase">
+                    <Text size="xs" c="#495057" fw={600} tt="uppercase">
                         {isProfitableGrey ? t('dashboard.metrics.savingsVsGrey') : t('dashboard.metrics.greenPremium')}
                     </Text>
                     <Badge color={isProfitableGrey ? 'teal' : 'red'} variant="light">
@@ -84,11 +84,11 @@ export default function ComparisonSetup({ setup, index, onRemove, setCalculatorT
             {/* ---- PHYSICAL STATS ---- */}
             <Group grow>
                 <Box ta="center">
-                    <Text size="xs" c="dimmed">{t('dashboard.stats.annualProduction')}</Text>
+                    <Text size="xs" c="#495057">{t('dashboard.stats.annualProduction')}</Text>
                     <Text size="sm" fw={700}>{fmt0(metrics.annualProd)} {t('units.kg')}</Text>
                 </Box>
                 <Box ta="center">
-                    <Text size="xs" c="dimmed">{t('dashboard.stats.avoidedCo2')}</Text>
+                    <Text size="xs" c="#495057">{t('dashboard.stats.avoidedCo2')}</Text>
                     <Group gap={4} justify="center">
                         <ThemeIcon color="green" size={14} radius="xl"><IconLeaf size={10} /></ThemeIcon>
                         <Text size="sm" fw={700}>{fmt(avoidedCO2 ?? 0, 1)} {t('units.tons')}</Text>

@@ -16,7 +16,7 @@ export default function References() {
         <Container size="md" py="xl" mt="150px"> 
             <Box mb={50} ta="center"> 
                 <Title order={1} c="dark.8" mb="sm">{t("title")}</Title> 
-                <Text size="lg" c="dimmed"> 
+                <Text size="lg" c="#495057"> 
                     {t("introText")} 
                 </Text> 
             </Box> 

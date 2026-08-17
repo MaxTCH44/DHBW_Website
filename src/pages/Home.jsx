@@ -88,7 +88,7 @@ export default function Home() {
                         {t("home_lab.title")} <Text component="span" c="var(--mantine-primary-color-filled)" inherit>GreenLab</Text>
                     </Title>
 
-                    <Text c="dimmed" size="lg" mb="xl" lh={1.6}>
+                    <Text c="#495057" size="lg" mb="xl" lh={1.6}>
                         {t("home_lab.description")}
                     </Text>
 
@@ -120,7 +120,7 @@ export default function Home() {
                 {t("home_tools_section.title")}
                 </Title>
 
-                <Text c="dimmed" ta="center" mb="xl" maw={600} mx="auto">
+                <Text c="#495057" ta="center" mb="xl" maw={600} mx="auto">
                 {t("home_tools_section.subtitle")}
                 </Text>
 
@@ -148,7 +148,7 @@ export default function Home() {
                     {t("home_learn_section.title")}
                 </Title>
 
-                <Text c="dimmed" ta="center" mb="xl" maw={600} mx="auto">
+                <Text c="#495057" ta="center" mb="xl" maw={600} mx="auto">
                     {t("home_learn_section.subtitle")}
                 </Text>
 

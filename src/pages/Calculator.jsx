@@ -464,7 +464,7 @@ export default function Calculator() {
         <Container size="xl" px="xl" py="lg" mt="150px">
             
             <Title order={1} ta="center" mb="xl" c="dark.7">{t("title")}</Title>
-            <Text c="dimmed" ta="center" maw={800} mx="auto" mb="xl">
+            <Text c="#495057" ta="center" maw={800} mx="auto" mb="xl">
                 {t("introText")}
             </Text>
 
@@ -513,7 +513,7 @@ export default function Calculator() {
                 component="button" 
                 type="button" 
                 size="sm" 
-                c="dimmed" 
+                c="#495057" 
                 mb="xs" 
                 onClick={() => setResetModalOpened(true)}
             >

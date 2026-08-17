@@ -23,7 +23,7 @@ export default function DetailSection({ openedSections, toggleSection, children 
                 component="button" 
                 type="button" 
                 size="sm" 
-                c="dimmed" 
+                c="#495057" 
                 mb="sm" 
                 mt={openedSections ? "xs" : ""} 
                 onClick={toggleSection}

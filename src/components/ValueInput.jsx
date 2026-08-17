@@ -132,7 +132,7 @@ export default function ValueInput({ label, value, units, currentUnit, onValueCh
       }}
     />
   ) : (
-    <Text size="sm" fw={500} c="dimmed" pr="md">
+    <Text size="sm" fw={500} c="black" pr="md">
       {isArray ? t(units[0].label) : t(units)}
     </Text>
   );

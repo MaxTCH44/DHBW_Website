@@ -42,7 +42,7 @@ export default function LearnCard({ title, description, Icon, link }) {
                 {title}
             </Text>
             
-            <Text c="dimmed" size="sm" mb="xl" style={{ flexGrow: 1 }}>
+            <Text c="#495057" size="sm" mb="xl" style={{ flexGrow: 1 }}>
                 {description}
             </Text>
             

@@ -243,7 +243,7 @@ export default function Recycling() {
                     {t("recyclingCalculatorPage.header.title")}
                 </Title>
 
-                <Text size="lg" c="dimmed" maw={800} mx="auto" mb="md">
+                <Text size="lg" c="#495057" maw={800} mx="auto" mb="md">
                     {t("recyclingCalculatorPage.header.description")}
                 </Text>
 
@@ -272,7 +272,7 @@ export default function Recycling() {
                             component="button" 
                             type="button" 
                             size="sm" 
-                            c="dimmed" 
+                            c="#495057" 
                             onClick={() => setResetModalOpened(true)}
                         >
                             {t("recyclingCalculatorPage.reset.link")}
@@ -377,7 +377,7 @@ export default function Recycling() {
                             </Badge>
                         </Group>
 
-                        <Text size="sm" c="dimmed" mb="xl">
+                        <Text size="sm" c="#495057" mb="xl">
                             {t(advice)}
                         </Text>
 
@@ -390,7 +390,7 @@ export default function Recycling() {
                                         <IconRecycle size={32} color="var(--mantine-color-blue-6)" />
 
                                         <div>
-                                            <Text size="sm" c="dimmed" fw={500}>
+                                            <Text size="sm" c="#495057" fw={500}>
                                                 {t("recyclingCalculatorPage.results.recoveredHydrogen")}
                                             </Text>
 
@@ -407,7 +407,7 @@ export default function Recycling() {
                                         <IconCoin size={32} color="var(--mantine-color-teal-6)" />
 
                                         <div>
-                                            <Text size="sm" c="dimmed" fw={500}>
+                                            <Text size="sm" c="#495057" fw={500}>
                                                 {t("recyclingCalculatorPage.results.estimatedGrossSavings")}
                                             </Text>
 
@@ -424,7 +424,7 @@ export default function Recycling() {
                                         <IconLeaf size={32} color="var(--mantine-color-myColor-9)" />
 
                                         <div>
-                                            <Text size="sm" c="dimmed" fw={500}>
+                                            <Text size="sm" c="#495057" fw={500}>
                                                 {t("recyclingCalculatorPage.results.avoidedCo2")}
                                             </Text>
 
@@ -444,7 +444,7 @@ export default function Recycling() {
                                         <IconClockHour4 size={32} color="var(--mantine-color-myColor-9)" />
 
                                         <div>
-                                            <Text size="sm" c="dimmed" fw={500}>
+                                            <Text size="sm" c="#495057" fw={500}>
                                                 {t("recyclingCalculatorPage.results.roi")}
                                             </Text>
 
@@ -467,14 +467,14 @@ export default function Recycling() {
                                 bg="white" 
                                 style={{ borderStyle: 'dashed', borderWidth: 2, borderColor: 'var(--mantine-color-gray-3)' }}
                             >
-                                <Text ta="center" c="dimmed">
+                                <Text ta="center" c="#495057">
                                     {t("recyclingCalculatorPage.results.placeholder")}
                                 </Text>
                             </Paper>
                         )}
 
                         <Box mt="auto" pt="xl">
-                            <Text size="xs" c="dimmed" ta="center">
+                            <Text size="xs" c="#495057" ta="center">
                                 {t("recyclingCalculatorPage.results.footer", {
                                     rate: recoveryRate * 100
                                 })}

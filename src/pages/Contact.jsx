@@ -21,7 +21,7 @@ export default function Contact() {
         <Container size="sm" py="xl" mt="150px">
             <Box ta="center" mb="xl">
                 <Title order={1} c="dark.7" mb="sm">{t("title")}</Title>
-                <Text c="dimmed" size="lg">
+                <Text c="#495057" size="lg">
                     {t("introText")}
                 </Text>
             </Box>

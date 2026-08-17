@@ -188,7 +188,7 @@ export default function SetupBuilder() {
     return (
         <Container size="xl" py="xl" mt={{ base: 80, md: 150 }}>
             <Title order={1} mb="sm" c="dark.8">{t('title')}</Title>
-            <Text c="dimmed" mb="xl">
+            <Text c="#495057" mb="xl">
                 {t('description')}
             </Text>
 
@@ -326,7 +326,7 @@ export default function SetupBuilder() {
 
                         {/* --- BALANCE OF PLANT (BOP) / AUXILIARIES SECTION --- */}
                         <Title order={3} mb="md">{t('setupBuilder.auxiliary_equipments')}</Title>
-                        <Text size="sm" c="dimmed" mb="md">{t('setupBuilder.auxiliary_equipments_description')}</Text>
+                        <Text size="sm" c="#495057" mb="md">{t('setupBuilder.auxiliary_equipments_description')}</Text>
                         
                         <Paper withBorder p="md" radius="md" bg="gray.0" mb="md">
                             <Grid align="flex-end">
@@ -434,7 +434,7 @@ export default function SetupBuilder() {
                 <Grid.Col span={{ base: 12, md: 5 }}>
                     <Title order={3} mb="md">{t('setupBuilder.saved_configurations')}</Title>
                     {savedSetups.length === 0 ? (
-                        <Text c="dimmed">{t('setupBuilder.no_setups_title')}</Text>
+                        <Text c="#495057">{t('setupBuilder.no_setups_title')}</Text>
                     ) : (
                         <ScrollArea 
                             h={{ base: 'auto', md: 'calc(113vh)' }} 
@@ -510,11 +510,11 @@ export default function SetupBuilder() {
                                         <Divider my="sm" />
                                         
                                         <Grid gutter="xs">
-                                            <Grid.Col span={{ base: 12, sm: 6 }}><Text size="xs" c="dimmed" tt="uppercase">{t('setupBuilder.total_capex')}</Text><Text fw={700} c="dark.8">{setup.price.toLocaleString()} {t('units.eur')}</Text></Grid.Col>
-                                            <Grid.Col span={{ base: 12, sm: 6 }}><Text size="xs" c="dimmed" tt="uppercase">{t('setupBuilder.power')}</Text><Text fw={700} c="dark.8">{setup.power} {t('units.power_kw')}</Text></Grid.Col>
-                                            <Grid.Col span={{ base: 12, sm: 6 }}><Text size="xs" c="dimmed" tt="uppercase">{t('setupBuilder.energy_consumption.label')}</Text><Text fw={700} c="dark.8">{setup.energy_consumption_kwh_per_kg} {t('units.kwh_per_kg')}</Text></Grid.Col>
-                                            <Grid.Col span={{ base: 12, sm: 6 }}><Text size="xs" c="dimmed" tt="uppercase">{t('setupBuilder.bop_consumption')}</Text><Text fw={700} c="dark.8">{setup.total_auxiliary_consumption} {t('units.power_kw')}</Text></Grid.Col>
-                                            <Grid.Col span={12}><Text size="xs" c="dimmed" tt="uppercase">{t('setupBuilder.total_water_consumption')}</Text><Text fw={700} c="dark.8">{setup.water_consumption_l_per_h} {t('units.l_per_h')}</Text></Grid.Col>
+                                            <Grid.Col span={{ base: 12, sm: 6 }}><Text size="xs" c="#495057" tt="uppercase">{t('setupBuilder.total_capex')}</Text><Text fw={700} c="dark.8">{setup.price.toLocaleString()} {t('units.eur')}</Text></Grid.Col>
+                                            <Grid.Col span={{ base: 12, sm: 6 }}><Text size="xs" c="#495057" tt="uppercase">{t('setupBuilder.power')}</Text><Text fw={700} c="dark.8">{setup.power} {t('units.power_kw')}</Text></Grid.Col>
+                                            <Grid.Col span={{ base: 12, sm: 6 }}><Text size="xs" c="#495057" tt="uppercase">{t('setupBuilder.energy_consumption.label')}</Text><Text fw={700} c="dark.8">{setup.energy_consumption_kwh_per_kg} {t('units.kwh_per_kg')}</Text></Grid.Col>
+                                            <Grid.Col span={{ base: 12, sm: 6 }}><Text size="xs" c="#495057" tt="uppercase">{t('setupBuilder.bop_consumption')}</Text><Text fw={700} c="dark.8">{setup.total_auxiliary_consumption} {t('units.power_kw')}</Text></Grid.Col>
+                                            <Grid.Col span={12}><Text size="xs" c="#495057" tt="uppercase">{t('setupBuilder.total_water_consumption')}</Text><Text fw={700} c="dark.8">{setup.water_consumption_l_per_h} {t('units.l_per_h')}</Text></Grid.Col>
                                         </Grid>
                                     </Card>
                                 ))}
