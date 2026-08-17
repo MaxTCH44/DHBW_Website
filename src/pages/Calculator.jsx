@@ -485,11 +485,11 @@ export default function Calculator() {
                             withArrow 
                             position="right"
                         >
-                            <ActionIcon 
+                            <Button 
                                 variant="light" 
-                                color="blue" 
+                                color="#00a41b" 
                                 radius="xl" 
-                                size="lg"
+                                size="m"
                                 onClick={() => {
                                     setShowHelp(true);
                                     setResetHelp(true);
@@ -502,8 +502,8 @@ export default function Calculator() {
                                     whiteSpace: 'nowrap'
                                 }}
                             >
-                                <IconQuestionMark size={20} stroke={2.5} />
-                            </ActionIcon>
+                                {t("advanceToggle.tooltipButton")}
+                            </Button>
                         </Tooltip>
                     )}
                 </Box>

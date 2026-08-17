@@ -4,7 +4,8 @@
   "advanceToggle": {
     "simple": "Einfacher Modus",
     "advanced": "Erweiterter Rechner",
-    "tooltipLabel": "Klicken Sie für schrittweise Hilfe"
+    "tooltipLabel": "Klicken Sie für schrittweise Hilfe",
+    "tooltipButton": "Schrittweise Hilfe"
   },
   "reset": "Alle Eingaben auf Standardwerte zurücksetzen",
   "resetModal": {
