@@ -1,7 +1,7 @@
 {
     "detailSection": {
-        "open": "Afficher les détails",
-        "close": "Cacher les détails"
+        "open": "Cacher les détails",
+        "close": "Afficher les détails"
     },
     "footer" :{
         "contact": "Contact",
