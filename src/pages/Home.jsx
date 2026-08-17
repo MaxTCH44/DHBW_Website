@@ -181,6 +181,7 @@ export default function Home() {
                             description={t(item.description)}
                             link={item.link}
                             Icon={IconComponent}
+                            documentation={t(item.documentation)}
                         />
                         </Carousel.Slide>
                     );

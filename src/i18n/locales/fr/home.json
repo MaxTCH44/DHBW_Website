@@ -27,21 +27,24 @@
   "homeLearn": {
     "productionChain": {
       "title": "Chaîne de production de l’H₂",
-      "description": "Comprendre le cycle complet de l’hydrogène vert, de l’électrolyse de l’eau jusqu’au stockage et à la distribution. Une vue macroscopique de l’infrastructure."
+      "description": "Comprendre le cycle complet de l’hydrogène vert, de l’électrolyse de l’eau jusqu’au stockage et à la distribution. Une vue macroscopique de l’infrastructure.",
+      "documentation": "Découvrir la chaîne de production de l’H₂"
     },
     "recyclingProcess": {
       "title": "Processus de recyclage de l’hydrogène",
-      "description": "Découvrir les technologies utilisées pour récupérer, purifier et recomprimer l’hydrogène non consommé dans les gaz industriels."
+      "description": "Découvrir les technologies utilisées pour récupérer, purifier et recomprimer l’hydrogène non consommé dans les gaz industriels.",
+      "documentation": "Découvrir le processus de recyclage de l'hydrogène"
     },
     "electrolyzerTechnologies": {
       "title": "Technologies d’électrolyseurs",
-      "description": "Comparer les technologies PEM, alcaline et AEM. Analyser les paramètres d’efficacité, la durée de vie opérationnelle et les cas d’usage industriels idéaux."
+      "description": "Comparer les technologies PEM, alcaline et AEM. Analyser les paramètres d’efficacité, la durée de vie opérationnelle et les cas d’usage industriels idéaux.",
+      "documentation": "Découvrir les technologies d’électrolyseurs"
     },
     "compressionSystems": {
       "title": "Systèmes de compression",
-      "description": "Explorer les méthodes de compression mécaniques et non mécaniques nécessaires au stockage haute densité de l’hydrogène et à son injection dans les réseaux."
-    },
-    "readDoc": "Lire la documentation"
+      "description": "Explorer les méthodes de compression mécaniques et non mécaniques nécessaires au stockage haute densité de l’hydrogène et à son injection dans les réseaux.",
+      "documentation": "Découvrir les systèmes de compression"
+    }
   },
 
   "homeTools": {

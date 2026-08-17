@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
  * @param {React.ElementType} props.Icon - A Tabler Icon component used as the visual identifier for the topic.
  * @param {string} props.link - The local router path (e.g., '/electrolyzers') to navigate to when the button is clicked.
  */
-export default function LearnCard({ title, description, Icon, link }) {
+export default function LearnCard({ title, description, Icon, link, documentation }) {
 
     const { t } = useTranslation("home");
 
@@ -52,7 +52,7 @@ export default function LearnCard({ title, description, Icon, link }) {
                 rightSection={<IconArrowRight size={16} />} 
                 fullWidth
             >
-                {t("homeLearn.readDoc")}
+                {documentation}
             </Button>
         </Card>
     );
