@@ -78,8 +78,6 @@ export default function Home() {
             {/* --- LAB INTRODUCTION SECTION --- */}
             <Container size="lg" pt={80} pb={20}>
                 <Paper radius="lg" p={{ base: 'xl', md: 50 }} bg="gray.0" style={{ border: '1px solid var(--mantine-color-gray-2)' }}>
-                <Grid align="center" gutter={{ base: 'xl', md: 50 }}>
-                    <Grid.Col span={{ base: 12, md: 7 }}>
                     <Badge color="#00a41b" variant="light" size="lg" mb="sm">
                         {t("home_lab.badge")}
                     </Badge>
@@ -103,14 +101,6 @@ export default function Home() {
                     >
                         {t("home_lab.button")}
                     </Button>
-                    </Grid.Col>
-
-                    <Grid.Col span={{ base: 12, md: 5 }} ta="center">
-                    <ThemeIcon size={160} radius="100%" variant="light" color="var(--mantine-primary-color-filled)">
-                        <IconFlask size={80} stroke={1.5} />
-                    </ThemeIcon>
-                    </Grid.Col>
-                </Grid>
                 </Paper>
             </Container>
 
