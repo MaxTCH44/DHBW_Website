@@ -152,41 +152,21 @@ export default function Home() {
                     {t("home_learn_section.subtitle")}
                 </Text>
 
-                <Carousel
-                    withControls={isMobile || learnData.length > 3}
-                    height="100%"
-                    slideSize={{ base: '100%', sm: '50%', md: '33.333333%' }}
-                    slideGap="md"
-                    emblaOptions={{ loop: true, align: "start" }}
-                    mt={40}
-                    pb={40}
-                    styles={{
-                        control: {
-                            backgroundColor: 'var(--mantine-color-green-3)',
-                            color: 'var(--mantine-color-white)',
-                            border: 'none',
-                            boxShadow: 'var(--mantine-shadow-sm)',
-                            '&:hover': {
-                                backgroundColor: 'var(--mantine-color-green-4)',
-                            }
-                        }
-                    }}
-                >
-                    {learnData.map((item, index) => {
+
+                <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="xl" mt={40}>
+                {learnData.map((item, index) => {
                     const IconComponent = ICON_MAP[item.iconName];
                     return (
-                        <Carousel.Slide key={index}>
-                        <LearnCard
-                            title={t(item.title)}
-                            description={t(item.description)}
-                            link={item.link}
-                            Icon={IconComponent}
-                            documentation={t(item.documentation)}
-                        />
-                        </Carousel.Slide>
+                    <LearnCard
+                        title={t(item.title)}
+                        description={t(item.description)}
+                        link={item.link}
+                        Icon={IconComponent}
+                        documentation={t(item.documentation)}
+                    />
                     );
-                    })}
-                </Carousel>
+                })}
+                </SimpleGrid>
                 </Container>
             </Box>
             </>
