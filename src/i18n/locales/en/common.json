@@ -17,6 +17,7 @@
         "production": "Production Chain",
         "recyclingProcess": "Recycling Process",
         "electrolyzers": "Electrolyzers",
-        "compressors": "Compressors"
+        "compressors": "Compressors",
+        "tools": "Tools"
     }
 }

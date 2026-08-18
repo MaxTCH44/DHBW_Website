@@ -464,12 +464,12 @@ export default function Calculator() {
         <Container size="xl" px="xl" py="lg" mt="150px">
             
             <Title order={1} ta="center" mb="xl" c="dark.7">{t("title")}</Title>
-            <Text c="dimmed" ta="center" maw={800} mx="auto" mb="xl">
+            <Text c="#495057" ta="center" maw={800} mx="auto" mb="xl">
                 {t("introText")}
             </Text>
 
             <Center mb="md">
-                <Box pos="relative">
+                <Stack align="center" gap="xs">
                     <SegmentedControl
                         value={isAdvancedMode ? 'advanced' : 'simple'}
                         onChange={(val) => setIsAdvancedMode(val === 'advanced')}
@@ -479,41 +479,35 @@ export default function Calculator() {
                         ]}
                         bg="green.1"
                     />
+
                     {isAdvancedMode && (
-                        <Tooltip 
-                            label={t("advanceToggle.tooltipLabel")} 
-                            withArrow 
+                        <Tooltip
+                            label={t("advanceToggle.tooltipLabel")}
+                            withArrow
                             position="right"
                         >
-                            <ActionIcon 
-                                variant="light" 
-                                color="blue" 
-                                radius="xl" 
-                                size="lg"
+                            <Button
+                                variant="light"
+                                color="#00a41b"
+                                radius="xl"
+                                size="m"
                                 onClick={() => {
                                     setShowHelp(true);
                                     setResetHelp(true);
                                 }}
-                                pos="absolute"
-                                style={{
-                                    left: 'calc(100% + 12px)', 
-                                    top: '50%',
-                                    transform: 'translateY(-50%)',
-                                    whiteSpace: 'nowrap'
-                                }}
                             >
-                                <IconQuestionMark size={20} stroke={2.5} />
-                            </ActionIcon>
+                                {t("advanceToggle.tooltipButton")}
+                            </Button>
                         </Tooltip>
                     )}
-                </Box>
+                </Stack>
             </Center>
 
             <Anchor 
                 component="button" 
                 type="button" 
                 size="sm" 
-                c="dimmed" 
+                c="#495057" 
                 mb="xs" 
                 onClick={() => setResetModalOpened(true)}
             >

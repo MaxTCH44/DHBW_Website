@@ -22,17 +22,17 @@ export default function Footer() {
           align="center" 
           py="xl"
         >
-          <Title order={4} c="dimmed">
+          <Title order={4} c="#495057">
             GreenLabs H₂
           </Title>
           <Group mt={{ base: 'md', sm: 0 }}>
-            <Anchor component={Link} to="/contact" c="dimmed" size="sm">
+            <Anchor component={Link} to="/contact" c="#495057" size="sm">
               {t("footer.contact")}
             </Anchor>
-            <Anchor component={Link} to="/references" c="dimmed" size="sm">
+            <Anchor component={Link} to="/references" c="#495057" size="sm">
               {t("footer.references")}
             </Anchor>
-            <Anchor component={Link} to="/setup" c="dimmed" size="sm">
+            <Anchor component={Link} to="/setup" c="#495057" size="sm">
               {t("footer.setupBuilder")}
             </Anchor>
           </Group>

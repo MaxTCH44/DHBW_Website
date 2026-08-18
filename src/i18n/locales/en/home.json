@@ -27,21 +27,24 @@
     "homeLearn": {
         "productionChain": {
         "title": "H₂ Production Chain",
-        "description": "Understand the complete lifecycle of green hydrogen from water electrolysis to storage and distribution. A macroscopic view of the infrastructure."
+        "description": "Understand the complete lifecycle of green hydrogen from water electrolysis to storage and distribution. A macroscopic view of the infrastructure.",
+        "documentation": "Read about H₂ Production Chain"
         },
         "recyclingProcess": {
         "title": "Hydrogen Recycling Process",
-        "description": "Learn about the technologies used to recover, purify, and recompress unconsumed hydrogen from industrial exhaust gases."
+        "description": "Learn about the technologies used to recover, purify, and recompress unconsumed hydrogen from industrial exhaust gases.",
+        "documentation": "Read about Hydrogen Recycling Process"
         },
         "electrolyzerTechnologies": {
         "title": "Electrolyzer Technologies",
-        "description": "Compare PEM, Alkaline, and AEM core technologies. Analyze efficiency parameters, operational lifespans, and ideal industrial use cases."
+        "description": "Compare PEM, Alkaline, and AEM core technologies. Analyze efficiency parameters, operational lifespans, and ideal industrial use cases.",
+        "documentation": "Read about Electrolyzer Technologies"
         },
         "compressionSystems": {
         "title": "Compression Systems",
-        "description": "Explore mechanical and non-mechanical compression methods necessary for high-density hydrogen storage and grid injection."
-        },
-        "readDoc": "Read Documentation"
+        "description": "Explore mechanical and non-mechanical compression methods necessary for high-density hydrogen storage and grid injection.",
+        "documentation": "Read about Compression Systems"
+        }
     },
   
     "homeTools": {

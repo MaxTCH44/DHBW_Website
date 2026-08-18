@@ -27,21 +27,24 @@
   "homeLearn": {
     "productionChain": {
       "title": "H₂-Produktionskette",
-      "description": "Verstehen Sie den vollständigen Lebenszyklus von grünem Wasserstoff – von der Wasserelektrolyse bis hin zu Speicherung und Verteilung. Eine makroskopische Sicht auf die Infrastruktur."
+      "description": "Verstehen Sie den vollständigen Lebenszyklus von grünem Wasserstoff – von der Wasserelektrolyse bis hin zu Speicherung und Verteilung. Eine makroskopische Sicht auf die Infrastruktur.",
+      "documentation": "Mehr über die H₂-Produktionskette erfahren"
     },
     "recyclingProcess": {
       "title": "Wasserstoff-Recyclingprozess",
-      "description": "Erfahren Sie mehr über die Technologien zur Rückgewinnung, Reinigung und erneuten Verdichtung von nicht verbrauchtem Wasserstoff aus industriellen Abgasen."
+      "description": "Erfahren Sie mehr über die Technologien zur Rückgewinnung, Reinigung und erneuten Verdichtung von nicht verbrauchtem Wasserstoff aus industriellen Abgasen.",
+      "documentation": "Mehr über den Wasserstoff-Recyclingprozess erfahren"
     },
     "electrolyzerTechnologies": {
       "title": "Elektrolyseur-Technologien",
-      "description": "Vergleichen Sie die Kerntechnologien PEM-, AEM- und alkalischer Elektrolyse. Analysieren Sie Effizienzparameter, Standzeit und ideale industrielle Anwendungsfälle."
+      "description": "Vergleichen Sie die Kerntechnologien PEM-, AEM- und alkalischer Elektrolyse. Analysieren Sie Effizienzparameter, Standzeit und ideale industrielle Anwendungsfälle.",
+      "documentation": "Mehr über Elektrolyseur-Technologien erfahren"
     },
     "compressionSystems": {
       "title": "Kompressionssysteme",
-      "description": "Entdecken Sie mechanische und nicht-mechanische Verdichtungsmethoden, die für die Wasserstoffspeicherung unter hohem Druck und Netzeinspeisung erforderlich sind."
-    },
-    "readDoc": "Dokumentation lesen"
+      "description": "Entdecken Sie mechanische und nicht-mechanische Verdichtungsmethoden, die für die Wasserstoffspeicherung unter hohem Druck und Netzeinspeisung erforderlich sind.",
+      "documentation": "Mehr über Kompressionssysteme erfahren"
+    }
   },
 
   "homeTools": {

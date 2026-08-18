@@ -14,7 +14,7 @@ export default function OurLab() {
     return(
         <Container mt="150px">
             <Title order={1} mb="sm">{t(ourLab.title)}</Title>
-            <Text size="lg" c="dimmed" maw={800} mx="auto">{t(ourLab.description)}</Text>
+            <Text size="lg" c="#495057" maw={800} mx="auto">{t(ourLab.description)}</Text>
             
             {/* Feeds the entire JSON payload to the dynamic rendering engine */}
             <ContentDetails item={ourLab} namespace="ourLab"/>

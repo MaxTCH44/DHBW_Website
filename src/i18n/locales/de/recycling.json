@@ -78,7 +78,8 @@
       "title": "Wasserstoff-Recycling-Rechner",
       "description": "Verschwenden Sie keinen wertvollen Wasserstoff mehr. Berechnen Sie, wie viel H₂ Sie jährlich zurückgewinnen können, und ermitteln Sie Ihren Return on Investment (ROI).",
       "learnMoreButton": "Erfahren Sie, wie der Recyclingprozess funktioniert",
-      "tooltipLabel": "Klicken Sie für schrittweise Hilfe"
+      "tooltipLabel": "Klicken Sie für schrittweise Hilfe",
+      "tooltipButton": "Schrittweise Hilfe"
     },
     "reset": {
       "link": "Alle Eingaben auf Standardwerte zurücksetzen",

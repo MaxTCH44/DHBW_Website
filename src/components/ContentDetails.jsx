@@ -151,7 +151,7 @@ export default function ContentDetails({ item, namespace, componentList = null }
                 radius="md"
               />
               {block.caption && (
-                <Text ta="center" size="sm" c="dimmed" fs="italic" px="sm">
+                <Text ta="center" size="sm" c="#495057" fs="italic" px="sm">
                   {t(block.caption)}
                 </Text>
               )}

@@ -105,7 +105,7 @@ export default function RecyclingInputs ({
             
             <Divider my="md" />
             
-            <Title order={4} mb="sm" c="dimmed">
+            <Title order={4} mb="sm" c="#495057">
                 {t("recyclingForm.financialsTitle")}
             </Title>
 

@@ -66,7 +66,7 @@ export default function Home() {
                     size="xl"
                     radius="md"
                     variant="white"
-                    c="var(--mantine-primary-color-filled)"
+                    c="#00a41b"
                     leftSection={<IconBook size={24} />}
                     >
                     {t("home_hero.buttons.secondary")}
@@ -78,17 +78,15 @@ export default function Home() {
             {/* --- LAB INTRODUCTION SECTION --- */}
             <Container size="lg" pt={80} pb={20}>
                 <Paper radius="lg" p={{ base: 'xl', md: 50 }} bg="gray.0" style={{ border: '1px solid var(--mantine-color-gray-2)' }}>
-                <Grid align="center" gutter={{ base: 'xl', md: 50 }}>
-                    <Grid.Col span={{ base: 12, md: 7 }}>
-                    <Badge color="var(--mantine-primary-color-filled)" variant="light" size="lg" mb="sm">
+                    <Badge color="#00a41b" variant="light" size="lg" mb="sm">
                         {t("home_lab.badge")}
                     </Badge>
 
                     <Title order={2} mb="md" lh={1.2}>
-                        {t("home_lab.title")} <Text component="span" c="var(--mantine-primary-color-filled)" inherit>GreenLab</Text>
+                        {t("home_lab.title")} <Text component="span" c="#00a41b" inherit>GreenLab</Text>
                     </Title>
 
-                    <Text c="dimmed" size="lg" mb="xl" lh={1.6}>
+                    <Text c="#495057" size="lg" mb="xl" lh={1.6}>
                         {t("home_lab.description")}
                     </Text>
 
@@ -98,19 +96,11 @@ export default function Home() {
                         size="md"
                         radius="md"
                         variant="outline"
-                        color="var(--mantine-primary-color-filled)"
+                        color="#00a41b"
                         rightSection={<IconArrowRight size={18} />}
                     >
                         {t("home_lab.button")}
                     </Button>
-                    </Grid.Col>
-
-                    <Grid.Col span={{ base: 12, md: 5 }} ta="center">
-                    <ThemeIcon size={160} radius="100%" variant="light" color="var(--mantine-primary-color-filled)">
-                        <IconFlask size={80} stroke={1.5} />
-                    </ThemeIcon>
-                    </Grid.Col>
-                </Grid>
                 </Paper>
             </Container>
 
@@ -120,7 +110,7 @@ export default function Home() {
                 {t("home_tools_section.title")}
                 </Title>
 
-                <Text c="dimmed" ta="center" mb="xl" maw={600} mx="auto">
+                <Text c="#495057" ta="center" mb="xl" maw={600} mx="auto">
                 {t("home_tools_section.subtitle")}
                 </Text>
 
@@ -148,44 +138,25 @@ export default function Home() {
                     {t("home_learn_section.title")}
                 </Title>
 
-                <Text c="dimmed" ta="center" mb="xl" maw={600} mx="auto">
+                <Text c="#495057" ta="center" mb="xl" maw={600} mx="auto">
                     {t("home_learn_section.subtitle")}
                 </Text>
 
-                <Carousel
-                    withControls={isMobile || learnData.length > 3}
-                    height="100%"
-                    slideSize={{ base: '100%', sm: '50%', md: '33.333333%' }}
-                    slideGap="md"
-                    emblaOptions={{ loop: true, align: "start" }}
-                    mt={40}
-                    pb={40}
-                    styles={{
-                        control: {
-                            backgroundColor: 'var(--mantine-color-green-3)',
-                            color: 'var(--mantine-color-white)',
-                            border: 'none',
-                            boxShadow: 'var(--mantine-shadow-sm)',
-                            '&:hover': {
-                                backgroundColor: 'var(--mantine-color-green-4)',
-                            }
-                        }
-                    }}
-                >
-                    {learnData.map((item, index) => {
+
+                <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="xl" mt={40}>
+                {learnData.map((item, index) => {
                     const IconComponent = ICON_MAP[item.iconName];
                     return (
-                        <Carousel.Slide key={index}>
-                        <LearnCard
-                            title={t(item.title)}
-                            description={t(item.description)}
-                            link={item.link}
-                            Icon={IconComponent}
-                        />
-                        </Carousel.Slide>
+                    <LearnCard
+                        title={t(item.title)}
+                        description={t(item.description)}
+                        link={item.link}
+                        Icon={IconComponent}
+                        documentation={t(item.documentation)}
+                    />
                     );
-                    })}
-                </Carousel>
+                })}
+                </SimpleGrid>
                 </Container>
             </Box>
             </>

@@ -13,7 +13,7 @@ const StatCard = ({ icon, color, title, value, unit }) => (
                 {icon}
             </ThemeIcon>
             <div>
-                <Text size="xs" c="dimmed" tt="uppercase" fw={600}>{title}</Text>
+                <Text size="xs" c="#495057" tt="uppercase" fw={600}>{title}</Text>
                 <Text fw={700} size="lg">
                     {value} {unit}
                 </Text>
@@ -104,7 +104,7 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                 {/* Levelized Cost of Hydrogen (LCOH) - The ultimate KPI combining CAPEX + OPEX over lifetime */}
                 <Paper p="md" radius="md" withBorder bg="white">
                     <Stack h="100%" justify="center" gap="sm">
-                        <Text size="sm" c="dimmed" fw={600} tt="uppercase">
+                        <Text size="sm" c="#495057" fw={600} tt="uppercase">
                             {t('dashboard.metrics.lcoh')}
                         </Text>
 
@@ -118,7 +118,7 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
 
                 <Paper p="md" radius="md" withBorder bg="white">
                     <Stack h="100%" justify="center" gap="sm">
-                        <Text size="sm" c="dimmed" fw={600} tt="uppercase">
+                        <Text size="sm" c="#495057" fw={600} tt="uppercase">
                             {t('dashboard.metrics.totalCapex')}
                         </Text>
 
@@ -293,7 +293,7 @@ function ResultDisplay({ cost, capex, greyCostDifference, greyAnnualDifference, 
                                     },
                                 ]}
                                 label={
-                                    <Text c="dimmed" fw={700} ta="center" size="lg">
+                                    <Text c="#495057" fw={700} ta="center" size="lg">
                                         100%
                                     </Text>
                                 }

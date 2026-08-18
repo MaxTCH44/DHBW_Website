@@ -4,7 +4,8 @@
   "advanceToggle": {
     "simple": "Mode Simple",
     "advanced": "Calculateur Avancé",
-    "tooltipLabel": "Cliquez pour une aide pas à pas"
+    "tooltipLabel": "Cliquez pour une aide étape par étape",
+    "tooltipButton": "Aide étape par étape"
   },
   "reset": "Réinitialiser toutes les entrées aux valeurs par défaut",
   "resetModal": {

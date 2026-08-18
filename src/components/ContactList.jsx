@@ -20,14 +20,14 @@ function ContactCard({ contact }) {
                 component="button"
                 type="button"
                 size="sm"
-                c="dimmed"
+                c="#495057"
                 mb="sm"
                 mt={opened ? "xs" : ""}
                 onClick={() => setOpened((o) => !o)}
             >
                 <Text c="black" fw={500}>{contact.name}</Text>
                 {contact.role.map((role) => (
-                    <Text key={role} c="dimmed" size="xs">{t(role)}</Text>
+                    <Text key={role} c="#495057" size="xs">{t(role)}</Text>
                 ))}
             </Anchor>
 

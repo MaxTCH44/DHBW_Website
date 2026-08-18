@@ -36,7 +36,7 @@ export default function ToolCard({ title, description, Icon, buttonText, link })
                 <Box w={50} />
             </Group>
 
-            <Text c="dimmed" size="md" mb="xl" style={{ flexGrow: 1 }}>
+            <Text c="#495057" size="md" mb="xl" style={{ flexGrow: 1 }}>
                 {description}
             </Text>
 

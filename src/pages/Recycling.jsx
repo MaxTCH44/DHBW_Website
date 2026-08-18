@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
-import { Container, Title, Text, Grid, Card, Group, Badge, Box, Paper, Button, Modal, Anchor, Tooltip, ActionIcon } from '@mantine/core';
+import { Container, Title, Text, Grid, Card, Group, Badge, Box, Paper, Button, Modal, Anchor, Tooltip, ActionIcon, Stack } from '@mantine/core';
 import { useMediaQuery, useSessionStorage } from '@mantine/hooks';
 import { IconMail, IconRecycle, IconCoin, IconClockHour4, IconArrowRight, IconLeaf, IconQuestionMark } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
@@ -243,7 +243,7 @@ export default function Recycling() {
                     {t("recyclingCalculatorPage.header.title")}
                 </Title>
 
-                <Text size="lg" c="dimmed" maw={800} mx="auto" mb="md">
+                <Text size="lg" c="#495057" maw={800} mx="auto" mb="md">
                     {t("recyclingCalculatorPage.header.description")}
                 </Text>
 
@@ -251,7 +251,7 @@ export default function Recycling() {
                     component={Link} 
                     to="/recycling-process" 
                     variant="light" 
-                    color="myColor"
+                    color="#00a41b"
                     radius="xl"
                     rightSection={<IconArrowRight size={16} />}
                     maw="100%"
@@ -265,47 +265,36 @@ export default function Recycling() {
             </Box>
 
             <Box mb={10} ta="center">
-                <Group justify="center" mt="xl" mb="sm">
-                    <Box pos="relative" display="inline-flex" style={{ alignItems: 'center' }}>
-        
-                        <Anchor 
-                            component="button" 
-                            type="button" 
-                            size="sm" 
-                            c="dimmed" 
-                            onClick={() => setResetModalOpened(true)}
+                <Stack align="center" gap="xs" mb="sm">
+                    <Tooltip
+                        label={t("recyclingCalculatorPage.header.tooltipLabel")}
+                        withArrow
+                        position="right"
+                    >
+                        <Button
+                            variant="light"
+                            color="#00a41b"
+                            radius="xl"
+                            size="sm"
+                            onClick={() => {
+                                setShowHelp(true);
+                                setResetHelp(true);
+                            }}
                         >
-                            {t("recyclingCalculatorPage.reset.link")}
-                        </Anchor>
-
-                        <Tooltip 
-                            label={t("recyclingCalculatorPage.header.tooltipLabel")} 
-                            withArrow 
-                            position="right"
-                        >
-                            <ActionIcon 
-                                variant="light" 
-                                color="blue" 
-                                radius="xl" 
-                                size="md" 
-                                onClick={() => {
-                                    setShowHelp(true);
-                                    setResetHelp(true);
-                                }}
-                                pos="absolute"
-                                style={{
-                                    left: 'calc(100% + 12px)', 
-                                    top: '50%',
-                                    transform: 'translateY(-50%)',
-                                    whiteSpace: 'nowrap'
-                                }}
-                            >
-                                <IconQuestionMark size={16} stroke={2.5} />
-                            </ActionIcon>
-                        </Tooltip>
-                        
-                    </Box>
-                </Group>
+                            {t("recyclingCalculatorPage.header.tooltipButton")}
+                        </Button>
+                    </Tooltip>
+                    
+                    <Anchor
+                        component="button"
+                        type="button"
+                        size="sm"
+                        c="#495057"
+                        onClick={() => setResetModalOpened(true)}
+                    >
+                        {t("recyclingCalculatorPage.reset.link")}
+                    </Anchor>
+                </Stack>
 
                 <Modal 
                     opened={resetModalOpened} 
@@ -377,7 +366,7 @@ export default function Recycling() {
                             </Badge>
                         </Group>
 
-                        <Text size="sm" c="dimmed" mb="xl">
+                        <Text size="sm" c="#495057" mb="xl">
                             {t(advice)}
                         </Text>
 
@@ -390,7 +379,7 @@ export default function Recycling() {
                                         <IconRecycle size={32} color="var(--mantine-color-blue-6)" />
 
                                         <div>
-                                            <Text size="sm" c="dimmed" fw={500}>
+                                            <Text size="sm" c="#495057" fw={500}>
                                                 {t("recyclingCalculatorPage.results.recoveredHydrogen")}
                                             </Text>
 
@@ -407,7 +396,7 @@ export default function Recycling() {
                                         <IconCoin size={32} color="var(--mantine-color-teal-6)" />
 
                                         <div>
-                                            <Text size="sm" c="dimmed" fw={500}>
+                                            <Text size="sm" c="#495057" fw={500}>
                                                 {t("recyclingCalculatorPage.results.estimatedGrossSavings")}
                                             </Text>
 
@@ -424,7 +413,7 @@ export default function Recycling() {
                                         <IconLeaf size={32} color="var(--mantine-color-myColor-9)" />
 
                                         <div>
-                                            <Text size="sm" c="dimmed" fw={500}>
+                                            <Text size="sm" c="#495057" fw={500}>
                                                 {t("recyclingCalculatorPage.results.avoidedCo2")}
                                             </Text>
 
@@ -444,7 +433,7 @@ export default function Recycling() {
                                         <IconClockHour4 size={32} color="var(--mantine-color-myColor-9)" />
 
                                         <div>
-                                            <Text size="sm" c="dimmed" fw={500}>
+                                            <Text size="sm" c="#495057" fw={500}>
                                                 {t("recyclingCalculatorPage.results.roi")}
                                             </Text>
 
@@ -467,14 +456,14 @@ export default function Recycling() {
                                 bg="white" 
                                 style={{ borderStyle: 'dashed', borderWidth: 2, borderColor: 'var(--mantine-color-gray-3)' }}
                             >
-                                <Text ta="center" c="dimmed">
+                                <Text ta="center" c="#495057">
                                     {t("recyclingCalculatorPage.results.placeholder")}
                                 </Text>
                             </Paper>
                         )}
 
                         <Box mt="auto" pt="xl">
-                            <Text size="xs" c="dimmed" ta="center">
+                            <Text size="xs" c="#495057" ta="center">
                                 {t("recyclingCalculatorPage.results.footer", {
                                     rate: recoveryRate * 100
                                 })}
@@ -502,7 +491,7 @@ export default function Recycling() {
                     variant="white" 
                     color="dark" 
                     leftSection={<IconMail size={20} />}
-                    style={{ color: 'var(--mantine-primary-color-filled)' }}
+                    style={{ color: "#00a41b" }}
                     styles={{ root: { height: 'auto', minHeight: 40, padding: '8px 16px' }, label: { whiteSpace: 'normal', textAlign: 'center' } }}
                 >
                     {t("recyclingCalculatorPage.cta.button")}

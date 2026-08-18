@@ -87,7 +87,8 @@
       "title": "Calculateur de recyclage de l’hydrogène",
       "description": "Arrêtez de rejeter un hydrogène précieux dans l’atmosphère. Calculez la quantité d’H₂ que vous pouvez récupérer chaque année et découvrez votre retour sur investissement (ROI).",
       "learnMoreButton": "Découvrir le fonctionnement du recyclage",
-      "tooltipLabel": "Cliquez pour une aide pas à pas"
+      "tooltipLabel": "Cliquez pour une aide pas à pas",
+      "tooltipButton": "Aide étape par étape"
     },
 
     "reset": {

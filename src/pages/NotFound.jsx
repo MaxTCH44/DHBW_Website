@@ -35,7 +35,7 @@ export default function NotFound() {
                 {t("not_found.title")}
                 </Title>
 
-                <Text c="dimmed" size="lg" maw={500} mx="auto" mb="xl">
+                <Text c="#495057" size="lg" maw={500} mx="auto" mb="xl">
                 {t("not_found.description")}
                 </Text>
 

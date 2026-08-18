@@ -4,7 +4,8 @@
   "advanceToggle": {
     "simple": "Simple Mode",
     "advanced": "Advanced Calculator",
-    "tooltipLabel": "Click for step-by-step help"
+    "tooltipLabel": "Click for step-by-step help",
+    "tooltipButton": "Step-by-step help"
   },
   "reset": "Reset all inputs to default values",
   "resetModal" :{

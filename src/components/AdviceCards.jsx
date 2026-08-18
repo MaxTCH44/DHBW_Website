@@ -203,7 +203,7 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange, rese
                 >
                     <Group justify="space-between" mb="sm" wrap="nowrap">
                         <Group gap="sm" wrap="nowrap" style={{ flex: 1 }}>
-                            <Text size="xs" fw={700} c="dimmed" tt="uppercase" style={{ whiteSpace: 'nowrap' }}>
+                            <Text size="xs" fw={700} c="#495057" tt="uppercase" style={{ whiteSpace: 'nowrap' }}>
                                 {t("advices.step")} {currentStep + 1} / {helpData.length}
                             </Text>
                             
@@ -254,7 +254,8 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange, rese
 
                     <Group justify="space-between">
                         <Button 
-                            variant="subtle" 
+                            variant="subtle"
+                            color="#00a41b" 
                             leftSection={<IconChevronLeft size={16} />} 
                             onClick={handlePrev}
                             disabled={currentStep === 0}
@@ -264,12 +265,13 @@ export default function AdviceCards({ helpData = [], onClose, onStepChange, rese
                         </Button>
 
                         {currentStep === helpData.length - 1 ? (
-                            <Button variant="light" color="green" size="xs" onClick={onClose}>
+                            <Button variant="light" color="#00a41b" size="xs" onClick={onClose}>
                                 {t("advices.finish")}
                             </Button>
                         ) : (
                             <Button 
-                                variant="light" 
+                                variant="light"
+                                color="#00a41b" 
                                 rightSection={<IconChevronRight size={16} />} 
                                 onClick={handleNext}
                                 size="xs"

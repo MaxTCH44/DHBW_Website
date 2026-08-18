@@ -11,8 +11,14 @@ import { LanguagePicker } from './LanguagePicker';
 // Centralized routing map. Adding a new page to the app only requires updating this array.
 const links = [
     { link: '/lab', label: "header.ourLab",icon: IconFlask },
-    { link: '/calculator', label: "header.calculator" },
-    { link: '/recycling', label: "header.recycling" },
+    {
+        link: '#tools',
+        label: 'header.tools',
+        links: [
+            { link: '/calculator', label: "header.calculator"},
+            { link: '/recycling', label: "header.recycling"},
+        ]
+    },
     {
         link: '#learn',
         label: 'header.learn',
@@ -52,7 +58,7 @@ export default function Header() {
                         to={item.link}
                         onClick={close}
                         fw={isSubActive ? 700 : 500}
-                        c={isSubActive ? 'var(--mantine-primary-color-filled)' : undefined}
+                        c={isSubActive ? "#00a41b" : undefined}
                     >
                         {t(item.label)}
                     </Menu.Item>
@@ -65,7 +71,7 @@ export default function Header() {
                         <Button
                             variant={isGroupActive ? 'light' : 'subtle'}
                             color={isGroupActive ? 'var(--mantine-primary-color-filled)' : 'gray'}
-                            c={isGroupActive ? 'var(--mantine-primary-color-filled)' : 'light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0))'}
+                            c={isGroupActive ? "#00a41b" : 'light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0))'}
                             px="sm"
                             radius="sm"
                             style={{ fontWeight: 500 }}
@@ -86,9 +92,9 @@ export default function Header() {
                 key={link.label}
                 component={Link}
                 to={link.link}
-                variant={isActive ? 'filled' : 'subtle'}
+                variant={isActive ? 'light' : 'subtle'}
                 color={isActive ? 'var(--mantine-primary-color-filled)' : 'gray'}
-                c={isActive ? 'white' : 'light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0))'}
+                c={isActive ? "#00a41b" : 'light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0))'}
                 onClick={close}
                 px="sm"
                 radius="sm"
@@ -113,7 +119,7 @@ export default function Header() {
     if (link.links) {
         return (
             <Stack key={link.label} gap={5} mt="sm">
-                <Text size="xs" fw={700} c="dimmed" px="sm" style={{ letterSpacing: 1 }}>
+                <Text size="xs" fw={700} c="#495057" px="sm" style={{ letterSpacing: 1 }}>
                     {t(link.label).toUpperCase()}
                 </Text>
                 
@@ -128,7 +134,7 @@ export default function Header() {
                                     to={item.link}
                                     variant={isSubActive ? 'filled' : 'subtle'}
                                     color={isSubActive ? 'var(--mantine-primary-color-filled)' : 'gray'}
-                                    c={isSubActive ? 'white' : 'light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0))'}
+                                    c={isSubActive ? 'black' : 'light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0))'}
                                     onClick={close}
                                     px="sm"
                                     radius="sm"

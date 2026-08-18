@@ -17,6 +17,7 @@
         "production": "Produktionskette",
         "recyclingProcess": "Recyclingprozess",
         "electrolyzers": "Elektrolyseure",
-        "compressors": "Kompressoren"
+        "compressors": "Kompressoren",
+        "tools": "Berechnungwerkzeugen"
     }
 }

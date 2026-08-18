@@ -3,24 +3,28 @@
     "title": "homeLearn.productionChain.title",
     "description": "homeLearn.productionChain.description",
     "iconName": "IconRoute",
-    "link": "/production"
+    "link": "/production",
+    "documentation": "homeLearn.productionChain.documentation"
   },
   {
     "title": "homeLearn.recyclingProcess.title",
     "description": "homeLearn.recyclingProcess.description",
     "iconName": "IconRecycle",
-    "link": "/recycling-process"
+    "link": "/recycling-process",
+    "documentation": "homeLearn.recyclingProcess.documentation"
   },
   {
     "title": "homeLearn.electrolyzerTechnologies.title",
     "description": "homeLearn.electrolyzerTechnologies.description",
     "iconName": "IconDroplet",
-    "link": "/electrolyzers"
+    "link": "/electrolyzers",
+    "documentation": "homeLearn.electrolyzerTechnologies.documentation"
   },
   {
     "title": "homeLearn.compressionSystems.title",
     "description": "homeLearn.compressionSystems.description",
     "iconName": "IconGauge",
-    "link": "/compressors"
+    "link": "/compressors",
+    "documentation": "homeLearn.compressionSystems.documentation"
   }
 ]
