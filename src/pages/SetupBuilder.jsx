@@ -200,127 +200,143 @@ export default function SetupBuilder() {
                             {editingId ? t('setupBuilder.edit_mode') : t('setupBuilder.step1_title')}
                         </Title>
                         
-                        <Grid>
-                            <Grid.Col span={{ base: 12, sm: 8 }}>
-                                <BufferedTextInput 
-                                    label={<LabelWithTooltip label={t('setupBuilder.configuration_name.label')} tooltip={t('setupBuilder.configuration_name.tooltip')} />} 
-                                    placeholder={t('setupBuilder.configuration_name.placeholder')} 
-                                    value={setupName} 
-                                    onValueChange={setSetupName}
-                                    required 
-                                    mb="sm" 
-                                />
-                            </Grid.Col>
-                            <Grid.Col span={{ base: 12, sm: 4 }}>
-                                <Select 
-                                    label={<LabelWithTooltip label={t('setupBuilder.technology_type.label')} tooltip={t('setupBuilder.technology_type.tooltip')} />} 
-                                    data={[
-                                        { value: 'electrolyzer.type.pem', label: t('electrolyzer.type.pem') },
-                                        { value: 'electrolyzer.type.alkaline', label: t('electrolyzer.type.alkaline') },
-                                        { value: 'electrolyzer.type.aem', label: t('electrolyzer.type.aem') },
-                                        { value: 'electrolyzer.type.soec', label: t('electrolyzer.type.soec') }
-                                    ]} 
-                                    value={type} 
-                                    onChange={setType} 
-                                    allowDeselect={false} 
-                                    mb="sm" 
-                                />
-                            </Grid.Col>
+                        <Stack gap="md">
+                            <Paper bg="gray.0" p="md" radius="md" withBorder>
+                                <Grid>
+                                    <Grid.Col span={{ base: 12, sm: 8 }}>
+                                        <BufferedTextInput 
+                                            label={<LabelWithTooltip label={t('setupBuilder.configuration_name.label')} tooltip={t('setupBuilder.configuration_name.tooltip')} />} 
+                                            placeholder={t('setupBuilder.configuration_name.placeholder')} 
+                                            value={setupName} 
+                                            onValueChange={setSetupName}
+                                            required 
+                                            mb="sm" 
+                                        />
+                                    </Grid.Col>
+                                    <Grid.Col span={{ base: 12, sm: 4 }}>
+                                        <Select 
+                                            label={<LabelWithTooltip label={t('setupBuilder.technology_type.label')} tooltip={t('setupBuilder.technology_type.tooltip')} />} 
+                                            data={[
+                                                { value: 'electrolyzer.type.pem', label: t('electrolyzer.type.pem') },
+                                                { value: 'electrolyzer.type.alkaline', label: t('electrolyzer.type.alkaline') },
+                                                { value: 'electrolyzer.type.aem', label: t('electrolyzer.type.aem') },
+                                                { value: 'electrolyzer.type.soec', label: t('electrolyzer.type.soec') }
+                                            ]} 
+                                            value={type} 
+                                            onChange={setType} 
+                                            allowDeselect={false} 
+                                            mb="sm" 
+                                        />
+                                    </Grid.Col>
+                                </Grid>
+                            </Paper>
 
-                           
-                            <Grid.Col span={{ base: 12, sm: 6 }}>
-                                <ValueInput 
-                                    label={<LabelWithTooltip label={t('setupBuilder.max_capacity.label')} tooltip={t('setupBuilder.max_capacity.tooltip')} />} 
-                                    value={systemMaxStacks} 
-                                    onValueChange={setSystemMaxStacks}
-                                    namespace="setupBuilder" 
-                                    units='units.stacks' 
-                                    nullBlocker 
-                                />
-                            </Grid.Col>
+                            <Paper bg="gray.0" p="md" radius="md" withBorder>
+                                <Grid>
+                                    <Grid.Col span={{ base: 12, sm: 6 }}>
+                                        <ValueInput 
+                                            label={<LabelWithTooltip label={t('setupBuilder.max_capacity.label')} tooltip={t('setupBuilder.max_capacity.tooltip')} />} 
+                                            value={systemMaxStacks} 
+                                            onValueChange={setSystemMaxStacks}
+                                            namespace="setupBuilder" 
+                                            units='units.stacks' 
+                                            nullBlocker 
+                                        />
+                                    </Grid.Col>
+                                    <Grid.Col span={{ base: 12, sm: 6 }}>
+                                        <SliderInput 
+                                            label={<LabelWithTooltip label={t('setupBuilder.included_stacks.label')} tooltip={t('setupBuilder.included_stacks.tooltip')} />}
+                                            value={includedStacks} 
+                                            onValueChange={setIncludedStacks}
+                                            min={1}
+                                            max={systemMaxStacks}
+                                            step={1}
+                                            units={t('units.stacks')}
+                                        />
+                                    </Grid.Col>
+                                    <Grid.Col span={{ base: 12, sm: 4 }}>
+                                        <ValueInput 
+                                            label={<LabelWithTooltip label={t('setupBuilder.single_stack_price.label')} tooltip={t('setupBuilder.single_stack_price.tooltip')} />} 
+                                            value={stackPrice} 
+                                            onValueChange={setStackPrice} 
+                                            namespace="setupBuilder"
+                                            units='units.eur' 
+                                        />
+                                    </Grid.Col>
+                                    <Grid.Col span={{ base: 12, sm: 4 }}>
+                                        <ValueInput 
+                                            label={<LabelWithTooltip label={t('setupBuilder.stack_power.label')} tooltip={t('setupBuilder.stack_power.tooltip')} />} 
+                                            value={stackPower} 
+                                            onValueChange={setStackPower} 
+                                            namespace="setupBuilder"
+                                            units='units.power_kw' 
+                                            nullBlocker 
+                                        />
+                                    </Grid.Col>
+                                    <Grid.Col span={{ base: 12, sm: 4 }}>
+                                        <TextInput 
+                                            label={<LabelWithTooltip label={t('setupBuilder.total_power.label')} tooltip={t('setupBuilder.total_power.tooltip')} />} 
+                                            value={`${calculatedTotalPower} ${t('units.power_kw')}`} 
+                                            readOnly
+                                            variant="filled"
+                                            styles={{ input: { cursor: 'default' } }}
+                                        />
+                                    </Grid.Col>
+                                </Grid>
+                            </Paper>
 
-                            <Grid.Col span={{ base: 12, sm: 6 }}>
-                                <SliderInput 
-                                    label={<LabelWithTooltip label={t('setupBuilder.included_stacks.label')} tooltip={t('setupBuilder.included_stacks.tooltip')} />}
-                                    value={includedStacks} 
-                                    onValueChange={setIncludedStacks}
-                                    min={1}
-                                    max={systemMaxStacks}
-                                    step={1}
-                                    units={t('units.stacks')}
-                                />
-                            </Grid.Col>
-                            <Grid.Col span={{ base: 12, sm: 4 }}>
-                                <ValueInput 
-                                    label={<LabelWithTooltip label={t('setupBuilder.single_stack_price.label')} tooltip={t('setupBuilder.single_stack_price.tooltip')} />} 
-                                    value={stackPrice} 
-                                    onValueChange={setStackPrice} 
-                                    namespace="setupBuilder"
-                                    units='units.eur' 
-                                />
-                            </Grid.Col>
-                            <Grid.Col span={{ base: 12, sm: 4 }}>
-                                <ValueInput 
-                                    label={<LabelWithTooltip label={t('setupBuilder.stack_power.label')} tooltip={t('setupBuilder.stack_power.tooltip')} />} 
-                                    value={stackPower} 
-                                    onValueChange={setStackPower} 
-                                    namespace="setupBuilder"
-                                    units='units.power_kw' 
-                                    nullBlocker 
-                                />
-                            </Grid.Col>
-                            <Grid.Col span={{ base: 12, sm: 4 }}>
-                                <TextInput 
-                                    label={<LabelWithTooltip label={t('setupBuilder.total_power.label')} tooltip={t('setupBuilder.total_power.tooltip')} />} 
-                                    value={`${calculatedTotalPower} ${t('units.power_kw')}`} 
-                                    readOnly
-                                    variant="filled"
-                                    styles={{ input: { cursor: 'default' } }}
-                                />
-                            </Grid.Col>
+                            {/* Groupe : consommation */}
+                            <Paper bg="gray.0" p="md" radius="md" withBorder>
+                                <Grid>
+                                    <Grid.Col span={{ base: 12, sm: 6 }}>
+                                        <ValueInput 
+                                            label={<LabelWithTooltip label={t('setupBuilder.energy_consumption.label')} tooltip={t('setupBuilder.energy_consumption.tooltip')} />} 
+                                            value={energyCons} 
+                                            onValueChange={setEnergyCons} 
+                                            namespace="setupBuilder"
+                                            units={H2_VOLUME_POWER_UNITS} 
+                                            currentUnit={energyConsUnit}
+                                            onUnitChange={setEnergyConsUnit}
+                                        />
+                                    </Grid.Col>
+                                    <Grid.Col span={{ base: 12, sm: 6 }}>
+                                        <ValueInput 
+                                            label={<LabelWithTooltip label={t('setupBuilder.base_water_consumption.label')} tooltip={t('setupBuilder.base_water_consumption.tooltip')} />} 
+                                            value={waterCons} 
+                                            onValueChange={setWaterCons} 
+                                            namespace="setupBuilder"
+                                            units='units.l_per_h'
+                                        />
+                                    </Grid.Col>
+                                </Grid>
+                            </Paper>
 
-                            <Grid.Col span={{ base: 12, sm: 6 }}>
-                                <ValueInput 
-                                    label={<LabelWithTooltip label={t('setupBuilder.energy_consumption.label')} tooltip={t('setupBuilder.energy_consumption.tooltip')} />} 
-                                    value={energyCons} 
-                                    onValueChange={setEnergyCons} 
-                                    namespace="setupBuilder"
-                                    units={H2_VOLUME_POWER_UNITS} 
-                                    currentUnit={energyConsUnit}
-                                    onUnitChange={setEnergyConsUnit}
-                                />
-                            </Grid.Col>
-                            <Grid.Col span={{ base: 12, sm: 6 }}>
-                                <ValueInput 
-                                    label={<LabelWithTooltip label={t('setupBuilder.base_water_consumption.label')} tooltip={t('setupBuilder.base_water_consumption.tooltip')} />} 
-                                    value={waterCons} 
-                                    onValueChange={setWaterCons} 
-                                    namespace="setupBuilder"
-                                    units='units.l_per_h'
-                                />
-                            </Grid.Col>
-
-                            <Grid.Col span={{ base: 12, sm: 6 }}>
-                                <ValueInput 
-                                    label={<LabelWithTooltip label={t('setupBuilder.global_maintenance.label')} tooltip={t('setupBuilder.global_maintenance.tooltip')} />} 
-                                    value={maintenance} 
-                                    onValueChange={setMaintenance} 
-                                    namespace="setupBuilder"
-                                    units={MAINTENANCE_UNITS} 
-                                    currentUnit={maintenanceUnit}
-                                    onUnitChange={setMaintenanceUnit}
-                                />
-                            </Grid.Col>
-                            <Grid.Col span={{ base: 12, sm: 6 }}>
-                                <ValueInput 
-                                    label={<LabelWithTooltip label={t('setupBuilder.stack_lifetime.label')} tooltip={t('setupBuilder.stack_lifetime.tooltip')} />} 
-                                    value={stackLifetime} 
-                                    onValueChange={setStackLifetime} 
-                                    namespace="setupBuilder"
-                                    units='units.hours'
-                                />
-                            </Grid.Col>
-                        </Grid>
+                            {/* Groupe : maintenance */}
+                            <Paper bg="gray.0" p="md" radius="md" withBorder>
+                                <Grid>
+                                    <Grid.Col span={{ base: 12, sm: 6 }}>
+                                        <ValueInput 
+                                            label={<LabelWithTooltip label={t('setupBuilder.global_maintenance.label')} tooltip={t('setupBuilder.global_maintenance.tooltip')} />} 
+                                            value={maintenance} 
+                                            onValueChange={setMaintenance} 
+                                            namespace="setupBuilder"
+                                            units={MAINTENANCE_UNITS} 
+                                            currentUnit={maintenanceUnit}
+                                            onUnitChange={setMaintenanceUnit}
+                                        />
+                                    </Grid.Col>
+                                    <Grid.Col span={{ base: 12, sm: 6 }}>
+                                        <ValueInput 
+                                            label={<LabelWithTooltip label={t('setupBuilder.stack_lifetime.label')} tooltip={t('setupBuilder.stack_lifetime.tooltip')} />} 
+                                            value={stackLifetime} 
+                                            onValueChange={setStackLifetime} 
+                                            namespace="setupBuilder"
+                                            units='units.hours'
+                                        />
+                                    </Grid.Col>
+                                </Grid>
+                            </Paper>
+                        </Stack>
 
                         <Divider my="xl" />
 
