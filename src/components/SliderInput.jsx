@@ -1,5 +1,6 @@
 import { NumberInput, Slider, Box, Text } from '@mantine/core';
 import { useEffect, useState } from 'react';
+import { IconPlayerPlayFilled } from '@tabler/icons-react';
 
 /**
  * A composite input component blending a precise NumberInput with a visual Slider.
@@ -63,6 +64,8 @@ export default function SliderInput({ label, value, units, onValueChange, min, m
       <Slider
         max={max}
         min={min}
+        thumbChildren={<IconPlayerPlayFilled size={16} />}
+        thumbSize={20}
         step={Number.isInteger(max) || step !== 1 ? step : Number((max / 10).toFixed(3))}
         label={null}
         value={sliderValue}
@@ -70,6 +73,10 @@ export default function SliderInput({ label, value, units, onValueChange, min, m
         onChangeEnd={onValueChange}      // Propage au parent uniquement au relâchement
         size={3}
         aria-label={label}
+        marks={[
+          { value: min, label: min },
+          { value: max, label: max },
+        ]}
         styles={{
           root: {
             position: 'absolute',
@@ -77,11 +84,24 @@ export default function SliderInput({ label, value, units, onValueChange, min, m
             bottom: '-1px',
           },
           thumb: {
-            width: '16px',
-            height: '16px',
+            borderWidth: 2,
+            padding: 3,
           },
           bar: {
             borderRadius: 0,
+          },
+          markLabel: {
+            fontSize: '10px',
+            color: 'var(--mantine-color-gray-6)',
+            transform: 'translateY(-1px)',
+          },
+          markWrapper: {
+            fontSize: '10px',
+            color: 'var(--mantine-color-gray-6)',
+            transform: 'translateY(8px)',
+          },
+          mark: {
+            display: 'none'
           }
         }}
       />
